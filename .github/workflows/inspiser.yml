@@ -43,11 +43,6 @@ jobs:
       - name: Navnekilde — SSB Klass
         run: python -m etl.sources.ssb_klass
 
-      # K4 alene først, så sporet står for seg selv i en kort logg.
-      - name: K4 alene
-        continue-on-error: true
-        run: python -m etl.sources.k4_effis
-
       # Feiler en kilde, skal datasettet og statusen likevel committes — det
       # er nettopp da statusen er verdt noe. Jobben markeres som feilet til
       # slutt, som i etl.yml.

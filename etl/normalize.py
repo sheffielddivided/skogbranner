@@ -362,6 +362,11 @@ def fra_k4(rader, info):
             "Entiteter uten oppføring i data/geo/land_no.json: "
             + ", ".join(f"{navn} ({kode})" for navn, kode in sorted(ukjente))
         )
+
+    observasjoner.sort(key=lambda o: (o["entity"], o["period"]))
+    return observasjoner
+
+
 def fra_rutenett(
     per_entitet,
     verden,
