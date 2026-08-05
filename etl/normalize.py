@@ -316,7 +316,10 @@ def fra_k10(rader, info):
     landnivå.
     """
     land = _land()
-    fotnoter = ["f_proxy"]
+
+    # Kurven er både et indirekte mål og et glidende gjennomsnitt. Vindusbredden
+    # står i fotnoteteksten, fordi den avgjør hvordan kurven skal leses.
+    fotnoter = ["f_proxy", "f_smoothed"]
 
     observasjoner = []
     for rad in rader:
@@ -336,6 +339,10 @@ def fra_k10(rader, info):
                 "series_id": k10_gcd.SERIES_ID,
                 "quality": "reconstructed",
                 "footnotes": list(fotnoter),
+                # Hvor mange kullserier som bidrar i punktet. Tallet avgjør
+                # hvor langt tilbake kurven kan vises, og må kunne leses uten
+                # å kjøre kilden på nytt (CLAUDE.md § 6).
+                "n_series": int(float(rad["n_sites"])),
             }
         )
 
@@ -354,13 +361,26 @@ def fra_k10(rader, info):
         )
 
     aar = [int(o["period"]) for o in observasjoner]
+    serier = [o["n_series"] for o in observasjoner]
     info["aar_forste"] = min(aar)
     info["aar_siste"] = max(aar)
+    info["n_series_min"] = min(serier)
+    info["n_series_max"] = max(serier)
     info["footnotes"] = fotnoter
     info["rows"] = len(observasjoner)
 
     observasjoner.sort(key=lambda o: int(o["period"]))
     return observasjoner
+
+
+def _kolonner(observasjoner):
+    """FELT, pluss de valgfrie feltene observasjonene faktisk har.
+
+    Et valgfritt felt skal bare gi en kolonne i de filene som bruker det, ikke
+    en tom kolonne i alle de andre.
+    """
+    ekstra = sorted({k for o in observasjoner for k in o} - set(FELT))
+    return FELT + ekstra
 
 
 def skriv(observasjoner, navn):
@@ -374,7 +394,7 @@ def skriv(observasjoner, navn):
         f.write("\n")
 
     with open(sti_csv, "w", encoding="utf-8", newline="") as f:
-        skriver = csv.DictWriter(f, fieldnames=FELT)
+        skriver = csv.DictWriter(f, fieldnames=_kolonner(observasjoner))
         skriver.writeheader()
         for o in observasjoner:
             rad = dict(o)

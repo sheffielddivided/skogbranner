@@ -47,6 +47,8 @@ tr <- pfTransform(
 # Lavpassfiltrert kompositt med bootstrappet konfidensintervall. tarAge er
 # alderaksen i kalenderår før 1950 (BP): 0 er 1950, negative verdier er årene
 # etter 1950.
+# hw er halve vindusbredden i år. Den står også i teksten for f_smoothed i
+# data/_footnotes.json — endres den her, endres teksten i samme commit (§ 9).
 maal_alder <- seq(-60, 8000, by = 20)
 komp <- pfCompositeLF(
   tr,

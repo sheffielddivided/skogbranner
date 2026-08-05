@@ -149,6 +149,9 @@ def skriv_metadata(info, processed_files):
         "coverage_start": str(info["aar_forste"]),
         "coverage_end": str(info["aar_siste"]),
         "temporal_resolution": "binned",
+        "smoothing_halfwidth_years": 500,
+        "n_series_min": info.get("n_series_min"),
+        "n_series_max": info.get("n_series_max"),
         "quality": "reconstructed",
         "unit_source": "zscore",
         "downloaded_at": info["downloaded_at"],
@@ -158,7 +161,8 @@ def skriv_metadata(info, processed_files):
         "series": [SERIES_ID],
         "processed_files": processed_files,
         "footnotes": info["footnotes"],
-        "notes": "Kompositt bygget med paleofire: minimaks, Box-Cox og z-score "
+        "notes": "Hvert punkt er et vektet snitt over 500 år til hver side. "
+        "Kompositt bygget med paleofire: minimaks, Box-Cox og z-score "
         "mot en felles basisperiode, deretter lavpassfiltrert snitt med "
         "bootstrappet usikkerhet. Utvalget er alle stedene i databasen, ikke et "
         "redaksjonelt utvalg. paleofire ble trukket fra CRAN i 2023 og "

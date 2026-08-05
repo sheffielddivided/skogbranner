@@ -572,6 +572,14 @@ Faktiske tall står i `data/processed/`.
 - `quality`: `measured` | `reported` | `beta` | `reconstructed`
 - `unit`: `km2` | `share` | `zscore`
 
+Feltene over er obligatoriske. En kilde kan i tillegg bære **valgfrie felt** der
+den har informasjon de andre ikke har, og da bare i den kildens egne filer —
+kolonnen skal ikke stå tom i alle de øvrige. I dag finnes ett:
+
+- `n_series` — antall serier bak punktet, for kilder der hvert punkt er satt
+  sammen av flere. K10 fører det, fordi antallet avgjør hvor langt tilbake
+  kurven kan vises, og fordi det ellers bare ville stått i en fil som slettes
+
 ### Entitetskoder
 
 `data/geo/land_no.json` er **fasit** for hvilke `entity`-koder som finnes, hva
@@ -892,6 +900,8 @@ særbehandling og uten egen seksjon (P8).
   slik at brent areal kan falle mellom rutene
 - `f_product_level` — satellittprodukter har ulik deteksjonsevne, så
   nivåforskjellen mellom to serier er ikke en endring i verden
+- `f_smoothed` — hvert punkt er et glidende gjennomsnitt over en lengre
+  periode, ikke en enkeltmåling
 
 **Hvor fotnotetekstene bor.** Kodene over er enumerasjonen, og følger T5: prosa
 her, konstant i `etl/schema.py`. Den norske teksten leseren ser er noe annet —
@@ -925,6 +935,16 @@ Merkes de ikke, gjelder terskelene ikke for serien, og en falsk nedgang av
 Qatar-typen — deteksjoner som stopper, ikke branner som avtar — ville passert
 ubemerket. En rutenettkilde som ikke merker nullene sine, undergraver derfor en
 regel som står et helt annet sted i dokumentet.
+
+`f_smoothed` gjelder K10. Hvert punkt i kompositten er et vektet snitt over et
+vindu på 500 år til hver side, og kurven viser derfor den langsiktige formen,
+ikke variasjon fra år til år. To punkter som ligger nær hverandre, er ikke
+uavhengige.
+
+**Vindusbredden står i fotnoteteksten**, ikke bare i koden. Uten den kan en
+leser tro at et punkt er en måling av det året, og at en topp er én hendelse.
+Endres `hw` i `etl/sources/k10_gcd.R`, må teksten i `data/_footnotes.json`
+endres i samme commit.
 
 `f_product_level` gjelder de satellittmålte arealseriene: K1, K8 og K9. Den
 sier at to serier kan ligge på ulikt nivå for samme år fordi produktene ser
