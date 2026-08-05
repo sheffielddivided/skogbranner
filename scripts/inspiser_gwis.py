@@ -1,6 +1,6 @@
 """Kartlegger GWIS' statistikk-API før en parser skrives.
 
-Verten er avvist av nettverkspolicyen i utviklingsmiljøet, så strukturen kan
+Verten er avvist av nettverkspolicyen i utviklingsmiljøet, så responsene kan
 ikke ses derfra. Skriptet kjøres i GitHub Actions, der utgående trafikk er
 åpen, og skriver strukturen til loggen.
 
@@ -11,35 +11,40 @@ Kjøres som modul fra repotoppen: ``python -m scripts.inspiser_gwis``
 """
 
 import json
-import re
 import urllib.error
 import urllib.request
 
 BRUKERAGENT = "skogbranner-etl/1.0 (+https://github.com/sheffielddivided/skogbranner)"
 
-PORTALER = [
-    "https://gwis.jrc.ec.europa.eu/apps/gwis.statistics/seasonaltrend",
-    "https://gwis.jrc.ec.europa.eu/apps/country.profile/overview/",
-]
-PORTAL = PORTALER[0]
-
-# Første runde traff ikke: alle /statistics/v2/-stiene svarte 404. Portalens
-# skriptfiler viste at basisstien er /api/gwis/. Kandidatene under følger den.
+# Runde tre. Portalens egen skriptfil (_nuxt/86508f3.js) viste både basisen og
+# hvordan hver adresse settes sammen, så disse er lest av kilden og ikke gjettet:
+#
+#   prefixUrl              https://api2.effis.emergency.copernicus.eu
+#   estimatesByCountryURL  /statistics/v2/gwis/estimatesbycountry?country=
+#   estimatesOverviewURL   /statistics/v2/gwis/estimatesoverview?countries=&year=
+#   seasonalTrendBANFURL   /statistics/v2/gwis/weekly?country=&year=
+#   aoiURL                 statistics/utils/aoi?scope=
+#   countriesByAOIURL      statistics/utils/countriesbyaoi?aoi=
+#
+# Det som gjenstår å få bekreftet er responsformene og hvilken enhet ``ba``
+# har. Portalen viser ``area_ha`` ved siden av, så hektar er antakelsen —
+# ``sjekk_enhet`` under prøver den mot ``ba_p``, som er samme tall i prosent.
 API = "https://api2.effis.emergency.copernicus.eu"
 
 KANDIDATER = [
-    f"{API}/api/gwis/seasonaltrend/",
-    f"{API}/api/gwis/seasonaltrend/?country=NO",
-    f"{API}/api/gwis/seasonaltrend/data/?country=NO",
-    f"{API}/api/gwis/countries/",
-    f"{API}/api/gwis/country.profile/",
-    f"{API}/api/gwis/country.profile/overview/?country=NO",
-    f"{API}/api/gwis/",
-    f"{API}/api/",
+    f"{API}/statistics/utils/aoi?scope=gwis",
+    f"{API}/statistics/utils/countriesbyaoi?aoi=UN_EUR",
+    f"{API}/statistics/v2/gwis/estimatesbycountry?country=NOR",
+    f"{API}/statistics/v2/gwis/estimatesbycountry?country=USA",
+    f"{API}/statistics/v2/gwis/estimatesoverview?countries=UN_EUR&year=2024",
+    f"{API}/statistics/v2/gwis/weekly?country=NOR&year=2024",
 ]
 
+# Adressene over uten skjema-prefikset, i tilfelle basisen skal være med.
+KANDIDATER += [f"{API}/api/gwis/estimatesbycountry?country=NOR"]
 
-def hent(url, maks=400_000):
+
+def hent(url, maks=2_000_000):
     forespoersel = urllib.request.Request(url, headers={"User-Agent": BRUKERAGENT})
     with urllib.request.urlopen(forespoersel, timeout=60) as svar:
         return svar.status, svar.headers.get("content-type", ""), svar.read(maks)
@@ -58,56 +63,43 @@ def vis_struktur(verdi, innrykk=0, sti="", maks_dybde=4):
         if verdi and innrykk < maks_dybde:
             vis_struktur(verdi[0], innrykk + 1, f"{sti}[0]", maks_dybde)
     else:
-        vist = repr(verdi)
-        print(f"{pre}{sti}: {type(verdi).__name__} = {vist[:80]}")
+        print(f"{pre}{sti}: {type(verdi).__name__} = {repr(verdi)[:80]}")
 
 
-def finn_api_i_portalen():
-    """Leter etter API-stier i portalenes egne skriptfiler.
+def sjekk_enhet(rader):
+    """Avgjør om ``ba`` er hektar, ved å prøve den mot ``ba_p`` og ``area_ha``.
 
-    Stiene settes gjerne sammen av en basiskonstant og et relativt fragment, så
-    det holder ikke å lete etter hele adresser. Her samles begge deler.
+    ``ba_p`` er brent areal som andel av landarealet, i prosent. Er ``ba``
+    hektar, skal ``ba / area_ha * 100`` treffe ``ba_p``. Er den km², bommer
+    den med faktor 100. Dette avgjør hvilken konstant normalize.py skal bruke,
+    og skal ikke gjettes.
     """
-    for portal in PORTALER:
-        print(f"\n### Leter etter API-stier i {portal}\n")
-        try:
-            _, _, kropp = hent(portal)
-        except Exception as e:
-            print(f"  portalen svarte ikke: {type(e).__name__}: {e}")
+    print("  ENHETSPRØVE (ba mot ba_p og area_ha):")
+    vist = 0
+    for rad in rader:
+        if not isinstance(rad, dict):
             continue
-
-        html = kropp.decode("utf-8", errors="replace")
-        skript = re.findall(r'src="([^"]+\.js[^"]*)"', html)
-        print(f"  fant {len(skript)} skriptfiler")
-
-        adresser, fragmenter = set(), set()
-        for sti in skript[:15]:
-            url = sti if sti.startswith("http") else "https://gwis.jrc.ec.europa.eu" + sti
-            try:
-                _, _, innhold = hent(url, maks=6_000_000)
-            except Exception:
-                continue
-            tekst = innhold.decode("utf-8", errors="replace")
-            adresser.update(
-                re.findall(r'https://[a-z0-9.\-]*(?:effis|gwis)[a-z0-9.\-/]*', tekst)
-            )
-            # Relative stier i anførselstegn, som settes sammen med basisen.
-            fragmenter.update(re.findall(r'["\'](/api/[a-zA-Z0-9._/\-]{2,80})["\']', tekst))
-            fragmenter.update(
-                re.findall(r'["\']([a-zA-Z0-9._/\-]*(?:statistic|estimate|burnt|burned|seasonal|country)[a-zA-Z0-9._/\-]*)["\']', tekst)
-            )
-
-        print("  hele adresser:")
-        for a in sorted(adresser)[:30]:
-            print(f"    {a}")
-        print("  stifragmenter:")
-        for f in sorted(fragmenter)[:60]:
-            print(f"    {f}")
+        ba, areal, andel = rad.get("ba"), rad.get("area_ha"), rad.get("ba_p")
+        if not all(isinstance(v, (int, float)) for v in (ba, areal, andel)):
+            continue
+        if not areal or not andel:
+            continue
+        beregnet = ba / areal * 100
+        print(
+            f"    {rad.get('iso3')}: ba={ba} area_ha={areal} ba_p={andel} "
+            f"→ ba/area_ha*100 = {beregnet:.4f} "
+            f"(forhold til ba_p: {beregnet / andel:.4f})"
+        )
+        vist += 1
+        if vist >= 5:
+            break
+    if not vist:
+        print("    ingen rader hadde ba, area_ha og ba_p samtidig")
 
 
 def main():
     print("=" * 72)
-    print("GWIS — kartlegging av statistikk-API")
+    print("GWIS — kartlegging av statistikk-API, runde tre")
     print("=" * 72)
 
     for url in KANDIDATER:
@@ -116,6 +108,7 @@ def main():
             status, ctype, kropp = hent(url)
         except urllib.error.HTTPError as e:
             print(f"  HTTP {e.code} {e.reason}")
+            print(f"  kropp: {e.read(400)!r}")
             continue
         except Exception as e:
             print(f"  {type(e).__name__}: {e}")
@@ -134,20 +127,20 @@ def main():
         print("  STRUKTUR:")
         vis_struktur(data, innrykk=2)
 
-        # Én komplett oppføring, slik at feltnavn og verdiformat kan leses av.
-        forste = None
         if isinstance(data, list) and data:
-            forste = data[0]
-        elif isinstance(data, dict):
-            for verdi in data.values():
-                if isinstance(verdi, list) and verdi:
-                    forste = verdi[0]
-                    break
-        if forste is not None:
-            print("  KOMPLETT OPPFØRING:")
-            print("   " + json.dumps(forste, ensure_ascii=False, indent=2)[:1500])
+            print("  FØRSTE OPPFØRING:")
+            print("   " + json.dumps(data[0], ensure_ascii=False, indent=2)[:1200])
+            print("  SISTE OPPFØRING:")
+            print("   " + json.dumps(data[-1], ensure_ascii=False, indent=2)[:1200])
+            sjekk_enhet(data)
 
-    finn_api_i_portalen()
+            # Kodene serien bruker for entiteter, som må slås mot land_no.json.
+            koder = sorted(
+                {r.get("iso3") or r.get("country") for r in data if isinstance(r, dict)}
+                - {None}
+            )
+            if koder:
+                print(f"  KODER ({len(koder)}): {koder[:80]}")
 
 
 if __name__ == "__main__":

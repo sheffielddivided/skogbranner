@@ -8,7 +8,10 @@ name: Inspiser kildeformat
 
 on:
   push:
-    branches: [claude/ssb-name-source-ehcs0b]
+    branches: [claude/add-sources-k2-k3-k5-k6-k7-gg8y9l]
+    paths:
+      - scripts/inspiser_gwis.py
+      - .github/workflows/inspiser.yml
   workflow_dispatch:
 
 permissions:
