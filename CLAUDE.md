@@ -10,10 +10,17 @@ uten å gjette.
 
 En redaksjonell datanettside om skogbranner, globalt og i Europa.
 
-- Språk på siden og i koden: **norsk (bokmål)**. Kommentarer, variabelnavn i
-  data, overskrifter, commit-meldinger — alt på norsk. Unntak: etablerte
-  engelske faguttrykk i feltnavn der en oversettelse ville skapt tvetydighet
-  (`burned_area_km2`, `entity`, `indicator`).
+- **Alt leseren ser er norsk (bokmål).** Overskrifter, brødtekst, figurtitler,
+  aksetitler, tooltips, ordliste, fotnoter. Det samme gjelder kommentarer i
+  koden, dokumentasjon og commit-meldinger.
+- **Identifikatorer i datamodell og kode er engelske.** Feltnavn, kodeverdier
+  og verdier av `series_id` skrives på engelsk: `entity`, `indicator`,
+  `burned_area_km2`, `measured`, `owid_annual_area_burnt`. Ikke bland
+  språkene inne i en identifikator.
+
+  Skillet er: teknisk lag på engelsk, presentasjonslag på norsk.
+  Oversettelsen fra kodeverdi til lesbar norsk tekst skjer i visningslaget,
+  aldri ved å døpe om selve identifikatoren.
 - Privat, ikke-kommersielt prosjekt. Ingen tilknytning til arbeidsgiver.
 - Publiseres statisk på GitHub Pages under stien `/skogbranner/`.
 - Alt bygges på forhånd. Nettleseren gjør ingen API-kall.
@@ -203,7 +210,58 @@ siden dato X. Siden skal aldri gå i stykker av at en kilde er nede.
 
 ---
 
-## 5. Kanonisk datamodell
+## 5. Kildeoversikt
+
+Kildekodene er stabile. De brukes som `source_id` i den kanoniske datamodellen
+og som nøkkel i `data/_sources.json`. En kode gjenbrukes aldri til en annen
+kilde.
+
+| Kode | Kilde | Geografi | Dekning | `quality` | Merknad |
+|---|---|---|---|---|---|
+| K1 | Our World in Data | Global | 2012– | `measured` | CC BY 4.0 |
+| K2 | GWIS (JRC/Copernicus) | Global | 2012– | `measured` | Kryssjekk mot K1 |
+| K3 | EFFIS, landtotaler | Europa, Midtøsten, Nord-Afrika | — | `reported` | Nasjonalt rapporterte totaler |
+| K4 | EFFIS, Burnt Areas | Europa | — | `reported` | Grunnlag for brannstørrelsesfordeling |
+| K5 | NIFC | USA | 1983– | `reported` | Lang nasjonal serie |
+| K6 | Natural Earth, admin-0 | Global | — | — | Geometri og landarealer. Public domain |
+| K7 | CNFDB / NBAC | Canada | — | `reported` | Krever sluttbrukeravtale — akseptert |
+| K8 | FireCCILT11 (ESA Fire_cci) | Global | 1982–2018, uten 1994 | `beta` | Statisk |
+| K9 | GFED5 | Global | 1997–2022 | `beta` | Statisk |
+| K10 | Global Charcoal Database | Global | — | `reconstructed` | Proxy. Statisk |
+
+### Statiske kilder
+
+K8, K9 og K10 er **statiske**. De skal aldri inn i den månedlige ETL-kjøringen.
+Datasettene er avsluttede utgivelser, ikke løpende serier — å hente dem på nytt
+hver måned gir ingen nye data og bare unødig last. De hentes én gang, ved en
+manuelt utløst workflow, og oppdateres kun hvis produsenten faktisk publiserer
+en ny versjon.
+
+### Avgrensninger per kilde
+
+- **K6 Natural Earth** leverer ikke branndata. Den brukes til kartgeometri og
+  til landarealer, som er nevneren i `burned_area_share_land`.
+- **K9 GFED5** brukes kun for årene **1997–2022**. Produsentens beta-år fra
+  2023 og framover holdes ute.
+- **K10 Global Charcoal Database** er et *proxy*: sedimentært kull som
+  indirekte spor etter brann, ikke en måling av brent areal. Alltid
+  `f_proxy`.
+
+### Påkrevd sitering for K7
+
+CNFDB krever at følgende sitering gjengis **ordrett** på siden. Teksten skal
+ikke oversettes, forkortes eller omskrives:
+
+> Canadian Forest Service. 2021. Canadian National Fire Database – Agency Fire
+> Data. Natural Resources Canada, Canadian Forest Service, Northern Forestry
+> Centre, Edmonton, Alberta. https://cwfis.cfs.nrcan.gc.ca/ha/nfdb
+
+Sluttbrukeravtalen er akseptert. Siteringen skal stå både i kildelinjen under
+figurer som bruker K7, og i attribusjonsblokken i sidefoten.
+
+---
+
+## 6. Kanonisk datamodell
 
 Alle kilder normaliseres til langformat før publisering:
 
@@ -217,7 +275,7 @@ Alle kilder normaliseres til langformat før publisering:
   "value": 9.71,
   "unit": "km2",
   "source_id": "K1",
-  "series_id": "owid_arlig_brent_areal",
+  "series_id": "owid_annual_area_burnt",
   "quality": "measured",
   "footnotes": ["f_sensor_break", "f_min_fire_size"]
 }
@@ -225,11 +283,43 @@ Alle kilder normaliseres til langformat før publisering:
 
 - `level`: `country` | `region` | `world`
 - `period`: ISO 8601 — `YYYY`, `YYYY-MM` eller `YYYY-Www`
-- `quality`: `measured` | `reported` | `reconstructed`
+- `quality`: `measured` | `reported` | `beta` | `reconstructed`
 
-**`quality` styrer visuell fremstilling:** målte serier tegnes med heltrukket
-linje, rapporterte med stiplet, rekonstruerte med eget bånd og separat akse.
-Serier med ulikt kvalitetsflagg slås **aldri** sammen til én kurve uten synlig
+### Indikatorer
+
+| `indicator` | Enhet | Kilde | Merknad |
+|---|---|---|---|
+| `burned_area_km2` | km² | K1–K5, K7–K9 | Brent areal |
+| `burned_area_share_land` | andel (0–1) | avledet, nevner fra K6 | Brent areal som andel av landareal. Gjør små og store land sammenlignbare |
+| `charcoal_index` | enhetsløs | K10 | Z-score |
+
+`charcoal_index` er en **z-score**: hvor mange standardavvik en verdi ligger
+over eller under gjennomsnittet for serien. Den har ingen enhet og kan ikke
+sammenlignes med et areal.
+
+Derfor: `charcoal_index` får **alltid egen akse** og skal **aldri** tegnes i
+samme figur som en km²-serie. Å legge dem oppå hverandre antyder en
+sammenlignbarhet som ikke finnes. Vil du vise dem sammen, bruk to figurer
+under hverandre med felles tidsakse.
+
+`burned_area_share_land` beregnes i `normalize.py` med landareal fra K6 som
+nevner. Andelen vises for leseren i prosent, men lagres som andel.
+
+### `quality` styrer visuell fremstilling
+
+| Verdi | Betydning | Tegnes som |
+|---|---|---|
+| `measured` | Satellittmålt | Heltrukket linje |
+| `reported` | Nasjonalt rapportert, egne definisjoner | Stiplet linje |
+| `beta` | Foreløpig datasett, merket som sådan av produsenten | Heltrukket linje med redusert opasitet |
+| `reconstructed` | Rekonstruert eller proxy | Eget bånd, separat akse |
+
+`beta` betyr at **produsenten selv** har merket datasettet som foreløpig. Det
+er ikke vår vurdering av datakvaliteten. Serier med `beta` skal alltid ha
+`f_beta_product`, og den reduserte opasiteten skal forklares i figurens
+tegnforklaring — en leser skal ikke måtte gjette hva den blekere linjen betyr.
+
+Serier med ulik `quality` slås **aldri** sammen til én kurve uten synlig
 markering av bruddet.
 
 **Ulike startår skjules ikke.** Hver figur viser dekningsperioden eksplisitt.
@@ -240,7 +330,7 @@ trendberegninger.
 
 ---
 
-## 6. Tillatte maskinelle avledninger
+## 7. Tillatte maskinelle avledninger
 
 `derive.py` produserer kun disse. Alt annet krever at prinsippene diskuteres på
 nytt.
@@ -253,13 +343,61 @@ nytt.
 | Andel | Enhetens andel av globalt totaltall for gitt år |
 | Konsentrasjon | Andel av totalt brent areal fra de N største brannene eller landene |
 | Dekning | Første og siste år med data per enhet og serie |
+| Arealsammenligning | Landet hvis landareal ligger nærmest en gitt arealverdi, valgt maskinelt fra Natural Earth-arealene (K6) |
+
+**Arealsammenligning** gir leseren en fysisk referanse for et tall i km², som
+ellers er vanskelig å forestille seg. Sammenligningslandet velges maskinelt
+som det med minst absolutt avvik i landareal — ingen redaksjonelt valgte
+eksempler, ingen «omtrent på størrelse med». Avviket i prosent oppgis sammen
+med sammenligningen, slik at leseren ser hvor god tilnærmingen er.
+
+### Trend: aldri på tvers av kilde eller kvalitet
+
+Trendberegninger kjøres **kun innenfor én kilde og én `quality`-verdi**. Aldri
+på en serie som er skjøtt sammen av flere kilder, og aldri på tvers av ulike
+`quality`-verdier.
+
+Grunnen er at et skifte av kilde eller målemetode gir et nivåbrudd i serien.
+En regresjon over et slikt brudd måler skiftet i metode, ikke en endring i
+verden, og gir en trend som ser reell ut uten å være det. Trenger to serier å
+vises sammen, tegnes de som to serier med synlig brudd, med hver sin trend
+eller ingen.
 
 **Ikke tillatt:** årsaksforklaringer, sammenligning mot klimascenarier,
 prognoser, kvalitative karakteristikker.
 
 ---
 
-## 7. Krav til hver figur
+## 8. Sidestruktur
+
+Én lang side med sticky innholdsnavigasjon. Seks seksjoner, i denne
+rekkefølgen. Hver seksjon åpner med figuren (P2).
+
+| # | Seksjon | Viser | Kilder |
+|---|---|---|---|
+| S1 | Hvor mye brenner det på jorden | Globalt brent areal per år | K1, K2 |
+| S2 | Hvor på kloden | Geografisk fordeling: kart og rangering av land | K1, K6 |
+| S3 | Året gjennom | Sesongvariasjon innenfor året — kumulativ kurve mot median og persentilbånd | K2 |
+| S4 | Europa | Land- og regionnivå, brent areal og andel av landareal, sorterbar tabell, brannstørrelsesfordeling | K3, K4, K6 |
+| S5 | Den lange linjen | De seriene som går lengst tilbake, vist hver for seg | K5, K7, K8, K9, K10 |
+| S6 | Om dataene | Kildeoversikt, definisjoner, ordliste, alle fotnoter samlet, nedlastingslenker til alle bearbeidede CSV-filer, lenke til repoet | alle |
+
+**Overskriftene er beskrivende, ikke tolkende.** «Hvor mye brenner det på
+jorden» stiller et spørsmål dataene kan svare på. Den svarer ikke på om det er
+mye eller lite — det er en vurdering siden ikke gjør (P1).
+
+**S5 er den seksjonen som lettest bryter reglene.** Seriene der har ulik kilde,
+ulik `quality`, ulike startår og ulike definisjoner. De skal vises **hver for
+seg**, med tydelig markering av at de ikke er direkte sammenlignbare, og aldri
+skjøtes til én lang kurve. `charcoal_index` (K10) står i egen figur med egen
+akse. Trender beregnes per serie, innenfor én kilde og én `quality`.
+
+Norge og de nordiske landene inngår i S4 som ordinære land, uten
+særbehandling og uten egen seksjon (P8).
+
+---
+
+## 9. Krav til hver figur
 
 - Tittel som beskriver hva som vises, ikke hva det betyr
 - Enhet oppgitt i aksen — km²
@@ -280,10 +418,16 @@ prognoser, kvalitative karakteristikker.
   enn satellittmålte
 - `f_coverage_change` — antall rapporterende land eller områder har endret seg
   over tid
+- `f_beta_product` — produsenten merker datasettet som foreløpig
+- `f_missing_year` — enkeltår mangler helt i kilden
+- `f_proxy` — indirekte mål, ikke en måling av brent areal
+
+`f_missing_year` gjelder blant annet 1994 i K8. Et manglende år vises som
+brudd i kurven, aldri som 0 og aldri som interpolert verdi.
 
 ---
 
-## 8. Lisens
+## 10. Lisens
 
 - Kode: MIT (se `LICENSE`)
 - Sidens tekst: CC BY 4.0
@@ -296,7 +440,7 @@ sluttbrukeravtale tas ikke inn før avtalen er avklart og notert i
 
 ---
 
-## 9. Sjekkliste før du committer
+## 11. Sjekkliste før du committer
 
 - [ ] Ingen håndskrevne tall i brødtekst (P3)
 - [ ] Ingen forbudte ord (P4)
@@ -309,10 +453,17 @@ sluttbrukeravtale tas ikke inn før avtalen er avklart og notert i
 - [ ] Ingen eksterne forespørsler fra klienten (T2)
 - [ ] Ingen tunge nedlastinger kjørt lokalt (T4)
 - [ ] `data/raw/` er ikke committet
+- [ ] **Ingen figur blander `quality`-verdier uten synlig brudd.**
+      `validate.py` skal feile hvis det skjer — dette er en maskinell
+      kontroll, ikke en vurdering som overlates til den som skriver figuren
+- [ ] Trender er beregnet innenfor én kilde og én `quality`
+- [ ] `charcoal_index` står ikke i samme figur som en km²-serie
+- [ ] Siteringen for K7 gjengis ordrett der K7 brukes
+- [ ] Identifikatorer er engelske, alt leseren ser er norsk
 
 ---
 
-## 10. Status
+## 12. Status
 
 Prosjektet er i oppstartsfasen. Kun mappestruktur, konfigurasjon og dette
 dokumentet finnes. ETL-koden er **ikke** skrevet ennå — `etl/*.py` inneholder
