@@ -1,178 +1,175 @@
-"""K6 — Natural Earth, admin-0: kartgeometri og landarealer.
+"""K6 — Natural Earth, admin-0: landgeometri og landarealer.
 
-Kilden leverer ingen branndata. Den gir to ting:
+Henter Natural Earths admin-0-lag (1:10 mill.) som shapefil, legger arkivet
+uendret i ``data/raw/`` og leverer geometriene videre som GeoJSON-aktige
+ordbøker. Ingen tolkning, ingen omregning — se ``etl/sources/README.md``.
 
-* **Geometri** til kartene, som forenklet TopoJSON under ``data/geo/``. Alt
-  tegnes fra filer i repoet — siden henter ingenting fra en flistjeneste (T2).
+Kilden leverer ikke branndata. Den gir to ting, og tegnes ikke som egen serie
+(CLAUDE.md § 5 og § 8):
+
+* **Geometri**, som rutenettkildene fordeles på land med, og som kartene
+  tegnes fra.
 * **Landarealer**, som er nevneren i ``burned_area_share_land`` og grunnlaget
   for arealsammenligningen i § 7.
 
-**Admin-0 har ikke noe arealfelt.** Arealene regnes derfor fra polygonene, ved
-å reprojisere til en arealtro projeksjon og måle flaten. En arealtro
-projeksjon bevarer areal eksakt, så resultatet er polygonenes faktiske areal —
-med den unøyaktigheten som ligger i at Natural Earth er generalisert.
-
-Tallene avviker derfor noe fra offisielle landarealer, og de er ikke ment å
-erstatte dem. Poenget er at nevneren og arealsammenligningen bruker det samme
-grunnlaget, slik at de er innbyrdes konsistente. Se CLAUDE.md § 7.
-
-Både forenkling og projeksjon gjøres med mapshaper, som er en
-byggeavhengighet. Den kjører i Node og sender ingenting til leseren (T2).
+**Admin-0 har ikke noe arealfelt.** Arealene regnes derfor fra polygonene, med
+den samme geometrien rutenettkildene fordeles på. Da er nevneren og
+rasteriseringen enige om hvor landegrensene går.
 
 Kjøres som modul fra repotoppen: ``python -m etl.sources.k6_natural_earth``
 """
 
 import hashlib
+import io
 import json
-import re
-import shutil
-import subprocess
+import math
+import urllib.error
 import urllib.request
 import zipfile
-from datetime import date, datetime, timezone
+from datetime import date
 
-from etl.schema import (
-    GEO_DIR,
-    LAND_AREA_JSON,
-    LAND_NO_JSON,
-    RAW_DIR,
-    REPO_ROOT,
-    SOURCES_JSON,
-    STATUS_JSON,
-)
+from etl.schema import LAND_AREA_JSON, LAND_NO_JSON, RAW_DIR, SOURCES_JSON
 
 SOURCE_ID = "K6"
 
-LANDING_URL = "https://www.naturalearthdata.com/downloads/"
-BASE_URL = "https://naciscdn.org/naturalearth"
+SKALA = "10m"
+# Kartenhetene, ikke landene. Admin-0-laget slår Fransk Guyana, Réunion,
+# Svalbard og en del andre områder sammen med moderlandet, og da ville brent
+# areal i Fransk Guyana blitt ført på Frankrike. Kartenhetene skiller dem, og
+# dekker 250 av de 251 landene i data/geo/land_no.json.
+LAG = f"ne_{SKALA}_admin_0_map_units"
+LANDING_URL = "https://www.naturalearthdata.com/downloads/10m-cultural-vectors/"
 
-# Målestokkene vi tar inn. 110m er nok til et verdenskart, 50m gir nok
-# oppløsning til et europakart og til arealberegningen.
-MAALESTOKKER = {
-    "110m": {
-        "url": f"{BASE_URL}/110m/cultural/ne_110m_admin_0_countries.zip",
-        "shapefile": "ne_110m_admin_0_countries.shp",
-        # Forenklingsgraden er valgt så kystlinjene holder seg gjenkjennelige
-        # i den størrelsen kartet faktisk vises i.
-        "simplify": "8%",
-    },
-    "50m": {
-        "url": f"{BASE_URL}/50m/cultural/ne_50m_admin_0_countries.zip",
-        "shapefile": "ne_50m_admin_0_countries.shp",
-        "simplify": "5%",
-    },
-}
+# Natural Earth ligger på to verter med samme innhold. Den andre brukes bare
+# hvis den første ikke svarer.
+LASTE_URLER = (
+    f"https://naciscdn.org/naturalearth/{SKALA}/cultural/{LAG}.zip",
+    f"https://naturalearth.s3.amazonaws.com/{SKALA}_cultural/{LAG}.zip",
+)
 
-# Arealene regnes fra den mest detaljerte målestokken vi henter.
-AREAL_MAALESTOKK = "50m"
+RAW_ZIP = RAW_DIR / f"k6_{LAG}.zip"
 
-# Arealtro sylinderprojeksjon. Den bevarer areal eksakt, så flaten i
-# projeksjonen er polygonets faktiske areal.
-AREALPROJEKSJON = "+proj=cea +lat_ts=0 +datum=WGS84"
+# Feltene som bærer en landkode, i den rekkefølgen de prøves. ISO_A3 er «-99»
+# for en del land der tilhørigheten er omstridt, og ISO_A3_EH gir da koden for
+# den suverene staten. ADM0_A3 er Natural Earths egen kode, som alltid finnes.
+KODEFELT = ("ISO_A3_EH", "ISO_A3", "ADM0_A3")
 
-# Natural Earths egne koder for entiteter uten tildelt ISO 3166-kode. For alle
-# andre brukes ISO_A3_EH, som kilden fyller ut der ISO_A3 står tom.
-NE_CODE_MAP = {
-    "KOS": "XKX",  # Kosovo — vi beholder X-formen, se CLAUDE.md § 6
+# Verdier Natural Earth bruker for «ingen kode».
+MANGLER = frozenset({"-99", "-099", ""})
+
+# Natural Earths koder som ikke er ISO 3166, oversatt til entity-kodene i
+# data/geo/land_no.json. Oversettelsen skjer her i kildemodulen, aldri ved å ta
+# kildens egen kode rått inn i datamodellen (CLAUDE.md § 6).
+NE_KODE_MAP = {
+    # Territorier vi fører som egne entiteter.
+    "KOS": "XKX",  # Kosovo
     "CYN": "NONISO_CYN",  # Nord-Kypros
+    "WSB": "NONISO_AKD",  # Akrotiri, den vestlige basen
+    "ESB": "NONISO_AKD",  # Dhekelia, den østlige basen
+    # Områder ISO 3166 fører under en annen kode enn Natural Earth.
+    "SAH": "ESH",  # Vest-Sahara
+    "SOL": "SOM",  # Somaliland, ikke egen ISO-kode
+    "CNM": "CYP",  # FN-sonen på Kypros
+    "USG": "CUB",  # Guantánamo-basen ligger på Cuba
+    "KAB": "KAZ",  # Bajkonur, leid av Russland, men kasakhisk territorium
+    "CLP": "FRA",  # Clipperton, fransk uten egen ISO-kode
+    "BRI": "BRA",  # Brasiliansk øy i Uruguay-elva
+    "ATC": "AUS",  # Ashmore- og Cartierøyene
+    "CSI": "AUS",  # Korallhavsøyene
+    "IOA": "AUS",  # De australske øyene i Indiahavet
 }
 
-# Entiteter Natural Earth fører, men som vi bevisst ikke har med. De er ikke en
-# feil, og skal ikke stoppe kjøringen — men de føres opp i utdatafilen, slik at
-# det er sporbart hva som er utelatt og hvorfor.
-ISO3 = re.compile(r"^[A-Z]{3}$")
+# Områder uten anerkjent tilhørighet. De rasteriseres ikke, og arealet deres
+# havner i den uattribuerte andelen kjøringen rapporterer. Å tilskrive dem et
+# land ville vært en redaksjonell avgjørelse siden ikke tar (P1).
+UTEN_TILHORIGHET = frozenset(
+    {
+        "KAS",  # Siachen-breen
+        "SPI",  # Den sørlige patagoniske isbreen
+        "BRT",  # Bir Tawil
+        "PGA",  # Spratlyøyene
+        "SCR",  # Scarborough-revet
+        "BJN",  # Bajo Nuevo
+        "SER",  # Serranilla
+    }
+)
 
-RAW_UNPACKED = RAW_DIR / "k6_natural_earth"
 
 BRUKERAGENT = "skogbranner-etl/1.0 (+https://github.com/sheffielddivided/skogbranner)"
 
 
-def _hent(url):
-    forespoersel = urllib.request.Request(url, headers={"User-Agent": BRUKERAGENT})
-    with urllib.request.urlopen(forespoersel, timeout=300) as svar:
-        return svar.read()
+class Nedlastingsfeil(Exception):
+    """Reises når nedlastingen ikke ga et brukbart arkiv."""
 
 
 def _sha256(data):
     return hashlib.sha256(data).hexdigest()
 
 
-def _mapshaper(*argumenter):
-    """Kjører mapshaper og reiser feil hvis den ikke finnes eller feiler.
+def hent():
+    """Laster ned admin-0-arkivet til data/raw/ og returnerer (sti, info).
 
-    Foretrekker den innstallerte binærfilen framfor npx, slik at kjøringen
-    ikke henter noe fra nettverket underveis.
+    Verifiserer at svaret faktisk er et zip-arkiv med en shapefil i, ikke en
+    feilside.
     """
-    lokal = REPO_ROOT / "node_modules" / ".bin" / "mapshaper"
-    if lokal.exists():
-        kommando = [str(lokal)]
-    elif shutil.which("mapshaper"):
-        kommando = ["mapshaper"]
-    else:
-        raise RuntimeError(
-            "mapshaper mangler. Den er en byggeavhengighet — kjør «npm ci» først."
-        )
+    RAW_DIR.mkdir(parents=True, exist_ok=True)
 
-    resultat = subprocess.run(
-        kommando + list(argumenter),
-        capture_output=True,
-        text=True,
-        cwd=REPO_ROOT,
-    )
-    if resultat.returncode != 0:
-        raise RuntimeError(
-            f"mapshaper feilet ({resultat.returncode}): {resultat.stderr.strip()}"
-        )
-    return resultat.stdout
-
-
-def entity_kode(post):
-    """Oversetter Natural Earths koder til vår entity-kode.
-
-    ISO_A3_EH er kildens eget felt for «ISO-koden, også der ISO_A3 står tom».
-    Der den er tom, er entiteten uten tildelt ISO-kode, og da slår vi opp i
-    NE_CODE_MAP. Finnes den ikke der heller, har vi ingen kode for entiteten.
-    """
-    adm = (post.get("ADM0_A3") or "").strip()
-    if adm in NE_CODE_MAP:
-        return NE_CODE_MAP[adm]
-    iso = (post.get("ISO_A3_EH") or "").strip()
-    if ISO3.match(iso):
-        return iso
-    return None
-
-
-def beregn_arealer(poster, land):
-    """Summerer polygonarealene per entity-kode.
-
-    Summeres, ikke settes: Natural Earth fører enkelte territorier som egne
-    polygoner under samme ISO-kode som moderlandet. To polygoner med samme kode
-    er da to deler av samme entitet, og arealet er summen av dem.
-
-    Returnerer (arealer, utelatt).
-    """
-    arealer = {}
-    utelatt = []
-
-    for post in poster:
-        areal = post.get("area_km2")
-        if areal is None:
+    feil = []
+    for url in LASTE_URLER:
+        try:
+            forespoersel = urllib.request.Request(
+                url, headers={"User-Agent": BRUKERAGENT}
+            )
+            with urllib.request.urlopen(forespoersel, timeout=300) as svar:
+                innhold_type = svar.headers.get("Content-Type", "")
+                data = svar.read()
+        except (urllib.error.URLError, TimeoutError) as e:
+            feil.append(f"{url}: {type(e).__name__}: {e}")
             continue
-        kode = entity_kode(post)
-        if kode is None or kode not in land:
-            utelatt.append(
-                {
-                    "ne_code": (post.get("ADM0_A3") or "").strip(),
-                    "name": post.get("NAME_EN", ""),
-                    "area_km2": round(areal, 2),
-                    "entity": kode,
-                }
+
+        if "html" in innhold_type.lower() or not data.startswith(b"PK"):
+            feil.append(
+                f"{url}: svaret er ikke et zip-arkiv "
+                f"(Content-Type {innhold_type!r}, {len(data)} byte)"
             )
             continue
-        arealer[kode] = round(arealer.get(kode, 0.0) + areal, 2)
 
-    utelatt.sort(key=lambda u: -u["area_km2"])
-    return arealer, utelatt
+        RAW_ZIP.write_bytes(data)
+        with zipfile.ZipFile(RAW_ZIP) as arkiv:
+            if not any(n.lower().endswith(".shp") for n in arkiv.namelist()):
+                RAW_ZIP.unlink()
+                feil.append(f"{url}: arkivet inneholder ingen .shp-fil")
+                continue
+
+        return RAW_ZIP, {
+            "source_id": SOURCE_ID,
+            "download_url": url,
+            "downloaded_at": date.today().isoformat(),
+            "checksum": _sha256(data),
+            "bytes": len(data),
+        }
+
+    raise Nedlastingsfeil(
+        "Fikk ikke lastet ned Natural Earth admin-0. Forsøk:\n  "
+        + "\n  ".join(feil)
+    )
+
+
+def entity_kode(felt):
+    """Oversetter Natural Earths kodefelt til vår entity-kode.
+
+    Returnerer None for områder uten anerkjent tilhørighet.
+    """
+    for navn in KODEFELT:
+        kode = str(felt.get(navn, "")).strip().upper()
+        if kode in MANGLER:
+            continue
+        if kode in NE_KODE_MAP:
+            return NE_KODE_MAP[kode]
+        if kode in UTEN_TILHORIGHET:
+            return None
+        return kode
+    return None
 
 
 def _land():
@@ -180,99 +177,147 @@ def _land():
         return json.load(f)["entities"]
 
 
-def hent():
-    """Laster ned begge målestokkene, bygger geometri og regner arealer.
+def geometrier(sti=None):
+    """Leser admin-0-laget og returnerer (geometrier, utelatt).
 
-    Returnerer (arealer, utelatt, info).
+    ``geometrier`` er en liste med (entity-kode, GeoJSON-geometri). Koder som
+    ikke står i data/geo/land_no.json tas med likevel — den som aggregerer
+    avgjør hva som skal skje med dem, slik at et land som dukker opp i en kilde
+    ikke forsvinner stille (CLAUDE.md § 5).
+
+    ``utelatt`` er navnene på de områdene som ikke fikk en kode, til logging.
     """
-    RAW_DIR.mkdir(parents=True, exist_ok=True)
-    GEO_DIR.mkdir(parents=True, exist_ok=True)
-    RAW_UNPACKED.mkdir(parents=True, exist_ok=True)
+    import shapefile  # pyshp. Installeres av workflowen, ikke av den månedlige.
 
-    sjekksummer = {}
-    geometrifiler = []
+    sti = sti or RAW_ZIP
+    with zipfile.ZipFile(sti) as arkiv:
+        deler = {}
+        for navn in arkiv.namelist():
+            for ending in ("shp", "dbf", "shx"):
+                if navn.lower().endswith("." + ending):
+                    deler[ending] = navn
+        if len(deler) < 3:
+            raise Nedlastingsfeil(
+                f"{sti.name} mangler shapefil-deler, fant {sorted(deler)}"
+            )
+        biter = {e: io.BytesIO(arkiv.read(n)) for e, n in deler.items()}
 
-    for maalestokk, oppsett in MAALESTOKKER.items():
-        zip_bytes = _hent(oppsett["url"])
-        zip_sti = RAW_DIR / f"k6_ne_{maalestokk}_admin_0_countries.zip"
-        zip_sti.write_bytes(zip_bytes)
-        sjekksummer[maalestokk] = _sha256(zip_bytes)
+    leser = shapefile.Reader(shp=biter["shp"], dbf=biter["dbf"], shx=biter["shx"])
+    feltnavn = [f[0] for f in leser.fields[1:]]
 
-        utpakket = RAW_UNPACKED / maalestokk
-        with zipfile.ZipFile(zip_sti) as arkiv:
-            arkiv.extractall(utpakket)
+    ut = []
+    utelatt = []
+    for post in leser.iterShapeRecords():
+        felt = dict(zip(feltnavn, post.record))
+        kode = entity_kode(felt)
+        geometri = post.shape.__geo_interface__
+        if not geometri.get("coordinates"):
+            continue
+        if kode is None:
+            utelatt.append(str(felt.get("NAME") or felt.get("ADMIN") or "uten navn"))
+            continue
+        ut.append((kode, geometri))
 
-        shapefile = utpakket / oppsett["shapefile"]
+    leser.close()
+    return ut, utelatt
 
-        # Geometri til kartene. Kun entity-kodene følger med — navnene slås opp
-        # i land_no.json ved tegning, så de ikke får en kopi til her.
-        ut = GEO_DIR / f"world_{maalestokk}.topo.json"
-        _mapshaper(
-            str(shapefile),
-            "-filter-fields",
-            "ADM0_A3,ISO_A3_EH",
-            "-simplify",
-            oppsett["simplify"],
-            "keep-shapes",
-            "-clean",
-            "-o",
-            "format=topojson",
-            str(ut),
+
+# Jordas autaliske radius i km: radien i den kula som har samme overflate som
+# WGS84-ellipsoiden. Den gjør at arealene stemmer i sum, ikke bare lokalt.
+AUTALISK_RADIUS_KM = 6371.0072
+
+
+def _ringareal(ring):
+    """Arealet av én lukket ring på kula, i km². Fortegnet følger omløpet.
+
+    Bruker formelen for sfærisk polygonareal. Fortegnet skiller ytterkant fra
+    hull, slik at et land med innsjøhull ikke får hullet regnet med.
+    """
+    if len(ring) < 4:
+        return 0.0
+
+    sum_ = 0.0
+    for (lon1, lat1), (lon2, lat2) in zip(ring, ring[1:]):
+        sum_ += math.radians(lon2 - lon1) * (
+            math.sin(math.radians(lat1)) + math.sin(math.radians(lat2))
         )
-        geometrifiler.append(ut.name)
+    return sum_ * AUTALISK_RADIUS_KM**2 / 2.0
 
-    # Arealene: reprojiser til arealtro projeksjon og les av flaten.
-    oppsett = MAALESTOKKER[AREAL_MAALESTOKK]
-    shapefile = RAW_UNPACKED / AREAL_MAALESTOKK / oppsett["shapefile"]
-    attributter = RAW_DIR / "k6_natural_earth_areas.json"
-    _mapshaper(
-        str(shapefile),
-        "-proj",
-        AREALPROJEKSJON,
-        "-each",
-        "area_km2 = this.area / 1e6",
-        "-filter-fields",
-        "ADM0_A3,ISO_A3_EH,NAME_EN,area_km2",
-        "-o",
-        "format=json",
-        str(attributter),
-    )
-    with open(attributter, encoding="utf-8") as f:
-        poster = json.load(f)
 
-    arealer, utelatt = beregn_arealer(poster, _land())
+def _geometriareal(geometri):
+    """Arealet av en GeoJSON-geometri i km².
 
-    info = {
-        "source_id": SOURCE_ID,
-        "downloaded_at": date.today().isoformat(),
-        "checksum": sjekksummer[AREAL_MAALESTOKK],
-        "checksums": sjekksummer,
-        "rows": len(arealer),
-        "geometry_files": geometrifiler,
-        "excluded": len(utelatt),
-    }
-    return arealer, utelatt, info
+    Første ring i et polygon er ytterkanten, resten er hull. Hullene kommer med
+    motsatt fortegn av ytterkanten, så summen trekker dem fra av seg selv.
+    """
+    type_ = geometri.get("type")
+    koordinater = geometri.get("coordinates") or []
+
+    if type_ == "Polygon":
+        polygoner = [koordinater]
+    elif type_ == "MultiPolygon":
+        polygoner = koordinater
+    else:
+        return 0.0
+
+    total = 0.0
+    for polygon in polygoner:
+        if not polygon:
+            continue
+        ytre = abs(_ringareal(polygon[0]))
+        hull = sum(abs(_ringareal(r)) for r in polygon[1:])
+        total += ytre - hull
+    return total
+
+
+def landarealer(geo, land=None):
+    """Summerer polygonarealene per entity-kode.
+
+    Summeres, ikke settes: et land består gjerne av flere polygoner, og
+    kartenhetene deler dessuten enkelte land i flere poster. Arealet er summen
+    av delene.
+
+    Returnerer (arealer, utelatt). ``utelatt`` er koder kilden fører som ikke
+    står i land_no.json — de er ikke en feil her, men føres opp slik at det er
+    sporbart hva som ikke er med.
+    """
+    land = land if land is not None else _land()
+
+    arealer = {}
+    utelatt = {}
+    for kode, geometri in geo:
+        areal = _geometriareal(geometri)
+        if areal <= 0:
+            continue
+        if kode in land:
+            arealer[kode] = arealer.get(kode, 0.0) + areal
+        else:
+            utelatt[kode] = round(utelatt.get(kode, 0.0) + areal, 2)
+
+    arealer = {k: round(v, 2) for k, v in sorted(arealer.items())}
+    return arealer, dict(sorted(utelatt.items()))
 
 
 def skriv_arealer(arealer, utelatt, info):
     """Skriver data/geo/land_area_km2.json."""
     data = {
         "schema_version": 1,
-        "_om": "Landareal per entitet i km², regnet fra Natural Earth admin-0 "
-        "ved reprojeksjon til en arealtro projeksjon. Admin-0 har ikke noe "
-        "arealfelt. Tallene er nevneren i burned_area_share_land og grunnlaget "
-        "for arealsammenligningen. Se CLAUDE.md § 5 og etl/sources/"
+        "_om": "Landareal per entitet i km², regnet fra Natural Earths "
+        "admin-0-kartenheter. Admin-0 har ikke noe arealfelt, så arealene er "
+        "regnet fra polygonene med formelen for sfærisk polygonareal. Tallene "
+        "er nevneren i burned_area_share_land og grunnlaget for "
+        "arealsammenligningen. Se CLAUDE.md § 5 og etl/sources/"
         "k6_natural_earth.py.",
         "source_id": SOURCE_ID,
-        "scale": AREAL_MAALESTOKK,
-        "projection": AREALPROJEKSJON,
+        "layer": LAG,
         "downloaded_at": info["downloaded_at"],
-        "_utelatt": "Entiteter Natural Earth fører, men som ikke står i "
-        "land_no.json. De er utelatt med vilje og føres opp her for at det skal "
-        "være sporbart hva som ikke er med.",
+        "_utelatt": "Koder Natural Earth fører, men som ikke står i "
+        "land_no.json. De er utelatt med vilje og føres opp her for at det "
+        "skal være sporbart hva som ikke er med.",
         "excluded": utelatt,
-        "areas": dict(sorted(arealer.items())),
+        "areas": arealer,
     }
+    LAND_AREA_JSON.parent.mkdir(parents=True, exist_ok=True)
     with open(LAND_AREA_JSON, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
         f.write("\n")
@@ -280,74 +325,59 @@ def skriv_arealer(arealer, utelatt, info):
 
 
 def skriv_metadata(info):
-    """Registrerer kilden i data/_sources.json.
-
-    K6 leverer ingen tallserie og står derfor ikke i kildekolonnen i § 8. Den
-    føres likevel her, fordi geometrien og arealene er synlige for leseren og
-    må kunne spores.
-    """
+    """Registrerer kilden i data/_sources.json."""
     with open(SOURCES_JSON, encoding="utf-8") as f:
         sources = json.load(f)
 
     sources["sources"][SOURCE_ID] = {
         "source_id": SOURCE_ID,
-        "name": "Natural Earth — Admin 0, countries",
+        "name": f"Natural Earth — admin-0, kartenheter ({SKALA}, 1:10 mill.)",
         "publisher": "Natural Earth",
         "url": LANDING_URL,
-        "download_url": MAALESTOKKER[AREAL_MAALESTOKK]["url"],
-        "license": "Public domain. Natural Earth setter ingen vilkår for bruk.",
+        "download_url": info["download_url"],
+        "license": "Public domain",
         "license_url": "https://www.naturalearthdata.com/about/terms-of-use/",
-        "attribution": "Made with Natural Earth.",
+        "attribution": "Made with Natural Earth. Free vector and raster map "
+        "data @ naturalearthdata.com.",
         "requires_agreement": False,
         "geography": "global",
-        "temporal_resolution": None,
-        "quality": None,
-        "unit_source": None,
+        "coverage_start": "",
+        "coverage_end": "",
+        "temporal_resolution": "",
+        "quality": "",
+        "unit_source": "",
         "downloaded_at": info["downloaded_at"],
+        "source_last_updated": None,
         "checksum": info["checksum"],
-        "checksums": info["checksums"],
         "series": [],
-        "processed_files": info["geometry_files"] + [LAND_AREA_JSON.name],
+        "processed_files": [],
         "footnotes": [],
-        "notes": "Leverer kartgeometri og landarealer, ikke branndata. "
-        "Admin-0 har ikke noe arealfelt, så arealene er regnet fra polygonene "
-        "ved reprojeksjon til en arealtro projeksjon. Fordi Natural Earth er "
-        "generalisert, avviker de noe fra offisielle landarealer.",
+        "notes": "Geometri for kart, og grunnlaget for å fordele "
+        "rutenettkilder på land. Leverer ingen tallverdier og står derfor ikke "
+        "i kildekolonnen for noen seksjon.",
     }
     with open(SOURCES_JSON, "w", encoding="utf-8") as f:
         json.dump(sources, f, ensure_ascii=False, indent=2)
         f.write("\n")
 
 
-def skriv_status(status, melding, info=None):
-    """Skriver kjørestatus til data/_status.json."""
-    with open(STATUS_JSON, encoding="utf-8") as f:
-        data = json.load(f)
-
-    naa = datetime.now(timezone.utc).isoformat(timespec="seconds")
-    forrige = data["sources"].get(SOURCE_ID, {})
-    data["last_run"] = naa
-    data["sources"][SOURCE_ID] = {
-        "status": status,
-        "last_attempt": naa,
-        "last_success": naa if status == "ok" else forrige.get("last_success"),
-        "rows": info["rows"] if info else forrige.get("rows"),
-        "checksum": info["checksum"] if info else forrige.get("checksum"),
-        "message": melding,
-    }
-    with open(STATUS_JSON, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
-        f.write("\n")
-
-
 def main():
-    arealer, utelatt, info = hent()
-    sti = skriv_arealer(arealer, utelatt, info)
+    sti, info = hent()
+    geo, utelatt = geometrier(sti)
+    land = _land()
+    ukjente = sorted({k for k, _ in geo if k not in land})
+    print(f"K6: {len(geo)} geometrier, {info['bytes']} byte")
+    print(f"K6: uten kode: {len(utelatt)}")
+    if ukjente:
+        print(f"K6: koder utenfor land_no.json: {', '.join(ukjente)}")
+
+    arealer, uten_oppforing = landarealer(geo, land)
+    skriv_arealer(arealer, uten_oppforing, info)
     print(
-        f"K6: {len(arealer)} entiteter med areal, {len(utelatt)} utelatt "
-        f"→ {sti.name}, {', '.join(info['geometry_files'])}"
+        f"K6: landareal for {len(arealer)} entiteter → {LAND_AREA_JSON.name}"
+        + (f", {len(uten_oppforing)} utelatt" if uten_oppforing else "")
     )
-    return arealer, utelatt, info
+    return geo, info
 
 
 if __name__ == "__main__":

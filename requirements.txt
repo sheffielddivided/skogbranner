@@ -1,11 +1,18 @@
-# Kjøreavhengigheter for ETL.
+# Kjøreavhengigheter for den månedlige ETL-kjøringen.
 #
 # Holdes så kort som mulig. Alt som klarer seg med standardbiblioteket, bruker
 # standardbiblioteket — se etl/sources/k1_owid.py og k5_nifc.py, som ikke
 # trenger noe herfra.
 #
+# De statiske kildene har tyngre behov (netCDF, rasterisering) og installerer
+# sine egne i .github/workflows/etl-statisk.yml. De hører ikke hjemme her, for
+# den månedlige kjøringen trenger dem ikke.
+#
 # Dette er ETLs avhengigheter, ikke sidens. Den publiserte siden laster
 # ingenting fra et annet domene (CLAUDE.md T2).
 
-# K7 leverer årsaggregatene sine som XLSX, som standardbiblioteket ikke leser.
+# K7 leverer årsaggregatene sine som XLSX, og K3 landtotalene sine.
 openpyxl==3.1.5
+
+# K6 leser landgeometrien fra en shapefil, og landarealene regnes fra den.
+pyshp==2.3.1

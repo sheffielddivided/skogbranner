@@ -139,7 +139,7 @@ i JavaScript, aldri i en malfil. Kommer en kilde med hektar eller acres,
 konverteres den én gang under normalisering, og den konverterte verdien er den
 eneste som finnes videre i pipelinen.
 
-Referanse: 1 km² = 100 ha. 1 acre = 0,00404686 km².
+Referanse: 1 km² = 100 ha = 1 000 000 m². 1 acre = 0,00404686 km².
 
 **Arealindikatorer bærer enheten i feltnavnet:** `burned_area_km2`. En
 arealindikator uten enhet i navnet er en feil.
@@ -241,9 +241,13 @@ etl/                Python-pakke. __init__.py er tom.
   schema.py         Enumerasjonene, tersklene og stiene. Alt annet
                     importerer herfra (T5).
   normalize.py      Kanonisk form. All enhetskonvertering skjer her.
+  grid.py           Rutenett → landnivå, med geometrien fra K6. Enhetsnøytral
   derive.py         Maskinelle avledninger → data/processed/insights.json
   validate.py       Kontrollerer at output er gyldig før publisering
   run.py            Kjører pipelinen: hent → normaliser → valider → publiser
+  run_static.py     Samme for de statiske kildene. Egen inngang, ikke et flagg
+                    til run.py, slik at den månedlige kjøringen ikke kan dra
+                    dem med seg (§ 5)
 data/
   raw/              Uendrede kildefiler. GITIGNORERT. Aldri committet.
   processed/        Kanoniske serier siden faktisk leser. Committes.
@@ -311,7 +315,7 @@ kilde.
 | K6 | Natural Earth, admin-0 | Global | — | — | Geometri og landarealer. Public domain |
 | K7 | CNFDB / NBAC | Canada | 1972– areal, 1959– antall | `reported` | Krever sluttbrukeravtale — akseptert |
 | K8 | FireCCILT11 (ESA Fire_cci) | Global | 1982–2018, uten 1994 | `beta` | Statisk. Selve produktet er merket beta av produsenten |
-| K9 | GFED5 | Global | 1997–2022 | `measured` | Statisk. GFED5.1 for 1997–2022 er en publisert utgivelse dokumentert i Scientific Data. Beta-merkingen gjelder kun produsentens `ext_Beta`-kataloger fra 2023, som vi holder ute |
+| K9 | GFED5 | Global | 1997–2020 | `measured` | Statisk. En publisert utgivelse dokumentert i Scientific Data. Hvilken av de to Zenodo-utgivelsene som har brent areal, står under § 5. Beta-merkingen gjelder kun produsentens `ext_Beta`-kataloger fra 2023, som vi holder ute |
 | K10 | Global Charcoal Database | Global | — | `reconstructed` | Proxy. Statisk |
 
 ### Navnekilde: SSB Klass
@@ -366,9 +370,14 @@ en ny versjon.
 
 ### Avgrensninger per kilde
 
-- **K6 Natural Earth** leverer ikke branndata. Den brukes til kartgeometri og
-  til landarealer, som er nevneren i `burned_area_share_land`. Den tegnes ikke
-  som egen serie, og står derfor ikke i kildekolonnen i § 8.
+- **K6 Natural Earth** leverer ikke branndata. Den brukes til kartgeometri, til
+  landarealer, som er nevneren i `burned_area_share_land`, og til å fordele
+  rutenettkilder på land. Den tegnes ikke som egen serie, og står derfor ikke i
+  kildekolonnen i § 8.
+
+  Vi bruker **kartenhetene** i admin-0, ikke landene. Landlaget slår Fransk
+  Guyana, Réunion, Svalbard og en del andre områder sammen med moderlandet, og
+  da ville brent areal i Fransk Guyana blitt ført på Frankrike.
 - **K2 GWIS** har to roller.
 
   Den ene er **kryssjekk mot K1**, som en ETL-validering: spriker K1 og K2 mer
@@ -399,19 +408,76 @@ en ny versjon.
   sammen til én serie, og en figur som viser begge må markere bruddet, av
   samme grunn som ellers i § 6: det er to målemetoder, ikke én måling.
 
-- **K9 GFED5** brukes kun for årene **1997–2022**, og har `quality`
-  `measured`. GFED5.1 for denne perioden er en publisert utgivelse,
-  dokumentert i Scientific Data. Produsentens `ext_Beta`-kataloger fra 2023 og
-  framover holdes ute — det er *de* som er foreløpige, ikke datasettet vi
-  bruker. Årene **1997–2000** har grovere romlig oppløsning enn resten av
-  serien (1° mot 0,25° fra 2001), og skal alltid ha `f_resolution_change`.
+- **K8 FireCCILT11** er et rutenettprodukt på 0,25°, ikke landtall. De månedlige
+  rutenettene summeres til årlige landtotaler med kartenhetene fra K6: hver rute
+  deles i et finere delrutenett, og rutens verdi fordeles mellom landene i ruten
+  etter hvor stor del av **landarealet** i ruten hvert av dem har. Havet får
+  ingenting — brent areal finnes bare på land, og en kystrute skal ikke miste
+  arealet sitt fordi halve ruten er sjø.
+
+  En rute som bærer brent areal uten at noen landgeometri når fram, kan ikke
+  tilskrives et land. Verdien går da til en uattribuert andel, som
+  `GRID_MAX_UNATTRIBUTED_SHARE` i `etl/schema.py` setter en øvre grense for.
+  Verdien forsvinner ikke: verdenstallet summeres fra rutenettet selv og ikke
+  fra landene, slik at de rutene fortsatt teller globalt.
+
+  Andelen skrives til `data/_status.json` ved hver kjøring, som
+  `unattributed_share` og `unattributed_km2`. Den er ikke bare en terskel å
+  passere: den sier hvor mye brann som faller utenfor all landgeometri, og skal
+  kunne følges fra kjøring til kjøring. Endrer den seg mye mellom to kjøringer,
+  har enten geometrien eller rutenettet endret seg.
+
+- **K9 GFED5** brukes kun for de årene produsenten har publisert, og har
+  `quality` `measured`. GFED5 er dokumentert i Scientific Data. Produsentens
+  `ext_Beta`-kataloger fra 2023 og framover holdes ute — det er *de* som er
+  foreløpige, ikke datasettet vi bruker. Årene **1997–2000** har grovere romlig
+  oppløsning enn resten av serien (1° mot 0,25° fra 2001), og skal alltid ha
+  `f_resolution_change`.
+
+  **Brent areal ligger i én bestemt utgivelse, og bare der.** GFED5 finnes i to
+  Zenodo-utgivelser, og de inneholder ikke det samme:
+
+  - `10.5281/zenodo.7668424`, *GFED5 Burned Area*: månedlige rutenett med laget
+    `Total` i km², **1997–2020**, 1° til og med 2000 og 0,25° fra 2001. Det er
+    denne vi henter.
+  - `10.5281/zenodo.16794692`, artikkelutgivelsen GFED5.1: `monthly`- og
+    `daily`-arkivene inneholder **kun utslipp** av 40 gasser og aerosoler, som
+    er utenfor scope (P8). Brent areal finnes der bare i `ecosystem`-arkivet,
+    som starter i 2002 og er 0,25° hele veien — og som derfor verken dekker
+    1997 eller har oppløsningsskiftet.
+
+  **Dekningen er 1997–2020, og det er ikke en luke som skal fikses.** Årene
+  2021 og 2022 finnes som brent areal kun i `ecosystem`-arkivet, som er et
+  annet produkt med annen dekning og annen oppløsningshistorikk. Å skjøte dem
+  på ville krysset en produktgrense — den samme feiltypen § 7 forbyr for trend
+  — for å dekke to år som allerede er dekket av K1 i S1s oversiktsfigur.
+
+  Leseren mister altså ingenting. Ser serien kort ut i enden, er det fordi
+  produsenten har delt datasettet, ikke fordi noe mangler på siden. Utvid den
+  ikke.
+
+  Kilden oppgir km² per rute. Rutenettene summeres til landnivå på samme måte
+  som K8, men med én maske per oppløsning: terskelen for `f_grid_resolution` og
+  settet av entiteter rutenettet ikke treffer, regnes mot det rutenettet som
+  gjelder for det enkelte året. En rute ved ekvator er om lag 12 400 km² ved 1°
+  og 773 km² ved 0,25°, så de to periodene treffer ulike entiteter.
 
   K8 er derimot `beta` fordi selve produktet er merket slik av produsenten.
   Skillet er hvem som har merket hva: en produsents beta-merking på et annet
   datasett i samme katalog smitter ikke over.
 - **K10 Global Charcoal Database** er et *proxy*: sedimentært kull som
   indirekte spor etter brann, ikke en måling av brent areal. Alltid
-  `f_proxy`.
+  `f_proxy`. Serien er global og har ikke landnivå.
+
+  Kompositten bygges av R-pakkene `GCD` og `paleofire`, som er de samme
+  verktøyene metoden er publisert med. `paleofire` ble trukket fra CRAN i
+  januar 2023 og installeres fra arkivet. Siste versjon importerer `rgdal`, som
+  selv ble trukket i oktober 2023, og som pakken bare bruker i funksjoner vi
+  ikke kaller. Installasjonssteget fjerner den derfor før pakken bygges, og at
+  pakken er lappet, står i `data/_sources.json`. Selve kompositten røres ikke.
+
+  R-skriptet skriver CSV-en før det gjør noe annet med resultatet. En kompositt
+  som først er beregnet, skal ikke gå tapt fordi et senere steg feiler.
 
 ### Påkrevd sitering
 
@@ -428,6 +494,14 @@ disse kildene uten siteringen skal ikke publiseres.
 > Canadian Forest Service. 2021. Canadian National Fire Database – Agency Fire
 > Data. Natural Resources Canada, Canadian Forest Service, Northern Forestry
 > Centre, Edmonton, Alberta. https://cwfis.cfs.nrcan.gc.ca/ha/nfdb
+
+**K8 — FireCCILT11.** Kilden krever at siteringen på katalogoppføringen gjengis,
+og bruken er dekket av Fire_cci-vilkårene, som lenkes fra `data/_sources.json`.
+
+> Chuvieco, E.; Pettinari, M.L.; Otón, G. (2020): ESA Fire Climate Change
+> Initiative (Fire_cci): AVHRR-LTDR Fire_cci Burned Area Grid product, version
+> 1.1. Centre for Environmental Data Analysis, 28 December 2020.
+> doi:10.5285/62866635ab074e07b93f17fbf87a2c1a.
 
 **K9 — GFED5.**
 
@@ -485,7 +559,9 @@ Faktiske tall står i `data/processed/`.
 ```
 
 - `level`: `country` | `region` | `world`
-- `period`: ISO 8601 — `YYYY`, `YYYY-MM` eller `YYYY-Www`
+- `period`: ISO 8601 — `YYYY`, `YYYY-MM` eller `YYYY-Www`. Årstallet kan bære
+  fortegn: proxyen i K10 rekker ned før år null, og `-0500` er år 500 fvt.
+  Måleseriene starter alle etter 1900, så fortegnet finnes bare i K10
 - `quality`: `measured` | `reported` | `beta` | `reconstructed`
 - `unit`: `km2` | `share` | `zscore` | `count`
 
@@ -812,6 +888,8 @@ særbehandling og uten egen seksjon (P8).
   datakvaliteten varierer mellom rapporterende byråer og år
 - `f_product_level` — tallene er en hurtigkartlegging gjort mens sesongen
   pågår, og revideres når bedre satellittbilder foreligger
+- `f_grid_resolution` — landet er lite i forhold til rutenettets oppløsning,
+  slik at brent areal kan falle mellom rutene
 
 **Hvor fotnotetekstene bor.** Kodene over er enumerasjonen, og følger T5: prosa
 her, konstant i `etl/schema.py`. Den norske teksten leseren ser er noe annet —
@@ -829,14 +907,63 @@ brudd i kurven, aldri som 0 og aldri som interpolert verdi.
 `f_resolution_change` gjelder K9 for **1997–2000**, der oppløsningen er 1° mot
 0,25° fra 2001.
 
-`f_zero_no_detection` gjelder K1. Kilden leverer et fullt rutenett av entiteter
-og år, og bruker 0 der satellittene ikke har påvist brent areal. En 0 kan
-derfor bety at det ikke brant, at brannene var under deteksjonsgrensen, eller
-at området ikke er dekket — kilden skiller ikke. `normalize.py` merker hver
-nullverdi med fotnoten.
+`f_zero_no_detection` gjelder K1 og K8. Begge leverer et fullt rutenett av
+entiteter og år, og bruker 0 der satellittene ikke har påvist brent areal. En 0
+kan derfor bety at det ikke brant, at brannene var under deteksjonsgrensen,
+eller at området ikke er dekket — kilden skiller ikke. `normalize.py` merker
+hver nullverdi med fotnoten.
 
 Dette er ikke det samme som «ingen data». En figur skal ikke tegne en 0 fra
 denne kilden som en målt null uten at fotnoten følger med.
+
+**Merkingen er også maskinlesbar, og det er poenget.** Trendreglene i § 7 finner
+nullene sine gjennom denne fotnoten: `TREND_MAX_ZERO_SHARE` og
+`TREND_MAX_ZERO_TAIL` gjelder de nullene som bærer `f_zero_no_detection`.
+Merkes de ikke, gjelder terskelene ikke for serien, og en falsk nedgang av
+Qatar-typen — deteksjoner som stopper, ikke branner som avtar — ville passert
+ubemerket. En rutenettkilde som ikke merker nullene sine, undergraver derfor en
+regel som står et helt annet sted i dokumentet.
+
+`f_grid_resolution` gjelder rutenettkilder og påføres maskinelt. En entitet med
+mindre landareal enn **én rute ved ekvator** — 0,25° × 0,25°, om lag 773 km²,
+som er den største en rute kan bli — får fotnoten på alle sine år.
+
+Grensen er valgt fordi den har en fysisk betydning og ikke er en avrundet
+skjønnsverdi: et land under den får plass innenfor én rute hvor som helst på
+kloden. Da finnes det ingen rute som er landets alene, og tallet er en andel av
+ruter det deler med naboland eller hav.
+
+**Entiteter delrutenettet ikke treffer i det hele tatt, utelates fra kilden.**
+De skal ikke publiseres som 0 med fotnoter. En 0 fra en entitet rutenettet
+fysisk ikke kan observere, er fravær av måling og ikke en måling av null, og
+§ 6 krever at manglende data vises som «ingen data», aldri som null. Fotnoter
+endrer ikke hva verdien er.
+
+Skillet mot de øvrige entitetene med `f_grid_resolution` er at de deler ruter
+med naboland: tallet deres er upresist, men målt. Disse er ikke observert.
+
+Settet beregnes ved hver kjøring, av rutenettet og geometrien slik de forelå
+da, og skal aldri fryses som en liste over koder i kode (§ 7, T5). Får en
+entitet treff etter at geometrien er oppdatert eller en senere kilde har finere
+oppløsning, kommer den inn av seg selv.
+
+**Et land uten geometri i K6 er en annen sak, og føres for seg.** Der har ikke
+rutenettet bommet på geometrien — det finnes ingen geometri å bomme på.
+Entiteten kom aldri inn i masken, og får derfor heller ingen rader.
+
+Utfallet for leseren er det samme, men årsaken er ikke, og en manglende rad
+skal kunne forklares. De to settene føres derfor hver for seg i
+`data/_sources.json`, som `excluded_unobserved` og `excluded_no_geometry`.
+Begge beregnes ved kjøring: det første av rutenettet, det andre som landene i
+`land_no.json` som ikke finnes i K6-geometrien. Regioner og verdenskoden er
+ikke med — K6 leverer ikke geometri for dem, og verdenstallet kommer fra
+rutenettet.
+
+Arealet måles **på rutenettet**, ikke hentet fra en annen kilde. Det er det
+rutenettet ser av landet som avgjør om tallet kan brukes, ikke hva et atlas
+oppgir. Terskelen står som `GRID_MIN_ENTITY_CELLS` i `etl/schema.py`, oppgitt i
+antall ruter, slik at den følger med hvis en senere kilde har en annen
+oppløsning.
 
 **Null i et ufullstendig år får begge fotnotene, ikke en tredje.** En
 observasjon som er 0 i inneværende år bærer både `f_incomplete_year` og
@@ -893,7 +1020,7 @@ sluttbrukeravtale tas ikke inn før avtalen er avklart og notert i
 - [ ] Settet av ekskluderte entiteter beregnes ved kjøring, aldri fryst som
       liste i kode (§ 7, T5)
 - [ ] `charcoal_index` står ikke i samme figur som en km²-serie
-- [ ] Påkrevde siteringer gjengis ordrett der kilden brukes (K7, K9, K10,
+- [ ] Påkrevde siteringer gjengis ordrett der kilden brukes (K7, K8, K9, K10,
       og EFFIS-lisensen for K3/K4)
 - [ ] Identifikatorer er engelske, alt leseren ser er norsk
 - [ ] Ingen kodefil gjentar regler fra CLAUDE.md — den refererer til dem (T5)
@@ -916,18 +1043,27 @@ sluttbrukeravtale tas ikke inn før avtalen er avklart og notert i
 - `etl/sources/k3_effis.py` — K3, nasjonalt rapporterte landtotaler fra XLS
 - `etl/sources/k4_effis.py` — K4, EFFIS' egen satellittkartlegging (RDA)
 - `etl/sources/k5_nifc.py` — K5, HTML-tabellen på statistikksiden
-- `etl/sources/k6_natural_earth.py` — K6, kartgeometri og landarealer
+- `etl/sources/k6_natural_earth.py` — K6, kartenhetene som geometri, og
+  landarealene regnet fra dem
 - `etl/sources/k7_nbac.py` — K7, NBACs årsaggregat og CNFDBs punktstatistikk
-- `etl/normalize.py` — kanonisk form, hektar og acres → km², andel av landareal
+- `etl/sources/k8_firecci.py` — K8, katalogen hos CEDA, henting og verifisering
+- `etl/sources/k9_gfed5.py` — K9, arkivet hos Zenodo, henting og verifisering
+- `etl/sources/k10_gcd.py` og `k10_gcd.R` — K10, kompositten fra paleofire
+- `etl/normalize.py` — kanonisk form, hektar, acres og m² → km², andel av
+  landareal
+- `etl/grid.py` — rutenett → landnivå
 - `etl/validate.py` — kontrollene i § 6 og § 11, og kryssjekken K1 mot K2
-- `etl/run.py` — pipelinen. Én kilde som feiler, tar ikke ned de andre
+- `etl/run.py` — de månedlige kildene. Én som feiler, tar ikke ned de andre
+- `etl/run_static.py` — pipelinen for de statiske kildene
 - `data/geo/land_no.json` — 260 entiteter, generert fra SSB
 - `data/geo/land_area_km2.json` — landarealer fra K6, nevner i andelsindikatoren
-- `data/geo/world_110m.topo.json` og `world_50m.topo.json` — kartgeometri
 - `data/processed/` — én fil per indikator, som JSON og CSV
 - `data/_footnotes.json` — fotnotetekstene, kontrollert mot `schema.py`
-- `requirements.txt` — ETLs kjøreavhengigheter. `openpyxl`, for K7s XLSX
+- `requirements.txt` — den månedlige kjøringens avhengigheter: `openpyxl`
+  for K3 og K7, `pyshp` for K6
 - `.github/workflows/etl.yml` — månedlig kjøring, endringer som pull request
+- `.github/workflows/etl-statisk.yml` — manuelt utløst kjøring av en statisk
+  kilde. Rutenettfilene lastes ned, aggregeres og slettes i Actions
 - `.github/workflows/deploy.yml` — bygger og publiserer ved push til `main`
 - Nettsiden — Astro, seks seksjoner, `src/komponenter/Figur.astro` og S1
 
@@ -946,14 +1082,29 @@ dataene — ikke av en liste i figurmodulen.
 publiseres ikke — `data/raw/` er gitignorert, og workflowen legger rapporten
 ved kjøringen som artefakt i stedet.
 
+**Hentet, men ikke kjørt:** ingen av de statiske kildene ligger i repoet ennå.
+Koden og workflowen er på plass, men filene under `data/processed/` finnes
+først etter at `etl-statisk.yml` er kjørt for hver kilde og pull requestene er
+slått sammen:
+
+- `kilde: k8` → `burned_area_firecci_lt11.*`, 432 månedsfiler, 6,7 GiB
+- `kilde: k9` → `burned_area_gfed5.*`, ett arkiv på 253 MiB med 288 månedsfiler
+- `kilde: k10` → `charcoal_composite_gcd.*`, ingen datanedlasting
+
 **Ikke implementert:** `etl/derive.py` inneholder kun beskrivelse av
-ansvarsområde. K8, K9 og K10 er ikke hentet. S2–S6 har overskrift og en
-merknad om at de ikke er laget, så K3, K4, K5 og K7 ligger i datasettet uten
-at noen seksjon viser dem ennå. Det samme gjelder `fire_count` og
-`burned_area_share_land`, og K2s ukesoppløsning, som S3 skal bruke.
+ansvarsområde. S2–S6 har overskrift og en merknad om at de ikke er laget, så
+K3, K4, K5 og K7 ligger i datasettet uten at noen seksjon viser dem ennå. Det
+samme gjelder `fire_count` og `burned_area_share_land`, og K2s ukesoppløsning,
+som S3 skal bruke.
 
 K4 dekker foreløpig bare brent areal. Brannstørrelsesfordelingen S4 skal vise,
 krever polygonene fra Burnt Areas-databasen, som ikke er hentet.
+
+**Kartgeometrien er ikke laget.** K6 leverer geometrien rutenettkildene
+fordeles på, og landarealene regnes fra den, men det finnes ingen forenklet
+TopoJSON under `data/geo/` ennå. Den lages når S2 eller S4 trenger et kart, og
+skal da bygges fra det samme kartenhetslaget — ellers vil kartet vise andre
+grenser enn arealene og rasteriseringen bruker.
 
 **Neste steg:** `derive.py` og `insights.json`. Først da kan S1 få
 overskriftstallet med arealsammenligning, som er den delen av § 8 som krever

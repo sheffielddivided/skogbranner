@@ -24,6 +24,10 @@ from etl import schema
 
 ISO3 = re.compile(r"^[A-Z]{3}$")
 
+# Perioden er ISO 8601: YYYY, YYYY-MM eller YYYY-Www. Årstallet kan bære
+# fortegn, for proxyen rekker ned før år null (CLAUDE.md § 6).
+PERIODE = re.compile(r"^(-?\d{1,5})(-\d{2}|-W\d{2})?$")
+
 
 class Valideringsfeil(Exception):
     """Reises når datasettet ikke kan publiseres."""
@@ -94,11 +98,12 @@ def valider(observasjoner):
             if fotnote not in schema.FOOTNOTE:
                 meld(f"{hvor}: ukjent fotnote {fotnote!r}")
 
-        # Ingen negative verdier
+        # Et areal kan ikke være negativt. En z-score kan: den måler avvik fra
+        # et gjennomsnitt, og halve serien ligger under det (CLAUDE.md § 6).
         if o["value"] is None:
             meld(f"{hvor}: verdien mangler — bruk «ingen data», ikke null")
-        elif o["value"] < 0:
-            meld(f"{hvor}: negativ verdi ({o['value']})")
+        elif o["value"] < 0 and o["unit"] != "zscore":
+            meld(f"{hvor}: negativ verdi ({o['value']}) med unit {o['unit']!r}")
         # En andel lagres mellom 0 og 1. Er den større, er nevneren feil —
         # typisk et landareal fra en annen entitet enn telleren.
         elif o["unit"] == "share" and o["value"] > 1:
@@ -120,10 +125,14 @@ def valider(observasjoner):
             if oppslag["iso3"] and not ISO3.match(o["entity"]):
                 meld(f"{hvor}: {o['entity']!r} er merket iso3, men er ikke en ISO3-kode")
 
-        # Årstall innenfor rimelig intervall
-        aar = int(o["period"][:4])
-        if not (schema.YEAR_MIN <= aar <= aar_maks):
-            meld(f"{hvor}: årstall {aar} utenfor {schema.YEAR_MIN}–{aar_maks}")
+        # Perioden skal være ISO 8601, og årstallet innenfor rimelig intervall
+        treff = PERIODE.match(str(o["period"]))
+        if not treff:
+            meld(f"{hvor}: perioden {o['period']!r} er ikke ISO 8601")
+        else:
+            aar = int(treff.group(1))
+            if not (schema.YEAR_MIN <= aar <= aar_maks):
+                meld(f"{hvor}: årstall {aar} utenfor {schema.YEAR_MIN}–{aar_maks}")
 
         sett[(o["entity"], o["period"], o["indicator"], o["source_id"])] += 1
         kvalitet_per_serie[o["series_id"]].add(o["quality"])
@@ -231,16 +240,15 @@ def avviksrapport(avvik, sammenlignet):
 
 
 def les_publiserte():
-    """Leser alle kanoniske filer som finnes under data/processed/.
+    """Leser alle kanoniske filer under data/processed/.
 
-    Filnavnene står i schema.PROCESSED_FILE. En indikator uten fil ennå er
-    ikke en feil — den er bare ikke tatt inn.
+    Alle JSON-filene leses, ikke bare de månedlige kildenes. De statiske
+    kildene skriver én fil per serie med sitt eget navn (se
+    ``etl/run_static.py``), og de skal valideres på samme vilkår som resten.
+    Et glob fanger dem uten at filnavnene får en kopi til her (T5).
     """
     observasjoner = []
-    for navn in sorted(set(schema.PROCESSED_FILE.values())):
-        sti = schema.PROCESSED_DIR / f"{navn}.json"
-        if not sti.exists():
-            continue
+    for sti in sorted(schema.PROCESSED_DIR.glob("*.json")):
         with open(sti, encoding="utf-8") as f:
             observasjoner.extend(json.load(f))
     return observasjoner

@@ -83,21 +83,28 @@ KILDER = [
 
 
 def landarealer():
-    """Kjører K6, som gir geometri og landarealene til andelsindikatoren.
+    """Kjører K6, som gir landarealene til andelsindikatoren.
 
     Kjøres først, fordi normalize.andel_av_landareal leser resultatet. Feiler
     den, beholdes forrige data/geo/land_area_km2.json, og andelene regnes mot
     den — gamle landarealer er langt bedre enn ingen.
+
+    Samme geometri som rutenettkildene fordeles på, slik at nevneren og
+    rasteriseringen er enige om hvor landegrensene går.
     """
     try:
-        arealer, utelatt, info = k6_natural_earth.hent()
+        sti, info = k6_natural_earth.hent()
+        geo, uten_kode = k6_natural_earth.geometrier(sti)
+        arealer, utelatt = k6_natural_earth.landarealer(geo)
         k6_natural_earth.skriv_arealer(arealer, utelatt, info)
         k6_natural_earth.skriv_metadata(info)
-        k6_natural_earth.skriv_status("ok", "hentet og publisert", info)
-        print(f"K6: {len(arealer)} entiteter med landareal, {len(utelatt)} utelatt")
+        print(
+            f"K6: {len(arealer)} entiteter med landareal, "
+            f"{len(utelatt)} koder utenfor land_no.json, "
+            f"{len(uten_kode)} områder uten kode"
+        )
         return True
     except Exception as e:
-        k6_natural_earth.skriv_status("failed", f"{type(e).__name__}: {e}")
         print(f"K6 FEILET: {type(e).__name__}: {e} — forrige landarealer beholdes")
         return False
 

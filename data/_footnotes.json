@@ -14,6 +14,7 @@
     "f_zero_no_detection": "Kilden har ikke påvist brent areal. Den skiller ikke mellom at ingenting brant, at brannene var for små til å bli sett, og at området ikke var dekket.",
     "f_record_start": "Serien starter der kilden begynte å rapportere systematisk. Eldre år finnes ikke, fordi brannmyndighetene ikke brukte dagens rapporteringsprosesser den gangen.",
     "f_incomplete_inventory": "Databasen er verken komplett eller feilfri. Ikke alle branner er kartlagt, og datakvaliteten varierer mellom byråene som rapporterer og mellom år.",
-    "f_product_level": "Tallene kommer fra en hurtigkartlegging som gjøres mens brannsesongen pågår. De revideres når bedre satellittbilder foreligger, så verdien for et år kan endre seg i ettertid."
+    "f_product_level": "Tallene kommer fra en hurtigkartlegging som gjøres mens brannsesongen pågår. De revideres når bedre satellittbilder foreligger, så verdien for et år kan endre seg i ettertid.",
+    "f_grid_resolution": "Landet er lite i forhold til rutenettet målingene er delt inn i. Det får plass innenfor én rute, og brent areal kan derfor falle mellom rutene eller bli fordelt på naboland."
   }
 }

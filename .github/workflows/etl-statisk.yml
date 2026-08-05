@@ -1,0 +1,199 @@
+# Statiske kilder.
+#
+# K8, K9 og K10 er avsluttede utgivelser. De skal aldri inn i den månedlige
+# kjøringen — å hente dem på nytt hver måned gir ingen nye data (CLAUDE.md § 5).
+# Derfor kun workflow_dispatch, og en egen inngang i etl/run_static.py.
+#
+# Jobben laster ned rutenettfiler i gigabyte-klassen. Det er nettopp slikt som
+# hører hjemme i Actions og ikke i en utviklingssesjon (T4). Rådataene slettes
+# etter aggregering, og bare de aggregerte landtallene havner i
+# data/processed/.
+
+name: ETL statiske kilder
+
+on:
+  workflow_dispatch:
+    inputs:
+      kilde:
+        description: "Hvilken statisk kilde som skal hentes"
+        required: true
+        default: k8
+        type: choice
+        options:
+          - k8
+          - k9
+          - k10
+      kun_katalog:
+        description: "Rapporter omfanget uten å laste ned noe"
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+  pull-requests: write
+
+# To samtidige kjøringer ville skrevet over hverandres datasett.
+concurrency:
+  group: etl-statisk-${{ inputs.kilde }}
+  cancel-in-progress: false
+
+jobs:
+  hent:
+    runs-on: ubuntu-latest
+    # K8 laster ned 6,7 GiB sekvensielt fra CEDA og er den lengste kjøringen.
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # Den månedlige kjøringen klarer seg med standardbiblioteket. Disse
+      # avhengighetene trengs kun for rutenettkildene: netCDF-lesing,
+      # shapefil-lesing og rasterisering av landgeometrien.
+      - name: Installer avhengigheter — rutenettkilder
+        if: ${{ !inputs.kun_katalog && inputs.kilde != 'k10' }}
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install \
+            "numpy==2.3.5" \
+            "netCDF4==1.7.2" \
+            "rasterio==1.5.0" \
+            "pyshp==2.3.1"
+
+      # K10 er en R-kilde. Kullserien ligger i GCD-pakken, så det lastes ikke
+      # ned data — men pakkene er gamle nok til å trenge litt hjelp.
+      - uses: r-lib/actions/setup-r@v2
+        if: ${{ !inputs.kun_katalog && inputs.kilde == 'k10' }}
+        with:
+          r-version: "4.4.2"
+          # Ferdigbygde Linux-binærpakker. Uten dette må raster og terra
+          # kompileres mot GDAL, som tar tid og feiler lett.
+          use-public-rspm: true
+
+      # paleofire ble trukket fra CRAN i januar 2023 og finnes bare i arkivet.
+      # Siste versjon importerer rgdal, som selv ble trukket i oktober 2023.
+      # rgdal brukes kun av pfGridding og pfToKml, som vi ikke kaller — det er
+      # NAMESPACE som krever pakken ved lasting. Her fjernes den derfra, og de
+      # to filene som bruker den, tas ut. Funksjonene kompositten bygges av
+      # røres ikke. Lappingen er notert i data/_sources.json.
+      - name: Installer R-pakker — K10
+        if: ${{ !inputs.kun_katalog && inputs.kilde == 'k10' }}
+        run: |
+          set -euo pipefail
+          Rscript -e 'install.packages(c("GCD","locfit","raster","ggplot2","plyr","lattice"))'
+
+          arkiv=https://cran.r-project.org/src/contrib/Archive/paleofire
+          curl -fsSL -o paleofire.tar.gz "$arkiv/paleofire_1.2.4.tar.gz"
+          tar xzf paleofire.tar.gz
+
+          sed -i 's/GCD,rgdal,lattice,raster)/GCD,lattice,raster)/' paleofire/NAMESPACE
+          sed -i 's/^Imports: locfit, raster, ggplot2, plyr, rgdal, lattice$/Imports: locfit, raster, ggplot2, plyr, lattice/' paleofire/DESCRIPTION
+          rm -f paleofire/R/pfGridding.R paleofire/R/pfToKml.R
+
+          if grep -q rgdal paleofire/NAMESPACE paleofire/DESCRIPTION; then
+            echo "::error::rgdal står fortsatt igjen i paleofire etter lappingen."
+            grep -n rgdal paleofire/NAMESPACE paleofire/DESCRIPTION
+            exit 1
+          fi
+
+          R CMD INSTALL paleofire
+          Rscript -e 'library(paleofire); cat("paleofire", as.character(packageVersion("paleofire")), "lastet\n")'
+
+      # Alle Python-steg kjøres som modul fra repotoppen (§ 4).
+      #
+      # Steget stopper med en tydelig melding hvis nedlastingen ikke gir data:
+      # CEDA svarer med en HTML-side når tilgangen avvises, og hver fil
+      # kontrolleres derfor mot katalogens størrelse og md5-sum og mot at
+      # innholdet faktisk lar seg åpne som netCDF, før aggregeringen starter.
+      - name: Hent, aggreger, valider og publiser
+        id: etl
+        continue-on-error: true
+        run: |
+          python -m etl.run_static \
+            --kilde "${{ inputs.kilde }}" \
+            ${{ inputs.kun_katalog && '--kun-katalog' || '' }}
+
+      # Rådata er gitignorert, men en tom mappe er den eneste tilstanden som
+      # beviser at slettingen faktisk skjedde.
+      - name: Kontroller at rådata er slettet
+        run: |
+          igjen="$(find data/raw -type f ! -name .gitkeep)"
+          if [ -n "$igjen" ]; then
+            echo "::error::Rådata ligger igjen etter kjøringen:"
+            echo "$igjen"
+            exit 1
+          fi
+          echo "data/raw/ er tom."
+
+      - name: Se etter endringer
+        id: endringer
+        if: ${{ !inputs.kun_katalog }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Eksplisitte stier. data/raw/ nevnes ikke, og et git add -A over
+          # hele treet brukes ikke (T4).
+          git add data/processed data/_sources.json data/_status.json
+
+          if git diff --cached --quiet -- data/processed data/_sources.json; then
+            echo "data=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "data=true" >> "$GITHUB_OUTPUT"
+          fi
+
+          if git diff --cached --quiet; then
+            echo "noe=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "noe=true" >> "$GITHUB_OUTPUT"
+          fi
+
+          git diff --cached --stat
+
+      # data/_status.json bærer et tidsstempel og endrer seg ved hver kjøring.
+      # Alene er den ikke grunn til en pull request. Unntaket er en feilet
+      # kjøring, der statusen er hele poenget.
+      - name: Opprett pull request
+        id: pr
+        if: >-
+          !inputs.kun_katalog &&
+          steps.endringer.outputs.noe == 'true' &&
+          (steps.endringer.outputs.data == 'true' ||
+           steps.etl.outcome == 'failure')
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          KILDE: ${{ inputs.kilde }}
+        run: |
+          set -euo pipefail
+          gren="etl/statisk-${KILDE}-$(date -u +%Y-%m-%d)-${{ github.run_id }}"
+
+          if [ "${{ steps.etl.outcome }}" = "failure" ]; then
+            tittel="ETL statisk: ${KILDE^^} feilet $(date -u +%Y-%m-%d)"
+            brodtekst=$'Hentingen av den statiske kilden feilet. Forrige datasett er beholdt, og feilen er logget i `data/_status.json`.\n\nSe kjøreloggen for hva som feilet.'
+          else
+            tittel="ETL statisk: ${KILDE^^} oppdatert $(date -u +%Y-%m-%d)"
+            brodtekst=$'Maskinell kjøring av den statiske kilden.\n\nRådataene er hentet i Actions, bearbeidet og slettet. Kun de ferdige seriene ligger i diffen.\n\nGå gjennom diffen under `data/processed/` før du slår sammen.'
+          fi
+
+          git commit -m "$tittel" -m "Maskinell kjøring, se .github/workflows/etl-statisk.yml"
+          git push origin "HEAD:$gren"
+
+          gh pr create \
+            --base "${{ github.ref_name }}" \
+            --head "$gren" \
+            --title "$tittel" \
+            --body "$brodtekst"
+
+      - name: Ingen endringer
+        if: ${{ !inputs.kun_katalog && steps.pr.conclusion == 'skipped' }}
+        run: echo "Ingen endringer i data/processed/ eller data/_sources.json. Ingen pull request opprettet."
+
+      # Til slutt, slik at status og data er committet før jobben faller.
+      - name: Marker kjøringen som feilet
+        if: steps.etl.outcome == 'failure'
+        run: |
+          echo "::error::Kjøringen av ${{ inputs.kilde }} feilet. Se loggen over."
+          exit 1
