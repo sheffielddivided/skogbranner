@@ -41,7 +41,7 @@ concurrency:
 jobs:
   hent:
     runs-on: ubuntu-latest
-    # Nedlastingen er på flere gigabyte og går sekvensielt mot CEDA.
+    # K8 laster ned 6,7 GiB sekvensielt fra CEDA og er den lengste kjøringen.
     timeout-minutes: 360
     steps:
       - uses: actions/checkout@v4
@@ -53,8 +53,8 @@ jobs:
       # Den månedlige kjøringen klarer seg med standardbiblioteket. Disse
       # avhengighetene trengs kun for rutenettkildene: netCDF-lesing,
       # shapefil-lesing og rasterisering av landgeometrien.
-      - name: Installer avhengigheter
-        if: ${{ !inputs.kun_katalog }}
+      - name: Installer avhengigheter — rutenettkilder
+        if: ${{ !inputs.kun_katalog && inputs.kilde != 'k10' }}
         run: |
           python -m pip install --upgrade pip
           python -m pip install \
@@ -62,6 +62,45 @@ jobs:
             "netCDF4==1.7.2" \
             "rasterio==1.5.0" \
             "pyshp==2.3.1"
+
+      # K10 er en R-kilde. Kullserien ligger i GCD-pakken, så det lastes ikke
+      # ned data — men pakkene er gamle nok til å trenge litt hjelp.
+      - uses: r-lib/actions/setup-r@v2
+        if: ${{ !inputs.kun_katalog && inputs.kilde == 'k10' }}
+        with:
+          r-version: "4.4.2"
+          # Ferdigbygde Linux-binærpakker. Uten dette må raster og terra
+          # kompileres mot GDAL, som tar tid og feiler lett.
+          use-public-rspm: true
+
+      # paleofire ble trukket fra CRAN i januar 2023 og finnes bare i arkivet.
+      # Siste versjon importerer rgdal, som selv ble trukket i oktober 2023.
+      # rgdal brukes kun av pfGridding og pfToKml, som vi ikke kaller — det er
+      # NAMESPACE som krever pakken ved lasting. Her fjernes den derfra, og de
+      # to filene som bruker den, tas ut. Funksjonene kompositten bygges av
+      # røres ikke. Lappingen er notert i data/_sources.json.
+      - name: Installer R-pakker — K10
+        if: ${{ !inputs.kun_katalog && inputs.kilde == 'k10' }}
+        run: |
+          set -euo pipefail
+          Rscript -e 'install.packages(c("GCD","locfit","raster","ggplot2","plyr","lattice"))'
+
+          arkiv=https://cran.r-project.org/src/contrib/Archive/paleofire
+          curl -fsSL -o paleofire.tar.gz "$arkiv/paleofire_1.2.4.tar.gz"
+          tar xzf paleofire.tar.gz
+
+          sed -i 's/GCD,rgdal,lattice,raster)/GCD,lattice,raster)/' paleofire/NAMESPACE
+          sed -i 's/^Imports: locfit, raster, ggplot2, plyr, rgdal, lattice$/Imports: locfit, raster, ggplot2, plyr, lattice/' paleofire/DESCRIPTION
+          rm -f paleofire/R/pfGridding.R paleofire/R/pfToKml.R
+
+          if grep -q rgdal paleofire/NAMESPACE paleofire/DESCRIPTION; then
+            echo "::error::rgdal står fortsatt igjen i paleofire etter lappingen."
+            grep -n rgdal paleofire/NAMESPACE paleofire/DESCRIPTION
+            exit 1
+          fi
+
+          R CMD INSTALL paleofire
+          Rscript -e 'library(paleofire); cat("paleofire", as.character(packageVersion("paleofire")), "lastet\n")'
 
       # Alle Python-steg kjøres som modul fra repotoppen (§ 4).
       #
@@ -135,8 +174,8 @@ jobs:
             tittel="ETL statisk: ${KILDE^^} feilet $(date -u +%Y-%m-%d)"
             brodtekst=$'Hentingen av den statiske kilden feilet. Forrige datasett er beholdt, og feilen er logget i `data/_status.json`.\n\nSe kjøreloggen for hva som feilet.'
           else
-            tittel="ETL statisk: ${KILDE^^} aggregert til landtotaler $(date -u +%Y-%m-%d)"
-            brodtekst=$'Maskinell kjøring av den statiske kilden.\n\nRutenettfilene er lastet ned i Actions, aggregert til årlige landtotaler og slettet. Kun de aggregerte tallene ligger i diffen.\n\nGå gjennom diffen under `data/processed/` før du slår sammen.'
+            tittel="ETL statisk: ${KILDE^^} oppdatert $(date -u +%Y-%m-%d)"
+            brodtekst=$'Maskinell kjøring av den statiske kilden.\n\nRådataene er hentet i Actions, bearbeidet og slettet. Kun de ferdige seriene ligger i diffen.\n\nGå gjennom diffen under `data/processed/` før du slår sammen.'
           fi
 
           git commit -m "$tittel" -m "Maskinell kjøring, se .github/workflows/etl-statisk.yml"

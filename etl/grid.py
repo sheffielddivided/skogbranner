@@ -26,9 +26,11 @@ Kjøres ikke direkte. Se ``etl/run_static.py``.
 
 import numpy as np
 
-# Delruter per celle langs hver akse. 5 gir 0,05° for et 0,25°-rutenett, som er
-# den oppløsningen FireCCILT11 selv er produsert i før den ble summert opp.
-DELRUTER = 5
+# Delrutenettets oppløsning i grader. Delrutene skal være like fine uansett hvor
+# grovt rutenettet er, slik at en kilde med 1°-ruter deles i flere delruter enn
+# en med 0,25°-ruter og geometrien treffes like presist i begge. 0,05° er
+# oppløsningen FireCCILT11 selv er produsert i før den ble summert opp.
+DELRUTE_GRAD = 0.05
 
 # Rutenettene er regelmessige. Toleransen fanger opp flyttallsstøy i
 # koordinatene, ikke et faktisk ujevnt rutenett.
@@ -148,12 +150,21 @@ def _steg(akse, navn):
     return float(abs(diff[0]))
 
 
-def bygg_maske(lat, lon, geometrier, delruter=DELRUTER):
+def delruter_for(dgrad, maal=DELRUTE_GRAD):
+    """Antall delruter per celle langs hver akse for en gitt cellestørrelse."""
+    return max(1, round(dgrad / maal))
+
+
+def bygg_maske(lat, lon, geometrier, delruter=None):
     """Bygger vektmasken for et rutenett ut fra admin-0-geometrien.
 
     ``geometrier`` er en liste med (entity-kode, GeoJSON-geometri), slik
     ``etl.sources.k6_natural_earth.geometrier`` leverer den. Flere geometrier
     kan ha samme kode.
+
+    Antall delruter utledes av cellestørrelsen, slik at delrutenettet blir like
+    fint uansett oppløsning. En maske gjelder ett rutenett: endrer kilden
+    oppløsning underveis, trengs en maske per oppløsning.
     """
     from rasterio.features import rasterize
     from rasterio.transform import from_origin
@@ -163,6 +174,8 @@ def bygg_maske(lat, lon, geometrier, delruter=DELRUTER):
     dlat = _steg(lat, "lat")
     dlon = _steg(lon, "lon")
     nlat, nlon = lat.size, lon.size
+    if delruter is None:
+        delruter = delruter_for(max(dlat, dlon))
 
     if not geometrier:
         raise Rutenettfeil("ingen geometrier å bygge maske av")

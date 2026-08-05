@@ -98,10 +98,14 @@ GRID_MAX_UNATTRIBUTED_SHARE = 0.02
 # rute ved ekvator, som er den største en rute kan bli — se CLAUDE.md § 9.
 GRID_MIN_ENTITY_CELLS = 1.0
 
-# Ytre grenser for et gyldig årstall. Nedre grense er satt under den eldste
-# serien vi tar inn (K8 fra 1982, NBAC fra 1972). Øvre grense settes av
-# nedlastingsåret og beregnes i validate.py.
-YEAR_MIN = 1900
+# Ytre grenser for et gyldig årstall. Øvre grense settes av nedlastingsåret og
+# beregnes i validate.py.
+#
+# Nedre grense må rekke ned til proxyen: K10 er sedimentært kull gjennom
+# holocen, og en periode kan derfor være et år før vår tidsregning, skrevet med
+# fortegn. Måleseriene starter alle etter 1900 — grensen her er ikke en påstand
+# om at de gjør noe annet.
+YEAR_MIN = -12000
 
 
 # --- Serier (CLAUDE.md § 6) ---
@@ -111,6 +115,8 @@ SERIES_ID = frozenset(
     {
         "owid_annual_area_burnt",
         "firecci_lt11_annual_burned_area",
+        "gfed5_annual_burned_area",
+        "gcd_charcoal_composite",
     }
 )
 

@@ -24,6 +24,10 @@ from etl import schema
 
 ISO3 = re.compile(r"^[A-Z]{3}$")
 
+# Perioden er ISO 8601: YYYY, YYYY-MM eller YYYY-Www. Årstallet kan bære
+# fortegn, for proxyen rekker ned før år null (CLAUDE.md § 6).
+PERIODE = re.compile(r"^(-?\d{1,5})(-\d{2}|-W\d{2})?$")
+
 
 class Valideringsfeil(Exception):
     """Reises når datasettet ikke kan publiseres."""
@@ -94,11 +98,12 @@ def valider(observasjoner):
             if fotnote not in schema.FOOTNOTE:
                 meld(f"{hvor}: ukjent fotnote {fotnote!r}")
 
-        # Ingen negative verdier
+        # Et areal kan ikke være negativt. En z-score kan: den måler avvik fra
+        # et gjennomsnitt, og halve serien ligger under det (CLAUDE.md § 6).
         if o["value"] is None:
             meld(f"{hvor}: verdien mangler — bruk «ingen data», ikke null")
-        elif o["value"] < 0:
-            meld(f"{hvor}: negativt areal ({o['value']})")
+        elif o["value"] < 0 and o["unit"] != "zscore":
+            meld(f"{hvor}: negativ verdi ({o['value']}) med unit {o['unit']!r}")
 
         # Entity-koder: land_no.json er fasit. Landkoder skal være ISO3, med
         # unntak av territoriene som er merket iso3: false.
@@ -116,10 +121,14 @@ def valider(observasjoner):
             if oppslag["iso3"] and not ISO3.match(o["entity"]):
                 meld(f"{hvor}: {o['entity']!r} er merket iso3, men er ikke en ISO3-kode")
 
-        # Årstall innenfor rimelig intervall
-        aar = int(o["period"][:4])
-        if not (schema.YEAR_MIN <= aar <= aar_maks):
-            meld(f"{hvor}: årstall {aar} utenfor {schema.YEAR_MIN}–{aar_maks}")
+        # Perioden skal være ISO 8601, og årstallet innenfor rimelig intervall
+        treff = PERIODE.match(str(o["period"]))
+        if not treff:
+            meld(f"{hvor}: perioden {o['period']!r} er ikke ISO 8601")
+        else:
+            aar = int(treff.group(1))
+            if not (schema.YEAR_MIN <= aar <= aar_maks):
+                meld(f"{hvor}: årstall {aar} utenfor {schema.YEAR_MIN}–{aar_maks}")
 
         sett[(o["entity"], o["period"], o["indicator"], o["source_id"])] += 1
         kvalitet_per_serie[o["series_id"]].add(o["quality"])

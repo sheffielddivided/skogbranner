@@ -20,15 +20,20 @@ import argparse
 import hashlib
 import shutil
 import time
+import zipfile
 from collections import defaultdict
 
 from etl import normalize, validate
 from etl.schema import GRID_MAX_UNATTRIBUTED_SHARE, GRID_MIN_ENTITY_CELLS
-from etl.sources import k6_natural_earth, k8_firecci
+from etl.sources import k6_natural_earth, k8_firecci, k9_gfed5, k10_gcd
 
 # Filnavnet under data/processed/ per kilde. Navnet følger serien, ikke
 # kildekoden, slik at en lesbar nedlastingslenke peker på det figuren viser.
-FILNAVN = {"k8": "burned_area_firecci_lt11"}
+FILNAVN = {
+    "k8": "burned_area_firecci_lt11",
+    "k9": "burned_area_gfed5",
+    "k10": "charcoal_composite_gcd",
+}
 
 
 class Kjorefeil(Exception):
@@ -38,7 +43,32 @@ class Kjorefeil(Exception):
 def _rydd():
     """Fjerner rådata. De committes aldri (CLAUDE.md T4)."""
     shutil.rmtree(k8_firecci.RAW_K8_DIR, ignore_errors=True)
+    shutil.rmtree(k9_gfed5.RAW_K9_DIR, ignore_errors=True)
+    shutil.rmtree(k10_gcd.RAW_K10_DIR, ignore_errors=True)
     k6_natural_earth.RAW_ZIP.unlink(missing_ok=True)
+
+
+def _geometri():
+    """Henter K6 og skriver ut hva den dekker."""
+    _, k6_info = k6_natural_earth.hent()
+    geometrier, uten_kode = k6_natural_earth.geometrier()
+    print(
+        f"K6: {len(geometrier)} geometrier. "
+        f"{len(uten_kode)} områder uten anerkjent tilhørighet holdes utenfor"
+        + (f": {', '.join(sorted(uten_kode))}" if uten_kode else "")
+    )
+    return geometrier, k6_info
+
+
+def _kontroller_uattribuert(andel, kilde):
+    print(f"{kilde}: uten landtilknytning: {andel:.4%} av samlet brent areal")
+    if andel > GRID_MAX_UNATTRIBUTED_SHARE:
+        raise Kjorefeil(
+            f"{kilde}: {andel:.2%} av arealet lot seg ikke tilskrive et land, "
+            f"over grensen på {GRID_MAX_UNATTRIBUTED_SHARE:.2%} "
+            "(GRID_MAX_UNATTRIBUTED_SHARE i etl/schema.py). Geometri og "
+            "rutenett spriker — kontroller K6-nedlastingen før tallene brukes."
+        )
 
 
 def _skriv_ut_katalog(sammendrag):
@@ -221,20 +251,213 @@ def kjor_k8(kun_katalog=False):
     return observasjoner
 
 
-def _ikke_implementert(kode):
-    def kjor(kun_katalog=False):
-        raise SystemExit(
-            f"{kode.upper()} er ikke implementert ennå. Se CLAUDE.md § 12."
+def kjor_k9(kun_katalog=False):
+    oppf = k9_gfed5.katalog()
+    sammendrag = k9_gfed5.katalogsammendrag(oppf)
+    print(
+        f"K9: {oppf['navn']}, {oppf['bytes'] / 2**30:.2f} GiB "
+        f"({oppf['bytes']} byte), {sammendrag['maanedsfiler']} månedsfiler"
+    )
+    print(
+        f"K9: {sammendrag['aar_forste']}–{sammendrag['aar_siste']}, "
+        f"{sammendrag['aar_antall']} år. Grov oppløsning: "
+        f"{sammendrag['aar_grov_opplosning'][0]}–"
+        f"{sammendrag['aar_grov_opplosning'][-1]}"
+    )
+    if kun_katalog:
+        print("K9: --kun-katalog, ingenting lastes ned.")
+        return None
+
+    from etl import grid
+
+    geometrier, k6_info = _geometri()
+    sti = k9_gfed5.hent(oppf)
+    filer = k9_gfed5.maanedsfiler(sti)
+
+    maaneder = defaultdict(set)
+    for aar, maaned, _ in filer:
+        maaneder[aar].add(maaned)
+    mangler = {a: sorted(set(range(1, 13)) - m) for a, m in maaneder.items()}
+    mangler = {a: m for a, m in mangler.items() if m}
+    if mangler:
+        raise Kjorefeil(
+            "K9: arkivet har år uten alle tolv månedsfiler: "
+            + "; ".join(f"{a} mangler {m}" for a, m in sorted(mangler.items()))
         )
 
-    return kjor
+    masker = {}
+    maske_for_aar = {}
+    per_entitet = defaultdict(lambda: defaultdict(float))
+    verden = defaultdict(float)
+    uattribuert = defaultdict(float)
+    start = time.monotonic()
+
+    with zipfile.ZipFile(sti) as arkiv:
+        for nr, (aar, maaned, navn) in enumerate(filer, start=1):
+            lat, lon, verdier = k9_gfed5.les_rutenett(arkiv, navn)
+            form = (lat.size, lon.size)
+
+            # Oppløsningen skifter innenfor serien, så det trengs én maske per
+            # rutenett. Terskler og fotnoter regnes mot den maskeen året
+            # faktisk ble aggregert med.
+            if form not in masker:
+                print(
+                    f"K9: nytt rutenett {form[0]}×{form[1]} i {aar}. "
+                    "Bygger maske …",
+                    flush=True,
+                )
+                masker[form] = grid.bygg_maske(lat, lon, geometrier)
+                print(
+                    f"K9: rute {masker[form].ruteareal_ekvator_km2:.0f} km² ved "
+                    "ekvator",
+                    flush=True,
+                )
+            maske = masker[form]
+            if not maske.passer(lat, lon):
+                raise Kjorefeil(
+                    f"{navn}: rutenettet har samme form som en tidligere maske, "
+                    "men andre koordinater. Summene ville blitt feil."
+                )
+            maske_for_aar[aar] = form
+
+            sum_entitet, sum_uten_land, sum_total = maske.aggreger(verdier)
+            for kode, verdi in sum_entitet.items():
+                per_entitet[kode][aar] += verdi
+            verden[aar] += sum_total
+            uattribuert[aar] += sum_uten_land
+
+            if maaned == 12:
+                print(
+                    f"K9: {nr}/{len(filer)} {aar} ferdig "
+                    f"({verden[aar]:,.0f} km², {time.monotonic() - start:.0f} s)",
+                    flush=True,
+                )
+
+    _rydd()
+
+    total = sum(verden.values())
+    andel = sum(uattribuert.values()) / total if total else 0.0
+    _kontroller_uattribuert(andel, "K9")
+
+    # Hvilke år som er grovt oppløst, følger av maskene kjøringen faktisk
+    # bygget, ikke av et årstall i koden.
+    finest = min(m.ruteareal_ekvator_km2 for m in masker.values())
+    grove = {
+        aar
+        for aar, form in maske_for_aar.items()
+        if masker[form].ruteareal_ekvator_km2 > finest
+    }
+    if grove:
+        print(
+            f"K9: {len(grove)} år med grovere rutenett får f_resolution_change: "
+            f"{min(grove)}–{max(grove)}"
+        )
+
+    smaa_per_maske = {
+        form: m.for_smaa_entiteter(GRID_MIN_ENTITY_CELLS) for form, m in masker.items()
+    }
+    uobs_per_maske = {form: m.uobserverte_entiteter() for form, m in masker.items()}
+    for form in masker:
+        print(
+            f"K9: rutenett {form[0]}×{form[1]}: "
+            f"{len(smaa_per_maske[form] - uobs_per_maske[form])} entiteter med "
+            f"f_grid_resolution, {len(uobs_per_maske[form])} uten treff"
+        )
+
+    def per_aar(aar):
+        form = maske_for_aar[aar]
+        return (
+            ["f_resolution_change"] if aar in grove else [],
+            smaa_per_maske[form],
+            uobs_per_maske[form],
+        )
+
+    info = dict(sammendrag)
+    info.update(
+        {
+            "url": oppf["url"],
+            "zenodo_doi": oppf["zenodo_doi"],
+            "publication_date": oppf.get("publication_date"),
+            "checksum": oppf["md5"] or "",
+            "k6_checksum": k6_info["checksum"],
+            "uattribuert_andel": andel,
+            "uattribuert_km2": sum(uattribuert.values()),
+        }
+    )
+
+    alle_koder = {k for m in masker.values() for k in m.koder}
+    observasjoner = normalize.fra_k9(
+        {k: dict(v) for k, v in per_entitet.items()},
+        dict(verden),
+        info,
+        per_aar,
+        med_geometri=alle_koder,
+    )
+
+    feil = validate.valider(observasjoner)
+    if feil:
+        for melding in feil:
+            print("FEIL:", melding)
+        k9_gfed5.skriv_status(
+            "failed", f"{len(feil)} valideringsfeil, ingenting publisert", info
+        )
+        raise validate.Valideringsfeil(f"{len(feil)} feil — ingenting publisert")
+
+    sti_json, sti_csv = normalize.skriv(observasjoner, FILNAVN["k9"])
+    k6_natural_earth.skriv_metadata(k6_info)
+    k9_gfed5.skriv_metadata(info, [sti_json.name, sti_csv.name])
+    k9_gfed5.skriv_status(
+        "ok",
+        f"{len(filer)} månedsfiler aggregert til {info['rows']} observasjoner, "
+        f"{andel:.4%} uten landtilknytning",
+        info,
+    )
+    print(f"normalize: {len(observasjoner)} observasjoner")
+    print("validate:  OK")
+    print(f"skrevet:   {sti_json.name}, {sti_csv.name}")
+    return observasjoner
 
 
-KILDER = {
-    "k8": kjor_k8,
-    "k9": _ikke_implementert("k9"),
-    "k10": _ikke_implementert("k10"),
-}
+def kjor_k10(kun_katalog=False):
+    print(
+        "K10: R-pakkene GCD (CRAN) og paleofire (CRAN-arkivet, 3,5 MB). "
+        "Ingen datanedlasting — kullserien ligger i GCD-pakken."
+    )
+    if kun_katalog:
+        print("K10: --kun-katalog, ingenting kjøres.")
+        return None
+
+    rader, info = k10_gcd.hent()
+    print(f"K10: {info['rader']} rader i kompositten")
+
+    observasjoner = normalize.fra_k10(rader, info)
+    feil = validate.valider(observasjoner)
+    if feil:
+        for melding in feil:
+            print("FEIL:", melding)
+        k10_gcd.skriv_status(
+            "failed", f"{len(feil)} valideringsfeil, ingenting publisert", info
+        )
+        raise validate.Valideringsfeil(f"{len(feil)} feil — ingenting publisert")
+
+    sti_json, sti_csv = normalize.skriv(observasjoner, FILNAVN["k10"])
+    k10_gcd.skriv_metadata(info, [sti_json.name, sti_csv.name])
+    k10_gcd.skriv_status(
+        "ok",
+        f"kompositt med {info['rows']} punkter, "
+        f"{info['aar_forste']}–{info['aar_siste']}",
+        info,
+    )
+    _rydd()
+
+    print(f"normalize: {len(observasjoner)} observasjoner")
+    print("validate:  OK")
+    print(f"skrevet:   {sti_json.name}, {sti_csv.name}")
+    return observasjoner
+
+
+
+KILDER = {"k8": kjor_k8, "k9": kjor_k9, "k10": kjor_k10}
 
 
 def main(argv=None):
@@ -255,8 +478,13 @@ def main(argv=None):
     except Exception as e:
         # Feiler kjøringen, beholdes forrige datasett og feilen logges, slik at
         # siden kan vise at serien ikke er oppdatert siden dato X (§ 4).
-        if args.kilde == "k8" and not args.kun_katalog:
-            k8_firecci.skriv_status("failed", f"{type(e).__name__}: {e}")
+        statusskriver = {
+            "k8": k8_firecci.skriv_status,
+            "k9": k9_gfed5.skriv_status,
+            "k10": k10_gcd.skriv_status,
+        }
+        if not args.kun_katalog:
+            statusskriver[args.kilde]("failed", f"{type(e).__name__}: {e}")
         raise
     finally:
         # Rådata skal aldri bli liggende, uansett hvordan kjøringen endte.

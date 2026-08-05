@@ -315,7 +315,7 @@ kilde.
 | K6 | Natural Earth, admin-0 | Global | — | — | Geometri og landarealer. Public domain |
 | K7 | CNFDB / NBAC | Canada | — | `reported` | Krever sluttbrukeravtale — akseptert |
 | K8 | FireCCILT11 (ESA Fire_cci) | Global | 1982–2018, uten 1994 | `beta` | Statisk. Selve produktet er merket beta av produsenten |
-| K9 | GFED5 | Global | 1997–2022 | `measured` | Statisk. GFED5.1 for 1997–2022 er en publisert utgivelse dokumentert i Scientific Data. Beta-merkingen gjelder kun produsentens `ext_Beta`-kataloger fra 2023, som vi holder ute |
+| K9 | GFED5 | Global | 1997–2020 | `measured` | Statisk. En publisert utgivelse dokumentert i Scientific Data. Hvilken av de to Zenodo-utgivelsene som har brent areal, står under § 5. Beta-merkingen gjelder kun produsentens `ext_Beta`-kataloger fra 2023, som vi holder ute |
 | K10 | Global Charcoal Database | Global | — | `reconstructed` | Proxy. Statisk |
 
 ### Navnekilde: SSB Klass
@@ -409,19 +409,52 @@ en ny versjon.
   kunne følges fra kjøring til kjøring. Endrer den seg mye mellom to kjøringer,
   har enten geometrien eller rutenettet endret seg.
 
-- **K9 GFED5** brukes kun for årene **1997–2022**, og har `quality`
-  `measured`. GFED5.1 for denne perioden er en publisert utgivelse,
-  dokumentert i Scientific Data. Produsentens `ext_Beta`-kataloger fra 2023 og
-  framover holdes ute — det er *de* som er foreløpige, ikke datasettet vi
-  bruker. Årene **1997–2000** har grovere romlig oppløsning enn resten av
-  serien (1° mot 0,25° fra 2001), og skal alltid ha `f_resolution_change`.
+- **K9 GFED5** brukes kun for de årene produsenten har publisert, og har
+  `quality` `measured`. GFED5 er dokumentert i Scientific Data. Produsentens
+  `ext_Beta`-kataloger fra 2023 og framover holdes ute — det er *de* som er
+  foreløpige, ikke datasettet vi bruker. Årene **1997–2000** har grovere romlig
+  oppløsning enn resten av serien (1° mot 0,25° fra 2001), og skal alltid ha
+  `f_resolution_change`.
+
+  **Brent areal ligger i én bestemt utgivelse, og bare der.** GFED5 finnes i to
+  Zenodo-utgivelser, og de inneholder ikke det samme:
+
+  - `10.5281/zenodo.7668424`, *GFED5 Burned Area*: månedlige rutenett med laget
+    `Total` i km², **1997–2020**, 1° til og med 2000 og 0,25° fra 2001. Det er
+    denne vi henter.
+  - `10.5281/zenodo.16794692`, artikkelutgivelsen GFED5.1: `monthly`- og
+    `daily`-arkivene inneholder **kun utslipp** av 40 gasser og aerosoler, som
+    er utenfor scope (P8). Brent areal finnes der bare i `ecosystem`-arkivet,
+    som starter i 2002 og er 0,25° hele veien — og som derfor verken dekker
+    1997 eller har oppløsningsskiftet.
+
+  Dekningen er altså 1997–2020, ikke 1997–2022. Årene 2021 og 2022 finnes som
+  brent areal kun i `ecosystem`-arkivet, og å skjøte dem på ville krysset både
+  en utgivelses- og en produktgrense. Det gjør vi ikke — se regelen om trend og
+  kildebrudd i § 7.
+
+  Kilden oppgir km² per rute. Rutenettene summeres til landnivå på samme måte
+  som K8, men med én maske per oppløsning: terskelen for `f_grid_resolution` og
+  settet av entiteter rutenettet ikke treffer, regnes mot det rutenettet som
+  gjelder for det enkelte året. En rute ved ekvator er om lag 12 400 km² ved 1°
+  og 773 km² ved 0,25°, så de to periodene treffer ulike entiteter.
 
   K8 er derimot `beta` fordi selve produktet er merket slik av produsenten.
   Skillet er hvem som har merket hva: en produsents beta-merking på et annet
   datasett i samme katalog smitter ikke over.
 - **K10 Global Charcoal Database** er et *proxy*: sedimentært kull som
   indirekte spor etter brann, ikke en måling av brent areal. Alltid
-  `f_proxy`.
+  `f_proxy`. Serien er global og har ikke landnivå.
+
+  Kompositten bygges av R-pakkene `GCD` og `paleofire`, som er de samme
+  verktøyene metoden er publisert med. `paleofire` ble trukket fra CRAN i
+  januar 2023 og installeres fra arkivet. Siste versjon importerer `rgdal`, som
+  selv ble trukket i oktober 2023, og som pakken bare bruker i funksjoner vi
+  ikke kaller. Installasjonssteget fjerner den derfor før pakken bygges, og at
+  pakken er lappet, står i `data/_sources.json`. Selve kompositten røres ikke.
+
+  R-skriptet skriver CSV-en før det gjør noe annet med resultatet. En kompositt
+  som først er beregnet, skal ikke gå tapt fordi et senere steg feiler.
 
 ### Påkrevd sitering
 
@@ -503,7 +536,9 @@ Faktiske tall står i `data/processed/`.
 ```
 
 - `level`: `country` | `region` | `world`
-- `period`: ISO 8601 — `YYYY`, `YYYY-MM` eller `YYYY-Www`
+- `period`: ISO 8601 — `YYYY`, `YYYY-MM` eller `YYYY-Www`. Årstallet kan bære
+  fortegn: proxyen i K10 rekker ned før år null, og `-0500` er år 500 fvt.
+  Måleseriene starter alle etter 1900, så fortegnet finnes bare i K10
 - `quality`: `measured` | `reported` | `beta` | `reconstructed`
 - `unit`: `km2` | `share` | `zscore`
 
@@ -975,6 +1010,8 @@ sluttbrukeravtale tas ikke inn før avtalen er avklart og notert i
 - `etl/sources/k1_owid.py` — K1, henting og råformat
 - `etl/sources/k6_natural_earth.py` — K6, admin-0-kartenhetene som geometri
 - `etl/sources/k8_firecci.py` — K8, katalogen hos CEDA, henting og verifisering
+- `etl/sources/k9_gfed5.py` — K9, arkivet hos Zenodo, henting og verifisering
+- `etl/sources/k10_gcd.py` og `k10_gcd.R` — K10, kompositten fra paleofire
 - `etl/sources/ssb_klass.py` — navnekilden, bygger `land_no.json`
 - `etl/normalize.py` — kanonisk form, hektar → km² og m² → km²
 - `etl/grid.py` — rutenett → landnivå
@@ -1000,10 +1037,14 @@ Hver figur har en modul under `src/figurer/` som bygger graf, tabell og
 fotnoteliste fra observasjonene. Hvilke fotnoter en figur viser, utledes av
 dataene — ikke av en liste i figurmodulen.
 
-**Hentet, men ikke kjørt:** K8-tallene ligger ikke i repoet ennå. Koden og
-workflowen er på plass, men `data/processed/burned_area_firecci_lt11.*` finnes
-først etter at `etl-statisk.yml` er kjørt med `kilde: k8` og pull requesten er
-slått sammen. Kjøringen laster ned 432 månedsfiler på til sammen 6,7 GiB.
+**Hentet, men ikke kjørt:** ingen av de statiske kildene ligger i repoet ennå.
+Koden og workflowen er på plass, men filene under `data/processed/` finnes
+først etter at `etl-statisk.yml` er kjørt for hver kilde og pull requestene er
+slått sammen:
+
+- `kilde: k8` → `burned_area_firecci_lt11.*`, 432 månedsfiler, 6,7 GiB
+- `kilde: k9` → `burned_area_gfed5.*`, ett arkiv på 253 MiB med 288 månedsfiler
+- `kilde: k10` → `charcoal_composite_gcd.*`, ingen datanedlasting
 
 **Ikke implementert:** `etl/derive.py` inneholder kun beskrivelse av
 ansvarsområde. S2–S6 har overskrift og en merknad om at de ikke er laget.
