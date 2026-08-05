@@ -34,6 +34,42 @@
         "f_min_fire_size"
       ],
       "notes": "Area burnt by wildfires in hectares. The 2026 data is incomplete and was last updated 01 August 2026."
+    },
+    "K10": {
+      "source_id": "K10",
+      "name": "Global Charcoal Database — global kompositt av sedimentært kull",
+      "publisher": "Global Paleofire Working Group, via R-pakkene GCD og paleofire",
+      "url": "https://cran.r-project.org/package=GCD",
+      "download_url": "https://cran.r-project.org/src/contrib/Archive/paleofire/paleofire_1.2.4.tar.gz",
+      "license": "GPL (>= 2) for pakkene. Dataene i GCD er fritt tilgjengelige med kildeangivelse.",
+      "license_url": "https://cran.r-project.org/web/licenses/GPL-2",
+      "attribution": "Blarquez, O., Vannière, B., Marlon, J.R., Daniau, A.-L., Power, M.J., Brewer, S. & Bartlein, P.J. (2014). paleofire: an R package to analyse sedimentary charcoal records from the Global Charcoal Database to reconstruct past biomass burning. Computers & Geosciences 72: 255–261.",
+      "requires_agreement": false,
+      "geography": "global",
+      "coverage_start": "-6050",
+      "coverage_end": "2010",
+      "temporal_resolution": "binned",
+      "smoothing_halfwidth_years": 500,
+      "n_series_min": 99,
+      "n_series_max": 360,
+      "quality": "reconstructed",
+      "unit_source": "zscore",
+      "downloaded_at": "2026-08-05",
+      "source_last_updated": null,
+      "checksum": "592b00a45ab48ae6668cffc295404e31cba2c0f7b2f18a1db183338aeb12e845",
+      "package_versions": {},
+      "series": [
+        "gcd_charcoal_composite"
+      ],
+      "processed_files": [
+        "charcoal_composite_gcd.json",
+        "charcoal_composite_gcd.csv"
+      ],
+      "footnotes": [
+        "f_proxy",
+        "f_smoothed"
+      ],
+      "notes": "Hvert punkt er et vektet snitt over 500 år til hver side. Kompositt bygget med paleofire: minimaks, Box-Cox og z-score mot en felles basisperiode, deretter lavpassfiltrert snitt med bootstrappet usikkerhet. Utvalget er alle stedene i databasen, ikke et redaksjonelt utvalg. paleofire ble trukket fra CRAN i 2023 og installeres fra arkivet, uten rgdal, som pakken bare bruker i funksjoner vi ikke kaller. Alderen er regnet om fra år før 1950 til kalenderår."
     }
   }
 }
