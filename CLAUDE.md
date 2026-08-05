@@ -319,6 +319,9 @@ en ny versjon.
   arbeidsverktøy for redaktøren, ikke innhold på siden. Den publiseres ikke,
   og K2 tegnes ikke i noen figur i denne rollen.
 
+  Terskelen er `KRYSSJEKK_TERSKEL` i `etl/schema.py`. Valideringskoden
+  importerer konstanten og skriver aldri tallet selv (T5).
+
   Den andre er som datagrunnlag for **S3**, der ukesoppløsningen brukes. Det er
   den eneste seksjonen der K2 er synlig for leseren.
 - **K9 GFED5** brukes kun for årene **1997–2022**, og har `quality`
@@ -499,14 +502,17 @@ rekkefølgen. Hver seksjon åpner med figuren (P2).
 | S5 | Den lange linjen | De samme seriene som i S1, pluss de nasjonale og proxyen, vist **hver for seg** i separate figurer med hver sin akse og hver sin dekningsperiode | K1, K5, K7, K8, K9, K10 |
 | S6 | Om dataene | Kildeoversikt, definisjoner, ordliste, alle fotnoter samlet, nedlastingslenker til alle bearbeidede CSV-filer, lenke til repoet | alle |
 
-**Hva kildekolonnen betyr.** Kolonnen lister **kun kilder som faktisk tegnes i
-seksjonens figurer**. Kilder som brukes til validering, geometri eller
-avledning står ikke der — de er beskrevet under sin egen kildeoppføring i § 5.
+**Hva kildekolonnen betyr.** Kolonnen lister kilder som leverer **tallverdiene
+figurene viser**.
+
+Kilder som leverer geometri, nevnere for avledede indikatorer eller
+valideringsgrunnlag står **ikke** der — selv om de rendres på skjermen. De er
+beskrevet under sin egen oppføring i § 5.
 
 Derfor står ikke K6 i S2 og S4, selv om kartene tegnes med geometri derfra og
 `burned_area_share_land` bruker landarealene som nevner. Og derfor står ikke
-K2 i S1, selv om den brukes til å kryssjekke K1. Kolonnen svarer på «hva ser
-leseren», ikke «hva var involvert».
+K2 i S1, selv om den brukes til å kryssjekke K1. Kolonnen svarer på hvor
+tallene kommer fra, ikke hva som var involvert i å tegne figuren.
 
 **Overskriftene er beskrivende, ikke tolkende.** «Hvor mye brenner det på
 jorden» stiller et spørsmål dataene kan svare på. Den svarer ikke på om det er

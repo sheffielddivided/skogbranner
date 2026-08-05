@@ -65,3 +65,10 @@ FOOTNOTE = frozenset(
 
 HA_TO_KM2 = 0.01
 ACRE_TO_KM2 = 0.00404686
+
+
+# --- Terskler (CLAUDE.md § 5) ---
+
+# Relativt avvik mellom K1 og K2 for samme enhet og år som utløser en
+# oppføring i avviksrapporten.
+KRYSSJEKK_TERSKEL = 0.05
