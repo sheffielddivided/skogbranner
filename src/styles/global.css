@@ -1,0 +1,516 @@
+/*
+ * Stilark for hele siden.
+ *
+ * Ingen webfonter fra tredjepart og ingenting hentet fra andre domener
+ * (CLAUDE.md T2). Typografien bruker skriftene som allerede finnes på
+ * leserens maskin.
+ *
+ * Kontrast, fargebruk og bevegelse følger WCAG 2.1 AA (§ 9). Fargene bærer
+ * aldri informasjon alene — det ufullstendige året skilles også med stiplet
+ * omriss.
+ */
+
+:root {
+  --skrift: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, sans-serif;
+  --skrift-tall: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+    "Liberation Mono", monospace;
+
+  --farge-bakgrunn: #fbfaf9;
+  --farge-flate: #ffffff;
+  --farge-tekst: #1c1917;
+  --farge-tekst-svak: #57534e;
+  --farge-kant: #d6d3d1;
+  --farge-lenke: #1d4ed8;
+  --farge-lenke-besokt: #6d28d9;
+
+  --farge-serie: #9a3412;
+  --farge-serie-svak: #fde6d3;
+  --farge-akse: #57534e;
+  --farge-merknad: #7c2d12;
+  --farge-merknad-flate: #fff7ed;
+
+  --bredde-innhold: 62rem;
+  --luft: 1.25rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --farge-bakgrunn: #14120f;
+    --farge-flate: #1c1917;
+    --farge-tekst: #f5f5f4;
+    --farge-tekst-svak: #d6d3d1;
+    --farge-kant: #44403c;
+    --farge-lenke: #93c5fd;
+    --farge-lenke-besokt: #d8b4fe;
+
+    --farge-serie: #f97316;
+    --farge-serie-svak: #451a03;
+    --farge-akse: #a8a29e;
+    --farge-merknad: #fdba74;
+    --farge-merknad-flate: #292524;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Leseren kan ha bedt om mindre bevegelse. Da hopper vi rett til seksjonen. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--farge-bakgrunn);
+  color: var(--farge-tekst);
+  font-family: var(--skrift);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-text-size-adjust: 100%;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  line-height: 1.25;
+  text-wrap: balance;
+}
+
+a {
+  color: var(--farge-lenke);
+}
+
+a:visited {
+  color: var(--farge-lenke-besokt);
+}
+
+:focus-visible {
+  outline: 3px solid var(--farge-lenke);
+  outline-offset: 2px;
+}
+
+.innramming {
+  max-width: var(--bredde-innhold);
+  margin-inline: auto;
+  padding-inline: var(--luft);
+}
+
+/* --- Hopp til innhold --- */
+
+.hopp-til-innhold {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--farge-flate);
+  color: var(--farge-tekst);
+  padding: 0.75rem 1rem;
+  z-index: 20;
+}
+
+.hopp-til-innhold:focus {
+  left: 0;
+}
+
+/* --- Sidehode --- */
+
+.sidehode {
+  border-bottom: 1px solid var(--farge-kant);
+  padding-block: 2.5rem 1.75rem;
+  background: var(--farge-flate);
+}
+
+.sidehode h1 {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.75rem, 1.2rem + 2.2vw, 2.75rem);
+}
+
+.ingress {
+  margin: 0;
+  max-width: 46rem;
+  color: var(--farge-tekst-svak);
+  font-size: 1.125rem;
+}
+
+/* --- Oppsett --- */
+
+.sideoppsett {
+  display: grid;
+  gap: 2.5rem;
+  padding-block: 2rem 4rem;
+}
+
+/*
+ * Uten dette får rutenettsporene min-width: auto, og innhold som ikke kan
+ * brytes — den vannrette innholdsnavigasjonen på smal skjerm, brede tabeller —
+ * sprenger sporet i stedet for å rulle inne i det. Da blir hele siden bredere
+ * enn skjermen.
+ */
+.sideoppsett > * {
+  min-width: 0;
+}
+
+@media (min-width: 60rem) {
+  .sideoppsett {
+    grid-template-columns: 15rem minmax(0, 1fr);
+    align-items: start;
+    gap: 3rem;
+  }
+}
+
+/* --- Innholdsnavigasjon --- */
+
+.innholdsnavigasjon {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--farge-bakgrunn);
+  border-bottom: 1px solid var(--farge-kant);
+  margin-inline: calc(var(--luft) * -1);
+  padding: 0.5rem var(--luft);
+}
+
+.innholdsnavigasjon ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 0.25rem 1rem;
+  overflow-x: auto;
+}
+
+.innholdsnavigasjon a {
+  display: flex;
+  gap: 0.5rem;
+  align-items: baseline;
+  padding: 0.4rem 0;
+  text-decoration: none;
+  color: var(--farge-tekst);
+  white-space: nowrap;
+  font-size: 0.9375rem;
+}
+
+.innholdsnavigasjon a:hover .innholdsnavigasjon-tittel,
+.innholdsnavigasjon a:focus-visible .innholdsnavigasjon-tittel {
+  text-decoration: underline;
+}
+
+.innholdsnavigasjon-kode {
+  font-family: var(--skrift-tall);
+  font-size: 0.8125rem;
+  color: var(--farge-tekst-svak);
+}
+
+@media (min-width: 60rem) {
+  .innholdsnavigasjon {
+    top: 1.5rem;
+    border-bottom: 0;
+    border-left: 2px solid var(--farge-kant);
+    margin-inline: 0;
+    padding: 0 0 0 1rem;
+  }
+
+  .innholdsnavigasjon ol {
+    display: block;
+    overflow: visible;
+  }
+
+  .innholdsnavigasjon a {
+    white-space: normal;
+  }
+}
+
+/* --- Seksjoner --- */
+
+.seksjon {
+  scroll-margin-top: 5rem;
+  padding-block: 1rem 3rem;
+  border-bottom: 1px solid var(--farge-kant);
+}
+
+.seksjon:last-of-type {
+  border-bottom: 0;
+}
+
+.seksjon > h2 {
+  font-size: clamp(1.375rem, 1.1rem + 1.2vw, 1.875rem);
+  margin: 0 0 1.5rem;
+}
+
+.seksjon-kode {
+  font-family: var(--skrift-tall);
+  font-size: 0.8125rem;
+  color: var(--farge-tekst-svak);
+  display: block;
+  font-weight: 400;
+}
+
+.seksjon-tekst {
+  max-width: 40rem;
+}
+
+.seksjon-tekst h3 {
+  font-size: 1.125rem;
+  margin-bottom: 0.25rem;
+}
+
+.ikke-laget {
+  color: var(--farge-tekst-svak);
+  max-width: 40rem;
+}
+
+/* --- Figur --- */
+
+.figur {
+  background: var(--farge-flate);
+  border: 1px solid var(--farge-kant);
+  border-radius: 4px;
+  padding: 1.25rem;
+  scroll-margin-top: 5rem;
+}
+
+.figur-tittel {
+  margin: 0 0 1rem;
+  font-size: 1.1875rem;
+}
+
+.figur-graf {
+  margin: 0;
+}
+
+.graf svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Smal og bred figur er to ulike oppsett, ikke samme figur i to størrelser. */
+.graf--smal {
+  display: block;
+}
+
+.graf--bred {
+  display: none;
+}
+
+@media (min-width: 48rem) {
+  .graf--smal {
+    display: none;
+  }
+
+  .graf--bred {
+    display: block;
+  }
+}
+
+/* --- Tegnforklaring --- */
+
+.tegnforklaring {
+  list-style: none;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  font-size: 0.9375rem;
+  color: var(--farge-tekst-svak);
+}
+
+.tegnforklaring li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  max-width: 32rem;
+}
+
+.tegnforklaring-merke {
+  flex: none;
+  width: 1rem;
+  height: 0.75rem;
+  translate: 0 0.1rem;
+}
+
+.tegnforklaring-merke--maalt {
+  background: var(--farge-serie);
+}
+
+.tegnforklaring-merke--ufullstendig {
+  background: var(--farge-serie-svak);
+  border: 1.5px dashed var(--farge-serie);
+}
+
+/* --- Kildelinje --- */
+
+.kildelinje,
+.kildelinje-sitering {
+  margin: 1rem 0 0;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--farge-tekst-svak);
+}
+
+.kildelinje-sitering {
+  margin-top: 0.35rem;
+}
+
+.kildelinje-sitering cite {
+  font-style: normal;
+}
+
+.kildelinje-merke {
+  display: inline-block;
+  font-family: var(--skrift-tall);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border: 1px solid var(--farge-kant);
+  border-radius: 3px;
+  padding: 0 0.35rem;
+  margin-right: 0.35rem;
+  color: var(--farge-tekst-svak);
+}
+
+/* --- Fotnoter --- */
+
+.fotnoter {
+  margin-top: 1.25rem;
+  border-top: 1px solid var(--farge-kant);
+  padding-top: 0.75rem;
+}
+
+.fotnoter-tittel {
+  margin: 0 0 0.35rem;
+  font-size: 0.9375rem;
+}
+
+.fotnoter ol {
+  margin: 0;
+  padding-left: 1.5rem;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--farge-tekst-svak);
+}
+
+.fotnoter li {
+  margin-bottom: 0.35rem;
+  max-width: 44rem;
+}
+
+/* --- Merknad om utdatert serie --- */
+
+.merknad-ikke-oppdatert {
+  margin: 0 0 1rem;
+  padding: 0.5rem 0.75rem;
+  border-left: 3px solid var(--farge-merknad);
+  background: var(--farge-merknad-flate);
+  color: var(--farge-merknad);
+  font-size: 0.875rem;
+}
+
+/* --- Tabellvisning --- */
+
+.tabell {
+  margin-top: 1.25rem;
+  border-top: 1px solid var(--farge-kant);
+  padding-top: 0.75rem;
+}
+
+.tabell summary {
+  cursor: pointer;
+  font-size: 0.9375rem;
+  padding: 0.25rem 0;
+}
+
+.tabell-ramme {
+  overflow-x: auto;
+  margin-top: 0.75rem;
+}
+
+.tabell table {
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+  min-width: 24rem;
+}
+
+.tabell caption {
+  text-align: left;
+  color: var(--farge-tekst-svak);
+  font-size: 0.875rem;
+  padding-bottom: 0.5rem;
+  max-width: 44rem;
+}
+
+.tabell th,
+.tabell td {
+  border-bottom: 1px solid var(--farge-kant);
+  padding: 0.35rem 0.75rem 0.35rem 0;
+  text-align: left;
+}
+
+.tabell thead th {
+  border-bottom: 2px solid var(--farge-kant);
+  white-space: nowrap;
+}
+
+.tabell tbody th,
+.tabell td {
+  font-variant-numeric: tabular-nums;
+  font-weight: 400;
+}
+
+.tabell td:nth-child(2) {
+  text-align: right;
+  padding-right: 1.5rem;
+}
+
+/* --- Sidefot --- */
+
+.sidefot {
+  border-top: 1px solid var(--farge-kant);
+  background: var(--farge-flate);
+  padding-block: 2.5rem 3.5rem;
+  font-size: 0.9375rem;
+  color: var(--farge-tekst-svak);
+}
+
+.sidefot h2 {
+  font-size: 1.0625rem;
+  margin: 1.75rem 0 0.75rem;
+}
+
+.sidefot h2:first-child {
+  margin-top: 0;
+}
+
+.sidefot p {
+  max-width: 44rem;
+}
+
+.attribusjon {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.25rem;
+}
+
+.attribusjon p {
+  margin: 0 0 0.2rem;
+}
+
+.attribusjon-navn {
+  color: var(--farge-tekst);
+}
+
+.attribusjon-sitering cite {
+  font-style: normal;
+}

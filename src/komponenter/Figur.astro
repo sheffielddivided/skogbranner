@@ -1,0 +1,169 @@
+---
+/**
+ * Gjenbrukbar figur: tittel, graf, kildelinje, fotnoter og tabellvisning.
+ *
+ * Kravene til hver figur står i CLAUDE.md § 9, kildelinjen i P5 og fotnotene
+ * i P6. Komponenten bygger kildelinjen fra data/_sources.json og
+ * fotnotetekstene fra data/_footnotes.json — ingen av delene skrives for hånd
+ * i en side.
+ *
+ * Rekkefølgen i DOM er figur før forklarende tekst (P2). Teksten som hører
+ * til seksjonen legges etter komponenten, ikke inni den.
+ */
+import { kilde, fotnotetekst, kildestatus } from "../lib/data";
+import { dato } from "../lib/format";
+
+interface Tabell {
+  beskrivelse: string;
+  kolonner: string[];
+  rader: (string | number)[][];
+}
+
+interface Tegnforklaring {
+  /** Modifikator som styrer hvordan merket tegnes, se global.css. */
+  merke: string;
+  tekst: string;
+}
+
+interface Props {
+  id: string;
+  tittel: string;
+  svg: string;
+  /** Eget oppsett for smal skjerm, ikke den samme figuren skalert ned (§ 9). */
+  svgMobil: string;
+  grafBeskrivelse: string;
+  kildeId: string;
+  dekning: { fra: number; til: number };
+  fotnoter: string[];
+  tabell: Tabell;
+  tegnforklaring?: Tegnforklaring[];
+}
+
+const {
+  id,
+  tittel,
+  svg,
+  svgMobil,
+  grafBeskrivelse,
+  kildeId,
+  dekning,
+  fotnoter,
+  tabell,
+  tegnforklaring = [],
+} = Astro.props;
+
+const k = kilde(kildeId);
+
+// Lenken skal peke til den CSV-filen figuren faktisk bruker, ikke til mappen
+// og ikke til en lignende fil (P5).
+const csvNavn = k.processed_files.find((f) => f.endsWith(".csv"));
+if (!csvNavn) {
+  throw new Error(
+    `Kilden ${kildeId} har ingen CSV-fil i processed_files. Kildelinjen kan ikke bygges.`,
+  );
+}
+const base = import.meta.env.BASE_URL;
+const csvUrl = `${base}data/${csvNavn}`;
+
+// Feilet siste henting, beholdt pipelinen forrige datasett. Da skal leseren se
+// en diskré merknad om at akkurat denne serien ikke er oppdatert siden dato X
+// (§ 4). Går alt bra, står det ingenting.
+const status = kildestatus(kildeId);
+const ikkeOppdatert =
+  status && status.status !== "ok" && status.last_success
+    ? dato(status.last_success)
+    : null;
+---
+
+<div class="figur" id={id}>
+  <h3 class="figur-tittel">{tittel}</h3>
+
+  {
+    ikkeOppdatert && (
+      <p class="merknad-ikke-oppdatert">
+        Denne serien er ikke oppdatert siden {ikkeOppdatert}. Siste henting fra
+        kilden gikk ikke gjennom, og figuren viser forrige datasett.
+      </p>
+    )
+  }
+
+  <figure class="figur-graf">
+    <div class="graf graf--bred" role="img" aria-label={grafBeskrivelse} set:html={svg} />
+    <div class="graf graf--smal" role="img" aria-label={grafBeskrivelse} set:html={svgMobil} />
+  </figure>
+
+  {
+    tegnforklaring.length > 0 && (
+      <ul class="tegnforklaring">
+        {tegnforklaring.map((t) => (
+          <li>
+            <span class={`tegnforklaring-merke tegnforklaring-merke--${t.merke}`} aria-hidden="true" />
+            {t.tekst}
+          </li>
+        ))}
+      </ul>
+    )
+  }
+
+  <p class="kildelinje">
+    <span class="kildelinje-merke">Kilde</span>
+    <a href={k.url} rel="noreferrer">{k.name}</a>.
+    Dekning i denne figuren: {dekning.fra}–{dekning.til}.
+    Data hentet {dato(k.downloaded_at)}.
+    <a href={csvUrl} download>Last ned tallene som CSV ({csvNavn})</a>.
+    Lisens: <a href={k.license_url} rel="noreferrer">{k.license}</a>.
+  </p>
+
+  {
+    k.attribution && (
+      <p class="kildelinje-sitering">
+        <span class="kildelinje-merke">Sitering</span>
+        <cite>{k.attribution}</cite>
+      </p>
+    )
+  }
+
+  {
+    fotnoter.length > 0 && (
+      <div class="fotnoter">
+        <h4 class="fotnoter-tittel" id={`${id}-fotnoter`}>
+          Forbehold for denne figuren
+        </h4>
+        <ol aria-labelledby={`${id}-fotnoter`}>
+          {fotnoter.map((kode) => (
+            <li id={`${id}-${kode}`}>{fotnotetekst(kode)}</li>
+          ))}
+        </ol>
+      </div>
+    )
+  }
+
+  <details class="tabell">
+    <summary>Vis tallene som tabell</summary>
+    <div class="tabell-ramme">
+      <table>
+        <caption>{tabell.beskrivelse}</caption>
+        <thead>
+          <tr>
+            {tabell.kolonner.map((kolonne) => <th scope="col">{kolonne}</th>)}
+          </tr>
+        </thead>
+        <tbody>
+          {
+            tabell.rader.map((rad) => (
+              <tr>
+                {rad.map((celle, i) =>
+                  i === 0 ? (
+                    <th scope="row">{celle}</th>
+                  ) : (
+                    <td>{celle}</td>
+                  ),
+                )}
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </details>
+</div>

@@ -1,0 +1,19 @@
+{
+  "name": "skogbranner",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "prebuild": "node scripts/kopier-data.mjs",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check"
+  },
+  "devDependencies": {
+    "@observablehq/plot": "^0.6.17",
+    "astro": "^5.14.1",
+    "linkedom": "^0.18.11",
+    "typescript": "^5.9.2"
+  }
+}

@@ -1,0 +1,62 @@
+# Bygger siden og publiserer den på GitHub Pages.
+#
+# Alt bygges på forhånd. Det som legges ut er ferdige filer — ingen server,
+# ingen kjøretidslogikk, ingen API-kall fra nettleseren (CLAUDE.md T3).
+#
+# Basisstien er /skogbranner/ og settes i astro.config.mjs, ikke her.
+
+name: Publiser
+
+on:
+  push:
+    branches: [main]
+  # Kan kjøres for hånd når en publisering må gjøres om igjen uten at det
+  # finnes noe nytt å pushe.
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Én publisering om gangen. En pågående kjøring får gjøre seg ferdig, slik at
+# siden ikke står halvveis oppdatert.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  bygg:
+    runs-on: ubuntu-latest
+    env:
+      # Byggeverktøyet skal ikke sende bruksstatistikk fra kjøringen.
+      ASTRO_TELEMETRY_DISABLED: "1"
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Installer avhengigheter
+        run: npm ci
+
+      - name: Bygg
+        run: npm run build
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  publiser:
+    needs: bygg
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v4
