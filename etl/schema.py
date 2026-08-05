@@ -41,7 +41,7 @@ STATIC_SOURCES = frozenset({"K8", "K9", "K10"})
 
 # Kilder med sitering som må gjengis ordrett. Selve siteringsteksten står i
 # data/_sources.json, som er der den hentes fra ved bygging.
-SOURCES_REQUIRING_CITATION = frozenset({"K7", "K9", "K10"})
+SOURCES_REQUIRING_CITATION = frozenset({"K7", "K8", "K9", "K10"})
 
 
 # --- Fotnotekoder (CLAUDE.md § 9) ---
@@ -66,6 +66,7 @@ FOOTNOTE = frozenset(
 
 HA_TO_KM2 = 0.01
 ACRE_TO_KM2 = 0.00404686
+M2_TO_KM2 = 1e-6
 
 
 # --- Terskler (CLAUDE.md § 5) ---
@@ -85,6 +86,12 @@ TREND_MAX_ZERO_SHARE = 0.33
 # beregnes ingen trend.
 TREND_MAX_ZERO_TAIL = 2
 
+# Rutenettkilder fordeles til land med geometrien fra K6. En rute som bærer
+# brent areal uten at noen landgeometri dekker den, kan ikke tilskrives et
+# land. Overstiger den uattribuerte andelen denne terskelen, stopper
+# kjøringen — se CLAUDE.md § 5.
+GRID_MAX_UNATTRIBUTED_SHARE = 0.02
+
 # Ytre grenser for et gyldig årstall. Nedre grense er satt under den eldste
 # serien vi tar inn (K8 fra 1982, NBAC fra 1972). Øvre grense settes av
 # nedlastingsåret og beregnes i validate.py.
@@ -94,7 +101,12 @@ YEAR_MIN = 1900
 # --- Serier (CLAUDE.md § 6) ---
 
 # series_id er stabile. En serie-id gjenbrukes aldri til en annen serie.
-SERIES_ID = frozenset({"owid_annual_area_burnt"})
+SERIES_ID = frozenset(
+    {
+        "owid_annual_area_burnt",
+        "firecci_lt11_annual_burned_area",
+    }
+)
 
 
 # --- Stier ---

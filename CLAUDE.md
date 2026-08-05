@@ -139,7 +139,7 @@ i JavaScript, aldri i en malfil. Kommer en kilde med hektar eller acres,
 konverteres den én gang under normalisering, og den konverterte verdien er den
 eneste som finnes videre i pipelinen.
 
-Referanse: 1 km² = 100 ha. 1 acre = 0,00404686 km².
+Referanse: 1 km² = 100 ha = 1 000 000 m². 1 acre = 0,00404686 km².
 
 **Arealindikatorer bærer enheten i feltnavnet:** `burned_area_km2`. En
 arealindikator uten enhet i navnet er en feil.
@@ -241,9 +241,13 @@ etl/                Python-pakke. __init__.py er tom.
   schema.py         Enumerasjonene, tersklene og stiene. Alt annet
                     importerer herfra (T5).
   normalize.py      Kanonisk form. All enhetskonvertering skjer her.
+  grid.py           Rutenett → landnivå, med geometrien fra K6. Enhetsnøytral
   derive.py         Maskinelle avledninger → data/processed/insights.json
   validate.py       Kontrollerer at output er gyldig før publisering
   run.py            Kjører pipelinen: hent → normaliser → valider → publiser
+  run_static.py     Samme for de statiske kildene. Egen inngang, ikke et flagg
+                    til run.py, slik at den månedlige kjøringen ikke kan dra
+                    dem med seg (§ 5)
 data/
   raw/              Uendrede kildefiler. GITIGNORERT. Aldri committet.
   processed/        Kanoniske serier siden faktisk leser. Committes.
@@ -366,9 +370,14 @@ en ny versjon.
 
 ### Avgrensninger per kilde
 
-- **K6 Natural Earth** leverer ikke branndata. Den brukes til kartgeometri og
-  til landarealer, som er nevneren i `burned_area_share_land`. Den tegnes ikke
-  som egen serie, og står derfor ikke i kildekolonnen i § 8.
+- **K6 Natural Earth** leverer ikke branndata. Den brukes til kartgeometri, til
+  landarealer, som er nevneren i `burned_area_share_land`, og til å fordele
+  rutenettkilder på land. Den tegnes ikke som egen serie, og står derfor ikke i
+  kildekolonnen i § 8.
+
+  Vi bruker **kartenhetene** i admin-0, ikke landene. Landlaget slår Fransk
+  Guyana, Réunion, Svalbard og en del andre områder sammen med moderlandet, og
+  da ville brent areal i Fransk Guyana blitt ført på Frankrike.
 - **K2 GWIS** har to roller.
 
   Den ene er **kryssjekk mot K1**, som en ETL-validering: spriker K1 og K2 mer
@@ -381,6 +390,19 @@ en ny versjon.
 
   Den andre er som datagrunnlag for **S3**, der ukesoppløsningen brukes. Det er
   den eneste seksjonen der K2 er synlig for leseren.
+- **K8 FireCCILT11** er et rutenettprodukt på 0,25°, ikke landtall. De månedlige
+  rutenettene summeres til årlige landtotaler med kartenhetene fra K6: hver rute
+  deles i et finere delrutenett, og rutens verdi fordeles mellom landene i ruten
+  etter hvor stor del av **landarealet** i ruten hvert av dem har. Havet får
+  ingenting — brent areal finnes bare på land, og en kystrute skal ikke miste
+  arealet sitt fordi halve ruten er sjø.
+
+  En rute som bærer brent areal uten at noen landgeometri når fram, kan ikke
+  tilskrives et land. Verdien går da til en uattribuert andel, som kjøringen
+  rapporterer og `GRID_MAX_UNATTRIBUTED_SHARE` i `etl/schema.py` setter en øvre
+  grense for. Verdien forsvinner ikke: verdenstallet summeres fra rutenettet
+  selv og ikke fra landene, slik at de rutene fortsatt teller globalt.
+
 - **K9 GFED5** brukes kun for årene **1997–2022**, og har `quality`
   `measured`. GFED5.1 for denne perioden er en publisert utgivelse,
   dokumentert i Scientific Data. Produsentens `ext_Beta`-kataloger fra 2023 og
@@ -410,6 +432,14 @@ disse kildene uten siteringen skal ikke publiseres.
 > Canadian Forest Service. 2021. Canadian National Fire Database – Agency Fire
 > Data. Natural Resources Canada, Canadian Forest Service, Northern Forestry
 > Centre, Edmonton, Alberta. https://cwfis.cfs.nrcan.gc.ca/ha/nfdb
+
+**K8 — FireCCILT11.** Kilden krever at siteringen på katalogoppføringen gjengis,
+og bruken er dekket av Fire_cci-vilkårene, som lenkes fra `data/_sources.json`.
+
+> Chuvieco, E.; Pettinari, M.L.; Otón, G. (2020): ESA Fire Climate Change
+> Initiative (Fire_cci): AVHRR-LTDR Fire_cci Burned Area Grid product, version
+> 1.1. Centre for Environmental Data Analysis, 28 December 2020.
+> doi:10.5285/62866635ab074e07b93f17fbf87a2c1a.
 
 **K9 — GFED5.**
 
@@ -868,7 +898,7 @@ sluttbrukeravtale tas ikke inn før avtalen er avklart og notert i
 - [ ] Settet av ekskluderte entiteter beregnes ved kjøring, aldri fryst som
       liste i kode (§ 7, T5)
 - [ ] `charcoal_index` står ikke i samme figur som en km²-serie
-- [ ] Påkrevde siteringer gjengis ordrett der kilden brukes (K7, K9, K10,
+- [ ] Påkrevde siteringer gjengis ordrett der kilden brukes (K7, K8, K9, K10,
       og EFFIS-lisensen for K3/K4)
 - [ ] Identifikatorer er engelske, alt leseren ser er norsk
 - [ ] Ingen kodefil gjentar regler fra CLAUDE.md — den refererer til dem (T5)
@@ -886,14 +916,20 @@ sluttbrukeravtale tas ikke inn før avtalen er avklart og notert i
 
 - `etl/schema.py` — enumerasjonene, tersklene og stiene
 - `etl/sources/k1_owid.py` — K1, henting og råformat
+- `etl/sources/k6_natural_earth.py` — K6, admin-0-kartenhetene som geometri
+- `etl/sources/k8_firecci.py` — K8, katalogen hos CEDA, henting og verifisering
 - `etl/sources/ssb_klass.py` — navnekilden, bygger `land_no.json`
-- `etl/normalize.py` — kanonisk form, hektar → km²
+- `etl/normalize.py` — kanonisk form, hektar → km² og m² → km²
+- `etl/grid.py` — rutenett → landnivå
 - `etl/validate.py` — kontrollene i § 6 og § 11
 - `etl/run.py` — pipelinen
+- `etl/run_static.py` — pipelinen for de statiske kildene
 - `data/geo/land_no.json` — 260 entiteter, generert fra SSB
 - `data/processed/burned_area.json` og `.csv` — K1, 2012–, 3900 observasjoner
 - `data/_footnotes.json` — fotnotetekstene, kontrollert mot `schema.py`
 - `.github/workflows/etl.yml` — månedlig kjøring, endringer som pull request
+- `.github/workflows/etl-statisk.yml` — manuelt utløst kjøring av en statisk
+  kilde. Rutenettfilene lastes ned, aggregeres og slettes i Actions
 - `.github/workflows/deploy.yml` — bygger og publiserer ved push til `main`
 - Nettsiden — Astro, seks seksjoner, `src/komponenter/Figur.astro` og S1
 
@@ -906,6 +942,11 @@ slått av. Se `src/lib/plot.ts`.
 Hver figur har en modul under `src/figurer/` som bygger graf, tabell og
 fotnoteliste fra observasjonene. Hvilke fotnoter en figur viser, utledes av
 dataene — ikke av en liste i figurmodulen.
+
+**Hentet, men ikke kjørt:** K8-tallene ligger ikke i repoet ennå. Koden og
+workflowen er på plass, men `data/processed/burned_area_firecci_lt11.*` finnes
+først etter at `etl-statisk.yml` er kjørt med `kilde: k8` og pull requesten er
+slått sammen. Kjøringen laster ned 432 månedsfiler på til sammen 6,7 GiB.
 
 **Ikke implementert:** `etl/derive.py` inneholder kun beskrivelse av
 ansvarsområde. S2–S6 har overskrift og en merknad om at de ikke er laget.
