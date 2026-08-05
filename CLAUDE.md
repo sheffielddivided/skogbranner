@@ -469,7 +469,7 @@ Faktiske tall står i `data/processed/`.
 - `level`: `country` | `region` | `world`
 - `period`: ISO 8601 — `YYYY`, `YYYY-MM` eller `YYYY-Www`
 - `quality`: `measured` | `reported` | `beta` | `reconstructed`
-- `unit`: `km2` | `share` | `zscore`
+- `unit`: `km2` | `share` | `zscore` | `count`
 
 ### Entitetskoder
 
@@ -508,6 +508,7 @@ er en feil.
 | `burned_area_km2` | `km2` | km² | K1–K5, K7–K9 | Brent areal |
 | `burned_area_share_land` | `share` | prosent | avledet, nevner fra K6 | Brent areal som andel av landareal. Gjør små og store land sammenlignbare |
 | `charcoal_index` | `zscore` | enhetsløst tall | K10 | Z-score |
+| `fire_count` | `count` | antall | K5, K7 | Antall registrerte branner. Sier noe annet enn arealet: mange små branner og én stor kan gi samme areal |
 
 `unit` er en kodeverdi, ikke visningstekst. `share` lagres som andel mellom 0
 og 1, men vises for leseren i prosent — omregningen skjer i visningslaget, som
@@ -787,6 +788,10 @@ særbehandling og uten egen seksjon (P8).
   tidligste delen av serien, noe som gir større usikkerhet
 - `f_zero_no_detection` — kilden har ikke påvist brent areal, men skiller ikke
   mellom «ingenting brant» og «ingen måling»
+- `f_record_start` — serien starter der kilden begynte å rapportere
+  systematisk, og eldre år finnes ikke
+- `f_incomplete_inventory` — databasen er verken komplett eller feilfri, og
+  datakvaliteten varierer mellom rapporterende byråer og år
 
 **Hvor fotnotetekstene bor.** Kodene over er enumerasjonen, og følger T5: prosa
 her, konstant i `etl/schema.py`. Den norske teksten leseren ser er noe annet —

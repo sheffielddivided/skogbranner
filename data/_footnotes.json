@@ -11,6 +11,8 @@
     "f_missing_year": "Året mangler helt i kilden. Det vises som brudd i kurven, aldri som null og aldri som en beregnet mellomverdi.",
     "f_proxy": "Verdien er et indirekte spor etter brann, ikke en måling av brent areal. Den kan ikke sammenlignes med et areal.",
     "f_resolution_change": "Dataene er grovere oppløst i den tidligste delen av serien. Hver rute dekker et større område, og usikkerheten er dermed større.",
-    "f_zero_no_detection": "Kilden har ikke påvist brent areal. Den skiller ikke mellom at ingenting brant, at brannene var for små til å bli sett, og at området ikke var dekket."
+    "f_zero_no_detection": "Kilden har ikke påvist brent areal. Den skiller ikke mellom at ingenting brant, at brannene var for små til å bli sett, og at området ikke var dekket.",
+    "f_record_start": "Serien starter der kilden begynte å rapportere systematisk. Eldre år finnes ikke, fordi brannmyndighetene ikke brukte dagens rapporteringsprosesser den gangen.",
+    "f_incomplete_inventory": "Databasen er verken komplett eller feilfri. Ikke alle branner er kartlagt, og datakvaliteten varierer mellom byråene som rapporterer og mellom år."
   }
 }
