@@ -32,11 +32,16 @@ cat("K10: steder i databasen:", length(alle$id_site), "\n")
 
 # Transformasjon til sammenlignbare serier. Basisperioden er den paleofire
 # bruker i sine egne eksempler, og dekker en periode med mange serier.
+# verbose = TRUE er ikke for loggens skyld. Framdriftssjekken inne i pakken er
+# skrevet «k %in% values & verbose == TRUE», og & er ikke kortsluttende: R
+# regner ut «k %in% values» uansett. values finnes bare når verbose er TRUE, og
+# ellers plukker R opp raster::values — en funksjon — og feiler med at match
+# krever vektorargumenter. Slår vi på framdriften, er variabelen definert.
 tr <- pfTransform(
   alle,
   method = c("MinMax", "Box-Cox", "Z-Score"),
   BasePeriod = c(200, 4000),
-  verbose = FALSE
+  verbose = TRUE
 )
 
 # Lavpassfiltrert kompositt med bootstrappet konfidensintervall. tarAge er
@@ -49,7 +54,7 @@ komp <- pfCompositeLF(
   binhw = 10,
   hw = 500,
   nboot = 1000,
-  verbose = FALSE
+  verbose = TRUE
 )
 
 # Feltnavnene er paleofires egne: BootMean er kurven, BootCi er det
