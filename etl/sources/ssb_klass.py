@@ -69,6 +69,15 @@ IKKE_ENTITET = frozenset(
     }
 )
 
+# Entiteter i standarden som ingen kilde vi bruker rapporterer. Holdes ute så
+# tabellen bare inneholder entiteter det finnes tall for. Kommer en kilde med
+# tall for en av dem, avviser validate.py observasjonen — da fjernes koden her.
+UTEN_DATA = frozenset(
+    {
+        "ATA",  # Antarktis
+    }
+)
+
 
 def hent():
     """Henter klassifikasjonen og versjonen som gjelder nå."""
@@ -106,7 +115,7 @@ def bygg(versjon):
 
     for element in versjon["classificationItems"]:
         kode = element["code"].strip().upper()
-        if kode in IKKE_ENTITET:
+        if kode in IKKE_ENTITET or kode in UTEN_DATA:
             continue
         kode = KODE_ALIAS.get(kode, kode)
         entities[kode] = _entitet(kode, element["name"].strip(), "country", overrides)

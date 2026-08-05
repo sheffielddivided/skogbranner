@@ -342,6 +342,11 @@ To avvik går andre veien: SSB fører Kosovo som `XXK`, mens vi bruker `XKX`
 oppføringene «Uoppgitt» og «Statsløs» er ikke geografiske entiteter og tas
 ikke inn.
 
+Antarktis står i standarden, men ingen kilde vi bruker rapporterer entiteten,
+og den holdes ute så tabellen bare inneholder entiteter det finnes tall for.
+Kommer en kilde med tall for den, avviser `validate.py` observasjonen, og da
+tas koden inn.
+
 **Overstyringer.** Der SSBs form er uklar for en allmenn leser, overstyres den
 i `data/geo/land_no_overrides.json`. Hver overstyring skal ha en begrunnelse i
 filen. Eksempel: SSB kaller Den demokratiske republikken Kongo bare «Kongo»,
@@ -870,10 +875,11 @@ sluttbrukeravtale tas ikke inn før avtalen er avklart og notert i
 
 - `etl/schema.py` — enumerasjonene, tersklene og stiene
 - `etl/sources/k1_owid.py` — K1, henting og råformat
+- `etl/sources/ssb_klass.py` — navnekilden, bygger `land_no.json`
 - `etl/normalize.py` — kanonisk form, hektar → km²
 - `etl/validate.py` — kontrollene i § 6 og § 11
 - `etl/run.py` — pipelinen
-- `data/geo/land_no.json` — 260 entiteter med norske navn
+- `data/geo/land_no.json` — 260 entiteter, generert fra SSB
 - `data/processed/burned_area.json` og `.csv` — K1, 2012–, 3900 observasjoner
 
 Ingen av disse er stubber. De skal ikke skrives på nytt.
@@ -881,6 +887,11 @@ Ingen av disse er stubber. De skal ikke skrives på nytt.
 **Ikke implementert:** `etl/derive.py` inneholder kun beskrivelse av
 ansvarsområde. Ingen nettside finnes ennå — `src/` og `public/` er tomme, og
 det er ingen workflow i `.github/workflows/`.
+
+**Utestående:** `land_no.json` er regenerert fra SSB, og elleve navn er endret.
+`data/processed/` bærer fortsatt de gamle navnene, så `validate.py` feiler til
+`normalize.py` er kjørt på nytt. Det krever en henting av K1 og hører derfor
+hjemme i en workflow (T4), ikke i en sesjon.
 
 **Neste steg:** `derive.py` og `insights.json`, deretter første seksjon av
 siden.

@@ -10,13 +10,17 @@
       "entity_name": "Kongo-Brazzaville",
       "begrunnelse": "Følger av overstyringen for COD: de to landene må navngis etter samme mønster, ellers ser paret usymmetrisk ut i en tabell."
     },
+    "CIV": {
+      "entity_name": "Elfenbenskysten",
+      "begrunnelse": "SSB skriver «Elfenbeinskysten». Formen med «elfenben» er den innarbeidede i norsk allmennspråk og den Språkrådet fører."
+    },
     "GBR": {
       "entity_name": "Storbritannia",
-      "begrunnelse": "SSBs fulle form «Storbritannia og Nord-Irland» er presis, men lang i aksetitler og tabellrader. Kortformen er den innarbeidede i norsk allmennspråk."
+      "begrunnelse": "Sammenfaller med SSBs form i dag, og endrer derfor ingenting. Står som et vern mot at standarden går tilbake til den fulle formen «Storbritannia og Nord-Irland», som er presis, men lang i aksetitler og tabellrader."
     },
     "USA": {
       "entity_name": "USA",
-      "begrunnelse": "SSB bruker «Amerikas forente stater». USA er den formen en allmenn norsk leser gjenkjenner umiddelbart, og den er kortere i figurer."
+      "begrunnelse": "Sammenfaller med SSBs form i dag, og endrer derfor ingenting. Står som et vern mot at standarden går tilbake til «Amerikas forente stater», som er lengre i figurer enn den formen en allmenn norsk leser gjenkjenner umiddelbart."
     }
   }
 }
