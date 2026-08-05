@@ -82,6 +82,21 @@ def _sha256(data):
     return hashlib.sha256(data).hexdigest()
 
 
+def _hent_liste(url):
+    """Henter en adresse som skal svare med en liste.
+
+    Kilden svarer av og til null eller et objekt i stedet. Uten denne blir det
+    en bar TypeError langt inne i en løkke, uten spor av hvilken adresse som
+    sviktet. Her sier feilen hva som kom og hvorfra.
+    """
+    svar = _hent_json(url)
+    if svar is None:
+        return []
+    if not isinstance(svar, list):
+        raise ValueError(f"{url} svarte med {type(svar).__name__}, ikke en liste")
+    return svar
+
+
 def entity_kode(iso3):
     """Oversetter GWIS' landkode til vår entity-kode."""
     return GWIS_CODE_MAP.get(iso3, iso3)
@@ -92,14 +107,14 @@ def hent_landkoder():
 
     Samme land kan ligge i flere soner. Kodene samles derfor i et sett.
     """
-    soner = _hent_json(SONE_URL)
+    soner = _hent_liste(SONE_URL)
 
     koder = {}
     for sone in soner:
         if sone.get("type") not in SONETYPER_MED_LAND:
             continue
         try:
-            land = _hent_json(LAND_URL.format(sone=sone["code"]))
+            land = _hent_liste(LAND_URL.format(sone=sone["code"]))
         except urllib.error.HTTPError as e:
             # En sone uten landliste skal ikke stoppe de andre.
             if e.code == 404:
@@ -129,7 +144,7 @@ def hent():
     uten_svar = []
     for iso3 in sorted(koder):
         try:
-            serie = _hent_json(AAR_URL.format(land=iso3))
+            serie = _hent_liste(AAR_URL.format(land=iso3))
         except urllib.error.HTTPError as e:
             uten_svar.append(f"{iso3}: HTTP {e.code}")
             continue

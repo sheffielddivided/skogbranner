@@ -72,6 +72,21 @@ def _sha256(data):
     return hashlib.sha256(data).hexdigest()
 
 
+def _hent_liste(url):
+    """Henter en adresse som skal svare med en liste.
+
+    Kilden svarer av og til null eller et objekt i stedet. Uten denne blir det
+    en bar TypeError langt inne i en løkke, uten spor av hvilken adresse som
+    sviktet. Her sier feilen hva som kom og hvorfra.
+    """
+    svar = _hent_json(url)
+    if svar is None:
+        return []
+    if not isinstance(svar, list):
+        raise ValueError(f"{url} svarte med {type(svar).__name__}, ikke en liste")
+    return svar
+
+
 def entity_kode(iso3):
     """Oversetter EFFIS' landkode til vår entity-kode."""
     return EFFIS_CODE_MAP.get(iso3, iso3)
@@ -84,7 +99,7 @@ def hent_landkoder():
     oppslag, ikke en liste.
     """
     koder = {}
-    for oppforing in _hent_json(LAND_URL):
+    for oppforing in _hent_liste(LAND_URL):
         iso3 = (oppforing.get("iso3") or "").strip()
         if iso3:
             koder[iso3] = oppforing.get("name", "")
@@ -107,7 +122,7 @@ def hent():
     uten_svar = []
     for iso3 in sorted(koder):
         try:
-            serie = _hent_json(AAR_URL.format(land=iso3))
+            serie = _hent_liste(AAR_URL.format(land=iso3))
         except urllib.error.HTTPError as e:
             uten_svar.append(f"{iso3}: HTTP {e.code}")
             continue
