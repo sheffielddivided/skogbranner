@@ -833,6 +833,10 @@ sluttbrukeravtale tas ikke inn før avtalen er avklart og notert i
       - byggesteget: ingen figur tegner flere `quality`-verdier uten at
         bruddet er markert
 - [ ] Trender er beregnet innenfor én kilde og én `quality`
+- [ ] Avledninger er beregnet på fullstendige år. Inneværende år inngår ikke i
+      beregningsgrunnlaget for noen avledning (§ 7)
+- [ ] Settet av ekskluderte entiteter beregnes ved kjøring, aldri fryst som
+      liste i kode (§ 7, T5)
 - [ ] `charcoal_index` står ikke i samme figur som en km²-serie
 - [ ] Påkrevde siteringer gjengis ordrett der kilden brukes (K7, K9, K10,
       og EFFIS-lisensen for K3/K4)
