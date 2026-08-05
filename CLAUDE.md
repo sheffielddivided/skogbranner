@@ -260,7 +260,7 @@ kilde.
 | Kode | Kilde | Geografi | Dekning | `quality` | Merknad |
 |---|---|---|---|---|---|
 | K1 | Our World in Data | Global | 2012– | `measured` | CC BY 4.0 |
-| K2 | GWIS (JRC/Copernicus) | Global | 2012– | `measured` | Kryssjekk mot K1 |
+| K2 | GWIS (JRC/Copernicus) | Global | 2012– | `measured` | Kryssjekk mot K1, og ukesoppløsning til S3 |
 | K3 | EFFIS, landtotaler | Europa, Midtøsten, Nord-Afrika | — | `reported` | Nasjonalt rapporterte totaler |
 | K4 | EFFIS, Burnt Areas | Europa | — | `reported` | Grunnlag for brannstørrelsesfordeling |
 | K5 | NIFC | USA | 1983– | `reported` | Lang nasjonal serie |
@@ -281,7 +281,17 @@ en ny versjon.
 ### Avgrensninger per kilde
 
 - **K6 Natural Earth** leverer ikke branndata. Den brukes til kartgeometri og
-  til landarealer, som er nevneren i `burned_area_share_land`.
+  til landarealer, som er nevneren i `burned_area_share_land`. Den tegnes ikke
+  som egen serie, og står derfor ikke i kildekolonnen i § 8.
+- **K2 GWIS** har to roller.
+
+  Den ene er **kryssjekk mot K1**, som en ETL-validering: spriker K1 og K2 mer
+  enn 5 % for samme enhet og år, produseres en avviksrapport. Rapporten er et
+  arbeidsverktøy for redaktøren, ikke innhold på siden. Den publiseres ikke,
+  og K2 tegnes ikke i noen figur i denne rollen.
+
+  Den andre er som datagrunnlag for **S3**, der ukesoppløsningen brukes. Det er
+  den eneste seksjonen der K2 er synlig for leseren.
 - **K9 GFED5** brukes kun for årene **1997–2022**, og har `quality`
   `measured`. GFED5.1 for denne perioden er en publisert utgivelse,
   dokumentert i Scientific Data. Produsentens `ext_Beta`-kataloger fra 2023 og
@@ -453,12 +463,21 @@ rekkefølgen. Hver seksjon åpner med figuren (P2).
 
 | # | Seksjon | Viser | Kilder |
 |---|---|---|---|
-| S1 | Hvor mye brenner det på jorden | Overskriftstall for siste fullstendige år, og globalt brent areal per år over hele perioden | K1, K2, K8, K9 |
-| S2 | Hvor på kloden | Geografisk fordeling: kart og rangering av land | K1, K6 |
-| S3 | Året gjennom | Sesongvariasjon innenfor året — kumulativ kurve mot median og persentilbånd | K2 |
-| S4 | Europa | Land- og regionnivå, brent areal og andel av landareal, sorterbar tabell, brannstørrelsesfordeling | K3, K4, K6 |
-| S5 | Den lange linjen | De seriene som går lengst tilbake, vist hver for seg | K5, K7, K8, K9, K10 |
+| S1 | Hvor mye brenner det på jorden | Overskriftstall for siste fullstendige år, og globalt brent areal per år over hele perioden i én oversiktsfigur med synlige brudd | K1, K8, K9 |
+| S2 | Hvor på kloden | Geografisk fordeling: kart og rangering av land | K1 |
+| S3 | Året gjennom | Sesongvariasjon innenfor året — kumulativ kurve mot median og persentilbånd, i ukesoppløsning | K2 |
+| S4 | Europa | Land- og regionnivå, brent areal og andel av landareal, sorterbar tabell, brannstørrelsesfordeling | K3, K4 |
+| S5 | Den lange linjen | De samme seriene som i S1, pluss de nasjonale og proxyen, vist **hver for seg** i separate figurer med hver sin akse og hver sin dekningsperiode | K1, K5, K7, K8, K9, K10 |
 | S6 | Om dataene | Kildeoversikt, definisjoner, ordliste, alle fotnoter samlet, nedlastingslenker til alle bearbeidede CSV-filer, lenke til repoet | alle |
+
+**Hva kildekolonnen betyr.** Kolonnen lister **kun kilder som faktisk tegnes i
+seksjonens figurer**. Kilder som brukes til validering, geometri eller
+avledning står ikke der — de er beskrevet under sin egen kildeoppføring i § 5.
+
+Derfor står ikke K6 i S2 og S4, selv om kartene tegnes med geometri derfra og
+`burned_area_share_land` bruker landarealene som nevner. Og derfor står ikke
+K2 i S1, selv om den brukes til å kryssjekke K1. Kolonnen svarer på «hva ser
+leseren», ikke «hva var involvert».
 
 **Overskriftene er beskrivende, ikke tolkende.** «Hvor mye brenner det på
 jorden» stiller et spørsmål dataene kan svare på. Den svarer ikke på om det er
@@ -495,13 +514,14 @@ Trend beregnes ikke på tvers av de tre seriene (se § 7).
 De to seksjonene bruker delvis de samme seriene, og det er lett å ende opp med
 at den ene gjentar den andre.
 
-- **S1 gir oversikten:** hele perioden i én figur, med brudd.
-- **S5 gir detaljen:** de samme seriene vist **hver for seg**, med sine egne
-  akser, dekningsperioder og forbehold, pluss `charcoal_index` (K10) i egen
-  figur.
+- **S1 gir helheten:** de globale seriene sammen i én oversiktsfigur, med
+  synlige brudd.
+- **S5 gir oppløsningen per serie:** K8, K9, K1, K5, K7 og K10 vist **hver for
+  seg**, i separate figurer med hver sin akse og hver sin dekningsperiode,
+  pluss `charcoal_index` (K10) som sin egen figur.
 
-**S5 skal ikke gjenta S1s oversiktsfigur.** Trenger en leser å se seriene
-sammen, er det S1 som svarer på det.
+Samme data, ulik oppgave. **S5 skal ikke gjenta S1s oversiktsfigur.** Trenger
+en leser å se seriene sammen, er det S1 som svarer på det.
 
 **S5 er den seksjonen som lettest bryter reglene.** Seriene der har ulik kilde,
 ulik `quality`, ulike startår og ulike definisjoner. Hver av dem skal ha
