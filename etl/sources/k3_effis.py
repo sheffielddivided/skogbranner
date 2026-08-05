@@ -99,6 +99,13 @@ def finn_nyeste():
         except urllib.error.HTTPError as e:
             proevd.append(f"{aar}: HTTP {e.code}")
             continue
+        except (urllib.error.URLError, TimeoutError, OSError) as e:
+            # Et år som ikke finnes kan gi tidsavbrudd i stedet for 404. Det
+            # skal ikke stoppe søket — da ville en treg forespørsel på et
+            # årstall som aldri har eksistert, hindret oss i å finne filen som
+            # faktisk ligger der.
+            proevd.append(f"{aar}: {type(e).__name__}")
+            continue
         # En 404-side kan komme som HTML med status 200. XLSX er zip-basert.
         if data[:2] != b"PK":
             proevd.append(f"{aar}: ikke en arbeidsbok")

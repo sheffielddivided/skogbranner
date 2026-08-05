@@ -43,7 +43,12 @@ jobs:
       - name: Navnekilde — SSB Klass
         run: python -m etl.sources.ssb_klass
 
+      # Feiler en kilde, skal datasettet og statusen likevel committes — det
+      # er nettopp da statusen er verdt noe. Jobben markeres som feilet til
+      # slutt, som i etl.yml.
       - name: Hele pipelinen
+        id: etl
+        continue-on-error: true
         run: python -m etl.run
 
       - name: Avviksrapporten K1 mot K2
@@ -51,6 +56,7 @@ jobs:
         run: cat data/raw/kryssjekk_k1_k2.md || echo "ingen rapport"
 
       - name: Commit de bearbeidede filene
+        if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -66,3 +72,9 @@ jobs:
             git commit -m "ETL: regn datasettet på nytt mot kartenhetenes landarealer"
             git push origin "HEAD:${{ github.ref_name }}"
           fi
+
+      - name: Marker kjøringen som feilet
+        if: steps.etl.outcome == 'failure'
+        run: |
+          echo "::error::En kilde feilet. Se loggen over."
+          exit 1

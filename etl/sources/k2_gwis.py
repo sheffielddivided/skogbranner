@@ -133,6 +133,16 @@ def hent():
         except urllib.error.HTTPError as e:
             uten_svar.append(f"{iso3}: HTTP {e.code}")
             continue
+        except (urllib.error.URLError, TimeoutError, OSError) as e:
+            uten_svar.append(f"{iso3}: {type(e).__name__}")
+            continue
+
+        # Kilden svarer av og til null for et land i stedet for en tom liste.
+        # Det er «ingen data», ikke en grunn til å stoppe hele hentingen.
+        if not serie:
+            uten_svar.append(f"{iso3}: tomt svar")
+            continue
+
         for punkt in serie:
             if punkt.get("ba") is None:
                 continue
