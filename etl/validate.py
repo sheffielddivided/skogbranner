@@ -104,6 +104,10 @@ def valider(observasjoner):
             meld(f"{hvor}: verdien mangler — bruk «ingen data», ikke null")
         elif o["value"] < 0 and o["unit"] != "zscore":
             meld(f"{hvor}: negativ verdi ({o['value']}) med unit {o['unit']!r}")
+        # En andel lagres mellom 0 og 1. Er den større, er nevneren feil —
+        # typisk et landareal fra en annen entitet enn telleren.
+        elif o["unit"] == "share" and o["value"] > 1:
+            meld(f"{hvor}: andel over 1 ({o['value']})")
 
         # Entity-koder: land_no.json er fasit. Landkoder skal være ISO3, med
         # unntak av territoriene som er merket iso3: false.
@@ -146,16 +150,120 @@ def valider(observasjoner):
     return feil
 
 
+def kryssjekk(k1_observasjoner, k2_observasjoner):
+    """Sammenligner K1 mot K2 for samme entitet og år.
+
+    K1 er Our World in Datas bearbeiding av GWIS, som er K2. De to skal derfor
+    i utgangspunktet si det samme, og et sprik betyr som regel at GWIS har
+    oppdatert tallene etter at OWID tok sin kopi.
+
+    Terskelen er CROSSCHECK_THRESHOLD i schema.py. Den skrives aldri her (T5).
+
+    Begge sett skal være kanoniske observasjoner i km², slik at sammenligningen
+    ikke gjør en enhetskonvertering på egen hånd (T1).
+
+    Returnerer en liste avvik, sortert etter størrelsen på det relative
+    avviket. Rapporten er et arbeidsverktøy for redaktøren og publiseres ikke
+    — se CLAUDE.md § 5.
+    """
+    k2 = {
+        (o["entity"], o["period"]): o
+        for o in k2_observasjoner
+        if o["indicator"] == "burned_area_km2"
+    }
+
+    avvik = []
+    sammenlignet = 0
+    for o in k1_observasjoner:
+        if o["indicator"] != "burned_area_km2":
+            continue
+        motpart = k2.get((o["entity"], o["period"]))
+        if motpart is None:
+            continue
+        sammenlignet += 1
+
+        a, b = o["value"], motpart["value"]
+        # Er begge 0, er de enige. Er bare den ene 0, finnes det ingen
+        # meningsfull relativ forskjell, og avviket føres som fullt utslag.
+        if a == 0 and b == 0:
+            continue
+        nevner = max(abs(a), abs(b))
+        relativt = abs(a - b) / nevner
+
+        if relativt > schema.CROSSCHECK_THRESHOLD:
+            avvik.append(
+                {
+                    "entity": o["entity"],
+                    "entity_name": o["entity_name"],
+                    "period": o["period"],
+                    "k1_km2": a,
+                    "k2_km2": b,
+                    "relative": round(relativt, 4),
+                }
+            )
+
+    avvik.sort(key=lambda d: -d["relative"])
+    return avvik, sammenlignet
+
+
+def avviksrapport(avvik, sammenlignet):
+    """Formaterer avviksrapporten som tekst.
+
+    Rapporten publiseres ikke. Den skrives til kjøreloggen og legges ved
+    kjøringen som artefakt, slik at redaktøren kan se den uten at den havner
+    på siden.
+    """
+    terskel = schema.CROSSCHECK_THRESHOLD * 100
+    linjer = [
+        "# Avviksrapport K1 mot K2",
+        "",
+        f"Sammenlignet {sammenlignet} observasjoner av brent areal for samme "
+        f"entitet og år.",
+        f"Terskel: {terskel:g} % relativt avvik.",
+        f"Over terskelen: {len(avvik)}.",
+        "",
+    ]
+    if not avvik:
+        linjer.append("Ingen avvik over terskelen.")
+        return "\n".join(linjer) + "\n"
+
+    linjer += [
+        "| Entitet | År | K1 (km²) | K2 (km²) | Avvik |",
+        "|---|---|---|---|---|",
+    ]
+    for d in avvik:
+        linjer.append(
+            f"| {d['entity_name']} ({d['entity']}) | {d['period']} | "
+            f"{d['k1_km2']} | {d['k2_km2']} | {d['relative'] * 100:.1f} % |"
+        )
+    return "\n".join(linjer) + "\n"
+
+
+def les_publiserte():
+    """Leser alle kanoniske filer under data/processed/.
+
+    Alle JSON-filene leses, ikke bare de månedlige kildenes. De statiske
+    kildene skriver én fil per serie med sitt eget navn (se
+    ``etl/run_static.py``), og de skal valideres på samme vilkår som resten.
+    Et glob fanger dem uten at filnavnene får en kopi til her (T5).
+    """
+    observasjoner = []
+    for sti in sorted(schema.PROCESSED_DIR.glob("*.json")):
+        with open(sti, encoding="utf-8") as f:
+            observasjoner.extend(json.load(f))
+    return observasjoner
+
+
 def main():
-    sti = schema.PROCESSED_DIR / "burned_area.json"
-    with open(sti, encoding="utf-8") as f:
-        observasjoner = json.load(f)
+    observasjoner = les_publiserte()
+    if not observasjoner:
+        raise Valideringsfeil("ingen kanoniske filer under data/processed/")
 
     feil = valider(observasjoner)
     if feil:
         for f_ in feil:
             print("FEIL:", f_)
-        raise Valideringsfeil(f"{len(feil)} feil i {sti.name}")
+        raise Valideringsfeil(f"{len(feil)} feil i data/processed/")
 
     print(f"validate: {len(observasjoner)} observasjoner OK")
     return observasjoner

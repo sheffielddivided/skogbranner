@@ -18,16 +18,30 @@ QUALITY = frozenset({"measured", "reported", "beta", "reconstructed"})
 
 LEVEL = frozenset({"country", "region", "world"})
 
-UNIT = frozenset({"km2", "share", "zscore"})
+UNIT = frozenset({"km2", "share", "zscore", "count"})
 
 # Hver indikator har nøyaktig én tillatt enhet.
 INDICATOR_UNIT = {
     "burned_area_km2": "km2",
     "burned_area_share_land": "share",
     "charcoal_index": "zscore",
+    "fire_count": "count",
 }
 
 INDICATOR = frozenset(INDICATOR_UNIT)
+
+# Filnavnet hver indikator får under data/processed/, uten etternavn. Én fil
+# per indikator, slik at kildelinjen under en figur kan peke på den filen
+# figuren faktisk bruker (CLAUDE.md P5).
+#
+# Arealfilen het burned_area før fire_count kom til, og beholder navnet — en
+# omdøping ville brutt lenkene som allerede er publisert.
+PROCESSED_FILE = {
+    "burned_area_km2": "burned_area",
+    "burned_area_share_land": "burned_area_share_land",
+    "charcoal_index": "charcoal_index",
+    "fire_count": "fire_count",
+}
 
 
 # --- Kildekoder (CLAUDE.md § 5) ---
@@ -58,6 +72,9 @@ FOOTNOTE = frozenset(
         "f_proxy",
         "f_resolution_change",
         "f_zero_no_detection",
+        "f_record_start",
+        "f_incomplete_inventory",
+        "f_product_level",
         "f_grid_resolution",
     }
 )
@@ -111,12 +128,24 @@ YEAR_MIN = -12000
 # --- Serier (CLAUDE.md § 6) ---
 
 # series_id er stabile. En serie-id gjenbrukes aldri til en annen serie.
+#
+# Én serie bærer én indikator. Avledede indikatorer får derfor egen serie-id,
+# slik at dekningsperiode og trend regnes per indikator og ikke blandes.
 SERIES_ID = frozenset(
     {
-        "owid_annual_area_burnt",
-        "firecci_lt11_annual_burned_area",
-        "gfed5_annual_burned_area",
-        "gcd_charcoal_composite",
+        "owid_annual_area_burnt",  # K1
+        "owid_annual_area_burnt_share_land",  # avledet av K1, nevner fra K6
+        "gwis_annual_burned_area",  # K2
+        "effis_annual_country_totals",  # K3, nasjonalt rapportert areal
+        "effis_annual_country_fire_count",  # K3, nasjonalt rapportert antall
+        "effis_rda_annual_burned_area",  # K4, EFFIS' egen satellittkartlegging
+        "nifc_annual_burned_area",  # K5
+        "nifc_annual_fire_count",  # K5
+        "nbac_annual_burned_area",  # K7
+        "cnfdb_annual_fire_count",  # K7
+        "firecci_lt11_annual_burned_area",  # K8
+        "gfed5_annual_burned_area",  # K9
+        "gcd_charcoal_composite",  # K10
     }
 )
 
@@ -134,6 +163,8 @@ REPO_ROOT = _Path(__file__).resolve().parent.parent
 RAW_DIR = REPO_ROOT / "data" / "raw"
 PROCESSED_DIR = REPO_ROOT / "data" / "processed"
 GEO_DIR = REPO_ROOT / "data" / "geo"
+
+LAND_AREA_JSON = GEO_DIR / "land_area_km2.json"
 
 SOURCES_JSON = REPO_ROOT / "data" / "_sources.json"
 STATUS_JSON = REPO_ROOT / "data" / "_status.json"

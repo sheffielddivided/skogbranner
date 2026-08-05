@@ -33,6 +33,17 @@ jobs:
         with:
           python-version: "3.12"
 
+      - run: pip install -r requirements.txt
+
+      # K6 forenkler geometri og regner landarealer med mapshaper, som er en
+      # byggeavhengighet. Den kjører kun her og sender ingenting til leseren (T2).
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - run: npm ci
+
       # Alle Python-steg kjøres som modul fra repotoppen (§ 4).
 
       # Navnekilden først: normalize.py slår opp norske navn i land_no.json,
@@ -50,6 +61,17 @@ jobs:
         id: etl
         continue-on-error: true
         run: python -m etl.run
+
+      # Avviksrapporten fra kryssjekken mellom K1 og K2 er et arbeidsverktøy for
+      # redaktøren og skal ikke publiseres (§ 5). Den legges derfor ved
+      # kjøringen framfor å committes — data/raw/ er gitignorert.
+      - name: Legg ved avviksrapporten
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kryssjekk-k1-k2
+          path: data/raw/kryssjekk_k1_k2.md
+          if-no-files-found: ignore
 
       - name: Se etter endringer
         id: endringer

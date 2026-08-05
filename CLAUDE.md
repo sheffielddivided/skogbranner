@@ -309,11 +309,11 @@ kilde.
 |---|---|---|---|---|---|
 | K1 | Our World in Data | Global | 2012– | `measured` | CC BY 4.0 |
 | K2 | GWIS (JRC/Copernicus) | Global | 2012– | `measured` | Kryssjekk mot K1, og ukesoppløsning til S3 |
-| K3 | EFFIS, landtotaler | Europa, Midtøsten, Nord-Afrika | — | `reported` | Nasjonalt rapporterte totaler |
-| K4 | EFFIS, Burnt Areas | Europa | — | `reported` | Grunnlag for brannstørrelsesfordeling |
+| K3 | EFFIS, landtotaler | Europa, Midtøsten, Nord-Afrika | 1980– | `reported` | Nasjonalt rapporterte totaler, som nedlastbar XLS |
+| K4 | EFFIS, Rapid Damage Assessment | Europa, Midtøsten, Nord-Afrika | 2006– | `measured` | EFFIS' egen satellittkartlegging. Også grunnlag for brannstørrelsesfordeling |
 | K5 | NIFC | USA | 1983– | `reported` | Lang nasjonal serie |
 | K6 | Natural Earth, admin-0 | Global | — | — | Geometri og landarealer. Public domain |
-| K7 | CNFDB / NBAC | Canada | — | `reported` | Krever sluttbrukeravtale — akseptert |
+| K7 | CNFDB / NBAC | Canada | 1972– areal, 1959– antall | `reported` | Krever sluttbrukeravtale — akseptert |
 | K8 | FireCCILT11 (ESA Fire_cci) | Global | 1982–2018, uten 1994 | `beta` | Statisk. Selve produktet er merket beta av produsenten |
 | K9 | GFED5 | Global | 1997–2020 | `measured` | Statisk. En publisert utgivelse dokumentert i Scientific Data. Hvilken av de to Zenodo-utgivelsene som har brent areal, står under § 5. Beta-merkingen gjelder kun produsentens `ext_Beta`-kataloger fra 2023, som vi holder ute |
 | K10 | Global Charcoal Database | Global | — | `reconstructed` | Proxy. Statisk |
@@ -390,6 +390,24 @@ en ny versjon.
 
   Den andre er som datagrunnlag for **S3**, der ukesoppløsningen brukes. Det er
   den eneste seksjonen der K2 er synlig for leseren.
+- **K3 og K4 er to ulike produkter fra EFFIS**, og skal ikke forveksles.
+
+  **K3** er landtotalene EFFIS publiserer som nedlastbar XLS sammen med
+  årsrapporten. De er nasjonalt rapporterte, følger hvert lands egne
+  definisjoner, og har derfor `f_reporting_basis`. Serien starter i 1980, men
+  bare med de fem første EFFIS-landene — flere kommer til utover i serien, og
+  den bærer derfor `f_coverage_change`.
+
+  **K4** er EFFIS' egen Rapid Damage Assessment: satellittkartlegging fra
+  MODIS, VIIRS og Sentinel-2. Den er `measured`, ikke `reported`, og skal
+  aldri ha `f_reporting_basis` — tallene er ikke rapportert av noen. Den er en
+  hurtigkartlegging som revideres når bedre bilder foreligger, og har derfor
+  `f_product_level`.
+
+  De to dekker samme geografi og overlapper i tid. De skal aldri skjøtes
+  sammen til én serie, og en figur som viser begge må markere bruddet, av
+  samme grunn som ellers i § 6: det er to målemetoder, ikke én måling.
+
 - **K8 FireCCILT11** er et rutenettprodukt på 0,25°, ikke landtall. De månedlige
   rutenettene summeres til årlige landtotaler med kartenhetene fra K6: hver rute
   deles i et finere delrutenett, og rutens verdi fordeles mellom landene i ruten
@@ -545,7 +563,7 @@ Faktiske tall står i `data/processed/`.
   fortegn: proxyen i K10 rekker ned før år null, og `-0500` er år 500 fvt.
   Måleseriene starter alle etter 1900, så fortegnet finnes bare i K10
 - `quality`: `measured` | `reported` | `beta` | `reconstructed`
-- `unit`: `km2` | `share` | `zscore`
+- `unit`: `km2` | `share` | `zscore` | `count`
 
 ### Entitetskoder
 
@@ -584,6 +602,7 @@ er en feil.
 | `burned_area_km2` | `km2` | km² | K1–K5, K7–K9 | Brent areal |
 | `burned_area_share_land` | `share` | prosent | avledet, nevner fra K6 | Brent areal som andel av landareal. Gjør små og store land sammenlignbare |
 | `charcoal_index` | `zscore` | enhetsløst tall | K10 | Z-score |
+| `fire_count` | `count` | antall | K3, K5, K7 | Antall registrerte branner. Sier noe annet enn arealet: mange små branner og én stor kan gi samme areal |
 
 `unit` er en kodeverdi, ikke visningstekst. `share` lagres som andel mellom 0
 og 1, men vises for leseren i prosent — omregningen skjer i visningslaget, som
@@ -863,6 +882,12 @@ særbehandling og uten egen seksjon (P8).
   tidligste delen av serien, noe som gir større usikkerhet
 - `f_zero_no_detection` — kilden har ikke påvist brent areal, men skiller ikke
   mellom «ingenting brant» og «ingen måling»
+- `f_record_start` — serien starter der kilden begynte å rapportere
+  systematisk, og eldre år finnes ikke
+- `f_incomplete_inventory` — databasen er verken komplett eller feilfri, og
+  datakvaliteten varierer mellom rapporterende byråer og år
+- `f_product_level` — tallene er en hurtigkartlegging gjort mens sesongen
+  pågår, og revideres når bedre satellittbilder foreligger
 - `f_grid_resolution` — landet er lite i forhold til rutenettets oppløsning,
   slik at brent areal kan falle mellom rutene
 
@@ -1012,20 +1037,30 @@ sluttbrukeravtale tas ikke inn før avtalen er avklart og notert i
 **Implementert og i drift:**
 
 - `etl/schema.py` — enumerasjonene, tersklene og stiene
-- `etl/sources/k1_owid.py` — K1, henting og råformat
-- `etl/sources/k6_natural_earth.py` — K6, admin-0-kartenhetene som geometri
+- `etl/sources/ssb_klass.py` — navnekilden, bygger `land_no.json`
+- `etl/sources/k1_owid.py` — K1, CSV og metadata
+- `etl/sources/k2_gwis.py` — K2, årsserie per land. Brukes til kryssjekk mot K1
+- `etl/sources/k3_effis.py` — K3, nasjonalt rapporterte landtotaler fra XLS
+- `etl/sources/k4_effis.py` — K4, EFFIS' egen satellittkartlegging (RDA)
+- `etl/sources/k5_nifc.py` — K5, HTML-tabellen på statistikksiden
+- `etl/sources/k6_natural_earth.py` — K6, kartenhetene som geometri, og
+  landarealene regnet fra dem
+- `etl/sources/k7_nbac.py` — K7, NBACs årsaggregat og CNFDBs punktstatistikk
 - `etl/sources/k8_firecci.py` — K8, katalogen hos CEDA, henting og verifisering
 - `etl/sources/k9_gfed5.py` — K9, arkivet hos Zenodo, henting og verifisering
 - `etl/sources/k10_gcd.py` og `k10_gcd.R` — K10, kompositten fra paleofire
-- `etl/sources/ssb_klass.py` — navnekilden, bygger `land_no.json`
-- `etl/normalize.py` — kanonisk form, hektar → km² og m² → km²
+- `etl/normalize.py` — kanonisk form, hektar, acres og m² → km², andel av
+  landareal
 - `etl/grid.py` — rutenett → landnivå
-- `etl/validate.py` — kontrollene i § 6 og § 11
-- `etl/run.py` — pipelinen
+- `etl/validate.py` — kontrollene i § 6 og § 11, og kryssjekken K1 mot K2
+- `etl/run.py` — de månedlige kildene. Én som feiler, tar ikke ned de andre
 - `etl/run_static.py` — pipelinen for de statiske kildene
 - `data/geo/land_no.json` — 260 entiteter, generert fra SSB
-- `data/processed/burned_area.json` og `.csv` — K1, 2012–, 3900 observasjoner
+- `data/geo/land_area_km2.json` — landarealer fra K6, nevner i andelsindikatoren
+- `data/processed/` — én fil per indikator, som JSON og CSV
 - `data/_footnotes.json` — fotnotetekstene, kontrollert mot `schema.py`
+- `requirements.txt` — den månedlige kjøringens avhengigheter: `openpyxl`
+  for K3 og K7, `pyshp` for K6
 - `.github/workflows/etl.yml` — månedlig kjøring, endringer som pull request
 - `.github/workflows/etl-statisk.yml` — manuelt utløst kjøring av en statisk
   kilde. Rutenettfilene lastes ned, aggregeres og slettes i Actions
@@ -1042,6 +1077,11 @@ Hver figur har en modul under `src/figurer/` som bygger graf, tabell og
 fotnoteliste fra observasjonene. Hvilke fotnoter en figur viser, utledes av
 dataene — ikke av en liste i figurmodulen.
 
+**Kryssjekken K1 mot K2** kjøres av `run.py` og skriver en avviksrapport til
+`data/raw/kryssjekk_k1_k2.md`. Den er et arbeidsverktøy for redaktøren og
+publiseres ikke — `data/raw/` er gitignorert, og workflowen legger rapporten
+ved kjøringen som artefakt i stedet.
+
 **Hentet, men ikke kjørt:** ingen av de statiske kildene ligger i repoet ennå.
 Koden og workflowen er på plass, men filene under `data/processed/` finnes
 først etter at `etl-statisk.yml` er kjørt for hver kilde og pull requestene er
@@ -1052,7 +1092,19 @@ slått sammen:
 - `kilde: k10` → `charcoal_composite_gcd.*`, ingen datanedlasting
 
 **Ikke implementert:** `etl/derive.py` inneholder kun beskrivelse av
-ansvarsområde. S2–S6 har overskrift og en merknad om at de ikke er laget.
+ansvarsområde. S2–S6 har overskrift og en merknad om at de ikke er laget, så
+K3, K4, K5 og K7 ligger i datasettet uten at noen seksjon viser dem ennå. Det
+samme gjelder `fire_count` og `burned_area_share_land`, og K2s ukesoppløsning,
+som S3 skal bruke.
+
+K4 dekker foreløpig bare brent areal. Brannstørrelsesfordelingen S4 skal vise,
+krever polygonene fra Burnt Areas-databasen, som ikke er hentet.
+
+**Kartgeometrien er ikke laget.** K6 leverer geometrien rutenettkildene
+fordeles på, og landarealene regnes fra den, men det finnes ingen forenklet
+TopoJSON under `data/geo/` ennå. Den lages når S2 eller S4 trenger et kart, og
+skal da bygges fra det samme kartenhetslaget — ellers vil kartet vise andre
+grenser enn arealene og rasteriseringen bruker.
 
 **Neste steg:** `derive.py` og `insights.json`. Først da kan S1 få
 overskriftstallet med arealsammenligning, som er den delen av § 8 som krever
