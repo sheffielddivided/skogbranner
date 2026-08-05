@@ -174,6 +174,11 @@ def fra_k2(rader, info):
     ukjente = set()
 
     for rad in rader:
+        # Oppføringer kilden fører som ikke er entiteter i landtabellen, er
+        # utelatt med vilje og skal ikke stoppe kjøringen.
+        if rad["iso3"] in k2_gwis.IKKE_ENTITETER:
+            continue
+
         kode = k2_gwis.entity_kode(rad["iso3"])
         if kode not in land:
             ukjente.add((rad["name"], rad["iso3"]))

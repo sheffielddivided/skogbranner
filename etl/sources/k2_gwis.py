@@ -49,9 +49,20 @@ LANDING_URL = "https://gwis.jrc.ec.europa.eu/apps/gwis.statistics/estimates"
 
 RAW_JSON = RAW_DIR / "k2_gwis_estimates.json"
 
-# GWIS bruker XKO for Kosovo. Vi bruker XKX — se CLAUDE.md § 6.
+# GWIS koder enkelte entiteter med egne X-koder. Her oversettes de til
+# entity-kodene i data/geo/land_no.json.
 GWIS_CODE_MAP = {
-    "XKO": "XKX",
+    "XKO": "XKX",  # Kosovo — vi beholder X-formen, se CLAUDE.md § 6
+    "XAD": "NONISO_AKD",  # Akrotiri og Dhekelia
+    "XNC": "NONISO_CYN",  # Nord-Kypros
+}
+
+# Kilden fører også oppføringer som ikke er geografiske entiteter vi har eller
+# skal ha. De utelates med vilje, og står her framfor å bli fanget av en
+# generell «hopp over det vi ikke kjenner igjen» — et land som kommer til hos
+# GWIS skal fortsatt stoppe kjøringen, ikke forsvinne stille.
+IKKE_ENTITETER = {
+    "XCA": "Det kaspiske hav er et vannområde, ikke en entitet i landtabellen",
 }
 
 # Sonelista inneholder både verdensdeler og en verdenskode. Verdenskoden er
