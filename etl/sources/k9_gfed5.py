@@ -297,6 +297,7 @@ def skriv_metadata(info, processed_files):
         "footnotes": info["footnotes"],
         "excluded_unobserved": info["utelatte_entiteter"],
         "excluded_no_geometry": info["uten_geometri"],
+        "resolutions": info["per_opplosning"],
         "notes": "Månedlige rutenett summert til årlige landtotaler med "
         "admin-0-geometrien fra K6. Rutenettet er 1° til og med 2000 og 0,25° "
         "fra 2001, og terskler og fotnoter regnes mot den oppløsningen som "
@@ -336,6 +337,20 @@ def skriv_status(status, melding, info=None):
         "checksum": felt("checksum", "checksum"),
         "unattributed_share": felt("uattribuert_andel", "unattributed_share", 6),
         "unattributed_km2": felt("uattribuert_km2", "unattributed_km2", 2),
+        # Serien har to oppløsninger, og andelen henger sammen med
+        # rutestørrelsen. Samletallet alene skjuler den forskjellen.
+        "unattributed_by_resolution": (
+            {
+                navn: {
+                    "unattributed_share": d["unattributed_share"],
+                    "unattributed_km2": d["unattributed_km2"],
+                    "years": d["years"],
+                }
+                for navn, d in info["per_opplosning"].items()
+            }
+            if info and "per_opplosning" in info
+            else forrige.get("unattributed_by_resolution")
+        ),
         "message": melding,
     }
     with open(STATUS_JSON, "w", encoding="utf-8") as f:

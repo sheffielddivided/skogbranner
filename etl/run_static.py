@@ -290,6 +290,11 @@ def kjor_k9(kun_katalog=False):
     per_entitet = defaultdict(lambda: defaultdict(float))
     verden = defaultdict(float)
     uattribuert = defaultdict(float)
+    # Oppløsningen skifter innenfor serien, og den uattribuerte andelen henger
+    # sammen med rutestørrelsen: jo grovere ruter, jo oftere ligger en kystrute
+    # delvis i sjøen. Andelen føres derfor per rutenett og ikke bare samlet.
+    uattribuert_per_form = defaultdict(float)
+    total_per_form = defaultdict(float)
     start = time.monotonic()
 
     with zipfile.ZipFile(sti) as arkiv:
@@ -325,6 +330,8 @@ def kjor_k9(kun_katalog=False):
                 per_entitet[kode][aar] += verdi
             verden[aar] += sum_total
             uattribuert[aar] += sum_uten_land
+            uattribuert_per_form[form] += sum_uten_land
+            total_per_form[form] += sum_total
 
             if maaned == 12:
                 print(
@@ -357,9 +364,30 @@ def kjor_k9(kun_katalog=False):
         form: m.for_smaa_entiteter(GRID_MIN_ENTITY_CELLS) for form, m in masker.items()
     }
     uobs_per_maske = {form: m.uobserverte_entiteter() for form, m in masker.items()}
-    for form in masker:
+
+    per_opplosning = {}
+    for form, maske in sorted(masker.items()):
+        aarene = sorted(a for a, f in maske_for_aar.items() if f == form)
+        grader = round(abs(float(maske.lat[1] - maske.lat[0])), 6)
+        andel_form = (
+            uattribuert_per_form[form] / total_per_form[form]
+            if total_per_form[form]
+            else 0.0
+        )
+        per_opplosning[f"{grader:g} degrees"] = {
+            "grid": f"{form[0]}x{form[1]}",
+            "cell_km2_at_equator": round(maske.ruteareal_ekvator_km2, 1),
+            "years": [aarene[0], aarene[-1]],
+            "unattributed_share": round(andel_form, 8),
+            "unattributed_km2": round(uattribuert_per_form[form], 2),
+            "grid_resolution_entities": len(smaa_per_maske[form] - uobs_per_maske[form]),
+            "excluded_unobserved": sorted(uobs_per_maske[form]),
+        }
         print(
-            f"K9: rutenett {form[0]}×{form[1]}: "
+            f"K9: rutenett {form[0]}×{form[1]} ({grader:g}°, "
+            f"{maske.ruteareal_ekvator_km2:.0f} km²/rute ved ekvator, "
+            f"{aarene[0]}–{aarene[-1]}): "
+            f"{andel_form:.6%} uten landtilknytning, "
             f"{len(smaa_per_maske[form] - uobs_per_maske[form])} entiteter med "
             f"f_grid_resolution, {len(uobs_per_maske[form])} uten treff"
         )
@@ -382,6 +410,7 @@ def kjor_k9(kun_katalog=False):
             "k6_checksum": k6_info["checksum"],
             "uattribuert_andel": andel,
             "uattribuert_km2": sum(uattribuert.values()),
+            "per_opplosning": per_opplosning,
         }
     )
 
