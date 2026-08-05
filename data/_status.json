@@ -19,6 +19,34 @@
       "rows": 404,
       "checksum": "592b00a45ab48ae6668cffc295404e31cba2c0f7b2f18a1db183338aeb12e845",
       "message": "kompositt med 404 punkter, -6050–2010"
+    },
+    "K9": {
+      "status": "ok",
+      "last_attempt": "2026-08-05T21:35:22+00:00",
+      "last_success": "2026-08-05T21:35:22+00:00",
+      "rows": 5880,
+      "checksum": "2fe4a5ced7e19823f78eafb73616d9f1",
+      "unattributed_share": 1.8e-05,
+      "unattributed_km2": 3304.14,
+      "unattributed_by_resolution": {
+        "1 degrees": {
+          "unattributed_share": 0.0,
+          "unattributed_km2": 0.0,
+          "years": [
+            1997,
+            2000
+          ]
+        },
+        "0.25 degrees": {
+          "unattributed_share": 2.13e-05,
+          "unattributed_km2": 3304.14,
+          "years": [
+            2001,
+            2020
+          ]
+        }
+      },
+      "message": "288 månedsfiler aggregert til 5880 observasjoner, 0.0018% uten landtilknytning"
     }
   }
 }
