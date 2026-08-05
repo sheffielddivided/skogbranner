@@ -579,6 +579,41 @@ verden, og gir en trend som ser reell ut uten å være det. Trenger to serier å
 vises sammen, tegnes de som to serier med synlig brudd, med hver sin trend
 eller ingen.
 
+### Nullverdier i avledninger
+
+Nuller merket `f_zero_no_detection` er tvetydige: de kan bety at ingenting
+brant, at brannene lå under deteksjonsgrensen, eller at området ikke var
+dekket. Kilden skiller ikke. Hver avledning må derfor si eksplisitt hva den
+gjør med dem.
+
+**Trend beregnes ikke** når én av disse er oppfylt:
+
+- Nullene utgjør mer enn `TREND_MAX_ZERO_SHARE` av observasjonene
+- Serien ender i en sammenhengende rekke nuller lengre enn
+  `TREND_MAX_ZERO_TAIL`
+
+Begge konstantene står i `etl/schema.py`.
+
+Grunnen er den samme feiltypen som § 7 allerede forbyr for kildebrudd, men den
+oppstår **innenfor** én kilde og fanges derfor ikke av den regelen. Qatar er
+eksempelet: ni år med deteksjoner fulgt av seks år med null. En Theil–Sen-linje
+gjennom det gir en kraftig fallende trend som utelukkende måler at
+deteksjonene stoppet. Om det brant mindre, eller om kilden sluttet å se det,
+vet vi ikke — og en trend som ikke kan skille de to, skal ikke publiseres.
+
+Haleregelen fanger det som andelsregelen ikke ser: en serie kan ha få nuller
+totalt, men ha dem alle til slutt. Det er nettopp det mønsteret som gir en
+falsk nedgang.
+
+**Rangering og avvik fra normal** utelater entiteter der **alle** verdier er 0.
+En entitet uten en eneste påvist brann kan ikke rangeres mot andre, og har
+ingen median å avvike fra. Å gi den plass N av M ville antydet en måling som
+ikke finnes.
+
+**Konsentrasjon og andel** tar nullene med. En null bidrar med 0 til en sum og
+til en andel, og påvirker verken telleren eller nevneren feil. Her er
+tvetydigheten uten praktisk konsekvens.
+
 **Ikke tillatt:** årsaksforklaringer, sammenligning mot klimascenarier,
 prognoser, kvalitative karakteristikker.
 
@@ -709,6 +744,21 @@ nullverdi med fotnoten.
 
 Dette er ikke det samme som «ingen data». En figur skal ikke tegne en 0 fra
 denne kilden som en målt null uten at fotnoten følger med.
+
+**Null i et ufullstendig år får begge fotnotene, ikke en tredje.** En
+observasjon som er 0 i inneværende år bærer både `f_incomplete_year` og
+`f_zero_no_detection`.
+
+Det er fristende å lage en egen fotnote for «ikke rapportert ennå», særlig for
+de entitetene som hadde en målt verdi året før. Men vi kan ikke vite hvilke
+nuller det gjelder. I 2026 er 79 av 260 entiteter 0; 12 av dem hadde verdi i
+2025. Begge gruppene er like tvetydige — den ene har bare et mønster som ser
+mer mistenkelig ut. En egen fotnote ville påstått kunnskap vi ikke har, og det
+er en tolkning siden ikke gjør (P1).
+
+De to fotnotene sammen sier nøyaktig det vi vet: året er ufullstendig, og
+nullen er tvetydig. Kombinasjonen er maskinlesbar, så `derive.py` kan behandle
+den som en egen kategori uten at det trengs en tredje kode.
 
 ---
 

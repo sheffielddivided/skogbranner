@@ -74,6 +74,17 @@ ACRE_TO_KM2 = 0.00404686
 # oppføring i avviksrapporten.
 CROSSCHECK_THRESHOLD = 0.05
 
+# Nullverdier merket f_zero_no_detection er tvetydige og kan gi en trend som
+# måler at deteksjonene stoppet. Terskler for når trend ikke beregnes — se
+# CLAUDE.md § 7.
+#
+# Andel nuller i serien. Over denne andelen beregnes ingen trend.
+TREND_MAX_ZERO_SHARE = 0.33
+#
+# Lengste tillatte sammenhengende rekke nuller sist i serien. Er halen lengre,
+# beregnes ingen trend.
+TREND_MAX_ZERO_TAIL = 2
+
 # Ytre grenser for et gyldig årstall. Nedre grense er satt under den eldste
 # serien vi tar inn (K8 fra 1982, NBAC fra 1972). Øvre grense settes av
 # nedlastingsåret og beregnes i validate.py.
