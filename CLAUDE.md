@@ -137,8 +137,15 @@ eneste som finnes videre i pipelinen.
 
 Referanse: 1 km² = 100 ha. 1 acre = 0,00404686 km².
 
-Feltnavn bærer enheten: `burned_area_km2`. Et felt uten enhet i navnet er en
-feil.
+**Arealindikatorer bærer enheten i feltnavnet:** `burned_area_km2`. En
+arealindikator uten enhet i navnet er en feil.
+
+Kravet gjelder ikke enhetsløse indikatorer. `charcoal_index` har ingen enhet å
+bære, og navnet angir da hva verdien *er*, ikke hvilken enhet den har. Det
+samme vil gjelde senere indikatorer uten fysisk enhet.
+
+Hvilken `unit` hver indikator har, står i indikatortabellen i § 6 og i
+`etl/schema.py`.
 
 ### T2 — Ingen eksterne avhengigheter i klienten
 
@@ -354,10 +361,10 @@ disse kildene uten siteringen skal ikke publiseres.
 > Data. Natural Resources Canada, Canadian Forest Service, Northern Forestry
 > Centre, Edmonton, Alberta. https://cwfis.cfs.nrcan.gc.ca/ha/nfdb
 
-**K9 — GFED5.**
+**K9 — GFED5.** DOI legges i `data/_sources.json` når kilden hentes.
 
-> van der Werf et al., Landscape fire emissions from the 5th version of the
-> Global Fire Emissions Database (GFED5), Scientific Data
+> van der Werf, G. et al. (2025). Landscape fire emissions from the 5th
+> version of the Global Fire Emissions Database (GFED5). Scientific Data.
 
 **K10 — Global Charcoal Database.**
 
@@ -441,6 +448,21 @@ tegnforklaring — en leser skal ikke måtte gjette hva den blekere linjen betyr
 
 Serier med ulik `quality` slås **aldri** sammen til én kurve uten synlig
 markering av bruddet.
+
+### Hvem kontrollerer hva
+
+Regelen over håndheves i to lag, fordi ingen av dem ser hele bildet alene.
+
+- **`validate.py`** kjører i ETL og ser data, ikke figurer. Den kontrollerer at
+  **dataene** er gyldige: at hver serie har én `quality`, og at ingen
+  `series_id` har blandede verdier.
+- **Byggesteget for siden** ser figurene. Det kontrollerer at **ingen figur**
+  tegner flere `quality`-verdier uten at bruddet er markert.
+
+En figur kan lovlig vise flere serier med ulik `quality` — S1s oversiktsfigur
+gjør nettopp det. Det `validate.py` ikke kan avgjøre, er om bruddet mellom dem
+er markert, for den vet ikke hva som havner i samme figur. Legg derfor aldri
+figurkontrollen i ETL, og legg aldri datakontrollen i byggesteget.
 
 **Ulike startår skjules ikke.** Hver figur viser dekningsperioden eksplisitt.
 Land uten data for et gitt år vises som «ingen data», aldri som null.
@@ -571,7 +593,9 @@ særbehandling og uten egen seksjon (P8).
 ## 9. Krav til hver figur
 
 - Tittel som beskriver hva som vises, ikke hva det betyr
-- Enhet oppgitt i aksen — km²
+- Aksen oppgir alltid indikatorens enhet, slik den står i indikatortabellen i
+  § 6: km² for `burned_area_km2`, prosent for `burned_area_share_land`,
+  enhetsløst tall for `charcoal_index`
 - Kildelinje under figuren (se P5)
 - Nummererte fotnoter direkte under figuren (se P6)
 - Tastaturnavigerbar, med tabellvisning som alternativ til grafikken
@@ -629,9 +653,11 @@ sluttbrukeravtale tas ikke inn før avtalen er avklart og notert i
 - [ ] Ingen eksterne forespørsler fra klienten (T2)
 - [ ] Ingen tunge nedlastinger kjørt lokalt (T4)
 - [ ] `data/raw/` er ikke committet
-- [ ] **Ingen figur blander `quality`-verdier uten synlig brudd.**
-      `validate.py` skal feile hvis det skjer — dette er en maskinell
-      kontroll, ikke en vurdering som overlates til den som skriver figuren
+- [ ] **`quality`-kontrollen, i begge lag** (§ 6)
+      - `validate.py`: hver serie har én `quality`, og ingen `series_id` har
+        blandede verdier
+      - byggesteget: ingen figur tegner flere `quality`-verdier uten at
+        bruddet er markert
 - [ ] Trender er beregnet innenfor én kilde og én `quality`
 - [ ] `charcoal_index` står ikke i samme figur som en km²-serie
 - [ ] Påkrevde siteringer gjengis ordrett der kilden brukes (K7, K9, K10,
@@ -648,6 +674,13 @@ sluttbrukeravtale tas ikke inn før avtalen er avklart og notert i
 
 ## 12. Status
 
-Prosjektet er i oppstartsfasen. Kun mappestruktur, konfigurasjon og dette
-dokumentet finnes. ETL-koden er **ikke** skrevet ennå — `etl/*.py` inneholder
-kun beskrivelser av ansvarsområde. Skriv den ikke uten at det er bedt om det.
+Mappestruktur, konfigurasjon, dette dokumentet og `etl/schema.py` finnes.
+
+**`etl/schema.py` er implementert.** Den inneholder enumerasjonene og
+tersklene, og er ikke en stubb. Den skal ikke skrives på nytt — den utvides når
+en ny enumerasjon kommer til.
+
+Øvrige `etl/*.py` inneholder kun beskrivelse av ansvarsområde. Skriv dem ikke
+uten at det er bedt om det.
+
+**Neste steg:** datamodellen og K1.
