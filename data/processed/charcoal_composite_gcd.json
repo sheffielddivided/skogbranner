@@ -1,0 +1,6062 @@
+[
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-6050",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-6030",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-6010",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-5990",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-5970",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-5950",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-5930",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-5910",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-5890",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-5870",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-5850",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-5830",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-5810",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-5790",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-5770",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-5750",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-5730",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-5710",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-5690",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-5670",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-5650",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-5630",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-5610",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-5590",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-5570",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-5550",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-5530",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-5510",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-5490",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-5470",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-5450",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-5430",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-5410",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-5390",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-5370",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-5350",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-5330",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-5310",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-5290",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-5270",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-5250",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-5230",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-5210",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-5190",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-5170",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-5150",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-5130",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-5110",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-5090",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-5070",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-5050",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-5030",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-5010",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-4990",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-4970",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-4950",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-4930",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-4910",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-4890",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-4870",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-4850",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-4830",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-4810",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-4790",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-4770",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-4750",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-4730",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-4710",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-4690",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-4670",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-4650",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-4630",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-4610",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-4590",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-4570",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-4550",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-4530",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-4510",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-4490",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-4470",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-4450",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-4430",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-4410",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-4390",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-4370",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-4350",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-4330",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-4310",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-4290",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-4270",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-4250",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-4230",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-4210",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-4190",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-4170",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-4150",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-4130",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-4110",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-4090",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-4070",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-4050",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-4030",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-4010",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-3990",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-3970",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-3950",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-3930",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-3910",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-3890",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-3870",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-3850",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-3830",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-3810",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-3790",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-3770",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-3750",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-3730",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-3710",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-3690",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-3670",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-3650",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-3630",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-3610",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-3590",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-3570",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-3550",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-3530",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-3510",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-3490",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-3470",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-3450",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-3430",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-3410",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-3390",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-3370",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-3350",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-3330",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-3310",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-3290",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-3270",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-3250",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-3230",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-3210",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-3190",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-3170",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-3150",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-3130",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-3110",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-3090",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-3070",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-3050",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-3030",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-3010",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-2990",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-2970",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-2950",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-2930",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-2910",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-2890",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-2870",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-2850",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-2830",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-2810",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-2790",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-2770",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-2750",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-2730",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-2710",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-2690",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-2670",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-2650",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-2630",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-2610",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-2590",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-2570",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-2550",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-2530",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-2510",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-2490",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-2470",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-2450",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-2430",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-2410",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-2390",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-2370",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-2350",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-2330",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-2310",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-2290",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-2270",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-2250",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-2230",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-2210",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-2190",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-2170",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-2150",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-2130",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-2110",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-2090",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-2070",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-2050",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-2030",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-2010",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-1990",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-1970",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-1950",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-1930",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-1910",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-1890",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-1870",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-1850",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-1830",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-1810",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-1790",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-1770",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-1750",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-1730",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-1710",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-1690",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-1670",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-1650",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-1630",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-1610",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-1590",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-1570",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-1550",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-1530",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-1510",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-1490",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-1470",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-1450",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-1430",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-1410",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-1390",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-1370",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-1350",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-1330",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-1310",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-1290",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-1270",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-1250",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-1230",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-1210",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-1190",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-1170",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-1150",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-1130",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-1110",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-1090",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-1070",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-1050",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-1030",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-1010",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-990",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-970",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-950",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-930",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-910",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-890",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-870",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-850",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-830",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-810",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-790",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-770",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-750",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-730",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-710",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-690",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-670",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-650",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-630",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-610",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-590",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-570",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-550",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-530",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-510",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-490",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-470",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-450",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-430",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-410",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-390",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-370",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-350",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-330",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-310",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-290",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-270",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-250",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-230",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-210",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-190",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-170",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-150",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-130",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-110",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-90",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-70",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-50",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-30",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "-10",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "10",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "30",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "50",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "70",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "90",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "110",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "130",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "150",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "170",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "190",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "210",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "230",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "250",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "270",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "290",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "310",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "330",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "350",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "370",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "390",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "410",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "430",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "450",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "470",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "490",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "510",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "530",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "550",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "570",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "590",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "610",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "630",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "650",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "670",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "690",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "710",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "730",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "750",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "770",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "790",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "810",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "830",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "850",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "870",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "890",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "910",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "930",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "950",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "970",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "990",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "1010",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "1030",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "1050",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "1070",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "1090",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "1110",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "1130",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "1150",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "1170",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "1190",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "1210",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "1230",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "1250",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "1270",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "1290",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "1310",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "1330",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "1350",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "1370",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "1390",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "1410",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "1430",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "1450",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "1470",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "1490",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "1510",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "1530",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "1550",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "1570",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "1590",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "1610",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "1630",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "1650",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "1670",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "1690",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "1710",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "1730",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "1750",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "1770",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "1790",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "1810",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "1830",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "1850",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "1870",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "1890",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "1910",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "1930",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "1950",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "1970",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "1990",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "2010",
+  "indicator": "charcoal_index",
+  "value": 0.3362,
+  "unit": "zscore",
+  "source_id": "K10",
+  "series_id": "gcd_charcoal_composite",
+  "quality": "reconstructed",
+  "footnotes": [
+   "f_proxy"
+  ]
+ }
+]
