@@ -73,6 +73,16 @@ jobs:
           # kompileres mot GDAL, som tar tid og feiler lett.
           use-public-rspm: true
 
+      # De ferdigbygde R-pakkene for romlige data lenker mot systembibliotekene
+      # for PROJ, GDAL og GEOS. Uten dem installeres terra fint, men lar seg
+      # ikke laste — og raster, som paleofire importerer, drar terra med seg.
+      - name: Installer systembibliotek — K10
+        if: ${{ !inputs.kun_katalog && inputs.kilde == 'k10' }}
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends \
+            libproj-dev libgdal-dev libgeos-dev
+
       # paleofire ble trukket fra CRAN i januar 2023 og finnes bare i arkivet.
       # Siste versjon importerer rgdal, som selv ble trukket i oktober 2023.
       # rgdal brukes kun av pfGridding og pfToKml, som vi ikke kaller — det er
@@ -100,7 +110,9 @@ jobs:
           fi
 
           R CMD INSTALL paleofire
-          Rscript -e 'library(paleofire); cat("paleofire", as.character(packageVersion("paleofire")), "lastet\n")'
+          # Lasting er den egentlige prøven: byggingen kan gå gjennom selv om
+          # en avhengighet ikke lar seg laste i runtime.
+          Rscript -e 'library(paleofire); library(GCD); cat("paleofire", as.character(packageVersion("paleofire")), "lastet\n")'
 
       # Alle Python-steg kjøres som modul fra repotoppen (§ 4).
       #
