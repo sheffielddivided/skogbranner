@@ -27,7 +27,7 @@ from etl.schema import (
     PROCESSED_DIR,
     PROCESSED_FILE,
 )
-from etl.sources import k1_owid, k5_nifc, k7_nbac
+from etl.sources import k1_owid, k2_gwis, k5_nifc, k7_nbac
 
 FELT = [
     "entity",
@@ -149,6 +149,66 @@ def fra_k1(rader, info):
         raise ValueError(
             "Entiteter uten oppføring i data/geo/land_no.json: "
             + ", ".join(f"{navn} ({kode or 'ingen kode'})" for navn, kode in sorted(ukjente))
+        )
+
+    observasjoner.sort(key=lambda o: (o["entity"], o["period"]))
+    return observasjoner
+
+
+def fra_k2(rader, info):
+    """Gjør GWIS-rader om til kanoniske observasjoner.
+
+    Kilden leverer hektar, som konverteres til km² her. Det er den samme
+    målingen K1 bygger på, så fotnotene er de samme.
+
+    Observasjonene skrives ikke til data/processed/ i denne omgangen. K2 tegnes
+    ikke i noen figur i kryssjekkrollen (§ 5), og formen brukes for at
+    kryssjekken skal sammenligne to sett i samme enhet — ikke for å publisere
+    en serie ingen seksjon leser.
+    """
+    land = _land()
+    ufullstendig_aar = int(info["downloaded_at"][:4])
+    grunnfotnoter = ["f_sensor_break", "f_min_fire_size"]
+
+    observasjoner = []
+    ukjente = set()
+
+    for rad in rader:
+        kode = k2_gwis.entity_kode(rad["iso3"])
+        if kode not in land:
+            ukjente.add((rad["name"], rad["iso3"]))
+            continue
+
+        aar = rad["year"]
+        verdi = round(rad["ba_ha"] * HA_TO_KM2, DESIMALER)
+
+        fotnoter = list(grunnfotnoter)
+        if aar >= ufullstendig_aar:
+            fotnoter.append("f_incomplete_year")
+        # Samme grunnlag som K1: en 0 skiller ikke mellom «ingenting brant» og
+        # «ingen måling». Se CLAUDE.md § 9.
+        if verdi == 0:
+            fotnoter.append("f_zero_no_detection")
+
+        observasjoner.append(
+            _observasjon(
+                kode,
+                land,
+                aar,
+                INDIKATOR,
+                ENHET,
+                verdi,
+                k2_gwis.SOURCE_ID,
+                k2_gwis.SERIES_ID,
+                "measured",
+                fotnoter,
+            )
+        )
+
+    if ukjente:
+        raise ValueError(
+            "Entiteter uten oppføring i data/geo/land_no.json: "
+            + ", ".join(f"{navn} ({kode})" for navn, kode in sorted(ukjente))
         )
 
     observasjoner.sort(key=lambda o: (o["entity"], o["period"]))

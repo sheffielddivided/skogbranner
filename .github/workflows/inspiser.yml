@@ -1,8 +1,9 @@
 # Engangsverktøy: kartlegger et kildeformat i Actions, der utgående trafikk er
-# åpen. Utviklingsmiljøets nettverkspolicy avviser enkelte kildeverter, og en
-# parser skal ikke skrives mot en antatt struktur.
+# åpen og en tung fil kan lastes ned. Utviklingsmiljøets nettverkspolicy
+# avviser enkelte kildeverter, og en parser skal ikke skrives mot en antatt
+# struktur.
 #
-# Slettes når k2_gwis.py er skrevet mot verifisert form.
+# Slettes sammen med scripts/inspiser_kilder.py før grenen slås sammen med main.
 
 name: Inspiser kildeformat
 
@@ -10,7 +11,7 @@ on:
   push:
     branches: [claude/add-sources-k2-k3-k5-k6-k7-gg8y9l]
     paths:
-      - scripts/inspiser_gwis.py
+      - scripts/inspiser_kilder.py
       - .github/workflows/inspiser.yml
   workflow_dispatch:
 
@@ -18,11 +19,12 @@ permissions:
   contents: read
 
 jobs:
-  gwis:
+  kilder:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: python -m scripts.inspiser_gwis
+      - run: pip install -r requirements.txt
+      - run: python -m scripts.inspiser_kilder

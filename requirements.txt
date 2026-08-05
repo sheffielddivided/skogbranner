@@ -1,0 +1,11 @@
+# Kjøreavhengigheter for ETL.
+#
+# Holdes så kort som mulig. Alt som klarer seg med standardbiblioteket, bruker
+# standardbiblioteket — se etl/sources/k1_owid.py og k5_nifc.py, som ikke
+# trenger noe herfra.
+#
+# Dette er ETLs avhengigheter, ikke sidens. Den publiserte siden laster
+# ingenting fra et annet domene (CLAUDE.md T2).
+
+# K7 leverer årsaggregatene sine som XLSX, som standardbiblioteket ikke leser.
+openpyxl==3.1.5

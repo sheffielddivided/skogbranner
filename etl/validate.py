@@ -141,6 +141,95 @@ def valider(observasjoner):
     return feil
 
 
+def kryssjekk(k1_observasjoner, k2_observasjoner):
+    """Sammenligner K1 mot K2 for samme entitet og år.
+
+    K1 er Our World in Datas bearbeiding av GWIS, som er K2. De to skal derfor
+    i utgangspunktet si det samme, og et sprik betyr som regel at GWIS har
+    oppdatert tallene etter at OWID tok sin kopi.
+
+    Terskelen er CROSSCHECK_THRESHOLD i schema.py. Den skrives aldri her (T5).
+
+    Begge sett skal være kanoniske observasjoner i km², slik at sammenligningen
+    ikke gjør en enhetskonvertering på egen hånd (T1).
+
+    Returnerer en liste avvik, sortert etter størrelsen på det relative
+    avviket. Rapporten er et arbeidsverktøy for redaktøren og publiseres ikke
+    — se CLAUDE.md § 5.
+    """
+    k2 = {
+        (o["entity"], o["period"]): o
+        for o in k2_observasjoner
+        if o["indicator"] == "burned_area_km2"
+    }
+
+    avvik = []
+    sammenlignet = 0
+    for o in k1_observasjoner:
+        if o["indicator"] != "burned_area_km2":
+            continue
+        motpart = k2.get((o["entity"], o["period"]))
+        if motpart is None:
+            continue
+        sammenlignet += 1
+
+        a, b = o["value"], motpart["value"]
+        # Er begge 0, er de enige. Er bare den ene 0, finnes det ingen
+        # meningsfull relativ forskjell, og avviket føres som fullt utslag.
+        if a == 0 and b == 0:
+            continue
+        nevner = max(abs(a), abs(b))
+        relativt = abs(a - b) / nevner
+
+        if relativt > schema.CROSSCHECK_THRESHOLD:
+            avvik.append(
+                {
+                    "entity": o["entity"],
+                    "entity_name": o["entity_name"],
+                    "period": o["period"],
+                    "k1_km2": a,
+                    "k2_km2": b,
+                    "relative": round(relativt, 4),
+                }
+            )
+
+    avvik.sort(key=lambda d: -d["relative"])
+    return avvik, sammenlignet
+
+
+def avviksrapport(avvik, sammenlignet):
+    """Formaterer avviksrapporten som tekst.
+
+    Rapporten publiseres ikke. Den skrives til kjøreloggen og legges ved
+    kjøringen som artefakt, slik at redaktøren kan se den uten at den havner
+    på siden.
+    """
+    terskel = schema.CROSSCHECK_THRESHOLD * 100
+    linjer = [
+        "# Avviksrapport K1 mot K2",
+        "",
+        f"Sammenlignet {sammenlignet} observasjoner av brent areal for samme "
+        f"entitet og år.",
+        f"Terskel: {terskel:g} % relativt avvik.",
+        f"Over terskelen: {len(avvik)}.",
+        "",
+    ]
+    if not avvik:
+        linjer.append("Ingen avvik over terskelen.")
+        return "\n".join(linjer) + "\n"
+
+    linjer += [
+        "| Entitet | År | K1 (km²) | K2 (km²) | Avvik |",
+        "|---|---|---|---|---|",
+    ]
+    for d in avvik:
+        linjer.append(
+            f"| {d['entity_name']} ({d['entity']}) | {d['period']} | "
+            f"{d['k1_km2']} | {d['k2_km2']} | {d['relative'] * 100:.1f} % |"
+        )
+    return "\n".join(linjer) + "\n"
+
+
 def les_publiserte():
     """Leser alle kanoniske filer som finnes under data/processed/.
 
