@@ -2,7 +2,7 @@
   "schema_version": 1,
   "_skjema": "se CLAUDE.md § 6 og etl/schema.py",
   "_om": "Siste kjørestatus per kilde. Skrives av ETL, leses av byggetrinnet. Feiler en kilde, beholdes forrige datasett og siden viser en diskré merknad om at akkurat den serien ikke er oppdatert siden dato X. Rutenettkilder fører i tillegg unattributed_share og unattributed_km2: hvor mye brent areal som falt utenfor all landgeometri i kjøringen, slik at andelen kan følges over tid.",
-  "last_run": "2026-08-05T17:21:37+00:00",
+  "last_run": "2026-08-05T21:52:43+00:00",
   "sources": {
     "K1": {
       "status": "ok",
@@ -11,6 +11,14 @@
       "rows": 3900,
       "checksum": "a60fa5fded76cff4f7e76bc5f9e93e0f4bc2dc27a581914115d01808b6fab881",
       "message": "hentet og publisert"
+    },
+    "K10": {
+      "status": "failed",
+      "last_attempt": "2026-08-05T21:52:43+00:00",
+      "last_success": null,
+      "rows": null,
+      "checksum": null,
+      "message": "Kildefeil: R-skriptet feilet med kode 1. Siste utdata:\nWarning message:\nS3 method ‘plot.pfGridding’ was declared in NAMESPACE but not found \nThere were 15 warnings (use warnings() to see them)\nError in match(x, table, nomatch = 0L) : \n  'match' requires vector arguments\nCalls: pfCompositeLF -> %in% -> %in%\nExecution halted\n"
     }
   }
 }
