@@ -305,11 +305,11 @@ kilde.
 |---|---|---|---|---|---|
 | K1 | Our World in Data | Global | 2012– | `measured` | CC BY 4.0 |
 | K2 | GWIS (JRC/Copernicus) | Global | 2012– | `measured` | Kryssjekk mot K1, og ukesoppløsning til S3 |
-| K3 | EFFIS, landtotaler | Europa, Midtøsten, Nord-Afrika | — | `reported` | Nasjonalt rapporterte totaler |
+| K3 | EFFIS, landtotaler | Europa, Midtøsten, Nord-Afrika | 2006– | `reported` | Nasjonalt rapporterte totaler |
 | K4 | EFFIS, Burnt Areas | Europa | — | `reported` | Grunnlag for brannstørrelsesfordeling |
 | K5 | NIFC | USA | 1983– | `reported` | Lang nasjonal serie |
 | K6 | Natural Earth, admin-0 | Global | — | — | Geometri og landarealer. Public domain |
-| K7 | CNFDB / NBAC | Canada | — | `reported` | Krever sluttbrukeravtale — akseptert |
+| K7 | CNFDB / NBAC | Canada | 1972– areal, 1959– antall | `reported` | Krever sluttbrukeravtale — akseptert |
 | K8 | FireCCILT11 (ESA Fire_cci) | Global | 1982–2018, uten 1994 | `beta` | Statisk. Selve produktet er merket beta av produsenten |
 | K9 | GFED5 | Global | 1997–2022 | `measured` | Statisk. GFED5.1 for 1997–2022 er en publisert utgivelse dokumentert i Scientific Data. Beta-merkingen gjelder kun produsentens `ext_Beta`-kataloger fra 2023, som vi holder ute |
 | K10 | Global Charcoal Database | Global | — | `reconstructed` | Proxy. Statisk |
@@ -890,14 +890,22 @@ sluttbrukeravtale tas ikke inn før avtalen er avklart og notert i
 **Implementert og i drift:**
 
 - `etl/schema.py` — enumerasjonene, tersklene og stiene
-- `etl/sources/k1_owid.py` — K1, henting og råformat
 - `etl/sources/ssb_klass.py` — navnekilden, bygger `land_no.json`
-- `etl/normalize.py` — kanonisk form, hektar → km²
-- `etl/validate.py` — kontrollene i § 6 og § 11
-- `etl/run.py` — pipelinen
+- `etl/sources/k1_owid.py` — K1, CSV og metadata
+- `etl/sources/k2_gwis.py` — K2, årsserie per land. Brukes til kryssjekk mot K1
+- `etl/sources/k3_effis.py` — K3, landtotaler for Europa, Midtøsten, Nord-Afrika
+- `etl/sources/k5_nifc.py` — K5, HTML-tabellen på statistikksiden
+- `etl/sources/k6_natural_earth.py` — K6, kartgeometri og landarealer
+- `etl/sources/k7_nbac.py` — K7, NBACs årsaggregat og CNFDBs punktstatistikk
+- `etl/normalize.py` — kanonisk form, hektar og acres → km², andel av landareal
+- `etl/validate.py` — kontrollene i § 6 og § 11, og kryssjekken K1 mot K2
+- `etl/run.py` — pipelinen. Én kilde som feiler, tar ikke ned de andre
 - `data/geo/land_no.json` — 260 entiteter, generert fra SSB
-- `data/processed/burned_area.json` og `.csv` — K1, 2012–, 3900 observasjoner
+- `data/geo/land_area_km2.json` — landarealer fra K6, nevner i andelsindikatoren
+- `data/geo/world_110m.topo.json` og `world_50m.topo.json` — kartgeometri
+- `data/processed/` — én fil per indikator, som JSON og CSV
 - `data/_footnotes.json` — fotnotetekstene, kontrollert mot `schema.py`
+- `requirements.txt` — ETLs kjøreavhengigheter. `openpyxl`, for K7s XLSX
 - `.github/workflows/etl.yml` — månedlig kjøring, endringer som pull request
 - `.github/workflows/deploy.yml` — bygger og publiserer ved push til `main`
 - Nettsiden — Astro, seks seksjoner, `src/komponenter/Figur.astro` og S1
@@ -912,8 +920,23 @@ Hver figur har en modul under `src/figurer/` som bygger graf, tabell og
 fotnoteliste fra observasjonene. Hvilke fotnoter en figur viser, utledes av
 dataene — ikke av en liste i figurmodulen.
 
+**Kryssjekken K1 mot K2** kjøres av `run.py` og skriver en avviksrapport til
+`data/raw/kryssjekk_k1_k2.md`. Den er et arbeidsverktøy for redaktøren og
+publiseres ikke — `data/raw/` er gitignorert, og workflowen legger rapporten
+ved kjøringen som artefakt i stedet.
+
 **Ikke implementert:** `etl/derive.py` inneholder kun beskrivelse av
-ansvarsområde. S2–S6 har overskrift og en merknad om at de ikke er laget.
+ansvarsområde. K4, K8, K9 og K10 er ikke hentet. S2–S6 har overskrift og en
+merknad om at de ikke er laget, så K3, K5 og K7 ligger i datasettet uten at
+noen seksjon viser dem ennå. Det samme gjelder `fire_count` og
+`burned_area_share_land`, og K2s ukesoppløsning, som S3 skal bruke.
+
+**Til avklaring:** § 5 beskriver K3 som nasjonalt rapporterte totaler, men
+endepunktet EFFIS' egen statistikkportal bruker, leverer Rapid Damage
+Assessment — deres satellittkartlegging fra MODIS, VIIRS og Sentinel-2.
+Geografien i § 5 stemmer eksakt med endepunktet, så kilden er den rette, men
+`quality` bør antakelig være `measured`. Verdien står i
+`k3_effis.KVALITET` og er inntil videre `reported`, slik § 5 sier.
 
 **Neste steg:** `derive.py` og `insights.json`. Først da kan S1 få
 overskriftstallet med arealsammenligning, som er den delen av § 8 som krever

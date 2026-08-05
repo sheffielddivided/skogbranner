@@ -1,6 +1,7 @@
 # etl/sources/
 
-Én modul per datakilde. Ingen kildemoduler er skrevet ennå.
+Én modul per datakilde. Hvilke kilder som finnes, står i CLAUDE.md § 5 —
+listen gjentas ikke her.
 
 ## Ansvar
 
