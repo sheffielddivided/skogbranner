@@ -39,32 +39,27 @@
     },
     "K6": {
       "source_id": "K6",
-      "name": "Natural Earth — Admin 0, countries",
+      "name": "Natural Earth — admin-0, kartenheter (10m, 1:10 mill.)",
       "publisher": "Natural Earth",
-      "url": "https://www.naturalearthdata.com/downloads/",
-      "download_url": "https://naciscdn.org/naturalearth/50m/cultural/ne_50m_admin_0_countries.zip",
-      "license": "Public domain. Natural Earth setter ingen vilkår for bruk.",
+      "url": "https://www.naturalearthdata.com/downloads/10m-cultural-vectors/",
+      "download_url": "https://naciscdn.org/naturalearth/10m/cultural/ne_10m_admin_0_map_units.zip",
+      "license": "Public domain",
       "license_url": "https://www.naturalearthdata.com/about/terms-of-use/",
-      "attribution": "Made with Natural Earth.",
+      "attribution": "Made with Natural Earth. Free vector and raster map data @ naturalearthdata.com.",
       "requires_agreement": false,
       "geography": "global",
-      "temporal_resolution": null,
-      "quality": null,
-      "unit_source": null,
+      "coverage_start": "",
+      "coverage_end": "",
+      "temporal_resolution": "",
+      "quality": "",
+      "unit_source": "",
       "downloaded_at": "2026-08-05",
-      "checksum": "5fed433373581fa648920435f937d95f2d3c0200e067409c6478dcdf1b853139",
-      "checksums": {
-        "110m": "0f243aeac8ac6cf26f0417285b0bd33ac47f1b5bdb719fd3e0df37d03ea37110",
-        "50m": "5fed433373581fa648920435f937d95f2d3c0200e067409c6478dcdf1b853139"
-      },
+      "source_last_updated": null,
+      "checksum": "45bebe2aaf8bf42b9daf4428594925bcb11eabd32fe9dc6e0acf681438053eb5",
       "series": [],
-      "processed_files": [
-        "world_110m.topo.json",
-        "world_50m.topo.json",
-        "land_area_km2.json"
-      ],
+      "processed_files": [],
       "footnotes": [],
-      "notes": "Leverer kartgeometri og landarealer, ikke branndata. Admin-0 har ikke noe arealfelt, så arealene er regnet fra polygonene ved reprojeksjon til en arealtro projeksjon. Fordi Natural Earth er generalisert, avviker de noe fra offisielle landarealer."
+      "notes": "Geometri for kart, og grunnlaget for å fordele rutenettkilder på land. Leverer ingen tallverdier og står derfor ikke i kildekolonnen for noen seksjon."
     },
     "K3": {
       "source_id": "K3",
