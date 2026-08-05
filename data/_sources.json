@@ -1,29 +1,6 @@
 {
   "schema_version": 1,
-  "_om": "Kildemetadata for alle datasett siden bruker. Én oppføring per kilde, med kildens id som nøkkel. Filen fylles av ETL ved nedlasting og leses av byggetrinnet for å produsere kildelinjen under hver figur (CLAUDE.md P5) og attribusjonsblokken i sidefoten. Filen er tom inntil første kilde er tatt inn.",
-  "_felt": {
-    "source_id": "Kort, stabil id for kilden. Brukes som fremmednøkkel fra de kanoniske seriene.",
-    "name": "Kildens navn slik det skal vises for leseren.",
-    "publisher": "Institusjonen som utgir dataene.",
-    "url": "Lenke til kildens landingsside. Vises som lenke i kildelinjen.",
-    "download_url": "Direkte lenke til filen eller endepunktet ETL faktisk henter fra.",
-    "license": "Lisensens navn, for eksempel 'CC BY 4.0'.",
-    "license_url": "Lenke til lisensteksten.",
-    "attribution": "Ferdig formulert attribusjonstekst på norsk, slik den skal stå i sidefoten.",
-    "requires_agreement": "true hvis kilden krever registrering eller sluttbrukeravtale. Kilder med true tas ikke i bruk før avtalen er avklart.",
-    "agreement_note": "Hva avtalen krever, og status for avklaringen.",
-    "geography": "Geografisk dekning, for eksempel 'global' eller 'Europa'.",
-    "coverage_start": "Første periode med data, ISO 8601 (YYYY eller YYYY-MM).",
-    "coverage_end": "Siste periode med data, ISO 8601.",
-    "temporal_resolution": "'annual' | 'monthly' | 'weekly'.",
-    "quality": "'measured' | 'reported' | 'reconstructed'. Styrer hvordan serien tegnes.",
-    "unit_source": "Enheten kilden leverer i, før konvertering. All konvertering til km² skjer i etl/normalize.py.",
-    "downloaded_at": "Dato dataene sist ble hentet, ISO 8601 (YYYY-MM-DD). Vises i kildelinjen.",
-    "checksum": "SHA-256 av den nedlastede råfilen, for å oppdage endringer i kilden.",
-    "series": "Liste over series_id denne kilden leverer.",
-    "processed_files": "Liste over filer under data/processed/ som stammer fra kilden. Figurene lenker til disse.",
-    "footnotes": "Liste over fotnote-id-er som alltid gjelder for denne kilden, for eksempel 'f_sensor_break'.",
-    "notes": "Øvrige forbehold om kilden, på norsk."
-  },
+  "_skjema": "se CLAUDE.md § 6 og etl/schema.py",
+  "_om": "Kildemetadata for alle datasett siden bruker. Én oppføring per kilde, med kildekoden som nøkkel. Filen fylles av ETL ved nedlasting og leses av byggetrinnet for å produsere kildelinjen under hver figur og attribusjonsblokken i sidefoten. Filen er tom inntil første kilde er tatt inn.",
   "sources": {}
 }

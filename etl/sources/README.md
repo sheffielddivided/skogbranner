@@ -12,20 +12,13 @@ En kildemodul gjør **kun** to ting:
 Den skal ikke konvertere enheter, ikke fylle hull, ikke slå sammen serier og
 ikke beregne noe. Alt slikt hører hjemme i `normalize.py`.
 
-## Krav per modul
+I tillegg registrerer modulen kilden i `data/_sources.json` og skriver
+kjørestatus til `data/_status.json`, også når hentingen feiler.
 
-- Registrerer kilden i `data/_sources.json` med lisens, lenke,
-  dekningsperiode, nedlastingsdato og SHA-256 av råfilen
-- Skriver kjørestatus til `data/_status.json`, også ved feil
-- Feiler kontrollert: en kilde som er nede skal aldri stoppe de andre eller
-  ødelegge siden
-- Oppgir hvilken enhet kilden leverer i, slik at `normalize.py` kan konvertere
-  til km²
-- Kilder som krever registrering eller sluttbrukeravtale merkes med
-  `requires_agreement` og tas ikke i bruk før avtalen er avklart
+## Regler
 
-## Kjøring
+Kildekoder, hvilke kilder som er statiske, hvilke som krever ordrett sitering,
+og hva som gjelder for kjøring i sandkasse kontra GitHub Actions: se
+CLAUDE.md § 5 og § 3 (T4).
 
-Nedlasting og prosessering kjører **kun i GitHub Actions**. I en lokal sesjon
-eller sandkasse: hent maks én fil eller ett år for å undersøke formatet. Aldri
-fullt løp, aldri store arkiver. `data/raw/` er gitignorert med vilje.
+Kodeverdier importeres fra `etl/schema.py`.

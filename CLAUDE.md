@@ -181,18 +181,43 @@ laster mer enn noen få MB, er den tung. Legg den i en workflow i stedet.
 
 ### T5 — CLAUDE.md er eneste sannhetskilde
 
-Regler, kodeverdier og prinsipper skrives **kun ett sted**: her.
+Skill mellom **regler** og **enumerasjoner**. De to håndteres ulikt.
 
-Kodefiler, docstrings og kommentarer skal **referere** til CLAUDE.md, ikke
-gjenfortelle innholdet. Duplisert regelverk divergerer — én kopi oppdateres,
-den andre blir stående, og da er det uklart hva som faktisk gjelder.
+#### Regler
+
+Prosa med begrunnelse og skjønn: hvorfor trender ikke krysser kildegrenser,
+hva som gjør en overskrift tolkende, når et brudd skal være synlig.
+
+Regler skrives **kun i CLAUDE.md**. Kodefiler, docstrings og kommentarer skal
+**referere**, aldri gjenfortelle. Duplisert regelverk divergerer — én kopi
+oppdateres, den andre blir stående, og da er det uklart hva som gjelder.
 
 Trenger en fil å forklare seg, skriv `se CLAUDE.md § X` i stedet for å kopiere
-regelen. En docstring skal si hva filen har ansvar for, ikke gjenta hvilke
-verdier `quality` kan ha.
+regelen. En docstring skal si hva filen har ansvar for, ikke gjengi resonnementet
+bak regelen den følger.
 
-Dette gjelder også lister som virker trygge å kopiere: kodeverdier,
-fotnote-id-er, kildekoder, enheter. Det er nettopp de som divergerer.
+#### Enumerasjoner
+
+Maskinlesbare lister koden må validere mot: gyldige `quality`-verdier,
+`indicator`-navn, `unit`-verdier, kildekoder, fotnotekoder,
+konverteringsfaktorer.
+
+Disse defineres **ett sted i kode**: `etl/schema.py`. CLAUDE.md dokumenterer
+dem i prosa, men `schema.py` er det maskinen leser.
+
+At en konstant finnes i `schema.py` er **implementering, ikke duplisering**.
+Den skal ikke fjernes under henvisning til T5.
+
+#### Regelen
+
+> Enhver enumerasjon finnes nøyaktig **to** steder: som prosa i CLAUDE.md for
+> mennesket, og som konstant i `etl/schema.py` for maskinen. Ingen tredje kopi.
+
+`validate.py`, `normalize.py` og alt annet importerer fra `schema.py` og
+definerer aldri egne lister. Skriver du `["measured", "reported", ...]` i en
+annen fil, har du laget den tredje kopien.
+
+Endres en enumerasjon, endres begge stedene i samme commit.
 
 ---
 
@@ -201,6 +226,7 @@ fotnote-id-er, kildekoder, enheter. Det er nettopp de som divergerer.
 ```
 etl/
   sources/          Én modul per kilde. Kun henting + råformat-parsing.
+  schema.py         Enumerasjonene i kode. Alt annet importerer herfra (T5).
   normalize.py      Kanonisk form. All enhetskonvertering skjer her.
   derive.py         Maskinelle avledninger → data/processed/insights.json
   validate.py       Kontrollerer at output er gyldig før publisering
@@ -557,6 +583,8 @@ sluttbrukeravtale tas ikke inn før avtalen er avklart og notert i
       og EFFIS-lisensen for K3/K4)
 - [ ] Identifikatorer er engelske, alt leseren ser er norsk
 - [ ] Ingen kodefil gjentar regler fra CLAUDE.md — den refererer til dem (T5)
+- [ ] Enumerasjoner importeres fra `etl/schema.py`, aldri definert på nytt i
+      en annen fil (T5)
 
 ---
 
