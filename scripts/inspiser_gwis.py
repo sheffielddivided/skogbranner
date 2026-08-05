@@ -17,18 +17,25 @@ import urllib.request
 
 BRUKERAGENT = "skogbranner-etl/1.0 (+https://github.com/sheffielddivided/skogbranner)"
 
-PORTAL = "https://gwis.jrc.ec.europa.eu/apps/gwis.statistics/seasonaltrend"
+PORTALER = [
+    "https://gwis.jrc.ec.europa.eu/apps/gwis.statistics/seasonaltrend",
+    "https://gwis.jrc.ec.europa.eu/apps/country.profile/overview/",
+]
+PORTAL = PORTALER[0]
 
-# Kandidater satt opp etter det portalen dokumenterer. Skriptet prøver alle og
-# rapporterer hva som svarer, slik at vi slipper å gjette videre.
+# Første runde traff ikke: alle /statistics/v2/-stiene svarte 404. Portalens
+# skriptfiler viste at basisstien er /api/gwis/. Kandidatene under følger den.
+API = "https://api2.effis.emergency.copernicus.eu"
+
 KANDIDATER = [
-    "https://api2.effis.emergency.copernicus.eu/statistics/v2/countries",
-    "https://api2.effis.emergency.copernicus.eu/statistics/v2/estimates",
-    "https://api2.effis.emergency.copernicus.eu/statistics/v2/estimates?country=NO",
-    "https://api2.effis.emergency.copernicus.eu/statistics/v2/estimates?country=NO&year=2024",
-    "https://api2.effis.emergency.copernicus.eu/statistics/v2/burnedareas",
-    "https://api2.effis.emergency.copernicus.eu/statistics/v2/seasonal",
-    "https://api2.effis.emergency.copernicus.eu/statistics/v2/seasonal/trend?country=NO",
+    f"{API}/api/gwis/seasonaltrend/",
+    f"{API}/api/gwis/seasonaltrend/?country=NO",
+    f"{API}/api/gwis/seasonaltrend/data/?country=NO",
+    f"{API}/api/gwis/countries/",
+    f"{API}/api/gwis/country.profile/",
+    f"{API}/api/gwis/country.profile/overview/?country=NO",
+    f"{API}/api/gwis/",
+    f"{API}/api/",
 ]
 
 
@@ -56,33 +63,46 @@ def vis_struktur(verdi, innrykk=0, sti="", maks_dybde=4):
 
 
 def finn_api_i_portalen():
-    """Leter etter API-adresser i portalens egne skriptfiler."""
-    print(f"\n### Leter etter API-adresser i {PORTAL}\n")
-    try:
-        _, _, kropp = hent(PORTAL)
-    except Exception as e:
-        print(f"  portalen svarte ikke: {type(e).__name__}: {e}")
-        return
+    """Leter etter API-stier i portalenes egne skriptfiler.
 
-    html = kropp.decode("utf-8", errors="replace")
-    skript = re.findall(r'src="([^"]+\.js[^"]*)"', html)
-    print(f"  fant {len(skript)} skriptfiler")
-
-    funnet = set()
-    for sti in skript[:12]:
-        url = sti if sti.startswith("http") else "https://gwis.jrc.ec.europa.eu" + sti
+    Stiene settes gjerne sammen av en basiskonstant og et relativt fragment, så
+    det holder ikke å lete etter hele adresser. Her samles begge deler.
+    """
+    for portal in PORTALER:
+        print(f"\n### Leter etter API-stier i {portal}\n")
         try:
-            _, _, innhold = hent(url, maks=3_000_000)
-        except Exception:
+            _, _, kropp = hent(portal)
+        except Exception as e:
+            print(f"  portalen svarte ikke: {type(e).__name__}: {e}")
             continue
-        tekst = innhold.decode("utf-8", errors="replace")
-        for treff in re.findall(r'https://[a-z0-9.\-]*(?:effis|gwis)[a-z0-9.\-/]*', tekst):
-            funnet.add(treff)
 
-    for adresse in sorted(funnet)[:40]:
-        print(f"    {adresse}")
-    if not funnet:
-        print("    ingen adresser funnet i skriptfilene")
+        html = kropp.decode("utf-8", errors="replace")
+        skript = re.findall(r'src="([^"]+\.js[^"]*)"', html)
+        print(f"  fant {len(skript)} skriptfiler")
+
+        adresser, fragmenter = set(), set()
+        for sti in skript[:15]:
+            url = sti if sti.startswith("http") else "https://gwis.jrc.ec.europa.eu" + sti
+            try:
+                _, _, innhold = hent(url, maks=6_000_000)
+            except Exception:
+                continue
+            tekst = innhold.decode("utf-8", errors="replace")
+            adresser.update(
+                re.findall(r'https://[a-z0-9.\-]*(?:effis|gwis)[a-z0-9.\-/]*', tekst)
+            )
+            # Relative stier i anførselstegn, som settes sammen med basisen.
+            fragmenter.update(re.findall(r'["\'](/api/[a-zA-Z0-9._/\-]{2,80})["\']', tekst))
+            fragmenter.update(
+                re.findall(r'["\']([a-zA-Z0-9._/\-]*(?:statistic|estimate|burnt|burned|seasonal|country)[a-zA-Z0-9._/\-]*)["\']', tekst)
+            )
+
+        print("  hele adresser:")
+        for a in sorted(adresser)[:30]:
+            print(f"    {a}")
+        print("  stifragmenter:")
+        for f in sorted(fragmenter)[:60]:
+            print(f"    {f}")
 
 
 def main():

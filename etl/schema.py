@@ -18,13 +18,14 @@ QUALITY = frozenset({"measured", "reported", "beta", "reconstructed"})
 
 LEVEL = frozenset({"country", "region", "world"})
 
-UNIT = frozenset({"km2", "share", "zscore"})
+UNIT = frozenset({"km2", "share", "zscore", "count"})
 
 # Hver indikator har nøyaktig én tillatt enhet.
 INDICATOR_UNIT = {
     "burned_area_km2": "km2",
     "burned_area_share_land": "share",
     "charcoal_index": "zscore",
+    "fire_count": "count",
 }
 
 INDICATOR = frozenset(INDICATOR_UNIT)
@@ -58,6 +59,8 @@ FOOTNOTE = frozenset(
         "f_proxy",
         "f_resolution_change",
         "f_zero_no_detection",
+        "f_record_start",
+        "f_incomplete_inventory",
     }
 )
 
@@ -94,7 +97,21 @@ YEAR_MIN = 1900
 # --- Serier (CLAUDE.md § 6) ---
 
 # series_id er stabile. En serie-id gjenbrukes aldri til en annen serie.
-SERIES_ID = frozenset({"owid_annual_area_burnt"})
+#
+# Én serie bærer én indikator. Avledede indikatorer får derfor egen serie-id,
+# slik at dekningsperiode og trend regnes per indikator og ikke blandes.
+SERIES_ID = frozenset(
+    {
+        "owid_annual_area_burnt",  # K1
+        "owid_annual_area_burnt_share_land",  # avledet av K1, nevner fra K6
+        "gwis_annual_burned_area",  # K2
+        "effis_annual_country_totals",  # K3
+        "nifc_annual_burned_area",  # K5
+        "nifc_annual_fire_count",  # K5
+        "nbac_annual_burned_area",  # K7
+        "cnfdb_annual_fire_count",  # K7
+    }
+)
 
 
 # --- Stier ---
@@ -110,6 +127,8 @@ REPO_ROOT = _Path(__file__).resolve().parent.parent
 RAW_DIR = REPO_ROOT / "data" / "raw"
 PROCESSED_DIR = REPO_ROOT / "data" / "processed"
 GEO_DIR = REPO_ROOT / "data" / "geo"
+
+LAND_AREA_JSON = GEO_DIR / "land_area_km2.json"
 
 SOURCES_JSON = REPO_ROOT / "data" / "_sources.json"
 STATUS_JSON = REPO_ROOT / "data" / "_status.json"
