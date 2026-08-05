@@ -1,0 +1,24 @@
+---
+/**
+ * Sticky innholdsnavigasjon for seksjonene i CLAUDE.md § 8.
+ *
+ * Ren HTML med ankerlenker. Ingen JavaScript — navigasjonen virker også når
+ * skript er slått av (§ 9).
+ */
+import { seksjoner } from "../lib/seksjoner";
+---
+
+<nav class="innholdsnavigasjon" aria-label="Innhold">
+  <ol>
+    {
+      seksjoner.map((s) => (
+        <li>
+          <a href={`#${s.id}`}>
+            <span class="innholdsnavigasjon-kode">{s.kode}</span>
+            <span class="innholdsnavigasjon-tittel">{s.tittel}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ol>
+</nav>

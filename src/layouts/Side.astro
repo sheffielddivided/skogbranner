@@ -1,0 +1,48 @@
+---
+/**
+ * Sidemal: hode, hopp-til-innhold, innholdsnavigasjon og sidefot.
+ *
+ * Ingen ressurser hentes fra andre domener. Ingen webfonter, ingen sporing,
+ * ingen samtykkebanner (CLAUDE.md T2).
+ */
+import Innholdsnavigasjon from "../komponenter/Innholdsnavigasjon.astro";
+import Sidefot from "../komponenter/Sidefot.astro";
+import "../styles/global.css";
+
+interface Props {
+  tittel: string;
+  ingress: string;
+}
+
+const { tittel, ingress } = Astro.props;
+---
+
+<!doctype html>
+<html lang="nb">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{tittel}</title>
+    <meta name="description" content={ingress} />
+    <meta name="color-scheme" content="light dark" />
+  </head>
+  <body>
+    <a class="hopp-til-innhold" href="#innhold">Hopp til innholdet</a>
+
+    <header class="sidehode">
+      <div class="innramming">
+        <h1>{tittel}</h1>
+        <p class="ingress">{ingress}</p>
+      </div>
+    </header>
+
+    <div class="innramming sideoppsett">
+      <Innholdsnavigasjon />
+      <main id="innhold">
+        <slot />
+      </main>
+    </div>
+
+    <Sidefot />
+  </body>
+</html>

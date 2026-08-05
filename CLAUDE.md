@@ -251,6 +251,7 @@ data/
     land_no.json    Entitetskode → norsk navn og nivå. Delt av alle kilder.
   _sources.json     Kildemetadata: lisens, lenke, dekning, nedlastingsdato
   _status.json      Siste kjørestatus per kilde, for degradert visning
+  _footnotes.json   Fotnotekode → norsk tekst. Se § 9
 src/                Nettsidens kildekode
 public/             Statiske ressurser som kopieres uendret
 .github/workflows/  ETL-kjøring og deploy
@@ -787,6 +788,16 @@ særbehandling og uten egen seksjon (P8).
 - `f_zero_no_detection` — kilden har ikke påvist brent areal, men skiller ikke
   mellom «ingenting brant» og «ingen måling»
 
+**Hvor fotnotetekstene bor.** Kodene over er enumerasjonen, og følger T5: prosa
+her, konstant i `etl/schema.py`. Den norske teksten leseren ser er noe annet —
+den er visningslagets oversettelse fra kodeverdi til lesbar tekst (§ 1), og står
+i `data/_footnotes.json`.
+
+Filen er ikke en tredje kopi av enumerasjonen. `validate.py` kontrollerer at
+nøklene der er nøyaktig `FOOTNOTE` fra `schema.py`, verken flere eller færre, så
+en ny kode kan ikke tas i bruk uten tekst og en tekst kan ikke bli stående etter
+at koden er fjernet.
+
 `f_missing_year` gjelder blant annet 1994 i K8. Et manglende år vises som
 brudd i kurven, aldri som 0 og aldri som interpolert verdi.
 
@@ -881,17 +892,24 @@ sluttbrukeravtale tas ikke inn før avtalen er avklart og notert i
 - `etl/run.py` — pipelinen
 - `data/geo/land_no.json` — 260 entiteter, generert fra SSB
 - `data/processed/burned_area.json` og `.csv` — K1, 2012–, 3900 observasjoner
+- `data/_footnotes.json` — fotnotetekstene, kontrollert mot `schema.py`
+- `.github/workflows/etl.yml` — månedlig kjøring, endringer som pull request
+- `.github/workflows/deploy.yml` — bygger og publiserer ved push til `main`
+- Nettsiden — Astro, seks seksjoner, `src/komponenter/Figur.astro` og S1
 
 Ingen av disse er stubber. De skal ikke skrives på nytt.
 
+**Slik tegnes grafene.** Observable Plot kjører i Node under bygging og gir
+ferdig SVG. Ingen graf-kode sendes til leseren, og figurene vises med skript
+slått av. Se `src/lib/plot.ts`.
+
+Hver figur har en modul under `src/figurer/` som bygger graf, tabell og
+fotnoteliste fra observasjonene. Hvilke fotnoter en figur viser, utledes av
+dataene — ikke av en liste i figurmodulen.
+
 **Ikke implementert:** `etl/derive.py` inneholder kun beskrivelse av
-ansvarsområde. Ingen nettside finnes ennå — `src/` og `public/` er tomme, og
-det er ingen workflow i `.github/workflows/`.
+ansvarsområde. S2–S6 har overskrift og en merknad om at de ikke er laget.
 
-**Utestående:** `land_no.json` er regenerert fra SSB, og elleve navn er endret.
-`data/processed/` bærer fortsatt de gamle navnene, så `validate.py` feiler til
-`normalize.py` er kjørt på nytt. Det krever en henting av K1 og hører derfor
-hjemme i en workflow (T4), ikke i en sesjon.
-
-**Neste steg:** `derive.py` og `insights.json`, deretter første seksjon av
-siden.
+**Neste steg:** `derive.py` og `insights.json`. Først da kan S1 få
+overskriftstallet med arealsammenligning, som er den delen av § 8 som krever
+maskinelle avledninger.

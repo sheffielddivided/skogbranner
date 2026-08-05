@@ -113,4 +113,5 @@ GEO_DIR = REPO_ROOT / "data" / "geo"
 
 SOURCES_JSON = REPO_ROOT / "data" / "_sources.json"
 STATUS_JSON = REPO_ROOT / "data" / "_status.json"
+FOOTNOTES_JSON = REPO_ROOT / "data" / "_footnotes.json"
 LAND_NO_JSON = GEO_DIR / "land_no.json"

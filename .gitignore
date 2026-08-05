@@ -54,3 +54,8 @@ Thumbs.db
 *.swp
 .idea/
 .vscode/
+
+# Generert av scripts/kopier-data.mjs og astro build
+public/data/
+dist/
+.astro/

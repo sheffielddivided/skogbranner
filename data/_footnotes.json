@@ -1,0 +1,16 @@
+{
+  "_om": "Fotnotekode → norsk tekst. Dette er visningslagets oversettelse fra kodeverdi til lesbar tekst, se CLAUDE.md § 1. Hvilke koder som finnes, avgjøres av FOOTNOTE i etl/schema.py — validate.py kontrollerer at nøklene her er nøyaktig de samme, slik at en ny kode ikke kan tas i bruk uten tekst.",
+  "_skjema": "se CLAUDE.md § 9 og etl/schema.py",
+  "footnotes": {
+    "f_sensor_break": "Målingene kommer fra flere satellittsensorer. Overgangen mellom dem kan gi et brudd i serien, slik at en endring skyldes bytte av sensor og ikke en endring i verden.",
+    "f_min_fire_size": "Systemet fanger i praksis ikke opp de minste brannene. Hvor liten en brann kan være før den forsvinner, varierer med terreng, skydekke og hvor ofte satellitten passerer.",
+    "f_incomplete_year": "Inneværende år er ufullstendig. Verdien dekker bare den delen av året som er gått, og kan ikke sammenlignes med et helt år.",
+    "f_reporting_basis": "Tallene er rapportert av landene selv, og følger andre definisjoner enn de satellittmålte. Hva som regnes som brent areal kan variere fra land til land.",
+    "f_coverage_change": "Antall land eller områder som rapporterer, har endret seg over tid. En endring i totalen kan derfor skyldes at flere eller færre er med.",
+    "f_beta_product": "Produsenten merker selv datasettet som foreløpig. Det er ikke vår vurdering av kvaliteten.",
+    "f_missing_year": "Året mangler helt i kilden. Det vises som brudd i kurven, aldri som null og aldri som en beregnet mellomverdi.",
+    "f_proxy": "Verdien er et indirekte spor etter brann, ikke en måling av brent areal. Den kan ikke sammenlignes med et areal.",
+    "f_resolution_change": "Dataene er grovere oppløst i den tidligste delen av serien. Hver rute dekker et større område, og usikkerheten er dermed større.",
+    "f_zero_no_detection": "Kilden har ikke påvist brent areal. Den skiller ikke mellom at ingenting brant, at brannene var for små til å bli sett, og at området ikke var dekket."
+  }
+}

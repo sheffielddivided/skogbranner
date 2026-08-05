@@ -34,6 +34,26 @@ def _land():
         return json.load(f)["entities"]
 
 
+def valider_fotnotetekster():
+    """Kontrollerer at hver fotnotekode har én norsk tekst, og ingen flere.
+
+    Uten denne kan en ny kode tas i bruk i dataene uten at leseren får se hva
+    den betyr, eller en tekst bli stående etter at koden er fjernet.
+    """
+    with open(schema.FOOTNOTES_JSON, encoding="utf-8") as f:
+        tekster = json.load(f)["footnotes"]
+
+    feil = []
+    for kode in sorted(schema.FOOTNOTE - set(tekster)):
+        feil.append(f"fotnoten {kode!r} mangler tekst i _footnotes.json")
+    for kode in sorted(set(tekster) - schema.FOOTNOTE):
+        feil.append(f"_footnotes.json har teksten {kode!r}, som ikke er en gyldig fotnote")
+    for kode, tekst in sorted(tekster.items()):
+        if not tekst.strip():
+            feil.append(f"fotnoten {kode!r} har tom tekst")
+    return feil
+
+
 def valider(observasjoner):
     """Kontrollerer et sett kanoniske observasjoner.
 
@@ -42,7 +62,7 @@ def valider(observasjoner):
     """
     land = _land()
     aar_maks = date.today().year
-    feil = []
+    feil = valider_fotnotetekster()
 
     def meld(tekst):
         if len(feil) < 25:

@@ -1,0 +1,60 @@
+---
+/**
+ * Sidefot med samlet attribusjonsblokk (CLAUDE.md § 10).
+ *
+ * Kildene leses fra data/_sources.json, slik at en ny kilde dukker opp her av
+ * seg selv. Siteringer som må gjengis ordrett, står uendret — ikke oversatt,
+ * ikke forkortet (§ 5).
+ */
+import kilderJson from "../../data/_sources.json";
+import type { Kilde } from "../lib/data";
+
+const kilder = Object.values(
+  kilderJson.sources as unknown as Record<string, Kilde>,
+).sort((a, b) =>
+  a.source_id.localeCompare(b.source_id, "nb", { numeric: true }),
+);
+
+const REPO = "https://github.com/sheffielddivided/skogbranner";
+---
+
+<footer class="sidefot">
+  <div class="innramming">
+    <h2>Attribusjon og lisens</h2>
+
+    <ul class="attribusjon">
+      {
+        kilder.map((k) => (
+          <li>
+            <p class="attribusjon-navn">
+              <span class="kildelinje-merke">{k.source_id}</span>
+              <a href={k.url} rel="noreferrer">
+                {k.name}
+              </a>
+            </p>
+            {k.attribution && <p class="attribusjon-sitering"><cite>{k.attribution}</cite></p>}
+            <p class="attribusjon-lisens">
+              Lisens: <a href={k.license_url} rel="noreferrer">{k.license}</a>.
+              Data hentet {k.downloaded_at}.
+            </p>
+          </li>
+        ))
+      }
+    </ul>
+
+    <h2>Om siden</h2>
+    <p>
+      Koden er lisensiert under MIT. Teksten på siden er lisensiert under
+      CC BY 4.0. Bearbeidede data videreformidles under den strengeste av
+      kildelisensene, med kildeangivelse per serie.
+    </p>
+    <p>
+      Dette er et privat, ikke-kommersielt prosjekt uten tilknytning til noen
+      arbeidsgiver. <a href={REPO} rel="noreferrer">Kildekoden ligger på GitHub</a>.
+    </p>
+    <p>
+      Siden laster ingenting fra andre nettsteder. Den bruker ikke
+      informasjonskapsler og samler ikke inn data om deg.
+    </p>
+  </div>
+</footer>

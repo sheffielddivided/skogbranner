@@ -44,15 +44,42 @@ data/processed/       Kanoniske serier siden leser
 data/geo/             Forenklet geometri for kart
 data/_sources.json    Kildemetadata
 data/_status.json     Siste kjørestatus per kilde
-src/                  Nettsidens kildekode
+data/_footnotes.json  Fotnotekode → norsk tekst
+src/figurer/          Én modul per figur: graf, tabell og fotnoter
+src/komponenter/      Figur, innholdsnavigasjon, sidefot
+src/lib/              Datalesing, formatering, Plot-til-SVG
 public/               Statiske ressurser
 .github/workflows/    ETL-kjøring og deploy
 ```
 
+## Bygging
+
+```
+npm install
+npm run build      # → dist/
+npm run dev
+```
+
+Grafene tegnes med Observable Plot, men **i Node under bygging**, ikke i
+nettleseren. Det som legges ut er ferdig SVG, så leseren laster verken
+grafbibliotek eller annen JavaScript, og figurene vises også med skript slått
+av.
+
+Byggeavhengighetene — Astro (MIT), Observable Plot (ISC), linkedom (ISC) —
+sendes derfor aldri til leseren. Fullstendige lisenstekster ligger under
+`node_modules/` etter `npm install`.
+
+ETL-en kjøres som moduler fra repotoppen:
+
+```
+python -m etl.run
+python -m etl.validate
+```
+
 ## Status
 
-Oppstartsfase. Kun struktur og dokumentasjon. ETL og nettside er ikke
-implementert.
+ETL er i drift for K1. Nettsiden har skjelett med seks seksjoner, og S1 viser
+globalt brent areal per år. S2–S6 er ikke laget ennå.
 
 ## Lisens
 

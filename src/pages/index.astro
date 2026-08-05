@@ -1,0 +1,73 @@
+---
+/**
+ * Forsiden. Én lang side med seks seksjoner i rekkefølgen i CLAUDE.md § 8.
+ *
+ * Hver seksjon åpner med figuren. Forklarende tekst ligger under, også i
+ * DOM-rekkefølgen, slik at en skjermleser møter figuren først (P2).
+ *
+ * Foreløpig har bare S1 innhold. De øvrige står med overskrift og en merknad
+ * om at de ikke er laget ennå.
+ */
+import Side from "../layouts/Side.astro";
+import Figur from "../komponenter/Figur.astro";
+import { seksjoner } from "../lib/seksjoner";
+import { globaltBrentAreal } from "../figurer/globaltBrentAreal";
+
+const figurS1 = globaltBrentAreal();
+
+const [s1, ...resten] = seksjoner;
+---
+
+<Side
+  tittel="Skogbranner"
+  ingress="Et oppslagsverk over hva målingene av skogbrann sier, hvor langt tilbake de går, og hvor de er usikre."
+>
+  <section class="seksjon" id={s1!.id} aria-labelledby={`${s1!.id}-tittel`}>
+    <h2 id={`${s1!.id}-tittel`}>
+      <span class="seksjon-kode">{s1!.kode}</span>
+      {s1!.tittel}
+    </h2>
+
+    <Figur {...figurS1} />
+
+    <div class="seksjon-tekst">
+      <h3>Hva figuren viser</h3>
+      <p>
+        <strong>Brent areal</strong> er hvor stort område som har brent, målt i
+        kvadratkilometer. Det sier noe om hvor mye som brant, ikke hvor mange
+        branner det var. Én stor brann og mange små kan gi det samme arealet.
+      </p>
+      <p>
+        Tallene kommer fra satellitter. En <strong>satellittsensor</strong> er
+        et måleinstrument om bord som registrerer stråling fra bakken, og
+        brannspor kjennes igjen på at overflaten endrer farge og varme. Metoden
+        dekker hele kloden på samme måte, uten å være avhengig av at noen
+        rapporterer inn.
+      </p>
+      <p>
+        Den har også sine grenser. De minste brannene forsvinner mellom
+        målepunktene, og et bytte av sensor kan gi et brudd i serien.
+        Forbeholdene som gjelder akkurat denne figuren, står nummerert rett
+        under den.
+      </p>
+      <p>
+        Det siste året i figuren er ikke omme. Søylen viser bare det som er
+        registrert så langt, og er derfor ikke sammenlignbar med et helt år.
+        Den er tegnet med lysere flate og stiplet omriss for å skille den fra
+        de hele årene.
+      </p>
+    </div>
+  </section>
+
+  {
+    resten.map((s) => (
+      <section class="seksjon" id={s.id} aria-labelledby={`${s.id}-tittel`}>
+        <h2 id={`${s.id}-tittel`}>
+          <span class="seksjon-kode">{s.kode}</span>
+          {s.tittel}
+        </h2>
+        <p class="ikke-laget">Denne seksjonen er ikke laget ennå.</p>
+      </section>
+    ))
+  }
+</Side>
