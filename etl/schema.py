@@ -72,3 +72,33 @@ ACRE_TO_KM2 = 0.00404686
 # Relativt avvik mellom K1 og K2 for samme enhet og år som utløser en
 # oppføring i avviksrapporten.
 CROSSCHECK_THRESHOLD = 0.05
+
+# Ytre grenser for et gyldig årstall. Nedre grense er satt under den eldste
+# serien vi tar inn (K8 fra 1982, NBAC fra 1972). Øvre grense settes av
+# nedlastingsåret og beregnes i validate.py.
+YEAR_MIN = 1900
+
+
+# --- Serier (CLAUDE.md § 6) ---
+
+# series_id er stabile. En serie-id gjenbrukes aldri til en annen serie.
+SERIES_ID = frozenset({"owid_annual_area_burnt"})
+
+
+# --- Stier ---
+#
+# Ligger her for at ingen annen modul skal skrive stiene på nytt. Alle er
+# absolutte og utledet fra repotoppen, slik at pipelinen gir samme resultat
+# uansett arbeidskatalog.
+
+from pathlib import Path as _Path
+
+REPO_ROOT = _Path(__file__).resolve().parent.parent
+
+RAW_DIR = REPO_ROOT / "data" / "raw"
+PROCESSED_DIR = REPO_ROOT / "data" / "processed"
+GEO_DIR = REPO_ROOT / "data" / "geo"
+
+SOURCES_JSON = REPO_ROOT / "data" / "_sources.json"
+STATUS_JSON = REPO_ROOT / "data" / "_status.json"
+LAND_NO_JSON = GEO_DIR / "land_no.json"

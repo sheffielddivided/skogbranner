@@ -2,5 +2,38 @@
   "schema_version": 1,
   "_skjema": "se CLAUDE.md § 6 og etl/schema.py",
   "_om": "Kildemetadata for alle datasett siden bruker. Én oppføring per kilde, med kildekoden som nøkkel. Filen fylles av ETL ved nedlasting og leses av byggetrinnet for å produsere kildelinjen under hver figur og attribusjonsblokken i sidefoten. Filen er tom inntil første kilde er tatt inn.",
-  "sources": {}
+  "sources": {
+    "K1": {
+      "source_id": "K1",
+      "name": "Our World in Data — Annual area burnt by wildfires",
+      "publisher": "Our World in Data, med data fra Global Wildfire Information System (GWIS)",
+      "url": "https://ourworldindata.org/grapher/annual-area-burnt-by-wildfires",
+      "download_url": "https://ourworldindata.org/grapher/annual-area-burnt-by-wildfires.csv",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "attribution": "Global Wildfire Information System (2026) – with minor processing by Our World in Data. “Annual area burnt by wildfires – GWIS (MODIS & VIIRS)” [dataset]. Global Wildfire Information System, “Seasonal wildfire trends” [original data].",
+      "requires_agreement": false,
+      "geography": "global",
+      "coverage_start": "2012",
+      "coverage_end": "2026",
+      "temporal_resolution": "annual",
+      "quality": "measured",
+      "unit_source": "hectares",
+      "downloaded_at": "2026-08-05",
+      "source_last_updated": "2026-08-01",
+      "checksum": "a60fa5fded76cff4f7e76bc5f9e93e0f4bc2dc27a581914115d01808b6fab881",
+      "series": [
+        "owid_annual_area_burnt"
+      ],
+      "processed_files": [
+        "burned_area.json",
+        "burned_area.csv"
+      ],
+      "footnotes": [
+        "f_sensor_break",
+        "f_min_fire_size"
+      ],
+      "notes": "Area burnt by wildfires in hectares. The 2026 data is incomplete and was last updated 01 August 2026."
+    }
+  }
 }

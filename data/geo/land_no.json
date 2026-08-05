@@ -1,0 +1,1307 @@
+{
+  "_om": "Kode → norsk navn og nivå. Delt mapping for alle kilder, slik at samme land får samme norske navn uansett hvilken kilde tallet kommer fra. Filen er også fasit for hvilke entity-koder som er gyldige.",
+  "_skjema": "se CLAUDE.md § 6 og etl/schema.py",
+  "_koder": "Landkoder er ISO 3166-1 alpha-3. Tre territorier mangler ISO3-kode og har fått koder fra ISO 3166-1s brukerdefinerte X-område: XKX Kosovo, XNC Nord-Kypros, XAD Akrotiri og Dhekelia. Disse er merket med iso3: false. Regionkoder er valgt slik at de ikke kolliderer med tildelte ISO3-koder - merk at Nord-Amerika er NAC, ikke NAM, siden NAM er Namibia.",
+  "entities": {
+    "ABW": {
+      "entity_name": "Aruba",
+      "level": "country",
+      "iso3": true
+    },
+    "AFG": {
+      "entity_name": "Afghanistan",
+      "level": "country",
+      "iso3": true
+    },
+    "AFR": {
+      "entity_name": "Afrika",
+      "level": "region",
+      "iso3": false
+    },
+    "AGO": {
+      "entity_name": "Angola",
+      "level": "country",
+      "iso3": true
+    },
+    "AIA": {
+      "entity_name": "Anguilla",
+      "level": "country",
+      "iso3": true
+    },
+    "ALA": {
+      "entity_name": "Åland",
+      "level": "country",
+      "iso3": true
+    },
+    "ALB": {
+      "entity_name": "Albania",
+      "level": "country",
+      "iso3": true
+    },
+    "AND": {
+      "entity_name": "Andorra",
+      "level": "country",
+      "iso3": true
+    },
+    "ARE": {
+      "entity_name": "De forente arabiske emirater",
+      "level": "country",
+      "iso3": true
+    },
+    "ARG": {
+      "entity_name": "Argentina",
+      "level": "country",
+      "iso3": true
+    },
+    "ARM": {
+      "entity_name": "Armenia",
+      "level": "country",
+      "iso3": true
+    },
+    "ASI": {
+      "entity_name": "Asia",
+      "level": "region",
+      "iso3": false
+    },
+    "ASM": {
+      "entity_name": "Amerikansk Samoa",
+      "level": "country",
+      "iso3": true
+    },
+    "ATF": {
+      "entity_name": "De franske sørterritorier",
+      "level": "country",
+      "iso3": true
+    },
+    "ATG": {
+      "entity_name": "Antigua og Barbuda",
+      "level": "country",
+      "iso3": true
+    },
+    "AUS": {
+      "entity_name": "Australia",
+      "level": "country",
+      "iso3": true
+    },
+    "AUT": {
+      "entity_name": "Østerrike",
+      "level": "country",
+      "iso3": true
+    },
+    "AZE": {
+      "entity_name": "Aserbajdsjan",
+      "level": "country",
+      "iso3": true
+    },
+    "BDI": {
+      "entity_name": "Burundi",
+      "level": "country",
+      "iso3": true
+    },
+    "BEL": {
+      "entity_name": "Belgia",
+      "level": "country",
+      "iso3": true
+    },
+    "BEN": {
+      "entity_name": "Benin",
+      "level": "country",
+      "iso3": true
+    },
+    "BES": {
+      "entity_name": "Bonaire, Sint Eustatius og Saba",
+      "level": "country",
+      "iso3": true
+    },
+    "BFA": {
+      "entity_name": "Burkina Faso",
+      "level": "country",
+      "iso3": true
+    },
+    "BGD": {
+      "entity_name": "Bangladesh",
+      "level": "country",
+      "iso3": true
+    },
+    "BGR": {
+      "entity_name": "Bulgaria",
+      "level": "country",
+      "iso3": true
+    },
+    "BHR": {
+      "entity_name": "Bahrain",
+      "level": "country",
+      "iso3": true
+    },
+    "BHS": {
+      "entity_name": "Bahamas",
+      "level": "country",
+      "iso3": true
+    },
+    "BIH": {
+      "entity_name": "Bosnia-Hercegovina",
+      "level": "country",
+      "iso3": true
+    },
+    "BLM": {
+      "entity_name": "Saint-Barthélemy",
+      "level": "country",
+      "iso3": true
+    },
+    "BLR": {
+      "entity_name": "Belarus",
+      "level": "country",
+      "iso3": true
+    },
+    "BLZ": {
+      "entity_name": "Belize",
+      "level": "country",
+      "iso3": true
+    },
+    "BMU": {
+      "entity_name": "Bermuda",
+      "level": "country",
+      "iso3": true
+    },
+    "BOL": {
+      "entity_name": "Bolivia",
+      "level": "country",
+      "iso3": true
+    },
+    "BRA": {
+      "entity_name": "Brasil",
+      "level": "country",
+      "iso3": true
+    },
+    "BRB": {
+      "entity_name": "Barbados",
+      "level": "country",
+      "iso3": true
+    },
+    "BRN": {
+      "entity_name": "Brunei",
+      "level": "country",
+      "iso3": true
+    },
+    "BTN": {
+      "entity_name": "Bhutan",
+      "level": "country",
+      "iso3": true
+    },
+    "BVT": {
+      "entity_name": "Bouvetøya",
+      "level": "country",
+      "iso3": true
+    },
+    "BWA": {
+      "entity_name": "Botswana",
+      "level": "country",
+      "iso3": true
+    },
+    "CAF": {
+      "entity_name": "Den sentralafrikanske republikk",
+      "level": "country",
+      "iso3": true
+    },
+    "CAN": {
+      "entity_name": "Canada",
+      "level": "country",
+      "iso3": true
+    },
+    "CCK": {
+      "entity_name": "Kokosøyene",
+      "level": "country",
+      "iso3": true
+    },
+    "CHE": {
+      "entity_name": "Sveits",
+      "level": "country",
+      "iso3": true
+    },
+    "CHL": {
+      "entity_name": "Chile",
+      "level": "country",
+      "iso3": true
+    },
+    "CHN": {
+      "entity_name": "Kina",
+      "level": "country",
+      "iso3": true
+    },
+    "CIV": {
+      "entity_name": "Elfenbenskysten",
+      "level": "country",
+      "iso3": true
+    },
+    "CMR": {
+      "entity_name": "Kamerun",
+      "level": "country",
+      "iso3": true
+    },
+    "COD": {
+      "entity_name": "Kongo-Kinshasa",
+      "level": "country",
+      "iso3": true
+    },
+    "COG": {
+      "entity_name": "Kongo-Brazzaville",
+      "level": "country",
+      "iso3": true
+    },
+    "COK": {
+      "entity_name": "Cookøyene",
+      "level": "country",
+      "iso3": true
+    },
+    "COL": {
+      "entity_name": "Colombia",
+      "level": "country",
+      "iso3": true
+    },
+    "COM": {
+      "entity_name": "Komorene",
+      "level": "country",
+      "iso3": true
+    },
+    "CPV": {
+      "entity_name": "Kapp Verde",
+      "level": "country",
+      "iso3": true
+    },
+    "CRI": {
+      "entity_name": "Costa Rica",
+      "level": "country",
+      "iso3": true
+    },
+    "CUB": {
+      "entity_name": "Cuba",
+      "level": "country",
+      "iso3": true
+    },
+    "CUW": {
+      "entity_name": "Curaçao",
+      "level": "country",
+      "iso3": true
+    },
+    "CXR": {
+      "entity_name": "Christmasøya",
+      "level": "country",
+      "iso3": true
+    },
+    "CYM": {
+      "entity_name": "Caymanøyene",
+      "level": "country",
+      "iso3": true
+    },
+    "CYP": {
+      "entity_name": "Kypros",
+      "level": "country",
+      "iso3": true
+    },
+    "CZE": {
+      "entity_name": "Tsjekkia",
+      "level": "country",
+      "iso3": true
+    },
+    "DEU": {
+      "entity_name": "Tyskland",
+      "level": "country",
+      "iso3": true
+    },
+    "DJI": {
+      "entity_name": "Djibouti",
+      "level": "country",
+      "iso3": true
+    },
+    "DMA": {
+      "entity_name": "Dominica",
+      "level": "country",
+      "iso3": true
+    },
+    "DNK": {
+      "entity_name": "Danmark",
+      "level": "country",
+      "iso3": true
+    },
+    "DOM": {
+      "entity_name": "Den dominikanske republikk",
+      "level": "country",
+      "iso3": true
+    },
+    "DZA": {
+      "entity_name": "Algerie",
+      "level": "country",
+      "iso3": true
+    },
+    "ECU": {
+      "entity_name": "Ecuador",
+      "level": "country",
+      "iso3": true
+    },
+    "EGY": {
+      "entity_name": "Egypt",
+      "level": "country",
+      "iso3": true
+    },
+    "ERI": {
+      "entity_name": "Eritrea",
+      "level": "country",
+      "iso3": true
+    },
+    "ESH": {
+      "entity_name": "Vest-Sahara",
+      "level": "country",
+      "iso3": true
+    },
+    "ESP": {
+      "entity_name": "Spania",
+      "level": "country",
+      "iso3": true
+    },
+    "EST": {
+      "entity_name": "Estland",
+      "level": "country",
+      "iso3": true
+    },
+    "ETH": {
+      "entity_name": "Etiopia",
+      "level": "country",
+      "iso3": true
+    },
+    "EU27": {
+      "entity_name": "EU (27 land)",
+      "level": "region",
+      "iso3": false
+    },
+    "EUR": {
+      "entity_name": "Europa",
+      "level": "region",
+      "iso3": false
+    },
+    "EUR_XRU": {
+      "entity_name": "Europa (uten Russland)",
+      "level": "region",
+      "iso3": false
+    },
+    "FIN": {
+      "entity_name": "Finland",
+      "level": "country",
+      "iso3": true
+    },
+    "FJI": {
+      "entity_name": "Fiji",
+      "level": "country",
+      "iso3": true
+    },
+    "FLK": {
+      "entity_name": "Falklandsøyene",
+      "level": "country",
+      "iso3": true
+    },
+    "FRA": {
+      "entity_name": "Frankrike",
+      "level": "country",
+      "iso3": true
+    },
+    "FRO": {
+      "entity_name": "Færøyene",
+      "level": "country",
+      "iso3": true
+    },
+    "FSM": {
+      "entity_name": "Mikronesiaføderasjonen",
+      "level": "country",
+      "iso3": true
+    },
+    "GAB": {
+      "entity_name": "Gabon",
+      "level": "country",
+      "iso3": true
+    },
+    "GBR": {
+      "entity_name": "Storbritannia",
+      "level": "country",
+      "iso3": true
+    },
+    "GEO": {
+      "entity_name": "Georgia",
+      "level": "country",
+      "iso3": true
+    },
+    "GGY": {
+      "entity_name": "Guernsey",
+      "level": "country",
+      "iso3": true
+    },
+    "GHA": {
+      "entity_name": "Ghana",
+      "level": "country",
+      "iso3": true
+    },
+    "GIB": {
+      "entity_name": "Gibraltar",
+      "level": "country",
+      "iso3": true
+    },
+    "GIN": {
+      "entity_name": "Guinea",
+      "level": "country",
+      "iso3": true
+    },
+    "GLP": {
+      "entity_name": "Guadeloupe",
+      "level": "country",
+      "iso3": true
+    },
+    "GMB": {
+      "entity_name": "Gambia",
+      "level": "country",
+      "iso3": true
+    },
+    "GNB": {
+      "entity_name": "Guinea-Bissau",
+      "level": "country",
+      "iso3": true
+    },
+    "GNQ": {
+      "entity_name": "Ekvatorial-Guinea",
+      "level": "country",
+      "iso3": true
+    },
+    "GRC": {
+      "entity_name": "Hellas",
+      "level": "country",
+      "iso3": true
+    },
+    "GRD": {
+      "entity_name": "Grenada",
+      "level": "country",
+      "iso3": true
+    },
+    "GRL": {
+      "entity_name": "Grønland",
+      "level": "country",
+      "iso3": true
+    },
+    "GTM": {
+      "entity_name": "Guatemala",
+      "level": "country",
+      "iso3": true
+    },
+    "GUF": {
+      "entity_name": "Fransk Guyana",
+      "level": "country",
+      "iso3": true
+    },
+    "GUM": {
+      "entity_name": "Guam",
+      "level": "country",
+      "iso3": true
+    },
+    "GUY": {
+      "entity_name": "Guyana",
+      "level": "country",
+      "iso3": true
+    },
+    "HKG": {
+      "entity_name": "Hongkong",
+      "level": "country",
+      "iso3": true
+    },
+    "HMD": {
+      "entity_name": "Heard- og McDonaldøyene",
+      "level": "country",
+      "iso3": true
+    },
+    "HND": {
+      "entity_name": "Honduras",
+      "level": "country",
+      "iso3": true
+    },
+    "HRV": {
+      "entity_name": "Kroatia",
+      "level": "country",
+      "iso3": true
+    },
+    "HTI": {
+      "entity_name": "Haiti",
+      "level": "country",
+      "iso3": true
+    },
+    "HUN": {
+      "entity_name": "Ungarn",
+      "level": "country",
+      "iso3": true
+    },
+    "IDN": {
+      "entity_name": "Indonesia",
+      "level": "country",
+      "iso3": true
+    },
+    "IMN": {
+      "entity_name": "Man",
+      "level": "country",
+      "iso3": true
+    },
+    "IND": {
+      "entity_name": "India",
+      "level": "country",
+      "iso3": true
+    },
+    "IOT": {
+      "entity_name": "Det britiske territoriet i Indiahavet",
+      "level": "country",
+      "iso3": true
+    },
+    "IRL": {
+      "entity_name": "Irland",
+      "level": "country",
+      "iso3": true
+    },
+    "IRN": {
+      "entity_name": "Iran",
+      "level": "country",
+      "iso3": true
+    },
+    "IRQ": {
+      "entity_name": "Irak",
+      "level": "country",
+      "iso3": true
+    },
+    "ISL": {
+      "entity_name": "Island",
+      "level": "country",
+      "iso3": true
+    },
+    "ISR": {
+      "entity_name": "Israel",
+      "level": "country",
+      "iso3": true
+    },
+    "ITA": {
+      "entity_name": "Italia",
+      "level": "country",
+      "iso3": true
+    },
+    "JAM": {
+      "entity_name": "Jamaica",
+      "level": "country",
+      "iso3": true
+    },
+    "JEY": {
+      "entity_name": "Jersey",
+      "level": "country",
+      "iso3": true
+    },
+    "JOR": {
+      "entity_name": "Jordan",
+      "level": "country",
+      "iso3": true
+    },
+    "JPN": {
+      "entity_name": "Japan",
+      "level": "country",
+      "iso3": true
+    },
+    "KAZ": {
+      "entity_name": "Kasakhstan",
+      "level": "country",
+      "iso3": true
+    },
+    "KEN": {
+      "entity_name": "Kenya",
+      "level": "country",
+      "iso3": true
+    },
+    "KGZ": {
+      "entity_name": "Kirgisistan",
+      "level": "country",
+      "iso3": true
+    },
+    "KHM": {
+      "entity_name": "Kambodsja",
+      "level": "country",
+      "iso3": true
+    },
+    "KIR": {
+      "entity_name": "Kiribati",
+      "level": "country",
+      "iso3": true
+    },
+    "KNA": {
+      "entity_name": "Saint Kitts og Nevis",
+      "level": "country",
+      "iso3": true
+    },
+    "KOR": {
+      "entity_name": "Sør-Korea",
+      "level": "country",
+      "iso3": true
+    },
+    "KWT": {
+      "entity_name": "Kuwait",
+      "level": "country",
+      "iso3": true
+    },
+    "LAO": {
+      "entity_name": "Laos",
+      "level": "country",
+      "iso3": true
+    },
+    "LBN": {
+      "entity_name": "Libanon",
+      "level": "country",
+      "iso3": true
+    },
+    "LBR": {
+      "entity_name": "Liberia",
+      "level": "country",
+      "iso3": true
+    },
+    "LBY": {
+      "entity_name": "Libya",
+      "level": "country",
+      "iso3": true
+    },
+    "LCA": {
+      "entity_name": "Saint Lucia",
+      "level": "country",
+      "iso3": true
+    },
+    "LIE": {
+      "entity_name": "Liechtenstein",
+      "level": "country",
+      "iso3": true
+    },
+    "LKA": {
+      "entity_name": "Sri Lanka",
+      "level": "country",
+      "iso3": true
+    },
+    "LSO": {
+      "entity_name": "Lesotho",
+      "level": "country",
+      "iso3": true
+    },
+    "LTU": {
+      "entity_name": "Litauen",
+      "level": "country",
+      "iso3": true
+    },
+    "LUX": {
+      "entity_name": "Luxembourg",
+      "level": "country",
+      "iso3": true
+    },
+    "LVA": {
+      "entity_name": "Latvia",
+      "level": "country",
+      "iso3": true
+    },
+    "MAC": {
+      "entity_name": "Macao",
+      "level": "country",
+      "iso3": true
+    },
+    "MAF": {
+      "entity_name": "Saint-Martin",
+      "level": "country",
+      "iso3": true
+    },
+    "MAR": {
+      "entity_name": "Marokko",
+      "level": "country",
+      "iso3": true
+    },
+    "MCO": {
+      "entity_name": "Monaco",
+      "level": "country",
+      "iso3": true
+    },
+    "MDA": {
+      "entity_name": "Moldova",
+      "level": "country",
+      "iso3": true
+    },
+    "MDG": {
+      "entity_name": "Madagaskar",
+      "level": "country",
+      "iso3": true
+    },
+    "MDV": {
+      "entity_name": "Maldivene",
+      "level": "country",
+      "iso3": true
+    },
+    "MEX": {
+      "entity_name": "Mexico",
+      "level": "country",
+      "iso3": true
+    },
+    "MHL": {
+      "entity_name": "Marshalløyene",
+      "level": "country",
+      "iso3": true
+    },
+    "MKD": {
+      "entity_name": "Nord-Makedonia",
+      "level": "country",
+      "iso3": true
+    },
+    "MLI": {
+      "entity_name": "Mali",
+      "level": "country",
+      "iso3": true
+    },
+    "MLT": {
+      "entity_name": "Malta",
+      "level": "country",
+      "iso3": true
+    },
+    "MMR": {
+      "entity_name": "Myanmar",
+      "level": "country",
+      "iso3": true
+    },
+    "MNE": {
+      "entity_name": "Montenegro",
+      "level": "country",
+      "iso3": true
+    },
+    "MNG": {
+      "entity_name": "Mongolia",
+      "level": "country",
+      "iso3": true
+    },
+    "MNP": {
+      "entity_name": "Nord-Marianene",
+      "level": "country",
+      "iso3": true
+    },
+    "MOZ": {
+      "entity_name": "Mosambik",
+      "level": "country",
+      "iso3": true
+    },
+    "MRT": {
+      "entity_name": "Mauritania",
+      "level": "country",
+      "iso3": true
+    },
+    "MSR": {
+      "entity_name": "Montserrat",
+      "level": "country",
+      "iso3": true
+    },
+    "MTQ": {
+      "entity_name": "Martinique",
+      "level": "country",
+      "iso3": true
+    },
+    "MUS": {
+      "entity_name": "Mauritius",
+      "level": "country",
+      "iso3": true
+    },
+    "MWI": {
+      "entity_name": "Malawi",
+      "level": "country",
+      "iso3": true
+    },
+    "MYS": {
+      "entity_name": "Malaysia",
+      "level": "country",
+      "iso3": true
+    },
+    "MYT": {
+      "entity_name": "Mayotte",
+      "level": "country",
+      "iso3": true
+    },
+    "NAC": {
+      "entity_name": "Nord-Amerika",
+      "level": "region",
+      "iso3": false
+    },
+    "NAM": {
+      "entity_name": "Namibia",
+      "level": "country",
+      "iso3": true
+    },
+    "NCL": {
+      "entity_name": "Ny-Caledonia",
+      "level": "country",
+      "iso3": true
+    },
+    "NER": {
+      "entity_name": "Niger",
+      "level": "country",
+      "iso3": true
+    },
+    "NFK": {
+      "entity_name": "Norfolkøya",
+      "level": "country",
+      "iso3": true
+    },
+    "NGA": {
+      "entity_name": "Nigeria",
+      "level": "country",
+      "iso3": true
+    },
+    "NIC": {
+      "entity_name": "Nicaragua",
+      "level": "country",
+      "iso3": true
+    },
+    "NIU": {
+      "entity_name": "Niue",
+      "level": "country",
+      "iso3": true
+    },
+    "NLD": {
+      "entity_name": "Nederland",
+      "level": "country",
+      "iso3": true
+    },
+    "NOR": {
+      "entity_name": "Norge",
+      "level": "country",
+      "iso3": true
+    },
+    "NPL": {
+      "entity_name": "Nepal",
+      "level": "country",
+      "iso3": true
+    },
+    "NRU": {
+      "entity_name": "Nauru",
+      "level": "country",
+      "iso3": true
+    },
+    "NZL": {
+      "entity_name": "New Zealand",
+      "level": "country",
+      "iso3": true
+    },
+    "OCE": {
+      "entity_name": "Oseania",
+      "level": "region",
+      "iso3": false
+    },
+    "OMN": {
+      "entity_name": "Oman",
+      "level": "country",
+      "iso3": true
+    },
+    "PAK": {
+      "entity_name": "Pakistan",
+      "level": "country",
+      "iso3": true
+    },
+    "PAN": {
+      "entity_name": "Panama",
+      "level": "country",
+      "iso3": true
+    },
+    "PCN": {
+      "entity_name": "Pitcairn",
+      "level": "country",
+      "iso3": true
+    },
+    "PER": {
+      "entity_name": "Peru",
+      "level": "country",
+      "iso3": true
+    },
+    "PHL": {
+      "entity_name": "Filippinene",
+      "level": "country",
+      "iso3": true
+    },
+    "PLW": {
+      "entity_name": "Palau",
+      "level": "country",
+      "iso3": true
+    },
+    "PNG": {
+      "entity_name": "Papua Ny-Guinea",
+      "level": "country",
+      "iso3": true
+    },
+    "POL": {
+      "entity_name": "Polen",
+      "level": "country",
+      "iso3": true
+    },
+    "PRI": {
+      "entity_name": "Puerto Rico",
+      "level": "country",
+      "iso3": true
+    },
+    "PRK": {
+      "entity_name": "Nord-Korea",
+      "level": "country",
+      "iso3": true
+    },
+    "PRT": {
+      "entity_name": "Portugal",
+      "level": "country",
+      "iso3": true
+    },
+    "PRY": {
+      "entity_name": "Paraguay",
+      "level": "country",
+      "iso3": true
+    },
+    "PSE": {
+      "entity_name": "Palestina",
+      "level": "country",
+      "iso3": true
+    },
+    "PYF": {
+      "entity_name": "Fransk Polynesia",
+      "level": "country",
+      "iso3": true
+    },
+    "QAT": {
+      "entity_name": "Qatar",
+      "level": "country",
+      "iso3": true
+    },
+    "REU": {
+      "entity_name": "Réunion",
+      "level": "country",
+      "iso3": true
+    },
+    "ROU": {
+      "entity_name": "Romania",
+      "level": "country",
+      "iso3": true
+    },
+    "RUS": {
+      "entity_name": "Russland",
+      "level": "country",
+      "iso3": true
+    },
+    "RWA": {
+      "entity_name": "Rwanda",
+      "level": "country",
+      "iso3": true
+    },
+    "SAM": {
+      "entity_name": "Sør-Amerika",
+      "level": "region",
+      "iso3": false
+    },
+    "SAU": {
+      "entity_name": "Saudi-Arabia",
+      "level": "country",
+      "iso3": true
+    },
+    "SDN": {
+      "entity_name": "Sudan",
+      "level": "country",
+      "iso3": true
+    },
+    "SEN": {
+      "entity_name": "Senegal",
+      "level": "country",
+      "iso3": true
+    },
+    "SGP": {
+      "entity_name": "Singapore",
+      "level": "country",
+      "iso3": true
+    },
+    "SGS": {
+      "entity_name": "Sør-Georgia og Sør-Sandwichøyene",
+      "level": "country",
+      "iso3": true
+    },
+    "SHN": {
+      "entity_name": "St. Helena",
+      "level": "country",
+      "iso3": true
+    },
+    "SJM": {
+      "entity_name": "Svalbard og Jan Mayen",
+      "level": "country",
+      "iso3": true
+    },
+    "SLB": {
+      "entity_name": "Salomonøyene",
+      "level": "country",
+      "iso3": true
+    },
+    "SLE": {
+      "entity_name": "Sierra Leone",
+      "level": "country",
+      "iso3": true
+    },
+    "SLV": {
+      "entity_name": "El Salvador",
+      "level": "country",
+      "iso3": true
+    },
+    "SMR": {
+      "entity_name": "San Marino",
+      "level": "country",
+      "iso3": true
+    },
+    "SOM": {
+      "entity_name": "Somalia",
+      "level": "country",
+      "iso3": true
+    },
+    "SPM": {
+      "entity_name": "Saint-Pierre og Miquelon",
+      "level": "country",
+      "iso3": true
+    },
+    "SRB": {
+      "entity_name": "Serbia",
+      "level": "country",
+      "iso3": true
+    },
+    "SSD": {
+      "entity_name": "Sør-Sudan",
+      "level": "country",
+      "iso3": true
+    },
+    "STP": {
+      "entity_name": "São Tomé og Príncipe",
+      "level": "country",
+      "iso3": true
+    },
+    "SUR": {
+      "entity_name": "Surinam",
+      "level": "country",
+      "iso3": true
+    },
+    "SVK": {
+      "entity_name": "Slovakia",
+      "level": "country",
+      "iso3": true
+    },
+    "SVN": {
+      "entity_name": "Slovenia",
+      "level": "country",
+      "iso3": true
+    },
+    "SWE": {
+      "entity_name": "Sverige",
+      "level": "country",
+      "iso3": true
+    },
+    "SWZ": {
+      "entity_name": "Eswatini",
+      "level": "country",
+      "iso3": true
+    },
+    "SXM": {
+      "entity_name": "Sint Maarten",
+      "level": "country",
+      "iso3": true
+    },
+    "SYC": {
+      "entity_name": "Seychellene",
+      "level": "country",
+      "iso3": true
+    },
+    "SYR": {
+      "entity_name": "Syria",
+      "level": "country",
+      "iso3": true
+    },
+    "TCA": {
+      "entity_name": "Turks- og Caicosøyene",
+      "level": "country",
+      "iso3": true
+    },
+    "TCD": {
+      "entity_name": "Tsjad",
+      "level": "country",
+      "iso3": true
+    },
+    "TGO": {
+      "entity_name": "Togo",
+      "level": "country",
+      "iso3": true
+    },
+    "THA": {
+      "entity_name": "Thailand",
+      "level": "country",
+      "iso3": true
+    },
+    "TJK": {
+      "entity_name": "Tadsjikistan",
+      "level": "country",
+      "iso3": true
+    },
+    "TKL": {
+      "entity_name": "Tokelau",
+      "level": "country",
+      "iso3": true
+    },
+    "TKM": {
+      "entity_name": "Turkmenistan",
+      "level": "country",
+      "iso3": true
+    },
+    "TLS": {
+      "entity_name": "Øst-Timor",
+      "level": "country",
+      "iso3": true
+    },
+    "TON": {
+      "entity_name": "Tonga",
+      "level": "country",
+      "iso3": true
+    },
+    "TTO": {
+      "entity_name": "Trinidad og Tobago",
+      "level": "country",
+      "iso3": true
+    },
+    "TUN": {
+      "entity_name": "Tunisia",
+      "level": "country",
+      "iso3": true
+    },
+    "TUR": {
+      "entity_name": "Tyrkia",
+      "level": "country",
+      "iso3": true
+    },
+    "TUV": {
+      "entity_name": "Tuvalu",
+      "level": "country",
+      "iso3": true
+    },
+    "TWN": {
+      "entity_name": "Taiwan",
+      "level": "country",
+      "iso3": true
+    },
+    "TZA": {
+      "entity_name": "Tanzania",
+      "level": "country",
+      "iso3": true
+    },
+    "UGA": {
+      "entity_name": "Uganda",
+      "level": "country",
+      "iso3": true
+    },
+    "UKR": {
+      "entity_name": "Ukraina",
+      "level": "country",
+      "iso3": true
+    },
+    "UMI": {
+      "entity_name": "USAs ytre småøyer",
+      "level": "country",
+      "iso3": true
+    },
+    "URY": {
+      "entity_name": "Uruguay",
+      "level": "country",
+      "iso3": true
+    },
+    "USA": {
+      "entity_name": "USA",
+      "level": "country",
+      "iso3": true
+    },
+    "UZB": {
+      "entity_name": "Usbekistan",
+      "level": "country",
+      "iso3": true
+    },
+    "VAT": {
+      "entity_name": "Vatikanstaten",
+      "level": "country",
+      "iso3": true
+    },
+    "VCT": {
+      "entity_name": "Saint Vincent og Grenadinene",
+      "level": "country",
+      "iso3": true
+    },
+    "VEN": {
+      "entity_name": "Venezuela",
+      "level": "country",
+      "iso3": true
+    },
+    "VGB": {
+      "entity_name": "De britiske jomfruøyene",
+      "level": "country",
+      "iso3": true
+    },
+    "VIR": {
+      "entity_name": "De amerikanske jomfruøyene",
+      "level": "country",
+      "iso3": true
+    },
+    "VNM": {
+      "entity_name": "Vietnam",
+      "level": "country",
+      "iso3": true
+    },
+    "VUT": {
+      "entity_name": "Vanuatu",
+      "level": "country",
+      "iso3": true
+    },
+    "WLD": {
+      "entity_name": "Verden",
+      "level": "world",
+      "iso3": false
+    },
+    "WLF": {
+      "entity_name": "Wallis og Futuna",
+      "level": "country",
+      "iso3": true
+    },
+    "WSM": {
+      "entity_name": "Samoa",
+      "level": "country",
+      "iso3": true
+    },
+    "XAD": {
+      "entity_name": "Akrotiri og Dhekelia",
+      "level": "country",
+      "iso3": false
+    },
+    "XKX": {
+      "entity_name": "Kosovo",
+      "level": "country",
+      "iso3": false
+    },
+    "XNC": {
+      "entity_name": "Nord-Kypros",
+      "level": "country",
+      "iso3": false
+    },
+    "YEM": {
+      "entity_name": "Jemen",
+      "level": "country",
+      "iso3": true
+    },
+    "ZAF": {
+      "entity_name": "Sør-Afrika",
+      "level": "country",
+      "iso3": true
+    },
+    "ZMB": {
+      "entity_name": "Zambia",
+      "level": "country",
+      "iso3": true
+    },
+    "ZWE": {
+      "entity_name": "Zimbabwe",
+      "level": "country",
+      "iso3": true
+    }
+  }
+}

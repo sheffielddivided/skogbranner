@@ -238,14 +238,17 @@ Endres en enumerasjon, endres begge stedene i samme commit.
 etl/                Python-pakke. __init__.py er tom.
   sources/          Én modul per kilde. Kun henting + råformat-parsing.
                     Egen pakke, med tom __init__.py.
-  schema.py         Enumerasjonene i kode. Alt annet importerer herfra (T5).
+  schema.py         Enumerasjonene, tersklene og stiene. Alt annet
+                    importerer herfra (T5).
   normalize.py      Kanonisk form. All enhetskonvertering skjer her.
   derive.py         Maskinelle avledninger → data/processed/insights.json
   validate.py       Kontrollerer at output er gyldig før publisering
+  run.py            Kjører pipelinen: hent → normaliser → valider → publiser
 data/
   raw/              Uendrede kildefiler. GITIGNORERT. Aldri committet.
   processed/        Kanoniske serier siden faktisk leser. Committes.
   geo/              Forenklet geometri for kart. Committes.
+    land_no.json    Entitetskode → norsk navn og nivå. Delt av alle kilder.
   _sources.json     Kildemetadata: lisens, lenke, dekning, nedlastingsdato
   _status.json      Siste kjørestatus per kilde, for degradert visning
 src/                Nettsidens kildekode
@@ -420,6 +423,26 @@ Alle kilder normaliseres til langformat før publisering:
 - `period`: ISO 8601 — `YYYY`, `YYYY-MM` eller `YYYY-Www`
 - `quality`: `measured` | `reported` | `beta` | `reconstructed`
 - `unit`: `km2` | `share` | `zscore`
+
+### Entitetskoder
+
+`data/geo/land_no.json` er **fasit** for hvilke `entity`-koder som finnes, hva
+de heter på norsk, og hvilket `level` de har. Alle kilder slår opp der, slik at
+samme land får samme norske navn uansett hvilken kilde tallet kommer fra.
+`validate.py` avviser en observasjon med en `entity` som ikke står i filen.
+
+- **Land** bruker ISO 3166-1 alpha-3.
+- **Tre territorier mangler ISO3-kode** og har fått koder fra ISO 3166-1s
+  brukerdefinerte X-område: `XKX` Kosovo, `XNC` Nord-Kypros, `XAD` Akrotiri og
+  Dhekelia. De er merket `iso3: false` i filen, slik at ISO3-kontrollen ikke
+  slår ut på dem.
+- **Regionkoder** er valgt så de ikke kolliderer med tildelte ISO3-koder:
+  `WLD` verden, `EUR` Europa, `EUR_XRU` Europa uten Russland, `EU27` EU,
+  `AFR`, `ASI`, `NAC` Nord-Amerika, `SAM` Sør-Amerika, `OCE` Oseania.
+
+**`NAC`, ikke `NAM`, for Nord-Amerika.** `NAM` er ISO3 for Namibia. Kilder som
+bruker en egen kode for Nord-Amerika må oversettes i kildemodulen, ikke tas inn
+rått.
 
 ### Indikatorer
 
@@ -692,13 +715,21 @@ sluttbrukeravtale tas ikke inn før avtalen er avklart og notert i
 
 ## 12. Status
 
-Mappestruktur, konfigurasjon, dette dokumentet og `etl/schema.py` finnes.
+**Implementert og i drift:**
 
-**`etl/schema.py` er implementert.** Den inneholder enumerasjonene og
-tersklene, og er ikke en stubb. Den skal ikke skrives på nytt — den utvides når
-en ny enumerasjon kommer til.
+- `etl/schema.py` — enumerasjonene, tersklene og stiene
+- `etl/sources/k1_owid.py` — K1, henting og råformat
+- `etl/normalize.py` — kanonisk form, hektar → km²
+- `etl/validate.py` — kontrollene i § 6 og § 11
+- `etl/run.py` — pipelinen
+- `data/geo/land_no.json` — 260 entiteter med norske navn
+- `data/processed/burned_area.json` og `.csv` — K1, 2012–, 3900 observasjoner
 
-Øvrige `etl/*.py` inneholder kun beskrivelse av ansvarsområde. Skriv dem ikke
-uten at det er bedt om det.
+Ingen av disse er stubber. De skal ikke skrives på nytt.
 
-**Neste steg:** datamodellen og K1.
+**Ikke implementert:** `etl/derive.py` inneholder kun beskrivelse av
+ansvarsområde. Ingen nettside finnes ennå — `src/` og `public/` er tomme, og
+det er ingen workflow i `.github/workflows/`.
+
+**Neste steg:** `derive.py` og `insights.json`, deretter første seksjon av
+siden.
