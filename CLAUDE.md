@@ -640,6 +640,9 @@ sluttbrukeravtale tas ikke inn før avtalen er avklart og notert i
 - [ ] Ingen kodefil gjentar regler fra CLAUDE.md — den refererer til dem (T5)
 - [ ] Enumerasjoner importeres fra `etl/schema.py`, aldri definert på nytt i
       en annen fil (T5)
+- [ ] Importer er absolutte (`from etl.x import ...`), kjørt som modul fra
+      repotoppen (`python -m etl.<modul>`). Ingen relative importer, ingen
+      `sys.path`-manipulering (§ 4)
 
 ---
 
