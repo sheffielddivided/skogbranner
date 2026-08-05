@@ -316,8 +316,12 @@ kilde.
 ### Navnekilde: SSB Klass
 
 De norske landnavnene kommer fra **Statistisk sentralbyrås standard for
-landkoder alfa-3** (Klass 1219), som knytter ISO 3166-1-koder til offisielle
+landkoder alfa-3** (Klass 552), som knytter ISO 3166-1-koder til offisielle
 norske navn.
+
+Standarden har én versjon per revisjon. `ssb_klass.py` slår opp den gjeldende
+versjonen ved kjøring i stedet for å låse en versjons-id, slik at en revisjon
+hos SSB kommer med av seg selv.
 
 SSB leverer **navn, ikke tallverdier**. Den tegnes ikke som en serie, står
 ikke i kildekolonnen i § 8, og har derfor ingen K-kode. Den hører hjemme her
@@ -327,6 +331,16 @@ fordi navnene er synlige for leseren og må kunne spores.
 `data/geo/land_no.json`. Håndskrevne navn er ikke tillatt — endres et navn,
 endres det i SSBs standard eller i overstyringsfilen, aldri direkte i
 `land_no.json`.
+
+**Det SSB ikke dekker.** Standarden fører land og territorier, ikke
+aggregater. Regionkodene, verdenskoden og `NONISO_`-kodene finnes derfor ikke
+hos SSB, og navngis i `ssb_klass.py`. Det er ikke et unntak fra regelen over —
+det finnes ingen SSB-form å hente for en kode SSB ikke har.
+
+To avvik går andre veien: SSB fører Kosovo som `XXK`, mens vi bruker `XKX`
+(§ 6), så oppføringen leses under SSBs kode og lagres under vår. Og
+oppføringene «Uoppgitt» og «Statsløs» er ikke geografiske entiteter og tas
+ikke inn.
 
 **Overstyringer.** Der SSBs form er uklar for en allmenn leser, overstyres den
 i `data/geo/land_no_overrides.json`. Hver overstyring skal ha en begrunnelse i

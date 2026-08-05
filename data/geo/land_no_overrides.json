@@ -1,5 +1,5 @@
 {
-  "_om": "Redaksjonelle overstyringer av de norske navnene fra SSBs standard for landkoder alfa-3 (Klass 1219). Brukes kun der SSBs form er uklar for en allmenn leser. Hver overstyring skal ha en begrunnelse. Se CLAUDE.md § 5.",
+  "_om": "Redaksjonelle overstyringer av de norske navnene fra SSBs standard for landkoder alfa-3 (Klass 552). Brukes kun der SSBs form er uklar for en allmenn leser. Hver overstyring skal ha en begrunnelse. Se CLAUDE.md § 5.",
   "_skjema": "se CLAUDE.md § 6 og etl/schema.py",
   "overrides": {
     "COD": {
