@@ -316,8 +316,12 @@ kilde.
 ### Navnekilde: SSB Klass
 
 De norske landnavnene kommer fra **Statistisk sentralbyrås standard for
-landkoder alfa-3** (Klass 1219), som knytter ISO 3166-1-koder til offisielle
+landkoder alfa-3** (Klass 552), som knytter ISO 3166-1-koder til offisielle
 norske navn.
+
+Standarden har én versjon per revisjon. `ssb_klass.py` slår opp den gjeldende
+versjonen ved kjøring i stedet for å låse en versjons-id, slik at en revisjon
+hos SSB kommer med av seg selv.
 
 SSB leverer **navn, ikke tallverdier**. Den tegnes ikke som en serie, står
 ikke i kildekolonnen i § 8, og har derfor ingen K-kode. Den hører hjemme her
@@ -327,6 +331,21 @@ fordi navnene er synlige for leseren og må kunne spores.
 `data/geo/land_no.json`. Håndskrevne navn er ikke tillatt — endres et navn,
 endres det i SSBs standard eller i overstyringsfilen, aldri direkte i
 `land_no.json`.
+
+**Det SSB ikke dekker.** Standarden fører land og territorier, ikke
+aggregater. Regionkodene, verdenskoden og `NONISO_`-kodene finnes derfor ikke
+hos SSB, og navngis i `ssb_klass.py`. Det er ikke et unntak fra regelen over —
+det finnes ingen SSB-form å hente for en kode SSB ikke har.
+
+To avvik går andre veien: SSB fører Kosovo som `XXK`, mens vi bruker `XKX`
+(§ 6), så oppføringen leses under SSBs kode og lagres under vår. Og
+oppføringene «Uoppgitt» og «Statsløs» er ikke geografiske entiteter og tas
+ikke inn.
+
+Antarktis står i standarden, men ingen kilde vi bruker rapporterer entiteten,
+og den holdes ute så tabellen bare inneholder entiteter det finnes tall for.
+Kommer en kilde med tall for den, avviser `validate.py` observasjonen, og da
+tas koden inn.
 
 **Overstyringer.** Der SSBs form er uklar for en allmenn leser, overstyres den
 i `data/geo/land_no_overrides.json`. Hver overstyring skal ha en begrunnelse i
@@ -856,10 +875,11 @@ sluttbrukeravtale tas ikke inn før avtalen er avklart og notert i
 
 - `etl/schema.py` — enumerasjonene, tersklene og stiene
 - `etl/sources/k1_owid.py` — K1, henting og råformat
+- `etl/sources/ssb_klass.py` — navnekilden, bygger `land_no.json`
 - `etl/normalize.py` — kanonisk form, hektar → km²
 - `etl/validate.py` — kontrollene i § 6 og § 11
 - `etl/run.py` — pipelinen
-- `data/geo/land_no.json` — 260 entiteter med norske navn
+- `data/geo/land_no.json` — 260 entiteter, generert fra SSB
 - `data/processed/burned_area.json` og `.csv` — K1, 2012–, 3900 observasjoner
 
 Ingen av disse er stubber. De skal ikke skrives på nytt.
@@ -867,6 +887,11 @@ Ingen av disse er stubber. De skal ikke skrives på nytt.
 **Ikke implementert:** `etl/derive.py` inneholder kun beskrivelse av
 ansvarsområde. Ingen nettside finnes ennå — `src/` og `public/` er tomme, og
 det er ingen workflow i `.github/workflows/`.
+
+**Utestående:** `land_no.json` er regenerert fra SSB, og elleve navn er endret.
+`data/processed/` bærer fortsatt de gamle navnene, så `validate.py` feiler til
+`normalize.py` er kjørt på nytt. Det krever en henting av K1 og hører derfor
+hjemme i en workflow (T4), ikke i en sesjon.
 
 **Neste steg:** `derive.py` og `insights.json`, deretter første seksjon av
 siden.

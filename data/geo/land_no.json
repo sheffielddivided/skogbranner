@@ -1,7 +1,7 @@
 {
-  "_om": "Kode → norsk navn og nivå. Delt mapping for alle kilder, slik at samme land får samme norske navn uansett hvilken kilde tallet kommer fra. Filen er også fasit for hvilke entity-koder som er gyldige.",
+  "_om": "Entity-kode → norsk navn og nivå. Delt mapping for alle kilder, slik at samme land får samme norske navn uansett hvilken kilde tallet kommer fra. Filen er også fasit for hvilke entity-koder som er gyldige. Generert av etl/sources/ssb_klass.py — rediger ikke for hånd.",
   "_skjema": "se CLAUDE.md § 6 og etl/schema.py",
-  "_koder": "Landkoder er ISO 3166-1 alpha-3. Koder utenfor ISO 3166 er våre egne og er merket iso3: false. XKX for Kosovo beholder X-formen fordi den er utbredt praksis og gjenkjennes av andre datasett. Territorier uten noen etablert kode får prefikset NONISO_, som ikke kan forveksles med en ISO-kode siden ISO 3166 ikke bruker understrek. Regionkoder er valgt så de ikke kolliderer med tildelte ISO3-koder - merk at Nord-Amerika er NAC, ikke NAM, siden NAM er Namibia.",
+  "_navnekilde": "SSB, standard for landkoder alfa-3 (Klass 552), https://www.ssb.no/klass/klassifikasjoner/552. Versjon: Landkoder (alfa-3) 2023, gyldig fra 2023-01-01. Regionkoder, verdenskoden og koder utenfor ISO 3166 dekkes ikke av standarden og navngis i ssb_klass.py. Redaksjonelle overstyringer i land_no_overrides.json.",
   "entities": {
     "ABW": {
       "entity_name": "Aruba",
@@ -549,7 +549,7 @@
       "iso3": true
     },
     "IOT": {
-      "entity_name": "Det britiske territoriet i Indiahavet",
+      "entity_name": "Det britiske territorium i Indiahavet",
       "level": "country",
       "iso3": true
     },
@@ -629,7 +629,7 @@
       "iso3": true
     },
     "KNA": {
-      "entity_name": "Saint Kitts og Nevis",
+      "entity_name": "St. Kitts og Nevis",
       "level": "country",
       "iso3": true
     },
@@ -664,7 +664,7 @@
       "iso3": true
     },
     "LCA": {
-      "entity_name": "Saint Lucia",
+      "entity_name": "St. Lucia",
       "level": "country",
       "iso3": true
     },
@@ -704,7 +704,7 @@
       "iso3": true
     },
     "MAF": {
-      "entity_name": "Saint-Martin",
+      "entity_name": "Saint-Martin (FR)",
       "level": "country",
       "iso3": true
     },
@@ -1029,7 +1029,7 @@
       "iso3": true
     },
     "SHN": {
-      "entity_name": "St. Helena",
+      "entity_name": "Sankt Helena, Ascension og Tristan da Cunha",
       "level": "country",
       "iso3": true
     },
@@ -1064,7 +1064,7 @@
       "iso3": true
     },
     "SPM": {
-      "entity_name": "Saint-Pierre og Miquelon",
+      "entity_name": "Saint-Pierre-et-Miquelon",
       "level": "country",
       "iso3": true
     },
@@ -1109,7 +1109,7 @@
       "iso3": true
     },
     "SXM": {
-      "entity_name": "Sint Maarten",
+      "entity_name": "Sint Maarten (NL)",
       "level": "country",
       "iso3": true
     },
@@ -1234,7 +1234,7 @@
       "iso3": true
     },
     "VCT": {
-      "entity_name": "Saint Vincent og Grenadinene",
+      "entity_name": "St. Vincent og Grenadinene",
       "level": "country",
       "iso3": true
     },
@@ -1244,12 +1244,12 @@
       "iso3": true
     },
     "VGB": {
-      "entity_name": "De britiske jomfruøyene",
+      "entity_name": "De britiske Jomfruøyer",
       "level": "country",
       "iso3": true
     },
     "VIR": {
-      "entity_name": "De amerikanske jomfruøyene",
+      "entity_name": "De amerikanske Jomfruøyer",
       "level": "country",
       "iso3": true
     },
@@ -1269,7 +1269,7 @@
       "iso3": false
     },
     "WLF": {
-      "entity_name": "Wallis og Futuna",
+      "entity_name": "Wallis- og Futunaøyene",
       "level": "country",
       "iso3": true
     },
