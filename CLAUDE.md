@@ -361,10 +361,23 @@ disse kildene uten siteringen skal ikke publiseres.
 > Data. Natural Resources Canada, Canadian Forest Service, Northern Forestry
 > Centre, Edmonton, Alberta. https://cwfis.cfs.nrcan.gc.ca/ha/nfdb
 
-**K9 — GFED5.** DOI legges i `data/_sources.json` når kilden hentes.
+**K9 — GFED5.**
 
-> van der Werf, G. et al. (2025). Landscape fire emissions from the 5th
-> version of the Global Fire Emissions Database (GFED5). Scientific Data.
+> van der Werf, G.R., Randerson, J.T., van Wees, D., Chen, Y., Giglio, L.,
+> Hall, J., Vernooij, R., Mu, M., Binte Shahid, S., Barsanti, K.C., Yokelson,
+> R. & Morton, D.C. (2025). Landscape fire emissions from the 5th version of
+> the Global Fire Emissions Database (GFED5). Scientific Data 12, 1870.
+> https://doi.org/10.1038/s41597-025-06127-w
+
+Når K9 hentes, legges følgende i `data/_sources.json`:
+
+- `doi`: `10.1038/s41597-025-06127-w`
+- Den publiserte rettelsen som **eget felt**: Publisher Correction, Scientific
+  Data 13, 44 (15. januar 2026),
+  `https://doi.org/10.1038/s41597-026-06613-9`
+
+Rettelsen føres som eget felt, ikke som en endring av siteringen, slik at det
+er sporbart hvilken versjon av artikkelen datasettet er dokumentert av.
 
 **K10 — Global Charcoal Database.**
 
