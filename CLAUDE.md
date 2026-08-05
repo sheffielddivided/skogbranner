@@ -463,10 +463,20 @@ en ny versjon.
 
   Kompositten bygges av R-pakkene `GCD` og `paleofire`, som er de samme
   verktøyene metoden er publisert med. `paleofire` ble trukket fra CRAN i
-  januar 2023 og installeres fra arkivet. Siste versjon importerer `rgdal`, som
-  selv ble trukket i oktober 2023, og som pakken bare bruker i funksjoner vi
-  ikke kaller. Installasjonssteget fjerner den derfor før pakken bygges, og at
-  pakken er lappet, står i `data/_sources.json`. Selve kompositten røres ikke.
+  januar 2023 og installeres fra arkivet. Pakken er fra 2019 og trenger to
+  mekaniske lapper for å kunne installeres og lastes i dag:
+
+  - `NAMESPACE` importerer `rgdal`, som selv ble trukket i oktober 2023, og som
+    pakken bare bruker i funksjoner vi ikke kaller.
+  - `pfTransform` avgjør med en kjede av `||`-sammenligninger om en av de
+    rullende metodene er bedt om. R 4.3 gjorde det til en feil å gi `||` en
+    vektor, og `method` *er* en vektor når kompositten bygges med flere
+    metoder.
+
+  Begge lappene står i `etl/sources/k10_lapp_paleofire.py`, som stopper hvis
+  pakken ikke ser ut som lappene er skrevet for — en annen versjon skal ikke
+  lappes blindt. Beregningene kompositten bygges av, røres ikke. At pakken er
+  lappet, står i `data/_sources.json`.
 
   R-skriptet skriver CSV-en før det gjør noe annet med resultatet. En kompositt
   som først er beregnet, skal ikke gå tapt fordi et senere steg feiler.

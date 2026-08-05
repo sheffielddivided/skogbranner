@@ -84,30 +84,21 @@ jobs:
             libproj-dev libgdal-dev libgeos-dev
 
       # paleofire ble trukket fra CRAN i januar 2023 og finnes bare i arkivet.
-      # Siste versjon importerer rgdal, som selv ble trukket i oktober 2023.
-      # rgdal brukes kun av pfGridding og pfToKml, som vi ikke kaller — det er
-      # NAMESPACE som krever pakken ved lasting. Her fjernes den derfra, og de
-      # to filene som bruker den, tas ut. Funksjonene kompositten bygges av
-      # røres ikke. Lappingen er notert i data/_sources.json.
+      # Pakken er fra 2019 og trenger to mekaniske lapper for å kunne
+      # installeres og lastes i dag — se etl/sources/k10_lapp_paleofire.py, som
+      # stopper hvis pakken ikke ser ut som lappene er skrevet for. Lappingen
+      # er notert i data/_sources.json.
       - name: Installer R-pakker — K10
         if: ${{ !inputs.kun_katalog && inputs.kilde == 'k10' }}
         run: |
           set -euo pipefail
-          Rscript -e 'install.packages(c("GCD","locfit","raster","ggplot2","plyr","lattice"))'
+          Rscript -e 'install.packages(c("GCD","locfit","raster","ggplot2","plyr","lattice","caTools","gtools"))'
 
           arkiv=https://cran.r-project.org/src/contrib/Archive/paleofire
           curl -fsSL -o paleofire.tar.gz "$arkiv/paleofire_1.2.4.tar.gz"
           tar xzf paleofire.tar.gz
 
-          sed -i 's/GCD,rgdal,lattice,raster)/GCD,lattice,raster)/' paleofire/NAMESPACE
-          sed -i 's/^Imports: locfit, raster, ggplot2, plyr, rgdal, lattice$/Imports: locfit, raster, ggplot2, plyr, lattice/' paleofire/DESCRIPTION
-          rm -f paleofire/R/pfGridding.R paleofire/R/pfToKml.R
-
-          if grep -q rgdal paleofire/NAMESPACE paleofire/DESCRIPTION; then
-            echo "::error::rgdal står fortsatt igjen i paleofire etter lappingen."
-            grep -n rgdal paleofire/NAMESPACE paleofire/DESCRIPTION
-            exit 1
-          fi
+          python -m etl.sources.k10_lapp_paleofire paleofire
 
           R CMD INSTALL paleofire
           # Lasting er den egentlige prøven: byggingen kan gå gjennom selv om
