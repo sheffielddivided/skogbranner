@@ -27,7 +27,7 @@ from etl.schema import (
     PROCESSED_DIR,
     PROCESSED_FILE,
 )
-from etl.sources import k1_owid, k2_gwis, k3_effis, k5_nifc, k7_nbac
+from etl.sources import k1_owid, k2_gwis, k3_effis, k4_effis, k5_nifc, k7_nbac
 
 FELT = [
     "entity",
@@ -220,25 +220,104 @@ def fra_k2(rader, info):
     return observasjoner
 
 
-def fra_k3(rader, info):
-    """Gjør EFFIS-rader om til kanoniske observasjoner.
+def fra_k3(areal, antall, info):
+    """Gjør EFFIS' nasjonalt rapporterte landtotaler om til observasjoner.
 
-    Kilden leverer hektar, som konverteres til km² her.
+    Kilden leverer hektar, som konverteres til km² her. Branntallet har ingen
+    enhet å konvertere.
 
-    Kvaliteten står i k3_effis.KVALITET, med begrunnelsen for verdien der.
-    Fotnotene følger av hva kartleggingen faktisk er: sensorene har skiftet
-    (MODIS, VIIRS, Sentinel-2), de minste brannene kom først med fra 2018, og
-    antallet land i EFFIS-nettverket har økt over tid.
+    Tallene er rapportert inn av landene selv, etter deres egne definisjoner,
+    derfor f_reporting_basis. Serien begynner i 1980 med fem land, og flere
+    kommer til utover i serien, derfor f_coverage_change.
+
+    En tom celle i regnearket betyr at landet ikke rapporterte det året. Den
+    er allerede utelatt i kildemodulen, og skal aldri bli en 0 her.
     """
     land = _land()
     ufullstendig_aar = int(info["downloaded_at"][:4])
-    grunnfotnoter = ["f_sensor_break", "f_min_fire_size", "f_coverage_change"]
+    grunnfotnoter = ["f_reporting_basis", "f_coverage_change"]
+
+    observasjoner = []
+    ukjente = set()
+
+    def legg_til(rader, indikator, enhet, serie, omregn):
+        for rad in rader:
+            kode = k3_effis.entity_kode(rad["code"])
+            if kode not in land:
+                ukjente.add((rad["code"], kode))
+                continue
+
+            aar = rad["year"]
+            fotnoter = list(grunnfotnoter)
+            if aar >= ufullstendig_aar:
+                fotnoter.append("f_incomplete_year")
+
+            observasjoner.append(
+                _observasjon(
+                    kode,
+                    land,
+                    aar,
+                    indikator,
+                    enhet,
+                    omregn(rad["value"]),
+                    k3_effis.SOURCE_ID,
+                    serie,
+                    k3_effis.KVALITET,
+                    fotnoter,
+                )
+            )
+
+    legg_til(
+        areal,
+        INDIKATOR,
+        ENHET,
+        k3_effis.SERIES_BURNED_AREA,
+        lambda v: round(v * HA_TO_KM2, DESIMALER),
+    )
+    legg_til(
+        antall,
+        INDIKATOR_ANTALL,
+        ENHET_ANTALL,
+        k3_effis.SERIES_FIRE_COUNT,
+        lambda v: int(round(v)),
+    )
+
+    if ukjente:
+        raise ValueError(
+            "Kolonner uten oppføring i data/geo/land_no.json: "
+            + ", ".join(f"{kilde} → {vaar}" for kilde, vaar in sorted(ukjente))
+        )
+
+    observasjoner.sort(key=lambda o: (o["series_id"], o["entity"], o["period"]))
+    return observasjoner
+
+
+def fra_k4(rader, info):
+    """Gjør EFFIS' satellittkartlegging om til kanoniske observasjoner.
+
+    Kilden leverer hektar, som konverteres til km² her.
+
+    Fotnotene følger av hva produktet er: sensorene har skiftet (MODIS, VIIRS,
+    Sentinel-2), de minste brannene kom først med fra 2018, antallet land har
+    økt over tid, og kartleggingen er en hurtigvurdering som revideres når
+    bedre bilder foreligger.
+
+    f_reporting_basis settes aldri her. Tallene er ikke rapportert av noen.
+    """
+    land = _land()
+    ufullstendig_aar = int(info["downloaded_at"][:4])
+    grunnfotnoter = [
+        "f_sensor_break",
+        "f_min_fire_size",
+        "f_coverage_change",
+        "f_product_level",
+    ]
 
     observasjoner = []
     ukjente = set()
 
     for rad in rader:
-        kode = k3_effis.entity_kode(rad["iso3"])
+        kode = k4_effis.entity_kode(rad["iso3"])
         if kode not in land:
             ukjente.add((rad["name"], rad["iso3"]))
             continue
@@ -260,9 +339,9 @@ def fra_k3(rader, info):
                 INDIKATOR,
                 ENHET,
                 verdi,
-                k3_effis.SOURCE_ID,
-                k3_effis.SERIES_ID,
-                k3_effis.KVALITET,
+                k4_effis.SOURCE_ID,
+                k4_effis.SERIES_ID,
+                k4_effis.KVALITET,
                 fotnoter,
             )
         )

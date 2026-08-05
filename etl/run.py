@@ -20,6 +20,7 @@ from etl.sources import (
     k1_owid,
     k2_gwis,
     k3_effis,
+    k4_effis,
     k5_nifc,
     k6_natural_earth,
     k7_nbac,
@@ -47,9 +48,15 @@ def hent_k1():
 
 
 def hent_k3():
-    rader, info = k3_effis.hent()
+    areal, antall, info = k3_effis.hent()
     k3_effis.skriv_metadata(info, [])
-    return normalize.fra_k3(rader, info), info
+    return normalize.fra_k3(areal, antall, info), info
+
+
+def hent_k4():
+    rader, info = k4_effis.hent()
+    k4_effis.skriv_metadata(info, [])
+    return normalize.fra_k4(rader, info), info
 
 
 def hent_k5():
@@ -69,6 +76,7 @@ def hent_k7():
 KILDER = [
     (k1_owid, hent_k1),
     (k3_effis, hent_k3),
+    (k4_effis, hent_k4),
     (k5_nifc, hent_k5),
     (k7_nbac, hent_k7),
 ]

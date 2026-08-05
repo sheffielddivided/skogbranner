@@ -305,8 +305,8 @@ kilde.
 |---|---|---|---|---|---|
 | K1 | Our World in Data | Global | 2012– | `measured` | CC BY 4.0 |
 | K2 | GWIS (JRC/Copernicus) | Global | 2012– | `measured` | Kryssjekk mot K1, og ukesoppløsning til S3 |
-| K3 | EFFIS, landtotaler | Europa, Midtøsten, Nord-Afrika | 2006– | `reported` | Nasjonalt rapporterte totaler |
-| K4 | EFFIS, Burnt Areas | Europa | — | `reported` | Grunnlag for brannstørrelsesfordeling |
+| K3 | EFFIS, landtotaler | Europa, Midtøsten, Nord-Afrika | 1980– | `reported` | Nasjonalt rapporterte totaler, som nedlastbar XLS |
+| K4 | EFFIS, Rapid Damage Assessment | Europa, Midtøsten, Nord-Afrika | 2006– | `measured` | EFFIS' egen satellittkartlegging. Også grunnlag for brannstørrelsesfordeling |
 | K5 | NIFC | USA | 1983– | `reported` | Lang nasjonal serie |
 | K6 | Natural Earth, admin-0 | Global | — | — | Geometri og landarealer. Public domain |
 | K7 | CNFDB / NBAC | Canada | 1972– areal, 1959– antall | `reported` | Krever sluttbrukeravtale — akseptert |
@@ -381,6 +381,24 @@ en ny versjon.
 
   Den andre er som datagrunnlag for **S3**, der ukesoppløsningen brukes. Det er
   den eneste seksjonen der K2 er synlig for leseren.
+- **K3 og K4 er to ulike produkter fra EFFIS**, og skal ikke forveksles.
+
+  **K3** er landtotalene EFFIS publiserer som nedlastbar XLS sammen med
+  årsrapporten. De er nasjonalt rapporterte, følger hvert lands egne
+  definisjoner, og har derfor `f_reporting_basis`. Serien starter i 1980, men
+  bare med de fem første EFFIS-landene — flere kommer til utover i serien, og
+  den bærer derfor `f_coverage_change`.
+
+  **K4** er EFFIS' egen Rapid Damage Assessment: satellittkartlegging fra
+  MODIS, VIIRS og Sentinel-2. Den er `measured`, ikke `reported`, og skal
+  aldri ha `f_reporting_basis` — tallene er ikke rapportert av noen. Den er en
+  hurtigkartlegging som revideres når bedre bilder foreligger, og har derfor
+  `f_product_level`.
+
+  De to dekker samme geografi og overlapper i tid. De skal aldri skjøtes
+  sammen til én serie, og en figur som viser begge må markere bruddet, av
+  samme grunn som ellers i § 6: det er to målemetoder, ikke én måling.
+
 - **K9 GFED5** brukes kun for årene **1997–2022**, og har `quality`
   `measured`. GFED5.1 for denne perioden er en publisert utgivelse,
   dokumentert i Scientific Data. Produsentens `ext_Beta`-kataloger fra 2023 og
@@ -508,7 +526,7 @@ er en feil.
 | `burned_area_km2` | `km2` | km² | K1–K5, K7–K9 | Brent areal |
 | `burned_area_share_land` | `share` | prosent | avledet, nevner fra K6 | Brent areal som andel av landareal. Gjør små og store land sammenlignbare |
 | `charcoal_index` | `zscore` | enhetsløst tall | K10 | Z-score |
-| `fire_count` | `count` | antall | K5, K7 | Antall registrerte branner. Sier noe annet enn arealet: mange små branner og én stor kan gi samme areal |
+| `fire_count` | `count` | antall | K3, K5, K7 | Antall registrerte branner. Sier noe annet enn arealet: mange små branner og én stor kan gi samme areal |
 
 `unit` er en kodeverdi, ikke visningstekst. `share` lagres som andel mellom 0
 og 1, men vises for leseren i prosent — omregningen skjer i visningslaget, som
@@ -792,6 +810,8 @@ særbehandling og uten egen seksjon (P8).
   systematisk, og eldre år finnes ikke
 - `f_incomplete_inventory` — databasen er verken komplett eller feilfri, og
   datakvaliteten varierer mellom rapporterende byråer og år
+- `f_product_level` — tallene er en hurtigkartlegging gjort mens sesongen
+  pågår, og revideres når bedre satellittbilder foreligger
 
 **Hvor fotnotetekstene bor.** Kodene over er enumerasjonen, og følger T5: prosa
 her, konstant i `etl/schema.py`. Den norske teksten leseren ser er noe annet —
@@ -893,7 +913,8 @@ sluttbrukeravtale tas ikke inn før avtalen er avklart og notert i
 - `etl/sources/ssb_klass.py` — navnekilden, bygger `land_no.json`
 - `etl/sources/k1_owid.py` — K1, CSV og metadata
 - `etl/sources/k2_gwis.py` — K2, årsserie per land. Brukes til kryssjekk mot K1
-- `etl/sources/k3_effis.py` — K3, landtotaler for Europa, Midtøsten, Nord-Afrika
+- `etl/sources/k3_effis.py` — K3, nasjonalt rapporterte landtotaler fra XLS
+- `etl/sources/k4_effis.py` — K4, EFFIS' egen satellittkartlegging (RDA)
 - `etl/sources/k5_nifc.py` — K5, HTML-tabellen på statistikksiden
 - `etl/sources/k6_natural_earth.py` — K6, kartgeometri og landarealer
 - `etl/sources/k7_nbac.py` — K7, NBACs årsaggregat og CNFDBs punktstatistikk
@@ -926,17 +947,13 @@ publiseres ikke — `data/raw/` er gitignorert, og workflowen legger rapporten
 ved kjøringen som artefakt i stedet.
 
 **Ikke implementert:** `etl/derive.py` inneholder kun beskrivelse av
-ansvarsområde. K4, K8, K9 og K10 er ikke hentet. S2–S6 har overskrift og en
-merknad om at de ikke er laget, så K3, K5 og K7 ligger i datasettet uten at
-noen seksjon viser dem ennå. Det samme gjelder `fire_count` og
+ansvarsområde. K8, K9 og K10 er ikke hentet. S2–S6 har overskrift og en
+merknad om at de ikke er laget, så K3, K4, K5 og K7 ligger i datasettet uten
+at noen seksjon viser dem ennå. Det samme gjelder `fire_count` og
 `burned_area_share_land`, og K2s ukesoppløsning, som S3 skal bruke.
 
-**Til avklaring:** § 5 beskriver K3 som nasjonalt rapporterte totaler, men
-endepunktet EFFIS' egen statistikkportal bruker, leverer Rapid Damage
-Assessment — deres satellittkartlegging fra MODIS, VIIRS og Sentinel-2.
-Geografien i § 5 stemmer eksakt med endepunktet, så kilden er den rette, men
-`quality` bør antakelig være `measured`. Verdien står i
-`k3_effis.KVALITET` og er inntil videre `reported`, slik § 5 sier.
+K4 dekker foreløpig bare brent areal. Brannstørrelsesfordelingen S4 skal vise,
+krever polygonene fra Burnt Areas-databasen, som ikke er hentet.
 
 **Neste steg:** `derive.py` og `insights.json`. Først da kan S1 få
 overskriftstallet med arealsammenligning, som er den delen av § 8 som krever

@@ -74,6 +74,7 @@ FOOTNOTE = frozenset(
         "f_zero_no_detection",
         "f_record_start",
         "f_incomplete_inventory",
+        "f_product_level",
     }
 )
 
@@ -118,7 +119,9 @@ SERIES_ID = frozenset(
         "owid_annual_area_burnt",  # K1
         "owid_annual_area_burnt_share_land",  # avledet av K1, nevner fra K6
         "gwis_annual_burned_area",  # K2
-        "effis_annual_country_totals",  # K3
+        "effis_annual_country_totals",  # K3, nasjonalt rapportert areal
+        "effis_annual_country_fire_count",  # K3, nasjonalt rapportert antall
+        "effis_rda_annual_burned_area",  # K4, EFFIS' egen satellittkartlegging
         "nifc_annual_burned_area",  # K5
         "nifc_annual_fire_count",  # K5
         "nbac_annual_burned_area",  # K7
