@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "_om": "Siste kjørestatus per kilde. Skrives av ETL, leses av byggetrinnet. Feiler en kilde, beholdes forrige datasett og siden viser en diskré merknad om at akkurat den serien ikke er oppdatert siden dato X. Siden skal aldri gå i stykker av at en kilde er nede.",
+  "_felt": {
+    "status": "'ok' | 'unchanged' | 'failed' | 'skipped'.",
+    "last_attempt": "Tidspunkt for siste forsøk, ISO 8601.",
+    "last_success": "Tidspunkt for siste vellykkede henting, ISO 8601. Datoen som vises for leseren ved feil.",
+    "rows": "Antall rader i den normaliserte serien etter siste vellykkede kjøring.",
+    "message": "Kort forklaring på norsk. Vises for leseren ved status 'failed'.",
+    "run_url": "Lenke til kjøringen i GitHub Actions."
+  },
+  "last_run": null,
+  "sources": {}
+}

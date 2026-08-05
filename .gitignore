@@ -1,0 +1,56 @@
+# Rådata og nedlastede arkiver skal aldri committes.
+# Se CLAUDE.md § T4: nedlasting og prosessering kjører kun i GitHub Actions.
+data/raw/*
+!data/raw/.gitkeep
+
+# Nedlastede arkiver og store kildeformater, uansett hvor de havner
+*.zip
+*.gz
+*.tgz
+*.tar
+*.tar.gz
+*.7z
+*.rar
+*.nc
+*.nc4
+*.hdf
+*.h5
+*.shp
+*.shx
+*.dbf
+*.prj
+*.cpg
+*.sbn
+*.sbx
+*.gpkg
+*.sqlite
+*.gdb/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+
+# Node og bygg
+node_modules/
+dist/
+build/
+.cache/
+.vite/
+
+# Miljø og hemmeligheter
+.env
+.env.*
+!.env.example
+
+# Operativsystem og editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
