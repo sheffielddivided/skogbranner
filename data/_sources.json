@@ -68,35 +68,38 @@
     },
     "K3": {
       "source_id": "K3",
-      "name": "EFFIS — European Forest Fire Information System, landtotaler",
+      "name": "EFFIS — landtotaler, brent areal og antall skogbranner",
       "publisher": "Joint Research Centre, Europakommisjonen, under Copernicus",
-      "url": "https://forest-fire.emergency.copernicus.eu/apps/effis.statistics/estimates",
-      "download_url": "https://api2.effis.emergency.copernicus.eu/statistics/v2/effis/estimatesbycountry?country=ITA",
+      "url": "https://forest-fire.emergency.copernicus.eu/applications/data-and-services",
+      "download_url": "https://forest-fire.emergency.copernicus.eu/effis/applications/data-and-services/report_2024.xlsx",
       "license": "Creative Commons Attribution 4.0 International (CC BY 4.0). Copyright (C) European Union, 1995–2025. Kommisjonens gjenbrukspolitikk følger kommisjonsbeslutningen av 12. desember 2011 om gjenbruk av kommisjonsdokumenter.",
       "license_url": "https://forest-fire.emergency.copernicus.eu/about-effis/data-license",
       "attribution": "European Forest Fire Information System (EFFIS), Copernicus Emergency Management Service, Joint Research Centre.",
       "requires_agreement": false,
       "geography": "Europa, Midtøsten og Nord-Afrika",
-      "coverage_start": "2006",
-      "coverage_end": "2026",
+      "coverage_start": "1980",
+      "coverage_end": "2024",
       "temporal_resolution": "annual",
       "quality": "reported",
       "unit_source": "hectares",
       "downloaded_at": "2026-08-05",
-      "checksum": "510f13bae8cff59bbbc716ebef437a71de40c33c416f753e379a90f87311408b",
+      "source_last_updated": "2024",
+      "checksum": "bbc05c239e5d471700c2d440800c9c41318aaf74eaae7db82445557ab6c05a06",
       "series": [
-        "effis_annual_country_totals"
+        "effis_annual_country_totals",
+        "effis_annual_country_fire_count"
       ],
       "processed_files": [
         "burned_area.csv",
-        "burned_area.json"
+        "burned_area.json",
+        "fire_count.csv",
+        "fire_count.json"
       ],
       "footnotes": [
-        "f_sensor_break",
-        "f_min_fire_size",
+        "f_reporting_basis",
         "f_coverage_change"
       ],
-      "notes": "Tallene kommer fra EFFIS' Rapid Damage Assessment, som kartlegger brent areal fra satellitt: MODIS fra 2003, VIIRS fra 2016 og Sentinel-2 fra 2018. Fram til 2018 fanget kartleggingen i praksis branner fra rundt 30 hektar og oppover; med Sentinel-2 kommer også mindre branner med. Antallet land i EFFIS-nettverket har økt over tid, så hvor langt tilbake serien går, varierer mellom land."
+      "notes": "Tallene er rapportert inn av det enkelte land og følger landets egne definisjoner av hva som telles som en skogbrann. De er hentet fra regnearket EFFIS publiserer sammen med årsrapporten. Serien begynner i 1980 med fem land, og flere kommer til utover i serien, så hvor langt tilbake tallene går, varierer mellom land. Dette er en annen kilde enn K4, som er EFFIS' egen satellittkartlegging."
     },
     "K5": {
       "source_id": "K5",
@@ -197,6 +200,40 @@
         "f_min_fire_size"
       ],
       "notes": "Brukes til å kryssjekke K1, som er Our World in Datas bearbeiding av det samme grunnlaget. Avviksrapporten er et arbeidsverktøy og publiseres ikke. Ukesoppløsningen fra samme kilde skal brukes i seksjonen om sesongvariasjon."
+    },
+    "K4": {
+      "source_id": "K4",
+      "name": "EFFIS — Rapid Damage Assessment, satellittkartlagt brent areal",
+      "publisher": "Joint Research Centre, Europakommisjonen, under Copernicus",
+      "url": "https://forest-fire.emergency.copernicus.eu/apps/effis.statistics/estimates",
+      "download_url": "https://api2.effis.emergency.copernicus.eu/statistics/v2/effis/estimatesbycountry?country=ITA",
+      "method_url": "https://forest-fire.emergency.copernicus.eu/about-effis/technical-background/rapid-damage-assessment",
+      "license": "Creative Commons Attribution 4.0 International (CC BY 4.0). Copyright (C) European Union, 1995–2025. Kommisjonens gjenbrukspolitikk følger kommisjonsbeslutningen av 12. desember 2011 om gjenbruk av kommisjonsdokumenter.",
+      "license_url": "https://forest-fire.emergency.copernicus.eu/about-effis/data-license",
+      "attribution": "European Forest Fire Information System (EFFIS), Copernicus Emergency Management Service, Joint Research Centre.",
+      "requires_agreement": false,
+      "geography": "Europa, Midtøsten og Nord-Afrika",
+      "coverage_start": "2006",
+      "coverage_end": "2026",
+      "temporal_resolution": "annual",
+      "quality": "measured",
+      "unit_source": "hectares",
+      "downloaded_at": "2026-08-05",
+      "checksum": "510f13bae8cff59bbbc716ebef437a71de40c33c416f753e379a90f87311408b",
+      "series": [
+        "effis_rda_annual_burned_area"
+      ],
+      "processed_files": [
+        "burned_area.csv",
+        "burned_area.json"
+      ],
+      "footnotes": [
+        "f_sensor_break",
+        "f_min_fire_size",
+        "f_coverage_change",
+        "f_product_level"
+      ],
+      "notes": "EFFIS kartlegger brente areal fra satellitt: MODIS fra 2003, VIIRS fra 2016 og Sentinel-2 fra 2018. Fram til 2018 fanget kartleggingen i praksis branner fra rundt 30 hektar og oppover; med Sentinel-2 kommer også mindre branner med. Kartleggingen gjøres mens sesongen pågår og revideres når bedre bilder foreligger. Dette er en annen kilde enn K3, som er tallene landene selv rapporterer inn."
     }
   }
 }
