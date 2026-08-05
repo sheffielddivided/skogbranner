@@ -71,4 +71,4 @@ ACRE_TO_KM2 = 0.00404686
 
 # Relativt avvik mellom K1 og K2 for samme enhet og år som utløser en
 # oppføring i avviksrapporten.
-KRYSSJEKK_TERSKEL = 0.05
+CROSSCHECK_THRESHOLD = 0.05

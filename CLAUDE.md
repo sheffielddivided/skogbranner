@@ -319,7 +319,7 @@ en ny versjon.
   arbeidsverktøy for redaktøren, ikke innhold på siden. Den publiseres ikke,
   og K2 tegnes ikke i noen figur i denne rollen.
 
-  Terskelen er `KRYSSJEKK_TERSKEL` i `etl/schema.py`. Valideringskoden
+  Terskelen er `CROSSCHECK_THRESHOLD` i `etl/schema.py`. Valideringskoden
   importerer konstanten og skriver aldri tallet selv (T5).
 
   Den andre er som datagrunnlag for **S3**, der ukesoppløsningen brukes. Det er
