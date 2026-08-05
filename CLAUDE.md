@@ -224,8 +224,9 @@ Endres en enumerasjon, endres begge stedene i samme commit.
 ## 4. Mappestruktur
 
 ```
-etl/
+etl/                Python-pakke. __init__.py er tom.
   sources/          Én modul per kilde. Kun henting + råformat-parsing.
+                    Egen pakke, med tom __init__.py.
   schema.py         Enumerasjonene i kode. Alt annet importerer herfra (T5).
   normalize.py      Kanonisk form. All enhetskonvertering skjer her.
   derive.py         Maskinelle avledninger → data/processed/insights.json
@@ -240,6 +241,34 @@ src/                Nettsidens kildekode
 public/             Statiske ressurser som kopieres uendret
 .github/workflows/  ETL-kjøring og deploy
 ```
+
+### Pakkeoppsett og importer
+
+`etl/` og `etl/sources/` er Python-pakker. Begge har en tom `__init__.py`.
+
+**Alle interne importer er absolutte:**
+
+```python
+from etl.schema import QUALITY, HA_TO_KM2
+```
+
+Aldri `from schema import ...`, aldri relative importer (`from .schema import
+...`), aldri `sys.path`-manipulering. Ingen unntak — heller ikke i et
+engangsskript eller en test.
+
+**ETL kjøres som modul fra repotoppen:**
+
+```
+python -m etl.normalize
+```
+
+Ikke `python etl/normalize.py`. Kjøres en fil direkte, havner `etl/` selv på
+`sys.path` i stedet for repotoppen, og da virker `from etl.schema import ...`
+ikke. Det er den feilen som frister til `sys.path`-triksing, og grunnen til at
+kjøremåten er fastslått her og ikke overlatt til skjønn.
+
+Det samme gjelder i GitHub Actions: workflow-stegene kjører `python -m etl.<modul>`
+med repotoppen som arbeidskatalog.
 
 **Dataflyt:** `sources/` henter → `normalize.py` kanoniserer og konverterer til
 km² → `validate.py` avviser ugyldig output → `derive.py` beregner avledninger →
