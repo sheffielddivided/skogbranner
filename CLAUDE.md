@@ -179,6 +179,21 @@ I en Claude Code-sesjon:
 Er du usikker på om en jobb er «tung»: hvis den tar mer enn noen sekunder eller
 laster mer enn noen få MB, er den tung. Legg den i en workflow i stedet.
 
+### T5 — CLAUDE.md er eneste sannhetskilde
+
+Regler, kodeverdier og prinsipper skrives **kun ett sted**: her.
+
+Kodefiler, docstrings og kommentarer skal **referere** til CLAUDE.md, ikke
+gjenfortelle innholdet. Duplisert regelverk divergerer — én kopi oppdateres,
+den andre blir stående, og da er det uklart hva som faktisk gjelder.
+
+Trenger en fil å forklare seg, skriv `se CLAUDE.md § X` i stedet for å kopiere
+regelen. En docstring skal si hva filen har ansvar for, ikke gjenta hvilke
+verdier `quality` kan ha.
+
+Dette gjelder også lister som virker trygge å kopiere: kodeverdier,
+fotnote-id-er, kildekoder, enheter. Det er nettopp de som divergerer.
+
 ---
 
 ## 4. Mappestruktur
@@ -225,8 +240,8 @@ kilde.
 | K5 | NIFC | USA | 1983– | `reported` | Lang nasjonal serie |
 | K6 | Natural Earth, admin-0 | Global | — | — | Geometri og landarealer. Public domain |
 | K7 | CNFDB / NBAC | Canada | — | `reported` | Krever sluttbrukeravtale — akseptert |
-| K8 | FireCCILT11 (ESA Fire_cci) | Global | 1982–2018, uten 1994 | `beta` | Statisk |
-| K9 | GFED5 | Global | 1997–2022 | `beta` | Statisk |
+| K8 | FireCCILT11 (ESA Fire_cci) | Global | 1982–2018, uten 1994 | `beta` | Statisk. Selve produktet er merket beta av produsenten |
+| K9 | GFED5 | Global | 1997–2022 | `measured` | Statisk. GFED5.1 for 1997–2022 er en publisert utgivelse dokumentert i Scientific Data. Beta-merkingen gjelder kun produsentens `ext_Beta`-kataloger fra 2023, som vi holder ute |
 | K10 | Global Charcoal Database | Global | — | `reconstructed` | Proxy. Statisk |
 
 ### Statiske kilder
@@ -241,23 +256,51 @@ en ny versjon.
 
 - **K6 Natural Earth** leverer ikke branndata. Den brukes til kartgeometri og
   til landarealer, som er nevneren i `burned_area_share_land`.
-- **K9 GFED5** brukes kun for årene **1997–2022**. Produsentens beta-år fra
-  2023 og framover holdes ute.
+- **K9 GFED5** brukes kun for årene **1997–2022**, og har `quality`
+  `measured`. GFED5.1 for denne perioden er en publisert utgivelse,
+  dokumentert i Scientific Data. Produsentens `ext_Beta`-kataloger fra 2023 og
+  framover holdes ute — det er *de* som er foreløpige, ikke datasettet vi
+  bruker. Årene **1997–2000** har grovere romlig oppløsning enn resten av
+  serien (1° mot 0,25° fra 2001), og skal alltid ha `f_resolution_change`.
+
+  K8 er derimot `beta` fordi selve produktet er merket slik av produsenten.
+  Skillet er hvem som har merket hva: en produsents beta-merking på et annet
+  datasett i samme katalog smitter ikke over.
 - **K10 Global Charcoal Database** er et *proxy*: sedimentært kull som
   indirekte spor etter brann, ikke en måling av brent areal. Alltid
   `f_proxy`.
 
-### Påkrevd sitering for K7
+### Påkrevd sitering
 
-CNFDB krever at følgende sitering gjengis **ordrett** på siden. Teksten skal
-ikke oversettes, forkortes eller omskrives:
+Flere kilder stiller krav til hvordan de siteres. Siteringene under skal
+gjengis **ordrett**: ikke oversettes, ikke forkortes, ikke omskrives. De skal
+stå både i kildelinjen under figurer som bruker kilden, og i
+attribusjonsblokken i sidefoten.
+
+Dette er et vilkår for bruk, ikke en høflighet. En figur som bruker en av
+disse kildene uten siteringen skal ikke publiseres.
+
+**K7 — CNFDB / NBAC.** Sluttbrukeravtalen er akseptert.
 
 > Canadian Forest Service. 2021. Canadian National Fire Database – Agency Fire
 > Data. Natural Resources Canada, Canadian Forest Service, Northern Forestry
 > Centre, Edmonton, Alberta. https://cwfis.cfs.nrcan.gc.ca/ha/nfdb
 
-Sluttbrukeravtalen er akseptert. Siteringen skal stå både i kildelinjen under
-figurer som bruker K7, og i attribusjonsblokken i sidefoten.
+**K9 — GFED5.**
+
+> van der Werf et al., Landscape fire emissions from the 5th version of the
+> Global Fire Emissions Database (GFED5), Scientific Data
+
+**K10 — Global Charcoal Database.**
+
+> Blarquez, O., Vannière, B., Marlon, J.R., Daniau, A.-L., Power, M.J.,
+> Brewer, S. & Bartlein, P.J. (2014). paleofire: an R package to analyse
+> sedimentary charcoal records from the Global Charcoal Database to
+> reconstruct past biomass burning. Computers & Geosciences 72: 255–261.
+
+**K3 og K4 — EFFIS.** Har egen datalisens som må gjengis. Lenken til
+lisensteksten legges i `data/_sources.json`, og lisensteksten refereres i
+attribusjonsblokken.
 
 ---
 
@@ -284,14 +327,23 @@ Alle kilder normaliseres til langformat før publisering:
 - `level`: `country` | `region` | `world`
 - `period`: ISO 8601 — `YYYY`, `YYYY-MM` eller `YYYY-Www`
 - `quality`: `measured` | `reported` | `beta` | `reconstructed`
+- `unit`: `km2` | `share` | `zscore`
 
 ### Indikatorer
 
-| `indicator` | Enhet | Kilde | Merknad |
-|---|---|---|---|
-| `burned_area_km2` | km² | K1–K5, K7–K9 | Brent areal |
-| `burned_area_share_land` | andel (0–1) | avledet, nevner fra K6 | Brent areal som andel av landareal. Gjør små og store land sammenlignbare |
-| `charcoal_index` | enhetsløs | K10 | Z-score |
+Hver `indicator` har nøyaktig én tillatt `unit`. Kombinasjoner utenfor tabellen
+er en feil.
+
+| `indicator` | `unit` | Vises som | Kilde | Merknad |
+|---|---|---|---|---|
+| `burned_area_km2` | `km2` | km² | K1–K5, K7–K9 | Brent areal |
+| `burned_area_share_land` | `share` | prosent | avledet, nevner fra K6 | Brent areal som andel av landareal. Gjør små og store land sammenlignbare |
+| `charcoal_index` | `zscore` | enhetsløst tall | K10 | Z-score |
+
+`unit` er en kodeverdi, ikke visningstekst. `share` lagres som andel mellom 0
+og 1, men vises for leseren i prosent — omregningen skjer i visningslaget, som
+er den ene formen for enhetsbehandling som ikke hører hjemme i `normalize.py`,
+fordi den ikke endrer den lagrede verdien.
 
 `charcoal_index` er en **z-score**: hvor mange standardavvik en verdi ligger
 over eller under gjennomsnittet for serien. Den har ingen enhet og kan ikke
@@ -303,7 +355,7 @@ sammenlignbarhet som ikke finnes. Vil du vise dem sammen, bruk to figurer
 under hverandre med felles tidsakse.
 
 `burned_area_share_land` beregnes i `normalize.py` med landareal fra K6 som
-nevner. Andelen vises for leseren i prosent, men lagres som andel.
+nevner.
 
 ### `quality` styrer visuell fremstilling
 
@@ -421,9 +473,14 @@ særbehandling og uten egen seksjon (P8).
 - `f_beta_product` — produsenten merker datasettet som foreløpig
 - `f_missing_year` — enkeltår mangler helt i kilden
 - `f_proxy` — indirekte mål, ikke en måling av brent areal
+- `f_resolution_change` — dataenes romlige oppløsning er grovere i den
+  tidligste delen av serien, noe som gir større usikkerhet
 
 `f_missing_year` gjelder blant annet 1994 i K8. Et manglende år vises som
 brudd i kurven, aldri som 0 og aldri som interpolert verdi.
+
+`f_resolution_change` gjelder K9 for **1997–2000**, der oppløsningen er 1° mot
+0,25° fra 2001.
 
 ---
 
@@ -458,8 +515,10 @@ sluttbrukeravtale tas ikke inn før avtalen er avklart og notert i
       kontroll, ikke en vurdering som overlates til den som skriver figuren
 - [ ] Trender er beregnet innenfor én kilde og én `quality`
 - [ ] `charcoal_index` står ikke i samme figur som en km²-serie
-- [ ] Siteringen for K7 gjengis ordrett der K7 brukes
+- [ ] Påkrevde siteringer gjengis ordrett der kilden brukes (K7, K9, K10,
+      og EFFIS-lisensen for K3/K4)
 - [ ] Identifikatorer er engelske, alt leseren ser er norsk
+- [ ] Ingen kodefil gjentar regler fra CLAUDE.md — den refererer til dem (T5)
 
 ---
 
