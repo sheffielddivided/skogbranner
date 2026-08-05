@@ -1,0 +1,25 @@
+# Engangsverktøy: kartlegger et kildeformat i Actions, der utgående trafikk er
+# åpen. Utviklingsmiljøets nettverkspolicy avviser enkelte kildeverter, og en
+# parser skal ikke skrives mot en antatt struktur.
+#
+# Slettes når k2_gwis.py er skrevet mot verifisert form.
+
+name: Inspiser kildeformat
+
+on:
+  push:
+    branches: [claude/ssb-name-source-ehcs0b]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  gwis:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m scripts.inspiser_gwis
