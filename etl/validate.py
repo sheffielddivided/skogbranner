@@ -98,7 +98,11 @@ def valider(observasjoner):
         if o["value"] is None:
             meld(f"{hvor}: verdien mangler — bruk «ingen data», ikke null")
         elif o["value"] < 0:
-            meld(f"{hvor}: negativt areal ({o['value']})")
+            meld(f"{hvor}: negativ verdi ({o['value']})")
+        # En andel lagres mellom 0 og 1. Er den større, er nevneren feil —
+        # typisk et landareal fra en annen entitet enn telleren.
+        elif o["unit"] == "share" and o["value"] > 1:
+            meld(f"{hvor}: andel over 1 ({o['value']})")
 
         # Entity-koder: land_no.json er fasit. Landkoder skal være ISO3, med
         # unntak av territoriene som er merket iso3: false.
@@ -137,16 +141,32 @@ def valider(observasjoner):
     return feil
 
 
+def les_publiserte():
+    """Leser alle kanoniske filer som finnes under data/processed/.
+
+    Filnavnene står i schema.PROCESSED_FILE. En indikator uten fil ennå er
+    ikke en feil — den er bare ikke tatt inn.
+    """
+    observasjoner = []
+    for navn in sorted(set(schema.PROCESSED_FILE.values())):
+        sti = schema.PROCESSED_DIR / f"{navn}.json"
+        if not sti.exists():
+            continue
+        with open(sti, encoding="utf-8") as f:
+            observasjoner.extend(json.load(f))
+    return observasjoner
+
+
 def main():
-    sti = schema.PROCESSED_DIR / "burned_area.json"
-    with open(sti, encoding="utf-8") as f:
-        observasjoner = json.load(f)
+    observasjoner = les_publiserte()
+    if not observasjoner:
+        raise Valideringsfeil("ingen kanoniske filer under data/processed/")
 
     feil = valider(observasjoner)
     if feil:
         for f_ in feil:
             print("FEIL:", f_)
-        raise Valideringsfeil(f"{len(feil)} feil i {sti.name}")
+        raise Valideringsfeil(f"{len(feil)} feil i data/processed/")
 
     print(f"validate: {len(observasjoner)} observasjoner OK")
     return observasjoner

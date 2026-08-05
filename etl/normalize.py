@@ -22,6 +22,7 @@ from collections import defaultdict
 from etl.schema import (
     ACRE_TO_KM2,
     HA_TO_KM2,
+    LAND_AREA_JSON,
     LAND_NO_JSON,
     PROCESSED_DIR,
     PROCESSED_FILE,
@@ -52,6 +53,14 @@ ENHET = "km2"
 
 INDIKATOR_ANTALL = "fire_count"
 ENHET_ANTALL = "count"
+
+INDIKATOR_ANDEL = "burned_area_share_land"
+ENHET_ANDEL = "share"
+
+# Andelen lagres som et tall mellom 0 og 1, og vises for leseren i prosent.
+# Åtte desimaler holder på oppløsningen også for de minste andelene: et land
+# der en brøkdel av en km² brant, får fortsatt en verdi som ikke runder til 0.
+DESIMALER_ANDEL = 8
 
 
 def _land():
@@ -258,6 +267,49 @@ def fra_k7(areal, branner, info):
 
     observasjoner.sort(key=lambda o: (o["series_id"], o["period"]))
     return observasjoner
+
+
+def _landarealer():
+    with open(LAND_AREA_JSON, encoding="utf-8") as f:
+        return json.load(f)["areas"]
+
+
+def andel_av_landareal(observasjoner, serie_id):
+    """Beregner brent areal som andel av landareal, med nevner fra K6.
+
+    Gjør små og store land sammenlignbare. Andelen får egen serie-id, slik at
+    dekning og trend regnes per indikator og ikke blandes med arealet.
+
+    Kilden er den samme som telleren — K6 leverer bare nevneren, og står derfor
+    ikke i kildekolonnen i § 8.
+
+    Entiteter uten landareal hos K6 får ingen andel. Det gjelder blant annet
+    regionene og verden, som er aggregater uten polygon, og de territoriene
+    Natural Earth fører sammen med moderlandet. En manglende nevner skal gi
+    «ingen data», aldri en beregnet verdi.
+    """
+    arealer = _landarealer()
+
+    observasjoner_andel = []
+    for o in observasjoner:
+        if o["indicator"] != INDIKATOR:
+            continue
+        areal = arealer.get(o["entity"])
+        if not areal:
+            continue
+        observasjoner_andel.append(
+            dict(
+                o,
+                indicator=INDIKATOR_ANDEL,
+                unit=ENHET_ANDEL,
+                value=round(o["value"] / areal, DESIMALER_ANDEL),
+                series_id=serie_id,
+                footnotes=list(o["footnotes"]),
+            )
+        )
+
+    observasjoner_andel.sort(key=lambda o: (o["entity"], o["period"]))
+    return observasjoner_andel
 
 
 def skriv(observasjoner, navn):
