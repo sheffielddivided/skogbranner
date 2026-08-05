@@ -541,8 +541,8 @@ figurkontrollen i ETL, og legg aldri datakontrollen i byggesteget.
 **Ulike startår skjules ikke.** Hver figur viser dekningsperioden eksplisitt.
 Land uten data for et gitt år vises som «ingen data», aldri som null.
 
-**Inneværende år** markeres alltid visuelt som ufullstendig og inngår aldri i
-trendberegninger.
+**Inneværende år** markeres alltid visuelt som ufullstendig. Det kan vises i
+figurer, men inngår aldri i beregningsgrunnlaget for noen avledning — se § 7.
 
 ---
 
@@ -550,6 +550,40 @@ trendberegninger.
 
 `derive.py` produserer kun disse. Alt annet krever at prinsippene diskuteres på
 nytt.
+
+### Grunnlaget: alltid fullstendige år
+
+**Alle avledninger regnes over fullstendige år. Inneværende år inngår aldri i
+grunnlaget** — verken for trend, rangering, avvik fra normal, konsentrasjon,
+andel, dekning eller for å avgjøre om en entitet er «alltid null».
+
+Dette er **én definisjon som gjelder alle avledninger**, ikke en regel per
+avledning. Grunnen er at samme entitet ellers kan være ekskludert i én figur og
+med i en annen, og da vil to figurer på samme side motsi hverandre uten at
+leseren får vite hvorfor.
+
+En verdi fra et ufullstendig år er ikke sammenlignbar med et helt år. Den er
+lavere fordi året ikke er omme, ikke fordi det brant mindre. Da skal den heller
+ikke kunne avgjøre om en entitet i det hele tatt kan rangeres.
+
+**Konsekvens, som skal være synlig og ikke overraske noen:** Grenada regnes som
+alltid null og utelates fra rangering og avvik fra normal, selv om entiteten
+har en verdi i inneværende år. Antallet entiteter som utelates er derfor **48,
+ikke 47**.
+
+Tallene 48 og 47 beskriver datasettet slik det var da regelen ble skrevet, og
+er tatt med for å vise hva regelen gjør. De er ikke en fasit å validere mot —
+settet beregnes på nytt hver kjøring, se under.
+
+**Skillet er mellom å vise og å regne.** Inneværende år kan fortsatt tegnes i
+figurer, markert som ufullstendig (§ 6). Det er kun beregningsgrunnlaget det
+holdes utenfor.
+
+**Settet av ekskluderte entiteter beregnes på nytt ved hver ETL-kjøring.** Det
+skal aldri fryses som en liste i kode. En entitet kan få sin første påviste
+brann, og da skal den inn i rangeringen ved neste kjøring uten at noen må huske
+å redigere en liste. En håndholdt liste ville dessuten vært den tredje kopien
+T5 forbyr.
 
 | Avledning | Definisjon |
 |---|---|
@@ -609,6 +643,10 @@ falsk nedgang.
 En entitet uten en eneste påvist brann kan ikke rangeres mot andre, og har
 ingen median å avvike fra. Å gi den plass N av M ville antydet en måling som
 ikke finnes.
+
+«Alle verdier» betyr alle verdier i **fullstendige** år, slik grunnlaget er
+definert over. Inneværende år teller ikke med når det avgjøres om en entitet er
+alltid null.
 
 **Konsentrasjon og andel** tar nullene med. En null bidrar med 0 til en sum og
 til en andel, og påvirker verken telleren eller nevneren feil. Her er
