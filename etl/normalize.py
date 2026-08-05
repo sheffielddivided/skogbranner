@@ -116,7 +116,7 @@ def fra_k1(rader, info):
     return observasjoner
 
 
-def fra_k8(per_entitet, verden, info, for_smaa=()):
+def fra_k8(per_entitet, verden, info, for_smaa=(), uobservert=()):
     """Gjør aggregerte K8-summer om til kanoniske observasjoner.
 
     ``per_entitet`` er {entity-kode: {år: m²}} slik ``etl/grid.py`` summerte
@@ -125,6 +125,9 @@ def fra_k8(per_entitet, verden, info, for_smaa=()):
 
     ``for_smaa`` er entitetene som er små i forhold til rutenettets oppløsning.
     De får ``f_grid_resolution``.
+
+    ``uobservert`` er entitetene rutenettet ikke treffer i det hele tatt. De
+    utelates — se CLAUDE.md § 9.
 
     Verdenstallet summeres fra rutenettet og ikke fra landene, slik at de
     cellene ingen landgeometri dekker, fortsatt teller globalt. Se
@@ -159,9 +162,24 @@ def fra_k8(per_entitet, verden, info, for_smaa=()):
             + ". Se CLAUDE.md § 5 — koden må tas inn før tallene kan publiseres."
         )
 
+    # Rutenettet treffer ikke geometrien til disse entitetene, så summen deres
+    # er 0 fordi ingenting er målt, ikke fordi ingenting brant. De utelates
+    # framfor å publiseres som en målt null (CLAUDE.md § 9).
+    med_verdi = {
+        kode: maks
+        for kode in uobservert
+        if (maks := max(per_entitet.get(kode, {0: 0.0}).values())) > 0
+    }
+    if med_verdi:
+        raise ValueError(
+            "K8: entiteter uten treff i rutenettet har likevel en verdi: "
+            + ", ".join(f"{k} ({v:.0f} m²)" for k, v in sorted(med_verdi.items()))
+            + ". Da er de observert, og regelen i § 9 gjelder ikke for dem."
+        )
+
     observasjoner = []
     for kode in sorted(per_entitet):
-        if kode not in land:
+        if kode not in land or kode in uobservert:
             continue
         # Entiteten er mindre enn én rute, så tallet er en andel av ruter den
         # deler med naboland eller hav. Gjelder alle årene for entiteten.
@@ -177,6 +195,7 @@ def fra_k8(per_entitet, verden, info, for_smaa=()):
         observasjoner.append(_k8_observasjon("WLD", a, verden[a], land, fotnoter))
 
     info["aar_mangler"] = hull
+    info["utelatte_entiteter"] = sorted(set(uobservert) & set(land))
     info["footnotes"] = sorted({f for o in observasjoner for f in o["footnotes"]})
     info["rows"] = len(observasjoner)
 

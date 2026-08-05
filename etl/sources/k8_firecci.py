@@ -291,7 +291,10 @@ def skriv_metadata(info, processed_files):
         "notes": "Månedlige rutenett på 0,25° summert til årlige landtotaler "
         "med admin-0-geometrien fra K6. Rutenettfilene lastes ned i GitHub "
         "Actions og slettes etter aggregering. Andelen brent areal uten "
-        f"landtilknytning i denne kjøringen: {info['uattribuert_andel']:.4%}.",
+        f"landtilknytning i denne kjøringen: {info['uattribuert_andel']:.4%}. "
+        f"{len(info['utelatte_entiteter'])} entiteter er utelatt fordi "
+        "rutenettet ikke treffer geometrien deres.",
+        "excluded_entities": info["utelatte_entiteter"],
     }
     with open(SOURCES_JSON, "w", encoding="utf-8") as f:
         json.dump(sources, f, ensure_ascii=False, indent=2)

@@ -56,6 +56,7 @@ class Maske:
         vekt,
         uten_land,
         landareal_km2,
+        delruter_per_entitet,
         ruteareal_ekvator_km2,
     ):
         self.lat = lat
@@ -69,6 +70,7 @@ class Maske:
         # fikk. Det er den størrelsen som avgjør om entiteten er for liten for
         # oppløsningen, og derfor riktigere her enn et areal fra en annen kilde.
         self.landareal_km2 = landareal_km2
+        self.delruter_per_entitet = delruter_per_entitet
         self.ruteareal_ekvator_km2 = ruteareal_ekvator_km2
 
     def for_smaa_entiteter(self, minste_antall_ruter):
@@ -78,6 +80,15 @@ class Maske:
         """
         grense = minste_antall_ruter * self.ruteareal_ekvator_km2
         return {kode for kode, areal in self.landareal_km2.items() if areal < grense}
+
+    def uobserverte_entiteter(self):
+        """Entiteter der ingen delrute traff geometrien.
+
+        Rutenettet kan ikke observere dem, og summen deres er 0 fordi ingenting
+        er målt. De utelates fra kilden — se CLAUDE.md § 9. Settet beregnes her,
+        ved kjøring, og skal aldri fryses som en liste i kode.
+        """
+        return {kode for kode, antall in self.delruter_per_entitet.items() if antall == 0}
 
     @property
     def form(self):
@@ -205,6 +216,9 @@ def bygg_maske(lat, lon, geometrier, delruter=DELRUTER):
     cellareal = _cellearealer(lat, dlat, dlon)
     areal_per_par = antall * cellareal[rute_u // nlon] / delruter**2
     landareal = np.bincount(entitet_u, weights=areal_per_par, minlength=len(koder))
+    delruter_per_entitet = np.bincount(
+        entitet_u, weights=antall, minlength=len(koder)
+    )
 
     return Maske(
         lat=lat,
@@ -215,5 +229,8 @@ def bygg_maske(lat, lon, geometrier, delruter=DELRUTER):
         vekt=vekt,
         uten_land=per_rute == 0,
         landareal_km2={kode: float(landareal[i]) for i, kode in enumerate(koder)},
+        delruter_per_entitet={
+            kode: int(delruter_per_entitet[i]) for i, kode in enumerate(koder)
+        },
         ruteareal_ekvator_km2=float(_cellearealer(np.array([0.0]), dlat, dlon)[0]),
     )

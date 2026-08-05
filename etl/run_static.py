@@ -99,6 +99,7 @@ def kjor_k8(kun_katalog=False):
 
     maske = None
     for_smaa = set()
+    uobservert = set()
     per_entitet = defaultdict(lambda: defaultdict(float))
     verden = defaultdict(float)
     uattribuert = defaultdict(float)
@@ -120,6 +121,7 @@ def kjor_k8(kun_katalog=False):
                 )
                 maske = grid.bygg_maske(lat, lon, geometrier)
                 for_smaa = maske.for_smaa_entiteter(GRID_MIN_ENTITY_CELLS)
+                uobservert = maske.uobserverte_entiteter()
                 print(
                     f"K8: maske for {len(maske.koder)} entiteter. "
                     f"En rute er {maske.ruteareal_ekvator_km2:.0f} km² ved "
@@ -127,6 +129,13 @@ def kjor_k8(kun_katalog=False):
                     "enn det og får f_grid_resolution",
                     flush=True,
                 )
+                if uobservert:
+                    print(
+                        f"K8: {len(uobservert)} entiteter treffes ikke av "
+                        "delrutenettet og utelates: "
+                        + ", ".join(sorted(uobservert)),
+                        flush=True,
+                    )
             elif not maske.passer(lat, lon):
                 raise Kjorefeil(
                     f"{oppf['navn']}: rutenettet er et annet enn i den første "
@@ -166,7 +175,6 @@ def kjor_k8(kun_katalog=False):
     info = dict(sammendrag)
     info["uattribuert_andel"] = andel
     info["uattribuert_km2"] = uten_land * 1e-6
-    info["for_smaa"] = sorted(for_smaa)
     info["checksum"] = hashlib.sha256(
         "".join(o["md5"] or o["navn"] for o in oppforinger).encode("utf-8")
     ).hexdigest()
@@ -177,6 +185,7 @@ def kjor_k8(kun_katalog=False):
         dict(verden),
         info,
         for_smaa=for_smaa,
+        uobservert=uobservert,
     )
 
     feil = validate.valider(observasjoner)
@@ -194,7 +203,9 @@ def kjor_k8(kun_katalog=False):
     k8_firecci.skriv_status(
         "ok",
         f"{sammendrag['filer']} månedsfiler aggregert til {info['rows']} "
-        f"observasjoner, {andel:.4%} uten landtilknytning",
+        f"observasjoner, {andel:.4%} uten landtilknytning, "
+        f"{len(info['utelatte_entiteter'])} entiteter uten treff i rutenettet "
+        "utelatt",
         info,
     )
 

@@ -866,9 +866,21 @@ som er den største en rute kan bli — får fotnoten på alle sine år.
 Grensen er valgt fordi den har en fysisk betydning og ikke er en avrundet
 skjønnsverdi: et land under den får plass innenfor én rute hvor som helst på
 kloden. Da finnes det ingen rute som er landets alene, og tallet er en andel av
-ruter det deler med naboland eller hav. For de aller minste treffer ikke
-delrutenettet landet i det hele tatt, og serien blir null alle år — de
-entitetene bærer begge fotnotene, som til sammen sier nøyaktig det vi vet.
+ruter det deler med naboland eller hav.
+
+**Entiteter delrutenettet ikke treffer i det hele tatt, utelates fra kilden.**
+De skal ikke publiseres som 0 med fotnoter. En 0 fra en entitet rutenettet
+fysisk ikke kan observere, er fravær av måling og ikke en måling av null, og
+§ 6 krever at manglende data vises som «ingen data», aldri som null. Fotnoter
+endrer ikke hva verdien er.
+
+Skillet mot de øvrige entitetene med `f_grid_resolution` er at de deler ruter
+med naboland: tallet deres er upresist, men målt. Disse er ikke observert.
+
+Settet beregnes ved hver kjøring, av rutenettet og geometrien slik de forelå
+da, og skal aldri fryses som en liste over koder i kode (§ 7, T5). Får en
+entitet treff etter at geometrien er oppdatert eller en senere kilde har finere
+oppløsning, kommer den inn av seg selv.
 
 Arealet måles **på rutenettet**, ikke hentet fra en annen kilde. Det er det
 rutenettet ser av landet som avgjør om tallet kan brukes, ikke hva et atlas
