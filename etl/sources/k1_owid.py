@@ -42,8 +42,8 @@ OWID_CODE_MAP = {
     "OWID_SAM": "SAM",
     "OWID_OCE": "OCE",
     "OWID_KOS": "XKX",
-    "OWID_CYN": "XNC",
-    "OWID_AKD": "XAD",
+    "OWID_CYN": "NONISO_CYN",
+    "OWID_AKD": "NONISO_AKD",
 }
 
 # Entiteter OWID leverer helt uten kode, nøklet på entitetsnavn.

@@ -57,6 +57,7 @@ FOOTNOTE = frozenset(
         "f_missing_year",
         "f_proxy",
         "f_resolution_change",
+        "f_zero_no_detection",
     }
 )
 

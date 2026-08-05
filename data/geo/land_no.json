@@ -1,7 +1,7 @@
 {
   "_om": "Kode → norsk navn og nivå. Delt mapping for alle kilder, slik at samme land får samme norske navn uansett hvilken kilde tallet kommer fra. Filen er også fasit for hvilke entity-koder som er gyldige.",
   "_skjema": "se CLAUDE.md § 6 og etl/schema.py",
-  "_koder": "Landkoder er ISO 3166-1 alpha-3. Tre territorier mangler ISO3-kode og har fått koder fra ISO 3166-1s brukerdefinerte X-område: XKX Kosovo, XNC Nord-Kypros, XAD Akrotiri og Dhekelia. Disse er merket med iso3: false. Regionkoder er valgt slik at de ikke kolliderer med tildelte ISO3-koder - merk at Nord-Amerika er NAC, ikke NAM, siden NAM er Namibia.",
+  "_koder": "Landkoder er ISO 3166-1 alpha-3. Koder utenfor ISO 3166 er våre egne og er merket iso3: false. XKX for Kosovo beholder X-formen fordi den er utbredt praksis og gjenkjennes av andre datasett. Territorier uten noen etablert kode får prefikset NONISO_, som ikke kan forveksles med en ISO-kode siden ISO 3166 ikke bruker understrek. Regionkoder er valgt så de ikke kolliderer med tildelte ISO3-koder - merk at Nord-Amerika er NAC, ikke NAM, siden NAM er Namibia.",
   "entities": {
     "ABW": {
       "entity_name": "Aruba",
@@ -863,6 +863,16 @@
       "level": "country",
       "iso3": true
     },
+    "NONISO_AKD": {
+      "entity_name": "Akrotiri og Dhekelia",
+      "level": "country",
+      "iso3": false
+    },
+    "NONISO_CYN": {
+      "entity_name": "Nord-Kypros",
+      "level": "country",
+      "iso3": false
+    },
     "NOR": {
       "entity_name": "Norge",
       "level": "country",
@@ -1268,18 +1278,8 @@
       "level": "country",
       "iso3": true
     },
-    "XAD": {
-      "entity_name": "Akrotiri og Dhekelia",
-      "level": "country",
-      "iso3": false
-    },
     "XKX": {
       "entity_name": "Kosovo",
-      "level": "country",
-      "iso3": false
-    },
-    "XNC": {
-      "entity_name": "Nord-Kypros",
       "level": "country",
       "iso3": false
     },

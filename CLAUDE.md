@@ -313,6 +313,29 @@ kilde.
 | K9 | GFED5 | Global | 1997–2022 | `measured` | Statisk. GFED5.1 for 1997–2022 er en publisert utgivelse dokumentert i Scientific Data. Beta-merkingen gjelder kun produsentens `ext_Beta`-kataloger fra 2023, som vi holder ute |
 | K10 | Global Charcoal Database | Global | — | `reconstructed` | Proxy. Statisk |
 
+### Navnekilde: SSB Klass
+
+De norske landnavnene kommer fra **Statistisk sentralbyrås standard for
+landkoder alfa-3** (Klass 1219), som knytter ISO 3166-1-koder til offisielle
+norske navn.
+
+SSB leverer **navn, ikke tallverdier**. Den tegnes ikke som en serie, står
+ikke i kildekolonnen i § 8, og har derfor ingen K-kode. Den hører hjemme her
+fordi navnene er synlige for leseren og må kunne spores.
+
+`etl/sources/ssb_klass.py` henter standarden og bygger
+`data/geo/land_no.json`. Håndskrevne navn er ikke tillatt — endres et navn,
+endres det i SSBs standard eller i overstyringsfilen, aldri direkte i
+`land_no.json`.
+
+**Overstyringer.** Der SSBs form er uklar for en allmenn leser, overstyres den
+i `data/geo/land_no_overrides.json`. Hver overstyring skal ha en begrunnelse i
+filen. Eksempel: SSB kaller Den demokratiske republikken Kongo bare «Kongo»,
+som er umulig å skille fra nabolandet med samme navn.
+
+Overstyringer er et redaksjonelt unntak, ikke en snarvei. Er du i tvil, bruk
+SSBs form.
+
 ### Statiske kilder
 
 K8, K9 og K10 er **statiske**. De skal aldri inn i den månedlige ETL-kjøringen.
@@ -401,7 +424,11 @@ attribusjonsblokken.
 
 ## 6. Kanonisk datamodell
 
-Alle kilder normaliseres til langformat før publisering:
+Alle kilder normaliseres til langformat før publisering.
+
+Eksempelet under viser **formen**, ikke innholdet. Verdiene er oppdiktede og
+skal ikke sammenlignes med datasettet — feltene og kodeverdiene er poenget.
+Faktiske tall står i `data/processed/`.
 
 ```json
 {
@@ -432,10 +459,17 @@ samme land får samme norske navn uansett hvilken kilde tallet kommer fra.
 `validate.py` avviser en observasjon med en `entity` som ikke står i filen.
 
 - **Land** bruker ISO 3166-1 alpha-3.
-- **Tre territorier mangler ISO3-kode** og har fått koder fra ISO 3166-1s
-  brukerdefinerte X-område: `XKX` Kosovo, `XNC` Nord-Kypros, `XAD` Akrotiri og
-  Dhekelia. De er merket `iso3: false` i filen, slik at ISO3-kontrollen ikke
-  slår ut på dem.
+- **Koder utenfor ISO 3166 er våre egne** og merket `iso3: false`. De skal
+  ikke kunne forveksles med tildelte ISO-koder, for en leser som ser `XNC` i
+  en CSV har ingen måte å vite at koden ikke er standard.
+
+  Derfor får territorier uten etablert kode prefikset `NONISO_`:
+  `NONISO_CYN` Nord-Kypros, `NONISO_AKD` Akrotiri og Dhekelia. Understrek
+  finnes ikke i ISO 3166, så formen er selvforklarende.
+
+  **`XKX` Kosovo er unntaket.** Den beholder X-formen fordi den er utbredt
+  praksis og gjenkjennes av andre datasett. Å døpe den om ville gjort
+  kryssbruk mot andre kilder vanskeligere uten å vinne noe.
 - **Regionkoder** er valgt så de ikke kolliderer med tildelte ISO3-koder:
   `WLD` verden, `EUR` Europa, `EUR_XRU` Europa uten Russland, `EU27` EU,
   `AFR`, `ASI`, `NAC` Nord-Amerika, `SAM` Sør-Amerika, `OCE` Oseania.
@@ -658,12 +692,23 @@ særbehandling og uten egen seksjon (P8).
 - `f_proxy` — indirekte mål, ikke en måling av brent areal
 - `f_resolution_change` — dataenes romlige oppløsning er grovere i den
   tidligste delen av serien, noe som gir større usikkerhet
+- `f_zero_no_detection` — kilden har ikke påvist brent areal, men skiller ikke
+  mellom «ingenting brant» og «ingen måling»
 
 `f_missing_year` gjelder blant annet 1994 i K8. Et manglende år vises som
 brudd i kurven, aldri som 0 og aldri som interpolert verdi.
 
 `f_resolution_change` gjelder K9 for **1997–2000**, der oppløsningen er 1° mot
 0,25° fra 2001.
+
+`f_zero_no_detection` gjelder K1. Kilden leverer et fullt rutenett av entiteter
+og år, og bruker 0 der satellittene ikke har påvist brent areal. En 0 kan
+derfor bety at det ikke brant, at brannene var under deteksjonsgrensen, eller
+at området ikke er dekket — kilden skiller ikke. `normalize.py` merker hver
+nullverdi med fotnoten.
+
+Dette er ikke det samme som «ingen data». En figur skal ikke tegne en 0 fra
+denne kilden som en målt null uten at fotnoten følger med.
 
 ---
 

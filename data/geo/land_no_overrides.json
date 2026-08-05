@@ -1,0 +1,22 @@
+{
+  "_om": "Redaksjonelle overstyringer av de norske navnene fra SSBs standard for landkoder alfa-3 (Klass 1219). Brukes kun der SSBs form er uklar for en allmenn leser. Hver overstyring skal ha en begrunnelse. Se CLAUDE.md § 5.",
+  "_skjema": "se CLAUDE.md § 6 og etl/schema.py",
+  "overrides": {
+    "COD": {
+      "entity_name": "Kongo-Kinshasa",
+      "begrunnelse": "SSB bruker «Kongo» for Den demokratiske republikken Kongo og «Kongo-Brazzaville» for nabolandet. Formen «Kongo» alene er umulig å skille fra nabolandet for en leser uten forkunnskap."
+    },
+    "COG": {
+      "entity_name": "Kongo-Brazzaville",
+      "begrunnelse": "Følger av overstyringen for COD: de to landene må navngis etter samme mønster, ellers ser paret usymmetrisk ut i en tabell."
+    },
+    "GBR": {
+      "entity_name": "Storbritannia",
+      "begrunnelse": "SSBs fulle form «Storbritannia og Nord-Irland» er presis, men lang i aksetitler og tabellrader. Kortformen er den innarbeidede i norsk allmennspråk."
+    },
+    "USA": {
+      "entity_name": "USA",
+      "begrunnelse": "SSB bruker «Amerikas forente stater». USA er den formen en allmenn norsk leser gjenkjenner umiddelbart, og den er kortere i figurer."
+    }
+  }
+}

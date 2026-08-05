@@ -78,9 +78,17 @@ def fra_k1(rader, info):
             continue
 
         aar = int(rad["Year"])
+        verdi = round(float(raa) * HA_TO_KM2, DESIMALER)
+
         fotnoter = list(grunnfotnoter)
         if aar >= ufullstendig_aar:
             fotnoter.append("f_incomplete_year")
+
+        # Kilden leverer et fullt rutenett og bruker 0 der den ikke har påvist
+        # brent areal. Den skiller ikke mellom «ingenting brant» og «ingen
+        # måling», så nullene merkes eksplisitt. Se CLAUDE.md § 9.
+        if verdi == 0:
+            fotnoter.append("f_zero_no_detection")
 
         observasjoner.append(
             {
@@ -89,7 +97,7 @@ def fra_k1(rader, info):
                 "level": land[kode]["level"],
                 "period": str(aar),
                 "indicator": INDIKATOR,
-                "value": round(float(raa) * HA_TO_KM2, DESIMALER),
+                "value": verdi,
                 "unit": ENHET,
                 "source_id": k1_owid.SOURCE_ID,
                 "series_id": k1_owid.SERIES_ID,
