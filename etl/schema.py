@@ -30,6 +30,19 @@ INDICATOR_UNIT = {
 
 INDICATOR = frozenset(INDICATOR_UNIT)
 
+# Filnavnet hver indikator får under data/processed/, uten etternavn. Én fil
+# per indikator, slik at kildelinjen under en figur kan peke på den filen
+# figuren faktisk bruker (CLAUDE.md P5).
+#
+# Arealfilen het burned_area før fire_count kom til, og beholder navnet — en
+# omdøping ville brutt lenkene som allerede er publisert.
+PROCESSED_FILE = {
+    "burned_area_km2": "burned_area",
+    "burned_area_share_land": "burned_area_share_land",
+    "charcoal_index": "charcoal_index",
+    "fire_count": "fire_count",
+}
+
 
 # --- Kildekoder (CLAUDE.md § 5) ---
 

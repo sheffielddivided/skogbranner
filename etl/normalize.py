@@ -17,9 +17,16 @@ Kjøres som modul fra repotoppen: ``python -m etl.normalize``
 
 import csv
 import json
+from collections import defaultdict
 
-from etl.schema import HA_TO_KM2, LAND_NO_JSON, PROCESSED_DIR
-from etl.sources import k1_owid
+from etl.schema import (
+    ACRE_TO_KM2,
+    HA_TO_KM2,
+    LAND_NO_JSON,
+    PROCESSED_DIR,
+    PROCESSED_FILE,
+)
+from etl.sources import k1_owid, k5_nifc, k7_nbac
 
 FELT = [
     "entity",
@@ -35,18 +42,42 @@ FELT = [
     "footnotes",
 ]
 
-# Antall desimaler i km²-verdiene. Kilden oppgir hele hektar, så to desimaler
-# holder på all informasjon i kilden (1 ha = 0,01 km²) uten å legge til
-# flyttallsstøy.
+# Antall desimaler i km²-verdiene. Den groveste kilden oppgir hele hektar, så
+# to desimaler holder på all informasjon i kilden (1 ha = 0,01 km²) uten å
+# legge til flyttallsstøy.
 DESIMALER = 2
 
 INDIKATOR = "burned_area_km2"
 ENHET = "km2"
 
+INDIKATOR_ANTALL = "fire_count"
+ENHET_ANTALL = "count"
+
 
 def _land():
     with open(LAND_NO_JSON, encoding="utf-8") as f:
         return json.load(f)["entities"]
+
+
+def _observasjon(kode, land, aar, indikator, enhet, verdi, kilde, serie, kvalitet, fotnoter):
+    """Setter sammen én kanonisk observasjon.
+
+    Navnet og nivået hentes alltid fra land_no.json, som er fasit for hvilke
+    entiteter som finnes og hva de heter (CLAUDE.md § 6).
+    """
+    return {
+        "entity": kode,
+        "entity_name": land[kode]["entity_name"],
+        "level": land[kode]["level"],
+        "period": str(aar),
+        "indicator": indikator,
+        "value": verdi,
+        "unit": enhet,
+        "source_id": kilde,
+        "series_id": serie,
+        "quality": kvalitet,
+        "footnotes": fotnoter,
+    }
 
 
 def fra_k1(rader, info):
@@ -91,19 +122,18 @@ def fra_k1(rader, info):
             fotnoter.append("f_zero_no_detection")
 
         observasjoner.append(
-            {
-                "entity": kode,
-                "entity_name": land[kode]["entity_name"],
-                "level": land[kode]["level"],
-                "period": str(aar),
-                "indicator": INDIKATOR,
-                "value": verdi,
-                "unit": ENHET,
-                "source_id": k1_owid.SOURCE_ID,
-                "series_id": k1_owid.SERIES_ID,
-                "quality": "measured",
-                "footnotes": fotnoter,
-            }
+            _observasjon(
+                kode,
+                land,
+                aar,
+                INDIKATOR,
+                ENHET,
+                verdi,
+                k1_owid.SOURCE_ID,
+                k1_owid.SERIES_ID,
+                "measured",
+                fotnoter,
+            )
         )
 
     if ukjente:
@@ -113,6 +143,120 @@ def fra_k1(rader, info):
         )
 
     observasjoner.sort(key=lambda o: (o["entity"], o["period"]))
+    return observasjoner
+
+
+def fra_k5(rader, info):
+    """Gjør NIFC-rader om til kanoniske observasjoner.
+
+    Kilden leverer acres og antall branner. Acres konverteres til km² her.
+
+    Kilden er nasjonalt rapportert og følger amerikanske definisjoner, og den
+    starter i 1983 fordi de føderale brannmyndighetene ikke førte offisielle
+    tall etter dagens rapporteringsprosesser før det. Begge deler gjelder hele
+    serien.
+    """
+    land = _land()
+    ufullstendig_aar = int(info["downloaded_at"][:4])
+    grunnfotnoter = ["f_reporting_basis", "f_record_start"]
+
+    observasjoner = []
+    for rad in rader:
+        aar = rad["year"]
+        fotnoter = list(grunnfotnoter)
+        if aar >= ufullstendig_aar:
+            fotnoter.append("f_incomplete_year")
+        # Kilden merker 2004 med at delstatsarealer for North Carolina mangler.
+        if rad["marked"]:
+            fotnoter.append("f_incomplete_inventory")
+
+        observasjoner.append(
+            _observasjon(
+                k5_nifc.ENTITY,
+                land,
+                aar,
+                INDIKATOR,
+                ENHET,
+                round(rad["acres"] * ACRE_TO_KM2, DESIMALER),
+                k5_nifc.SOURCE_ID,
+                k5_nifc.SERIES_BURNED_AREA,
+                "reported",
+                fotnoter,
+            )
+        )
+        observasjoner.append(
+            _observasjon(
+                k5_nifc.ENTITY,
+                land,
+                aar,
+                INDIKATOR_ANTALL,
+                ENHET_ANTALL,
+                rad["fires"],
+                k5_nifc.SOURCE_ID,
+                k5_nifc.SERIES_FIRE_COUNT,
+                "reported",
+                list(fotnoter),
+            )
+        )
+
+    observasjoner.sort(key=lambda o: (o["series_id"], o["period"]))
+    return observasjoner
+
+
+def fra_k7(areal, branner, info):
+    """Gjør NBAC- og CNFDB-rader om til kanoniske observasjoner.
+
+    NBAC oppgir justerte hektar, som konverteres til km² her. Antall branner
+    kommer fra CNFDBs punktdata og har ingen enhet å konvertere.
+
+    De to seriene har hver sin dekningsperiode: NBAC starter i 1972, CNFDBs
+    punktdata tidligere. De skjøtes ikke sammen — hver serie beholder sin egen.
+    """
+    land = _land()
+    ufullstendig_aar = int(info["downloaded_at"][:4])
+    # Kilden opplyser selv at databasen verken er komplett eller feilfri, og at
+    # kvaliteten varierer mellom rapporterende byråer og mellom år.
+    grunnfotnoter = ["f_reporting_basis", "f_incomplete_inventory"]
+
+    def fotnoter_for(aar):
+        fotnoter = list(grunnfotnoter)
+        if aar >= ufullstendig_aar:
+            fotnoter.append("f_incomplete_year")
+        return fotnoter
+
+    observasjoner = []
+    for rad in areal:
+        observasjoner.append(
+            _observasjon(
+                k7_nbac.ENTITY,
+                land,
+                rad["year"],
+                INDIKATOR,
+                ENHET,
+                round(rad["adjusted_ha"] * HA_TO_KM2, DESIMALER),
+                k7_nbac.SOURCE_ID,
+                k7_nbac.SERIES_BURNED_AREA,
+                "reported",
+                fotnoter_for(rad["year"]),
+            )
+        )
+    for rad in branner:
+        observasjoner.append(
+            _observasjon(
+                k7_nbac.ENTITY,
+                land,
+                rad["year"],
+                INDIKATOR_ANTALL,
+                ENHET_ANTALL,
+                rad["fires"],
+                k7_nbac.SOURCE_ID,
+                k7_nbac.SERIES_FIRE_COUNT,
+                "reported",
+                fotnoter_for(rad["year"]),
+            )
+        )
+
+    observasjoner.sort(key=lambda o: (o["series_id"], o["period"]))
     return observasjoner
 
 
@@ -137,11 +281,29 @@ def skriv(observasjoner, navn):
     return sti_json, sti_csv
 
 
+def skriv_per_indikator(observasjoner):
+    """Skriver én fil per indikator, og returnerer filnavnene per indikator.
+
+    Filnavnene står i schema.PROCESSED_FILE. Observasjonene sorteres innenfor
+    hver fil, slik at samme input alltid gir samme fil (T3).
+    """
+    filer = {}
+    per_indikator = defaultdict(list)
+    for o in observasjoner:
+        per_indikator[o["indicator"]].append(o)
+
+    for indikator, gruppe in sorted(per_indikator.items()):
+        gruppe.sort(key=lambda o: (o["series_id"], o["entity"], o["period"]))
+        sti_json, sti_csv = skriv(gruppe, PROCESSED_FILE[indikator])
+        filer[indikator] = [sti_json.name, sti_csv.name]
+    return filer
+
+
 def main():
     rader, metadata, info = k1_owid.hent()
     observasjoner = fra_k1(rader, info)
-    sti_json, sti_csv = skriv(observasjoner, "burned_area")
-    print(f"normalize: {len(observasjoner)} observasjoner → {sti_json.name}, {sti_csv.name}")
+    filer = skriv_per_indikator(observasjoner)
+    print(f"normalize: {len(observasjoner)} observasjoner → {filer}")
     return observasjoner, metadata, info
 
 
