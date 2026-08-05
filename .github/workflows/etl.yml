@@ -1,0 +1,124 @@
+# Månedlig ETL-kjøring.
+#
+# Tunge jobber hører hjemme her og ikke i en utviklingssesjon (CLAUDE.md T4).
+#
+# Jobben kjører kun de løpende kildene. Hvilke det er, avgjøres av etl/run.py —
+# workflowen lister dem ikke, for da ville kildelista fått en kopi til (T5).
+# De statiske kildene hentes av en egen, manuelt utløst workflow (§ 5).
+
+name: ETL
+
+on:
+  schedule:
+    # 1. i måneden kl. 04:00 UTC.
+    - cron: "0 4 1 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+# To samtidige kjøringer ville skrevet over hverandres datasett.
+concurrency:
+  group: etl
+  cancel-in-progress: false
+
+jobs:
+  oppdater:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # Alle Python-steg kjøres som modul fra repotoppen (§ 4).
+
+      # Navnekilden først: normalize.py slår opp norske navn i land_no.json,
+      # så en revisjon hos SSB må være på plass før observasjonene bygges.
+      - name: Navnekilde — SSB Klass
+        id: navn
+        continue-on-error: true
+        run: python -m etl.sources.ssb_klass
+
+      # Feiler en kilde, beholdes forrige datasett og feilen logges i
+      # data/_status.json. Kjøringen stopper ikke her — statusfilen skal
+      # committes uansett, slik at siden kan vise at serien ikke er oppdatert
+      # siden dato X (§ 4). Jobben markeres som feilet i siste steg.
+      - name: Hent, normaliser, valider og publiser
+        id: etl
+        continue-on-error: true
+        run: python -m etl.run
+
+      - name: Se etter endringer
+        id: endringer
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Eksplisitte stier. data/raw/ er gitignorert og skal aldri
+          # committes (T4) — den nevnes ikke her, og et git add -A over hele
+          # treet brukes ikke.
+          git add data/processed data/geo data/_sources.json data/_status.json
+
+          if git diff --cached --quiet -- data/processed data/geo data/_sources.json; then
+            echo "data=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "data=true" >> "$GITHUB_OUTPUT"
+          fi
+
+          # En feilet kilde uten noe å committe skal ikke gi en tom pull
+          # request. ssb_klass.py skriver for eksempel ingen status.
+          if git diff --cached --quiet; then
+            echo "noe=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "noe=true" >> "$GITHUB_OUTPUT"
+          fi
+
+          git diff --cached --stat
+
+      # data/_status.json endrer seg ved hver kjøring, siden den bærer et
+      # tidsstempel. Alene er den ikke grunn til en pull request — da ville
+      # hver kjøring gitt en PR uten datainnhold. Unntaket er en feilet
+      # kjøring, der statusen er hele poenget.
+      - name: Opprett pull request
+        id: pr
+        if: >-
+          steps.endringer.outputs.noe == 'true' &&
+          (steps.endringer.outputs.data == 'true' ||
+           steps.etl.outcome == 'failure' ||
+           steps.navn.outcome == 'failure')
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          gren="etl/oppdatering-$(date -u +%Y-%m-%d)-${{ github.run_id }}"
+
+          if [ "${{ steps.etl.outcome }}" = "failure" ] || [ "${{ steps.navn.outcome }}" = "failure" ]; then
+            tittel="ETL: kjøring med feilet kilde $(date -u +%Y-%m-%d)"
+            brodtekst=$'En kilde feilet. Forrige datasett er beholdt, og feilen er logget i `data/_status.json`.\n\nMerknaden om at serien ikke er oppdatert, blir synlig på siden først når denne slås sammen.\n\nSe kjøreloggen for hva som feilet.'
+          else
+            tittel="ETL: oppdaterte data $(date -u +%Y-%m-%d)"
+            brodtekst=$'Maskinell oppdatering fra den månedlige ETL-kjøringen.\n\nGå gjennom diffen under `data/processed/` før du slår sammen.'
+          fi
+
+          git commit -m "$tittel" -m "Maskinell kjøring, se .github/workflows/etl.yml"
+          git push origin "HEAD:$gren"
+
+          gh pr create \
+            --base "${{ github.ref_name }}" \
+            --head "$gren" \
+            --title "$tittel" \
+            --body "$brodtekst"
+
+      - name: Ingen endringer
+        if: steps.pr.conclusion == 'skipped'
+        run: echo "Ingen endringer i data/processed/, data/geo/ eller data/_sources.json. Ingen pull request opprettet."
+
+      # Til slutt, slik at status og data er committet før jobben faller.
+      - name: Marker kjøringen som feilet
+        if: steps.etl.outcome == 'failure' || steps.navn.outcome == 'failure'
+        run: |
+          echo "::error::En kilde feilet. Forrige datasett er beholdt, se data/_status.json."
+          exit 1
