@@ -59,6 +59,7 @@ FOOTNOTE = frozenset(
         "f_resolution_change",
         "f_zero_no_detection",
         "f_grid_resolution",
+        "f_product_level",
     }
 )
 

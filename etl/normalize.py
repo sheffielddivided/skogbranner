@@ -60,9 +60,10 @@ def fra_k1(rader, info):
     # Data for nedlastingsåret er per definisjon ufullstendige.
     ufullstendig_aar = int(info["downloaded_at"][:4])
 
-    # Gjelder hele serien: MODIS/VIIRS-overgangen og at de minste brannene
-    # ikke fanges opp. Se data/_sources.json for kildens egen ordlyd.
-    grunnfotnoter = ["f_sensor_break", "f_min_fire_size"]
+    # Gjelder hele serien: MODIS/VIIRS-overgangen, at de minste brannene ikke
+    # fanges opp, og at nivået avhenger av produktet. Se data/_sources.json for
+    # kildens egen ordlyd.
+    grunnfotnoter = ["f_sensor_break", "f_min_fire_size", "f_product_level"]
 
     observasjoner = []
     ukjente = set()
@@ -281,7 +282,7 @@ def fra_k8(per_entitet, verden, info, for_smaa=(), uobservert=(), med_geometri=N
         serie=k8_firecci.SERIES_ID,
         kvalitet="beta",
         faktor=M2_TO_KM2,
-        grunnfotnoter=["f_beta_product", "f_sensor_break"],
+        grunnfotnoter=["f_beta_product", "f_sensor_break", "f_product_level"],
         per_aar=lambda _: ([], set(for_smaa), set(uobservert)),
     )
 
@@ -302,7 +303,7 @@ def fra_k9(per_entitet, verden, info, per_aar, med_geometri=None):
         serie=k9_gfed5.SERIES_ID,
         kvalitet="measured",
         faktor=1.0,
-        grunnfotnoter=[],
+        grunnfotnoter=["f_product_level"],
         per_aar=per_aar,
     )
 

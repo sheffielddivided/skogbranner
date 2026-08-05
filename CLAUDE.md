@@ -438,6 +438,16 @@ en ny versjon.
   produsenten har delt datasettet, ikke fordi noe mangler på siden. Utvid den
   ikke.
 
+  **Nivået er kontrollert mot kilden.** GFED5 oppgir 774 ± 63 Mha per år for
+  2001–2020, og vår aggregering gir 775,5 Mha for de samme årene. Produktet
+  ligger 93 % over MCD64A1 og 61 % over GFED4s fordi det korrigerer for
+  commission- og omission-feil med Landsat og Sentinel-2, og legger til areal i
+  jordbruksland, torvmark og avskogingsområder fra aktiv branndeteksjon.
+
+  Det er derfor K9 ligger nesten dobbelt så høyt som K1 for de årene begge
+  dekker. Forskjellen er et produktavvik, ikke en feil hos oss og ikke en
+  endring i verden — se `f_product_level` i § 9.
+
   Kilden oppgir km² per rute. Rutenettene summeres til landnivå på samme måte
   som K8, men med én maske per oppløsning: terskelen for `f_grid_resolution` og
   settet av entiteter rutenettet ikke treffer, regnes mot det rutenettet som
@@ -485,23 +495,28 @@ og bruken er dekket av Fire_cci-vilkårene, som lenkes fra `data/_sources.json`.
 > 1.1. Centre for Environmental Data Analysis, 28 December 2020.
 > doi:10.5285/62866635ab074e07b93f17fbf87a2c1a.
 
-**K9 — GFED5.**
+**K9 — GFED5.** Vi bruker brent areal-produktet, og siteringen er artikkelen
+som dokumenterer *det*. Utslippsartikkelen under dokumenterer et annet produkt
+i samme familie og er ikke siteringen for disse tallene.
 
-> van der Werf, G.R., Randerson, J.T., van Wees, D., Chen, Y., Giglio, L.,
-> Hall, J., Vernooij, R., Mu, M., Binte Shahid, S., Barsanti, K.C.,
-> Yokelson, R. & Morton, D.C. (2025). Landscape fire emissions from the 5th
-> version of the Global Fire Emissions Database (GFED5).
-> Scientific Data 12, 1870. https://doi.org/10.1038/s41597-025-06127-w
+> Chen, Y., Hall, J., van Wees, D., Andela, N., Hantson, S., Giglio, L.,
+> van der Werf, G. R., Morton, D. C., and Randerson, J. T.: Multi-decadal
+> trends and variability in burned area from the fifth version of the Global
+> Fire Emissions Database (GFED5), Earth Syst. Sci. Data, 15, 5227–5259,
+> https://doi.org/10.5194/essd-15-5227-2023, 2023.
 
 Når K9 hentes, legges følgende i `data/_sources.json`:
 
-- `doi`: `10.1038/s41597-025-06127-w`
-- Den publiserte rettelsen som **eget felt**: Publisher Correction, Scientific
-  Data 13, 44 (15. januar 2026),
+- `doi`: `10.5194/essd-15-5227-2023`
+- `dataset_doi`: Zenodo-utgivelsen tallene faktisk er lastet ned fra
+- GFED5.1-artikkelen som **eget felt** under `related_publication`: van der
+  Werf m.fl. (2025), Scientific Data 12, 1870,
+  `https://doi.org/10.1038/s41597-025-06127-w`, med sin publiserte rettelse —
+  Publisher Correction, Scientific Data 13, 44 (15. januar 2026),
   `https://doi.org/10.1038/s41597-026-06613-9`
 
-Rettelsen føres som eget felt, ikke som en endring av siteringen, slik at det
-er sporbart hvilken versjon av artikkelen datasettet er dokumentert av.
+GFED5.1-artikkelen og rettelsen føres som egne felt, ikke som en endring av
+siteringen, slik at det er sporbart hvilken artikkel som dokumenterer hva.
 
 **K10 — Global Charcoal Database.**
 
@@ -865,6 +880,8 @@ særbehandling og uten egen seksjon (P8).
   mellom «ingenting brant» og «ingen måling»
 - `f_grid_resolution` — landet er lite i forhold til rutenettets oppløsning,
   slik at brent areal kan falle mellom rutene
+- `f_product_level` — satellittprodukter har ulik deteksjonsevne, så
+  nivåforskjellen mellom to serier er ikke en endring i verden
 
 **Hvor fotnotetekstene bor.** Kodene over er enumerasjonen, og følger T5: prosa
 her, konstant i `etl/schema.py`. Den norske teksten leseren ser er noe annet —
@@ -898,6 +915,21 @@ Merkes de ikke, gjelder terskelene ikke for serien, og en falsk nedgang av
 Qatar-typen — deteksjoner som stopper, ikke branner som avtar — ville passert
 ubemerket. En rutenettkilde som ikke merker nullene sine, undergraver derfor en
 regel som står et helt annet sted i dokumentet.
+
+`f_product_level` gjelder de satellittmålte arealseriene: K1, K8 og K9. Den
+sier at to serier kan ligge på ulikt nivå for samme år fordi produktene ser
+ulikt mye, og at avstanden mellom dem derfor ikke er informasjon om verden.
+
+Den overlapper ikke med `f_min_fire_size`. Den fotnoten sier hva én serie ikke
+fanger opp; denne sier at *avstanden mellom to serier* ikke kan leses som en
+endring. Nasjonalt rapporterte kilder får den ikke — de har `f_reporting_basis`
+for en annen mekanisme, nemlig at definisjonene er ulike, ikke at
+deteksjonsevnen er det.
+
+Grunnen til at den trengs, er at kvalitetsbruddet i § 6 ikke fanger dette. K1
+og K9 er begge `measured`, så en figur som viser dem sammen tegner to
+heltrukne linjer uten noe som forklarer at den ene ligger nesten dobbelt så
+høyt som den andre.
 
 `f_grid_resolution` gjelder rutenettkilder og påføres maskinelt. En entitet med
 mindre landareal enn **én rute ved ekvator** — 0,25° × 0,25°, om lag 773 km²,
