@@ -2,15 +2,55 @@
   "schema_version": 1,
   "_skjema": "se CLAUDE.md § 6 og etl/schema.py",
   "_om": "Siste kjørestatus per kilde. Skrives av ETL, leses av byggetrinnet. Feiler en kilde, beholdes forrige datasett og siden viser en diskré merknad om at akkurat den serien ikke er oppdatert siden dato X.",
-  "last_run": "2026-08-05T17:21:37+00:00",
+  "last_run": "2026-08-05T20:12:17+00:00",
   "sources": {
     "K1": {
       "status": "ok",
-      "last_attempt": "2026-08-05T17:21:37+00:00",
-      "last_success": "2026-08-05T17:21:37+00:00",
+      "last_attempt": "2026-08-05T20:08:29+00:00",
+      "last_success": "2026-08-05T20:08:29+00:00",
       "rows": 3900,
       "checksum": "a60fa5fded76cff4f7e76bc5f9e93e0f4bc2dc27a581914115d01808b6fab881",
+      "message": "hentet og normalisert"
+    },
+    "K6": {
+      "status": "ok",
+      "last_attempt": "2026-08-05T20:08:29+00:00",
+      "last_success": "2026-08-05T20:08:29+00:00",
+      "rows": 237,
+      "checksum": "5fed433373581fa648920435f937d95f2d3c0200e067409c6478dcdf1b853139",
       "message": "hentet og publisert"
+    },
+    "K3": {
+      "status": "ok",
+      "last_attempt": "2026-08-05T20:10:48+00:00",
+      "last_success": "2026-08-05T20:10:48+00:00",
+      "rows": 1365,
+      "checksum": "510f13bae8cff59bbbc716ebef437a71de40c33c416f753e379a90f87311408b",
+      "message": "hentet og normalisert"
+    },
+    "K5": {
+      "status": "ok",
+      "last_attempt": "2026-08-05T20:10:48+00:00",
+      "last_success": "2026-08-05T20:10:48+00:00",
+      "rows": 43,
+      "checksum": "32fe27d4ddefecf6e52bc98bc7013f8af8522a415429de1d288b19ef510ef679",
+      "message": "hentet og normalisert"
+    },
+    "K7": {
+      "status": "ok",
+      "last_attempt": "2026-08-05T20:10:49+00:00",
+      "last_success": "2026-08-05T20:10:49+00:00",
+      "rows": 121,
+      "checksum": "9248134616e43740a596fce592e7ac72e0bd41334de831f4712a3f37cc2bcefc",
+      "message": "hentet og normalisert"
+    },
+    "K2": {
+      "status": "failed",
+      "last_attempt": "2026-08-05T20:12:17+00:00",
+      "last_success": null,
+      "rows": null,
+      "checksum": null,
+      "message": "ValueError: Entiteter uten oppføring i data/geo/land_no.json: Akrotiri and Dhekelia (XAD), Caspian Sea (XCA), Northern Cyprus (XNC)"
     }
   }
 }

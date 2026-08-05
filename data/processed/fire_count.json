@@ -1,0 +1,1763 @@
+[
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "1959",
+  "indicator": "fire_count",
+  "value": 1632,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "1960",
+  "indicator": "fire_count",
+  "value": 2856,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "1961",
+  "indicator": "fire_count",
+  "value": 4219,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "1962",
+  "indicator": "fire_count",
+  "value": 1957,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "1963",
+  "indicator": "fire_count",
+  "value": 3047,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "1964",
+  "indicator": "fire_count",
+  "value": 1712,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "1965",
+  "indicator": "fire_count",
+  "value": 3177,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "1966",
+  "indicator": "fire_count",
+  "value": 2718,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "1967",
+  "indicator": "fire_count",
+  "value": 4421,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "1968",
+  "indicator": "fire_count",
+  "value": 2767,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "1969",
+  "indicator": "fire_count",
+  "value": 3550,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "1970",
+  "indicator": "fire_count",
+  "value": 5540,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "1971",
+  "indicator": "fire_count",
+  "value": 4865,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "1972",
+  "indicator": "fire_count",
+  "value": 4875,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "1973",
+  "indicator": "fire_count",
+  "value": 5154,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "1974",
+  "indicator": "fire_count",
+  "value": 5021,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "1975",
+  "indicator": "fire_count",
+  "value": 6339,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "1976",
+  "indicator": "fire_count",
+  "value": 8286,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "1977",
+  "indicator": "fire_count",
+  "value": 7057,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "1978",
+  "indicator": "fire_count",
+  "value": 5778,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "1979",
+  "indicator": "fire_count",
+  "value": 8296,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "1980",
+  "indicator": "fire_count",
+  "value": 7483,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "1981",
+  "indicator": "fire_count",
+  "value": 9242,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "1982",
+  "indicator": "fire_count",
+  "value": 7748,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "1983",
+  "indicator": "fire_count",
+  "value": 7978,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "1984",
+  "indicator": "fire_count",
+  "value": 8484,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "1985",
+  "indicator": "fire_count",
+  "value": 7760,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "1986",
+  "indicator": "fire_count",
+  "value": 6091,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "1987",
+  "indicator": "fire_count",
+  "value": 10465,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "1988",
+  "indicator": "fire_count",
+  "value": 10168,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "1989",
+  "indicator": "fire_count",
+  "value": 12015,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "1990",
+  "indicator": "fire_count",
+  "value": 9974,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "1991",
+  "indicator": "fire_count",
+  "value": 10183,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "1992",
+  "indicator": "fire_count",
+  "value": 8967,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "1993",
+  "indicator": "fire_count",
+  "value": 5949,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "1994",
+  "indicator": "fire_count",
+  "value": 9663,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "1995",
+  "indicator": "fire_count",
+  "value": 8463,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "1996",
+  "indicator": "fire_count",
+  "value": 6406,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "1997",
+  "indicator": "fire_count",
+  "value": 6064,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "1998",
+  "indicator": "fire_count",
+  "value": 10766,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "1999",
+  "indicator": "fire_count",
+  "value": 7598,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "2000",
+  "indicator": "fire_count",
+  "value": 5403,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "2001",
+  "indicator": "fire_count",
+  "value": 7732,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "2002",
+  "indicator": "fire_count",
+  "value": 7849,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "2003",
+  "indicator": "fire_count",
+  "value": 8257,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "2004",
+  "indicator": "fire_count",
+  "value": 6470,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "2005",
+  "indicator": "fire_count",
+  "value": 7442,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "2006",
+  "indicator": "fire_count",
+  "value": 9719,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "2007",
+  "indicator": "fire_count",
+  "value": 6911,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "2008",
+  "indicator": "fire_count",
+  "value": 6235,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "2009",
+  "indicator": "fire_count",
+  "value": 7138,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "2010",
+  "indicator": "fire_count",
+  "value": 7315,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "2011",
+  "indicator": "fire_count",
+  "value": 4675,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "2012",
+  "indicator": "fire_count",
+  "value": 7911,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "2013",
+  "indicator": "fire_count",
+  "value": 6246,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "2014",
+  "indicator": "fire_count",
+  "value": 5016,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "2015",
+  "indicator": "fire_count",
+  "value": 7029,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "2016",
+  "indicator": "fire_count",
+  "value": 5259,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "2017",
+  "indicator": "fire_count",
+  "value": 5654,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "2018",
+  "indicator": "fire_count",
+  "value": 7111,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "2019",
+  "indicator": "fire_count",
+  "value": 4062,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "2020",
+  "indicator": "fire_count",
+  "value": 4014,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "2021",
+  "indicator": "fire_count",
+  "value": 6710,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "2022",
+  "indicator": "fire_count",
+  "value": 5658,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "2023",
+  "indicator": "fire_count",
+  "value": 6837,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "2024",
+  "indicator": "fire_count",
+  "value": 5844,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "CAN",
+  "entity_name": "Canada",
+  "level": "country",
+  "period": "2025",
+  "indicator": "fire_count",
+  "value": 6199,
+  "unit": "count",
+  "source_id": "K7",
+  "series_id": "cnfdb_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "USA",
+  "entity_name": "USA",
+  "level": "country",
+  "period": "1983",
+  "indicator": "fire_count",
+  "value": 18229,
+  "unit": "count",
+  "source_id": "K5",
+  "series_id": "nifc_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_record_start"
+  ]
+ },
+ {
+  "entity": "USA",
+  "entity_name": "USA",
+  "level": "country",
+  "period": "1984",
+  "indicator": "fire_count",
+  "value": 20493,
+  "unit": "count",
+  "source_id": "K5",
+  "series_id": "nifc_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_record_start"
+  ]
+ },
+ {
+  "entity": "USA",
+  "entity_name": "USA",
+  "level": "country",
+  "period": "1985",
+  "indicator": "fire_count",
+  "value": 82591,
+  "unit": "count",
+  "source_id": "K5",
+  "series_id": "nifc_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_record_start"
+  ]
+ },
+ {
+  "entity": "USA",
+  "entity_name": "USA",
+  "level": "country",
+  "period": "1986",
+  "indicator": "fire_count",
+  "value": 85907,
+  "unit": "count",
+  "source_id": "K5",
+  "series_id": "nifc_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_record_start"
+  ]
+ },
+ {
+  "entity": "USA",
+  "entity_name": "USA",
+  "level": "country",
+  "period": "1987",
+  "indicator": "fire_count",
+  "value": 71300,
+  "unit": "count",
+  "source_id": "K5",
+  "series_id": "nifc_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_record_start"
+  ]
+ },
+ {
+  "entity": "USA",
+  "entity_name": "USA",
+  "level": "country",
+  "period": "1988",
+  "indicator": "fire_count",
+  "value": 72750,
+  "unit": "count",
+  "source_id": "K5",
+  "series_id": "nifc_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_record_start"
+  ]
+ },
+ {
+  "entity": "USA",
+  "entity_name": "USA",
+  "level": "country",
+  "period": "1989",
+  "indicator": "fire_count",
+  "value": 48949,
+  "unit": "count",
+  "source_id": "K5",
+  "series_id": "nifc_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_record_start"
+  ]
+ },
+ {
+  "entity": "USA",
+  "entity_name": "USA",
+  "level": "country",
+  "period": "1990",
+  "indicator": "fire_count",
+  "value": 66481,
+  "unit": "count",
+  "source_id": "K5",
+  "series_id": "nifc_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_record_start"
+  ]
+ },
+ {
+  "entity": "USA",
+  "entity_name": "USA",
+  "level": "country",
+  "period": "1991",
+  "indicator": "fire_count",
+  "value": 75754,
+  "unit": "count",
+  "source_id": "K5",
+  "series_id": "nifc_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_record_start"
+  ]
+ },
+ {
+  "entity": "USA",
+  "entity_name": "USA",
+  "level": "country",
+  "period": "1992",
+  "indicator": "fire_count",
+  "value": 87394,
+  "unit": "count",
+  "source_id": "K5",
+  "series_id": "nifc_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_record_start"
+  ]
+ },
+ {
+  "entity": "USA",
+  "entity_name": "USA",
+  "level": "country",
+  "period": "1993",
+  "indicator": "fire_count",
+  "value": 58810,
+  "unit": "count",
+  "source_id": "K5",
+  "series_id": "nifc_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_record_start"
+  ]
+ },
+ {
+  "entity": "USA",
+  "entity_name": "USA",
+  "level": "country",
+  "period": "1994",
+  "indicator": "fire_count",
+  "value": 79107,
+  "unit": "count",
+  "source_id": "K5",
+  "series_id": "nifc_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_record_start"
+  ]
+ },
+ {
+  "entity": "USA",
+  "entity_name": "USA",
+  "level": "country",
+  "period": "1995",
+  "indicator": "fire_count",
+  "value": 82234,
+  "unit": "count",
+  "source_id": "K5",
+  "series_id": "nifc_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_record_start"
+  ]
+ },
+ {
+  "entity": "USA",
+  "entity_name": "USA",
+  "level": "country",
+  "period": "1996",
+  "indicator": "fire_count",
+  "value": 96363,
+  "unit": "count",
+  "source_id": "K5",
+  "series_id": "nifc_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_record_start"
+  ]
+ },
+ {
+  "entity": "USA",
+  "entity_name": "USA",
+  "level": "country",
+  "period": "1997",
+  "indicator": "fire_count",
+  "value": 66196,
+  "unit": "count",
+  "source_id": "K5",
+  "series_id": "nifc_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_record_start"
+  ]
+ },
+ {
+  "entity": "USA",
+  "entity_name": "USA",
+  "level": "country",
+  "period": "1998",
+  "indicator": "fire_count",
+  "value": 81043,
+  "unit": "count",
+  "source_id": "K5",
+  "series_id": "nifc_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_record_start"
+  ]
+ },
+ {
+  "entity": "USA",
+  "entity_name": "USA",
+  "level": "country",
+  "period": "1999",
+  "indicator": "fire_count",
+  "value": 92487,
+  "unit": "count",
+  "source_id": "K5",
+  "series_id": "nifc_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_record_start"
+  ]
+ },
+ {
+  "entity": "USA",
+  "entity_name": "USA",
+  "level": "country",
+  "period": "2000",
+  "indicator": "fire_count",
+  "value": 92250,
+  "unit": "count",
+  "source_id": "K5",
+  "series_id": "nifc_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_record_start"
+  ]
+ },
+ {
+  "entity": "USA",
+  "entity_name": "USA",
+  "level": "country",
+  "period": "2001",
+  "indicator": "fire_count",
+  "value": 84079,
+  "unit": "count",
+  "source_id": "K5",
+  "series_id": "nifc_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_record_start"
+  ]
+ },
+ {
+  "entity": "USA",
+  "entity_name": "USA",
+  "level": "country",
+  "period": "2002",
+  "indicator": "fire_count",
+  "value": 73457,
+  "unit": "count",
+  "source_id": "K5",
+  "series_id": "nifc_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_record_start"
+  ]
+ },
+ {
+  "entity": "USA",
+  "entity_name": "USA",
+  "level": "country",
+  "period": "2003",
+  "indicator": "fire_count",
+  "value": 63629,
+  "unit": "count",
+  "source_id": "K5",
+  "series_id": "nifc_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_record_start"
+  ]
+ },
+ {
+  "entity": "USA",
+  "entity_name": "USA",
+  "level": "country",
+  "period": "2004",
+  "indicator": "fire_count",
+  "value": 65461,
+  "unit": "count",
+  "source_id": "K5",
+  "series_id": "nifc_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_record_start",
+   "f_incomplete_inventory"
+  ]
+ },
+ {
+  "entity": "USA",
+  "entity_name": "USA",
+  "level": "country",
+  "period": "2005",
+  "indicator": "fire_count",
+  "value": 66753,
+  "unit": "count",
+  "source_id": "K5",
+  "series_id": "nifc_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_record_start"
+  ]
+ },
+ {
+  "entity": "USA",
+  "entity_name": "USA",
+  "level": "country",
+  "period": "2006",
+  "indicator": "fire_count",
+  "value": 96385,
+  "unit": "count",
+  "source_id": "K5",
+  "series_id": "nifc_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_record_start"
+  ]
+ },
+ {
+  "entity": "USA",
+  "entity_name": "USA",
+  "level": "country",
+  "period": "2007",
+  "indicator": "fire_count",
+  "value": 85705,
+  "unit": "count",
+  "source_id": "K5",
+  "series_id": "nifc_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_record_start"
+  ]
+ },
+ {
+  "entity": "USA",
+  "entity_name": "USA",
+  "level": "country",
+  "period": "2008",
+  "indicator": "fire_count",
+  "value": 78979,
+  "unit": "count",
+  "source_id": "K5",
+  "series_id": "nifc_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_record_start"
+  ]
+ },
+ {
+  "entity": "USA",
+  "entity_name": "USA",
+  "level": "country",
+  "period": "2009",
+  "indicator": "fire_count",
+  "value": 78792,
+  "unit": "count",
+  "source_id": "K5",
+  "series_id": "nifc_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_record_start"
+  ]
+ },
+ {
+  "entity": "USA",
+  "entity_name": "USA",
+  "level": "country",
+  "period": "2010",
+  "indicator": "fire_count",
+  "value": 71971,
+  "unit": "count",
+  "source_id": "K5",
+  "series_id": "nifc_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_record_start"
+  ]
+ },
+ {
+  "entity": "USA",
+  "entity_name": "USA",
+  "level": "country",
+  "period": "2011",
+  "indicator": "fire_count",
+  "value": 74126,
+  "unit": "count",
+  "source_id": "K5",
+  "series_id": "nifc_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_record_start"
+  ]
+ },
+ {
+  "entity": "USA",
+  "entity_name": "USA",
+  "level": "country",
+  "period": "2012",
+  "indicator": "fire_count",
+  "value": 67774,
+  "unit": "count",
+  "source_id": "K5",
+  "series_id": "nifc_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_record_start"
+  ]
+ },
+ {
+  "entity": "USA",
+  "entity_name": "USA",
+  "level": "country",
+  "period": "2013",
+  "indicator": "fire_count",
+  "value": 47579,
+  "unit": "count",
+  "source_id": "K5",
+  "series_id": "nifc_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_record_start"
+  ]
+ },
+ {
+  "entity": "USA",
+  "entity_name": "USA",
+  "level": "country",
+  "period": "2014",
+  "indicator": "fire_count",
+  "value": 63312,
+  "unit": "count",
+  "source_id": "K5",
+  "series_id": "nifc_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_record_start"
+  ]
+ },
+ {
+  "entity": "USA",
+  "entity_name": "USA",
+  "level": "country",
+  "period": "2015",
+  "indicator": "fire_count",
+  "value": 68151,
+  "unit": "count",
+  "source_id": "K5",
+  "series_id": "nifc_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_record_start"
+  ]
+ },
+ {
+  "entity": "USA",
+  "entity_name": "USA",
+  "level": "country",
+  "period": "2016",
+  "indicator": "fire_count",
+  "value": 67743,
+  "unit": "count",
+  "source_id": "K5",
+  "series_id": "nifc_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_record_start"
+  ]
+ },
+ {
+  "entity": "USA",
+  "entity_name": "USA",
+  "level": "country",
+  "period": "2017",
+  "indicator": "fire_count",
+  "value": 71499,
+  "unit": "count",
+  "source_id": "K5",
+  "series_id": "nifc_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_record_start"
+  ]
+ },
+ {
+  "entity": "USA",
+  "entity_name": "USA",
+  "level": "country",
+  "period": "2018",
+  "indicator": "fire_count",
+  "value": 58083,
+  "unit": "count",
+  "source_id": "K5",
+  "series_id": "nifc_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_record_start"
+  ]
+ },
+ {
+  "entity": "USA",
+  "entity_name": "USA",
+  "level": "country",
+  "period": "2019",
+  "indicator": "fire_count",
+  "value": 50477,
+  "unit": "count",
+  "source_id": "K5",
+  "series_id": "nifc_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_record_start"
+  ]
+ },
+ {
+  "entity": "USA",
+  "entity_name": "USA",
+  "level": "country",
+  "period": "2020",
+  "indicator": "fire_count",
+  "value": 58950,
+  "unit": "count",
+  "source_id": "K5",
+  "series_id": "nifc_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_record_start"
+  ]
+ },
+ {
+  "entity": "USA",
+  "entity_name": "USA",
+  "level": "country",
+  "period": "2021",
+  "indicator": "fire_count",
+  "value": 58985,
+  "unit": "count",
+  "source_id": "K5",
+  "series_id": "nifc_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_record_start"
+  ]
+ },
+ {
+  "entity": "USA",
+  "entity_name": "USA",
+  "level": "country",
+  "period": "2022",
+  "indicator": "fire_count",
+  "value": 68988,
+  "unit": "count",
+  "source_id": "K5",
+  "series_id": "nifc_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_record_start"
+  ]
+ },
+ {
+  "entity": "USA",
+  "entity_name": "USA",
+  "level": "country",
+  "period": "2023",
+  "indicator": "fire_count",
+  "value": 56580,
+  "unit": "count",
+  "source_id": "K5",
+  "series_id": "nifc_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_record_start"
+  ]
+ },
+ {
+  "entity": "USA",
+  "entity_name": "USA",
+  "level": "country",
+  "period": "2024",
+  "indicator": "fire_count",
+  "value": 64897,
+  "unit": "count",
+  "source_id": "K5",
+  "series_id": "nifc_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_record_start"
+  ]
+ },
+ {
+  "entity": "USA",
+  "entity_name": "USA",
+  "level": "country",
+  "period": "2025",
+  "indicator": "fire_count",
+  "value": 77850,
+  "unit": "count",
+  "source_id": "K5",
+  "series_id": "nifc_annual_fire_count",
+  "quality": "reported",
+  "footnotes": [
+   "f_reporting_basis",
+   "f_record_start"
+  ]
+ }
+]

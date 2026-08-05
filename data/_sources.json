@@ -26,14 +26,149 @@
         "owid_annual_area_burnt"
       ],
       "processed_files": [
+        "burned_area.csv",
         "burned_area.json",
-        "burned_area.csv"
+        "burned_area_share_land.csv",
+        "burned_area_share_land.json"
       ],
       "footnotes": [
         "f_sensor_break",
         "f_min_fire_size"
       ],
       "notes": "Area burnt by wildfires in hectares. The 2026 data is incomplete and was last updated 01 August 2026."
+    },
+    "K6": {
+      "source_id": "K6",
+      "name": "Natural Earth — Admin 0, countries",
+      "publisher": "Natural Earth",
+      "url": "https://www.naturalearthdata.com/downloads/",
+      "download_url": "https://naciscdn.org/naturalearth/50m/cultural/ne_50m_admin_0_countries.zip",
+      "license": "Public domain. Natural Earth setter ingen vilkår for bruk.",
+      "license_url": "https://www.naturalearthdata.com/about/terms-of-use/",
+      "attribution": "Made with Natural Earth.",
+      "requires_agreement": false,
+      "geography": "global",
+      "temporal_resolution": null,
+      "quality": null,
+      "unit_source": null,
+      "downloaded_at": "2026-08-05",
+      "checksum": "5fed433373581fa648920435f937d95f2d3c0200e067409c6478dcdf1b853139",
+      "checksums": {
+        "110m": "0f243aeac8ac6cf26f0417285b0bd33ac47f1b5bdb719fd3e0df37d03ea37110",
+        "50m": "5fed433373581fa648920435f937d95f2d3c0200e067409c6478dcdf1b853139"
+      },
+      "series": [],
+      "processed_files": [
+        "world_110m.topo.json",
+        "world_50m.topo.json",
+        "land_area_km2.json"
+      ],
+      "footnotes": [],
+      "notes": "Leverer kartgeometri og landarealer, ikke branndata. Admin-0 har ikke noe arealfelt, så arealene er regnet fra polygonene ved reprojeksjon til en arealtro projeksjon. Fordi Natural Earth er generalisert, avviker de noe fra offisielle landarealer."
+    },
+    "K3": {
+      "source_id": "K3",
+      "name": "EFFIS — European Forest Fire Information System, landtotaler",
+      "publisher": "Joint Research Centre, Europakommisjonen, under Copernicus",
+      "url": "https://forest-fire.emergency.copernicus.eu/apps/effis.statistics/estimates",
+      "download_url": "https://api2.effis.emergency.copernicus.eu/statistics/v2/effis/estimatesbycountry?country=ITA",
+      "license": "Creative Commons Attribution 4.0 International (CC BY 4.0). Copyright (C) European Union, 1995–2025. Kommisjonens gjenbrukspolitikk følger kommisjonsbeslutningen av 12. desember 2011 om gjenbruk av kommisjonsdokumenter.",
+      "license_url": "https://forest-fire.emergency.copernicus.eu/about-effis/data-license",
+      "attribution": "European Forest Fire Information System (EFFIS), Copernicus Emergency Management Service, Joint Research Centre.",
+      "requires_agreement": false,
+      "geography": "Europa, Midtøsten og Nord-Afrika",
+      "coverage_start": "2006",
+      "coverage_end": "2026",
+      "temporal_resolution": "annual",
+      "quality": "reported",
+      "unit_source": "hectares",
+      "downloaded_at": "2026-08-05",
+      "checksum": "510f13bae8cff59bbbc716ebef437a71de40c33c416f753e379a90f87311408b",
+      "series": [
+        "effis_annual_country_totals"
+      ],
+      "processed_files": [
+        "burned_area.csv",
+        "burned_area.json"
+      ],
+      "footnotes": [
+        "f_sensor_break",
+        "f_min_fire_size",
+        "f_coverage_change"
+      ],
+      "notes": "Tallene kommer fra EFFIS' Rapid Damage Assessment, som kartlegger brent areal fra satellitt: MODIS fra 2003, VIIRS fra 2016 og Sentinel-2 fra 2018. Fram til 2018 fanget kartleggingen i praksis branner fra rundt 30 hektar og oppover; med Sentinel-2 kommer også mindre branner med. Antallet land i EFFIS-nettverket har økt over tid, så hvor langt tilbake serien går, varierer mellom land."
+    },
+    "K5": {
+      "source_id": "K5",
+      "name": "NIFC — Total Wildland Fires and Acres",
+      "publisher": "National Interagency Fire Center, med tall fra National Interagency Coordination Center",
+      "url": "https://www.nifc.gov/fire-information/statistics/wildfires",
+      "download_url": "https://www.nifc.gov/fire-information/statistics/wildfires",
+      "license": "Offentlig eiendom. Verk av USAs føderale myndigheter er ikke opphavsrettsbeskyttet.",
+      "license_url": "https://www.doi.gov/disclaimer",
+      "attribution": "National Interagency Coordination Center, via National Interagency Fire Center.",
+      "requires_agreement": false,
+      "geography": "USA",
+      "coverage_start": "1983",
+      "coverage_end": "2025",
+      "temporal_resolution": "annual",
+      "quality": "reported",
+      "unit_source": "acres",
+      "downloaded_at": "2026-08-05",
+      "checksum": "32fe27d4ddefecf6e52bc98bc7013f8af8522a415429de1d288b19ef510ef679",
+      "series": [
+        "nifc_annual_burned_area",
+        "nifc_annual_fire_count"
+      ],
+      "processed_files": [
+        "burned_area.csv",
+        "burned_area.json",
+        "fire_count.csv",
+        "fire_count.json"
+      ],
+      "footnotes": [
+        "f_reporting_basis",
+        "f_record_start"
+      ],
+      "notes": "Tallene er nasjonalt rapporterte og følger amerikanske definisjoner av hva som telles som en branntilfelle. Kilden oppgir at de føderale brannmyndighetene ikke førte offisielle branndata etter dagens rapporteringsprosesser før 1983, og at det derfor ikke finnes offisielle tall for tidligere år."
+    },
+    "K7": {
+      "source_id": "K7",
+      "name": "CNFDB / NBAC — Canadian National Fire Database og National Burned Area Composite",
+      "publisher": "Natural Resources Canada, Canadian Forest Service",
+      "url": "https://cwfis.cfs.nrcan.gc.ca/ha/nfdb",
+      "download_url": "https://cwfis.cfs.nrcan.gc.ca/downloads/nbac/NBAC_summarystats_1972_to_2025_20260513.xlsx",
+      "fire_count_download_url": "https://cwfis.cfs.nrcan.gc.ca/downloads/nfdb/fire_pnt/current_version/NFDB_point_stats.xlsx",
+      "license": "Krever aksept av sluttbrukeravtale. Avtalen er akseptert.",
+      "license_url": "https://cwfis.cfs.nrcan.gc.ca/downloads/nbac/NBAC_EULA.pdf",
+      "attribution": "Canadian Forest Service. 2021. Canadian National Fire Database – Agency Fire Data. Natural Resources Canada, Canadian Forest Service, Northern Forestry Centre, Edmonton, Alberta. https://cwfis.cfs.nrcan.gc.ca/ha/nfdb",
+      "requires_agreement": true,
+      "agreement_accepted": true,
+      "geography": "Canada",
+      "coverage_start": "1959",
+      "coverage_end": "2025",
+      "temporal_resolution": "annual",
+      "quality": "reported",
+      "unit_source": "hectares",
+      "downloaded_at": "2026-08-05",
+      "source_last_updated": "2026-05-13",
+      "checksum": "9248134616e43740a596fce592e7ac72e0bd41334de831f4712a3f37cc2bcefc",
+      "fire_count_checksum": "1049fe47f07f347761659f41199da573731a3eae10111c6176744343678b76f4",
+      "series": [
+        "nbac_annual_burned_area",
+        "cnfdb_annual_fire_count"
+      ],
+      "processed_files": [
+        "burned_area.csv",
+        "burned_area.json",
+        "fire_count.csv",
+        "fire_count.json"
+      ],
+      "footnotes": [
+        "f_reporting_basis",
+        "f_incomplete_inventory"
+      ],
+      "notes": "Brent areal er produsentens eget årsaggregat fra National Burned Area Composite, oppgitt som justerte hektar. Antall branner kommer fra punktdataene i Canadian National Fire Database. Kilden opplyser selv at databasen verken er komplett eller feilfri, og at både fullstendighet og kvalitet varierer mellom byråene som rapporterer og mellom år."
     }
   }
 }
