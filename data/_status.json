@@ -2,7 +2,7 @@
   "schema_version": 1,
   "_skjema": "se CLAUDE.md § 6 og etl/schema.py",
   "_om": "Siste kjørestatus per kilde. Skrives av ETL, leses av byggetrinnet. Feiler en kilde, beholdes forrige datasett og siden viser en diskré merknad om at akkurat den serien ikke er oppdatert siden dato X. Rutenettkilder fører i tillegg unattributed_share og unattributed_km2: hvor mye brent areal som falt utenfor all landgeometri i kjøringen, slik at andelen kan følges over tid.",
-  "last_run": "2026-08-05T17:21:37+00:00",
+  "last_run": "2026-08-05T21:24:11+00:00",
   "sources": {
     "K1": {
       "status": "ok",
@@ -11,6 +11,34 @@
       "rows": 3900,
       "checksum": "a60fa5fded76cff4f7e76bc5f9e93e0f4bc2dc27a581914115d01808b6fab881",
       "message": "hentet og publisert"
+    },
+    "K9": {
+      "status": "ok",
+      "last_attempt": "2026-08-05T21:24:11+00:00",
+      "last_success": "2026-08-05T21:24:11+00:00",
+      "rows": 5880,
+      "checksum": "2fe4a5ced7e19823f78eafb73616d9f1",
+      "unattributed_share": 1.8e-05,
+      "unattributed_km2": 3304.14,
+      "unattributed_by_resolution": {
+        "1 degrees": {
+          "unattributed_share": 0.0,
+          "unattributed_km2": 0.0,
+          "years": [
+            1997,
+            2000
+          ]
+        },
+        "0.25 degrees": {
+          "unattributed_share": 2.13e-05,
+          "unattributed_km2": 3304.14,
+          "years": [
+            2001,
+            2020
+          ]
+        }
+      },
+      "message": "288 månedsfiler aggregert til 5880 observasjoner, 0.0018% uten landtilknytning"
     }
   }
 }

@@ -34,6 +34,122 @@
         "f_min_fire_size"
       ],
       "notes": "Area burnt by wildfires in hectares. The 2026 data is incomplete and was last updated 01 August 2026."
+    },
+    "K6": {
+      "source_id": "K6",
+      "name": "Natural Earth — admin-0, kartenheter (10m, 1:10 mill.)",
+      "publisher": "Natural Earth",
+      "url": "https://www.naturalearthdata.com/downloads/10m-cultural-vectors/",
+      "download_url": "https://naciscdn.org/naturalearth/10m/cultural/ne_10m_admin_0_map_units.zip",
+      "license": "Public domain",
+      "license_url": "https://www.naturalearthdata.com/about/terms-of-use/",
+      "attribution": "Made with Natural Earth. Free vector and raster map data @ naturalearthdata.com.",
+      "requires_agreement": false,
+      "geography": "global",
+      "coverage_start": "",
+      "coverage_end": "",
+      "temporal_resolution": "",
+      "quality": "",
+      "unit_source": "",
+      "downloaded_at": "2026-08-05",
+      "source_last_updated": null,
+      "checksum": "45bebe2aaf8bf42b9daf4428594925bcb11eabd32fe9dc6e0acf681438053eb5",
+      "series": [],
+      "processed_files": [],
+      "footnotes": [],
+      "notes": "Geometri for kart, og grunnlaget for å fordele rutenettkilder på land. Leverer ingen tallverdier og står derfor ikke i kildekolonnen for noen seksjon."
+    },
+    "K9": {
+      "source_id": "K9",
+      "name": "GFED5 — Global Fire Emissions Database version 5, brent areal",
+      "publisher": "Chen, Y. m.fl., University of California, Irvine, distribuert av Zenodo",
+      "url": "https://zenodo.org/records/7668424",
+      "download_url": "https://zenodo.org/api/records/7668424/files/BA.zip/content",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "attribution": "van der Werf, G.R., Randerson, J.T., van Wees, D., Chen, Y., Giglio, L., Hall, J., Vernooij, R., Mu, M., Binte Shahid, S., Barsanti, K.C., Yokelson, R. & Morton, D.C. (2025). Landscape fire emissions from the 5th version of the Global Fire Emissions Database (GFED5). Scientific Data 12, 1870. https://doi.org/10.1038/s41597-025-06127-w",
+      "doi": "10.1038/s41597-025-06127-w",
+      "dataset_doi": "10.5281/zenodo.7668424",
+      "correction": {
+        "type": "Publisher Correction",
+        "citation": "Publisher Correction, Scientific Data 13, 44 (15. januar 2026)",
+        "doi": "10.1038/s41597-026-06613-9"
+      },
+      "requires_agreement": false,
+      "geography": "global",
+      "coverage_start": "1997",
+      "coverage_end": "2020",
+      "temporal_resolution": "monthly",
+      "quality": "measured",
+      "unit_source": "km2",
+      "spatial_resolution": "1 degree 1997–2000, 0.25 degrees 2001–",
+      "downloaded_at": "2026-08-05",
+      "source_last_updated": "2023-02-23",
+      "checksum": "2fe4a5ced7e19823f78eafb73616d9f1",
+      "series": [
+        "gfed5_annual_burned_area"
+      ],
+      "processed_files": [
+        "burned_area_gfed5.json",
+        "burned_area_gfed5.csv"
+      ],
+      "footnotes": [
+        "f_grid_resolution",
+        "f_resolution_change",
+        "f_zero_no_detection"
+      ],
+      "excluded_unobserved": [
+        "BLM",
+        "CCK",
+        "GIB",
+        "SXM",
+        "TKL",
+        "VAT"
+      ],
+      "excluded_no_geometry": [
+        "UMI"
+      ],
+      "resolutions": {
+        "1 degrees": {
+          "grid": "180x360",
+          "cell_km2_at_equator": 12364.2,
+          "years": [
+            1997,
+            2000
+          ],
+          "unattributed_share": 0.0,
+          "unattributed_km2": 0.0,
+          "grid_resolution_entities": 82,
+          "excluded_unobserved": [
+            "BLM",
+            "CCK",
+            "GIB",
+            "SXM",
+            "TKL",
+            "VAT"
+          ]
+        },
+        "0.25 degrees": {
+          "grid": "720x1440",
+          "cell_km2_at_equator": 772.8,
+          "years": [
+            2001,
+            2020
+          ],
+          "unattributed_share": 2.13e-05,
+          "unattributed_km2": 3304.14,
+          "grid_resolution_entities": 53,
+          "excluded_unobserved": [
+            "BLM",
+            "CCK",
+            "GIB",
+            "SXM",
+            "TKL",
+            "VAT"
+          ]
+        }
+      },
+      "notes": "Månedlige rutenett summert til årlige landtotaler med admin-0-geometrien fra K6. Rutenettet er 1° til og med 2000 og 0,25° fra 2001, og terskler og fotnoter regnes mot den oppløsningen som gjelder for det enkelte året. Arkivet lastes ned i GitHub Actions og slettes etter aggregering. Andelen brent areal uten landtilknytning i denne kjøringen: 0.0018%."
     }
   }
 }
