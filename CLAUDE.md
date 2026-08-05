@@ -127,8 +127,12 @@ ingen Cloudflare Worker, ingen FIRMS-integrasjon i klienten.
 
 ### T1 — km² er primærenhet
 
-**Hele grensesnittet bruker km².** Aksetitler, tabeller, tooltips, nedlastbare
-CSV-filer under `data/processed/`, avledede tall — alt i km².
+**km² er primærenheten for areal.** Arealindikatorer vises alltid i km² — i
+aksetitler, tabeller, tooltips, nedlastbare CSV-filer under `data/processed/`
+og avledede tall.
+
+Indikatorer uten fysisk enhet følger sin egen `unit`, slik den står i
+indikatortabellen i § 6.
 
 All enhetskonvertering skjer i `etl/normalize.py`. Aldri i visningslaget, aldri
 i JavaScript, aldri i en malfil. Kommer en kilde med hektar eller acres,
@@ -364,10 +368,10 @@ disse kildene uten siteringen skal ikke publiseres.
 **K9 — GFED5.**
 
 > van der Werf, G.R., Randerson, J.T., van Wees, D., Chen, Y., Giglio, L.,
-> Hall, J., Vernooij, R., Mu, M., Binte Shahid, S., Barsanti, K.C., Yokelson,
-> R. & Morton, D.C. (2025). Landscape fire emissions from the 5th version of
-> the Global Fire Emissions Database (GFED5). Scientific Data 12, 1870.
-> https://doi.org/10.1038/s41597-025-06127-w
+> Hall, J., Vernooij, R., Mu, M., Binte Shahid, S., Barsanti, K.C.,
+> Yokelson, R. & Morton, D.C. (2025). Landscape fire emissions from the 5th
+> version of the Global Fire Emissions Database (GFED5).
+> Scientific Data 12, 1870. https://doi.org/10.1038/s41597-025-06127-w
 
 Når K9 hentes, legges følgende i `data/_sources.json`:
 
@@ -662,7 +666,8 @@ sluttbrukeravtale tas ikke inn før avtalen er avklart og notert i
 - [ ] Fotnoter under figuren (P6)
 - [ ] Nye fagbegreper forklart første gang (P7)
 - [ ] Ingenting fra scope-listen har sneket seg inn (P8)
-- [ ] Alle verdier i km², konvertert i `normalize.py` (T1)
+- [ ] Hver verdi har den `unit` indikatortabellen i § 6 angir, og all
+      konvertering er gjort i `normalize.py` (T1)
 - [ ] Ingen eksterne forespørsler fra klienten (T2)
 - [ ] Ingen tunge nedlastinger kjørt lokalt (T4)
 - [ ] `data/raw/` er ikke committet
