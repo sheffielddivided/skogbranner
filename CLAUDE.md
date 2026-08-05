@@ -427,7 +427,7 @@ rekkefølgen. Hver seksjon åpner med figuren (P2).
 
 | # | Seksjon | Viser | Kilder |
 |---|---|---|---|
-| S1 | Hvor mye brenner det på jorden | Globalt brent areal per år | K1, K2 |
+| S1 | Hvor mye brenner det på jorden | Overskriftstall for siste fullstendige år, og globalt brent areal per år over hele perioden | K1, K2, K8, K9 |
 | S2 | Hvor på kloden | Geografisk fordeling: kart og rangering av land | K1, K6 |
 | S3 | Året gjennom | Sesongvariasjon innenfor året — kumulativ kurve mot median og persentilbånd | K2 |
 | S4 | Europa | Land- og regionnivå, brent areal og andel av landareal, sorterbar tabell, brannstørrelsesfordeling | K3, K4, K6 |
@@ -438,11 +438,49 @@ rekkefølgen. Hver seksjon åpner med figuren (P2).
 jorden» stiller et spørsmål dataene kan svare på. Den svarer ikke på om det er
 mye eller lite — det er en vurdering siden ikke gjør (P1).
 
+### S1 — to figurer
+
+**Figur 1: overskriftstallet.** Globalt brent areal for siste fullstendige år,
+i km². Kilde K1. Sammen med tallet vises arealsammenligningen fra
+`insights.json`, som gir leseren en fysisk referanse.
+
+Både arealet og sammenligningslandet er maskinelt avledet (P3). Ingen av
+tallene skrives for hånd, og sammenligningslandet velges ikke redaksjonelt.
+Inneværende år brukes aldri her — «siste fullstendige år» er en avledning, ikke
+en antakelse om hvilket år det er nå.
+
+**Figur 2: oversiktsfiguren.** Globalt brent areal per år over hele den
+tilgjengelige perioden, 1982–. Bygger på K8, K9 og K1.
+
+De tre kildene dekker hver sin del av perioden og har ulikt opphav. De skal
+tegnes som **tre serier med synlige brudd**, hver etter sin egen
+`quality`-verdi — K8 med redusert opasitet (`beta`), K9 og K1 heltrukket
+(`measured`). Ingen sammenskjøting til én kurve, verken visuelt eller i data.
+
+Bruddene er poenget med figuren, ikke en skjønnhetsfeil ved den. En
+sammenhengende kurve fra 1982 til i dag ville sett ut som én måling av verden
+over førti år, og det finnes ikke. Overlapper to serier i tid, vises begge —
+avviket mellom dem er informasjon om målingene.
+
+Trend beregnes ikke på tvers av de tre seriene (se § 7).
+
+### Arbeidsdelingen mellom S1 og S5
+
+De to seksjonene bruker delvis de samme seriene, og det er lett å ende opp med
+at den ene gjentar den andre.
+
+- **S1 gir oversikten:** hele perioden i én figur, med brudd.
+- **S5 gir detaljen:** de samme seriene vist **hver for seg**, med sine egne
+  akser, dekningsperioder og forbehold, pluss `charcoal_index` (K10) i egen
+  figur.
+
+**S5 skal ikke gjenta S1s oversiktsfigur.** Trenger en leser å se seriene
+sammen, er det S1 som svarer på det.
+
 **S5 er den seksjonen som lettest bryter reglene.** Seriene der har ulik kilde,
-ulik `quality`, ulike startår og ulike definisjoner. De skal vises **hver for
-seg**, med tydelig markering av at de ikke er direkte sammenlignbare, og aldri
-skjøtes til én lang kurve. `charcoal_index` (K10) står i egen figur med egen
-akse. Trender beregnes per serie, innenfor én kilde og én `quality`.
+ulik `quality`, ulike startår og ulike definisjoner. Hver av dem skal ha
+tydelig markering av at de ikke er direkte sammenlignbare, og trender beregnes
+per serie, innenfor én kilde og én `quality`.
 
 Norge og de nordiske landene inngår i S4 som ordinære land, uten
 særbehandling og uten egen seksjon (P8).
