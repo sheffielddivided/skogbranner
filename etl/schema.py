@@ -58,6 +58,7 @@ FOOTNOTE = frozenset(
         "f_proxy",
         "f_resolution_change",
         "f_zero_no_detection",
+        "f_grid_resolution",
     }
 )
 
@@ -91,6 +92,11 @@ TREND_MAX_ZERO_TAIL = 2
 # land. Overstiger den uattribuerte andelen denne terskelen, stopper
 # kjøringen — se CLAUDE.md § 5.
 GRID_MAX_UNATTRIBUTED_SHARE = 0.02
+
+# En entitet med mindre landareal enn dette antallet ruter er liten i forhold
+# til rutenettets oppløsning, og får f_grid_resolution. Målt mot arealet av én
+# rute ved ekvator, som er den største en rute kan bli — se CLAUDE.md § 9.
+GRID_MIN_ENTITY_CELLS = 1.0
 
 # Ytre grenser for et gyldig årstall. Nedre grense er satt under den eldste
 # serien vi tar inn (K8 fra 1982, NBAC fra 1972). Øvre grense settes av

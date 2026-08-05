@@ -46,7 +46,18 @@ class Maske:
     alle månedsfilene i serien.
     """
 
-    def __init__(self, lat, lon, koder, rute, entitet, vekt, uten_land):
+    def __init__(
+        self,
+        lat,
+        lon,
+        koder,
+        rute,
+        entitet,
+        vekt,
+        uten_land,
+        landareal_km2,
+        ruteareal_ekvator_km2,
+    ):
         self.lat = lat
         self.lon = lon
         self.koder = koder
@@ -54,6 +65,19 @@ class Maske:
         self._entitet = entitet
         self._vekt = vekt
         self._uten_land = uten_land
+        # Landarealet slik rutenettet ser det: summen av delrutene entiteten
+        # fikk. Det er den størrelsen som avgjør om entiteten er for liten for
+        # oppløsningen, og derfor riktigere her enn et areal fra en annen kilde.
+        self.landareal_km2 = landareal_km2
+        self.ruteareal_ekvator_km2 = ruteareal_ekvator_km2
+
+    def for_smaa_entiteter(self, minste_antall_ruter):
+        """Entiteter med mindre landareal enn så mange ruter ved ekvator.
+
+        Grunnlaget for ``f_grid_resolution`` — se CLAUDE.md § 9.
+        """
+        grense = minste_antall_ruter * self.ruteareal_ekvator_km2
+        return {kode for kode, areal in self.landareal_km2.items() if areal < grense}
 
     @property
     def form(self):
@@ -90,6 +114,18 @@ class Maske:
             kode: float(sum_per_entitet[i]) for i, kode in enumerate(self.koder)
         }
         return per_entitet, float(flat[self._uten_land].sum()), float(flat.sum())
+
+
+def _cellearealer(lat, dlat, dlon):
+    """Areal i km² for en celle i hver breddegradsrekke.
+
+    Cellene er avgrenset av breddegrader, så arealet følger av forskjellen
+    mellom sinus til nord- og sørkanten. Jorden regnes som en kule.
+    """
+    r = 6371.0088  # middelradius i km, IUGG
+    nord = np.radians(np.minimum(lat + dlat / 2, 90.0))
+    sor = np.radians(np.maximum(lat - dlat / 2, -90.0))
+    return r**2 * np.radians(dlon) * np.abs(np.sin(nord) - np.sin(sor))
 
 
 def _steg(akse, navn):
@@ -163,6 +199,13 @@ def bygg_maske(lat, lon, geometrier, delruter=DELRUTER):
     per_rute = np.bincount(rute_u, weights=antall, minlength=nlat * nlon)
     vekt = antall / per_rute[rute_u]
 
+    # Landarealet per entitet, summert av delrutene den fikk. Cellen deles likt
+    # mellom delrutene sine, slik at summen ikke avhenger av hvilken vei aksene
+    # lå i kilden.
+    cellareal = _cellearealer(lat, dlat, dlon)
+    areal_per_par = antall * cellareal[rute_u // nlon] / delruter**2
+    landareal = np.bincount(entitet_u, weights=areal_per_par, minlength=len(koder))
+
     return Maske(
         lat=lat,
         lon=lon,
@@ -171,4 +214,6 @@ def bygg_maske(lat, lon, geometrier, delruter=DELRUTER):
         entitet=entitet_u,
         vekt=vekt,
         uten_land=per_rute == 0,
+        landareal_km2={kode: float(landareal[i]) for i, kode in enumerate(koder)},
+        ruteareal_ekvator_km2=float(_cellearealer(np.array([0.0]), dlat, dlon)[0]),
     )

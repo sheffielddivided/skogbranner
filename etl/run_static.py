@@ -23,7 +23,7 @@ import time
 from collections import defaultdict
 
 from etl import normalize, validate
-from etl.schema import GRID_MAX_UNATTRIBUTED_SHARE
+from etl.schema import GRID_MAX_UNATTRIBUTED_SHARE, GRID_MIN_ENTITY_CELLS
 from etl.sources import k6_natural_earth, k8_firecci
 
 # Filnavnet under data/processed/ per kilde. Navnet følger serien, ikke
@@ -98,6 +98,7 @@ def kjor_k8(kun_katalog=False):
     )
 
     maske = None
+    for_smaa = set()
     per_entitet = defaultdict(lambda: defaultdict(float))
     verden = defaultdict(float)
     uattribuert = defaultdict(float)
@@ -118,7 +119,14 @@ def kjor_k8(kun_katalog=False):
                     flush=True,
                 )
                 maske = grid.bygg_maske(lat, lon, geometrier)
-                print(f"K8: maske for {len(maske.koder)} entiteter", flush=True)
+                for_smaa = maske.for_smaa_entiteter(GRID_MIN_ENTITY_CELLS)
+                print(
+                    f"K8: maske for {len(maske.koder)} entiteter. "
+                    f"En rute er {maske.ruteareal_ekvator_km2:.0f} km² ved "
+                    f"ekvator; {len(for_smaa)} entiteter har mindre landareal "
+                    "enn det og får f_grid_resolution",
+                    flush=True,
+                )
             elif not maske.passer(lat, lon):
                 raise Kjorefeil(
                     f"{oppf['navn']}: rutenettet er et annet enn i den første "
@@ -157,13 +165,18 @@ def kjor_k8(kun_katalog=False):
 
     info = dict(sammendrag)
     info["uattribuert_andel"] = andel
+    info["uattribuert_km2"] = uten_land * 1e-6
+    info["for_smaa"] = sorted(for_smaa)
     info["checksum"] = hashlib.sha256(
         "".join(o["md5"] or o["navn"] for o in oppforinger).encode("utf-8")
     ).hexdigest()
     info["k6_checksum"] = k6_info["checksum"]
 
     observasjoner = normalize.fra_k8(
-        {k: dict(v) for k, v in per_entitet.items()}, dict(verden), info
+        {k: dict(v) for k, v in per_entitet.items()},
+        dict(verden),
+        info,
+        for_smaa=for_smaa,
     )
 
     feil = validate.valider(observasjoner)

@@ -116,12 +116,15 @@ def fra_k1(rader, info):
     return observasjoner
 
 
-def fra_k8(per_entitet, verden, info):
+def fra_k8(per_entitet, verden, info, for_smaa=()):
     """Gjør aggregerte K8-summer om til kanoniske observasjoner.
 
     ``per_entitet`` er {entity-kode: {år: m²}} slik ``etl/grid.py`` summerte
     rutenettet, og ``verden`` er {år: m²} summert fra rutenettet selv. Kilden
     leverer m², og konverteringen til km² skjer her.
+
+    ``for_smaa`` er entitetene som er små i forhold til rutenettets oppløsning.
+    De får ``f_grid_resolution``.
 
     Verdenstallet summeres fra rutenettet og ikke fra landene, slik at de
     cellene ingen landgeometri dekker, fortsatt teller globalt. Se
@@ -160,16 +163,21 @@ def fra_k8(per_entitet, verden, info):
     for kode in sorted(per_entitet):
         if kode not in land:
             continue
+        # Entiteten er mindre enn én rute, så tallet er en andel av ruter den
+        # deler med naboland eller hav. Gjelder alle årene for entiteten.
+        egne = list(fotnoter)
+        if kode in for_smaa:
+            egne.append("f_grid_resolution")
         for a in sorted(per_entitet[kode]):
             observasjoner.append(
-                _k8_observasjon(kode, a, per_entitet[kode][a], land, fotnoter)
+                _k8_observasjon(kode, a, per_entitet[kode][a], land, egne)
             )
 
     for a in aar:
         observasjoner.append(_k8_observasjon("WLD", a, verden[a], land, fotnoter))
 
     info["aar_mangler"] = hull
-    info["footnotes"] = fotnoter
+    info["footnotes"] = sorted({f for o in observasjoner for f in o["footnotes"]})
     info["rows"] = len(observasjoner)
 
     observasjoner.sort(key=lambda o: (o["entity"], o["period"]))
@@ -177,13 +185,22 @@ def fra_k8(per_entitet, verden, info):
 
 
 def _k8_observasjon(kode, aar, m2, land, fotnoter):
+    verdi = round(m2 * M2_TO_KM2, DESIMALER)
+
+    # Kilden har ikke påvist brent areal, men skiller ikke mellom «ingenting
+    # brant» og «ingen måling». Nullene merkes derfor eksplisitt, på samme måte
+    # som for K1. Merkingen er også det trendreglene i § 7 kjenner nullene sine
+    # på — se CLAUDE.md § 9.
+    if verdi == 0:
+        fotnoter = fotnoter + ["f_zero_no_detection"]
+
     return {
         "entity": kode,
         "entity_name": land[kode]["entity_name"],
         "level": land[kode]["level"],
         "period": str(aar),
         "indicator": INDIKATOR,
-        "value": round(m2 * M2_TO_KM2, DESIMALER),
+        "value": verdi,
         "unit": ENHET,
         "source_id": k8_firecci.SOURCE_ID,
         "series_id": k8_firecci.SERIES_ID,

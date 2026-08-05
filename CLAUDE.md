@@ -398,10 +398,16 @@ en ny versjon.
   arealet sitt fordi halve ruten er sjø.
 
   En rute som bærer brent areal uten at noen landgeometri når fram, kan ikke
-  tilskrives et land. Verdien går da til en uattribuert andel, som kjøringen
-  rapporterer og `GRID_MAX_UNATTRIBUTED_SHARE` i `etl/schema.py` setter en øvre
-  grense for. Verdien forsvinner ikke: verdenstallet summeres fra rutenettet
-  selv og ikke fra landene, slik at de rutene fortsatt teller globalt.
+  tilskrives et land. Verdien går da til en uattribuert andel, som
+  `GRID_MAX_UNATTRIBUTED_SHARE` i `etl/schema.py` setter en øvre grense for.
+  Verdien forsvinner ikke: verdenstallet summeres fra rutenettet selv og ikke
+  fra landene, slik at de rutene fortsatt teller globalt.
+
+  Andelen skrives til `data/_status.json` ved hver kjøring, som
+  `unattributed_share` og `unattributed_km2`. Den er ikke bare en terskel å
+  passere: den sier hvor mye brann som faller utenfor all landgeometri, og skal
+  kunne følges fra kjøring til kjøring. Endrer den seg mye mellom to kjøringer,
+  har enten geometrien eller rutenettet endret seg.
 
 - **K9 GFED5** brukes kun for årene **1997–2022**, og har `quality`
   `measured`. GFED5.1 for denne perioden er en publisert utgivelse,
@@ -817,6 +823,8 @@ særbehandling og uten egen seksjon (P8).
   tidligste delen av serien, noe som gir større usikkerhet
 - `f_zero_no_detection` — kilden har ikke påvist brent areal, men skiller ikke
   mellom «ingenting brant» og «ingen måling»
+- `f_grid_resolution` — landet er lite i forhold til rutenettets oppløsning,
+  slik at brent areal kan falle mellom rutene
 
 **Hvor fotnotetekstene bor.** Kodene over er enumerasjonen, og følger T5: prosa
 her, konstant i `etl/schema.py`. Den norske teksten leseren ser er noe annet —
@@ -834,14 +842,39 @@ brudd i kurven, aldri som 0 og aldri som interpolert verdi.
 `f_resolution_change` gjelder K9 for **1997–2000**, der oppløsningen er 1° mot
 0,25° fra 2001.
 
-`f_zero_no_detection` gjelder K1. Kilden leverer et fullt rutenett av entiteter
-og år, og bruker 0 der satellittene ikke har påvist brent areal. En 0 kan
-derfor bety at det ikke brant, at brannene var under deteksjonsgrensen, eller
-at området ikke er dekket — kilden skiller ikke. `normalize.py` merker hver
-nullverdi med fotnoten.
+`f_zero_no_detection` gjelder K1 og K8. Begge leverer et fullt rutenett av
+entiteter og år, og bruker 0 der satellittene ikke har påvist brent areal. En 0
+kan derfor bety at det ikke brant, at brannene var under deteksjonsgrensen,
+eller at området ikke er dekket — kilden skiller ikke. `normalize.py` merker
+hver nullverdi med fotnoten.
 
 Dette er ikke det samme som «ingen data». En figur skal ikke tegne en 0 fra
 denne kilden som en målt null uten at fotnoten følger med.
+
+**Merkingen er også maskinlesbar, og det er poenget.** Trendreglene i § 7 finner
+nullene sine gjennom denne fotnoten: `TREND_MAX_ZERO_SHARE` og
+`TREND_MAX_ZERO_TAIL` gjelder de nullene som bærer `f_zero_no_detection`.
+Merkes de ikke, gjelder terskelene ikke for serien, og en falsk nedgang av
+Qatar-typen — deteksjoner som stopper, ikke branner som avtar — ville passert
+ubemerket. En rutenettkilde som ikke merker nullene sine, undergraver derfor en
+regel som står et helt annet sted i dokumentet.
+
+`f_grid_resolution` gjelder rutenettkilder og påføres maskinelt. En entitet med
+mindre landareal enn **én rute ved ekvator** — 0,25° × 0,25°, om lag 773 km²,
+som er den største en rute kan bli — får fotnoten på alle sine år.
+
+Grensen er valgt fordi den har en fysisk betydning og ikke er en avrundet
+skjønnsverdi: et land under den får plass innenfor én rute hvor som helst på
+kloden. Da finnes det ingen rute som er landets alene, og tallet er en andel av
+ruter det deler med naboland eller hav. For de aller minste treffer ikke
+delrutenettet landet i det hele tatt, og serien blir null alle år — de
+entitetene bærer begge fotnotene, som til sammen sier nøyaktig det vi vet.
+
+Arealet måles **på rutenettet**, ikke hentet fra en annen kilde. Det er det
+rutenettet ser av landet som avgjør om tallet kan brukes, ikke hva et atlas
+oppgir. Terskelen står som `GRID_MIN_ENTITY_CELLS` i `etl/schema.py`, oppgitt i
+antall ruter, slik at den følger med hvis en senere kilde har en annen
+oppløsning.
 
 **Null i et ufullstendig år får begge fotnotene, ikke en tredje.** En
 observasjon som er 0 i inneværende år bærer både `f_incomplete_year` og

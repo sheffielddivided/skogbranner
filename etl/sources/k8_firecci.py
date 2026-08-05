@@ -299,19 +299,34 @@ def skriv_metadata(info, processed_files):
 
 
 def skriv_status(status, melding, info=None):
-    """Skriver kjørestatus til data/_status.json."""
+    """Skriver kjørestatus til data/_status.json.
+
+    Den uattribuerte andelen føres som eget felt, ikke bare som tekst i
+    meldingen. Den sier hvor mye brent areal som faller utenfor all
+    landgeometri, og skal kunne følges fra kjøring til kjøring.
+    """
     with open(STATUS_JSON, encoding="utf-8") as f:
         data = json.load(f)
 
     naa = datetime.now(timezone.utc).isoformat(timespec="seconds")
     forrige = data["sources"].get(SOURCE_ID, {})
+
+    def felt(fra_info, i_status, avrund=None):
+        """Verdien fra denne kjøringen, ellers den forrige kjøring satte."""
+        if info and fra_info in info:
+            verdi = info[fra_info]
+            return round(verdi, avrund) if avrund is not None else verdi
+        return forrige.get(i_status)
+
     data["last_run"] = naa
     data["sources"][SOURCE_ID] = {
         "status": status,
         "last_attempt": naa,
         "last_success": naa if status == "ok" else forrige.get("last_success"),
-        "rows": info["rows"] if info else forrige.get("rows"),
-        "checksum": info["checksum"] if info else forrige.get("checksum"),
+        "rows": felt("rows", "rows"),
+        "checksum": felt("checksum", "checksum"),
+        "unattributed_share": felt("uattribuert_andel", "unattributed_share", 6),
+        "unattributed_km2": felt("uattribuert_km2", "unattributed_km2", 2),
         "message": melding,
     }
     with open(STATUS_JSON, "w", encoding="utf-8") as f:

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "_skjema": "se CLAUDE.md § 6 og etl/schema.py",
-  "_om": "Siste kjørestatus per kilde. Skrives av ETL, leses av byggetrinnet. Feiler en kilde, beholdes forrige datasett og siden viser en diskré merknad om at akkurat den serien ikke er oppdatert siden dato X.",
+  "_om": "Siste kjørestatus per kilde. Skrives av ETL, leses av byggetrinnet. Feiler en kilde, beholdes forrige datasett og siden viser en diskré merknad om at akkurat den serien ikke er oppdatert siden dato X. Rutenettkilder fører i tillegg unattributed_share og unattributed_km2: hvor mye brent areal som falt utenfor all landgeometri i kjøringen, slik at andelen kan følges over tid.",
   "last_run": "2026-08-05T17:21:37+00:00",
   "sources": {
     "K1": {
