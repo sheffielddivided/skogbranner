@@ -1634,21 +1634,21 @@ IND,India,country,2023,burned_area_km2,52987.15,km2,K1,owid_annual_area_burnt,me
 IND,India,country,2024,burned_area_km2,38524.55,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
 IND,India,country,2025,burned_area_km2,46847.88,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
 IND,India,country,2026,burned_area_km2,40297.04,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_incomplete_year
-IOT,Det britiske territoriet i Indiahavet,country,2012,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-IOT,Det britiske territoriet i Indiahavet,country,2013,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-IOT,Det britiske territoriet i Indiahavet,country,2014,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-IOT,Det britiske territoriet i Indiahavet,country,2015,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-IOT,Det britiske territoriet i Indiahavet,country,2016,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-IOT,Det britiske territoriet i Indiahavet,country,2017,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-IOT,Det britiske territoriet i Indiahavet,country,2018,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-IOT,Det britiske territoriet i Indiahavet,country,2019,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-IOT,Det britiske territoriet i Indiahavet,country,2020,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-IOT,Det britiske territoriet i Indiahavet,country,2021,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-IOT,Det britiske territoriet i Indiahavet,country,2022,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-IOT,Det britiske territoriet i Indiahavet,country,2023,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-IOT,Det britiske territoriet i Indiahavet,country,2024,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-IOT,Det britiske territoriet i Indiahavet,country,2025,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-IOT,Det britiske territoriet i Indiahavet,country,2026,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_incomplete_year;f_zero_no_detection
+IOT,Det britiske territorium i Indiahavet,country,2012,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+IOT,Det britiske territorium i Indiahavet,country,2013,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+IOT,Det britiske territorium i Indiahavet,country,2014,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+IOT,Det britiske territorium i Indiahavet,country,2015,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+IOT,Det britiske territorium i Indiahavet,country,2016,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+IOT,Det britiske territorium i Indiahavet,country,2017,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+IOT,Det britiske territorium i Indiahavet,country,2018,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+IOT,Det britiske territorium i Indiahavet,country,2019,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+IOT,Det britiske territorium i Indiahavet,country,2020,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+IOT,Det britiske territorium i Indiahavet,country,2021,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+IOT,Det britiske territorium i Indiahavet,country,2022,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+IOT,Det britiske territorium i Indiahavet,country,2023,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+IOT,Det britiske territorium i Indiahavet,country,2024,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+IOT,Det britiske territorium i Indiahavet,country,2025,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+IOT,Det britiske territorium i Indiahavet,country,2026,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_incomplete_year;f_zero_no_detection
 IRL,Irland,country,2012,burned_area_km2,31.06,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
 IRL,Irland,country,2013,burned_area_km2,69.74,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
 IRL,Irland,country,2014,burned_area_km2,10.78,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
@@ -1874,21 +1874,21 @@ KIR,Kiribati,country,2023,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,meas
 KIR,Kiribati,country,2024,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
 KIR,Kiribati,country,2025,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
 KIR,Kiribati,country,2026,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_incomplete_year;f_zero_no_detection
-KNA,Saint Kitts og Nevis,country,2012,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-KNA,Saint Kitts og Nevis,country,2013,burned_area_km2,2.02,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
-KNA,Saint Kitts og Nevis,country,2014,burned_area_km2,5.8,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
-KNA,Saint Kitts og Nevis,country,2015,burned_area_km2,2.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
-KNA,Saint Kitts og Nevis,country,2016,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-KNA,Saint Kitts og Nevis,country,2017,burned_area_km2,3.15,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
-KNA,Saint Kitts og Nevis,country,2018,burned_area_km2,5.16,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
-KNA,Saint Kitts og Nevis,country,2019,burned_area_km2,5.85,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
-KNA,Saint Kitts og Nevis,country,2020,burned_area_km2,1.7,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
-KNA,Saint Kitts og Nevis,country,2021,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-KNA,Saint Kitts og Nevis,country,2022,burned_area_km2,5.13,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
-KNA,Saint Kitts og Nevis,country,2023,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-KNA,Saint Kitts og Nevis,country,2024,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-KNA,Saint Kitts og Nevis,country,2025,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-KNA,Saint Kitts og Nevis,country,2026,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_incomplete_year;f_zero_no_detection
+KNA,St. Kitts og Nevis,country,2012,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+KNA,St. Kitts og Nevis,country,2013,burned_area_km2,2.02,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
+KNA,St. Kitts og Nevis,country,2014,burned_area_km2,5.8,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
+KNA,St. Kitts og Nevis,country,2015,burned_area_km2,2.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
+KNA,St. Kitts og Nevis,country,2016,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+KNA,St. Kitts og Nevis,country,2017,burned_area_km2,3.15,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
+KNA,St. Kitts og Nevis,country,2018,burned_area_km2,5.16,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
+KNA,St. Kitts og Nevis,country,2019,burned_area_km2,5.85,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
+KNA,St. Kitts og Nevis,country,2020,burned_area_km2,1.7,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
+KNA,St. Kitts og Nevis,country,2021,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+KNA,St. Kitts og Nevis,country,2022,burned_area_km2,5.13,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
+KNA,St. Kitts og Nevis,country,2023,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+KNA,St. Kitts og Nevis,country,2024,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+KNA,St. Kitts og Nevis,country,2025,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+KNA,St. Kitts og Nevis,country,2026,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_incomplete_year;f_zero_no_detection
 KOR,Sør-Korea,country,2012,burned_area_km2,10.89,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
 KOR,Sør-Korea,country,2013,burned_area_km2,37.73,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
 KOR,Sør-Korea,country,2014,burned_area_km2,75.48,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
@@ -1979,21 +1979,21 @@ LBY,Libya,country,2023,burned_area_km2,23.91,km2,K1,owid_annual_area_burnt,measu
 LBY,Libya,country,2024,burned_area_km2,21.32,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
 LBY,Libya,country,2025,burned_area_km2,13.71,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
 LBY,Libya,country,2026,burned_area_km2,1.15,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_incomplete_year
-LCA,Saint Lucia,country,2012,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-LCA,Saint Lucia,country,2013,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-LCA,Saint Lucia,country,2014,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-LCA,Saint Lucia,country,2015,burned_area_km2,2.35,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
-LCA,Saint Lucia,country,2016,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-LCA,Saint Lucia,country,2017,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-LCA,Saint Lucia,country,2018,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-LCA,Saint Lucia,country,2019,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-LCA,Saint Lucia,country,2020,burned_area_km2,1.77,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
-LCA,Saint Lucia,country,2021,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-LCA,Saint Lucia,country,2022,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-LCA,Saint Lucia,country,2023,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-LCA,Saint Lucia,country,2024,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-LCA,Saint Lucia,country,2025,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-LCA,Saint Lucia,country,2026,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_incomplete_year;f_zero_no_detection
+LCA,St. Lucia,country,2012,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+LCA,St. Lucia,country,2013,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+LCA,St. Lucia,country,2014,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+LCA,St. Lucia,country,2015,burned_area_km2,2.35,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
+LCA,St. Lucia,country,2016,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+LCA,St. Lucia,country,2017,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+LCA,St. Lucia,country,2018,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+LCA,St. Lucia,country,2019,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+LCA,St. Lucia,country,2020,burned_area_km2,1.77,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
+LCA,St. Lucia,country,2021,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+LCA,St. Lucia,country,2022,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+LCA,St. Lucia,country,2023,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+LCA,St. Lucia,country,2024,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+LCA,St. Lucia,country,2025,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+LCA,St. Lucia,country,2026,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_incomplete_year;f_zero_no_detection
 LIE,Liechtenstein,country,2012,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
 LIE,Liechtenstein,country,2013,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
 LIE,Liechtenstein,country,2014,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
@@ -2099,21 +2099,21 @@ MAC,Macao,country,2023,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measure
 MAC,Macao,country,2024,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
 MAC,Macao,country,2025,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
 MAC,Macao,country,2026,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_incomplete_year;f_zero_no_detection
-MAF,Saint-Martin,country,2012,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-MAF,Saint-Martin,country,2013,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-MAF,Saint-Martin,country,2014,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-MAF,Saint-Martin,country,2015,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-MAF,Saint-Martin,country,2016,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-MAF,Saint-Martin,country,2017,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-MAF,Saint-Martin,country,2018,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-MAF,Saint-Martin,country,2019,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-MAF,Saint-Martin,country,2020,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-MAF,Saint-Martin,country,2021,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-MAF,Saint-Martin,country,2022,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-MAF,Saint-Martin,country,2023,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-MAF,Saint-Martin,country,2024,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-MAF,Saint-Martin,country,2025,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-MAF,Saint-Martin,country,2026,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_incomplete_year;f_zero_no_detection
+MAF,Saint-Martin (FR),country,2012,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+MAF,Saint-Martin (FR),country,2013,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+MAF,Saint-Martin (FR),country,2014,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+MAF,Saint-Martin (FR),country,2015,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+MAF,Saint-Martin (FR),country,2016,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+MAF,Saint-Martin (FR),country,2017,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+MAF,Saint-Martin (FR),country,2018,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+MAF,Saint-Martin (FR),country,2019,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+MAF,Saint-Martin (FR),country,2020,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+MAF,Saint-Martin (FR),country,2021,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+MAF,Saint-Martin (FR),country,2022,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+MAF,Saint-Martin (FR),country,2023,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+MAF,Saint-Martin (FR),country,2024,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+MAF,Saint-Martin (FR),country,2025,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+MAF,Saint-Martin (FR),country,2026,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_incomplete_year;f_zero_no_detection
 MAR,Marokko,country,2012,burned_area_km2,239.17,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
 MAR,Marokko,country,2013,burned_area_km2,96.85,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
 MAR,Marokko,country,2014,burned_area_km2,85.26,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
@@ -3074,21 +3074,21 @@ SGS,Sør-Georgia og Sør-Sandwichøyene,country,2023,burned_area_km2,0.0,km2,K1,
 SGS,Sør-Georgia og Sør-Sandwichøyene,country,2024,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
 SGS,Sør-Georgia og Sør-Sandwichøyene,country,2025,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
 SGS,Sør-Georgia og Sør-Sandwichøyene,country,2026,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_incomplete_year;f_zero_no_detection
-SHN,St. Helena,country,2012,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-SHN,St. Helena,country,2013,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-SHN,St. Helena,country,2014,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-SHN,St. Helena,country,2015,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-SHN,St. Helena,country,2016,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-SHN,St. Helena,country,2017,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-SHN,St. Helena,country,2018,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-SHN,St. Helena,country,2019,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-SHN,St. Helena,country,2020,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-SHN,St. Helena,country,2021,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-SHN,St. Helena,country,2022,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-SHN,St. Helena,country,2023,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-SHN,St. Helena,country,2024,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-SHN,St. Helena,country,2025,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-SHN,St. Helena,country,2026,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_incomplete_year;f_zero_no_detection
+SHN,"Sankt Helena, Ascension og Tristan da Cunha",country,2012,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+SHN,"Sankt Helena, Ascension og Tristan da Cunha",country,2013,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+SHN,"Sankt Helena, Ascension og Tristan da Cunha",country,2014,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+SHN,"Sankt Helena, Ascension og Tristan da Cunha",country,2015,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+SHN,"Sankt Helena, Ascension og Tristan da Cunha",country,2016,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+SHN,"Sankt Helena, Ascension og Tristan da Cunha",country,2017,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+SHN,"Sankt Helena, Ascension og Tristan da Cunha",country,2018,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+SHN,"Sankt Helena, Ascension og Tristan da Cunha",country,2019,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+SHN,"Sankt Helena, Ascension og Tristan da Cunha",country,2020,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+SHN,"Sankt Helena, Ascension og Tristan da Cunha",country,2021,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+SHN,"Sankt Helena, Ascension og Tristan da Cunha",country,2022,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+SHN,"Sankt Helena, Ascension og Tristan da Cunha",country,2023,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+SHN,"Sankt Helena, Ascension og Tristan da Cunha",country,2024,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+SHN,"Sankt Helena, Ascension og Tristan da Cunha",country,2025,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+SHN,"Sankt Helena, Ascension og Tristan da Cunha",country,2026,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_incomplete_year;f_zero_no_detection
 SJM,Svalbard og Jan Mayen,country,2012,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
 SJM,Svalbard og Jan Mayen,country,2013,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
 SJM,Svalbard og Jan Mayen,country,2014,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
@@ -3179,21 +3179,21 @@ SOM,Somalia,country,2023,burned_area_km2,82.91,km2,K1,owid_annual_area_burnt,mea
 SOM,Somalia,country,2024,burned_area_km2,127.36,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
 SOM,Somalia,country,2025,burned_area_km2,90.24,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
 SOM,Somalia,country,2026,burned_area_km2,23.84,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_incomplete_year
-SPM,Saint-Pierre og Miquelon,country,2012,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-SPM,Saint-Pierre og Miquelon,country,2013,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-SPM,Saint-Pierre og Miquelon,country,2014,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-SPM,Saint-Pierre og Miquelon,country,2015,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-SPM,Saint-Pierre og Miquelon,country,2016,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-SPM,Saint-Pierre og Miquelon,country,2017,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-SPM,Saint-Pierre og Miquelon,country,2018,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-SPM,Saint-Pierre og Miquelon,country,2019,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-SPM,Saint-Pierre og Miquelon,country,2020,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-SPM,Saint-Pierre og Miquelon,country,2021,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-SPM,Saint-Pierre og Miquelon,country,2022,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-SPM,Saint-Pierre og Miquelon,country,2023,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-SPM,Saint-Pierre og Miquelon,country,2024,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-SPM,Saint-Pierre og Miquelon,country,2025,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-SPM,Saint-Pierre og Miquelon,country,2026,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_incomplete_year;f_zero_no_detection
+SPM,Saint-Pierre-et-Miquelon,country,2012,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+SPM,Saint-Pierre-et-Miquelon,country,2013,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+SPM,Saint-Pierre-et-Miquelon,country,2014,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+SPM,Saint-Pierre-et-Miquelon,country,2015,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+SPM,Saint-Pierre-et-Miquelon,country,2016,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+SPM,Saint-Pierre-et-Miquelon,country,2017,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+SPM,Saint-Pierre-et-Miquelon,country,2018,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+SPM,Saint-Pierre-et-Miquelon,country,2019,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+SPM,Saint-Pierre-et-Miquelon,country,2020,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+SPM,Saint-Pierre-et-Miquelon,country,2021,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+SPM,Saint-Pierre-et-Miquelon,country,2022,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+SPM,Saint-Pierre-et-Miquelon,country,2023,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+SPM,Saint-Pierre-et-Miquelon,country,2024,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+SPM,Saint-Pierre-et-Miquelon,country,2025,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+SPM,Saint-Pierre-et-Miquelon,country,2026,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_incomplete_year;f_zero_no_detection
 SRB,Serbia,country,2012,burned_area_km2,1353.01,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
 SRB,Serbia,country,2013,burned_area_km2,551.36,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
 SRB,Serbia,country,2014,burned_area_km2,108.7,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
@@ -3314,21 +3314,21 @@ SWZ,Eswatini,country,2023,burned_area_km2,1040.81,km2,K1,owid_annual_area_burnt,
 SWZ,Eswatini,country,2024,burned_area_km2,1105.25,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
 SWZ,Eswatini,country,2025,burned_area_km2,523.86,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
 SWZ,Eswatini,country,2026,burned_area_km2,101.69,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_incomplete_year
-SXM,Sint Maarten,country,2012,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-SXM,Sint Maarten,country,2013,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-SXM,Sint Maarten,country,2014,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-SXM,Sint Maarten,country,2015,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-SXM,Sint Maarten,country,2016,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-SXM,Sint Maarten,country,2017,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-SXM,Sint Maarten,country,2018,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-SXM,Sint Maarten,country,2019,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-SXM,Sint Maarten,country,2020,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-SXM,Sint Maarten,country,2021,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-SXM,Sint Maarten,country,2022,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-SXM,Sint Maarten,country,2023,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-SXM,Sint Maarten,country,2024,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-SXM,Sint Maarten,country,2025,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-SXM,Sint Maarten,country,2026,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_incomplete_year;f_zero_no_detection
+SXM,Sint Maarten (NL),country,2012,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+SXM,Sint Maarten (NL),country,2013,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+SXM,Sint Maarten (NL),country,2014,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+SXM,Sint Maarten (NL),country,2015,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+SXM,Sint Maarten (NL),country,2016,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+SXM,Sint Maarten (NL),country,2017,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+SXM,Sint Maarten (NL),country,2018,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+SXM,Sint Maarten (NL),country,2019,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+SXM,Sint Maarten (NL),country,2020,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+SXM,Sint Maarten (NL),country,2021,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+SXM,Sint Maarten (NL),country,2022,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+SXM,Sint Maarten (NL),country,2023,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+SXM,Sint Maarten (NL),country,2024,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+SXM,Sint Maarten (NL),country,2025,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+SXM,Sint Maarten (NL),country,2026,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_incomplete_year;f_zero_no_detection
 SYC,Seychellene,country,2012,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
 SYC,Seychellene,country,2013,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
 SYC,Seychellene,country,2014,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
@@ -3689,21 +3689,21 @@ VAT,Vatikanstaten,country,2023,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt
 VAT,Vatikanstaten,country,2024,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
 VAT,Vatikanstaten,country,2025,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
 VAT,Vatikanstaten,country,2026,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_incomplete_year;f_zero_no_detection
-VCT,Saint Vincent og Grenadinene,country,2012,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-VCT,Saint Vincent og Grenadinene,country,2013,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-VCT,Saint Vincent og Grenadinene,country,2014,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-VCT,Saint Vincent og Grenadinene,country,2015,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-VCT,Saint Vincent og Grenadinene,country,2016,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-VCT,Saint Vincent og Grenadinene,country,2017,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-VCT,Saint Vincent og Grenadinene,country,2018,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-VCT,Saint Vincent og Grenadinene,country,2019,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-VCT,Saint Vincent og Grenadinene,country,2020,burned_area_km2,2.45,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
-VCT,Saint Vincent og Grenadinene,country,2021,burned_area_km2,17.14,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
-VCT,Saint Vincent og Grenadinene,country,2022,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-VCT,Saint Vincent og Grenadinene,country,2023,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-VCT,Saint Vincent og Grenadinene,country,2024,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-VCT,Saint Vincent og Grenadinene,country,2025,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-VCT,Saint Vincent og Grenadinene,country,2026,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_incomplete_year;f_zero_no_detection
+VCT,St. Vincent og Grenadinene,country,2012,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+VCT,St. Vincent og Grenadinene,country,2013,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+VCT,St. Vincent og Grenadinene,country,2014,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+VCT,St. Vincent og Grenadinene,country,2015,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+VCT,St. Vincent og Grenadinene,country,2016,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+VCT,St. Vincent og Grenadinene,country,2017,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+VCT,St. Vincent og Grenadinene,country,2018,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+VCT,St. Vincent og Grenadinene,country,2019,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+VCT,St. Vincent og Grenadinene,country,2020,burned_area_km2,2.45,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
+VCT,St. Vincent og Grenadinene,country,2021,burned_area_km2,17.14,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
+VCT,St. Vincent og Grenadinene,country,2022,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+VCT,St. Vincent og Grenadinene,country,2023,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+VCT,St. Vincent og Grenadinene,country,2024,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+VCT,St. Vincent og Grenadinene,country,2025,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+VCT,St. Vincent og Grenadinene,country,2026,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_incomplete_year;f_zero_no_detection
 VEN,Venezuela,country,2012,burned_area_km2,20894.75,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
 VEN,Venezuela,country,2013,burned_area_km2,45059.87,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
 VEN,Venezuela,country,2014,burned_area_km2,46551.87,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
@@ -3719,36 +3719,36 @@ VEN,Venezuela,country,2023,burned_area_km2,47496.31,km2,K1,owid_annual_area_burn
 VEN,Venezuela,country,2024,burned_area_km2,67815.63,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
 VEN,Venezuela,country,2025,burned_area_km2,33407.91,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
 VEN,Venezuela,country,2026,burned_area_km2,29774.66,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_incomplete_year
-VGB,De britiske jomfruøyene,country,2012,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-VGB,De britiske jomfruøyene,country,2013,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-VGB,De britiske jomfruøyene,country,2014,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-VGB,De britiske jomfruøyene,country,2015,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-VGB,De britiske jomfruøyene,country,2016,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-VGB,De britiske jomfruøyene,country,2017,burned_area_km2,1.39,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
-VGB,De britiske jomfruøyene,country,2018,burned_area_km2,2.99,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
-VGB,De britiske jomfruøyene,country,2019,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-VGB,De britiske jomfruøyene,country,2020,burned_area_km2,1.66,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
-VGB,De britiske jomfruøyene,country,2021,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-VGB,De britiske jomfruøyene,country,2022,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-VGB,De britiske jomfruøyene,country,2023,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-VGB,De britiske jomfruøyene,country,2024,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-VGB,De britiske jomfruøyene,country,2025,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-VGB,De britiske jomfruøyene,country,2026,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_incomplete_year;f_zero_no_detection
-VIR,De amerikanske jomfruøyene,country,2012,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-VIR,De amerikanske jomfruøyene,country,2013,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-VIR,De amerikanske jomfruøyene,country,2014,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-VIR,De amerikanske jomfruøyene,country,2015,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-VIR,De amerikanske jomfruøyene,country,2016,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-VIR,De amerikanske jomfruøyene,country,2017,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-VIR,De amerikanske jomfruøyene,country,2018,burned_area_km2,1.86,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
-VIR,De amerikanske jomfruøyene,country,2019,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-VIR,De amerikanske jomfruøyene,country,2020,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-VIR,De amerikanske jomfruøyene,country,2021,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-VIR,De amerikanske jomfruøyene,country,2022,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-VIR,De amerikanske jomfruøyene,country,2023,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-VIR,De amerikanske jomfruøyene,country,2024,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-VIR,De amerikanske jomfruøyene,country,2025,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-VIR,De amerikanske jomfruøyene,country,2026,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_incomplete_year;f_zero_no_detection
+VGB,De britiske Jomfruøyer,country,2012,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+VGB,De britiske Jomfruøyer,country,2013,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+VGB,De britiske Jomfruøyer,country,2014,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+VGB,De britiske Jomfruøyer,country,2015,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+VGB,De britiske Jomfruøyer,country,2016,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+VGB,De britiske Jomfruøyer,country,2017,burned_area_km2,1.39,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
+VGB,De britiske Jomfruøyer,country,2018,burned_area_km2,2.99,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
+VGB,De britiske Jomfruøyer,country,2019,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+VGB,De britiske Jomfruøyer,country,2020,burned_area_km2,1.66,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
+VGB,De britiske Jomfruøyer,country,2021,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+VGB,De britiske Jomfruøyer,country,2022,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+VGB,De britiske Jomfruøyer,country,2023,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+VGB,De britiske Jomfruøyer,country,2024,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+VGB,De britiske Jomfruøyer,country,2025,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+VGB,De britiske Jomfruøyer,country,2026,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_incomplete_year;f_zero_no_detection
+VIR,De amerikanske Jomfruøyer,country,2012,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+VIR,De amerikanske Jomfruøyer,country,2013,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+VIR,De amerikanske Jomfruøyer,country,2014,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+VIR,De amerikanske Jomfruøyer,country,2015,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+VIR,De amerikanske Jomfruøyer,country,2016,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+VIR,De amerikanske Jomfruøyer,country,2017,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+VIR,De amerikanske Jomfruøyer,country,2018,burned_area_km2,1.86,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
+VIR,De amerikanske Jomfruøyer,country,2019,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+VIR,De amerikanske Jomfruøyer,country,2020,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+VIR,De amerikanske Jomfruøyer,country,2021,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+VIR,De amerikanske Jomfruøyer,country,2022,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+VIR,De amerikanske Jomfruøyer,country,2023,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+VIR,De amerikanske Jomfruøyer,country,2024,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+VIR,De amerikanske Jomfruøyer,country,2025,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+VIR,De amerikanske Jomfruøyer,country,2026,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_incomplete_year;f_zero_no_detection
 VNM,Vietnam,country,2012,burned_area_km2,12420.78,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
 VNM,Vietnam,country,2013,burned_area_km2,10440.74,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
 VNM,Vietnam,country,2014,burned_area_km2,15000.38,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
@@ -3794,21 +3794,21 @@ WLD,Verden,world,2023,burned_area_km2,3969606.7,km2,K1,owid_annual_area_burnt,me
 WLD,Verden,world,2024,burned_area_km2,3506918.7,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
 WLD,Verden,world,2025,burned_area_km2,2653676.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size
 WLD,Verden,world,2026,burned_area_km2,1122758.8,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_incomplete_year
-WLF,Wallis og Futuna,country,2012,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-WLF,Wallis og Futuna,country,2013,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-WLF,Wallis og Futuna,country,2014,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-WLF,Wallis og Futuna,country,2015,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-WLF,Wallis og Futuna,country,2016,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-WLF,Wallis og Futuna,country,2017,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-WLF,Wallis og Futuna,country,2018,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-WLF,Wallis og Futuna,country,2019,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-WLF,Wallis og Futuna,country,2020,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-WLF,Wallis og Futuna,country,2021,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-WLF,Wallis og Futuna,country,2022,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-WLF,Wallis og Futuna,country,2023,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-WLF,Wallis og Futuna,country,2024,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-WLF,Wallis og Futuna,country,2025,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
-WLF,Wallis og Futuna,country,2026,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_incomplete_year;f_zero_no_detection
+WLF,Wallis- og Futunaøyene,country,2012,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+WLF,Wallis- og Futunaøyene,country,2013,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+WLF,Wallis- og Futunaøyene,country,2014,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+WLF,Wallis- og Futunaøyene,country,2015,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+WLF,Wallis- og Futunaøyene,country,2016,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+WLF,Wallis- og Futunaøyene,country,2017,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+WLF,Wallis- og Futunaøyene,country,2018,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+WLF,Wallis- og Futunaøyene,country,2019,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+WLF,Wallis- og Futunaøyene,country,2020,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+WLF,Wallis- og Futunaøyene,country,2021,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+WLF,Wallis- og Futunaøyene,country,2022,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+WLF,Wallis- og Futunaøyene,country,2023,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+WLF,Wallis- og Futunaøyene,country,2024,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+WLF,Wallis- og Futunaøyene,country,2025,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
+WLF,Wallis- og Futunaøyene,country,2026,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_incomplete_year;f_zero_no_detection
 WSM,Samoa,country,2012,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
 WSM,Samoa,country,2013,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
 WSM,Samoa,country,2014,burned_area_km2,0.0,km2,K1,owid_annual_area_burnt,measured,f_sensor_break;f_min_fire_size;f_zero_no_detection
