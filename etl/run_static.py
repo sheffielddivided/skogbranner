@@ -186,6 +186,7 @@ def kjor_k8(kun_katalog=False):
         info,
         for_smaa=for_smaa,
         uobservert=uobservert,
+        med_geometri=set(maske.koder),
     )
 
     feil = validate.valider(observasjoner)
@@ -209,6 +210,11 @@ def kjor_k8(kun_katalog=False):
         info,
     )
 
+    if info["uten_geometri"]:
+        print(
+            f"K8: {len(info['uten_geometri'])} land mangler geometri i K6 og "
+            "får ingen rader: " + ", ".join(info["uten_geometri"])
+        )
     print(f"normalize: {len(observasjoner)} observasjoner")
     print("validate:  OK")
     print(f"skrevet:   {sti_json.name}, {sti_csv.name}")

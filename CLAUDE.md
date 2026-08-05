@@ -882,6 +882,18 @@ da, og skal aldri fryses som en liste over koder i kode (§ 7, T5). Får en
 entitet treff etter at geometrien er oppdatert eller en senere kilde har finere
 oppløsning, kommer den inn av seg selv.
 
+**Et land uten geometri i K6 er en annen sak, og føres for seg.** Der har ikke
+rutenettet bommet på geometrien — det finnes ingen geometri å bomme på.
+Entiteten kom aldri inn i masken, og får derfor heller ingen rader.
+
+Utfallet for leseren er det samme, men årsaken er ikke, og en manglende rad
+skal kunne forklares. De to settene føres derfor hver for seg i
+`data/_sources.json`, som `excluded_unobserved` og `excluded_no_geometry`.
+Begge beregnes ved kjøring: det første av rutenettet, det andre som landene i
+`land_no.json` som ikke finnes i K6-geometrien. Regioner og verdenskoden er
+ikke med — K6 leverer ikke geometri for dem, og verdenstallet kommer fra
+rutenettet.
+
 Arealet måles **på rutenettet**, ikke hentet fra en annen kilde. Det er det
 rutenettet ser av landet som avgjør om tallet kan brukes, ikke hva et atlas
 oppgir. Terskelen står som `GRID_MIN_ENTITY_CELLS` i `etl/schema.py`, oppgitt i

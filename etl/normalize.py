@@ -116,7 +116,7 @@ def fra_k1(rader, info):
     return observasjoner
 
 
-def fra_k8(per_entitet, verden, info, for_smaa=(), uobservert=()):
+def fra_k8(per_entitet, verden, info, for_smaa=(), uobservert=(), med_geometri=None):
     """Gjør aggregerte K8-summer om til kanoniske observasjoner.
 
     ``per_entitet`` er {entity-kode: {år: m²}} slik ``etl/grid.py`` summerte
@@ -128,6 +128,9 @@ def fra_k8(per_entitet, verden, info, for_smaa=(), uobservert=()):
 
     ``uobservert`` er entitetene rutenettet ikke treffer i det hele tatt. De
     utelates — se CLAUDE.md § 9.
+
+    ``med_geometri`` er kodene K6-geometrien dekker. Land som mangler der, kom
+    aldri inn i masken, og føres som sin egen kategori.
 
     Verdenstallet summeres fra rutenettet og ikke fra landene, slik at de
     cellene ingen landgeometri dekker, fortsatt teller globalt. Se
@@ -196,6 +199,21 @@ def fra_k8(per_entitet, verden, info, for_smaa=(), uobservert=()):
 
     info["aar_mangler"] = hull
     info["utelatte_entiteter"] = sorted(set(uobservert) & set(land))
+
+    # Land uten geometri i K6 kom aldri inn i masken, og mangler av en annen
+    # grunn enn de uobserverte: rutenettet har ikke bommet på geometrien, det
+    # finnes ingen geometri å bomme på. Regioner og verdenskoden holdes utenfor
+    # — K6 leverer ikke geometri for dem, og verdenstallet kommer fra
+    # rutenettet. Settet beregnes her, ved kjøring (§ 7, T5).
+    info["uten_geometri"] = (
+        sorted(
+            kode
+            for kode, oppslag in land.items()
+            if oppslag["level"] == "country" and kode not in med_geometri
+        )
+        if med_geometri is not None
+        else []
+    )
     info["footnotes"] = sorted({f for o in observasjoner for f in o["footnotes"]})
     info["rows"] = len(observasjoner)
 

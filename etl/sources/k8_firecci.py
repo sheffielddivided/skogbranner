@@ -292,9 +292,12 @@ def skriv_metadata(info, processed_files):
         "med admin-0-geometrien fra K6. Rutenettfilene lastes ned i GitHub "
         "Actions og slettes etter aggregering. Andelen brent areal uten "
         f"landtilknytning i denne kjøringen: {info['uattribuert_andel']:.4%}. "
-        f"{len(info['utelatte_entiteter'])} entiteter er utelatt fordi "
-        "rutenettet ikke treffer geometrien deres.",
-        "excluded_entities": info["utelatte_entiteter"],
+        "To grupper entiteter får ingen rader, av hver sin grunn: "
+        f"{len(info['utelatte_entiteter'])} der rutenettet ikke treffer "
+        f"geometrien, og {len(info['uten_geometri'])} som ikke finnes i "
+        "K6-geometrien i det hele tatt.",
+        "excluded_unobserved": info["utelatte_entiteter"],
+        "excluded_no_geometry": info["uten_geometri"],
     }
     with open(SOURCES_JSON, "w", encoding="utf-8") as f:
         json.dump(sources, f, ensure_ascii=False, indent=2)
