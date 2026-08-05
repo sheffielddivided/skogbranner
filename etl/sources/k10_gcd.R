@@ -61,13 +61,33 @@ komp <- pfCompositeLF(
 # bootstrappede konfidensintervallet, og antall bidragende serier per bin
 # telles av de kolonnene som ikke er NA — samme regnestykke som pakkens egen
 # plot(add = "sitenum").
+# Formen på det pfCompositeLF gir fra seg, skrives ut før den brukes. En
+# kolonne av feil lengde blir resirkulert av data.frame() til en konstant
+# kurve, og det ser ut som data i stedet for som en feil.
+cat("K10: BinCentres", length(komp$BinCentres),
+    "| BootMean", paste(dim(komp$BootMean), collapse="x"),
+    "lengde", length(komp$BootMean),
+    "| BootCi", paste(dim(komp$BootCi), collapse="x"),
+    "| BinnedData", paste(dim(komp$BinnedData), collapse="x"), "\n")
+kurve <- as.numeric(komp$BootMean)
+cat("K10: kurven har", length(kurve), "punkter,",
+    sum(!is.na(kurve)), "uten NA, spenn",
+    sprintf("%.4f til %.4f", min(kurve, na.rm=TRUE), max(kurve, na.rm=TRUE)),
+    "| unike verdier:", length(unique(round(kurve, 6))), "\n")
+
 ut <- data.frame(
   age_bp = as.numeric(komp$BinCentres),
-  composite = as.numeric(komp$BootMean[, 1]),
+  composite = kurve,
   lower = as.numeric(komp$BootCi[, 1]),
   upper = as.numeric(komp$BootCi[, 2]),
   n_sites = ncol(komp$BinnedData) - rowSums(is.na(komp$BinnedData))
 )
+
+# En kompositt uten variasjon er ikke en kompositt. Stopp før skriving, slik
+# at en flat kurve ikke havner i data/processed/ og ser ut som et resultat.
+if (length(unique(round(kurve[!is.na(kurve)], 6))) < 2) {
+  stop("kompositten er konstant — pfCompositeLF ga ingen variasjon")
+}
 
 # Skriv med én gang, før noe annet gjøres med resultatet.
 write.csv(ut, utfil, row.names = FALSE)

@@ -342,6 +342,17 @@ def fra_k10(rader, info):
     if not observasjoner:
         raise ValueError("K10: kompositten ga ingen brukbare verdier")
 
+    # En kompositt der alle punktene er like, er ikke en kurve. Den passerer
+    # validate.py, som ser på kodeverdier og ikke på om tallene betyr noe, og
+    # ville blitt publisert som om den var et resultat.
+    if len({o["value"] for o in observasjoner}) < 2:
+        raise ValueError(
+            f"K10: alle {len(observasjoner)} punktene har samme verdi "
+            f"({observasjoner[0]['value']}). Kompositten er flat, og det er "
+            "ikke et resultat — se etter en kolonne av feil lengde i "
+            "R-utdataene."
+        )
+
     aar = [int(o["period"]) for o in observasjoner]
     info["aar_forste"] = min(aar)
     info["aar_siste"] = max(aar)
