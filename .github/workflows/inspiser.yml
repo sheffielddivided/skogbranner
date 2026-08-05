@@ -1,0 +1,32 @@
+# Engangsverktøy: undersøker et kildeformat i Actions.
+#
+# EFFIS' nedlastbare landtotaler ligger bak en 301 til
+# data.effis.emergency.copernicus.eu, som utviklingsmiljøets nettverkspolicy
+# avviser med 403 på CONNECT. Actions er samme sted den månedlige
+# ETL-kjøringen kjører, så det er der spørsmålet kan besvares.
+#
+# Slettes sammen med scripts/inspiser_effis_xls.py når K3 er koblet om.
+
+name: Inspiser EFFIS-landtotalene
+
+on:
+  push:
+    branches: [claude/add-sources-k2-k3-k5-k6-k7-gg8y9l]
+    paths:
+      - scripts/inspiser_effis_xls.py
+      - .github/workflows/inspiser.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  effis:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - run: python -m scripts.inspiser_effis_xls
