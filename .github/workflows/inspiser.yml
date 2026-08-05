@@ -1,0 +1,68 @@
+# Engangsverktøy: kjører den månedlige pipelinen i Actions og committer
+# resultatet til grenen, slik at datasettet er regnet på nytt etter at K6 ble
+# slått sammen med mains kartenheter.
+#
+# Utviklingsmiljøets nettverkspolicy avviser både
+# api2.effis.emergency.copernicus.eu og data.effis.emergency.copernicus.eu, så
+# K2, K3 og K4 kan ikke kjøres derfra i det hele tatt (CLAUDE.md T4).
+#
+# Slettes før grenen slås sammen med main. Den månedlige kjøringen ligger i
+# etl.yml og er det som gjelder videre.
+
+name: Kjør pipelinen på grenen
+
+on:
+  push:
+    branches: [claude/add-sources-k2-k3-k5-k6-k7-gg8y9l]
+    paths:
+      - etl/**
+      - requirements.txt
+      - .github/workflows/inspiser.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: inspiser
+  cancel-in-progress: false
+
+jobs:
+  kilder:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install -r requirements.txt
+
+      # Navnekilden først: normalize.py slår opp norske navn i land_no.json.
+      - name: Navnekilde — SSB Klass
+        run: python -m etl.sources.ssb_klass
+
+      - name: Hele pipelinen
+        run: python -m etl.run
+
+      - name: Avviksrapporten K1 mot K2
+        if: always()
+        run: cat data/raw/kryssjekk_k1_k2.md || echo "ingen rapport"
+
+      - name: Commit de bearbeidede filene
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Eksplisitte stier. data/raw/ er gitignorert og skal aldri
+          # committes (T4).
+          git add data/processed data/geo data/_sources.json data/_status.json
+
+          if git diff --cached --quiet; then
+            echo "ingen endringer"
+          else
+            git diff --cached --stat
+            git commit -m "ETL: regn datasettet på nytt mot kartenhetenes landarealer"
+            git push origin "HEAD:${{ github.ref_name }}"
+          fi
