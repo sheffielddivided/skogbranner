@@ -13,6 +13,7 @@ Kjøres som modul fra repotoppen: ``python -m etl.run``
 """
 
 import json
+import traceback
 
 from etl import normalize, validate
 from etl.schema import RAW_DIR, SOURCES_JSON
@@ -166,6 +167,9 @@ def main():
                 f"{modul.SOURCE_ID} FEILET: {type(e).__name__}: {e} — "
                 f"{len(beholdt)} observasjoner beholdt fra forrige kjøring"
             )
+            # Statusmeldingen sier hva som gikk galt, men ikke hvor. Uten
+            # sporet må feilen gjettes fra utsiden, og en kjøring tar minutter.
+            traceback.print_exc()
 
     feil = validate.valider(observasjoner)
     if feil:
