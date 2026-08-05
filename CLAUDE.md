@@ -428,10 +428,15 @@ en ny versjon.
     som starter i 2002 og er 0,25° hele veien — og som derfor verken dekker
     1997 eller har oppløsningsskiftet.
 
-  Dekningen er altså 1997–2020, ikke 1997–2022. Årene 2021 og 2022 finnes som
-  brent areal kun i `ecosystem`-arkivet, og å skjøte dem på ville krysset både
-  en utgivelses- og en produktgrense. Det gjør vi ikke — se regelen om trend og
-  kildebrudd i § 7.
+  **Dekningen er 1997–2020, og det er ikke en luke som skal fikses.** Årene
+  2021 og 2022 finnes som brent areal kun i `ecosystem`-arkivet, som er et
+  annet produkt med annen dekning og annen oppløsningshistorikk. Å skjøte dem
+  på ville krysset en produktgrense — den samme feiltypen § 7 forbyr for trend
+  — for å dekke to år som allerede er dekket av K1 i S1s oversiktsfigur.
+
+  Leseren mister altså ingenting. Ser serien kort ut i enden, er det fordi
+  produsenten har delt datasettet, ikke fordi noe mangler på siden. Utvid den
+  ikke.
 
   Kilden oppgir km² per rute. Rutenettene summeres til landnivå på samme måte
   som K8, men med én maske per oppløsning: terskelen for `f_grid_resolution` og
