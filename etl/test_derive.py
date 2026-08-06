@@ -21,6 +21,7 @@ from statistics import NormalDist
 from etl import derive
 from etl.schema import (
     ANOMALY_FACTOR_PCT,
+    SEASON_BAND_PCT,
     TREND_MAX_ZERO_SHARE,
     TREND_MAX_ZERO_TAIL,
     TREND_MIN_YEARS,
@@ -473,3 +474,73 @@ class HeleDatasettet(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class Sesong(unittest.TestCase):
+    """Sesongavledningene i § 7: profil per uke og persentilbånd."""
+
+    def _observasjoner(self):
+        def rad(aar, uke, verdi, fotnoter=()):
+            return {
+                "entity": "WLD",
+                "entity_name": "Verden",
+                "level": "world",
+                "period": f"{aar}-W{uke:02d}",
+                "indicator": "burned_area_km2",
+                "value": verdi,
+                "unit": "km2",
+                "source_id": "K2",
+                "series_id": "gwis_weekly_burned_area",
+                "quality": "measured",
+                "footnotes": list(fotnoter),
+            }
+
+        # Fire hele år. Uke 1 har verdiene 1, 2, 3 og 4; uke 2 har 10 i alle.
+        rader = [rad(2020 + i, 1, float(i + 1)) for i in range(4)]
+        rader += [rad(2020 + i, 2, 10.0) for i in range(4)]
+        # Inneværende år, markert ufullstendig.
+        rader.append(rad(2026, 1, 99.0, ["f_incomplete_year"]))
+        return rader
+
+    def setUp(self):
+        self.serie = derive.ukegrunnlag(self._observasjoner())[
+            "gwis_weekly_burned_area"
+        ]
+
+    def test_persentil_med_lineaer_interpolasjon(self):
+        # Samme konvensjon som numpy og R type 7.
+        self.assertEqual(derive.persentil([1, 2, 3, 4], 50), 2.5)
+        self.assertAlmostEqual(derive.persentil([1, 2, 3, 4], 10), 1.3)
+        self.assertAlmostEqual(derive.persentil([1, 2, 3, 4], 90), 3.7)
+        self.assertEqual(derive.persentil([5], 90), 5)
+        self.assertIsNone(derive.persentil([], 50))
+
+    def test_profilen_er_medianen_per_uke(self):
+        uker = derive.sesongprofil(self.serie, "WLD")["weeks"]
+        self.assertEqual(uker[0], {"week": 1, "median": 2.5, "n_years": 4})
+
+    def test_baandet_dekker_persentilene_i_schema(self):
+        band = derive.sesongband(self.serie, "WLD")
+        self.assertEqual(band["band_pct"], list(SEASON_BAND_PCT))
+        self.assertEqual(band["weeks"][0]["median"], 2.5)
+        self.assertAlmostEqual(band["weeks"][0]["low"], 1.3)
+        self.assertAlmostEqual(band["weeks"][0]["high"], 3.7)
+
+    def test_baandet_er_kumulativt(self):
+        # Uke 2 legger 10 til hver av årsverdiene fra uke 1.
+        uke2 = derive.sesongband(self.serie, "WLD")["weeks"][1]
+        self.assertEqual(uke2["median"], 12.5)
+        self.assertAlmostEqual(uke2["low"], 11.3)
+
+    def test_inneverende_aar_staar_utenfor_baandet(self):
+        band = derive.sesongband(self.serie, "WLD")
+        self.assertEqual(band["basis_years"], [2020, 2021, 2022, 2023])
+        self.assertEqual(band["incomplete_year"]["year"], 2026)
+        # 99 ville flyttet både median og øvre persentil hvis det var med.
+        self.assertLess(band["weeks"][0]["high"], 99)
+
+    def test_dekningen_skiller_hele_og_ufullstendige_aar(self):
+        d = derive.ukesdekning(self.serie, "WLD")
+        self.assertEqual(d["complete_years"], [2020, 2021, 2022, 2023])
+        self.assertEqual(d["incomplete_years"], [2026])
+        self.assertEqual(d["n_weeks"], 9)

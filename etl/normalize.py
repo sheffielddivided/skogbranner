@@ -791,6 +791,54 @@ def _kolonner(observasjoner):
     return FELT + ekstra
 
 
+def fra_k2_uker(rader, info):
+    """Gjør GWIS' ukesserie om til kanoniske observasjoner.
+
+    Kilden oppgir hektar, som konverteres til km² her. Perioden er ISO-uke,
+    YYYY-Www (§ 6).
+
+    Radene er allerede summert til region og verden i kildemodulen — landene
+    publiseres ikke (§ 5).
+    """
+    land = _land()
+    ufullstendig_aar = int(info["downloaded_at"][:4])
+    grunnfotnoter = ["f_sensor_break", "f_min_fire_size", "f_product_level"]
+
+    observasjoner = []
+    for rad in rader:
+        kode = rad["entity"]
+        if kode not in land:
+            raise ValueError(
+                f"K2 uke: entiteten {kode!r} står ikke i land_no.json"
+            )
+
+        verdi = round(rad["ba_ha"] * HA_TO_KM2, DESIMALER)
+        fotnoter = list(grunnfotnoter)
+        if rad["year"] >= ufullstendig_aar:
+            fotnoter.append("f_incomplete_year")
+        if verdi == 0:
+            fotnoter.append("f_zero_no_detection")
+
+        observasjoner.append(
+            _observasjon(
+                kode,
+                land,
+                f"{rad['year']}-W{rad['week']:02d}",
+                INDIKATOR,
+                ENHET,
+                verdi,
+                k2_gwis.SOURCE_ID,
+                k2_gwis.UKE_SERIES_ID,
+                "measured",
+                fotnoter,
+            )
+        )
+
+    observasjoner.sort(key=lambda o: (o["series_id"], o["entity"], o["period"]))
+    return observasjoner
+
+
+
 def skriv(observasjoner, navn):
     """Skriver observasjonene som JSON og CSV under data/processed/."""
     PROCESSED_DIR.mkdir(parents=True, exist_ok=True)

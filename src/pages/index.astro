@@ -23,6 +23,8 @@ import {
   globaltBrentAreal,
   kartBrentAreal,
   rangering,
+  sesongprofil,
+  kumulativUke,
 } from "../figurer";
 import { avledning, avledetTall } from "../lib/data";
 import { tall, pverdi, desimaltall } from "../lib/format";
@@ -31,6 +33,8 @@ const figur1 = overskriftstall();
 const figur2 = globaltBrentAreal();
 const figur3 = kartBrentAreal();
 const figur4 = rangering();
+const figur5 = sesongprofil();
+const figur6 = kumulativUke();
 
 // Konsentrasjonen navngir de største landene. Det er en tillatt avledning
 // (§ 7); en rangering av land mot hverandre er det ikke, og teksten sier
@@ -64,7 +68,7 @@ const aarFoer =
 const aarEtter =
   (dekningK9.last_year as number) - (dekningK8.last_year as number);
 
-const [s1, s2, ...resten] = seksjoner;
+const [s1, s2, s3, ...resten] = seksjoner;
 ---
 
 <Side
@@ -297,6 +301,90 @@ const [s1, s2, ...resten] = seksjoner;
       <p>
         Land uten data står med «ingen data» og havner sist uansett hvilken vei
         du sorterer. En måling som mangler, er ikke en lav verdi.
+      </p>
+    </div>
+  </section>
+
+  <section class="seksjon" id={s3!.id} aria-labelledby={`${s3!.id}-tittel`}>
+    <h2 id={`${s3!.id}-tittel`}>
+      <span class="seksjon-kode">{s3!.kode}</span>
+      {s3!.tittel}
+    </h2>
+
+    <Figur {...figur5} />
+
+    <Figur {...figur6} />
+
+    <div class="seksjon-tekst">
+      <h3>Hva sesongfiguren viser</h3>
+      <p>
+        Hver rute er én verdensdel. Kurven viser hvor mye som brenner i hver
+        uke av året: uke 1 sammenlignet med uke 1 i de andre årene, uke 2 med
+        uke 2, og så videre.
+      </p>
+      <p>
+        En <strong>brannsesong</strong> er den delen av året da det brenner
+        mest et bestemt sted. Kurvene topper seg i ulike uker fra verdensdel
+        til verdensdel — når på året det brenner, er ikke det samme overalt.
+      </p>
+      <p>
+        <strong>Medianen</strong> er den midterste verdien når årene sorteres
+        etter størrelse: halvparten av årene ligger over, halvparten under. Den
+        brukes framfor gjennomsnittet fordi ett år som stikker ut, ikke skal
+        flytte hele kurven.
+      </p>
+
+      <h3>Hvordan rutene skal leses</h3>
+      <p>
+        Hver rute har sin egen loddrette skala. Formen på kurven kan
+        sammenlignes mellom verdensdeler — når toppen kommer, og hvor bred den
+        er. Høyden kan ikke: en rute med lav akse viser ikke mindre brann enn
+        naboruten, den viser en annen skala. Tallene står i tabellen under.
+      </p>
+      <p>
+        Verdensdelene er summert av landene kilden fører i hver av dem. GWIS
+        svarer ikke på verdensdel direkte, så inndelingen er kildens, mens
+        summeringen er vår.
+      </p>
+
+      <h3>Hva den kumulative kurven viser</h3>
+      <p>
+        Kurven legger sammen ukene etter hvert som året går. Ved utgangen av
+        uke 10 viser den alt som har brent i årets ti første uker. En kumulativ
+        kurve synker aldri; det den forteller, er hvor bratt den stiger, og
+        når.
+      </p>
+      <p>
+        Den tykke linjen er inneværende år. Den er markert som ufullstendig og
+        stopper der målingene stopper — ikke ved årsslutt.
+      </p>
+
+      <h3>Båndet bak kurven</h3>
+      <p data-derivation={`season_band.gwis_weekly_burned_area.WLD`}>
+        Båndet er et <strong>persentilbånd</strong>. For hver uke er de hele
+        årene sortert etter størrelse, og båndet dekker området fra den {
+          figur6.bandPct[0]
+        }. til den {figur6.bandPct[1]}. persentilen: ett år av ti ligger over
+        båndet, ett av ti under. Linjen inne i båndet er medianen.
+      </p>
+      <p>
+        Båndet sier hvor et vanlig år pleier å ligge på dette tidspunktet i
+        året, og hvor mye årene pleier å sprike. Det sier ingenting om hvorfor
+        et enkelt år ligger der det ligger.
+      </p>
+      <p data-derivation={`coverage.gwis_weekly_burned_area.WLD`}>
+        Inneværende år er ikke med i grunnlaget for verken båndet eller
+        medianen. Et år som ikke er omme, kan ikke være med på å definere hva
+        et helt år pleier å være. Båndet er regnet over de {
+          figur6.grunnlagsaar.length
+        } hele årene serien dekker.
+      </p>
+
+      <h3>Hva figurene ikke svarer på</h3>
+      <p>
+        Uke 1 er ikke den samme datoen hvert år, og ukene forskyver seg med
+        noen dager fra år til år. Kurvene svarer på når i sesongen noe skjedde,
+        ikke på hvilken dato.
       </p>
     </div>
   </section>

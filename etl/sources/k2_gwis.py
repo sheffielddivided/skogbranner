@@ -22,14 +22,24 @@ Kjøres som modul fra repotoppen: ``python -m etl.sources.k2_gwis``
 
 import hashlib
 import json
+import time
 import urllib.error
 import urllib.request
 from datetime import date, datetime, timezone
 
-from etl.schema import RAW_DIR, SOURCES_JSON, STATUS_JSON
+from etl.schema import (
+    GWIS_REQUEST_PAUSE_S,
+    HA_TO_KM2,
+    PROCESSED_DIR,
+    PROCESSED_FILE,
+    RAW_DIR,
+    SOURCES_JSON,
+    STATUS_JSON,
+)
 
 SOURCE_ID = "K2"
 SERIES_ID = "gwis_annual_burned_area"
+UKE_SERIES_ID = "gwis_weekly_burned_area"
 
 API = "https://api2.effis.emergency.copernicus.eu"
 
@@ -47,7 +57,20 @@ UKE_URL = f"{API}/statistics/v2/gwis/weekly?country={{land}}&year={{aar}}"
 
 LANDING_URL = "https://gwis.jrc.ec.europa.eu/apps/gwis.statistics/estimates"
 
+# Kilden er én, med to roller og to oppløsninger (§ 5). Navn og merknad står
+# derfor ett sted, og begge skrivestegene bruker dem — ellers ville det steget
+# som kjørte sist, bestemt hvordan hele kilden ble beskrevet.
+NAVN = "GWIS — Global Wildfire Information System"
+NOTES = (
+    "Brukes til å kryssjekke K1, som er Our World in Datas bearbeiding av det "
+    "samme grunnlaget. Avviksrapporten er et arbeidsverktøy og publiseres "
+    "ikke. Ukesserien er hentet per land og summert til verdensdel og verden "
+    "— kilden svarer ikke på sone i ukesendepunktet. Fullstendige år hentes "
+    "ikke på nytt."
+)
+
 RAW_JSON = RAW_DIR / "k2_gwis_estimates.json"
+RAW_UKE_JSON = RAW_DIR / "k2_gwis_weekly.json"
 
 # GWIS koder enkelte entiteter med egne X-koder. Her oversettes de til
 # entity-kodene i data/geo/land_no.json.
@@ -68,6 +91,25 @@ IKKE_ENTITETER = {
 # Sonelista inneholder både verdensdeler og en verdenskode. Verdenskoden er
 # ikke et land og har ingen landliste å slå opp.
 SONETYPER_MED_LAND = frozenset({"continent", "macregion", "region"})
+
+# GWIS' soner, oversatt til regionkodene i data/geo/land_no.json (§ 6).
+# Kodene er lest av sonelista, ikke gjettet — se sonder_uker().
+#
+# Verdensdelene hos GWIS følger FNs inndeling, der Amerika er én verdensdel
+# (UN_AME). Vi fører Nord- og Sør-Amerika hver for seg, og bruker derfor
+# kildens makroregioner N_AME og S_AME for de to.
+#
+# Ukesserien publiseres på verdensdel og verden, ikke per land: landene ville
+# gitt over 180 000 rader uten at noen figur viser dem, og S3 spør om når på
+# året det brenner hvor — ikke om det enkelte landet.
+GWIS_SONE_MAP = {
+    "UN_AFR": "AFR",
+    "UN_ASI": "ASI",
+    "UN_EUR": "EUR",
+    "UN_OCE": "OCE",
+    "N_AME": "NAC",
+    "S_AME": "SAM",
+}
 
 BRUKERAGENT = "skogbranner-etl/1.0 (+https://github.com/sheffielddivided/skogbranner)"
 
@@ -194,6 +236,211 @@ def hent():
     return rader, info
 
 
+def sonder_uker(land="NOR", aar=None):
+    """Skriver ut hva ukesendepunktet faktisk svarer med.
+
+    Formatet er ikke dokumentert noe sted, og verten er ikke nåbar fra en
+    utviklingssesjon. Uten denne måtte parseren skrives på gjetning. Kjøres i
+    Actions, se .github/workflows/etl.yml.
+
+    Sonderingen svarer på tre spørsmål: hvilke soner kilden har, om
+    year-parameteret faktisk velger år, og om sonekodene kan brukes der
+    landkoden står — det siste avgjør om verdensdelene kan hentes ferdig
+    aggregert eller må summeres av landene.
+    """
+    soner = _hent_liste(SONE_URL)
+    print(f"soner: {len(soner)}")
+    for sone in soner:
+        print(f"  {sone.get('code')!r} type={sone.get('type')!r} navn={sone.get('name')!r}")
+
+    def vis(nokkel, adresse):
+        print(f"\n--- {nokkel}: {adresse}")
+        try:
+            svar = _hent_json(adresse)
+        except Exception as e:  # noqa: BLE001 — sonderingen skal vise alt
+            print(f"  feilet: {type(e).__name__}: {e}")
+            return
+        if not isinstance(svar, dict):
+            print(f"  type: {type(svar).__name__} — uventet")
+            return
+        for felt, rader in svar.items():
+            if not isinstance(rader, list):
+                print(f"  {felt}: {rader!r}")
+                continue
+            print(f"  {felt}: {len(rader)} rader")
+            if rader:
+                print(f"    første: {json.dumps(rader[0], ensure_ascii=False)}")
+                print(f"    siste:  {json.dumps(rader[-1], ensure_ascii=False)}")
+
+    # Samme land, tre år. Svarer year-parameteret med ulike datoer, velger den
+    # faktisk år; er datoene like, gjør den det ikke.
+    for aarstall in (2019, 2023, 2026):
+        vis(f"land {land}, år {aarstall}", UKE_URL.format(land=land, aar=aarstall))
+
+    # Sonekodene fra lista over, ikke gjettede navn.
+    for sone in ("UN_AFR", "WORLD"):
+        vis(f"sone {sone}", UKE_URL.format(land=sone, aar=2023))
+
+    return None
+
+
+def soner_med_land():
+    """Sonene vi fører som regioner, med landene kilden legger i hver.
+
+    Inndelingen er kildens. Summeringen er vår — GWIS svarer ikke på sone i
+    ukesendepunktet, se sonder_uker().
+    """
+    ut = {}
+    for sone in _hent_liste(SONE_URL):
+        kode = sone.get("code")
+        if kode not in GWIS_SONE_MAP:
+            continue
+        land = _hent_liste(LAND_URL.format(sone=kode))
+        # Kildens koder oversettes til våre med én gang, slik at
+        # sammenligningen mot de hentede landene skjer i ett kodesett (§ 6).
+        iso3 = sorted(
+            {entity_kode((o.get("iso3") or "").strip()) for o in land} - {""}
+        )
+        if iso3:
+            ut[GWIS_SONE_MAP[kode]] = iso3
+
+    mangler = sorted(set(GWIS_SONE_MAP.values()) - set(ut))
+    if mangler:
+        raise ValueError(f"GWIS ga ingen landliste for sonene {mangler}")
+    return ut
+
+
+def _bufrede_aar():
+    """Årene ukesserien allerede er publisert for, og radene deres.
+
+    Et fullstendig år hentes ikke på nytt: verdiene ligger fast, og en månedlig
+    kjøring skal ikke be kilden om fjorten år med uker den allerede har svart
+    på. Den publiserte filen er hurtigbufferen — se CLAUDE.md § 5.
+
+    Inneværende år er aldri bufret. Det er nettopp det året som endrer seg.
+    """
+    sti = PROCESSED_DIR / f"{PROCESSED_FILE[UKE_SERIES_ID]}.json"
+    if not sti.exists():
+        return {}
+
+    with open(sti, encoding="utf-8") as f:
+        publisert = json.load(f)
+
+    inneverende = date.today().year
+    per_aar = {}
+    for o in publisert:
+        if o.get("series_id") != UKE_SERIES_ID:
+            continue
+        aar = int(o["period"][:4])
+        if aar >= inneverende:
+            continue
+        per_aar.setdefault(aar, []).append(o)
+    return per_aar
+
+
+def hent_uker(aar_fra, aar_til, land_koder=None, bufret=None):
+    """Henter ukesserien per land, og summerer den til soner og verden.
+
+    Returnerer (rader, info). Radene er (entity, år, uke, hektar), der entity
+    er en regionkode eller WLD — landene selv publiseres ikke (§ 5).
+
+    Hentingen er skånsom: én forespørsel per land og år, med pause mellom, og
+    fullstendige år som allerede er publisert, hentes ikke på nytt.
+    """
+    RAW_DIR.mkdir(parents=True, exist_ok=True)
+
+    soner = soner_med_land()
+    # Verdenstallet summeres av alle landene kilden fører, ikke bare av dem som
+    # ligger i en av de seks sonene. Et land utenfor sonene skal telle globalt.
+    koder = land_koder if land_koder is not None else sorted(hent_landkoder())
+    bufret = _bufrede_aar() if bufret is None else bufret
+
+    aarene = [a for a in range(aar_fra, aar_til + 1) if a not in bufret]
+    per_land = {}
+    uten_svar = []
+    forespørsler = 0
+
+    for aar in aarene:
+        for iso3 in koder:
+            if forespørsler:
+                time.sleep(GWIS_REQUEST_PAUSE_S)
+            forespørsler += 1
+            try:
+                svar = _hent_json(UKE_URL.format(land=iso3, aar=aar))
+            except (urllib.error.URLError, TimeoutError, OSError) as e:
+                uten_svar.append(f"{iso3} {aar}: {type(e).__name__}")
+                continue
+
+            for rad in (svar or {}).get("banfweekly") or []:
+                # None betyr at uken ikke er nådd ennå. Det er ingen måling, og
+                # skal ikke bli en null (§ 6).
+                if rad.get("area_ha") is None:
+                    continue
+                per_land[(entity_kode(iso3), aar, int(rad["week"]))] = float(
+                    rad["area_ha"]
+                )
+
+    rader = _summer_til_soner(per_land, soner)
+    for aar, gamle in sorted(bufret.items()):
+        rader.extend(
+            {
+                "entity": o["entity"],
+                "year": aar,
+                "week": int(o["period"][6:]),
+                "ba_ha": o["value"] / HA_TO_KM2,
+                "bufret": True,
+            }
+            for o in gamle
+        )
+
+    rader.sort(key=lambda r: (r["entity"], r["year"], r["week"]))
+
+    raa = json.dumps(rader, ensure_ascii=False, sort_keys=True).encode("utf-8")
+    RAW_UKE_JSON.write_bytes(raa)
+
+    info = {
+        "source_id": SOURCE_ID,
+        "series_id": UKE_SERIES_ID,
+        "downloaded_at": date.today().isoformat(),
+        "checksum": _sha256(raa),
+        "rows": len(rader),
+        "requests": forespørsler,
+        "years_fetched": aarene,
+        "years_cached": sorted(bufret),
+        "countries": len(koder),
+        "zones": {kode: len(land) for kode, land in sorted(soner.items())},
+        "unanswered": uten_svar,
+    }
+    return rader, info
+
+
+def _summer_til_soner(per_land, soner):
+    """Summerer landenes uker til regionene og til verden.
+
+    Verdenstallet summeres av landene, ikke av regionene: et land kan ligge i
+    flere soner eller i ingen, og en sum av soner ville da telt det to ganger
+    eller ikke i det hele tatt.
+    """
+    per_entitet = {}
+    for (iso3, aar, uke), hektar in per_land.items():
+        for region, land in soner.items():
+            if iso3 in land:
+                nokkel = (region, aar, uke)
+                per_entitet[nokkel] = per_entitet.get(nokkel, 0.0) + hektar
+        verden = ("WLD", aar, uke)
+        per_entitet[verden] = per_entitet.get(verden, 0.0) + hektar
+
+    return [
+        {"entity": entitet, "year": aar, "week": uke, "ba_ha": hektar}
+        for (entitet, aar, uke), hektar in per_entitet.items()
+    ]
+
+
+def _opplosning(serier):
+    """temporal_resolution utledet av hvilke serier som faktisk er hentet."""
+    return "annual og weekly" if UKE_SERIES_ID in serier else "annual"
+
+
 def skriv_metadata(info):
     """Registrerer kilden i data/_sources.json.
 
@@ -204,60 +451,127 @@ def skriv_metadata(info):
     with open(SOURCES_JSON, encoding="utf-8") as f:
         sources = json.load(f)
 
-    sources["sources"][SOURCE_ID] = {
-        "source_id": SOURCE_ID,
-        "name": "GWIS — Global Wildfire Information System, årlige estimater",
-        "publisher": "Joint Research Centre, Europakommisjonen, under Copernicus",
-        "url": LANDING_URL,
-        "download_url": AAR_URL.format(land="NOR"),
-        "license": "Copernicus-data. Fri bruk med kildeangivelse.",
-        "license_url": "https://www.copernicus.eu/en/access-data/copyright-and-licences",
-        "attribution": "Global Wildfire Information System (GWIS), Copernicus "
-        "Emergency Management Service, Joint Research Centre.",
-        "requires_agreement": False,
-        "geography": "global",
-        "coverage_start": str(info["coverage_start"]),
-        "coverage_end": str(info["coverage_end"]),
-        "temporal_resolution": "annual",
-        "quality": "measured",
-        "unit_source": "hectares",
-        "downloaded_at": info["downloaded_at"],
-        "checksum": info["checksum"],
-        "series": [SERIES_ID],
-        "processed_files": [],
-        "footnotes": ["f_sensor_break", "f_min_fire_size"],
-        "notes": "Brukes til å kryssjekke K1, som er Our World in Datas "
-        "bearbeiding av det samme grunnlaget. Avviksrapporten er et "
-        "arbeidsverktøy og publiseres ikke. Ukesoppløsningen fra samme kilde "
-        "skal brukes i seksjonen om sesongvariasjon.",
-    }
+    # Oppføringen fylles av to steg, og dette kjører sist. Den skrives derfor
+    # inn i det som allerede står der — en full erstatning ville strøket
+    # ukesblokken og etterlatt K2 som om bare årsserien fantes.
+    oppforing = sources["sources"].setdefault(SOURCE_ID, {})
+    serier = sorted({*oppforing.get("series", []), SERIES_ID})
+    oppforing.update(
+        {
+            "source_id": SOURCE_ID,
+            "name": NAVN,
+            "publisher": "Joint Research Centre, Europakommisjonen, under Copernicus",
+            "url": LANDING_URL,
+            "download_url": AAR_URL.format(land="NOR"),
+            "license": "Copernicus-data. Fri bruk med kildeangivelse.",
+            "license_url": "https://www.copernicus.eu/en/access-data/copyright-and-licences",
+            "attribution": "Global Wildfire Information System (GWIS), Copernicus "
+            "Emergency Management Service, Joint Research Centre.",
+            "requires_agreement": False,
+            "geography": "global",
+            "coverage_start": str(info["coverage_start"]),
+            "coverage_end": str(info["coverage_end"]),
+            "temporal_resolution": _opplosning(serier),
+            "quality": "measured",
+            "unit_source": "hectares",
+            "downloaded_at": info["downloaded_at"],
+            "checksum": info["checksum"],
+            "series": serier,
+            "processed_files": oppforing.get("processed_files", []),
+            "footnotes": ["f_sensor_break", "f_min_fire_size"],
+            "notes": NOTES,
+        }
+    )
     with open(SOURCES_JSON, "w", encoding="utf-8") as f:
         json.dump(sources, f, ensure_ascii=False, indent=2)
         f.write("\n")
 
 
-def skriv_status(status, melding, info=None):
-    """Skriver kjørestatus til data/_status.json."""
+def skriv_uke_metadata(info):
+    """Oppdaterer K2s oppføring med ukesserien.
+
+    Kilden er den samme; det er oppløsningen som er ny. Oppføringen får derfor
+    begge seriene og en temporal_resolution som sier at begge finnes, framfor
+    en ny kildekode — en K-kode er én kilde, ikke ett endepunkt (§ 5).
+    """
+    with open(SOURCES_JSON, encoding="utf-8") as f:
+        sources = json.load(f)
+
+    oppforing = sources["sources"].setdefault(SOURCE_ID, {})
+    serier = sorted({*oppforing.get("series", []), SERIES_ID, UKE_SERIES_ID})
+    oppforing.update(
+        {
+            "name": NAVN,
+            "temporal_resolution": _opplosning(serier),
+            "series": serier,
+            "weekly": {
+                "downloaded_at": info["downloaded_at"],
+                "checksum": info["checksum"],
+                "requests": info["requests"],
+                "years_fetched": info["years_fetched"],
+                "years_cached": info["years_cached"],
+                "countries": info["countries"],
+                "zones": info["zones"],
+                "unanswered": len(info["unanswered"]),
+            },
+            "notes": NOTES,
+        }
+    )
+
+    with open(SOURCES_JSON, "w", encoding="utf-8") as f:
+        json.dump(sources, f, ensure_ascii=False, indent=2)
+        f.write("\n")
+
+
+def skriv_status(status, melding, info=None, rolle="weekly"):
+    """Skriver kjørestatus til data/_status.json.
+
+    K2 har to roller, og de kjører hver for seg (§ 5). Hver rolle får sin egen
+    oppføring under ``roles``, og den samlede statusen er ok bare hvis begge
+    er det — ellers ville rollen som kjørte sist, kunne overskrive en feil i
+    den andre og få kilden til å se hentet ut.
+    """
     with open(STATUS_JSON, encoding="utf-8") as f:
         data = json.load(f)
 
     naa = datetime.now(timezone.utc).isoformat(timespec="seconds")
     forrige = data["sources"].get(SOURCE_ID, {})
-    data["last_run"] = naa
-    data["sources"][SOURCE_ID] = {
+    roller = dict(forrige.get("roles", {}))
+    roller[rolle] = {
         "status": status,
         "last_attempt": naa,
-        "last_success": naa if status == "ok" else forrige.get("last_success"),
-        "rows": info["rows"] if info else forrige.get("rows"),
-        "checksum": info["checksum"] if info else forrige.get("checksum"),
+        "rows": info["rows"] if info else None,
         "message": melding,
+    }
+    samlet = "ok" if all(r["status"] == "ok" for r in roller.values()) else "failed"
+
+    data["last_run"] = naa
+    data["sources"][SOURCE_ID] = {
+        "status": samlet,
+        "last_attempt": naa,
+        "last_success": naa if samlet == "ok" else forrige.get("last_success"),
+        "rows": info["rows"] if info else forrige.get("rows"),
+        # Ikke alle inngangene bærer en sjekksum. En status som mangler den,
+        # skal skrives likevel — statusfilen er det som forteller hva som gikk
+        # galt, og den må ikke selv kunne velte kjøringen.
+        "checksum": info.get("checksum") if info else forrige.get("checksum"),
+        "message": melding,
+        "roles": roller,
     }
     with open(STATUS_JSON, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
         f.write("\n")
 
 
-def main():
+def main(argv=None):
+    import sys
+
+    if (argv or sys.argv[1:])[:1] == ["--uke-prove"]:
+        return sonder_uker()
+    return _main_aar()
+
+
+def _main_aar():
     rader, info = hent()
     print(
         f"K2: {info['rows']} årsrader for {info['countries']} land, "

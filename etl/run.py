@@ -16,6 +16,8 @@ import json
 import traceback
 
 from etl import derive, normalize, validate
+from datetime import date
+
 from etl.schema import PROCESSED_FILE, RAW_DIR, SOURCES_JSON
 from etl.sources import (
     k1_owid,
@@ -32,6 +34,9 @@ from etl.sources import (
 # gitignorert. Se CLAUDE.md § 5.
 AVVIKSRAPPORT = RAW_DIR / "kryssjekk_k1_k2.md"
 
+# Første året GWIS har ukesdata for. Samme startår som årsserien (§ 5).
+K2_UKE_FRA = 2012
+
 
 def _forrige(publisert, source_id):
     """Plukker ut en kildes forrige observasjoner fra det som lå der før."""
@@ -46,6 +51,18 @@ def hent_k1():
     )
     k1_owid.skriv_metadata(metadata, info, [])
     return observasjoner, info
+
+
+def hent_k2_uker():
+    """K2s ukesserie, som S3 bruker.
+
+    Hentingen er skånsom og bufret: fullstendige år som allerede er publisert,
+    hentes ikke på nytt, og det er pause mellom forespørslene (§ 5). Første
+    kjøring henter hele perioden, senere kjøringer bare inneværende år.
+    """
+    rader, info = k2_gwis.hent_uker(K2_UKE_FRA, date.today().year)
+    k2_gwis.skriv_uke_metadata(info)
+    return normalize.fra_k2_uker(rader, info), info
 
 
 def hent_k3():
@@ -76,6 +93,7 @@ def hent_k7():
 # her og ikke i workflowen, slik at kildeoversikten ikke får en kopi til (T5).
 KILDER = [
     (k1_owid, hent_k1),
+    (k2_gwis, hent_k2_uker),
     (k3_effis, hent_k3),
     (k4_effis, hent_k4),
     (k5_nifc, hent_k5),
@@ -128,14 +146,17 @@ def kryssjekk_k1_k2(k1_observasjoner):
 
         k2_gwis.skriv_metadata(info)
         k2_gwis.skriv_status(
-            "ok", f"{len(avvik)} avvik av {sammenlignet} sammenlignede", info
+            "ok",
+            f"{len(avvik)} avvik av {sammenlignet} sammenlignede",
+            info,
+            rolle="crosscheck",
         )
         print(
             f"K2: kryssjekket {sammenlignet} observasjoner mot K1, "
             f"{len(avvik)} over terskelen → {AVVIKSRAPPORT.name}"
         )
     except Exception as e:
-        k2_gwis.skriv_status("failed", f"{type(e).__name__}: {e}")
+        k2_gwis.skriv_status("failed", f"{type(e).__name__}: {e}", rolle="crosscheck")
         print(f"K2 FEILET: {type(e).__name__}: {e} — kryssjekken er ikke kjørt")
 
 
@@ -148,13 +169,24 @@ def main():
 
     observasjoner = []
     feilede = []
+    bokforingsfeil = []
 
     for modul, hent in KILDER:
         try:
             nye, info = hent()
-            modul.skriv_status("ok", "hentet og normalisert", info)
             observasjoner += nye
             print(f"{modul.SOURCE_ID}: {len(nye)} observasjoner")
+            # Bokføringen skjer etter at radene er tatt vare på. En feil i
+            # statusskrivingen er ikke en feil ved dataene, og skal ikke kaste
+            # en henting som tok minutter — den logges og publiseringen går
+            # videre med en uendret statusoppføring.
+            try:
+                modul.skriv_status("ok", "hentet og normalisert", info)
+            except Exception as e:
+                bokforingsfeil.append(f"{modul.SOURCE_ID}: {type(e).__name__}: {e}")
+                print(f"{modul.SOURCE_ID}: status ikke skrevet: {type(e).__name__}: {e}")
+                traceback.print_exc()
+            continue
         except Exception as e:
             beholdt = _forrige(publisert, modul.SOURCE_ID)
             modul.skriv_status(
@@ -189,6 +221,8 @@ def main():
     print(f"validate: {len(observasjoner)} observasjoner OK")
     for serie, navn in sorted(filer.items()):
         print(f"skrevet:   {serie} → {', '.join(navn)}")
+    for melding in bokforingsfeil:
+        print(f"BOKFØRING: {melding}")
 
     if feilede:
         raise RuntimeError(

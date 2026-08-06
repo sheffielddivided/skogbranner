@@ -13,6 +13,7 @@ import fireCountJson from "../../data/processed/fire_count.json";
 import firecciJson from "../../data/processed/burned_area_firecci_lt11.json";
 import gfed5Json from "../../data/processed/burned_area_gfed5.json";
 import charcoalJson from "../../data/processed/charcoal_composite_gcd.json";
+import ukeJson from "../../data/processed/burned_area_weekly.json";
 import avledningerJson from "../../data/processed/insights.json";
 import kilderJson from "../../data/_sources.json";
 import geometriJson from "../../data/geo/verden.json";
@@ -93,6 +94,7 @@ export const observasjoner = [
   ...firecciJson,
   ...gfed5Json,
   ...charcoalJson,
+  ...ukeJson,
 ] as Observasjon[];
 
 const kilder = kilderJson.sources as unknown as Record<string, Kilde>;

@@ -451,6 +451,31 @@ en ny versjon.
 
   Den andre er som datagrunnlag for **S3**, der ukesoppløsningen brukes. Det er
   den eneste seksjonen der K2 er synlig for leseren.
+
+  **Ukesserien hentes per land og summeres til verdensdel og verden.** Kilden
+  svarer ikke på sone i ukesendepunktet — en sonekode der landkoden skal stå,
+  gir null rader. Inndelingen er derfor kildens egne sonelister, mens
+  summeringen er vår, og det står i `data/_sources.json`.
+
+  Verdenstallet summeres av landene, ikke av sonene. Et land kan ligge i flere
+  soner eller i ingen, og en sum av soner ville telt det to ganger eller ikke i
+  det hele tatt.
+
+  FN-inndelingen kilden bruker har Amerika som én verdensdel. Vi fører Nord- og
+  Sør-Amerika hver for seg, og bruker derfor kildens makroregioner for de to.
+
+  Landene selv publiseres ikke. De ville gitt over 180 000 rader uten at noen
+  figur viser dem, og S3 spør om når på året det brenner hvor — ikke om det
+  enkelte landet.
+
+  **Hentingen er skånsom og bufret.** Ukesserien er én forespørsel per land og
+  år, og GWIS er en offentlig tjeneste vi ikke betaler for. Det er derfor pause
+  mellom forespørslene, med lengden som `GWIS_REQUEST_PAUSE_S` i `schema.py`.
+
+  Et fullstendig år hentes aldri på nytt: den publiserte filen er
+  hurtigbufferen, og en månedlig kjøring ber bare om inneværende år. Det betyr
+  også at en revisjon GWIS gjør i et gammelt år, ikke fanges opp av seg selv —
+  vil man ha den, må filen slettes og serien hentes på nytt.
 - **K3 og K4 er to ulike produkter fra EFFIS**, og skal ikke forveksles.
 
   **K3** er landtotalene EFFIS publiserer som nedlastbar XLS sammen med
@@ -822,6 +847,8 @@ T5 forbyr.
 | Konsentrasjon | Andel av totalt brent areal fra de N største brannene eller landene |
 | Dekning | Første og siste år med data per enhet og serie |
 | Arealsammenligning | Landet hvis landareal ligger nærmest en gitt arealverdi, valgt maskinelt fra Natural Earth-arealene (K6) |
+| Sesongprofil | Median brent areal per uke i året, over fullstendige år, per entitet |
+| Sesongbånd | Kumulativ kurve per uke: median og persentilbånd over fullstendige år |
 
 **Arealsammenligning** gir leseren en fysisk referanse for et tall i km², som
 ellers er vanskelig å forestille seg. Sammenligningslandet velges maskinelt
@@ -833,6 +860,26 @@ Regelen garanterer at det finnes et sammenligningsland, ikke at det er et
 godt et. Landarealene ligger ujevnt fordelt, og et tall som havner i en luke
 mellom to land, får et sammenligningsland med stort avvik. Setningen skal
 derfor alltid ta med avviket, aldri bare navnet.
+
+**Sesongprofil og sesongbånd** er de to avledningene S3 bygger på, og begge
+regnes uke for uke over fullstendige år.
+
+Profilen er medianen for hver uke: uke 1 mot uke 1 i de andre årene, uke 2 mot
+uke 2. Den svarer på når på året det brenner et sted — brannsesongen.
+
+Båndet er den samme øvelsen på den kumulative kurven, altså summen fra uke 1 og
+utover. For hver uke sorteres årene, og båndet dekker `SEASON_BAND_PCT` i
+`etl/schema.py`: ett år av ti ligger over, ett av ti under. Linjen inne i
+båndet er medianen.
+
+Inneværende år inngår i ingen av dem. Det tegnes for seg, som sin egen
+kumulative kurve, og båndet sier hva et helt år pleier å være — noe et år som
+ikke er omme, ikke kan være med på å definere (§ 7, grunnlaget).
+
+Persentilene er regnet med lineær interpolasjon mellom ordningsverdiene, samme
+konvensjon som numpy og R type 7. Med fjorten år ligger den tiende persentilen
+mellom to observasjoner, og en avrunding til nærmeste ville flyttet båndet et
+helt år ut eller inn.
 
 **Konsentrasjon** regnes over de `CONCENTRATION_TOP_N` største, og beregnes
 ikke når serien har like få entiteter som N eller færre. Da er «de største»
@@ -1327,7 +1374,8 @@ sluttbrukeravtale tas ikke inn før avtalen er avklart og notert i
 - `etl/schema.py` — enumerasjonene, tersklene og stiene
 - `etl/sources/ssb_klass.py` — navnekilden, bygger `land_no.json`
 - `etl/sources/k1_owid.py` — K1, CSV og metadata
-- `etl/sources/k2_gwis.py` — K2, årsserie per land. Brukes til kryssjekk mot K1
+- `etl/sources/k2_gwis.py` — K2, i to roller: årsserie per land til kryssjekken
+  mot K1, og ukesserie per land, summert til verdensdel og verden, til S3
 - `etl/sources/k3_effis.py` — K3, nasjonalt rapporterte landtotaler fra XLS
 - `etl/sources/k4_effis.py` — K4, EFFIS' egen satellittkartlegging (RDA)
 - `etl/sources/k5_nifc.py` — K5, HTML-tabellen på statistikksiden
@@ -1352,6 +1400,7 @@ sluttbrukeravtale tas ikke inn før avtalen er avklart og notert i
 - `src/lib/csv.ts` — figurens egen CSV, med test i `csv.test.ts`
 - `src/figurer/overskriftstall.ts` og `globaltBrentAreal.ts` — S1s to figurer
 - `src/figurer/kartBrentAreal.ts` og `rangering.ts` — S2s to figurer
+- `src/figurer/sesongprofil.ts` og `kumulativUke.ts` — S3s to figurer
 - `src/komponenter/Kart.astro` — kart med bryter mellom to visninger, uten
   skript, og `Rangering.astro` — sorterbar tabell, lesbar uten skript
 - `src/pages/data/figur/[figur].csv.ts` — skriver én CSV per figur ved bygging
@@ -1365,6 +1414,8 @@ sluttbrukeravtale tas ikke inn før avtalen er avklart og notert i
   8820 observasjoner
 - `data/processed/burned_area_gfed5.*` — K9, 1997–2020, 5880 observasjoner
 - `data/processed/charcoal_composite_gcd.*` — K10, 6050 fvt–2010, 404 punkter
+- `data/processed/burned_area_weekly.*` — K2s ukesserie, 2012-W01–, seks
+  verdensdeler og verden. Landene bak summene publiseres ikke (§ 5)
 - `data/processed/insights.json` — avledningene, med id som nøkkel
 - `data/_footnotes.json` — fotnotetekstene, kontrollert mot `schema.py`
 - `requirements.txt` — den månedlige kjøringens avhengigheter: `openpyxl`
@@ -1410,12 +1461,11 @@ Nivåforskjellen vises som tre verdier for samme år, ikke som årsgjennomsnitt.
 Et gjennomsnitt er ikke en tillatt avledning (§ 7), og et felles år er
 dessuten en sammenligning leseren kan etterprøve i figuren selv.
 
-**Ikke implementert:** S2–S6 har overskrift og en merknad om at de ikke er
+**Ikke implementert:** S4–S6 har overskrift og en merknad om at de ikke er
 laget, så K3, K4, K5 og K7 ligger i datasettet uten at noen seksjon viser dem
-ennå. Det samme gjelder `fire_count` og `burned_area_share_land`, og K2s
-ukesoppløsning, som S3 skal bruke.
+ennå. Det samme gjelder `fire_count`.
 
-**Avledningene er i bruk i S1.** Hvert tall i teksten der er fylt fra
+**Avledningene er i bruk i S1, S2 og S3.** Hvert tall i teksten er fylt fra
 `insights.json`, og setningen bærer id-en i `data-derivation` (P3). Finnes
 ikke avledningen en setning trenger, stopper bygget — `avledning()` i
 `src/lib/data.ts` kaster framfor å la et tall mangle.
@@ -1448,5 +1498,24 @@ rangerer år innenfor én entitet — og konsentrasjonen, som navngir de størst
 finnes bare for summerbare enheter. Tabellen viser rekkefølgen; brødteksten
 påstår den ikke.
 
-**Neste steg:** S3 — året gjennom, med K2s ukesoppløsning. Den er hentet som
-årsserie i dag, og ukesserien må inn i pipelinen først.
+**S3 er ferdig.** Sesongprofilen viser hver verdensdel i sin egen rute med sin
+egen loddrette skala — Afrika brenner i en helt annen størrelsesorden enn
+Europa, og en felles skala ville gjort de minste kurvene til flate streker.
+Teksten sier derfor at formen kan sammenlignes mellom rutene, men ikke høyden.
+
+Den kumulative figuren tegner inneværende år mot medianen og persentilbåndet
+for de fullstendige årene. Året som ikke er omme, er med i figuren og utenfor
+grunnlaget (§ 7), og kurven stopper der målingene stopper.
+
+**Ukesserien er hentet, og hentingen er den tyngste vi har.** Første kjøring
+var 3 840 forespørsler og tok en time. En månedlig kjøring ber bare om
+inneværende år: 256 forespørsler, et par minutter. De fullstendige årene ligger
+i den publiserte filen, som er hurtigbufferen (§ 5).
+
+Prisen er at en feil etter hentingen er dyr. Det er derfor `run.py` tar vare på
+radene før statusen skrives, og K2s status føres per rolle — en feilet
+ukeshenting skal ikke kunne se ut som suksess fordi kryssjekken gikk bra
+etterpå.
+
+**Neste steg:** S4 — Europa, med K3 og K4. Brannstørrelsesfordelingen krever
+polygonene fra Burnt Areas-databasen, som ikke er hentet.

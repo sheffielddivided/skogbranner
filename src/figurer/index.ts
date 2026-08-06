@@ -10,6 +10,8 @@ import { overskriftstall } from "./overskriftstall";
 import { globaltBrentAreal } from "./globaltBrentAreal";
 import { kartBrentAreal } from "./kartBrentAreal";
 import { rangering } from "./rangering";
+import { sesongprofil } from "./sesongprofil";
+import { kumulativUke } from "./kumulativUke";
 import type { Observasjon } from "../lib/data";
 
 export interface FigurData {
@@ -23,6 +25,15 @@ export const figurer: FigurData[] = [
   globaltBrentAreal(),
   kartBrentAreal(),
   rangering(),
+  sesongprofil(),
+  kumulativUke(),
 ];
 
-export { overskriftstall, globaltBrentAreal, kartBrentAreal, rangering };
+export {
+  overskriftstall,
+  globaltBrentAreal,
+  kartBrentAreal,
+  rangering,
+  sesongprofil,
+  kumulativUke,
+};
