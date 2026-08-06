@@ -39,7 +39,7 @@
     },
     "K2": {
       "source_id": "K2",
-      "name": "GWIS — Global Wildfire Information System, årlige estimater",
+      "name": "GWIS — Global Wildfire Information System",
       "publisher": "Joint Research Centre, Europakommisjonen, under Copernicus",
       "url": "https://gwis.jrc.ec.europa.eu/apps/gwis.statistics/estimates",
       "download_url": "https://api2.effis.emergency.copernicus.eu/statistics/v2/gwis/estimatesbycountry?country=NOR",
@@ -50,20 +50,57 @@
       "geography": "global",
       "coverage_start": "2012",
       "coverage_end": "2026",
-      "temporal_resolution": "annual",
+      "temporal_resolution": "annual og weekly",
       "quality": "measured",
       "unit_source": "hectares",
       "downloaded_at": "2026-08-06",
       "checksum": "044436f64aa11a9371b1eefdd3704e74a1a19315f71ec84e1aa7e4cd6438c778",
       "series": [
-        "gwis_annual_burned_area"
+        "gwis_annual_burned_area",
+        "gwis_weekly_burned_area"
       ],
-      "processed_files": [],
+      "processed_files": [
+        "burned_area_weekly.csv",
+        "burned_area_weekly.json"
+      ],
       "footnotes": [
         "f_sensor_break",
         "f_min_fire_size"
       ],
-      "notes": "Brukes til å kryssjekke K1, som er Our World in Datas bearbeiding av det samme grunnlaget. Avviksrapporten er et arbeidsverktøy og publiseres ikke. Ukesoppløsningen fra samme kilde skal brukes i seksjonen om sesongvariasjon."
+      "notes": "Brukes til å kryssjekke K1, som er Our World in Datas bearbeiding av det samme grunnlaget. Avviksrapporten er et arbeidsverktøy og publiseres ikke. Ukesserien er hentet per land og summert til verdensdel og verden — kilden svarer ikke på sone i ukesendepunktet. Fullstendige år hentes ikke på nytt.",
+      "weekly": {
+        "downloaded_at": "2026-08-06",
+        "checksum": "5a0c57db7c5e56a291f4747c5a7190704cfd38c8b6ef7a0447733e92fdd6aca8",
+        "requests": 3840,
+        "years_fetched": [
+          2012,
+          2013,
+          2014,
+          2015,
+          2016,
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024,
+          2025,
+          2026
+        ],
+        "years_cached": [],
+        "countries": 256,
+        "zones": {
+          "AFR": 60,
+          "ASI": 52,
+          "EUR": 53,
+          "NAC": 38,
+          "OCE": 29,
+          "SAM": 14
+        },
+        "unanswered": 0
+      }
     },
     "K3": {
       "source_id": "K3",
@@ -118,7 +155,7 @@
       "quality": "measured",
       "unit_source": "hectares",
       "downloaded_at": "2026-08-06",
-      "checksum": "510f13bae8cff59bbbc716ebef437a71de40c33c416f753e379a90f87311408b",
+      "checksum": "f93cb4d2b317b1f130d3b188268c7843d2ae467614318517a1936bfb4198812c",
       "series": [
         "effis_rda_annual_burned_area"
       ],
@@ -151,7 +188,7 @@
       "quality": "reported",
       "unit_source": "acres",
       "downloaded_at": "2026-08-06",
-      "checksum": "32fe27d4ddefecf6e52bc98bc7013f8af8522a415429de1d288b19ef510ef679",
+      "checksum": "bc497b0a066ea8821564f51edb750086bc7f12f58a1ae4f2e13783e437b6096c",
       "series": [
         "nifc_annual_burned_area",
         "nifc_annual_fire_count"
