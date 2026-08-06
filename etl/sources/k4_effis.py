@@ -241,7 +241,67 @@ def skriv_status(status, melding, info=None):
         f.write("\n")
 
 
-def main():
+
+
+# Brannstørrelsesfordelingen S4 skal vise, krever areal per brann og ikke bare
+# landtotalen. Hvor de tallene ligger, er ikke dokumentert, og verten er ikke
+# nåbar fra en utviklingssesjon. Sonderingen kjøres i Actions og skriver ut hva
+# adressene faktisk svarer med, slik at en parser kan skrives mot noe kjent.
+# Se .github/workflows/etl.yml.
+KART_WFS = "https://maps.effis.emergency.copernicus.eu/gwis"
+
+
+def sonder_branner():
+    """Skriver ut hva EFFIS svarer med på areal per brann.
+
+    Henter ingenting inn i datasettet og skriver ingen filer.
+    """
+
+    def vis(navn, url, tegn=1200):
+        print(f"\n=== {navn}\n{url}")
+        try:
+            forespoersel = urllib.request.Request(
+                url, headers={"User-Agent": BRUKERAGENT}
+            )
+            with urllib.request.urlopen(forespoersel, timeout=120) as svar:
+                kropp = svar.read().decode("utf-8", "replace")
+                print(f"  status: {svar.status}, {len(kropp)} tegn")
+                print("  " + kropp[:tegn].replace("\n", "\n  "))
+        except Exception as e:  # noqa: BLE001 — sonderingen skal vise alt
+            print(f"  FEIL: {type(e).__name__}: {e}")
+
+    # 1. Hvilke lag finnes i karttjenesten? Navnene er det vi ikke kan gjette.
+    vis(
+        "WFS GetCapabilities",
+        f"{KART_WFS}?service=WFS&version=2.0.0&request=GetCapabilities",
+        4000,
+    )
+
+    # 2. Noen få rader fra de mest sannsynlige lagene, som CSV, uten geometri.
+    for lag in ("ms:modis.ba.poly", "modis.ba.poly", "ms:effis.ba.poly"):
+        vis(
+            f"WFS GetFeature {lag}",
+            f"{KART_WFS}?service=WFS&version=2.0.0&request=GetFeature"
+            f"&typeName={lag}&count=3&outputFormat=csv",
+        )
+
+    # 3. Har statistikk-API-et selv noe per brann? Samme basis som årsserien.
+    for sti in (
+        "statistics/v2/effis/firesbycountry?country=ITA&year=2024",
+        "statistics/v2/effis/fires?country=ITA&year=2024",
+        "statistics/v2/effis/burntareas?country=ITA&year=2024",
+    ):
+        vis(f"API {sti.split('?')[0]}", f"{API}/{sti}", 600)
+
+    return None
+
+
+
+def main(argv=None):
+    import sys
+
+    if (argv or sys.argv[1:])[:1] == ["--brann-prove"]:
+        return sonder_branner()
     rader, info = hent()
     print(
         f"K4: {info['rows']} årsrader for {info['countries']} land, "
