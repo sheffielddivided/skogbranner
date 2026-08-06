@@ -17,6 +17,7 @@ import ukeJson from "../../data/processed/burned_area_weekly.json";
 import avledningerJson from "../../data/processed/insights.json";
 import kilderJson from "../../data/_sources.json";
 import geometriJson from "../../data/geo/verden.json";
+import europaJson from "../../data/geo/europa.json";
 import landJson from "../../data/geo/land_no.json";
 import fotnoterJson from "../../data/_footnotes.json";
 import statusJson from "../../data/_status.json";
@@ -124,6 +125,7 @@ export interface Kartgeometri {
 }
 
 const kart = geometriJson as unknown as Kartgeometri;
+const europa = europaJson as unknown as Kartgeometri;
 const entiteter = landJson.entities as unknown as Record<
   string,
   { entity_name: string; level: string; iso3: boolean }
@@ -132,6 +134,17 @@ const entiteter = landJson.entities as unknown as Record<
 /** Kartgeometrien. Navnene står ikke i den — de bor i land_no.json (§ 6). */
 export function geometri(): Kartgeometri {
   return kart;
+}
+
+/**
+ * Geometrien for Europa-kartet i S4.
+ *
+ * Samme kilde og samme kartenheter som verdenskartet, men finere forenkling:
+ * kartet dekker et mindre område på samme flate, så én piksel er færre grader.
+ * Utvalget er entitetene EFFIS fører, og bygges av etl/geo.py.
+ */
+export function geometriEuropa(): Kartgeometri {
+  return europa;
 }
 
 /**

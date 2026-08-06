@@ -17,7 +17,11 @@ interface Rad {
   entity_name: string;
   areal: number | null;
   andelLand: number | null;
-  andelVerden: number | null;
+  /**
+   * Andel av verdens brente areal. null der serien ikke har et verdenstall å
+   * regne mot — kolonnen faller da bort i stedet for å stå tom hele veien.
+   */
+  andelVerden?: number | null;
 }
 
 interface Props {
@@ -32,6 +36,9 @@ interface Props {
 
 const { id, tittel, rader, kildeIder, dekningPerKilde, csvFil, fotnoter } =
   Astro.props;
+
+// Kolonnen vises bare når serien faktisk har et verdenstall bak seg.
+const visAndelVerden = rader.some((r) => r.andelVerden !== undefined);
 
 const base = import.meta.env.BASE_URL;
 const csvUrl = `${base}data/figur/${csvFil}`;
@@ -52,8 +59,10 @@ const celler = rader.map((r) => ({
   andelLand: r.andelLand === null ? INGEN : `${desimaltall(r.andelLand * 100)} %`,
   andelLandVerdi: r.andelLand,
   andelVerden:
-    r.andelVerden === null ? INGEN : `${desimaltall(r.andelVerden * 100)} %`,
-  andelVerdenVerdi: r.andelVerden,
+    r.andelVerden === null || r.andelVerden === undefined
+      ? INGEN
+      : `${desimaltall(r.andelVerden * 100)} %`,
+  andelVerdenVerdi: r.andelVerden ?? null,
 }));
 ---
 
@@ -73,7 +82,13 @@ const celler = rader.map((r) => ({
             Brent areal (km²)
           </th>
           <th scope="col" data-type="tall">Andel av landarealet</th>
-          <th scope="col" data-type="tall">Andel av verdens brente areal</th>
+          {
+            visAndelVerden && (
+              <th scope="col" data-type="tall">
+                Andel av verdens brente areal
+              </th>
+            )
+          }
         </tr>
       </thead>
       <tbody>
@@ -83,7 +98,9 @@ const celler = rader.map((r) => ({
               <th scope="row">{r.navn}</th>
               <td data-verdi={r.arealVerdi ?? ""}>{r.areal}</td>
               <td data-verdi={r.andelLandVerdi ?? ""}>{r.andelLand}</td>
-              <td data-verdi={r.andelVerdenVerdi ?? ""}>{r.andelVerden}</td>
+              {visAndelVerden && (
+                <td data-verdi={r.andelVerdenVerdi ?? ""}>{r.andelVerden}</td>
+              )}
             </tr>
           ))
         }
