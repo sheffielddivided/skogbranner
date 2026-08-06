@@ -37,29 +37,33 @@
       ],
       "notes": "Area burnt by wildfires in hectares. The 2026 data is incomplete and was last updated 01 August 2026."
     },
-    "K6": {
-      "source_id": "K6",
-      "name": "Natural Earth — admin-0, kartenheter (10m, 1:10 mill.)",
-      "publisher": "Natural Earth",
-      "url": "https://www.naturalearthdata.com/downloads/10m-cultural-vectors/",
-      "download_url": "https://naciscdn.org/naturalearth/10m/cultural/ne_10m_admin_0_map_units.zip",
-      "license": "Public domain",
-      "license_url": "https://www.naturalearthdata.com/about/terms-of-use/",
-      "attribution": "Made with Natural Earth. Free vector and raster map data @ naturalearthdata.com.",
+    "K2": {
+      "source_id": "K2",
+      "name": "GWIS — Global Wildfire Information System, årlige estimater",
+      "publisher": "Joint Research Centre, Europakommisjonen, under Copernicus",
+      "url": "https://gwis.jrc.ec.europa.eu/apps/gwis.statistics/estimates",
+      "download_url": "https://api2.effis.emergency.copernicus.eu/statistics/v2/gwis/estimatesbycountry?country=NOR",
+      "license": "Copernicus-data. Fri bruk med kildeangivelse.",
+      "license_url": "https://www.copernicus.eu/en/access-data/copyright-and-licences",
+      "attribution": "Global Wildfire Information System (GWIS), Copernicus Emergency Management Service, Joint Research Centre.",
       "requires_agreement": false,
       "geography": "global",
-      "coverage_start": "",
-      "coverage_end": "",
-      "temporal_resolution": "",
-      "quality": "",
-      "unit_source": "",
+      "coverage_start": "2012",
+      "coverage_end": "2026",
+      "temporal_resolution": "annual",
+      "quality": "measured",
+      "unit_source": "hectares",
       "downloaded_at": "2026-08-06",
-      "source_last_updated": null,
-      "checksum": "45bebe2aaf8bf42b9daf4428594925bcb11eabd32fe9dc6e0acf681438053eb5",
-      "series": [],
+      "checksum": "921adbab833cf9fed6b2bb23d4e3458ae8a1bb5235d09822510fd5b5acc00035",
+      "series": [
+        "gwis_annual_burned_area"
+      ],
       "processed_files": [],
-      "footnotes": [],
-      "notes": "Geometri for kart, og grunnlaget for å fordele rutenettkilder på land. Leverer ingen tallverdier og står derfor ikke i kildekolonnen for noen seksjon."
+      "footnotes": [
+        "f_sensor_break",
+        "f_min_fire_size"
+      ],
+      "notes": "Brukes til å kryssjekke K1, som er Our World in Datas bearbeiding av det samme grunnlaget. Avviksrapporten er et arbeidsverktøy og publiseres ikke. Ukesoppløsningen fra samme kilde skal brukes i seksjonen om sesongvariasjon."
     },
     "K3": {
       "source_id": "K3",
@@ -96,6 +100,40 @@
       ],
       "notes": "Tallene er rapportert inn av det enkelte land og følger landets egne definisjoner av hva som telles som en skogbrann. De er hentet fra regnearket EFFIS publiserer sammen med årsrapporten. Serien begynner i 1980 med fem land, og flere kommer til utover i serien, så hvor langt tilbake tallene går, varierer mellom land. Dette er en annen kilde enn K4, som er EFFIS' egen satellittkartlegging."
     },
+    "K4": {
+      "source_id": "K4",
+      "name": "EFFIS — Rapid Damage Assessment, satellittkartlagt brent areal",
+      "publisher": "Joint Research Centre, Europakommisjonen, under Copernicus",
+      "url": "https://forest-fire.emergency.copernicus.eu/apps/effis.statistics/estimates",
+      "download_url": "https://api2.effis.emergency.copernicus.eu/statistics/v2/effis/estimatesbycountry?country=ITA",
+      "method_url": "https://forest-fire.emergency.copernicus.eu/about-effis/technical-background/rapid-damage-assessment",
+      "license": "Creative Commons Attribution 4.0 International (CC BY 4.0). Copyright (C) European Union, 1995–2025. Kommisjonens gjenbrukspolitikk følger kommisjonsbeslutningen av 12. desember 2011 om gjenbruk av kommisjonsdokumenter.",
+      "license_url": "https://forest-fire.emergency.copernicus.eu/about-effis/data-license",
+      "attribution": "European Forest Fire Information System (EFFIS), Copernicus Emergency Management Service, Joint Research Centre.",
+      "requires_agreement": false,
+      "geography": "Europa, Midtøsten og Nord-Afrika",
+      "coverage_start": "2006",
+      "coverage_end": "2026",
+      "temporal_resolution": "annual",
+      "quality": "measured",
+      "unit_source": "hectares",
+      "downloaded_at": "2026-08-06",
+      "checksum": "510f13bae8cff59bbbc716ebef437a71de40c33c416f753e379a90f87311408b",
+      "series": [
+        "effis_rda_annual_burned_area"
+      ],
+      "processed_files": [
+        "burned_area.csv",
+        "burned_area.json"
+      ],
+      "footnotes": [
+        "f_sensor_break",
+        "f_min_fire_size",
+        "f_coverage_change",
+        "f_product_level"
+      ],
+      "notes": "EFFIS kartlegger brente areal fra satellitt: MODIS fra 2003, VIIRS fra 2016 og Sentinel-2 fra 2018. Fram til 2018 fanget kartleggingen i praksis branner fra rundt 30 hektar og oppover; med Sentinel-2 kommer også mindre branner med. Kartleggingen gjøres mens sesongen pågår og revideres når bedre bilder foreligger. Dette er en annen kilde enn K3, som er tallene landene selv rapporterer inn."
+    },
     "K5": {
       "source_id": "K5",
       "name": "NIFC — Total Wildland Fires and Acres",
@@ -129,6 +167,30 @@
         "f_record_start"
       ],
       "notes": "Tallene er nasjonalt rapporterte og følger amerikanske definisjoner av hva som telles som en branntilfelle. Kilden oppgir at de føderale brannmyndighetene ikke førte offisielle branndata etter dagens rapporteringsprosesser før 1983, og at det derfor ikke finnes offisielle tall for tidligere år."
+    },
+    "K6": {
+      "source_id": "K6",
+      "name": "Natural Earth — admin-0, kartenheter (10m, 1:10 mill.)",
+      "publisher": "Natural Earth",
+      "url": "https://www.naturalearthdata.com/downloads/10m-cultural-vectors/",
+      "download_url": "https://naciscdn.org/naturalearth/10m/cultural/ne_10m_admin_0_map_units.zip",
+      "license": "Public domain",
+      "license_url": "https://www.naturalearthdata.com/about/terms-of-use/",
+      "attribution": "Made with Natural Earth. Free vector and raster map data @ naturalearthdata.com.",
+      "requires_agreement": false,
+      "geography": "global",
+      "coverage_start": "",
+      "coverage_end": "",
+      "temporal_resolution": "",
+      "quality": "",
+      "unit_source": "",
+      "downloaded_at": "2026-08-06",
+      "source_last_updated": null,
+      "checksum": "45bebe2aaf8bf42b9daf4428594925bcb11eabd32fe9dc6e0acf681438053eb5",
+      "series": [],
+      "processed_files": [],
+      "footnotes": [],
+      "notes": "Geometri for kart, og grunnlaget for å fordele rutenettkilder på land. Leverer ingen tallverdier og står derfor ikke i kildekolonnen for noen seksjon."
     },
     "K7": {
       "source_id": "K7",
@@ -168,67 +230,190 @@
       ],
       "notes": "Brent areal er produsentens eget årsaggregat fra National Burned Area Composite, oppgitt som justerte hektar. Antall branner kommer fra punktdataene i Canadian National Fire Database. Kilden opplyser selv at databasen verken er komplett eller feilfri, og at både fullstendighet og kvalitet varierer mellom byråene som rapporterer og mellom år."
     },
-    "K2": {
-      "source_id": "K2",
-      "name": "GWIS — Global Wildfire Information System, årlige estimater",
-      "publisher": "Joint Research Centre, Europakommisjonen, under Copernicus",
-      "url": "https://gwis.jrc.ec.europa.eu/apps/gwis.statistics/estimates",
-      "download_url": "https://api2.effis.emergency.copernicus.eu/statistics/v2/gwis/estimatesbycountry?country=NOR",
-      "license": "Copernicus-data. Fri bruk med kildeangivelse.",
-      "license_url": "https://www.copernicus.eu/en/access-data/copyright-and-licences",
-      "attribution": "Global Wildfire Information System (GWIS), Copernicus Emergency Management Service, Joint Research Centre.",
+    "K8": {
+      "source_id": "K8",
+      "name": "ESA Fire_cci — AVHRR-LTDR Burned Area Grid product v1.1 (FireCCILT11)",
+      "publisher": "University of Alcalá for ESA Fire_cci, distribuert av Centre for Environmental Data Analysis (CEDA)",
+      "url": "https://catalogue.ceda.ac.uk/uuid/62866635ab074e07b93f17fbf87a2c1a",
+      "download_url": "https://data.ceda.ac.uk/neodc/esacci/fire/data/burned_area/AVHRR-LTDR/grid/v1.1",
+      "license": "ESA CCI Data Policy: free and open access. Bruken er dekket av Fire_cci terms and conditions.",
+      "license_url": "https://artefacts.ceda.ac.uk/licences/specific_licences/esacci_fire_terms_and_conditions.pdf",
+      "attribution": "Chuvieco, E.; Pettinari, M.L.; Otón, G. (2020): ESA Fire Climate Change Initiative (Fire_cci): AVHRR-LTDR Fire_cci Burned Area Grid product, version 1.1. Centre for Environmental Data Analysis, 28 December 2020. doi:10.5285/62866635ab074e07b93f17fbf87a2c1a.",
+      "doi": "10.5285/62866635ab074e07b93f17fbf87a2c1a",
       "requires_agreement": false,
       "geography": "global",
-      "coverage_start": "2012",
-      "coverage_end": "2026",
-      "temporal_resolution": "annual",
-      "quality": "measured",
-      "unit_source": "hectares",
-      "downloaded_at": "2026-08-06",
-      "checksum": "921adbab833cf9fed6b2bb23d4e3458ae8a1bb5235d09822510fd5b5acc00035",
-      "series": [
-        "gwis_annual_burned_area"
+      "coverage_start": "1982",
+      "coverage_end": "2018",
+      "missing_years": [
+        "1994"
       ],
-      "processed_files": [],
-      "footnotes": [
-        "f_sensor_break",
-        "f_min_fire_size"
-      ],
-      "notes": "Brukes til å kryssjekke K1, som er Our World in Datas bearbeiding av det samme grunnlaget. Avviksrapporten er et arbeidsverktøy og publiseres ikke. Ukesoppløsningen fra samme kilde skal brukes i seksjonen om sesongvariasjon."
-    },
-    "K4": {
-      "source_id": "K4",
-      "name": "EFFIS — Rapid Damage Assessment, satellittkartlagt brent areal",
-      "publisher": "Joint Research Centre, Europakommisjonen, under Copernicus",
-      "url": "https://forest-fire.emergency.copernicus.eu/apps/effis.statistics/estimates",
-      "download_url": "https://api2.effis.emergency.copernicus.eu/statistics/v2/effis/estimatesbycountry?country=ITA",
-      "method_url": "https://forest-fire.emergency.copernicus.eu/about-effis/technical-background/rapid-damage-assessment",
-      "license": "Creative Commons Attribution 4.0 International (CC BY 4.0). Copyright (C) European Union, 1995–2025. Kommisjonens gjenbrukspolitikk følger kommisjonsbeslutningen av 12. desember 2011 om gjenbruk av kommisjonsdokumenter.",
-      "license_url": "https://forest-fire.emergency.copernicus.eu/about-effis/data-license",
-      "attribution": "European Forest Fire Information System (EFFIS), Copernicus Emergency Management Service, Joint Research Centre.",
-      "requires_agreement": false,
-      "geography": "Europa, Midtøsten og Nord-Afrika",
-      "coverage_start": "2006",
-      "coverage_end": "2026",
-      "temporal_resolution": "annual",
-      "quality": "measured",
-      "unit_source": "hectares",
-      "downloaded_at": "2026-08-06",
-      "checksum": "510f13bae8cff59bbbc716ebef437a71de40c33c416f753e379a90f87311408b",
+      "temporal_resolution": "monthly",
+      "quality": "beta",
+      "unit_source": "m2",
+      "spatial_resolution": "0.25 degrees",
+      "downloaded_at": "2026-08-05",
+      "source_last_updated": null,
+      "checksum": "d882fee1f8dba5abd6d8ca2a63661814f9a5d4a2038138a14d69ca5c8f2abd9a",
       "series": [
-        "effis_rda_annual_burned_area"
+        "firecci_lt11_annual_burned_area"
       ],
       "processed_files": [
-        "burned_area.csv",
-        "burned_area.json"
+        "burned_area_firecci_lt11.json",
+        "burned_area_firecci_lt11.csv"
       ],
       "footnotes": [
+        "f_beta_product",
+        "f_grid_resolution",
+        "f_missing_year",
+        "f_product_level",
         "f_sensor_break",
-        "f_min_fire_size",
-        "f_coverage_change",
-        "f_product_level"
+        "f_zero_no_detection"
       ],
-      "notes": "EFFIS kartlegger brente areal fra satellitt: MODIS fra 2003, VIIRS fra 2016 og Sentinel-2 fra 2018. Fram til 2018 fanget kartleggingen i praksis branner fra rundt 30 hektar og oppover; med Sentinel-2 kommer også mindre branner med. Kartleggingen gjøres mens sesongen pågår og revideres når bedre bilder foreligger. Dette er en annen kilde enn K3, som er tallene landene selv rapporterer inn."
+      "notes": "Månedlige rutenett på 0,25° summert til årlige landtotaler med admin-0-geometrien fra K6. Rutenettfilene lastes ned i GitHub Actions og slettes etter aggregering. Andelen brent areal uten landtilknytning i denne kjøringen: 0.0083%. To grupper entiteter får ingen rader, av hver sin grunn: 6 der rutenettet ikke treffer geometrien, og 1 som ikke finnes i K6-geometrien i det hele tatt.",
+      "excluded_unobserved": [
+        "BLM",
+        "CCK",
+        "GIB",
+        "SXM",
+        "TKL",
+        "VAT"
+      ],
+      "excluded_no_geometry": [
+        "UMI"
+      ]
+    },
+    "K9": {
+      "source_id": "K9",
+      "name": "GFED5 — Global Fire Emissions Database version 5, brent areal",
+      "publisher": "Chen, Y. m.fl., University of California, Irvine, distribuert av Zenodo",
+      "url": "https://zenodo.org/records/7668424",
+      "download_url": "https://zenodo.org/api/records/7668424/files/BA.zip/content",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "attribution": "Chen, Y., Hall, J., van Wees, D., Andela, N., Hantson, S., Giglio, L., van der Werf, G. R., Morton, D. C., and Randerson, J. T.: Multi-decadal trends and variability in burned area from the fifth version of the Global Fire Emissions Database (GFED5), Earth Syst. Sci. Data, 15, 5227–5259, https://doi.org/10.5194/essd-15-5227-2023, 2023.",
+      "doi": "10.5194/essd-15-5227-2023",
+      "dataset_doi": "10.5281/zenodo.7668424",
+      "related_publication": {
+        "citation": "van der Werf, G.R., Randerson, J.T., van Wees, D., Chen, Y., Giglio, L., Hall, J., Vernooij, R., Mu, M., Binte Shahid, S., Barsanti, K.C., Yokelson, R. & Morton, D.C. (2025). Landscape fire emissions from the 5th version of the Global Fire Emissions Database (GFED5). Scientific Data 12, 1870. https://doi.org/10.1038/s41597-025-06127-w",
+        "doi": "10.1038/s41597-025-06127-w",
+        "correction": {
+          "type": "Publisher Correction",
+          "citation": "Publisher Correction, Scientific Data 13, 44 (15. januar 2026)",
+          "doi": "10.1038/s41597-026-06613-9"
+        }
+      },
+      "requires_agreement": false,
+      "geography": "global",
+      "coverage_start": "1997",
+      "coverage_end": "2020",
+      "temporal_resolution": "monthly",
+      "quality": "measured",
+      "unit_source": "km2",
+      "spatial_resolution": "1 degree 1997–2000, 0.25 degrees 2001–",
+      "downloaded_at": "2026-08-05",
+      "source_last_updated": "2023-02-23",
+      "checksum": "2fe4a5ced7e19823f78eafb73616d9f1",
+      "series": [
+        "gfed5_annual_burned_area"
+      ],
+      "processed_files": [
+        "burned_area_gfed5.json",
+        "burned_area_gfed5.csv"
+      ],
+      "footnotes": [
+        "f_grid_resolution",
+        "f_product_level",
+        "f_resolution_change",
+        "f_zero_no_detection"
+      ],
+      "excluded_unobserved": [
+        "BLM",
+        "CCK",
+        "GIB",
+        "SXM",
+        "TKL",
+        "VAT"
+      ],
+      "excluded_no_geometry": [
+        "UMI"
+      ],
+      "resolutions": {
+        "1 degrees": {
+          "grid": "180x360",
+          "cell_km2_at_equator": 12364.2,
+          "years": [
+            1997,
+            2000
+          ],
+          "unattributed_share": 0.0,
+          "unattributed_km2": 0.0,
+          "grid_resolution_entities": 82,
+          "excluded_unobserved": [
+            "BLM",
+            "CCK",
+            "GIB",
+            "SXM",
+            "TKL",
+            "VAT"
+          ]
+        },
+        "0.25 degrees": {
+          "grid": "720x1440",
+          "cell_km2_at_equator": 772.8,
+          "years": [
+            2001,
+            2020
+          ],
+          "unattributed_share": 2.13e-05,
+          "unattributed_km2": 3304.14,
+          "grid_resolution_entities": 53,
+          "excluded_unobserved": [
+            "BLM",
+            "CCK",
+            "GIB",
+            "SXM",
+            "TKL",
+            "VAT"
+          ]
+        }
+      },
+      "notes": "Månedlige rutenett summert til årlige landtotaler med admin-0-geometrien fra K6. Rutenettet er 1° til og med 2000 og 0,25° fra 2001, og terskler og fotnoter regnes mot den oppløsningen som gjelder for det enkelte året. Arkivet lastes ned i GitHub Actions og slettes etter aggregering. Andelen brent areal uten landtilknytning i denne kjøringen: 0.0018%."
+    },
+    "K10": {
+      "source_id": "K10",
+      "name": "Global Charcoal Database — global kompositt av sedimentært kull",
+      "publisher": "Global Paleofire Working Group, via R-pakkene GCD og paleofire",
+      "url": "https://cran.r-project.org/package=GCD",
+      "download_url": "https://cran.r-project.org/src/contrib/Archive/paleofire/paleofire_1.2.4.tar.gz",
+      "license": "GPL (>= 2) for pakkene. Dataene i GCD er fritt tilgjengelige med kildeangivelse.",
+      "license_url": "https://cran.r-project.org/web/licenses/GPL-2",
+      "attribution": "Blarquez, O., Vannière, B., Marlon, J.R., Daniau, A.-L., Power, M.J., Brewer, S. & Bartlein, P.J. (2014). paleofire: an R package to analyse sedimentary charcoal records from the Global Charcoal Database to reconstruct past biomass burning. Computers & Geosciences 72: 255–261.",
+      "requires_agreement": false,
+      "geography": "global",
+      "coverage_start": "-6050",
+      "coverage_end": "2010",
+      "temporal_resolution": "binned",
+      "smoothing_halfwidth_years": 500,
+      "n_series_min": 99,
+      "n_series_max": 360,
+      "quality": "reconstructed",
+      "unit_source": "zscore",
+      "downloaded_at": "2026-08-05",
+      "source_last_updated": null,
+      "checksum": "592b00a45ab48ae6668cffc295404e31cba2c0f7b2f18a1db183338aeb12e845",
+      "package_versions": {},
+      "series": [
+        "gcd_charcoal_composite"
+      ],
+      "processed_files": [
+        "charcoal_composite_gcd.json",
+        "charcoal_composite_gcd.csv"
+      ],
+      "footnotes": [
+        "f_proxy",
+        "f_smoothed"
+      ],
+      "notes": "Hvert punkt er et vektet snitt over 500 år til hver side. Kompositt bygget med paleofire: minimaks, Box-Cox og z-score mot en felles basisperiode, deretter lavpassfiltrert snitt med bootstrappet usikkerhet. Utvalget er alle stedene i databasen, ikke et redaksjonelt utvalg. paleofire ble trukket fra CRAN i 2023 og installeres fra arkivet, uten rgdal, som pakken bare bruker i funksjoner vi ikke kaller. Alderen er regnet om fra år før 1950 til kalenderår."
     }
   }
 }

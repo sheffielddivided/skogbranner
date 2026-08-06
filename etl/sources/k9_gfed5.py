@@ -46,21 +46,36 @@ LANDING_URL = f"https://zenodo.org/records/{ZENODO_ID}"
 DOI = "10.5281/zenodo.7668424"
 ARKIVFIL = "BA.zip"
 
-# Artikkelen datasettet er dokumentert av, og den publiserte rettelsen. Begge
-# føres i data/_sources.json — rettelsen som eget felt, slik at det er sporbart
-# hvilken versjon av artikkelen som gjelder (CLAUDE.md § 5).
+# Artikkelen som dokumenterer *brent areal*-produktet, som er det vi bruker.
+# Utslippsartikkelen under dokumenterer et annet produkt i samme familie, og
+# er ikke siteringen for disse tallene (CLAUDE.md § 5).
 SITERING = (
-    "van der Werf, G.R., Randerson, J.T., van Wees, D., Chen, Y., Giglio, L., "
-    "Hall, J., Vernooij, R., Mu, M., Binte Shahid, S., Barsanti, K.C., "
-    "Yokelson, R. & Morton, D.C. (2025). Landscape fire emissions from the 5th "
-    "version of the Global Fire Emissions Database (GFED5). Scientific Data "
-    "12, 1870. https://doi.org/10.1038/s41597-025-06127-w"
+    "Chen, Y., Hall, J., van Wees, D., Andela, N., Hantson, S., Giglio, L., "
+    "van der Werf, G. R., Morton, D. C., and Randerson, J. T.: Multi-decadal "
+    "trends and variability in burned area from the fifth version of the "
+    "Global Fire Emissions Database (GFED5), Earth Syst. Sci. Data, 15, "
+    "5227–5259, https://doi.org/10.5194/essd-15-5227-2023, 2023."
 )
-ARTIKKEL_DOI = "10.1038/s41597-025-06127-w"
-RETTELSE = {
-    "type": "Publisher Correction",
-    "citation": "Publisher Correction, Scientific Data 13, 44 (15. januar 2026)",
-    "doi": "10.1038/s41597-026-06613-9",
+ARTIKKEL_DOI = "10.5194/essd-15-5227-2023"
+
+# GFED5.1, utslippsutgivelsen. Føres som referanse fordi den dokumenterer
+# familien datasettet hører til, med sin publiserte rettelse som eget felt,
+# slik at det er sporbart hvilken versjon av den artikkelen som gjelder.
+GFED51_ARTIKKEL = {
+    "citation": (
+        "van der Werf, G.R., Randerson, J.T., van Wees, D., Chen, Y., "
+        "Giglio, L., Hall, J., Vernooij, R., Mu, M., Binte Shahid, S., "
+        "Barsanti, K.C., Yokelson, R. & Morton, D.C. (2025). Landscape fire "
+        "emissions from the 5th version of the Global Fire Emissions Database "
+        "(GFED5). Scientific Data 12, 1870. "
+        "https://doi.org/10.1038/s41597-025-06127-w"
+    ),
+    "doi": "10.1038/s41597-025-06127-w",
+    "correction": {
+        "type": "Publisher Correction",
+        "citation": "Publisher Correction, Scientific Data 13, 44 (15. januar 2026)",
+        "doi": "10.1038/s41597-026-06613-9",
+    },
 }
 
 RAW_K9_DIR = RAW_DIR / "k9"
@@ -280,7 +295,7 @@ def skriv_metadata(info, processed_files):
         "attribution": SITERING,
         "doi": ARTIKKEL_DOI,
         "dataset_doi": info["zenodo_doi"],
-        "correction": RETTELSE,
+        "related_publication": GFED51_ARTIKKEL,
         "requires_agreement": False,
         "geography": "global",
         "coverage_start": str(info["aar_forste"]),
@@ -297,6 +312,7 @@ def skriv_metadata(info, processed_files):
         "footnotes": info["footnotes"],
         "excluded_unobserved": info["utelatte_entiteter"],
         "excluded_no_geometry": info["uten_geometri"],
+        "resolutions": info["per_opplosning"],
         "notes": "Månedlige rutenett summert til årlige landtotaler med "
         "admin-0-geometrien fra K6. Rutenettet er 1° til og med 2000 og 0,25° "
         "fra 2001, og terskler og fotnoter regnes mot den oppløsningen som "
@@ -336,6 +352,20 @@ def skriv_status(status, melding, info=None):
         "checksum": felt("checksum", "checksum"),
         "unattributed_share": felt("uattribuert_andel", "unattributed_share", 6),
         "unattributed_km2": felt("uattribuert_km2", "unattributed_km2", 2),
+        # Serien har to oppløsninger, og andelen henger sammen med
+        # rutestørrelsen. Samletallet alene skjuler den forskjellen.
+        "unattributed_by_resolution": (
+            {
+                navn: {
+                    "unattributed_share": d["unattributed_share"],
+                    "unattributed_km2": d["unattributed_km2"],
+                    "years": d["years"],
+                }
+                for navn, d in info["per_opplosning"].items()
+            }
+            if info and "per_opplosning" in info
+            else forrige.get("unattributed_by_resolution")
+        ),
         "message": melding,
     }
     with open(STATUS_JSON, "w", encoding="utf-8") as f:

@@ -15,6 +15,7 @@
     "f_record_start": "Serien starter der kilden begynte å rapportere systematisk. Eldre år finnes ikke, fordi brannmyndighetene ikke brukte dagens rapporteringsprosesser den gangen.",
     "f_incomplete_inventory": "Databasen er verken komplett eller feilfri. Ikke alle branner er kartlagt, og datakvaliteten varierer mellom byråene som rapporterer og mellom år.",
     "f_product_level": "Ulike satellittprodukter fanger opp ulik andel av brannene, avhengig av oppløsning, hvor små branner de klarer å se, og hvordan de er bygget. To serier kan derfor ligge på ulikt nivå selv om de måler det samme året. Forskjellen i nivå sier noe om hva målingene ser, ikke om hvor mye som brant.",
-    "f_grid_resolution": "Landet er lite i forhold til rutenettet målingene er delt inn i. Det får plass innenfor én rute, og brent areal kan derfor falle mellom rutene eller bli fordelt på naboland."
+    "f_grid_resolution": "Landet er lite i forhold til rutenettet målingene er delt inn i. Det får plass innenfor én rute, og brent areal kan derfor falle mellom rutene eller bli fordelt på naboland.",
+    "f_smoothed": "Hvert punkt er et glidende gjennomsnitt over et vindu på 500 år til hver side, ikke en enkeltmåling. Kurven viser den langsiktige formen, ikke variasjon fra år til år."
   }
 }

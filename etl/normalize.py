@@ -690,7 +690,7 @@ def fra_k8(per_entitet, verden, info, for_smaa=(), uobservert=(), med_geometri=N
         serie=k8_firecci.SERIES_ID,
         kvalitet="beta",
         faktor=M2_TO_KM2,
-        grunnfotnoter=["f_beta_product", "f_sensor_break"],
+        grunnfotnoter=["f_beta_product", "f_sensor_break", "f_product_level"],
         per_aar=lambda _: ([], set(for_smaa), set(uobservert)),
     )
 
@@ -711,7 +711,7 @@ def fra_k9(per_entitet, verden, info, per_aar, med_geometri=None):
         serie=k9_gfed5.SERIES_ID,
         kvalitet="measured",
         faktor=1.0,
-        grunnfotnoter=[],
+        grunnfotnoter=["f_product_level"],
         per_aar=per_aar,
     )
 
@@ -724,7 +724,10 @@ def fra_k10(rader, info):
     landnivå.
     """
     land = _land()
-    fotnoter = ["f_proxy"]
+
+    # Kurven er både et indirekte mål og et glidende gjennomsnitt. Vindusbredden
+    # står i fotnoteteksten, fordi den avgjør hvordan kurven skal leses.
+    fotnoter = ["f_proxy", "f_smoothed"]
 
     observasjoner = []
     for rad in rader:
@@ -744,20 +747,48 @@ def fra_k10(rader, info):
                 "series_id": k10_gcd.SERIES_ID,
                 "quality": "reconstructed",
                 "footnotes": list(fotnoter),
+                # Hvor mange kullserier som bidrar i punktet. Tallet avgjør
+                # hvor langt tilbake kurven kan vises, og må kunne leses uten
+                # å kjøre kilden på nytt (CLAUDE.md § 6).
+                "n_series": int(float(rad["n_sites"])),
             }
         )
 
     if not observasjoner:
         raise ValueError("K10: kompositten ga ingen brukbare verdier")
 
+    # En kompositt der alle punktene er like, er ikke en kurve. Den passerer
+    # validate.py, som ser på kodeverdier og ikke på om tallene betyr noe, og
+    # ville blitt publisert som om den var et resultat.
+    if len({o["value"] for o in observasjoner}) < 2:
+        raise ValueError(
+            f"K10: alle {len(observasjoner)} punktene har samme verdi "
+            f"({observasjoner[0]['value']}). Kompositten er flat, og det er "
+            "ikke et resultat — se etter en kolonne av feil lengde i "
+            "R-utdataene."
+        )
+
     aar = [int(o["period"]) for o in observasjoner]
+    serier = [o["n_series"] for o in observasjoner]
     info["aar_forste"] = min(aar)
     info["aar_siste"] = max(aar)
+    info["n_series_min"] = min(serier)
+    info["n_series_max"] = max(serier)
     info["footnotes"] = fotnoter
     info["rows"] = len(observasjoner)
 
     observasjoner.sort(key=lambda o: int(o["period"]))
     return observasjoner
+
+
+def _kolonner(observasjoner):
+    """FELT, pluss de valgfrie feltene observasjonene faktisk har.
+
+    Et valgfritt felt skal bare gi en kolonne i de filene som bruker det, ikke
+    en tom kolonne i alle de andre.
+    """
+    ekstra = sorted({k for o in observasjoner for k in o} - set(FELT))
+    return FELT + ekstra
 
 
 def skriv(observasjoner, navn):
@@ -771,7 +802,7 @@ def skriv(observasjoner, navn):
         f.write("\n")
 
     with open(sti_csv, "w", encoding="utf-8", newline="") as f:
-        skriver = csv.DictWriter(f, fieldnames=FELT)
+        skriver = csv.DictWriter(f, fieldnames=_kolonner(observasjoner))
         skriver.writeheader()
         for o in observasjoner:
             rad = dict(o)

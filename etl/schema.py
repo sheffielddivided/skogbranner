@@ -76,6 +76,8 @@ FOOTNOTE = frozenset(
         "f_incomplete_inventory",
         "f_product_level",
         "f_grid_resolution",
+        "f_product_level",
+        "f_smoothed",
     }
 )
 

@@ -476,6 +476,16 @@ en ny versjon.
   produsenten har delt datasettet, ikke fordi noe mangler på siden. Utvid den
   ikke.
 
+  **Nivået er kontrollert mot kilden.** GFED5 oppgir 774 ± 63 Mha per år for
+  2001–2020, og vår aggregering gir 775,5 Mha for de samme årene. Produktet
+  ligger 93 % over MCD64A1 og 61 % over GFED4s fordi det korrigerer for
+  commission- og omission-feil med Landsat og Sentinel-2, og legger til areal i
+  jordbruksland, torvmark og avskogingsområder fra aktiv branndeteksjon.
+
+  Det er derfor K9 ligger nesten dobbelt så høyt som K1 for de årene begge
+  dekker. Forskjellen er et produktavvik, ikke en feil hos oss og ikke en
+  endring i verden — se `f_product_level` i § 9.
+
   Kilden oppgir km² per rute. Rutenettene summeres til landnivå på samme måte
   som K8, men med én maske per oppløsning: terskelen for `f_grid_resolution` og
   settet av entiteter rutenettet ikke treffer, regnes mot det rutenettet som
@@ -491,10 +501,20 @@ en ny versjon.
 
   Kompositten bygges av R-pakkene `GCD` og `paleofire`, som er de samme
   verktøyene metoden er publisert med. `paleofire` ble trukket fra CRAN i
-  januar 2023 og installeres fra arkivet. Siste versjon importerer `rgdal`, som
-  selv ble trukket i oktober 2023, og som pakken bare bruker i funksjoner vi
-  ikke kaller. Installasjonssteget fjerner den derfor før pakken bygges, og at
-  pakken er lappet, står i `data/_sources.json`. Selve kompositten røres ikke.
+  januar 2023 og installeres fra arkivet. Pakken er fra 2019 og trenger to
+  mekaniske lapper for å kunne installeres og lastes i dag:
+
+  - `NAMESPACE` importerer `rgdal`, som selv ble trukket i oktober 2023, og som
+    pakken bare bruker i funksjoner vi ikke kaller.
+  - `pfTransform` avgjør med en kjede av `||`-sammenligninger om en av de
+    rullende metodene er bedt om. R 4.3 gjorde det til en feil å gi `||` en
+    vektor, og `method` *er* en vektor når kompositten bygges med flere
+    metoder.
+
+  Begge lappene står i `etl/sources/k10_lapp_paleofire.py`, som stopper hvis
+  pakken ikke ser ut som lappene er skrevet for — en annen versjon skal ikke
+  lappes blindt. Beregningene kompositten bygges av, røres ikke. At pakken er
+  lappet, står i `data/_sources.json`.
 
   R-skriptet skriver CSV-en før det gjør noe annet med resultatet. En kompositt
   som først er beregnet, skal ikke gå tapt fordi et senere steg feiler.
@@ -523,23 +543,28 @@ og bruken er dekket av Fire_cci-vilkårene, som lenkes fra `data/_sources.json`.
 > 1.1. Centre for Environmental Data Analysis, 28 December 2020.
 > doi:10.5285/62866635ab074e07b93f17fbf87a2c1a.
 
-**K9 — GFED5.**
+**K9 — GFED5.** Vi bruker brent areal-produktet, og siteringen er artikkelen
+som dokumenterer *det*. Utslippsartikkelen under dokumenterer et annet produkt
+i samme familie og er ikke siteringen for disse tallene.
 
-> van der Werf, G.R., Randerson, J.T., van Wees, D., Chen, Y., Giglio, L.,
-> Hall, J., Vernooij, R., Mu, M., Binte Shahid, S., Barsanti, K.C.,
-> Yokelson, R. & Morton, D.C. (2025). Landscape fire emissions from the 5th
-> version of the Global Fire Emissions Database (GFED5).
-> Scientific Data 12, 1870. https://doi.org/10.1038/s41597-025-06127-w
+> Chen, Y., Hall, J., van Wees, D., Andela, N., Hantson, S., Giglio, L.,
+> van der Werf, G. R., Morton, D. C., and Randerson, J. T.: Multi-decadal
+> trends and variability in burned area from the fifth version of the Global
+> Fire Emissions Database (GFED5), Earth Syst. Sci. Data, 15, 5227–5259,
+> https://doi.org/10.5194/essd-15-5227-2023, 2023.
 
 Når K9 hentes, legges følgende i `data/_sources.json`:
 
-- `doi`: `10.1038/s41597-025-06127-w`
-- Den publiserte rettelsen som **eget felt**: Publisher Correction, Scientific
-  Data 13, 44 (15. januar 2026),
+- `doi`: `10.5194/essd-15-5227-2023`
+- `dataset_doi`: Zenodo-utgivelsen tallene faktisk er lastet ned fra
+- GFED5.1-artikkelen som **eget felt** under `related_publication`: van der
+  Werf m.fl. (2025), Scientific Data 12, 1870,
+  `https://doi.org/10.1038/s41597-025-06127-w`, med sin publiserte rettelse —
+  Publisher Correction, Scientific Data 13, 44 (15. januar 2026),
   `https://doi.org/10.1038/s41597-026-06613-9`
 
-Rettelsen føres som eget felt, ikke som en endring av siteringen, slik at det
-er sporbart hvilken versjon av artikkelen datasettet er dokumentert av.
+GFED5.1-artikkelen og rettelsen føres som egne felt, ikke som en endring av
+siteringen, slik at det er sporbart hvilken artikkel som dokumenterer hva.
 
 **K10 — Global Charcoal Database.**
 
@@ -584,6 +609,14 @@ Faktiske tall står i `data/processed/`.
   Måleseriene starter alle etter 1900, så fortegnet finnes bare i K10
 - `quality`: `measured` | `reported` | `beta` | `reconstructed`
 - `unit`: `km2` | `share` | `zscore` | `count`
+
+Feltene over er obligatoriske. En kilde kan i tillegg bære **valgfrie felt** der
+den har informasjon de andre ikke har, og da bare i den kildens egne filer —
+kolonnen skal ikke stå tom i alle de øvrige. I dag finnes ett:
+
+- `n_series` — antall serier bak punktet, for kilder der hvert punkt er satt
+  sammen av flere. K10 fører det, fordi antallet avgjør hvor langt tilbake
+  kurven kan vises, og fordi det ellers bare ville stått i en fil som slettes
 
 ### Entitetskoder
 
@@ -910,6 +943,10 @@ særbehandling og uten egen seksjon (P8).
   nivåforskjellen mellom to serier er ikke en endring i verden
 - `f_grid_resolution` — landet er lite i forhold til rutenettets oppløsning,
   slik at brent areal kan falle mellom rutene
+- `f_product_level` — satellittprodukter har ulik deteksjonsevne, så
+  nivåforskjellen mellom to serier er ikke en endring i verden
+- `f_smoothed` — hvert punkt er et glidende gjennomsnitt over en lengre
+  periode, ikke en enkeltmåling
 
 `f_product_level` gjelder de satellittmålte arealseriene: K1, K4, K8 og K9.
 Den sier at to serier kan ligge på ulikt nivå for samme år fordi produktene ser
@@ -958,6 +995,31 @@ Merkes de ikke, gjelder terskelene ikke for serien, og en falsk nedgang av
 Qatar-typen — deteksjoner som stopper, ikke branner som avtar — ville passert
 ubemerket. En rutenettkilde som ikke merker nullene sine, undergraver derfor en
 regel som står et helt annet sted i dokumentet.
+
+`f_smoothed` gjelder K10. Hvert punkt i kompositten er et vektet snitt over et
+vindu på 500 år til hver side, og kurven viser derfor den langsiktige formen,
+ikke variasjon fra år til år. To punkter som ligger nær hverandre, er ikke
+uavhengige.
+
+**Vindusbredden står i fotnoteteksten**, ikke bare i koden. Uten den kan en
+leser tro at et punkt er en måling av det året, og at en topp er én hendelse.
+Endres `hw` i `etl/sources/k10_gcd.R`, må teksten i `data/_footnotes.json`
+endres i samme commit.
+
+`f_product_level` gjelder de satellittmålte arealseriene: K1, K8 og K9. Den
+sier at to serier kan ligge på ulikt nivå for samme år fordi produktene ser
+ulikt mye, og at avstanden mellom dem derfor ikke er informasjon om verden.
+
+Den overlapper ikke med `f_min_fire_size`. Den fotnoten sier hva én serie ikke
+fanger opp; denne sier at *avstanden mellom to serier* ikke kan leses som en
+endring. Nasjonalt rapporterte kilder får den ikke — de har `f_reporting_basis`
+for en annen mekanisme, nemlig at definisjonene er ulike, ikke at
+deteksjonsevnen er det.
+
+Grunnen til at den trengs, er at kvalitetsbruddet i § 6 ikke fanger dette. K1
+og K9 er begge `measured`, så en figur som viser dem sammen tegner to
+heltrukne linjer uten noe som forklarer at den ene ligger nesten dobbelt så
+høyt som den andre.
 
 `f_grid_resolution` gjelder rutenettkilder og påføres maskinelt. En entitet med
 mindre landareal enn **én rute ved ekvator** — 0,25° × 0,25°, om lag 773 km²,
@@ -1093,6 +1155,10 @@ sluttbrukeravtale tas ikke inn før avtalen er avklart og notert i
 - `data/geo/land_no.json` — 260 entiteter, generert fra SSB
 - `data/geo/land_area_km2.json` — landarealer fra K6, nevner i andelsindikatoren
 - `data/processed/` — én fil per indikator, som JSON og CSV
+- `data/processed/burned_area_firecci_lt11.*` — K8, 1982–2018 uten 1994,
+  8820 observasjoner
+- `data/processed/burned_area_gfed5.*` — K9, 1997–2020, 5880 observasjoner
+- `data/processed/charcoal_composite_gcd.*` — K10, 6050 fvt–2010, 404 punkter
 - `data/_footnotes.json` — fotnotetekstene, kontrollert mot `schema.py`
 - `requirements.txt` — den månedlige kjøringens avhengigheter: `openpyxl`
   for K3 og K7, `pyshp` for K6
@@ -1117,14 +1183,19 @@ dataene — ikke av en liste i figurmodulen.
 publiseres ikke — `data/raw/` er gitignorert, og workflowen legger rapporten
 ved kjøringen som artefakt i stedet.
 
-**Hentet, men ikke kjørt:** ingen av de statiske kildene ligger i repoet ennå.
-Koden og workflowen er på plass, men filene under `data/processed/` finnes
-først etter at `etl-statisk.yml` er kjørt for hver kilde og pull requestene er
-slått sammen:
+Alle tre statiske kildene er kjørt, og dataene deres ligger i repoet. De hentes
+ikke på nytt uten at produsenten publiserer en ny versjon (§ 5).
 
-- `kilde: k8` → `burned_area_firecci_lt11.*`, 432 månedsfiler, 6,7 GiB
-- `kilde: k9` → `burned_area_gfed5.*`, ett arkiv på 253 MiB med 288 månedsfiler
-- `kilde: k10` → `charcoal_composite_gcd.*`, ingen datanedlasting
+**Åpent punkt til fase 6 — figurteksten i S1.** De tre satellittseriene ligger
+på svært ulikt nivå der de overlapper: K8 gir 459 Mha per år i snitt, K9 gir
+775, og K1 ligger omtrent på K8s nivå. Det er en faktor 1,7 mellom
+ytterpunktene, mellom serier som alle har krav på å måle det samme.
+
+`f_product_level` forklarer hvorfor, men en fotnote er ikke nok når avviket er
+det første leseren ser i figuren. Figurteksten må ta det eksplisitt, og den må
+gjøre det **uten å påstå hvilken serie som er riktig** — det er en vurdering
+siden ikke gjør (P1). Skriv om hva produktene ser ulikt, ikke om hvem som ser
+best.
 
 **Ikke implementert:** `etl/derive.py` inneholder kun beskrivelse av
 ansvarsområde. S2–S6 har overskrift og en merknad om at de ikke er laget, så
