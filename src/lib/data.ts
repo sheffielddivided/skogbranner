@@ -193,3 +193,24 @@ export function serie(seriesId: string, entity: string): Observasjon[] {
     .sort((a, b) => a.period.localeCompare(b.period));
 }
 
+/**
+ * Alle entiteter i én serie for én periode, sortert på entitetskode.
+ *
+ * Bare entitetene kilden faktisk fører. Et land uten rad er et land uten
+ * måling, og skal vises som «ingen data» — ikke som null (§ 6).
+ */
+export function serieAar(
+  seriesId: string,
+  periode: string,
+  level?: string,
+): Observasjon[] {
+  return observasjoner
+    .filter(
+      (o) =>
+        o.series_id === seriesId &&
+        o.period === periode &&
+        (level === undefined || o.level === level),
+    )
+    .sort((a, b) => a.entity.localeCompare(b.entity));
+}
+

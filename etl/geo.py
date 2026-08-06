@@ -10,7 +10,7 @@ byggetiden større. Geometrien forenkles derfor med Douglas–Peucker, med
 terskler fra ``etl/schema.py``.
 
 Jobben laster ned en shapefil og hører hjemme i GitHub Actions, ikke i en
-utviklingssesjon (T4). Se ``.github/workflows/etl-statisk.yml``.
+utviklingssesjon (T4). Se ``.github/workflows/geo.yml``.
 
 Kjøres som modul fra repotoppen: ``python -m etl.geo``
 """
@@ -112,7 +112,7 @@ def bygg(sti=None):
     tallene er ført på.
     """
     geometrier, utelatt = k6_natural_earth.geometrier(sti)
-    land = _land()
+    land = _land()  # fasit for hvilke entiteter som finnes (§ 6)
 
     per_kode = {}
     for kode, geometri in geometrier:
@@ -126,15 +126,14 @@ def bygg(sti=None):
         )
         per_kode.setdefault(kode, []).extend(flater)
 
-    uten_navn = sorted(k for k in per_kode if k not in land)
+    # Navnet står ikke her. Det bor i land_no.json, som er fasit for hva en
+    # entitet heter (§ 6), og en kopi i geometrifilen ville divergert fra den.
+    ukjente = sorted(k for k in per_kode if k not in land)
     features = [
         {
             "type": "Feature",
             "id": kode,
-            "properties": {
-                "entity": kode,
-                "entity_name": land.get(kode, {}).get("name_no", kode),
-            },
+            "properties": {"entity": kode},
             "geometry": {"type": "MultiPolygon", "coordinates": per_kode[kode]},
         }
         for kode in sorted(per_kode)
@@ -149,7 +148,7 @@ def bygg(sti=None):
             for polygon in flater
             for ring in polygon
         ),
-        "without_name": uten_navn,
+        "unknown_entities": ukjente,
         "without_code": utelatt,
         "missing_geometry": sorted(k for k in land if k not in per_kode),
     }
