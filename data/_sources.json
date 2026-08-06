@@ -70,9 +70,12 @@
       "notes": "Brukes til å kryssjekke K1, som er Our World in Datas bearbeiding av det samme grunnlaget. Avviksrapporten er et arbeidsverktøy og publiseres ikke. Ukesserien er hentet per land og summert til verdensdel og verden — kilden svarer ikke på sone i ukesendepunktet. Fullstendige år hentes ikke på nytt.",
       "weekly": {
         "downloaded_at": "2026-08-06",
-        "checksum": "5a0c57db7c5e56a291f4747c5a7190704cfd38c8b6ef7a0447733e92fdd6aca8",
-        "requests": 3840,
+        "checksum": "d05e700f673585fce400b33f444d4293cf5e15282b9f4f1ad5348ae2906f1cf9",
+        "requests": 256,
         "years_fetched": [
+          2026
+        ],
+        "years_cached": [
           2012,
           2013,
           2014,
@@ -86,10 +89,8 @@
           2022,
           2023,
           2024,
-          2025,
-          2026
+          2025
         ],
-        "years_cached": [],
         "countries": 256,
         "zones": {
           "AFR": 60,
@@ -161,7 +162,9 @@
       ],
       "processed_files": [
         "burned_area.csv",
-        "burned_area.json"
+        "burned_area.json",
+        "burned_area_share_land.csv",
+        "burned_area_share_land.json"
       ],
       "footnotes": [
         "f_sensor_break",
@@ -188,7 +191,7 @@
       "quality": "reported",
       "unit_source": "acres",
       "downloaded_at": "2026-08-06",
-      "checksum": "bc497b0a066ea8821564f51edb750086bc7f12f58a1ae4f2e13783e437b6096c",
+      "checksum": "91168e3d376f76821b3ec86ba42935dc344c2f2a9852d7f7c8e406cf977987fc",
       "series": [
         "nifc_annual_burned_area",
         "nifc_annual_fire_count"
