@@ -93,6 +93,28 @@ TREND_MAX_ZERO_SHARE = 0.33
 # beregnes ingen trend.
 TREND_MAX_ZERO_TAIL = 2
 
+# Færreste år en serie må ha før en trend beregnes. Mann–Kendall-testen bruker
+# en normaltilnærming som ikke holder for korte serier — se CLAUDE.md § 7.
+TREND_MIN_YEARS = 10
+
+# Aggregater — verden og regionene — har en høyere grense enn landene. En trend
+# for et aggregat leses som en oppsummering, og skal tåle at et enkeltår faller
+# bort — se CLAUDE.md § 7.
+TREND_MIN_YEARS_AGGREGATE = 20
+
+# Signifikansnivå for Mann–Kendall. Over denne p-verdien rapporteres trenden
+# som «ingen statistisk signifikant trend» (CLAUDE.md § 7).
+TREND_ALPHA = 0.05
+
+# Antall entiteter konsentrasjonen regnes over: andelen av totalen som de N
+# største står for (CLAUDE.md § 7).
+CONCENTRATION_TOP_N = 10
+
+# Avvik fra normal over denne prosenten uttrykkes som multiplikator i teksten.
+# Verdien i insights.json er den samme uansett — det er formuleringen som
+# endrer seg, se CLAUDE.md § 7.
+ANOMALY_FACTOR_PCT = 200.0
+
 # Rutenettkilder fordeles til land med geometrien fra K6. En rute som bærer
 # brent areal uten at noen landgeometri dekker den, kan ikke tilskrives et
 # land. Overstiger den uattribuerte andelen denne terskelen, stopper
@@ -174,6 +196,8 @@ PROCESSED_DIR = REPO_ROOT / "data" / "processed"
 GEO_DIR = REPO_ROOT / "data" / "geo"
 
 LAND_AREA_JSON = GEO_DIR / "land_area_km2.json"
+
+INSIGHTS_JSON = PROCESSED_DIR / "insights.json"
 
 SOURCES_JSON = REPO_ROOT / "data" / "_sources.json"
 STATUS_JSON = REPO_ROOT / "data" / "_status.json"

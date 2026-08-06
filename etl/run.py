@@ -15,7 +15,7 @@ Kjøres som modul fra repotoppen: ``python -m etl.run``
 import json
 import traceback
 
-from etl import normalize, validate
+from etl import derive, normalize, validate
 from etl.schema import RAW_DIR, SOURCES_JSON
 from etl.sources import (
     k1_owid,
@@ -181,6 +181,10 @@ def main():
     _oppdater_filliste(filer)
 
     kryssjekk_k1_k2([o for o in observasjoner if o["source_id"] == k1_owid.SOURCE_ID])
+
+    # Avledningene regnes til slutt, av de ferdige filene, og committes som
+    # dem (§ 4). Brødteksten på siden henter tallene sine herfra (P3).
+    derive.main()
 
     print(f"validate: {len(observasjoner)} observasjoner OK")
     for serie, navn in sorted(filer.items()):

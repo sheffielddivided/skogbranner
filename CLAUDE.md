@@ -261,6 +261,8 @@ etl/                Python-pakke. __init__.py er tom.
   grid.py           Rutenett → landnivå, med geometrien fra K6. Enhetsnøytral
   derive.py         Maskinelle avledninger → data/processed/insights.json
   validate.py       Kontrollerer at output er gyldig før publisering
+  test_derive.py    Kontroll av avledningene, mot datasett med kjent fasit.
+                    python -m unittest discover -s etl -t .
   run.py            Kjører pipelinen: hent → normaliser → valider → avled →
                     publiser
   run_static.py     Samme for de statiske kildene. Egen inngang, ikke et flagg
@@ -270,6 +272,8 @@ data/
   raw/              Uendrede kildefiler. GITIGNORERT. Aldri committet.
   processed/        Kanoniske serier siden faktisk leser. Committes.
                     Filnavnene står i PROCESSED_FILE i schema.py
+    insights.json   Maskinelle avledninger fra derive.py. Committes som de
+                    andre. Ikke observasjoner, og valideres ikke som det
   geo/              Forenklet geometri for kart. Committes.
     land_no.json    Entitetskode → norsk navn og nivå. Delt av alle kilder.
     land_no_overrides.json
@@ -822,6 +826,53 @@ som det med minst absolutt avvik i landareal — ingen redaksjonelt valgte
 eksempler, ingen «omtrent på størrelse med». Avviket i prosent oppgis sammen
 med sammenligningen, slik at leseren ser hvor god tilnærmingen er.
 
+Regelen garanterer at det finnes et sammenligningsland, ikke at det er et
+godt et. Landarealene ligger ujevnt fordelt, og et tall som havner i en luke
+mellom to land, får et sammenligningsland med stort avvik. Setningen skal
+derfor alltid ta med avviket, aldri bare navnet.
+
+**Konsentrasjon** regnes over de `CONCENTRATION_TOP_N` største, og beregnes
+ikke når serien har like få entiteter som N eller færre. Da er «de største»
+alle sammen, og andelen sier ingenting. Nevneren er seriens eget verdenstall
+der det finnes — for rutenettkildene bærer det også areal som ikke lot seg
+tilskrive et land (§ 5) — og ellers summen av entitetene. Hvilken nevner som
+er brukt, følger med avledningen.
+
+**Avvik fra normal og andel regnes bare på forholdstall.** Prosent forutsetter
+at skalaen har et nullpunkt: at halvparten så mye er halvparten. `km2`,
+`count` og `share` har det. `charcoal_index` er en z-score, altså en avstand
+i standardavvik fra seriens eget gjennomsnitt, og «40 prosent over normalen»
+ville vært et regnestykke på en skala der normalen er null. Kompositten får
+derfor dekning og ingenting annet.
+
+Av samme grunn beregnes ikke avvik fra normal når medianen er null. Da har
+uttrykket ingen nevner, og en entitet uten en eneste påvist brann har ingen
+normal å avvike fra.
+
+**Store avvik skrives som multiplikator, ikke som prosent.** Over
+`ANOMALY_FACTOR_PCT` sier setningen «nesten femti ganger medianen» i stedet
+for «4 745 prosent over normalen». Et firesifret prosenttall er ikke en
+størrelse en leser kan se for seg, og det leses som et utrop selv når det er
+regnet riktig.
+
+Verdien er den samme i begge tilfeller. `insights.json` fører både
+`deviation_pct` og `factor`, og `express_as` sier hvilken av dem setningen
+skal bruke — det er formuleringen som skifter, ikke tallet.
+
+Grensen gjelder bare oppover. Under medianen er avviket begrenset av
+−100 prosent og blir aldri uleselig.
+
+### Hver avledning har et grunnlag som kan oppgis
+
+En avledning er ikke bare et tall. Den bærer serien, kilden, `quality`,
+entiteten, enheten og hvilke år den er regnet over, slik at setningen som
+bruker den, kan si det samme. Et tall uten dekningsperiode er ikke sporbart,
+og «nummer 3 av 14» betyr ingenting uten å si hvilke fjorten år.
+
+Verdier som er tvetydige nuller (`f_zero_no_detection`), merkes i avledningen
+de inngår i. En rangering eller et avvik som hviler på en slik null, skal
+kunne bære fotnoten videre til leseren.
+
 ### Trend: aldri på tvers av kilde eller kvalitet
 
 Trendberegninger kjøres **kun innenfor én kilde og én `quality`-verdi**. Aldri
@@ -833,6 +884,39 @@ En regresjon over et slikt brudd måler skiftet i metode, ikke en endring i
 verden, og gir en trend som ser reell ut uten å være det. Trenger to serier å
 vises sammen, tegnes de som to serier med synlig brudd, med hver sin trend
 eller ingen.
+
+**Signifikansnivået er `TREND_ALPHA` i `etl/schema.py`.** Over den p-verdien
+rapporteres trenden som «ingen statistisk signifikant trend» — ikke som
+fravær av endring. De to er ikke det samme, og setningen skal ikke si at det
+ikke skjer noe.
+
+**Korte serier får ingen trend.** Mann–Kendall bruker en normaltilnærming som
+ikke holder for få år, og `TREND_MIN_YEARS` i `etl/schema.py` setter grensen.
+En p-verdi regnet på en håndfull punkter ville sett like presis ut som en
+regnet på førti, og det er nettopp den forskjellen leseren ikke kan se.
+
+**Aggregater har en høyere grense: `TREND_MIN_YEARS_AGGREGATE`.** Den gjelder
+`level: world` og `level: region`.
+
+Grunnen står i dataene. K1s verdensserie flytter seg fra −477 000 til
+−638 000 km² per tiår når 2025 tas med, og p-verdien fra 0,044 til 0,012. Ett
+år av fjorten som flytter både størrelsen og signifikansen, er ikke et
+grunnlag for å publisere en trend som oppsummerer noe. K8 og K9, som har 36 og
+24 år, beholder sine.
+
+**Skjørheten følger serielengden, ikke aggregeringsnivået.** K1s regioner har
+de samme fjorten årene som verdensserien, og ett år veier like tungt der. Å
+publisere en europeisk trend, men ikke en global, fra samme kilde med samme
+grunnlag, ville vært en asymmetri uten begrunnelse.
+
+Land beholder `TREND_MIN_YEARS`. Der er den korte serien en begrensning ved
+kilden, og en nasjonal trend leses ikke som en uttalelse om verden.
+
+**Glattede serier får ingen trend.** K10 er et vektet snitt over et vindu på
+flere hundre år (`f_smoothed`, § 9), og nabopunktene er derfor ikke
+uavhengige. Mann–Kendall forutsetter at de er det. Testen ville gitt en
+p-verdi som utelukkende måler glattingen, og en slik p-verdi er en påstand om
+sikkerhet vi ikke har.
 
 ### Nullverdier i avledninger
 
@@ -1228,6 +1312,7 @@ sluttbrukeravtale tas ikke inn før avtalen er avklart og notert i
 - [ ] Importer er absolutte (`from etl.x import ...`), kjørt som modul fra
       repotoppen (`python -m etl.<modul>`). Ingen relative importer, ingen
       `sys.path`-manipulering (§ 4)
+- [ ] Testene kjører: `python -m unittest discover -s etl -t .` og `npm test`
 
 ---
 
@@ -1252,6 +1337,10 @@ sluttbrukeravtale tas ikke inn før avtalen er avklart og notert i
   landareal
 - `etl/grid.py` — rutenett → landnivå
 - `etl/validate.py` — kontrollene i § 6 og § 11, og kryssjekken K1 mot K2
+- `etl/derive.py` — avledningene i § 7, med Theil–Sen og Mann–Kendall skrevet
+  ut, uten numeriske avhengigheter. Skriver `data/processed/insights.json`
+- `etl/test_derive.py` — kontroll av avledningene mot datasett med kjent
+  fasit. Kjøres med `python -m unittest discover -s etl -t .`
 - `etl/run.py` — de månedlige kildene. Én som feiler, tar ikke ned de andre
 - `etl/run_static.py` — pipelinen for de statiske kildene
 - `src/lib/visning.ts` — avgrensningen av kompositten, med test i
@@ -1264,12 +1353,16 @@ sluttbrukeravtale tas ikke inn før avtalen er avklart og notert i
   8820 observasjoner
 - `data/processed/burned_area_gfed5.*` — K9, 1997–2020, 5880 observasjoner
 - `data/processed/charcoal_composite_gcd.*` — K10, 6050 fvt–2010, 404 punkter
+- `data/processed/insights.json` — avledningene, med id som nøkkel
 - `data/_footnotes.json` — fotnotetekstene, kontrollert mot `schema.py`
 - `requirements.txt` — den månedlige kjøringens avhengigheter: `openpyxl`
   for K3 og K7, `pyshp` for K6
 - `.github/workflows/etl.yml` — månedlig kjøring, endringer som pull request
 - `.github/workflows/etl-statisk.yml` — manuelt utløst kjøring av en statisk
   kilde. Rutenettfilene lastes ned, aggregeres og slettes i Actions
+- `.github/workflows/kontroll.yml` — kontroll av pull requests: importerer
+  begge inngangene, kompilerer, validerer datasettet og kjører testene
+- `.github/workflows/rydd-grener.yml` — rydder maskinelle grener som er merget
 - `.github/workflows/deploy.yml` — bygger og publiserer ved push til `main`
 - Nettsiden — Astro, seks seksjoner, `src/komponenter/Figur.astro` og S1
 
@@ -1302,11 +1395,39 @@ gjøre det **uten å påstå hvilken serie som er riktig** — det er en vurderi
 siden ikke gjør (P1). Skriv om hva produktene ser ulikt, ikke om hvem som ser
 best.
 
-**Ikke implementert:** `etl/derive.py` inneholder kun beskrivelse av
-ansvarsområde. S2–S6 har overskrift og en merknad om at de ikke er laget, så
-K3, K4, K5 og K7 ligger i datasettet uten at noen seksjon viser dem ennå. Det
-samme gjelder `fire_count` og `burned_area_share_land`, og K2s ukesoppløsning,
-som S3 skal bruke.
+**De spriker ikke bare i nivå. De peker i hver sin retning.** Trendene i
+`insights.json` er beregnet per serie, innenfor én kilde og én `quality`, slik
+§ 7 krever — og de svarer ulikt:
+
+| Serie | Periode | Retning | Per tiår | p |
+|---|---|---|---|---|
+| K8 | 1982–2018 | stigende | +145 888 km² | 0,006 |
+| K9 | 1997–2020 | fallende | −793 805 km² | 0,00001 |
+| K1 | 2012–2025 | ingen trend publiseres — serien er kortere enn `TREND_MIN_YEARS_AGGREGATE` | | |
+
+Hver av de to som står igjen, er statistisk signifikant, og hver av dem er
+regnet riktig. Men de dekker ulike perioder med ulike produkter, og settes de
+under hverandre i samme seksjon, leser leseren en konklusjon uansett hvor
+nøytralt hver enkelt setning er formulert. Det er ikke ordlyden som bærer
+påstanden, det er naboskapet.
+
+Figurteksten må derfor si hvorfor to serier kan gi hver sin retning uten at
+noen av dem tar feil: de ser ulike perioder, med ulik deteksjonsevne, og
+ingen av dem dekker den andres tidsrom. Den skal ikke slå fast hvilken
+retning som gjelder, og den skal ikke la være å nevne at de spriker.
+
+En sammenskjøtt trend over alle tre er uansett forbudt (§ 7), og det er ikke
+en omgåelse av problemet — det er den samme regelen sett fra en annen kant.
+
+**Ikke implementert:** S2–S6 har overskrift og en merknad om at de ikke er
+laget, så K3, K4, K5 og K7 ligger i datasettet uten at noen seksjon viser dem
+ennå. Det samme gjelder `fire_count` og `burned_area_share_land`, og K2s
+ukesoppløsning, som S3 skal bruke.
+
+**Avledningene er beregnet, men ingen setning bruker dem ennå.**
+`insights.json` ligger i repoet, og ingen tekst på siden har tall i seg — det
+er derfor P3 ikke er brutt i dag. Første setning som skal ha et tall, henter
+det derfra og bærer id-en som `data-derivation`.
 
 K4 dekker foreløpig bare brent areal. Brannstørrelsesfordelingen S4 skal vise,
 krever polygonene fra Burnt Areas-databasen, som ikke er hentet.
@@ -1323,6 +1444,8 @@ TopoJSON under `data/geo/` ennå. Den lages når S2 eller S4 trenger et kart, og
 skal da bygges fra det samme kartenhetslaget — ellers vil kartet vise andre
 grenser enn arealene og rasteriseringen bruker.
 
-**Neste steg:** `derive.py` og `insights.json`. Først da kan S1 få
-overskriftstallet med arealsammenligning, som er den delen av § 8 som krever
-maskinelle avledninger.
+**Neste steg:** S1s overskriftstall — figur 1 i § 8. Avledningene den trenger,
+finnes nå: `area_comparison.owid_annual_area_burnt.<år>` gir
+arealsammenligningen, og seriens `last_complete_year` står under `series` i
+`insights.json`. Det som gjenstår, er å hente dem inn i malen og feste
+`data-derivation` på setningen.

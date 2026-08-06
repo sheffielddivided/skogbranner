@@ -23,7 +23,7 @@ import time
 import zipfile
 from collections import defaultdict
 
-from etl import normalize, validate
+from etl import derive, normalize, validate
 from etl.schema import (
     GRID_MAX_UNATTRIBUTED_SHARE,
     GRID_MIN_ENTITY_CELLS,
@@ -507,7 +507,12 @@ def main(argv=None):
 
     kjor = KILDER[args.kilde]
     try:
-        return kjor(kun_katalog=args.kun_katalog)
+        observasjoner = kjor(kun_katalog=args.kun_katalog)
+        if observasjoner is not None:
+            # Avledningene regnes over hele datasettet, så en statisk kilde
+            # som er oppdatert, endrer også dem (§ 4).
+            derive.main()
+        return observasjoner
     except Exception as e:
         # Feiler kjøringen, beholdes forrige datasett og feilen logges, slik at
         # siden kan vise at serien ikke er oppdatert siden dato X (§ 4).
