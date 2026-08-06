@@ -193,6 +193,8 @@ PROCESSED_FILE = {
     "effis_annual_country_totals": "burned_area",  # K3, rapportert areal
     "effis_annual_country_fire_count": "fire_count",  # K3, rapportert antall
     "effis_rda_annual_burned_area": "burned_area",  # K4, satellittkartlegging
+    # avledet av K4, nevner fra K6
+    "effis_rda_annual_burned_area_share_land": "burned_area_share_land",
     "nifc_annual_burned_area": "burned_area",  # K5
     "nifc_annual_fire_count": "fire_count",  # K5
     "nbac_annual_burned_area": "burned_area",  # K7

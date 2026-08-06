@@ -72,9 +72,19 @@ def hent_k3():
 
 
 def hent_k4():
+    """K4, med andelen av landarealet.
+
+    S4 viser de europeiske landene både i km² og som andel av eget landareal.
+    Andelen regnes av K4s egne tall, ikke av K1s — kartet og tabellen skal vise
+    to sider av samme måling, ikke to kilder.
+    """
     rader, info = k4_effis.hent()
+    observasjoner = normalize.fra_k4(rader, info)
+    observasjoner += normalize.andel_av_landareal(
+        observasjoner, "effis_rda_annual_burned_area_share_land"
+    )
     k4_effis.skriv_metadata(info, [])
-    return normalize.fra_k4(rader, info), info
+    return observasjoner, info
 
 
 def hent_k5():
