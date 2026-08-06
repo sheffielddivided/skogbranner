@@ -350,10 +350,10 @@
  "summary": {
   "series": 12,
   "trend": {
-   "computed": 792,
+   "computed": 791,
    "skipped": {
     "smoothed": 1,
-    "too_few_years": 4,
+    "too_few_years": 5,
     "zero_share": 332,
     "zero_tail": 3
    }
@@ -383,6 +383,8 @@
    "ambiguous_zero": false,
    "median": 6406,
    "deviation_pct": -3.2,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 67,
    "first_year": 1959,
    "last_year": 2025
@@ -402,6 +404,8 @@
    "ambiguous_zero": false,
    "median": 142.5,
    "deviation_pct": 317.5,
+   "factor": 4.2,
+   "express_as": "factor",
    "n_years": 32,
    "first_year": 1993,
    "last_year": 2024
@@ -421,6 +425,8 @@
    "ambiguous_zero": false,
    "median": 438.5,
    "deviation_pct": -75.8,
+   "factor": 0.2,
+   "express_as": "percent",
    "n_years": 34,
    "first_year": 1991,
    "last_year": 2024
@@ -440,6 +446,8 @@
    "ambiguous_zero": false,
    "median": 96,
    "deviation_pct": -52.1,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 35,
    "first_year": 1990,
    "last_year": 2024
@@ -459,6 +467,8 @@
    "ambiguous_zero": false,
    "median": 119,
    "deviation_pct": 1.7,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 25,
    "first_year": 2000,
    "last_year": 2024
@@ -478,6 +488,8 @@
    "ambiguous_zero": false,
    "median": 1334.0,
    "deviation_pct": -3.7,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 30,
    "first_year": 1995,
    "last_year": 2024
@@ -497,6 +509,8 @@
    "ambiguous_zero": false,
    "median": 981.0,
    "deviation_pct": -42.6,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 34,
    "first_year": 1991,
    "last_year": 2024
@@ -516,6 +530,8 @@
    "ambiguous_zero": false,
    "median": 12238,
    "deviation_pct": -49.9,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 45,
    "first_year": 1980,
    "last_year": 2024
@@ -535,6 +551,8 @@
    "ambiguous_zero": false,
    "median": 65,
    "deviation_pct": -61.5,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 25,
    "first_year": 2000,
    "last_year": 2024
@@ -554,6 +572,8 @@
    "ambiguous_zero": false,
    "median": 1260,
    "deviation_pct": 0.0,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 29,
    "first_year": 1996,
    "last_year": 2024
@@ -573,6 +593,8 @@
    "ambiguous_zero": false,
    "median": 4002,
    "deviation_pct": -63.7,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 45,
    "first_year": 1980,
    "last_year": 2024
@@ -592,6 +614,8 @@
    "ambiguous_zero": false,
    "median": 1284,
    "deviation_pct": -23.6,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 45,
    "first_year": 1980,
    "last_year": 2024
@@ -611,6 +635,8 @@
    "ambiguous_zero": false,
    "median": 181,
    "deviation_pct": -41.4,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 33,
    "first_year": 1992,
    "last_year": 2024
@@ -630,6 +656,8 @@
    "ambiguous_zero": false,
    "median": 605.5,
    "deviation_pct": -3.9,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 26,
    "first_year": 1999,
    "last_year": 2024
@@ -649,6 +677,8 @@
    "ambiguous_zero": false,
    "median": 7956,
    "deviation_pct": -52.4,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 45,
    "first_year": 1980,
    "last_year": 2024
@@ -668,6 +698,8 @@
    "ambiguous_zero": false,
    "median": 279,
    "deviation_pct": -60.6,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 33,
    "first_year": 1992,
    "last_year": 2024
@@ -687,6 +719,8 @@
    "ambiguous_zero": false,
    "median": 641,
    "deviation_pct": -65.4,
+   "factor": 0.3,
+   "express_as": "percent",
    "n_years": 35,
    "first_year": 1990,
    "last_year": 2024
@@ -706,6 +740,8 @@
    "ambiguous_zero": false,
    "median": 416,
    "deviation_pct": -8.2,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 35,
    "first_year": 1990,
    "last_year": 2024
@@ -725,6 +761,8 @@
    "ambiguous_zero": false,
    "median": 109.5,
    "deviation_pct": 128.3,
+   "factor": 2.3,
+   "express_as": "percent",
    "n_years": 18,
    "first_year": 2007,
    "last_year": 2024
@@ -744,6 +782,8 @@
    "ambiguous_zero": false,
    "median": 476.5,
    "deviation_pct": -53.4,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 8,
    "first_year": 2017,
    "last_year": 2024
@@ -763,6 +803,8 @@
    "ambiguous_zero": false,
    "median": 184.5,
    "deviation_pct": 320.6,
+   "factor": 4.2,
+   "express_as": "factor",
    "n_years": 24,
    "first_year": 2001,
    "last_year": 2024
@@ -782,6 +824,8 @@
    "ambiguous_zero": false,
    "median": 7923,
    "deviation_pct": -26.1,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 35,
    "first_year": 1990,
    "last_year": 2024
@@ -801,6 +845,8 @@
    "ambiguous_zero": false,
    "median": 18958,
    "deviation_pct": -67.0,
+   "factor": 0.3,
+   "express_as": "percent",
    "n_years": 45,
    "first_year": 1980,
    "last_year": 2024
@@ -820,6 +866,8 @@
    "ambiguous_zero": false,
    "median": 170,
    "deviation_pct": 328.2,
+   "factor": 4.3,
+   "express_as": "factor",
    "n_years": 35,
    "first_year": 1990,
    "last_year": 2024
@@ -839,6 +887,8 @@
    "ambiguous_zero": false,
    "median": 67.5,
    "deviation_pct": 175.6,
+   "factor": 2.8,
+   "express_as": "percent",
    "n_years": 16,
    "first_year": 2009,
    "last_year": 2024
@@ -858,6 +908,8 @@
    "ambiguous_zero": false,
    "median": 262,
    "deviation_pct": -29.0,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 31,
    "first_year": 1994,
    "last_year": 2024
@@ -877,6 +929,8 @@
    "ambiguous_zero": false,
    "median": 84,
    "deviation_pct": -41.7,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 23,
    "first_year": 2002,
    "last_year": 2024
@@ -896,6 +950,8 @@
    "ambiguous_zero": false,
    "median": 4708,
    "deviation_pct": -39.1,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 27,
    "first_year": 1998,
    "last_year": 2024
@@ -915,6 +971,8 @@
    "ambiguous_zero": false,
    "median": 2160,
    "deviation_pct": 75.8,
+   "factor": 1.8,
+   "express_as": "percent",
    "n_years": 35,
    "first_year": 1990,
    "last_year": 2024
@@ -934,6 +992,8 @@
    "ambiguous_zero": false,
    "median": 1752.0,
    "deviation_pct": 13.8,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 18,
    "first_year": 2007,
    "last_year": 2024
@@ -953,6 +1013,8 @@
    "ambiguous_zero": false,
    "median": 0.51,
    "deviation_pct": 178.4,
+   "factor": 2.8,
+   "express_as": "percent",
    "n_years": 32,
    "first_year": 1993,
    "last_year": 2024
@@ -972,6 +1034,8 @@
    "ambiguous_zero": false,
    "median": 52.73,
    "deviation_pct": 224.6,
+   "factor": 3.2,
+   "express_as": "factor",
    "n_years": 34,
    "first_year": 1991,
    "last_year": 2024
@@ -991,6 +1055,8 @@
    "ambiguous_zero": false,
    "median": 0.69,
    "deviation_pct": -39.1,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 35,
    "first_year": 1990,
    "last_year": 2024
@@ -1010,6 +1076,8 @@
    "ambiguous_zero": false,
    "median": 20.0,
    "deviation_pct": 71.2,
+   "factor": 1.7,
+   "express_as": "percent",
    "n_years": 25,
    "first_year": 2000,
    "last_year": 2024
@@ -1029,6 +1097,8 @@
    "ambiguous_zero": false,
    "median": 3.37,
    "deviation_pct": -58.4,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 30,
    "first_year": 1995,
    "last_year": 2024
@@ -1048,6 +1118,8 @@
    "ambiguous_zero": false,
    "median": 4.49,
    "deviation_pct": -25.5,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 34,
    "first_year": 1991,
    "last_year": 2024
@@ -1067,6 +1139,8 @@
    "ambiguous_zero": false,
    "median": 1200.94,
    "deviation_pct": -60.3,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 45,
    "first_year": 1980,
    "last_year": 2024
@@ -1086,6 +1160,8 @@
    "ambiguous_zero": false,
    "median": 0.79,
    "deviation_pct": -78.5,
+   "factor": 0.2,
+   "express_as": "percent",
    "n_years": 25,
    "first_year": 2000,
    "last_year": 2024
@@ -1105,6 +1181,8 @@
    "ambiguous_zero": false,
    "median": 5.2,
    "deviation_pct": -25.0,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 29,
    "first_year": 1996,
    "last_year": 2024
@@ -1124,6 +1202,8 @@
    "ambiguous_zero": false,
    "median": 159.06,
    "deviation_pct": -81.5,
+   "factor": 0.2,
+   "express_as": "percent",
    "n_years": 45,
    "first_year": 1980,
    "last_year": 2024
@@ -1143,6 +1223,8 @@
    "ambiguous_zero": false,
    "median": 282.88,
    "deviation_pct": 0.0,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 45,
    "first_year": 1980,
    "last_year": 2024
@@ -1162,6 +1244,8 @@
    "ambiguous_zero": false,
    "median": 79.36,
    "deviation_pct": 84.1,
+   "factor": 1.8,
+   "express_as": "percent",
    "n_years": 33,
    "first_year": 1992,
    "last_year": 2024
@@ -1181,6 +1265,8 @@
    "ambiguous_zero": false,
    "median": 24.13,
    "deviation_pct": 16.0,
+   "factor": 1.2,
+   "express_as": "percent",
    "n_years": 25,
    "first_year": 1999,
    "last_year": 2024
@@ -1200,6 +1286,8 @@
    "ambiguous_zero": false,
    "median": 864.2,
    "deviation_pct": -39.1,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 45,
    "first_year": 1980,
    "last_year": 2024
@@ -1219,6 +1307,8 @@
    "ambiguous_zero": false,
    "median": 1.13,
    "deviation_pct": -56.6,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 33,
    "first_year": 1992,
    "last_year": 2024
@@ -1238,6 +1328,8 @@
    "ambiguous_zero": false,
    "median": 4.67,
    "deviation_pct": -86.5,
+   "factor": 0.1,
+   "express_as": "percent",
    "n_years": 35,
    "first_year": 1990,
    "last_year": 2024
@@ -1257,6 +1349,8 @@
    "ambiguous_zero": false,
    "median": 30.64,
    "deviation_pct": -71.5,
+   "factor": 0.3,
+   "express_as": "percent",
    "n_years": 35,
    "first_year": 1990,
    "last_year": 2024
@@ -1276,6 +1370,8 @@
    "ambiguous_zero": false,
    "median": 24.12,
    "deviation_pct": 2431.0,
+   "factor": 25.3,
+   "express_as": "factor",
    "n_years": 18,
    "first_year": 2007,
    "last_year": 2024
@@ -1295,6 +1391,8 @@
    "ambiguous_zero": false,
    "median": 2.26,
    "deviation_pct": -92.5,
+   "factor": 0.1,
+   "express_as": "percent",
    "n_years": 8,
    "first_year": 2017,
    "last_year": 2024
@@ -1314,6 +1412,8 @@
    "ambiguous_zero": false,
    "median": 7.7,
    "deviation_pct": 15.3,
+   "factor": 1.2,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 2001,
    "last_year": 2024
@@ -1333,6 +1433,8 @@
    "ambiguous_zero": false,
    "median": 42.22,
    "deviation_pct": -67.8,
+   "factor": 0.3,
+   "express_as": "percent",
    "n_years": 35,
    "first_year": 1990,
    "last_year": 2024
@@ -1352,6 +1454,8 @@
    "ambiguous_zero": false,
    "median": 888.67,
    "deviation_pct": 54.9,
+   "factor": 1.5,
+   "express_as": "percent",
    "n_years": 45,
    "first_year": 1980,
    "last_year": 2024
@@ -1371,6 +1475,8 @@
    "ambiguous_zero": false,
    "median": 7.29,
    "deviation_pct": 1321.1,
+   "factor": 14.2,
+   "express_as": "factor",
    "n_years": 35,
    "first_year": 1990,
    "last_year": 2024
@@ -1390,6 +1496,8 @@
    "ambiguous_zero": false,
    "median": 14.46,
    "deviation_pct": 375.3,
+   "factor": 4.8,
+   "express_as": "factor",
    "n_years": 16,
    "first_year": 2009,
    "last_year": 2024
@@ -1409,6 +1517,8 @@
    "ambiguous_zero": false,
    "median": 3.29,
    "deviation_pct": -75.1,
+   "factor": 0.2,
+   "express_as": "percent",
    "n_years": 26,
    "first_year": 1999,
    "last_year": 2024
@@ -1428,6 +1538,8 @@
    "ambiguous_zero": false,
    "median": 1.38,
    "deviation_pct": -2.9,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 23,
    "first_year": 2002,
    "last_year": 2024
@@ -1447,6 +1559,8 @@
    "ambiguous_zero": false,
    "median": 12.88,
    "deviation_pct": -75.9,
+   "factor": 0.2,
+   "express_as": "percent",
    "n_years": 27,
    "first_year": 1998,
    "last_year": 2024
@@ -1466,6 +1580,8 @@
    "ambiguous_zero": false,
    "median": 91.56,
    "deviation_pct": 200.2,
+   "factor": 3.0,
+   "express_as": "factor",
    "n_years": 35,
    "first_year": 1990,
    "last_year": 2024
@@ -1485,6 +1601,8 @@
    "ambiguous_zero": false,
    "median": 29.68,
    "deviation_pct": 707.4,
+   "factor": 8.1,
+   "express_as": "factor",
    "n_years": 18,
    "first_year": 2007,
    "last_year": 2024
@@ -1504,6 +1622,8 @@
    "ambiguous_zero": false,
    "median": 145.33,
    "deviation_pct": 312.4,
+   "factor": 4.1,
+   "express_as": "factor",
    "n_years": 20,
    "first_year": 2006,
    "last_year": 2025
@@ -1523,6 +1643,8 @@
    "ambiguous_zero": false,
    "median": 74.55,
    "deviation_pct": 339.4,
+   "factor": 4.4,
+   "express_as": "factor",
    "n_years": 20,
    "first_year": 2006,
    "last_year": 2025
@@ -1542,6 +1664,8 @@
    "ambiguous_zero": false,
    "median": 260.15,
    "deviation_pct": 46.5,
+   "factor": 1.5,
+   "express_as": "percent",
    "n_years": 20,
    "first_year": 2006,
    "last_year": 2025
@@ -1561,6 +1685,8 @@
    "ambiguous_zero": false,
    "median": 19.33,
    "deviation_pct": 599.8,
+   "factor": 7.0,
+   "express_as": "factor",
    "n_years": 20,
    "first_year": 2006,
    "last_year": 2025
@@ -1580,6 +1706,8 @@
    "ambiguous_zero": false,
    "median": 1.13,
    "deviation_pct": 4745.1,
+   "factor": 48.5,
+   "express_as": "factor",
    "n_years": 20,
    "first_year": 2006,
    "last_year": 2025
@@ -1599,6 +1727,8 @@
    "ambiguous_zero": false,
    "median": 501.05,
    "deviation_pct": -64.5,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 20,
    "first_year": 2006,
    "last_year": 2025
@@ -1618,6 +1748,8 @@
    "ambiguous_zero": false,
    "median": 623.3,
    "deviation_pct": 530.6,
+   "factor": 6.3,
+   "express_as": "factor",
    "n_years": 20,
    "first_year": 2006,
    "last_year": 2025
@@ -1637,6 +1769,8 @@
    "ambiguous_zero": false,
    "median": 64.03,
    "deviation_pct": 477.1,
+   "factor": 5.8,
+   "express_as": "factor",
    "n_years": 20,
    "first_year": 2006,
    "last_year": 2025
@@ -1656,6 +1790,8 @@
    "ambiguous_zero": false,
    "median": 36.73,
    "deviation_pct": 1203.4,
+   "factor": 13.0,
+   "express_as": "factor",
    "n_years": 20,
    "first_year": 2006,
    "last_year": 2025
@@ -1675,6 +1811,8 @@
    "ambiguous_zero": false,
    "median": 237.34,
    "deviation_pct": 101.5,
+   "factor": 2.0,
+   "express_as": "percent",
    "n_years": 20,
    "first_year": 2006,
    "last_year": 2025
@@ -1694,6 +1832,8 @@
    "ambiguous_zero": false,
    "median": 84.78,
    "deviation_pct": -60.1,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 20,
    "first_year": 2006,
    "last_year": 2025
@@ -1713,6 +1853,8 @@
    "ambiguous_zero": false,
    "median": 2.1,
    "deviation_pct": 216.4,
+   "factor": 3.2,
+   "express_as": "factor",
    "n_years": 20,
    "first_year": 2006,
    "last_year": 2025
@@ -1732,6 +1874,8 @@
    "ambiguous_zero": false,
    "median": 28.3,
    "deviation_pct": 53.9,
+   "factor": 1.5,
+   "express_as": "percent",
    "n_years": 20,
    "first_year": 2006,
    "last_year": 2025
@@ -1751,6 +1895,8 @@
    "ambiguous_zero": false,
    "median": 9.04,
    "deviation_pct": 268.5,
+   "factor": 3.7,
+   "express_as": "factor",
    "n_years": 20,
    "first_year": 2006,
    "last_year": 2025
@@ -1770,6 +1916,8 @@
    "ambiguous_zero": false,
    "median": 385.6,
    "deviation_pct": 118.7,
+   "factor": 2.2,
+   "express_as": "percent",
    "n_years": 20,
    "first_year": 2006,
    "last_year": 2025
@@ -1789,6 +1937,8 @@
    "ambiguous_zero": false,
    "median": 0.45,
    "deviation_pct": 3377.8,
+   "factor": 34.8,
+   "express_as": "factor",
    "n_years": 20,
    "first_year": 2006,
    "last_year": 2025
@@ -1808,6 +1958,8 @@
    "ambiguous_zero": false,
    "median": 0.84,
    "deviation_pct": 100.0,
+   "factor": 2.0,
+   "express_as": "percent",
    "n_years": 20,
    "first_year": 2006,
    "last_year": 2025
@@ -1827,6 +1979,8 @@
    "ambiguous_zero": false,
    "median": 28.16,
    "deviation_pct": -7.1,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 20,
    "first_year": 2006,
    "last_year": 2025
@@ -1846,6 +2000,8 @@
    "ambiguous_zero": false,
    "median": 103.53,
    "deviation_pct": 202.7,
+   "factor": 3.0,
+   "express_as": "factor",
    "n_years": 20,
    "first_year": 2006,
    "last_year": 2025
@@ -1865,6 +2021,8 @@
    "ambiguous_zero": false,
    "median": 120.69,
    "deviation_pct": 129.2,
+   "factor": 2.3,
+   "express_as": "percent",
    "n_years": 20,
    "first_year": 2006,
    "last_year": 2025
@@ -1884,6 +2042,8 @@
    "ambiguous_zero": false,
    "median": 2.67,
    "deviation_pct": 805.1,
+   "factor": 9.1,
+   "express_as": "factor",
    "n_years": 20,
    "first_year": 2006,
    "last_year": 2025
@@ -1903,6 +2063,8 @@
    "ambiguous_zero": false,
    "median": 0.15,
    "deviation_pct": 1866.7,
+   "factor": 19.7,
+   "express_as": "factor",
    "n_years": 20,
    "first_year": 2006,
    "last_year": 2025
@@ -1922,6 +2084,8 @@
    "ambiguous_zero": false,
    "median": 635.0,
    "deviation_pct": 339.2,
+   "factor": 4.4,
+   "express_as": "factor",
    "n_years": 20,
    "first_year": 2006,
    "last_year": 2025
@@ -1941,6 +2105,8 @@
    "ambiguous_zero": false,
    "median": 38.27,
    "deviation_pct": 3281.9,
+   "factor": 33.8,
+   "express_as": "factor",
    "n_years": 20,
    "first_year": 2006,
    "last_year": 2025
@@ -1960,6 +2126,8 @@
    "ambiguous_zero": false,
    "median": 40.43,
    "deviation_pct": 589.6,
+   "factor": 6.9,
+   "express_as": "factor",
    "n_years": 20,
    "first_year": 2006,
    "last_year": 2025
@@ -1979,6 +2147,8 @@
    "ambiguous_zero": false,
    "median": 0.76,
    "deviation_pct": 88.2,
+   "factor": 1.9,
+   "express_as": "percent",
    "n_years": 20,
    "first_year": 2006,
    "last_year": 2025
@@ -1998,6 +2168,8 @@
    "ambiguous_zero": false,
    "median": 2.77,
    "deviation_pct": 289.5,
+   "factor": 3.9,
+   "express_as": "factor",
    "n_years": 20,
    "first_year": 2006,
    "last_year": 2025
@@ -2017,6 +2189,8 @@
    "ambiguous_zero": false,
    "median": 32.62,
    "deviation_pct": 778.9,
+   "factor": 8.8,
+   "express_as": "factor",
    "n_years": 20,
    "first_year": 2006,
    "last_year": 2025
@@ -2036,6 +2210,8 @@
    "ambiguous_zero": false,
    "median": 41.06,
    "deviation_pct": 49.8,
+   "factor": 1.5,
+   "express_as": "percent",
    "n_years": 20,
    "first_year": 2006,
    "last_year": 2025
@@ -2055,6 +2231,8 @@
    "ambiguous_zero": false,
    "median": 302.24,
    "deviation_pct": 409.7,
+   "factor": 5.1,
+   "express_as": "factor",
    "n_years": 20,
    "first_year": 2006,
    "last_year": 2025
@@ -2074,6 +2252,8 @@
    "ambiguous_zero": false,
    "median": 19.92,
    "deviation_pct": 742.0,
+   "factor": 8.4,
+   "express_as": "factor",
    "n_years": 20,
    "first_year": 2006,
    "last_year": 2025
@@ -2093,6 +2273,8 @@
    "ambiguous_zero": false,
    "median": 2.03,
    "deviation_pct": 86.2,
+   "factor": 1.9,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -2112,6 +2294,8 @@
    "ambiguous_zero": false,
    "median": 762.54,
    "deviation_pct": -81.6,
+   "factor": 0.2,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -2131,6 +2315,8 @@
    "ambiguous_zero": false,
    "median": 373251.6,
    "deviation_pct": -9.8,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -2150,6 +2336,8 @@
    "ambiguous_zero": false,
    "median": 96.2,
    "deviation_pct": -66.2,
+   "factor": 0.3,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -2169,6 +2357,8 @@
    "ambiguous_zero": false,
    "median": 2.73,
    "deviation_pct": -94.9,
+   "factor": 0.1,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -2188,6 +2378,8 @@
    "ambiguous_zero": false,
    "median": 81.66,
    "deviation_pct": -98.2,
+   "factor": 0.0,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -2207,6 +2399,8 @@
    "ambiguous_zero": false,
    "median": 38944.84,
    "deviation_pct": 15.4,
+   "factor": 1.2,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -2226,6 +2420,8 @@
    "ambiguous_zero": false,
    "median": 239.77,
    "deviation_pct": 45.4,
+   "factor": 1.5,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -2245,6 +2441,8 @@
    "ambiguous_zero": false,
    "median": 419472.36,
    "deviation_pct": 38.2,
+   "factor": 1.4,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -2264,6 +2462,8 @@
    "ambiguous_zero": false,
    "median": 67.97,
    "deviation_pct": -78.7,
+   "factor": 0.2,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -2283,6 +2483,8 @@
    "ambiguous_zero": false,
    "median": 2283.65,
    "deviation_pct": -4.2,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -2302,6 +2504,8 @@
    "ambiguous_zero": false,
    "median": 968.71,
    "deviation_pct": -15.4,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -2321,6 +2525,8 @@
    "ambiguous_zero": false,
    "median": 9.38,
    "deviation_pct": -84.2,
+   "factor": 0.2,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -2340,6 +2546,8 @@
    "ambiguous_zero": false,
    "median": 29683.63,
    "deviation_pct": -44.9,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -2359,6 +2567,8 @@
    "ambiguous_zero": false,
    "median": 37899.32,
    "deviation_pct": -42.1,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -2378,6 +2588,8 @@
    "ambiguous_zero": false,
    "median": 1613.5,
    "deviation_pct": -14.1,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -2397,6 +2609,8 @@
    "ambiguous_zero": false,
    "median": 1846.63,
    "deviation_pct": -48.5,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -2416,6 +2630,8 @@
    "ambiguous_zero": false,
    "median": 151.9,
    "deviation_pct": -77.7,
+   "factor": 0.2,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -2435,6 +2651,8 @@
    "ambiguous_zero": false,
    "median": 827.73,
    "deviation_pct": -71.1,
+   "factor": 0.3,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -2454,6 +2672,8 @@
    "ambiguous_zero": false,
    "median": 186.06,
    "deviation_pct": 25.7,
+   "factor": 1.3,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -2473,6 +2693,8 @@
    "ambiguous_zero": false,
    "median": 30933.22,
    "deviation_pct": 2.4,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -2492,6 +2714,8 @@
    "ambiguous_zero": false,
    "median": 190090.89,
    "deviation_pct": 2.1,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -2511,6 +2735,8 @@
    "ambiguous_zero": false,
    "median": 17.86,
    "deviation_pct": 95.9,
+   "factor": 2.0,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -2530,6 +2756,8 @@
    "ambiguous_zero": false,
    "median": 127.62,
    "deviation_pct": -29.5,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -2549,6 +2777,8 @@
    "ambiguous_zero": false,
    "median": 16563.0,
    "deviation_pct": 107.6,
+   "factor": 2.1,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -2568,6 +2798,8 @@
    "ambiguous_zero": false,
    "median": 245450.23,
    "deviation_pct": -11.3,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -2587,6 +2819,8 @@
    "ambiguous_zero": false,
    "median": 18301.96,
    "deviation_pct": -32.6,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -2606,6 +2840,8 @@
    "ambiguous_zero": false,
    "median": 24.04,
    "deviation_pct": -55.1,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -2625,6 +2861,8 @@
    "ambiguous_zero": false,
    "median": 4755.8,
    "deviation_pct": 2.4,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -2644,6 +2882,8 @@
    "ambiguous_zero": false,
    "median": 65393.36,
    "deviation_pct": -48.6,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -2663,6 +2903,8 @@
    "ambiguous_zero": false,
    "median": 45008.12,
    "deviation_pct": -37.9,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -2682,6 +2924,8 @@
    "ambiguous_zero": false,
    "median": 64505.65,
    "deviation_pct": -24.4,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -2701,6 +2945,8 @@
    "ambiguous_zero": false,
    "median": 416979.45,
    "deviation_pct": -9.3,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -2720,6 +2966,8 @@
    "ambiguous_zero": false,
    "median": 18482.47,
    "deviation_pct": 62.8,
+   "factor": 1.6,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -2739,6 +2987,8 @@
    "ambiguous_zero": false,
    "median": 20690.21,
    "deviation_pct": 21.5,
+   "factor": 1.2,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -2758,6 +3008,8 @@
    "ambiguous_zero": false,
    "median": 412.53,
    "deviation_pct": 34.6,
+   "factor": 1.3,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -2777,6 +3029,8 @@
    "ambiguous_zero": false,
    "median": 1059.49,
    "deviation_pct": -6.4,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -2796,6 +3050,8 @@
    "ambiguous_zero": false,
    "median": 4.13,
    "deviation_pct": -57.7,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -2815,6 +3071,8 @@
    "ambiguous_zero": false,
    "median": 69.63,
    "deviation_pct": 33.2,
+   "factor": 1.3,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -2834,6 +3092,8 @@
    "ambiguous_zero": false,
    "median": 42.42,
    "deviation_pct": -70.3,
+   "factor": 0.3,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -2853,6 +3113,8 @@
    "ambiguous_zero": false,
    "median": 261.76,
    "deviation_pct": -65.4,
+   "factor": 0.3,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -2872,6 +3134,8 @@
    "ambiguous_zero": false,
    "median": 65.1,
    "deviation_pct": 48.9,
+   "factor": 1.5,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -2891,6 +3155,8 @@
    "ambiguous_zero": false,
    "median": 52.55,
    "deviation_pct": -30.3,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -2910,6 +3176,8 @@
    "ambiguous_zero": false,
    "median": 145.61,
    "deviation_pct": 16.3,
+   "factor": 1.2,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -2929,6 +3197,8 @@
    "ambiguous_zero": false,
    "median": 1367.53,
    "deviation_pct": -17.7,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -2948,6 +3218,8 @@
    "ambiguous_zero": false,
    "median": 671.9,
    "deviation_pct": 182.8,
+   "factor": 2.8,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -2967,6 +3239,8 @@
    "ambiguous_zero": false,
    "median": 642.53,
    "deviation_pct": -23.9,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -2986,6 +3260,8 @@
    "ambiguous_zero": false,
    "median": 672.6,
    "deviation_pct": 60.0,
+   "factor": 1.6,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3005,6 +3281,8 @@
    "ambiguous_zero": false,
    "median": 3440.44,
    "deviation_pct": -29.9,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3024,6 +3302,8 @@
    "ambiguous_zero": false,
    "median": 22.91,
    "deviation_pct": -0.46,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3043,6 +3323,8 @@
    "ambiguous_zero": false,
    "median": 94338.32,
    "deviation_pct": -7.5,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3062,6 +3344,8 @@
    "ambiguous_zero": false,
    "median": 145.31,
    "deviation_pct": -30.6,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3081,6 +3365,8 @@
    "ambiguous_zero": false,
    "median": 10.95,
    "deviation_pct": -22.9,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3100,6 +3386,8 @@
    "ambiguous_zero": false,
    "median": 718.03,
    "deviation_pct": -85.0,
+   "factor": 0.2,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3119,6 +3407,8 @@
    "ambiguous_zero": false,
    "median": 3341.64,
    "deviation_pct": 180.7,
+   "factor": 2.8,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3138,6 +3428,8 @@
    "ambiguous_zero": false,
    "median": 192.66,
    "deviation_pct": -35.2,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3157,6 +3449,8 @@
    "ambiguous_zero": false,
    "median": 800.2,
    "deviation_pct": -48.3,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3176,6 +3470,8 @@
    "ambiguous_zero": false,
    "median": 67538.96,
    "deviation_pct": -19.8,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3195,6 +3491,8 @@
    "ambiguous_zero": false,
    "median": 59475.77,
    "deviation_pct": -20.1,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3214,6 +3512,8 @@
    "ambiguous_zero": false,
    "median": 1874.99,
    "deviation_pct": -8.4,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3233,6 +3533,8 @@
    "ambiguous_zero": false,
    "median": 5874.49,
    "deviation_pct": -35.0,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3252,6 +3554,8 @@
    "ambiguous_zero": false,
    "median": 103.92,
    "deviation_pct": 143.8,
+   "factor": 2.4,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3271,6 +3575,8 @@
    "ambiguous_zero": false,
    "median": 1400.62,
    "deviation_pct": -47.2,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3290,6 +3596,8 @@
    "ambiguous_zero": false,
    "median": 107.95,
    "deviation_pct": -47.2,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3309,6 +3617,8 @@
    "ambiguous_zero": false,
    "median": 2600.27,
    "deviation_pct": 6.1,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3328,6 +3638,8 @@
    "ambiguous_zero": false,
    "median": 399.63,
    "deviation_pct": 41.5,
+   "factor": 1.4,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3347,6 +3659,8 @@
    "ambiguous_zero": false,
    "median": 1723.27,
    "deviation_pct": -36.9,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3366,6 +3680,8 @@
    "ambiguous_zero": false,
    "median": 28.13,
    "deviation_pct": 215.5,
+   "factor": 3.2,
+   "express_as": "factor",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3385,6 +3701,8 @@
    "ambiguous_zero": false,
    "median": 1975.59,
    "deviation_pct": 56.5,
+   "factor": 1.6,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3404,6 +3722,8 @@
    "ambiguous_zero": false,
    "median": 256.8,
    "deviation_pct": -57.5,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3423,6 +3743,8 @@
    "ambiguous_zero": false,
    "median": 68.98,
    "deviation_pct": 111.1,
+   "factor": 2.1,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3442,6 +3764,8 @@
    "ambiguous_zero": false,
    "median": 407.97,
    "deviation_pct": -88.4,
+   "factor": 0.1,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3461,6 +3785,8 @@
    "ambiguous_zero": false,
    "median": 13679.94,
    "deviation_pct": 9.4,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3480,6 +3806,8 @@
    "ambiguous_zero": true,
    "median": 1.05,
    "deviation_pct": -100.0,
+   "factor": 0.0,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3499,6 +3827,8 @@
    "ambiguous_zero": false,
    "median": 47618.29,
    "deviation_pct": 44.7,
+   "factor": 1.4,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3518,6 +3848,8 @@
    "ambiguous_zero": false,
    "median": 58.01,
    "deviation_pct": -65.0,
+   "factor": 0.3,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3537,6 +3869,8 @@
    "ambiguous_zero": false,
    "median": 2654.78,
    "deviation_pct": -55.6,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3556,6 +3890,8 @@
    "ambiguous_zero": false,
    "median": 647.0,
    "deviation_pct": 27.2,
+   "factor": 1.3,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3575,6 +3911,8 @@
    "ambiguous_zero": false,
    "median": 67.9,
    "deviation_pct": -4.4,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3594,6 +3932,8 @@
    "ambiguous_zero": false,
    "median": 46.55,
    "deviation_pct": 98.4,
+   "factor": 2.0,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3613,6 +3953,8 @@
    "ambiguous_zero": false,
    "median": 2016.93,
    "deviation_pct": -54.0,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3632,6 +3974,8 @@
    "ambiguous_zero": false,
    "median": 31.12,
    "deviation_pct": -25.2,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3651,6 +3995,8 @@
    "ambiguous_zero": false,
    "median": 4.79,
    "deviation_pct": -24.8,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3670,6 +4016,8 @@
    "ambiguous_zero": false,
    "median": 4074.42,
    "deviation_pct": -49.6,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3689,6 +4037,8 @@
    "ambiguous_zero": false,
    "median": 73316.97,
    "deviation_pct": -30.1,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3708,6 +4058,8 @@
    "ambiguous_zero": false,
    "median": 6689.56,
    "deviation_pct": 18.4,
+   "factor": 1.2,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3727,6 +4079,8 @@
    "ambiguous_zero": false,
    "median": 981.12,
    "deviation_pct": -54.9,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3746,6 +4100,8 @@
    "ambiguous_zero": false,
    "median": 30136.46,
    "deviation_pct": -1.2,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3765,6 +4121,8 @@
    "ambiguous_zero": false,
    "median": 664.1,
    "deviation_pct": -35.6,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3784,6 +4142,8 @@
    "ambiguous_zero": false,
    "median": 5285.93,
    "deviation_pct": -2.0,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3803,6 +4163,8 @@
    "ambiguous_zero": false,
    "median": 13.82,
    "deviation_pct": 19.2,
+   "factor": 1.2,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3822,6 +4184,8 @@
    "ambiguous_zero": false,
    "median": 773.78,
    "deviation_pct": -0.43,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3841,6 +4205,8 @@
    "ambiguous_zero": false,
    "median": 8.09,
    "deviation_pct": 389.2,
+   "factor": 4.9,
+   "express_as": "factor",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3860,6 +4226,8 @@
    "ambiguous_zero": false,
    "median": 518.85,
    "deviation_pct": 24.4,
+   "factor": 1.2,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3879,6 +4247,8 @@
    "ambiguous_zero": false,
    "median": 809.69,
    "deviation_pct": -44.0,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3898,6 +4268,8 @@
    "ambiguous_zero": false,
    "median": 42.86,
    "deviation_pct": 54.4,
+   "factor": 1.5,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3917,6 +4289,8 @@
    "ambiguous_zero": true,
    "median": 0.01,
    "deviation_pct": -100.0,
+   "factor": 0.0,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3936,6 +4310,8 @@
    "ambiguous_zero": false,
    "median": 29.46,
    "deviation_pct": -60.1,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3955,6 +4331,8 @@
    "ambiguous_zero": true,
    "median": 0.18,
    "deviation_pct": -100.0,
+   "factor": 0.0,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3974,6 +4352,8 @@
    "ambiguous_zero": false,
    "median": 1225.58,
    "deviation_pct": -7.5,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -3993,6 +4373,8 @@
    "ambiguous_zero": false,
    "median": 576.62,
    "deviation_pct": -61.1,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -4012,6 +4394,8 @@
    "ambiguous_zero": false,
    "median": 43417.62,
    "deviation_pct": -4.5,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -4031,6 +4415,8 @@
    "ambiguous_zero": false,
    "median": 22247.47,
    "deviation_pct": -25.7,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -4050,6 +4436,8 @@
    "ambiguous_zero": false,
    "median": 75.52,
    "deviation_pct": -80.3,
+   "factor": 0.2,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -4069,6 +4457,8 @@
    "ambiguous_zero": false,
    "median": 66721.42,
    "deviation_pct": -9.9,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -4088,6 +4478,8 @@
    "ambiguous_zero": true,
    "median": 0.22,
    "deviation_pct": -100.0,
+   "factor": 0.0,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -4107,6 +4499,8 @@
    "ambiguous_zero": false,
    "median": 26524.84,
    "deviation_pct": -4.6,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -4126,6 +4520,8 @@
    "ambiguous_zero": false,
    "median": 48.08,
    "deviation_pct": -58.1,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -4145,6 +4541,8 @@
    "ambiguous_zero": false,
    "median": 10002.3,
    "deviation_pct": -83.0,
+   "factor": 0.2,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -4164,6 +4562,8 @@
    "ambiguous_zero": false,
    "median": 202676.65,
    "deviation_pct": -44.9,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -4183,6 +4583,8 @@
    "ambiguous_zero": false,
    "median": 514.21,
    "deviation_pct": 151.2,
+   "factor": 2.5,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -4202,6 +4604,8 @@
    "ambiguous_zero": false,
    "median": 11210.11,
    "deviation_pct": -52.9,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -4221,6 +4625,8 @@
    "ambiguous_zero": false,
    "median": 1085.03,
    "deviation_pct": 33.2,
+   "factor": 1.3,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -4240,6 +4646,8 @@
    "ambiguous_zero": false,
    "median": 19862.77,
    "deviation_pct": 90.5,
+   "factor": 1.9,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -4259,6 +4667,8 @@
    "ambiguous_zero": false,
    "median": 2001.32,
    "deviation_pct": 20.2,
+   "factor": 1.2,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -4278,6 +4688,8 @@
    "ambiguous_zero": false,
    "median": 100210.27,
    "deviation_pct": -8.7,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -4297,6 +4709,8 @@
    "ambiguous_zero": false,
    "median": 1424.66,
    "deviation_pct": 55.8,
+   "factor": 1.6,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -4316,6 +4730,8 @@
    "ambiguous_zero": false,
    "median": 31.25,
    "deviation_pct": -44.9,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -4335,6 +4751,8 @@
    "ambiguous_zero": false,
    "median": 1.11,
    "deviation_pct": 0.0,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -4354,6 +4772,8 @@
    "ambiguous_zero": false,
    "median": 22.26,
    "deviation_pct": 54.9,
+   "factor": 1.5,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -4373,6 +4793,8 @@
    "ambiguous_zero": false,
    "median": 215.43,
    "deviation_pct": 5.3,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -4392,6 +4814,8 @@
    "ambiguous_zero": false,
    "median": 2161.83,
    "deviation_pct": 26.7,
+   "factor": 1.3,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -4411,6 +4835,8 @@
    "ambiguous_zero": false,
    "median": 2846.68,
    "deviation_pct": -87.0,
+   "factor": 0.1,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -4430,6 +4856,8 @@
    "ambiguous_zero": false,
    "median": 574.5,
    "deviation_pct": -45.9,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -4449,6 +4877,8 @@
    "ambiguous_zero": false,
    "median": 1592.04,
    "deviation_pct": -19.4,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -4468,6 +4898,8 @@
    "ambiguous_zero": false,
    "median": 276.33,
    "deviation_pct": -9.8,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -4487,6 +4919,8 @@
    "ambiguous_zero": false,
    "median": 3626.66,
    "deviation_pct": 256.9,
+   "factor": 3.6,
+   "express_as": "factor",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -4506,6 +4940,8 @@
    "ambiguous_zero": false,
    "median": 1347.47,
    "deviation_pct": 86.5,
+   "factor": 1.9,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -4525,6 +4961,8 @@
    "ambiguous_zero": false,
    "median": 2861.4,
    "deviation_pct": 42.6,
+   "factor": 1.4,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -4544,6 +4982,8 @@
    "ambiguous_zero": false,
    "median": 281.25,
    "deviation_pct": -9.0,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -4563,6 +5003,8 @@
    "ambiguous_zero": false,
    "median": 20.88,
    "deviation_pct": 12.0,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -4582,6 +5024,8 @@
    "ambiguous_zero": false,
    "median": 1205.25,
    "deviation_pct": -72.7,
+   "factor": 0.3,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -4601,6 +5045,8 @@
    "ambiguous_zero": false,
    "median": 1944.97,
    "deviation_pct": -42.6,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -4620,6 +5066,8 @@
    "ambiguous_zero": false,
    "median": 12642.97,
    "deviation_pct": 15.2,
+   "factor": 1.2,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -4639,6 +5087,8 @@
    "ambiguous_zero": false,
    "median": 0.78,
    "deviation_pct": 105.1,
+   "factor": 2.1,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -4658,6 +5108,8 @@
    "ambiguous_zero": false,
    "median": 2124.94,
    "deviation_pct": -62.3,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -4677,6 +5129,8 @@
    "ambiguous_zero": false,
    "median": 250114.36,
    "deviation_pct": -27.9,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -4696,6 +5150,8 @@
    "ambiguous_zero": false,
    "median": 787.43,
    "deviation_pct": -6.5,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -4715,6 +5171,8 @@
    "ambiguous_zero": false,
    "median": 1666.21,
    "deviation_pct": -33.4,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -4734,6 +5192,8 @@
    "ambiguous_zero": false,
    "median": 89741.95,
    "deviation_pct": 11.5,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -4753,6 +5213,8 @@
    "ambiguous_zero": false,
    "median": 34546.28,
    "deviation_pct": -25.8,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -4772,6 +5234,8 @@
    "ambiguous_zero": false,
    "median": 1.9,
    "deviation_pct": 354.7,
+   "factor": 4.5,
+   "express_as": "factor",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -4791,6 +5255,8 @@
    "ambiguous_zero": false,
    "median": 4.28,
    "deviation_pct": 58.6,
+   "factor": 1.6,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -4810,6 +5276,8 @@
    "ambiguous_zero": false,
    "median": 12.09,
    "deviation_pct": 26.7,
+   "factor": 1.3,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -4829,6 +5297,8 @@
    "ambiguous_zero": false,
    "median": 7213.31,
    "deviation_pct": 7.8,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -4848,6 +5318,8 @@
    "ambiguous_zero": false,
    "median": 409.12,
    "deviation_pct": 46.4,
+   "factor": 1.5,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -4867,6 +5339,8 @@
    "ambiguous_zero": false,
    "median": 1498.39,
    "deviation_pct": 56.8,
+   "factor": 1.6,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -4886,6 +5360,8 @@
    "ambiguous_zero": false,
    "median": 772.26,
    "deviation_pct": -68.6,
+   "factor": 0.3,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -4905,6 +5381,8 @@
    "ambiguous_zero": false,
    "median": 325741.58,
    "deviation_pct": -0.08,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -4924,6 +5402,8 @@
    "ambiguous_zero": false,
    "median": 802.93,
    "deviation_pct": -8.7,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -4943,6 +5423,8 @@
    "ambiguous_zero": false,
    "median": 51.42,
    "deviation_pct": -59.1,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -4962,6 +5444,8 @@
    "ambiguous_zero": false,
    "median": 18.13,
    "deviation_pct": -92.3,
+   "factor": 0.1,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -4981,6 +5465,8 @@
    "ambiguous_zero": false,
    "median": 150.38,
    "deviation_pct": -38.0,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5000,6 +5486,8 @@
    "ambiguous_zero": false,
    "median": 893.91,
    "deviation_pct": -52.9,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5019,6 +5507,8 @@
    "ambiguous_zero": false,
    "median": 512.2,
    "deviation_pct": 45.3,
+   "factor": 1.5,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5038,6 +5528,8 @@
    "ambiguous_zero": false,
    "median": 120683.04,
    "deviation_pct": -3.4,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5057,6 +5549,8 @@
    "ambiguous_zero": false,
    "median": 12749.57,
    "deviation_pct": -19.8,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5076,6 +5570,8 @@
    "ambiguous_zero": false,
    "median": 23454.72,
    "deviation_pct": -7.3,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5095,6 +5591,8 @@
    "ambiguous_zero": false,
    "median": 438.9,
    "deviation_pct": -51.1,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5114,6 +5612,8 @@
    "ambiguous_zero": false,
    "median": 610.26,
    "deviation_pct": -86.7,
+   "factor": 0.1,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5133,6 +5633,8 @@
    "ambiguous_zero": false,
    "median": 423.67,
    "deviation_pct": -58.7,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5152,6 +5654,8 @@
    "ambiguous_zero": false,
    "median": 49.07,
    "deviation_pct": -79.3,
+   "factor": 0.2,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5171,6 +5675,8 @@
    "ambiguous_zero": false,
    "median": 118.06,
    "deviation_pct": 5.3,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5190,6 +5696,8 @@
    "ambiguous_zero": false,
    "median": 8455.39,
    "deviation_pct": -10.4,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5209,6 +5717,8 @@
    "ambiguous_zero": false,
    "median": 196.93,
    "deviation_pct": 24.8,
+   "factor": 1.2,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5228,6 +5738,8 @@
    "ambiguous_zero": false,
    "median": 156875.57,
    "deviation_pct": -17.0,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5247,6 +5759,8 @@
    "ambiguous_zero": false,
    "median": 27797.97,
    "deviation_pct": 9.0,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5266,6 +5780,8 @@
    "ambiguous_zero": false,
    "median": 17388.65,
    "deviation_pct": -29.4,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5285,6 +5801,8 @@
    "ambiguous_zero": false,
    "median": 519.82,
    "deviation_pct": 223.7,
+   "factor": 3.2,
+   "express_as": "factor",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5304,6 +5822,8 @@
    "ambiguous_zero": false,
    "median": 48148.93,
    "deviation_pct": -12.6,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5323,6 +5843,8 @@
    "ambiguous_zero": false,
    "median": 741.18,
    "deviation_pct": 61.3,
+   "factor": 1.6,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5342,6 +5864,8 @@
    "ambiguous_zero": false,
    "median": 27614.72,
    "deviation_pct": 30.9,
+   "factor": 1.3,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5361,6 +5885,8 @@
    "ambiguous_zero": false,
    "median": 5480.28,
    "deviation_pct": 1.8,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5380,6 +5906,8 @@
    "ambiguous_zero": false,
    "median": 4551862.21,
    "deviation_pct": -0.8,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5399,6 +5927,8 @@
    "ambiguous_zero": false,
    "median": 4551862.21,
    "deviation_pct": -0.65,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5418,6 +5948,8 @@
    "ambiguous_zero": false,
    "median": 4551862.21,
    "deviation_pct": -6.0,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5437,6 +5969,8 @@
    "ambiguous_zero": false,
    "median": 4551862.21,
    "deviation_pct": -7.1,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5456,6 +5990,8 @@
    "ambiguous_zero": false,
    "median": 4551862.21,
    "deviation_pct": -4.2,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5475,6 +6011,8 @@
    "ambiguous_zero": false,
    "median": 4551862.21,
    "deviation_pct": -9.7,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5494,6 +6032,8 @@
    "ambiguous_zero": false,
    "median": 4551862.21,
    "deviation_pct": -5.1,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5513,6 +6053,8 @@
    "ambiguous_zero": false,
    "median": 4551862.21,
    "deviation_pct": -5.0,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5532,6 +6074,8 @@
    "ambiguous_zero": false,
    "median": 4551862.21,
    "deviation_pct": -3.1,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5551,6 +6095,8 @@
    "ambiguous_zero": false,
    "median": 4551862.21,
    "deviation_pct": -10.2,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5570,6 +6116,8 @@
    "ambiguous_zero": false,
    "median": 4551862.21,
    "deviation_pct": -6.9,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5589,6 +6137,8 @@
    "ambiguous_zero": false,
    "median": 4551862.21,
    "deviation_pct": -8.9,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5608,6 +6158,8 @@
    "ambiguous_zero": false,
    "median": 4551862.21,
    "deviation_pct": -0.94,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5627,6 +6179,8 @@
    "ambiguous_zero": false,
    "median": 4551862.21,
    "deviation_pct": 2.5,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5646,6 +6200,8 @@
    "ambiguous_zero": false,
    "median": 4551862.21,
    "deviation_pct": 2.6,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5665,6 +6221,8 @@
    "ambiguous_zero": false,
    "median": 4551862.21,
    "deviation_pct": -1.5,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5684,6 +6242,8 @@
    "ambiguous_zero": false,
    "median": 4551862.21,
    "deviation_pct": -2.1,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5703,6 +6263,8 @@
    "ambiguous_zero": false,
    "median": 4551862.21,
    "deviation_pct": 4.4,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5722,6 +6284,8 @@
    "ambiguous_zero": false,
    "median": 4551862.21,
    "deviation_pct": 10.5,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5741,6 +6305,8 @@
    "ambiguous_zero": false,
    "median": 4551862.21,
    "deviation_pct": 10.8,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5760,6 +6326,8 @@
    "ambiguous_zero": false,
    "median": 4551862.21,
    "deviation_pct": 7.8,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5779,6 +6347,8 @@
    "ambiguous_zero": false,
    "median": 4551862.21,
    "deviation_pct": 7.2,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5798,6 +6368,8 @@
    "ambiguous_zero": false,
    "median": 4551862.21,
    "deviation_pct": 5.2,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5817,6 +6389,8 @@
    "ambiguous_zero": false,
    "median": 4551862.21,
    "deviation_pct": 6.5,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5836,6 +6410,8 @@
    "ambiguous_zero": false,
    "median": 4551862.21,
    "deviation_pct": 12.5,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5855,6 +6431,8 @@
    "ambiguous_zero": false,
    "median": 4551862.21,
    "deviation_pct": 3.7,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5874,6 +6452,8 @@
    "ambiguous_zero": false,
    "median": 4551862.21,
    "deviation_pct": 2.3,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5893,6 +6473,8 @@
    "ambiguous_zero": false,
    "median": 4551862.21,
    "deviation_pct": 7.0,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5912,6 +6494,8 @@
    "ambiguous_zero": false,
    "median": 4551862.21,
    "deviation_pct": 13.8,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5931,6 +6515,8 @@
    "ambiguous_zero": false,
    "median": 4551862.21,
    "deviation_pct": 12.7,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5950,6 +6536,8 @@
    "ambiguous_zero": false,
    "median": 4551862.21,
    "deviation_pct": 0.85,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5969,6 +6557,8 @@
    "ambiguous_zero": false,
    "median": 4551862.21,
    "deviation_pct": 3.3,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -5988,6 +6578,8 @@
    "ambiguous_zero": false,
    "median": 4551862.21,
    "deviation_pct": 0.11,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -6007,6 +6599,8 @@
    "ambiguous_zero": false,
    "median": 4551862.21,
    "deviation_pct": -3.1,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -6026,6 +6620,8 @@
    "ambiguous_zero": false,
    "median": 4551862.21,
    "deviation_pct": -0.11,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -6045,6 +6641,8 @@
    "ambiguous_zero": false,
    "median": 4551862.21,
    "deviation_pct": -7.8,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -6064,6 +6662,8 @@
    "ambiguous_zero": false,
    "median": 15.48,
    "deviation_pct": -97.9,
+   "factor": 0.0,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -6083,6 +6683,8 @@
    "ambiguous_zero": false,
    "median": 384.92,
    "deviation_pct": 7.1,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -6102,6 +6704,8 @@
    "ambiguous_zero": false,
    "median": 37301.74,
    "deviation_pct": 2.8,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -6121,6 +6725,8 @@
    "ambiguous_zero": false,
    "median": 259758.15,
    "deviation_pct": -34.2,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -6140,6 +6746,8 @@
    "ambiguous_zero": false,
    "median": 33749.46,
    "deviation_pct": -15.0,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 36,
    "first_year": 1982,
    "last_year": 2018
@@ -6159,6 +6767,8 @@
    "ambiguous_zero": false,
    "median": 381.14,
    "deviation_pct": 57.7,
+   "factor": 1.6,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -6178,6 +6788,8 @@
    "ambiguous_zero": false,
    "median": 525981.04,
    "deviation_pct": -1.3,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -6197,6 +6809,8 @@
    "ambiguous_zero": false,
    "median": 464.64,
    "deviation_pct": 0.082,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -6216,6 +6830,8 @@
    "ambiguous_zero": false,
    "median": 0.54,
    "deviation_pct": 32.1,
+   "factor": 1.3,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -6235,6 +6851,8 @@
    "ambiguous_zero": true,
    "median": 0.83,
    "deviation_pct": -100.0,
+   "factor": 0.0,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -6254,6 +6872,8 @@
    "ambiguous_zero": false,
    "median": 71057.43,
    "deviation_pct": 55.6,
+   "factor": 1.6,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -6273,6 +6893,8 @@
    "ambiguous_zero": false,
    "median": 454.08,
    "deviation_pct": -57.9,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -6292,6 +6914,8 @@
    "ambiguous_zero": false,
    "median": 520306.27,
    "deviation_pct": -47.3,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -6311,6 +6935,8 @@
    "ambiguous_zero": false,
    "median": 56.31,
    "deviation_pct": -36.2,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -6330,6 +6956,8 @@
    "ambiguous_zero": false,
    "median": 2566.74,
    "deviation_pct": -28.2,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -6349,6 +6977,8 @@
    "ambiguous_zero": false,
    "median": 2168.91,
    "deviation_pct": -13.8,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -6368,6 +6998,8 @@
    "ambiguous_zero": false,
    "median": 80.47,
    "deviation_pct": 38.8,
+   "factor": 1.4,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -6387,6 +7019,8 @@
    "ambiguous_zero": false,
    "median": 56192.87,
    "deviation_pct": -40.1,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -6406,6 +7040,8 @@
    "ambiguous_zero": false,
    "median": 51924.08,
    "deviation_pct": -23.2,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -6425,6 +7061,8 @@
    "ambiguous_zero": false,
    "median": 5068.46,
    "deviation_pct": -2.1,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -6444,6 +7082,8 @@
    "ambiguous_zero": false,
    "median": 3830.32,
    "deviation_pct": -60.3,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -6463,6 +7103,8 @@
    "ambiguous_zero": false,
    "median": 231.1,
    "deviation_pct": 3.5,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -6482,6 +7124,8 @@
    "ambiguous_zero": false,
    "median": 564.05,
    "deviation_pct": 103.8,
+   "factor": 2.0,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -6501,6 +7145,8 @@
    "ambiguous_zero": false,
    "median": 2892.52,
    "deviation_pct": -35.2,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -6520,6 +7166,8 @@
    "ambiguous_zero": false,
    "median": 1575.58,
    "deviation_pct": 9.7,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -6539,6 +7187,8 @@
    "ambiguous_zero": false,
    "median": 50812.19,
    "deviation_pct": 6.9,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -6558,6 +7208,8 @@
    "ambiguous_zero": false,
    "median": 340498.07,
    "deviation_pct": -2.1,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -6577,6 +7229,8 @@
    "ambiguous_zero": false,
    "median": 17.65,
    "deviation_pct": 0.96,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -6596,6 +7250,8 @@
    "ambiguous_zero": false,
    "median": 23.54,
    "deviation_pct": -21.3,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -6615,6 +7271,8 @@
    "ambiguous_zero": false,
    "median": 503.17,
    "deviation_pct": -50.6,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -6634,6 +7292,8 @@
    "ambiguous_zero": false,
    "median": 26571.74,
    "deviation_pct": -1.5,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -6653,6 +7313,8 @@
    "ambiguous_zero": false,
    "median": 357552.28,
    "deviation_pct": 5.3,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -6672,6 +7334,8 @@
    "ambiguous_zero": false,
    "median": 33331.51,
    "deviation_pct": -41.3,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -6691,6 +7355,8 @@
    "ambiguous_zero": false,
    "median": 34.91,
    "deviation_pct": 12.8,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -6710,6 +7376,8 @@
    "ambiguous_zero": false,
    "median": 7656.92,
    "deviation_pct": -2.4,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -6729,6 +7397,8 @@
    "ambiguous_zero": false,
    "median": 108523.35,
    "deviation_pct": -7.3,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -6748,6 +7418,8 @@
    "ambiguous_zero": false,
    "median": 114259.16,
    "deviation_pct": -44.3,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -6767,6 +7439,8 @@
    "ambiguous_zero": false,
    "median": 109563.81,
    "deviation_pct": 7.2,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -6786,6 +7460,8 @@
    "ambiguous_zero": false,
    "median": 728130.76,
    "deviation_pct": 0.86,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -6805,6 +7481,8 @@
    "ambiguous_zero": false,
    "median": 48931.55,
    "deviation_pct": 29.3,
+   "factor": 1.3,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -6824,6 +7502,8 @@
    "ambiguous_zero": false,
    "median": 32764.86,
    "deviation_pct": 10.4,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -6843,6 +7523,8 @@
    "ambiguous_zero": false,
    "median": 7.55,
    "deviation_pct": -94.3,
+   "factor": 0.1,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -6862,6 +7544,8 @@
    "ambiguous_zero": false,
    "median": 1386.53,
    "deviation_pct": -2.3,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -6881,6 +7565,8 @@
    "ambiguous_zero": false,
    "median": 8446.31,
    "deviation_pct": 30.5,
+   "factor": 1.3,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -6900,6 +7586,8 @@
    "ambiguous_zero": false,
    "median": 52.14,
    "deviation_pct": 19.4,
+   "factor": 1.2,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -6919,6 +7607,8 @@
    "ambiguous_zero": false,
    "median": 111.06,
    "deviation_pct": 85.3,
+   "factor": 1.9,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -6938,6 +7628,8 @@
    "ambiguous_zero": false,
    "median": 521.31,
    "deviation_pct": 87.7,
+   "factor": 1.9,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -6957,6 +7649,8 @@
    "ambiguous_zero": false,
    "median": 0.2,
    "deviation_pct": 4335.0,
+   "factor": 44.3,
+   "express_as": "factor",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -6976,6 +7670,8 @@
    "ambiguous_zero": false,
    "median": 91.32,
    "deviation_pct": -23.4,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -6995,6 +7691,8 @@
    "ambiguous_zero": false,
    "median": 1703.53,
    "deviation_pct": 0.4,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -7014,6 +7712,8 @@
    "ambiguous_zero": false,
    "median": 1989.71,
    "deviation_pct": 52.4,
+   "factor": 1.5,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -7033,6 +7733,8 @@
    "ambiguous_zero": false,
    "median": 3962.56,
    "deviation_pct": 45.9,
+   "factor": 1.5,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -7052,6 +7754,8 @@
    "ambiguous_zero": false,
    "median": 1504.45,
    "deviation_pct": -27.6,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -7071,6 +7775,8 @@
    "ambiguous_zero": false,
    "median": 716.34,
    "deviation_pct": 78.7,
+   "factor": 1.8,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -7090,6 +7796,8 @@
    "ambiguous_zero": false,
    "median": 4447.17,
    "deviation_pct": -34.5,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -7109,6 +7817,8 @@
    "ambiguous_zero": false,
    "median": 63.15,
    "deviation_pct": -62.3,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -7128,6 +7838,8 @@
    "ambiguous_zero": false,
    "median": 118723.09,
    "deviation_pct": -6.2,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -7147,6 +7859,8 @@
    "ambiguous_zero": false,
    "median": 272.19,
    "deviation_pct": -37.4,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -7166,6 +7880,8 @@
    "ambiguous_zero": false,
    "median": 726.06,
    "deviation_pct": -15.2,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -7185,6 +7901,8 @@
    "ambiguous_zero": false,
    "median": 17.28,
    "deviation_pct": -67.0,
+   "factor": 0.3,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -7204,6 +7922,8 @@
    "ambiguous_zero": false,
    "median": 1308.23,
    "deviation_pct": -17.2,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -7223,6 +7943,8 @@
    "ambiguous_zero": false,
    "median": 5789.65,
    "deviation_pct": -0.77,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -7242,6 +7964,8 @@
    "ambiguous_zero": false,
    "median": 751.01,
    "deviation_pct": -22.9,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -7261,6 +7985,8 @@
    "ambiguous_zero": false,
    "median": 805.49,
    "deviation_pct": -9.7,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -7280,6 +8006,8 @@
    "ambiguous_zero": false,
    "median": 134711.3,
    "deviation_pct": 8.5,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -7299,6 +8027,8 @@
    "ambiguous_zero": false,
    "median": 153049.0,
    "deviation_pct": 4.7,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -7318,6 +8048,8 @@
    "ambiguous_zero": true,
    "median": 1.02,
    "deviation_pct": -100.0,
+   "factor": 0.0,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -7337,6 +8069,8 @@
    "ambiguous_zero": false,
    "median": 3250.91,
    "deviation_pct": -4.8,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -7356,6 +8090,8 @@
    "ambiguous_zero": false,
    "median": 11544.27,
    "deviation_pct": -14.2,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -7375,6 +8111,8 @@
    "ambiguous_zero": false,
    "median": 292.43,
    "deviation_pct": 54.4,
+   "factor": 1.5,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -7394,6 +8132,8 @@
    "ambiguous_zero": false,
    "median": 2196.68,
    "deviation_pct": -38.1,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -7413,6 +8153,8 @@
    "ambiguous_zero": false,
    "median": 14.35,
    "deviation_pct": -22.1,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -7432,6 +8174,8 @@
    "ambiguous_zero": false,
    "median": 11379.53,
    "deviation_pct": -12.9,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -7451,6 +8195,8 @@
    "ambiguous_zero": false,
    "median": 207.92,
    "deviation_pct": -35.8,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -7470,6 +8216,8 @@
    "ambiguous_zero": false,
    "median": 5.8,
    "deviation_pct": 350.0,
+   "factor": 4.5,
+   "express_as": "factor",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -7489,6 +8237,8 @@
    "ambiguous_zero": false,
    "median": 2156.98,
    "deviation_pct": 20.7,
+   "factor": 1.2,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -7508,6 +8258,8 @@
    "ambiguous_zero": false,
    "median": 6.25,
    "deviation_pct": -48.5,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -7527,6 +8279,8 @@
    "ambiguous_zero": false,
    "median": 9875.99,
    "deviation_pct": 47.8,
+   "factor": 1.5,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -7546,6 +8300,8 @@
    "ambiguous_zero": false,
    "median": 659.84,
    "deviation_pct": -47.1,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -7565,6 +8321,8 @@
    "ambiguous_zero": false,
    "median": 534.47,
    "deviation_pct": 21.8,
+   "factor": 1.2,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -7584,6 +8342,8 @@
    "ambiguous_zero": false,
    "median": 761.4,
    "deviation_pct": -51.1,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -7603,6 +8363,8 @@
    "ambiguous_zero": false,
    "median": 29015.24,
    "deviation_pct": -69.8,
+   "factor": 0.3,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -7622,6 +8384,8 @@
    "ambiguous_zero": false,
    "median": 152456.78,
    "deviation_pct": -3.8,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -7641,6 +8405,8 @@
    "ambiguous_zero": false,
    "median": 81.93,
    "deviation_pct": -60.0,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -7660,6 +8426,8 @@
    "ambiguous_zero": false,
    "median": 5127.47,
    "deviation_pct": 26.0,
+   "factor": 1.3,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -7679,6 +8447,8 @@
    "ambiguous_zero": false,
    "median": 2386.33,
    "deviation_pct": 200.7,
+   "factor": 3.0,
+   "express_as": "factor",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -7698,6 +8468,8 @@
    "ambiguous_zero": false,
    "median": 178.18,
    "deviation_pct": -13.6,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -7717,6 +8489,8 @@
    "ambiguous_zero": false,
    "median": 5641.64,
    "deviation_pct": -19.5,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -7736,6 +8510,8 @@
    "ambiguous_zero": false,
    "median": 237.28,
    "deviation_pct": 8.3,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -7755,6 +8531,8 @@
    "ambiguous_zero": false,
    "median": 32.05,
    "deviation_pct": 68.0,
+   "factor": 1.7,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -7774,6 +8552,8 @@
    "ambiguous_zero": false,
    "median": 578.06,
    "deviation_pct": 66.5,
+   "factor": 1.7,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -7793,6 +8573,8 @@
    "ambiguous_zero": false,
    "median": 123034.49,
    "deviation_pct": -37.1,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -7812,6 +8594,8 @@
    "ambiguous_zero": false,
    "median": 9689.22,
    "deviation_pct": 7.4,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -7831,6 +8615,8 @@
    "ambiguous_zero": false,
    "median": 1136.68,
    "deviation_pct": -25.6,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -7850,6 +8636,8 @@
    "ambiguous_zero": false,
    "median": 56451.28,
    "deviation_pct": 11.4,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -7869,6 +8657,8 @@
    "ambiguous_zero": false,
    "median": 532.48,
    "deviation_pct": 27.9,
+   "factor": 1.3,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -7888,6 +8678,8 @@
    "ambiguous_zero": true,
    "median": 0.11,
    "deviation_pct": -100.0,
+   "factor": 0.0,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -7907,6 +8699,8 @@
    "ambiguous_zero": false,
    "median": 61235.97,
    "deviation_pct": 26.0,
+   "factor": 1.3,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -7926,6 +8720,8 @@
    "ambiguous_zero": false,
    "median": 63.55,
    "deviation_pct": 165.7,
+   "factor": 2.7,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -7945,6 +8741,8 @@
    "ambiguous_zero": false,
    "median": 13538.39,
    "deviation_pct": -20.1,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -7964,6 +8762,8 @@
    "ambiguous_zero": false,
    "median": 63.1,
    "deviation_pct": 251.7,
+   "factor": 3.5,
+   "express_as": "factor",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -7983,6 +8783,8 @@
    "ambiguous_zero": false,
    "median": 3729.74,
    "deviation_pct": -44.8,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8002,6 +8804,8 @@
    "ambiguous_zero": false,
    "median": 653.65,
    "deviation_pct": -44.2,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8021,6 +8825,8 @@
    "ambiguous_zero": false,
    "median": 170.89,
    "deviation_pct": -58.5,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8040,6 +8846,8 @@
    "ambiguous_zero": false,
    "median": 0.88,
    "deviation_pct": -48.9,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8059,6 +8867,8 @@
    "ambiguous_zero": false,
    "median": 115.86,
    "deviation_pct": -59.9,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8078,6 +8888,8 @@
    "ambiguous_zero": false,
    "median": 331.44,
    "deviation_pct": 7.9,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8097,6 +8909,8 @@
    "ambiguous_zero": false,
    "median": 957.31,
    "deviation_pct": -44.5,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8116,6 +8930,8 @@
    "ambiguous_zero": false,
    "median": 138556.4,
    "deviation_pct": 16.6,
+   "factor": 1.2,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8135,6 +8951,8 @@
    "ambiguous_zero": false,
    "median": 81466.09,
    "deviation_pct": -8.2,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8154,6 +8972,8 @@
    "ambiguous_zero": false,
    "median": 380.11,
    "deviation_pct": -48.2,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8173,6 +8993,8 @@
    "ambiguous_zero": false,
    "median": 121951.18,
    "deviation_pct": -3.1,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8192,6 +9014,8 @@
    "ambiguous_zero": false,
    "median": 141843.73,
    "deviation_pct": 15.5,
+   "factor": 1.2,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8211,6 +9035,8 @@
    "ambiguous_zero": false,
    "median": 227.64,
    "deviation_pct": 69.5,
+   "factor": 1.7,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8230,6 +9056,8 @@
    "ambiguous_zero": false,
    "median": 12026.94,
    "deviation_pct": -93.9,
+   "factor": 0.1,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8249,6 +9077,8 @@
    "ambiguous_zero": false,
    "median": 286906.5,
    "deviation_pct": 2.9,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8268,6 +9098,8 @@
    "ambiguous_zero": false,
    "median": 1810.74,
    "deviation_pct": -13.6,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8287,6 +9119,8 @@
    "ambiguous_zero": false,
    "median": 38.69,
    "deviation_pct": -8.8,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8306,6 +9140,8 @@
    "ambiguous_zero": false,
    "median": 21758.67,
    "deviation_pct": 7.4,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8325,6 +9161,8 @@
    "ambiguous_zero": false,
    "median": 2097.39,
    "deviation_pct": -58.0,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8344,6 +9182,8 @@
    "ambiguous_zero": false,
    "median": 29762.0,
    "deviation_pct": -0.68,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8363,6 +9203,8 @@
    "ambiguous_zero": false,
    "median": 56.62,
    "deviation_pct": -29.8,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8382,6 +9224,8 @@
    "ambiguous_zero": false,
    "median": 2951.68,
    "deviation_pct": 18.0,
+   "factor": 1.2,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8401,6 +9245,8 @@
    "ambiguous_zero": false,
    "median": 202141.86,
    "deviation_pct": -3.9,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8420,6 +9266,8 @@
    "ambiguous_zero": false,
    "median": 6683.14,
    "deviation_pct": 36.9,
+   "factor": 1.4,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8439,6 +9287,8 @@
    "ambiguous_zero": false,
    "median": 107.58,
    "deviation_pct": 58.0,
+   "factor": 1.6,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8458,6 +9308,8 @@
    "ambiguous_zero": false,
    "median": 1.28,
    "deviation_pct": 87.5,
+   "factor": 1.9,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8477,6 +9329,8 @@
    "ambiguous_zero": false,
    "median": 11.98,
    "deviation_pct": 325.3,
+   "factor": 4.3,
+   "express_as": "factor",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8496,6 +9350,8 @@
    "ambiguous_zero": false,
    "median": 248.22,
    "deviation_pct": -78.1,
+   "factor": 0.2,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8515,6 +9371,8 @@
    "ambiguous_zero": false,
    "median": 6614.13,
    "deviation_pct": -64.5,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8534,6 +9392,8 @@
    "ambiguous_zero": false,
    "median": 348.25,
    "deviation_pct": 5.6,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8553,6 +9413,8 @@
    "ambiguous_zero": false,
    "median": 11.97,
    "deviation_pct": 5.1,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8572,6 +9434,8 @@
    "ambiguous_zero": false,
    "median": 16461.67,
    "deviation_pct": 17.0,
+   "factor": 1.2,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8591,6 +9455,8 @@
    "ambiguous_zero": false,
    "median": 2477.34,
    "deviation_pct": 38.5,
+   "factor": 1.4,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8610,6 +9476,8 @@
    "ambiguous_zero": false,
    "median": 9732.58,
    "deviation_pct": 59.5,
+   "factor": 1.6,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8629,6 +9497,8 @@
    "ambiguous_zero": false,
    "median": 10569.26,
    "deviation_pct": 0.29,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8648,6 +9518,8 @@
    "ambiguous_zero": false,
    "median": 3470.02,
    "deviation_pct": -26.3,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8667,6 +9539,8 @@
    "ambiguous_zero": false,
    "median": 719.98,
    "deviation_pct": -15.7,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8686,6 +9560,8 @@
    "ambiguous_zero": false,
    "median": 78.31,
    "deviation_pct": -62.6,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8705,6 +9581,8 @@
    "ambiguous_zero": false,
    "median": 1701.14,
    "deviation_pct": -72.5,
+   "factor": 0.3,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8724,6 +9602,8 @@
    "ambiguous_zero": false,
    "median": 2330.28,
    "deviation_pct": -54.1,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8743,6 +9623,8 @@
    "ambiguous_zero": false,
    "median": 36686.93,
    "deviation_pct": 42.3,
+   "factor": 1.4,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8762,6 +9644,8 @@
    "ambiguous_zero": false,
    "median": 40.2,
    "deviation_pct": 179.1,
+   "factor": 2.8,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8781,6 +9665,8 @@
    "ambiguous_zero": false,
    "median": 1.76,
    "deviation_pct": 0.0,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8800,6 +9686,8 @@
    "ambiguous_zero": false,
    "median": 6078.93,
    "deviation_pct": -18.1,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8819,6 +9707,8 @@
    "ambiguous_zero": false,
    "median": 421534.14,
    "deviation_pct": -14.5,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8838,6 +9728,8 @@
    "ambiguous_zero": false,
    "median": 756.69,
    "deviation_pct": 13.8,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8857,6 +9749,8 @@
    "ambiguous_zero": false,
    "median": 299.59,
    "deviation_pct": -14.1,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8876,6 +9770,8 @@
    "ambiguous_zero": false,
    "median": 121136.31,
    "deviation_pct": 4.9,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8895,6 +9791,8 @@
    "ambiguous_zero": false,
    "median": 56103.93,
    "deviation_pct": 3.6,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8914,6 +9812,8 @@
    "ambiguous_zero": false,
    "median": 0.29,
    "deviation_pct": 296.5,
+   "factor": 4.0,
+   "express_as": "factor",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8933,6 +9833,8 @@
    "ambiguous_zero": false,
    "median": 3.94,
    "deviation_pct": 58.4,
+   "factor": 1.6,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8952,6 +9854,8 @@
    "ambiguous_zero": false,
    "median": 38561.75,
    "deviation_pct": -4.7,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8971,6 +9875,8 @@
    "ambiguous_zero": false,
    "median": 1483.2,
    "deviation_pct": -1.2,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -8990,6 +9896,8 @@
    "ambiguous_zero": false,
    "median": 2302.88,
    "deviation_pct": -61.9,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9009,6 +9917,8 @@
    "ambiguous_zero": false,
    "median": 2212.62,
    "deviation_pct": -58.3,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9028,6 +9938,8 @@
    "ambiguous_zero": false,
    "median": 423752.58,
    "deviation_pct": -3.7,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9047,6 +9959,8 @@
    "ambiguous_zero": false,
    "median": 6.98,
    "deviation_pct": -10.4,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9066,6 +9980,8 @@
    "ambiguous_zero": false,
    "median": 536.95,
    "deviation_pct": 6.3,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9085,6 +10001,8 @@
    "ambiguous_zero": false,
    "median": 137.98,
    "deviation_pct": -32.9,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9104,6 +10022,8 @@
    "ambiguous_zero": false,
    "median": 13.2,
    "deviation_pct": -45.4,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9123,6 +10043,8 @@
    "ambiguous_zero": false,
    "median": 346.87,
    "deviation_pct": -28.1,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9142,6 +10064,8 @@
    "ambiguous_zero": false,
    "median": 2477.14,
    "deviation_pct": -10.0,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9161,6 +10085,8 @@
    "ambiguous_zero": false,
    "median": 1517.91,
    "deviation_pct": 235.4,
+   "factor": 3.4,
+   "express_as": "factor",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9180,6 +10106,8 @@
    "ambiguous_zero": false,
    "median": 156996.68,
    "deviation_pct": -5.5,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9199,6 +10127,8 @@
    "ambiguous_zero": false,
    "median": 35338.84,
    "deviation_pct": -16.0,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9218,6 +10148,8 @@
    "ambiguous_zero": false,
    "median": 76809.74,
    "deviation_pct": 0.95,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9237,6 +10169,8 @@
    "ambiguous_zero": false,
    "median": 370.13,
    "deviation_pct": -21.9,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9256,6 +10190,8 @@
    "ambiguous_zero": false,
    "median": 3074.24,
    "deviation_pct": 101.5,
+   "factor": 2.0,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9275,6 +10211,8 @@
    "ambiguous_zero": false,
    "median": 575.63,
    "deviation_pct": -31.5,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9294,6 +10232,8 @@
    "ambiguous_zero": false,
    "median": 88.39,
    "deviation_pct": 18.9,
+   "factor": 1.2,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9313,6 +10253,8 @@
    "ambiguous_zero": false,
    "median": 221.3,
    "deviation_pct": 101.7,
+   "factor": 2.0,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9332,6 +10274,8 @@
    "ambiguous_zero": false,
    "median": 12404.8,
    "deviation_pct": 6.2,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9351,6 +10295,8 @@
    "ambiguous_zero": false,
    "median": 128.94,
    "deviation_pct": 27.9,
+   "factor": 1.3,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9370,6 +10316,8 @@
    "ambiguous_zero": false,
    "median": 220849.16,
    "deviation_pct": -5.3,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9389,6 +10337,8 @@
    "ambiguous_zero": false,
    "median": 49459.32,
    "deviation_pct": -8.6,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9408,6 +10358,8 @@
    "ambiguous_zero": false,
    "median": 34797.43,
    "deviation_pct": -13.8,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9427,6 +10379,8 @@
    "ambiguous_zero": false,
    "median": 2740.33,
    "deviation_pct": 64.5,
+   "factor": 1.6,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9446,6 +10400,8 @@
    "ambiguous_zero": false,
    "median": 69000.74,
    "deviation_pct": 13.1,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9465,6 +10421,8 @@
    "ambiguous_zero": false,
    "median": 4196.15,
    "deviation_pct": 0.66,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9484,6 +10442,8 @@
    "ambiguous_zero": false,
    "median": 48676.71,
    "deviation_pct": 44.6,
+   "factor": 1.4,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9503,6 +10463,8 @@
    "ambiguous_zero": false,
    "median": 39378.73,
    "deviation_pct": 10.0,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9522,6 +10484,8 @@
    "ambiguous_zero": true,
    "median": 2.16,
    "deviation_pct": -100.0,
+   "factor": 0.0,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9541,6 +10505,8 @@
    "ambiguous_zero": false,
    "median": 7795008.58,
    "deviation_pct": -3.9,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9560,6 +10526,8 @@
    "ambiguous_zero": false,
    "median": 7795008.58,
    "deviation_pct": 18.2,
+   "factor": 1.2,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9579,6 +10547,8 @@
    "ambiguous_zero": false,
    "median": 7795008.58,
    "deviation_pct": 1.5,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9598,6 +10568,8 @@
    "ambiguous_zero": false,
    "median": 7795008.58,
    "deviation_pct": 6.9,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9617,6 +10589,8 @@
    "ambiguous_zero": false,
    "median": 7795008.58,
    "deviation_pct": 17.5,
+   "factor": 1.2,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9636,6 +10610,8 @@
    "ambiguous_zero": false,
    "median": 7795008.58,
    "deviation_pct": 9.3,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9655,6 +10631,8 @@
    "ambiguous_zero": false,
    "median": 7795008.58,
    "deviation_pct": 4.6,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9674,6 +10652,8 @@
    "ambiguous_zero": false,
    "median": 7795008.58,
    "deviation_pct": 9.5,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9693,6 +10673,8 @@
    "ambiguous_zero": false,
    "median": 7795008.58,
    "deviation_pct": 5.9,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9712,6 +10694,8 @@
    "ambiguous_zero": false,
    "median": 7795008.58,
    "deviation_pct": -1.3,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9731,6 +10715,8 @@
    "ambiguous_zero": false,
    "median": 7795008.58,
    "deviation_pct": 5.7,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9750,6 +10736,8 @@
    "ambiguous_zero": false,
    "median": 7795008.58,
    "deviation_pct": 5.3,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9769,6 +10757,8 @@
    "ambiguous_zero": false,
    "median": 7795008.58,
    "deviation_pct": -2.5,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9788,6 +10778,8 @@
    "ambiguous_zero": false,
    "median": 7795008.58,
    "deviation_pct": -2.8,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9807,6 +10799,8 @@
    "ambiguous_zero": false,
    "median": 7795008.58,
    "deviation_pct": 2.3,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9826,6 +10820,8 @@
    "ambiguous_zero": false,
    "median": 7795008.58,
    "deviation_pct": 1.3,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9845,6 +10841,8 @@
    "ambiguous_zero": false,
    "median": 7795008.58,
    "deviation_pct": -10.5,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9864,6 +10862,8 @@
    "ambiguous_zero": false,
    "median": 7795008.58,
    "deviation_pct": -7.1,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9883,6 +10883,8 @@
    "ambiguous_zero": false,
    "median": 7795008.58,
    "deviation_pct": -4.5,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9902,6 +10904,8 @@
    "ambiguous_zero": false,
    "median": 7795008.58,
    "deviation_pct": -5.3,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9921,6 +10925,8 @@
    "ambiguous_zero": false,
    "median": 7795008.58,
    "deviation_pct": -5.9,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9940,6 +10946,8 @@
    "ambiguous_zero": false,
    "median": 7795008.58,
    "deviation_pct": -12.1,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9959,6 +10967,8 @@
    "ambiguous_zero": false,
    "median": 7795008.58,
    "deviation_pct": -12.6,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9978,6 +10988,8 @@
    "ambiguous_zero": false,
    "median": 7795008.58,
    "deviation_pct": -7.3,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -9997,6 +11009,8 @@
    "ambiguous_zero": false,
    "median": 207.59,
    "deviation_pct": 6.6,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -10016,6 +11030,8 @@
    "ambiguous_zero": false,
    "median": 28.27,
    "deviation_pct": 130.9,
+   "factor": 2.3,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -10035,6 +11051,8 @@
    "ambiguous_zero": false,
    "median": 54254.35,
    "deviation_pct": -12.2,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -10054,6 +11072,8 @@
    "ambiguous_zero": false,
    "median": 370000.2,
    "deviation_pct": -5.3,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -10073,6 +11093,8 @@
    "ambiguous_zero": false,
    "median": 54733.02,
    "deviation_pct": -52.7,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 24,
    "first_year": 1997,
    "last_year": 2020
@@ -10092,6 +11114,8 @@
    "ambiguous_zero": false,
    "median": 17156.07,
    "deviation_pct": 326.0,
+   "factor": 4.3,
+   "express_as": "factor",
    "n_years": 54,
    "first_year": 1972,
    "last_year": 2025
@@ -10111,6 +11135,8 @@
    "ambiguous_zero": false,
    "median": 20271.9,
    "deviation_pct": 2.4,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 43,
    "first_year": 1983,
    "last_year": 2025
@@ -10130,6 +11156,8 @@
    "ambiguous_zero": false,
    "median": 71300,
    "deviation_pct": 9.2,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 43,
    "first_year": 1983,
    "last_year": 2025
@@ -10149,6 +11177,8 @@
    "ambiguous_zero": false,
    "median": 67.95,
    "deviation_pct": -67.6,
+   "factor": 0.3,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -10168,6 +11198,8 @@
    "ambiguous_zero": false,
    "median": 2342589.05,
    "deviation_pct": -33.0,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -10187,6 +11219,8 @@
    "ambiguous_zero": false,
    "median": 346015.92,
    "deviation_pct": -28.0,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -10206,6 +11240,8 @@
    "ambiguous_zero": false,
    "median": 335.41,
    "deviation_pct": 117.3,
+   "factor": 2.2,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -10225,6 +11261,8 @@
    "ambiguous_zero": false,
    "median": 1.42,
    "deviation_pct": 51.9,
+   "factor": 1.5,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -10244,6 +11282,8 @@
    "ambiguous_zero": false,
    "median": 36816.79,
    "deviation_pct": -28.7,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -10263,6 +11303,8 @@
    "ambiguous_zero": false,
    "median": 194.8,
    "deviation_pct": 23.9,
+   "factor": 1.2,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -10282,6 +11324,8 @@
    "ambiguous_zero": false,
    "median": 367902.92,
    "deviation_pct": -42.6,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -10301,6 +11345,8 @@
    "ambiguous_zero": false,
    "median": 348272.5,
    "deviation_pct": 2.5,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -10320,6 +11366,8 @@
    "ambiguous_zero": false,
    "median": 5.22,
    "deviation_pct": 100.0,
+   "factor": 2.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -10339,6 +11387,8 @@
    "ambiguous_zero": false,
    "median": 789.01,
    "deviation_pct": -56.8,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -10358,6 +11408,8 @@
    "ambiguous_zero": false,
    "median": 501.61,
    "deviation_pct": -53.0,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -10377,6 +11429,8 @@
    "ambiguous_zero": false,
    "median": 3.9,
    "deviation_pct": 87.9,
+   "factor": 1.9,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -10396,6 +11450,8 @@
    "ambiguous_zero": false,
    "median": 11246.51,
    "deviation_pct": -44.6,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -10415,6 +11471,8 @@
    "ambiguous_zero": false,
    "median": 13673.71,
    "deviation_pct": 26.3,
+   "factor": 1.3,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -10434,6 +11492,8 @@
    "ambiguous_zero": false,
    "median": 2551.18,
    "deviation_pct": -39.7,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -10453,6 +11513,8 @@
    "ambiguous_zero": false,
    "median": 695.7,
    "deviation_pct": -61.7,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -10472,6 +11534,8 @@
    "ambiguous_zero": false,
    "median": 259.78,
    "deviation_pct": 81.5,
+   "factor": 1.8,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -10491,6 +11555,8 @@
    "ambiguous_zero": false,
    "median": 468.72,
    "deviation_pct": -36.1,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -10510,6 +11576,8 @@
    "ambiguous_zero": false,
    "median": 266.83,
    "deviation_pct": -20.5,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -10529,6 +11597,8 @@
    "ambiguous_zero": false,
    "median": 1107.78,
    "deviation_pct": -40.0,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -10548,6 +11618,8 @@
    "ambiguous_zero": false,
    "median": 59491.15,
    "deviation_pct": -53.0,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -10567,6 +11639,8 @@
    "ambiguous_zero": false,
    "median": 313178.74,
    "deviation_pct": -47.8,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -10586,6 +11660,8 @@
    "ambiguous_zero": false,
    "median": 10.6,
    "deviation_pct": -80.6,
+   "factor": 0.2,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -10605,6 +11681,8 @@
    "ambiguous_zero": false,
    "median": 162.34,
    "deviation_pct": -41.5,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -10624,6 +11702,8 @@
    "ambiguous_zero": false,
    "median": 13997.8,
    "deviation_pct": -41.0,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -10643,6 +11723,8 @@
    "ambiguous_zero": false,
    "median": 162407.59,
    "deviation_pct": -43.4,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -10662,6 +11744,8 @@
    "ambiguous_zero": false,
    "median": 39658.85,
    "deviation_pct": 85.7,
+   "factor": 1.9,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -10681,6 +11765,8 @@
    "ambiguous_zero": true,
    "median": 1.3,
    "deviation_pct": -100.0,
+   "factor": 0.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -10700,6 +11786,8 @@
    "ambiguous_zero": false,
    "median": 3344.24,
    "deviation_pct": -18.8,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -10719,6 +11807,8 @@
    "ambiguous_zero": false,
    "median": 27081.71,
    "deviation_pct": 9.2,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -10738,6 +11828,8 @@
    "ambiguous_zero": false,
    "median": 19173.96,
    "deviation_pct": -61.9,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -10757,6 +11849,8 @@
    "ambiguous_zero": false,
    "median": 33558.71,
    "deviation_pct": -17.4,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -10776,6 +11870,8 @@
    "ambiguous_zero": false,
    "median": 429968.46,
    "deviation_pct": -28.1,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -10795,6 +11891,8 @@
    "ambiguous_zero": false,
    "median": 17298.1,
    "deviation_pct": -27.2,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -10814,6 +11912,8 @@
    "ambiguous_zero": false,
    "median": 18868.49,
    "deviation_pct": -34.1,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -10833,6 +11933,8 @@
    "ambiguous_zero": false,
    "median": 24.05,
    "deviation_pct": -83.9,
+   "factor": 0.2,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -10852,6 +11954,8 @@
    "ambiguous_zero": false,
    "median": 0.84,
    "deviation_pct": 709.5,
+   "factor": 8.1,
+   "express_as": "factor",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -10871,6 +11975,8 @@
    "ambiguous_zero": false,
    "median": 1058.72,
    "deviation_pct": -82.6,
+   "factor": 0.2,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -10890,6 +11996,8 @@
    "ambiguous_zero": false,
    "median": 4272.14,
    "deviation_pct": 18.9,
+   "factor": 1.2,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -10909,6 +12017,8 @@
    "ambiguous_zero": false,
    "median": 19.69,
    "deviation_pct": 99.5,
+   "factor": 2.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -10928,6 +12038,8 @@
    "ambiguous_zero": false,
    "median": 4.01,
    "deviation_pct": -12.3,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -10947,6 +12059,8 @@
    "ambiguous_zero": false,
    "median": 25.18,
    "deviation_pct": 320.8,
+   "factor": 4.2,
+   "express_as": "factor",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -10966,6 +12080,8 @@
    "ambiguous_zero": false,
    "median": 0.68,
    "deviation_pct": 666.2,
+   "factor": 7.7,
+   "express_as": "factor",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -10985,6 +12101,8 @@
    "ambiguous_zero": false,
    "median": 6.6,
    "deviation_pct": 80.7,
+   "factor": 1.8,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11004,6 +12122,8 @@
    "ambiguous_zero": false,
    "median": 536.47,
    "deviation_pct": -39.7,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11023,6 +12143,8 @@
    "ambiguous_zero": false,
    "median": 1422.38,
    "deviation_pct": -72.6,
+   "factor": 0.3,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11042,6 +12164,8 @@
    "ambiguous_zero": false,
    "median": 2072.21,
    "deviation_pct": -35.9,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11061,6 +12185,8 @@
    "ambiguous_zero": false,
    "median": 159.03,
    "deviation_pct": -70.6,
+   "factor": 0.3,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11080,6 +12206,8 @@
    "ambiguous_zero": false,
    "median": 95.12,
    "deviation_pct": 204.8,
+   "factor": 3.0,
+   "express_as": "factor",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11099,6 +12227,8 @@
    "ambiguous_zero": false,
    "median": 1340.95,
    "deviation_pct": 196.2,
+   "factor": 3.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11118,6 +12248,8 @@
    "ambiguous_zero": true,
    "median": 0.04,
    "deviation_pct": -100.0,
+   "factor": 0.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11137,6 +12269,8 @@
    "ambiguous_zero": false,
    "median": 57925.83,
    "deviation_pct": -44.5,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11156,6 +12290,8 @@
    "ambiguous_zero": false,
    "median": 7865.05,
    "deviation_pct": 21.2,
+   "factor": 1.2,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11175,6 +12311,8 @@
    "ambiguous_zero": false,
    "median": 166587.52,
    "deviation_pct": -48.0,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11194,6 +12332,8 @@
    "ambiguous_zero": false,
    "median": 20922.5,
    "deviation_pct": -19.7,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11213,6 +12353,8 @@
    "ambiguous_zero": false,
    "median": 9.41,
    "deviation_pct": -39.1,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11232,6 +12374,8 @@
    "ambiguous_zero": false,
    "median": 284.84,
    "deviation_pct": -31.8,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11251,6 +12395,8 @@
    "ambiguous_zero": true,
    "median": 12.11,
    "deviation_pct": -100.0,
+   "factor": 0.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11270,6 +12416,8 @@
    "ambiguous_zero": false,
    "median": 340.65,
    "deviation_pct": -17.0,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11289,6 +12437,8 @@
    "ambiguous_zero": false,
    "median": 1981.95,
    "deviation_pct": -20.1,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11308,6 +12458,8 @@
    "ambiguous_zero": false,
    "median": 124.4,
    "deviation_pct": 250.7,
+   "factor": 3.5,
+   "express_as": "factor",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11327,6 +12479,8 @@
    "ambiguous_zero": false,
    "median": 329.28,
    "deviation_pct": 31.3,
+   "factor": 1.3,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11346,6 +12500,8 @@
    "ambiguous_zero": false,
    "median": 47297.03,
    "deviation_pct": -54.9,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11365,6 +12521,8 @@
    "ambiguous_zero": false,
    "median": 67053.8,
    "deviation_pct": -53.4,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11384,6 +12542,8 @@
    "ambiguous_zero": false,
    "median": 1074.89,
    "deviation_pct": -19.0,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11403,6 +12563,8 @@
    "ambiguous_zero": false,
    "median": 4030.19,
    "deviation_pct": -53.4,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11422,6 +12584,8 @@
    "ambiguous_zero": false,
    "median": 33.77,
    "deviation_pct": -27.1,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11441,6 +12605,8 @@
    "ambiguous_zero": false,
    "median": 517.33,
    "deviation_pct": -18.4,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11460,6 +12626,8 @@
    "ambiguous_zero": false,
    "median": 0.53,
    "deviation_pct": 141.9,
+   "factor": 2.4,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11479,6 +12647,8 @@
    "ambiguous_zero": false,
    "median": 5621.58,
    "deviation_pct": -65.7,
+   "factor": 0.3,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11498,6 +12668,8 @@
    "ambiguous_zero": false,
    "median": 206.09,
    "deviation_pct": -1.9,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11517,6 +12689,8 @@
    "ambiguous_zero": false,
    "median": 3.96,
    "deviation_pct": 9.2,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11536,6 +12710,8 @@
    "ambiguous_zero": false,
    "median": 1298.69,
    "deviation_pct": -27.2,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11555,6 +12731,8 @@
    "ambiguous_zero": false,
    "median": 3.69,
    "deviation_pct": 140.1,
+   "factor": 2.4,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11574,6 +12752,8 @@
    "ambiguous_zero": false,
    "median": 7967.07,
    "deviation_pct": -83.4,
+   "factor": 0.2,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11593,6 +12773,8 @@
    "ambiguous_zero": false,
    "median": 136.62,
    "deviation_pct": -77.1,
+   "factor": 0.2,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11612,6 +12794,8 @@
    "ambiguous_zero": false,
    "median": 132.38,
    "deviation_pct": -34.5,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11631,6 +12815,8 @@
    "ambiguous_zero": false,
    "median": 63.44,
    "deviation_pct": -46.4,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11650,6 +12836,8 @@
    "ambiguous_zero": false,
    "median": 21730.26,
    "deviation_pct": -63.5,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11669,6 +12857,8 @@
    "ambiguous_zero": false,
    "median": 63158.86,
    "deviation_pct": -25.8,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11688,6 +12878,8 @@
    "ambiguous_zero": false,
    "median": 38.09,
    "deviation_pct": 71.8,
+   "factor": 1.7,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11707,6 +12899,8 @@
    "ambiguous_zero": false,
    "median": 4176.93,
    "deviation_pct": -7.5,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11726,6 +12920,8 @@
    "ambiguous_zero": false,
    "median": 2962.05,
    "deviation_pct": -28.7,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11745,6 +12941,8 @@
    "ambiguous_zero": false,
    "median": 15.52,
    "deviation_pct": 104.4,
+   "factor": 2.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11764,6 +12962,8 @@
    "ambiguous_zero": false,
    "median": 57.68,
    "deviation_pct": -79.4,
+   "factor": 0.2,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11783,6 +12983,8 @@
    "ambiguous_zero": false,
    "median": 1163.3,
    "deviation_pct": 10.1,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11802,6 +13004,8 @@
    "ambiguous_zero": false,
    "median": 78.92,
    "deviation_pct": -71.2,
+   "factor": 0.3,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11821,6 +13025,8 @@
    "ambiguous_zero": false,
    "median": 3.9,
    "deviation_pct": -56.9,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11840,6 +13046,8 @@
    "ambiguous_zero": false,
    "median": 105.2,
    "deviation_pct": 41.8,
+   "factor": 1.4,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11859,6 +13067,8 @@
    "ambiguous_zero": false,
    "median": 23180.89,
    "deviation_pct": -73.6,
+   "factor": 0.3,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11878,6 +13088,8 @@
    "ambiguous_zero": false,
    "median": 2615.51,
    "deviation_pct": 2.7,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11897,6 +13109,8 @@
    "ambiguous_zero": false,
    "median": 92.59,
    "deviation_pct": -25.1,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11916,6 +13130,8 @@
    "ambiguous_zero": false,
    "median": 29914.37,
    "deviation_pct": -46.9,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11935,6 +13151,8 @@
    "ambiguous_zero": true,
    "median": 1.85,
    "deviation_pct": -100.0,
+   "factor": 0.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11954,6 +13172,8 @@
    "ambiguous_zero": false,
    "median": 59.84,
    "deviation_pct": 1065.9,
+   "factor": 11.7,
+   "express_as": "factor",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11973,6 +13193,8 @@
    "ambiguous_zero": true,
    "median": 8.43,
    "deviation_pct": -100.0,
+   "factor": 0.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -11992,6 +13214,8 @@
    "ambiguous_zero": false,
    "median": 35834.73,
    "deviation_pct": -45.1,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12011,6 +13235,8 @@
    "ambiguous_zero": false,
    "median": 20.88,
    "deviation_pct": -29.1,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12030,6 +13256,8 @@
    "ambiguous_zero": false,
    "median": 5766.51,
    "deviation_pct": -43.9,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12049,6 +13277,8 @@
    "ambiguous_zero": false,
    "median": 41.04,
    "deviation_pct": -66.6,
+   "factor": 0.3,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12068,6 +13298,8 @@
    "ambiguous_zero": false,
    "median": 378.1,
    "deviation_pct": -51.6,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12087,6 +13319,8 @@
    "ambiguous_zero": false,
    "median": 231.14,
    "deviation_pct": -82.0,
+   "factor": 0.2,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12106,6 +13340,8 @@
    "ambiguous_zero": false,
    "median": 6.62,
    "deviation_pct": -50.5,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12125,6 +13361,8 @@
    "ambiguous_zero": true,
    "median": 5.21,
    "deviation_pct": -100.0,
+   "factor": 0.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12144,6 +13382,8 @@
    "ambiguous_zero": false,
    "median": 125.77,
    "deviation_pct": -55.1,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12163,6 +13403,8 @@
    "ambiguous_zero": false,
    "median": 196.85,
    "deviation_pct": -88.5,
+   "factor": 0.1,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12182,6 +13424,8 @@
    "ambiguous_zero": false,
    "median": 48016.98,
    "deviation_pct": -44.9,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12201,6 +13445,8 @@
    "ambiguous_zero": false,
    "median": 43738.49,
    "deviation_pct": -43.2,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12220,6 +13466,8 @@
    "ambiguous_zero": false,
    "median": 232.32,
    "deviation_pct": 37.4,
+   "factor": 1.4,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12239,6 +13487,8 @@
    "ambiguous_zero": false,
    "median": 36665.85,
    "deviation_pct": -6.9,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12258,6 +13508,8 @@
    "ambiguous_zero": false,
    "median": 69212.04,
    "deviation_pct": -31.5,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12277,6 +13529,8 @@
    "ambiguous_zero": false,
    "median": 246.37,
    "deviation_pct": 10.2,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12296,6 +13550,8 @@
    "ambiguous_zero": false,
    "median": 1799.55,
    "deviation_pct": -21.0,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12315,6 +13571,8 @@
    "ambiguous_zero": true,
    "median": 3.54,
    "deviation_pct": -100.0,
+   "factor": 0.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12334,6 +13592,8 @@
    "ambiguous_zero": false,
    "median": 180281.48,
    "deviation_pct": -36.1,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12353,6 +13613,8 @@
    "ambiguous_zero": false,
    "median": 666.27,
    "deviation_pct": 91.3,
+   "factor": 1.9,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12372,6 +13634,8 @@
    "ambiguous_zero": true,
    "median": 7.26,
    "deviation_pct": -100.0,
+   "factor": 0.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12391,6 +13655,8 @@
    "ambiguous_zero": false,
    "median": 8982.52,
    "deviation_pct": -45.5,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12410,6 +13676,8 @@
    "ambiguous_zero": false,
    "median": 1161.62,
    "deviation_pct": -67.5,
+   "factor": 0.3,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12429,6 +13697,8 @@
    "ambiguous_zero": false,
    "median": 166623.93,
    "deviation_pct": -14.4,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12448,6 +13718,8 @@
    "ambiguous_zero": false,
    "median": 16523.5,
    "deviation_pct": -49.8,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12467,6 +13739,8 @@
    "ambiguous_zero": false,
    "median": 182.66,
    "deviation_pct": -74.1,
+   "factor": 0.3,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12486,6 +13760,8 @@
    "ambiguous_zero": false,
    "median": 1677.84,
    "deviation_pct": 155.6,
+   "factor": 2.6,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12505,6 +13781,8 @@
    "ambiguous_zero": false,
    "median": 60489.79,
    "deviation_pct": -20.6,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12524,6 +13802,8 @@
    "ambiguous_zero": false,
    "median": 4976.67,
    "deviation_pct": -71.4,
+   "factor": 0.3,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12543,6 +13823,8 @@
    "ambiguous_zero": true,
    "median": 3.54,
    "deviation_pct": -100.0,
+   "factor": 0.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12562,6 +13844,8 @@
    "ambiguous_zero": false,
    "median": 0.03,
    "deviation_pct": 2166.7,
+   "factor": 22.7,
+   "express_as": "factor",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12581,6 +13865,8 @@
    "ambiguous_zero": false,
    "median": 2.15,
    "deviation_pct": -1.6,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12600,6 +13886,8 @@
    "ambiguous_zero": false,
    "median": 7.05,
    "deviation_pct": 22.2,
+   "factor": 1.2,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12619,6 +13907,8 @@
    "ambiguous_zero": false,
    "median": 4876.48,
    "deviation_pct": -61.3,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12638,6 +13928,8 @@
    "ambiguous_zero": false,
    "median": 360.37,
    "deviation_pct": -19.9,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12657,6 +13949,8 @@
    "ambiguous_zero": false,
    "median": 361030.2,
    "deviation_pct": -0.51,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12676,6 +13970,8 @@
    "ambiguous_zero": false,
    "median": 5.75,
    "deviation_pct": -65.8,
+   "factor": 0.3,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12695,6 +13991,8 @@
    "ambiguous_zero": false,
    "median": 2217.36,
    "deviation_pct": -1.7,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12714,6 +14012,8 @@
    "ambiguous_zero": false,
    "median": 1060.23,
    "deviation_pct": -86.0,
+   "factor": 0.1,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12733,6 +14033,8 @@
    "ambiguous_zero": false,
    "median": 8659.73,
    "deviation_pct": -57.4,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12752,6 +14054,8 @@
    "ambiguous_zero": false,
    "median": 1951.43,
    "deviation_pct": -69.3,
+   "factor": 0.3,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12771,6 +14075,8 @@
    "ambiguous_zero": false,
    "median": 4019.24,
    "deviation_pct": -56.9,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12790,6 +14096,8 @@
    "ambiguous_zero": false,
    "median": 35.34,
    "deviation_pct": -55.5,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12809,6 +14117,8 @@
    "ambiguous_zero": false,
    "median": 13.53,
    "deviation_pct": -60.4,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12828,6 +14138,8 @@
    "ambiguous_zero": false,
    "median": 351.58,
    "deviation_pct": -85.5,
+   "factor": 0.1,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12847,6 +14159,8 @@
    "ambiguous_zero": false,
    "median": 872.3,
    "deviation_pct": 142.5,
+   "factor": 2.4,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12866,6 +14180,8 @@
    "ambiguous_zero": false,
    "median": 27967.31,
    "deviation_pct": -55.6,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12885,6 +14201,8 @@
    "ambiguous_zero": false,
    "median": 12.81,
    "deviation_pct": -27.8,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12904,6 +14222,8 @@
    "ambiguous_zero": true,
    "median": 10.12,
    "deviation_pct": -100.0,
+   "factor": 0.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12923,6 +14243,8 @@
    "ambiguous_zero": true,
    "median": 55.34,
    "deviation_pct": -100.0,
+   "factor": 0.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12942,6 +14264,8 @@
    "ambiguous_zero": false,
    "median": 1684.74,
    "deviation_pct": -49.9,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12961,6 +14285,8 @@
    "ambiguous_zero": false,
    "median": 142173.25,
    "deviation_pct": -50.9,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12980,6 +14306,8 @@
    "ambiguous_zero": false,
    "median": 230.64,
    "deviation_pct": -69.3,
+   "factor": 0.3,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -12999,6 +14327,8 @@
    "ambiguous_zero": false,
    "median": 545886.81,
    "deviation_pct": -47.7,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -13018,6 +14348,8 @@
    "ambiguous_zero": false,
    "median": 82.79,
    "deviation_pct": 59.2,
+   "factor": 1.6,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -13037,6 +14369,8 @@
    "ambiguous_zero": false,
    "median": 42599.02,
    "deviation_pct": -2.6,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -13056,6 +14390,8 @@
    "ambiguous_zero": false,
    "median": 21323.38,
    "deviation_pct": -19.4,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -13075,6 +14411,8 @@
    "ambiguous_zero": false,
    "median": 16.32,
    "deviation_pct": -77.3,
+   "factor": 0.2,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -13094,6 +14432,8 @@
    "ambiguous_zero": false,
    "median": 20943.62,
    "deviation_pct": -45.9,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -13113,6 +14453,8 @@
    "ambiguous_zero": false,
    "median": 543.29,
    "deviation_pct": -80.2,
+   "factor": 0.2,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -13132,6 +14474,8 @@
    "ambiguous_zero": false,
    "median": 142.66,
    "deviation_pct": -36.7,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -13151,6 +14495,8 @@
    "ambiguous_zero": false,
    "median": 335.93,
    "deviation_pct": -15.5,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -13170,6 +14516,8 @@
    "ambiguous_zero": false,
    "median": 204700.46,
    "deviation_pct": -26.9,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -13189,6 +14537,8 @@
    "ambiguous_zero": false,
    "median": 421.79,
    "deviation_pct": -61.2,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -13208,6 +14558,8 @@
    "ambiguous_zero": false,
    "median": 6.54,
    "deviation_pct": -8.3,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -13227,6 +14579,8 @@
    "ambiguous_zero": false,
    "median": 1.67,
    "deviation_pct": 14.1,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -13246,6 +14600,8 @@
    "ambiguous_zero": false,
    "median": 19.51,
    "deviation_pct": -67.5,
+   "factor": 0.3,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -13265,6 +14621,8 @@
    "ambiguous_zero": false,
    "median": 1012.54,
    "deviation_pct": -48.3,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -13284,6 +14642,8 @@
    "ambiguous_zero": false,
    "median": 495.68,
    "deviation_pct": -12.1,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -13303,6 +14663,8 @@
    "ambiguous_zero": false,
    "median": 51698.82,
    "deviation_pct": -37.7,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -13322,6 +14684,8 @@
    "ambiguous_zero": false,
    "median": 6667.76,
    "deviation_pct": -58.8,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -13341,6 +14705,8 @@
    "ambiguous_zero": false,
    "median": 24866.72,
    "deviation_pct": -37.8,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -13360,6 +14726,8 @@
    "ambiguous_zero": false,
    "median": 37.15,
    "deviation_pct": 25.5,
+   "factor": 1.3,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -13379,6 +14747,8 @@
    "ambiguous_zero": false,
    "median": 833.38,
    "deviation_pct": -63.2,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -13398,6 +14768,8 @@
    "ambiguous_zero": false,
    "median": 481.17,
    "deviation_pct": -75.8,
+   "factor": 0.2,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -13417,6 +14789,8 @@
    "ambiguous_zero": true,
    "median": 28.73,
    "deviation_pct": -100.0,
+   "factor": 0.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -13436,6 +14810,8 @@
    "ambiguous_zero": false,
    "median": 186.11,
    "deviation_pct": -57.6,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -13455,6 +14831,8 @@
    "ambiguous_zero": false,
    "median": 3162.56,
    "deviation_pct": -35.2,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -13474,6 +14852,8 @@
    "ambiguous_zero": false,
    "median": 7.15,
    "deviation_pct": -67.4,
+   "factor": 0.3,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -13493,6 +14873,8 @@
    "ambiguous_zero": false,
    "median": 92161.48,
    "deviation_pct": -32.4,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -13512,6 +14894,8 @@
    "ambiguous_zero": false,
    "median": 19309.38,
    "deviation_pct": -40.4,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -13531,6 +14915,8 @@
    "ambiguous_zero": false,
    "median": 7812.3,
    "deviation_pct": -42.6,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -13550,6 +14936,8 @@
    "ambiguous_zero": false,
    "median": 317.79,
    "deviation_pct": -40.0,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -13569,6 +14957,8 @@
    "ambiguous_zero": false,
    "median": 56104.85,
    "deviation_pct": -42.4,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -13588,6 +14978,8 @@
    "ambiguous_zero": false,
    "median": 1009.84,
    "deviation_pct": -60.3,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -13607,6 +14999,8 @@
    "ambiguous_zero": false,
    "median": 45805.87,
    "deviation_pct": -27.1,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -13626,6 +15020,8 @@
    "ambiguous_zero": false,
    "median": 7111.43,
    "deviation_pct": -65.1,
+   "factor": 0.3,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -13645,6 +15041,8 @@
    "ambiguous_zero": false,
    "median": 180.54,
    "deviation_pct": -76.8,
+   "factor": 0.2,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -13664,6 +15062,8 @@
    "ambiguous_zero": false,
    "median": 4016304.35,
    "deviation_pct": 9.0,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -13683,6 +15083,8 @@
    "ambiguous_zero": false,
    "median": 4016304.35,
    "deviation_pct": -3.4,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -13702,6 +15104,8 @@
    "ambiguous_zero": false,
    "median": 4016304.35,
    "deviation_pct": 1.2,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -13721,6 +15125,8 @@
    "ambiguous_zero": false,
    "median": 4016304.35,
    "deviation_pct": 10.4,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -13740,6 +15146,8 @@
    "ambiguous_zero": false,
    "median": 4016304.35,
    "deviation_pct": 3.6,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -13759,6 +15167,8 @@
    "ambiguous_zero": false,
    "median": 4016304.35,
    "deviation_pct": 2.5,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -13778,6 +15188,8 @@
    "ambiguous_zero": false,
    "median": 4016304.35,
    "deviation_pct": -17.9,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -13797,6 +15209,8 @@
    "ambiguous_zero": false,
    "median": 4016304.35,
    "deviation_pct": 1.5,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -13816,6 +15230,8 @@
    "ambiguous_zero": false,
    "median": 4016304.35,
    "deviation_pct": 1.8,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -13835,6 +15251,8 @@
    "ambiguous_zero": false,
    "median": 4016304.35,
    "deviation_pct": -4.3,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -13854,6 +15272,8 @@
    "ambiguous_zero": false,
    "median": 4016304.35,
    "deviation_pct": -9.4,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -13873,6 +15293,8 @@
    "ambiguous_zero": false,
    "median": 4016304.35,
    "deviation_pct": -1.2,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -13892,6 +15314,8 @@
    "ambiguous_zero": false,
    "median": 4016304.35,
    "deviation_pct": -12.7,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -13911,6 +15335,8 @@
    "ambiguous_zero": false,
    "median": 4016304.35,
    "deviation_pct": -33.9,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -13930,6 +15356,8 @@
    "ambiguous_zero": false,
    "median": 85.68,
    "deviation_pct": 100.8,
+   "factor": 2.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -13949,6 +15377,8 @@
    "ambiguous_zero": false,
    "median": 8.45,
    "deviation_pct": 41.8,
+   "factor": 1.4,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -13968,6 +15398,8 @@
    "ambiguous_zero": false,
    "median": 33569.7,
    "deviation_pct": -47.5,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -13987,6 +15419,8 @@
    "ambiguous_zero": false,
    "median": 208307.72,
    "deviation_pct": -31.0,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14006,6 +15440,8 @@
    "ambiguous_zero": false,
    "median": 25049.15,
    "deviation_pct": -59.2,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14025,6 +15461,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": -67.6,
+   "factor": 0.3,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14044,6 +15482,8 @@
    "ambiguous_zero": false,
    "median": 0.28,
    "deviation_pct": -28.0,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14063,6 +15503,8 @@
    "ambiguous_zero": false,
    "median": 0.01,
    "deviation_pct": 117.3,
+   "factor": 2.2,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14082,6 +15524,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": 52.0,
+   "factor": 1.5,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14101,6 +15545,8 @@
    "ambiguous_zero": false,
    "median": 0.01,
    "deviation_pct": -28.7,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14120,6 +15566,8 @@
    "ambiguous_zero": false,
    "median": 0.01,
    "deviation_pct": 23.9,
+   "factor": 1.2,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14139,6 +15587,8 @@
    "ambiguous_zero": false,
    "median": 0.05,
    "deviation_pct": 2.5,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14158,6 +15608,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": 100.0,
+   "factor": 2.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14177,6 +15629,8 @@
    "ambiguous_zero": false,
    "median": 0.01,
    "deviation_pct": -56.8,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14196,6 +15650,8 @@
    "ambiguous_zero": false,
    "median": 0.02,
    "deviation_pct": -53.0,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14215,6 +15671,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": 87.9,
+   "factor": 1.9,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14234,6 +15692,8 @@
    "ambiguous_zero": false,
    "median": 0.1,
    "deviation_pct": -44.6,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14253,6 +15713,8 @@
    "ambiguous_zero": false,
    "median": 0.05,
    "deviation_pct": 26.3,
+   "factor": 1.3,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14272,6 +15734,8 @@
    "ambiguous_zero": false,
    "median": 0.02,
    "deviation_pct": -39.7,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14291,6 +15755,8 @@
    "ambiguous_zero": false,
    "median": 0.01,
    "deviation_pct": -61.7,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14310,6 +15776,8 @@
    "ambiguous_zero": false,
    "median": 0.02,
    "deviation_pct": 81.5,
+   "factor": 1.8,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14329,6 +15797,8 @@
    "ambiguous_zero": false,
    "median": 0.01,
    "deviation_pct": -36.1,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14348,6 +15818,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": -20.5,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14367,6 +15839,8 @@
    "ambiguous_zero": false,
    "median": 0.05,
    "deviation_pct": -40.0,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14386,6 +15860,8 @@
    "ambiguous_zero": false,
    "median": 0.05,
    "deviation_pct": -53.0,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14405,6 +15881,8 @@
    "ambiguous_zero": false,
    "median": 0.04,
    "deviation_pct": -47.8,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14424,6 +15902,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": -80.6,
+   "factor": 0.2,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14443,6 +15923,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": -41.5,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14462,6 +15944,8 @@
    "ambiguous_zero": false,
    "median": 0.02,
    "deviation_pct": -41.0,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14481,6 +15965,8 @@
    "ambiguous_zero": false,
    "median": 0.26,
    "deviation_pct": -43.4,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14500,6 +15986,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": 85.7,
+   "factor": 1.9,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14519,6 +16007,8 @@
    "ambiguous_zero": true,
    "median": 0.0,
    "deviation_pct": -100.0,
+   "factor": 0.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14538,6 +16028,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": -18.8,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14557,6 +16049,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": 9.2,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14576,6 +16070,8 @@
    "ambiguous_zero": false,
    "median": 0.06,
    "deviation_pct": -61.9,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14595,6 +16091,8 @@
    "ambiguous_zero": false,
    "median": 0.07,
    "deviation_pct": -17.4,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14614,6 +16112,8 @@
    "ambiguous_zero": false,
    "median": 0.18,
    "deviation_pct": -28.1,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14633,6 +16133,8 @@
    "ambiguous_zero": false,
    "median": 0.05,
    "deviation_pct": -27.2,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14652,6 +16154,8 @@
    "ambiguous_zero": false,
    "median": 0.02,
    "deviation_pct": -34.1,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14671,6 +16175,8 @@
    "ambiguous_zero": false,
    "median": 0.01,
    "deviation_pct": -83.9,
+   "factor": 0.2,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14690,6 +16196,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": 709.5,
+   "factor": 8.1,
+   "express_as": "factor",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14709,6 +16217,8 @@
    "ambiguous_zero": false,
    "median": 0.02,
    "deviation_pct": -82.6,
+   "factor": 0.2,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14728,6 +16238,8 @@
    "ambiguous_zero": false,
    "median": 0.04,
    "deviation_pct": 18.9,
+   "factor": 1.2,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14747,6 +16259,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": 99.5,
+   "factor": 2.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14766,6 +16280,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": -12.3,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14785,6 +16301,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": 320.7,
+   "factor": 4.2,
+   "express_as": "factor",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14804,6 +16322,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": 666.2,
+   "factor": 7.7,
+   "express_as": "factor",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14823,6 +16343,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": 80.7,
+   "factor": 1.8,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14842,6 +16364,8 @@
    "ambiguous_zero": false,
    "median": 0.01,
    "deviation_pct": -39.7,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14861,6 +16385,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": -72.6,
+   "factor": 0.3,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14880,6 +16406,8 @@
    "ambiguous_zero": false,
    "median": 0.01,
    "deviation_pct": -35.9,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14899,6 +16427,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": -70.6,
+   "factor": 0.3,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14918,6 +16448,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": 204.8,
+   "factor": 3.0,
+   "express_as": "factor",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14937,6 +16469,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": 196.2,
+   "factor": 3.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14956,6 +16490,8 @@
    "ambiguous_zero": true,
    "median": 0.0,
    "deviation_pct": -100.0,
+   "factor": 0.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14975,6 +16511,8 @@
    "ambiguous_zero": false,
    "median": 0.05,
    "deviation_pct": -44.5,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -14994,6 +16532,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": -39.1,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -15013,6 +16553,8 @@
    "ambiguous_zero": false,
    "median": 0.01,
    "deviation_pct": -31.8,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -15032,6 +16574,8 @@
    "ambiguous_zero": true,
    "median": 0.0,
    "deviation_pct": -100.0,
+   "factor": 0.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -15051,6 +16595,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": -17.0,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -15070,6 +16616,8 @@
    "ambiguous_zero": false,
    "median": 0.01,
    "deviation_pct": -20.1,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -15089,6 +16637,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": 250.7,
+   "factor": 3.5,
+   "express_as": "factor",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -15108,6 +16658,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": 31.3,
+   "factor": 1.3,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -15127,6 +16679,8 @@
    "ambiguous_zero": false,
    "median": 0.2,
    "deviation_pct": -54.9,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -15146,6 +16700,8 @@
    "ambiguous_zero": false,
    "median": 0.27,
    "deviation_pct": -53.4,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -15165,6 +16721,8 @@
    "ambiguous_zero": false,
    "median": 0.1,
    "deviation_pct": -19.0,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -15184,6 +16742,8 @@
    "ambiguous_zero": false,
    "median": 0.12,
    "deviation_pct": -53.4,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -15203,6 +16763,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": -27.1,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -15222,6 +16784,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": -18.4,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -15241,6 +16805,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": 140.8,
+   "factor": 2.4,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -15260,6 +16826,8 @@
    "ambiguous_zero": false,
    "median": 0.05,
    "deviation_pct": -65.7,
+   "factor": 0.3,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -15279,6 +16847,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": -1.9,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -15298,6 +16868,8 @@
    "ambiguous_zero": false,
    "median": 0.01,
    "deviation_pct": 9.2,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -15317,6 +16889,8 @@
    "ambiguous_zero": false,
    "median": 0.01,
    "deviation_pct": -27.2,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -15336,6 +16910,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": 140.1,
+   "factor": 2.4,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -15355,6 +16931,8 @@
    "ambiguous_zero": false,
    "median": 0.07,
    "deviation_pct": -83.4,
+   "factor": 0.2,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -15374,6 +16952,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": -77.1,
+   "factor": 0.2,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -15393,6 +16973,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": -34.5,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -15412,6 +16994,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": -46.4,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -15431,6 +17015,8 @@
    "ambiguous_zero": false,
    "median": 0.01,
    "deviation_pct": -63.5,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -15450,6 +17036,8 @@
    "ambiguous_zero": false,
    "median": 0.02,
    "deviation_pct": -25.8,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -15469,6 +17057,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": 71.8,
+   "factor": 1.7,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -15488,6 +17078,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": -7.5,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -15507,6 +17099,8 @@
    "ambiguous_zero": false,
    "median": 0.01,
    "deviation_pct": -28.7,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -15526,6 +17120,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": 104.4,
+   "factor": 2.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -15545,6 +17141,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": -79.4,
+   "factor": 0.2,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -15564,6 +17162,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": 10.1,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -15583,6 +17183,8 @@
    "ambiguous_zero": false,
    "median": 0.01,
    "deviation_pct": -71.2,
+   "factor": 0.3,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -15602,6 +17204,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": -56.9,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -15621,6 +17225,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": 41.8,
+   "factor": 1.4,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -15640,6 +17246,8 @@
    "ambiguous_zero": false,
    "median": 0.01,
    "deviation_pct": -73.6,
+   "factor": 0.3,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -15659,6 +17267,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": 2.7,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -15678,6 +17288,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": -25.1,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -15697,6 +17309,8 @@
    "ambiguous_zero": false,
    "median": 0.16,
    "deviation_pct": -46.9,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -15716,6 +17330,8 @@
    "ambiguous_zero": true,
    "median": 0.01,
    "deviation_pct": -100.0,
+   "factor": 0.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -15735,6 +17351,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": 1065.9,
+   "factor": 11.7,
+   "express_as": "factor",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -15754,6 +17372,8 @@
    "ambiguous_zero": true,
    "median": 0.0,
    "deviation_pct": -100.0,
+   "factor": 0.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -15773,6 +17393,8 @@
    "ambiguous_zero": false,
    "median": 0.16,
    "deviation_pct": -45.1,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -15792,6 +17414,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": -29.1,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -15811,6 +17435,8 @@
    "ambiguous_zero": false,
    "median": 0.06,
    "deviation_pct": -43.9,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -15830,6 +17456,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": -66.6,
+   "factor": 0.3,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -15849,6 +17477,8 @@
    "ambiguous_zero": false,
    "median": 0.01,
    "deviation_pct": -51.6,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -15868,6 +17498,8 @@
    "ambiguous_zero": false,
    "median": 0.01,
    "deviation_pct": -82.0,
+   "factor": 0.2,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -15887,6 +17519,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": -50.5,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -15906,6 +17540,8 @@
    "ambiguous_zero": true,
    "median": 0.0,
    "deviation_pct": -100.0,
+   "factor": 0.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -15925,6 +17561,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": -55.1,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -15944,6 +17582,8 @@
    "ambiguous_zero": false,
    "median": 0.01,
    "deviation_pct": -88.5,
+   "factor": 0.1,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -15963,6 +17603,8 @@
    "ambiguous_zero": false,
    "median": 0.08,
    "deviation_pct": -44.9,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -15982,6 +17624,8 @@
    "ambiguous_zero": false,
    "median": 0.02,
    "deviation_pct": -43.2,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16001,6 +17645,8 @@
    "ambiguous_zero": false,
    "median": 0.01,
    "deviation_pct": 37.4,
+   "factor": 1.4,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16020,6 +17666,8 @@
    "ambiguous_zero": false,
    "median": 0.03,
    "deviation_pct": -6.9,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16039,6 +17687,8 @@
    "ambiguous_zero": false,
    "median": 0.1,
    "deviation_pct": -31.5,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16058,6 +17708,8 @@
    "ambiguous_zero": false,
    "median": 0.02,
    "deviation_pct": 10.2,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16077,6 +17729,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": -21.0,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16096,6 +17750,8 @@
    "ambiguous_zero": true,
    "median": 0.01,
    "deviation_pct": -100.0,
+   "factor": 0.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16115,6 +17771,8 @@
    "ambiguous_zero": false,
    "median": 0.23,
    "deviation_pct": -36.1,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16134,6 +17792,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": 91.3,
+   "factor": 1.9,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16153,6 +17813,8 @@
    "ambiguous_zero": true,
    "median": 0.0,
    "deviation_pct": -100.0,
+   "factor": 0.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16172,6 +17834,8 @@
    "ambiguous_zero": false,
    "median": 0.07,
    "deviation_pct": -45.5,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16191,6 +17855,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": -67.5,
+   "factor": 0.3,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16210,6 +17876,8 @@
    "ambiguous_zero": false,
    "median": 0.02,
    "deviation_pct": -49.8,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16229,6 +17897,8 @@
    "ambiguous_zero": false,
    "median": 0.01,
    "deviation_pct": -74.1,
+   "factor": 0.3,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16248,6 +17918,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": 155.6,
+   "factor": 2.6,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16267,6 +17939,8 @@
    "ambiguous_zero": false,
    "median": 0.07,
    "deviation_pct": -20.6,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16286,6 +17960,8 @@
    "ambiguous_zero": false,
    "median": 0.04,
    "deviation_pct": -71.4,
+   "factor": 0.3,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16305,6 +17981,8 @@
    "ambiguous_zero": true,
    "median": 0.0,
    "deviation_pct": -100.0,
+   "factor": 0.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16324,6 +18002,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": 2166.7,
+   "factor": 22.7,
+   "express_as": "factor",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16343,6 +18023,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": -1.6,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16362,6 +18044,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": 22.2,
+   "factor": 1.2,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16381,6 +18065,8 @@
    "ambiguous_zero": false,
    "median": 0.03,
    "deviation_pct": -61.3,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16400,6 +18086,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": -19.9,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16419,6 +18107,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": -65.8,
+   "factor": 0.3,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16438,6 +18128,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": -1.7,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16457,6 +18149,8 @@
    "ambiguous_zero": false,
    "median": 0.01,
    "deviation_pct": -86.0,
+   "factor": 0.1,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16476,6 +18170,8 @@
    "ambiguous_zero": false,
    "median": 0.01,
    "deviation_pct": -57.4,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16495,6 +18191,8 @@
    "ambiguous_zero": false,
    "median": 0.01,
    "deviation_pct": -69.3,
+   "factor": 0.3,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16514,6 +18212,8 @@
    "ambiguous_zero": false,
    "median": 0.01,
    "deviation_pct": -56.9,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16533,6 +18233,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": -55.5,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16552,6 +18254,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": -60.4,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16571,6 +18275,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": -85.5,
+   "factor": 0.1,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16590,6 +18296,8 @@
    "ambiguous_zero": false,
    "median": 0.01,
    "deviation_pct": 142.5,
+   "factor": 2.4,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16609,6 +18317,8 @@
    "ambiguous_zero": false,
    "median": 0.07,
    "deviation_pct": -55.6,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16628,6 +18338,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": -27.8,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16647,6 +18359,8 @@
    "ambiguous_zero": true,
    "median": 0.0,
    "deviation_pct": -100.0,
+   "factor": 0.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16666,6 +18380,8 @@
    "ambiguous_zero": true,
    "median": 0.02,
    "deviation_pct": -100.0,
+   "factor": 0.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16685,6 +18401,8 @@
    "ambiguous_zero": false,
    "median": 0.01,
    "deviation_pct": -49.9,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16704,6 +18422,8 @@
    "ambiguous_zero": false,
    "median": 0.01,
    "deviation_pct": -50.9,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16723,6 +18443,8 @@
    "ambiguous_zero": false,
    "median": 0.01,
    "deviation_pct": -69.3,
+   "factor": 0.3,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16742,6 +18464,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": 59.2,
+   "factor": 1.6,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16761,6 +18485,8 @@
    "ambiguous_zero": false,
    "median": 0.02,
    "deviation_pct": -2.6,
+   "factor": 1.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16780,6 +18506,8 @@
    "ambiguous_zero": false,
    "median": 0.11,
    "deviation_pct": -19.4,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16799,6 +18527,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": -77.3,
+   "factor": 0.2,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16818,6 +18548,8 @@
    "ambiguous_zero": false,
    "median": 0.29,
    "deviation_pct": -45.9,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16837,6 +18569,8 @@
    "ambiguous_zero": false,
    "median": 0.03,
    "deviation_pct": -80.2,
+   "factor": 0.2,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16856,6 +18590,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": -36.7,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16875,6 +18611,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": -15.5,
+   "factor": 0.8,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16894,6 +18632,8 @@
    "ambiguous_zero": false,
    "median": 0.33,
    "deviation_pct": -26.9,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16913,6 +18653,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": -61.2,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16932,6 +18674,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": -8.3,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16951,6 +18695,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": 14.1,
+   "factor": 1.1,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16970,6 +18716,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": -67.5,
+   "factor": 0.3,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -16989,6 +18737,8 @@
    "ambiguous_zero": false,
    "median": 0.06,
    "deviation_pct": -48.3,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -17008,6 +18758,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": -12.1,
+   "factor": 0.9,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -17027,6 +18779,8 @@
    "ambiguous_zero": false,
    "median": 0.04,
    "deviation_pct": -37.7,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -17046,6 +18800,8 @@
    "ambiguous_zero": false,
    "median": 0.12,
    "deviation_pct": -58.8,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -17065,6 +18821,8 @@
    "ambiguous_zero": false,
    "median": 0.05,
    "deviation_pct": -37.8,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -17084,6 +18842,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": 25.5,
+   "factor": 1.3,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -17103,6 +18863,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": -63.2,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -17122,6 +18884,8 @@
    "ambiguous_zero": false,
    "median": 0.03,
    "deviation_pct": -75.8,
+   "factor": 0.2,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -17141,6 +18905,8 @@
    "ambiguous_zero": true,
    "median": 0.01,
    "deviation_pct": -100.0,
+   "factor": 0.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -17160,6 +18926,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": -57.6,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -17179,6 +18947,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": -35.2,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -17198,6 +18968,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": -67.4,
+   "factor": 0.3,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -17217,6 +18989,8 @@
    "ambiguous_zero": false,
    "median": 0.1,
    "deviation_pct": -32.4,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -17236,6 +19010,8 @@
    "ambiguous_zero": false,
    "median": 0.08,
    "deviation_pct": -40.4,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -17255,6 +19031,8 @@
    "ambiguous_zero": false,
    "median": 0.01,
    "deviation_pct": -42.6,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -17274,6 +19052,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": -40.0,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -17293,6 +19073,8 @@
    "ambiguous_zero": false,
    "median": 0.01,
    "deviation_pct": -42.4,
+   "factor": 0.6,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -17312,6 +19094,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": -60.3,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -17331,6 +19115,8 @@
    "ambiguous_zero": false,
    "median": 0.05,
    "deviation_pct": -27.1,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -17350,6 +19136,8 @@
    "ambiguous_zero": false,
    "median": 0.02,
    "deviation_pct": -65.1,
+   "factor": 0.3,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -17369,6 +19157,8 @@
    "ambiguous_zero": false,
    "median": 0.01,
    "deviation_pct": -76.8,
+   "factor": 0.2,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -17388,6 +19178,8 @@
    "ambiguous_zero": false,
    "median": 0.01,
    "deviation_pct": 100.8,
+   "factor": 2.0,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -17407,6 +19199,8 @@
    "ambiguous_zero": false,
    "median": 0.0,
    "deviation_pct": 41.8,
+   "factor": 1.4,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -17426,6 +19220,8 @@
    "ambiguous_zero": false,
    "median": 0.03,
    "deviation_pct": -47.5,
+   "factor": 0.5,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -17445,6 +19241,8 @@
    "ambiguous_zero": false,
    "median": 0.28,
    "deviation_pct": -31.0,
+   "factor": 0.7,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -17464,6 +19262,8 @@
    "ambiguous_zero": false,
    "median": 0.06,
    "deviation_pct": -59.2,
+   "factor": 0.4,
+   "express_as": "percent",
    "n_years": 14,
    "first_year": 2012,
    "last_year": 2025
@@ -103041,18 +104841,10 @@
    "entity_name": "Verden",
    "level": "world",
    "kind": "trend",
-   "computed": true,
+   "computed": false,
+   "reason": "too_few_years",
    "n_years": 14,
-   "first_year": 2012,
-   "last_year": 2025,
-   "slope_per_year": -63834.36,
-   "slope_per_decade": -638343.6,
-   "s": -47,
-   "z": -2.5183,
-   "p_value": 0.011793,
-   "alpha": 0.05,
-   "significant": true,
-   "direction": "decreasing"
+   "min_years": 20
   },
   "trend.owid_annual_area_burnt.WLF": {
    "series_id": "owid_annual_area_burnt",

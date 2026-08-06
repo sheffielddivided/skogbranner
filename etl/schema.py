@@ -97,6 +97,11 @@ TREND_MAX_ZERO_TAIL = 2
 # en normaltilnærming som ikke holder for korte serier — se CLAUDE.md § 7.
 TREND_MIN_YEARS = 10
 
+# Verdensnivået har en høyere grense enn de øvrige entitetene. En global trend
+# leses som en påstand om verden, og skal tåle at et enkeltår faller bort —
+# se CLAUDE.md § 7.
+TREND_MIN_YEARS_WORLD = 20
+
 # Signifikansnivå for Mann–Kendall. Over denne p-verdien rapporteres trenden
 # som «ingen statistisk signifikant trend» (CLAUDE.md § 7).
 TREND_ALPHA = 0.05
@@ -104,6 +109,11 @@ TREND_ALPHA = 0.05
 # Antall entiteter konsentrasjonen regnes over: andelen av totalen som de N
 # største står for (CLAUDE.md § 7).
 CONCENTRATION_TOP_N = 10
+
+# Avvik fra normal over denne prosenten uttrykkes som multiplikator i teksten.
+# Verdien i insights.json er den samme uansett — det er formuleringen som
+# endrer seg, se CLAUDE.md § 7.
+ANOMALY_FACTOR_PCT = 200.0
 
 # Rutenettkilder fordeles til land med geometrien fra K6. En rute som bærer
 # brent areal uten at noen landgeometri dekker den, kan ikke tilskrives et

@@ -849,6 +849,19 @@ Av samme grunn beregnes ikke avvik fra normal når medianen er null. Da har
 uttrykket ingen nevner, og en entitet uten en eneste påvist brann har ingen
 normal å avvike fra.
 
+**Store avvik skrives som multiplikator, ikke som prosent.** Over
+`ANOMALY_FACTOR_PCT` sier setningen «nesten femti ganger medianen» i stedet
+for «4 745 prosent over normalen». Et firesifret prosenttall er ikke en
+størrelse en leser kan se for seg, og det leses som et utrop selv når det er
+regnet riktig.
+
+Verdien er den samme i begge tilfeller. `insights.json` fører både
+`deviation_pct` og `factor`, og `express_as` sier hvilken av dem setningen
+skal bruke — det er formuleringen som skifter, ikke tallet.
+
+Grensen gjelder bare oppover. Under medianen er avviket begrenset av
+−100 prosent og blir aldri uleselig.
+
 ### Hver avledning har et grunnlag som kan oppgis
 
 En avledning er ikke bare et tall. Den bærer serien, kilden, `quality`,
@@ -881,6 +894,19 @@ ikke skjer noe.
 ikke holder for få år, og `TREND_MIN_YEARS` i `etl/schema.py` setter grensen.
 En p-verdi regnet på en håndfull punkter ville sett like presis ut som en
 regnet på førti, og det er nettopp den forskjellen leseren ikke kan se.
+
+**Verdensnivået har en høyere grense: `TREND_MIN_YEARS_WORLD`.** En trend for
+en enkelt entitet er et tall om det landet. En trend for verden leses som en
+påstand om verden, og den skal ikke kunne hvile på et enkeltår.
+
+Grunnen står i dataene. K1s verdensserie flytter seg fra −477 000 til
+−638 000 km² per tiår når 2025 tas med, og p-verdien fra 0,044 til 0,012. Ett
+år av fjorten som flytter både størrelsen og signifikansen, er ikke et
+grunnlag for å publisere en global trend. K8 og K9, som har 36 og 24 år,
+beholder sine.
+
+Grensen gjelder `level: world`. Land og regioner beholder `TREND_MIN_YEARS` —
+der er tallet en observasjon om én entitet, ikke en oppsummering av verden.
 
 **Glattede serier får ingen trend.** K10 er et vektet snitt over et vindu på
 flere hundre år (`f_smoothed`, § 9), og nabopunktene er derfor ikke
@@ -1364,6 +1390,30 @@ det første leseren ser i figuren. Figurteksten må ta det eksplisitt, og den m�
 gjøre det **uten å påstå hvilken serie som er riktig** — det er en vurdering
 siden ikke gjør (P1). Skriv om hva produktene ser ulikt, ikke om hvem som ser
 best.
+
+**De spriker ikke bare i nivå. De peker i hver sin retning.** Trendene i
+`insights.json` er beregnet per serie, innenfor én kilde og én `quality`, slik
+§ 7 krever — og de svarer ulikt:
+
+| Serie | Periode | Retning | Per tiår | p |
+|---|---|---|---|---|
+| K8 | 1982–2018 | stigende | +145 888 km² | 0,006 |
+| K9 | 1997–2020 | fallende | −793 805 km² | 0,00001 |
+| K1 | 2012–2025 | ingen trend publiseres — serien er kortere enn `TREND_MIN_YEARS_WORLD` | | |
+
+Hver av de to som står igjen, er statistisk signifikant, og hver av dem er
+regnet riktig. Men de dekker ulike perioder med ulike produkter, og settes de
+under hverandre i samme seksjon, leser leseren en konklusjon uansett hvor
+nøytralt hver enkelt setning er formulert. Det er ikke ordlyden som bærer
+påstanden, det er naboskapet.
+
+Figurteksten må derfor si hvorfor to serier kan gi hver sin retning uten at
+noen av dem tar feil: de ser ulike perioder, med ulik deteksjonsevne, og
+ingen av dem dekker den andres tidsrom. Den skal ikke slå fast hvilken
+retning som gjelder, og den skal ikke la være å nevne at de spriker.
+
+En sammenskjøtt trend over alle tre er uansett forbudt (§ 7), og det er ikke
+en omgåelse av problemet — det er den samme regelen sett fra en annen kant.
 
 **Ikke implementert:** S2–S6 har overskrift og en merknad om at de ikke er
 laget, så K3, K4, K5 og K7 ligger i datasettet uten at noen seksjon viser dem

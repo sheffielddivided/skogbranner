@@ -19,7 +19,13 @@ import unittest
 from statistics import NormalDist
 
 from etl import derive
-from etl.schema import TREND_MAX_ZERO_SHARE, TREND_MAX_ZERO_TAIL, TREND_MIN_YEARS
+from etl.schema import (
+    ANOMALY_FACTOR_PCT,
+    TREND_MAX_ZERO_SHARE,
+    TREND_MAX_ZERO_TAIL,
+    TREND_MIN_YEARS,
+    TREND_MIN_YEARS_WORLD,
+)
 
 
 def _serie(verdier, **felt):
@@ -241,6 +247,24 @@ class TrendReglene(unittest.TestCase):
         self.assertTrue(t["computed"])
         self.assertEqual(t["direction"], "decreasing")
 
+    def test_verdensnivaaet_har_en_hoeyere_grense(self):
+        # Like mange år, ulikt nivå: et land får trenden, verden ikke.
+        aar = {2000 + i: float(i) for i in range(TREND_MIN_YEARS_WORLD - 1)}
+        land = _serie(aar)
+        self.assertTrue(derive.trend(land, "NOR")["computed"])
+
+        verden = _serie(aar)
+        verden["levels"] = {"NOR": "world"}
+        t = derive.trend(verden, "NOR")
+        self.assertFalse(t["computed"])
+        self.assertEqual(t["reason"], "too_few_years")
+        self.assertEqual(t["min_years"], TREND_MIN_YEARS_WORLD)
+
+    def test_lang_nok_verdensserie_faar_trend(self):
+        verden = _serie({2000 + i: float(i) for i in range(TREND_MIN_YEARS_WORLD)})
+        verden["levels"] = {"NOR": "world"}
+        self.assertTrue(derive.trend(verden, "NOR")["computed"])
+
     def test_glattet_serie_faar_ingen_trend(self):
         serie = _serie({i: float(i) for i in range(40)}, smoothed=True)
         t = derive.trend(serie, "NOR")
@@ -286,6 +310,30 @@ class Avledninger(unittest.TestCase):
         a = derive.avvik_fra_normal(self.serie, "NOR", 2023)
         self.assertEqual(a["median"], 25.0)
         self.assertAlmostEqual(a["deviation_pct"], 60.0)
+
+    def test_store_avvik_uttrykkes_som_multiplikator(self):
+        # Tyskland-tilfellet fra K4: 54,75 km² mot en median på 1,13. «4 745
+        # prosent over normalen» sier mindre enn «nesten femti ganger».
+        # Medianen av 1,0 / 1,13 / 1,2 / 54,75 er (1,13 + 1,2) / 2 = 1,165, og
+        # 54,75 / 1,165 = 47,0.
+        serie = _serie({2020: 1.0, 2021: 1.13, 2022: 1.2, 2023: 54.75})
+        a = derive.avvik_fra_normal(serie, "NOR", 2023)
+        self.assertEqual(a["express_as"], "factor")
+        self.assertEqual(a["factor"], 47.0)
+        # Prosentverdien blir stående — det er formuleringen som endres.
+        self.assertGreater(a["deviation_pct"], ANOMALY_FACTOR_PCT)
+
+    def test_vanlige_avvik_blir_staaende_i_prosent(self):
+        a = derive.avvik_fra_normal(self.serie, "NOR", 2023)
+        self.assertEqual(a["express_as"], "percent")
+        self.assertAlmostEqual(a["deviation_pct"], 60.0)
+        self.assertAlmostEqual(a["factor"], 1.6)
+
+    def test_avvik_under_medianen_blir_alltid_prosent(self):
+        # Nedover er avviket begrenset av −100 prosent og blir aldri uleselig.
+        serie = _serie({2020: 100.0, 2021: 100.0, 2022: 1.0})
+        a = derive.avvik_fra_normal(serie, "NOR", 2022)
+        self.assertEqual(a["express_as"], "percent")
 
     def test_avvik_beregnes_ikke_naar_medianen_er_null(self):
         serie = _serie({2020: 0.0, 2021: 0.0, 2022: 8.0})

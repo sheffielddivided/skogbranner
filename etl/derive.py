@@ -23,6 +23,7 @@ from collections import defaultdict
 
 from etl import validate
 from etl.schema import (
+    ANOMALY_FACTOR_PCT,
     CONCENTRATION_TOP_N,
     INSIGHTS_JSON,
     LAND_AREA_JSON,
@@ -30,6 +31,7 @@ from etl.schema import (
     TREND_MAX_ZERO_SHARE,
     TREND_MAX_ZERO_TAIL,
     TREND_MIN_YEARS,
+    TREND_MIN_YEARS_WORLD,
 )
 
 # Fotnotene avledningene leser. De er kildens egen merking av hva en verdi er,
@@ -290,6 +292,7 @@ def avvik_fra_normal(serie, kode, aar):
     if median <= 0:
         return None
     verdi = punkter[aar]
+    avvik = (verdi - median) / median * 100
     return dict(
         _felles(serie, kode),
         kind="anomaly",
@@ -297,7 +300,11 @@ def avvik_fra_normal(serie, kode, aar):
         value=verdi,
         ambiguous_zero=serie["entities"][kode][aar]["ambiguous_zero"],
         median=round(median, DESIMALER_VERDI),
-        deviation_pct=_prosent((verdi - median) / median * 100),
+        deviation_pct=_prosent(avvik),
+        # Store avvik sier mer som multiplikator enn som prosent. Verdien er
+        # den samme — det er formuleringen som skifter, se § 7.
+        factor=round(verdi / median, 1),
+        express_as="factor" if avvik >= ANOMALY_FACTOR_PCT else "percent",
         n_years=len(punkter),
         first_year=min(punkter),
         last_year=max(punkter),
@@ -319,12 +326,19 @@ def trend(serie, kode):
     if serie["smoothed"]:
         return dict(felles, reason="smoothed", n_years=len(punkter))
 
-    if len(punkter) < TREND_MIN_YEARS:
+    # Verdensnivået har sin egen grense. En global trend leses som en påstand
+    # om verden, og tåler ikke å hvile på et enkeltår (§ 7).
+    min_aar = (
+        TREND_MIN_YEARS_WORLD
+        if serie["levels"][kode] == "world"
+        else TREND_MIN_YEARS
+    )
+    if len(punkter) < min_aar:
         return dict(
             felles,
             reason="too_few_years",
             n_years=len(punkter),
-            min_years=TREND_MIN_YEARS,
+            min_years=min_aar,
         )
 
     tvetydige = [a for a in sorted(aar) if aar[a]["ambiguous_zero"]]
