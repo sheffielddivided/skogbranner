@@ -1,0 +1,195 @@
+---
+/**
+ * Sorterbar rangeringstabell (CLAUDE.md § 8, S2).
+ *
+ * Tabellen er ferdig sortert etter brent areal og fullt lesbar uten
+ * JavaScript (§ 9). Sorteringsknappene legges bare til hvis skript kjører, og
+ * skriptet er vårt eget: ingen avhengigheter, ingen forespørsler ut (T2).
+ *
+ * «Ingen data» sorteres alltid sist, uansett retning. En måling som mangler er
+ * ikke en lav verdi (§ 6).
+ */
+import { kilde, fotnotetekst } from "../lib/data";
+import { dato, tall, desimaltall } from "../lib/format";
+
+interface Rad {
+  entity: string;
+  entity_name: string;
+  areal: number | null;
+  andelLand: number | null;
+  andelVerden: number | null;
+}
+
+interface Props {
+  id: string;
+  tittel: string;
+  rader: Rad[];
+  kildeIder: string[];
+  dekningPerKilde: Record<string, { fra: number; til: number }>;
+  csvFil: string;
+  fotnoter: string[];
+}
+
+const { id, tittel, rader, kildeIder, dekningPerKilde, csvFil, fotnoter } =
+  Astro.props;
+
+const base = import.meta.env.BASE_URL;
+const csvUrl = `${base}data/figur/${csvFil}`;
+
+const kildene = kildeIder.map((kildeId) => {
+  const d = dekningPerKilde[kildeId]!;
+  return {
+    k: kilde(kildeId),
+    dekning: d.fra === d.til ? String(d.fra) : `${d.fra}–${d.til}`,
+  };
+});
+
+const INGEN = "ingen data";
+const celler = rader.map((r) => ({
+  navn: r.entity_name,
+  areal: r.areal === null ? INGEN : tall(r.areal),
+  arealVerdi: r.areal,
+  andelLand: r.andelLand === null ? INGEN : `${desimaltall(r.andelLand * 100)} %`,
+  andelLandVerdi: r.andelLand,
+  andelVerden:
+    r.andelVerden === null ? INGEN : `${desimaltall(r.andelVerden * 100)} %`,
+  andelVerdenVerdi: r.andelVerden,
+}));
+---
+
+<div class="figur rangering" id={id}>
+  <h3 class="figur-tittel">{tittel}</h3>
+
+  <div class="tabell-ramme">
+    <table class="rangering-tabell" data-sorterbar>
+      <caption>
+        Landene står etter brent areal, med det største først. «Ingen data»
+        betyr at kilden ikke fører landet dette året.
+      </caption>
+      <thead>
+        <tr>
+          <th scope="col" data-type="tekst">Land</th>
+          <th scope="col" data-type="tall" aria-sort="descending">
+            Brent areal (km²)
+          </th>
+          <th scope="col" data-type="tall">Andel av landarealet</th>
+          <th scope="col" data-type="tall">Andel av verdens brente areal</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          celler.map((r) => (
+            <tr>
+              <th scope="row">{r.navn}</th>
+              <td data-verdi={r.arealVerdi ?? ""}>{r.areal}</td>
+              <td data-verdi={r.andelLandVerdi ?? ""}>{r.andelLand}</td>
+              <td data-verdi={r.andelVerdenVerdi ?? ""}>{r.andelVerden}</td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+
+  {
+    kildene.map((rad) => (
+      <p class="kildelinje">
+        <span class="kildelinje-merke">Kilde</span>
+        <a href={rad.k.url} rel="noreferrer">{rad.k.name}</a>.
+        Dekning i denne figuren: {rad.dekning}.
+        Data hentet {dato(rad.k.downloaded_at)}.
+        Lisens: <a href={rad.k.license_url} rel="noreferrer">{rad.k.license}</a>.
+      </p>
+    ))
+  }
+
+  <p class="kildelinje">
+    <span class="kildelinje-merke">Tallene</span>
+    <a href={csvUrl} download>Last ned figurens tall som CSV ({csvFil})</a>. Filen
+    inneholder nøyaktig de radene tabellen viser.
+  </p>
+
+  {
+    kildene
+      .filter((rad) => rad.k.attribution)
+      .map((rad) => (
+        <p class="kildelinje-sitering">
+          <span class="kildelinje-merke">Sitering</span>
+          <cite>{rad.k.attribution}</cite>
+        </p>
+      ))
+  }
+
+  {
+    fotnoter.length > 0 && (
+      <div class="fotnoter">
+        <h4 class="fotnoter-tittel" id={`${id}-fotnoter`}>
+          Forbehold for denne figuren
+        </h4>
+        <ol aria-labelledby={`${id}-fotnoter`}>
+          {fotnoter.map((kode) => (
+            <li id={`${id}-${kode}`}>{fotnotetekst(kode)}</li>
+          ))}
+        </ol>
+      </div>
+    )
+  }
+</div>
+
+<script is:inline>
+  /*
+   * Sortering av rangeringstabellen.
+   *
+   * Tabellen er ferdig sortert i HTML og fullt lesbar uten dette skriptet
+   * (CLAUDE.md § 9). Knappene legges derfor til her, ikke i malen — uten
+   * skript ville de vært knapper som ikke gjorde noe.
+   *
+   * Ingen avhengigheter, ingen forespørsler ut (T2).
+   */
+  for (const tabell of document.querySelectorAll("table[data-sorterbar]")) {
+    const kropp = tabell.tBodies[0];
+    const hoder = [...tabell.tHead.rows[0].cells];
+
+    const verdi = (rad, i) => {
+      const celle = rad.cells[i];
+      if (hoder[i].dataset.type === "tall") {
+        const raa = celle.dataset.verdi;
+        // Tom betyr «ingen data». Den skal ligge sist uansett retning, så den
+        // får en verdi som aldri kan vinne en sammenligning.
+        return raa === "" || raa === undefined ? null : Number(raa);
+      }
+      return celle.textContent.trim();
+    };
+
+    const sorter = (i, synkende) => {
+      const rader = [...kropp.rows];
+      rader.sort((a, b) => {
+        const x = verdi(a, i);
+        const y = verdi(b, i);
+        if (x === null && y === null) return 0;
+        if (x === null) return 1;
+        if (y === null) return -1;
+        const c = typeof x === "number" ? x - y : x.localeCompare(y, "nb");
+        return synkende ? -c : c;
+      });
+      for (const rad of rader) kropp.append(rad);
+    };
+
+    hoder.forEach((hode, i) => {
+      const tekst = hode.textContent.trim();
+      const knapp = document.createElement("button");
+      knapp.type = "button";
+      knapp.className = "sorteringsknapp";
+      knapp.textContent = tekst;
+      hode.textContent = "";
+      hode.append(knapp);
+
+      knapp.addEventListener("click", () => {
+        const synkende = hode.getAttribute("aria-sort") !== "descending";
+        for (const annen of hoder) annen.removeAttribute("aria-sort");
+        hode.setAttribute("aria-sort", synkende ? "descending" : "ascending");
+        sorter(i, synkende);
+      });
+    });
+  }
+</script>

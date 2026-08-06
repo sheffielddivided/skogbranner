@@ -8,6 +8,8 @@
 
 import { overskriftstall } from "./overskriftstall";
 import { globaltBrentAreal } from "./globaltBrentAreal";
+import { kartBrentAreal } from "./kartBrentAreal";
+import { rangering } from "./rangering";
 import type { Observasjon } from "../lib/data";
 
 export interface FigurData {
@@ -16,6 +18,11 @@ export interface FigurData {
   observasjoner: Observasjon[];
 }
 
-export const figurer: FigurData[] = [overskriftstall(), globaltBrentAreal()];
+export const figurer: FigurData[] = [
+  overskriftstall(),
+  globaltBrentAreal(),
+  kartBrentAreal(),
+  rangering(),
+];
 
-export { overskriftstall, globaltBrentAreal };
+export { overskriftstall, globaltBrentAreal, kartBrentAreal, rangering };

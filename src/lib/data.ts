@@ -8,10 +8,15 @@
  */
 
 import burnedAreaJson from "../../data/processed/burned_area.json";
+import shareLandJson from "../../data/processed/burned_area_share_land.json";
+import fireCountJson from "../../data/processed/fire_count.json";
 import firecciJson from "../../data/processed/burned_area_firecci_lt11.json";
 import gfed5Json from "../../data/processed/burned_area_gfed5.json";
+import charcoalJson from "../../data/processed/charcoal_composite_gcd.json";
 import avledningerJson from "../../data/processed/insights.json";
 import kilderJson from "../../data/_sources.json";
+import geometriJson from "../../data/geo/verden.json";
+import landJson from "../../data/geo/land_no.json";
 import fotnoterJson from "../../data/_footnotes.json";
 import statusJson from "../../data/_status.json";
 
@@ -83,8 +88,11 @@ export interface Kildestatus {
  */
 export const observasjoner = [
   ...burnedAreaJson,
+  ...shareLandJson,
+  ...fireCountJson,
   ...firecciJson,
   ...gfed5Json,
+  ...charcoalJson,
 ] as Observasjon[];
 
 const kilder = kilderJson.sources as unknown as Record<string, Kilde>;
@@ -100,6 +108,39 @@ export function kilde(sourceId: string): Kilde {
     );
   }
   return treff;
+}
+
+/** Forenklet kartgeometri, bygget av etl/geo.py og kjørt i Actions (T4). */
+export interface Kartgeometri {
+  summary: { entities: number; missing_geometry: string[]; unknown_entities: string[] };
+  features: {
+    type: string;
+    id: string;
+    properties: { entity: string };
+    geometry: { type: string; coordinates: number[][][][] };
+  }[];
+}
+
+const kart = geometriJson as unknown as Kartgeometri;
+const entiteter = landJson.entities as unknown as Record<
+  string,
+  { entity_name: string; level: string; iso3: boolean }
+>;
+
+/** Kartgeometrien. Navnene står ikke i den — de bor i land_no.json (§ 6). */
+export function geometri(): Kartgeometri {
+  return kart;
+}
+
+/**
+ * Det norske navnet på en entitet, fra land_no.json, som er fasit (§ 6).
+ *
+ * Kartgeometrien kan bære en kode som ikke står der — Antarktis har form, men
+ * ingen kilde rapporterer den (§ 5). Da vises koden, framfor å finne på et
+ * navn.
+ */
+export function entitetsnavn(kode: string): string {
+  return entiteter[kode]?.entity_name ?? kode;
 }
 
 /** Norsk tekst for en fotnotekode. Kaster hvis koden mangler tekst. */
@@ -191,5 +232,26 @@ export function serie(seriesId: string, entity: string): Observasjon[] {
   return observasjoner
     .filter((o) => o.series_id === seriesId && o.entity === entity)
     .sort((a, b) => a.period.localeCompare(b.period));
+}
+
+/**
+ * Alle entiteter i én serie for én periode, sortert på entitetskode.
+ *
+ * Bare entitetene kilden faktisk fører. Et land uten rad er et land uten
+ * måling, og skal vises som «ingen data» — ikke som null (§ 6).
+ */
+export function serieAar(
+  seriesId: string,
+  periode: string,
+  level?: string,
+): Observasjon[] {
+  return observasjoner
+    .filter(
+      (o) =>
+        o.series_id === seriesId &&
+        o.period === periode &&
+        (level === undefined || o.level === level),
+    )
+    .sort((a, b) => a.entity.localeCompare(b.entity));
 }
 
