@@ -191,6 +191,58 @@
         "f_smoothed"
       ],
       "notes": "Hvert punkt er et vektet snitt over 500 år til hver side. Kompositt bygget med paleofire: minimaks, Box-Cox og z-score mot en felles basisperiode, deretter lavpassfiltrert snitt med bootstrappet usikkerhet. Utvalget er alle stedene i databasen, ikke et redaksjonelt utvalg. paleofire ble trukket fra CRAN i 2023 og installeres fra arkivet, uten rgdal, som pakken bare bruker i funksjoner vi ikke kaller. Alderen er regnet om fra år før 1950 til kalenderår."
+    },
+    "K8": {
+      "source_id": "K8",
+      "name": "ESA Fire_cci — AVHRR-LTDR Burned Area Grid product v1.1 (FireCCILT11)",
+      "publisher": "University of Alcalá for ESA Fire_cci, distribuert av Centre for Environmental Data Analysis (CEDA)",
+      "url": "https://catalogue.ceda.ac.uk/uuid/62866635ab074e07b93f17fbf87a2c1a",
+      "download_url": "https://data.ceda.ac.uk/neodc/esacci/fire/data/burned_area/AVHRR-LTDR/grid/v1.1",
+      "license": "ESA CCI Data Policy: free and open access. Bruken er dekket av Fire_cci terms and conditions.",
+      "license_url": "https://artefacts.ceda.ac.uk/licences/specific_licences/esacci_fire_terms_and_conditions.pdf",
+      "attribution": "Chuvieco, E.; Pettinari, M.L.; Otón, G. (2020): ESA Fire Climate Change Initiative (Fire_cci): AVHRR-LTDR Fire_cci Burned Area Grid product, version 1.1. Centre for Environmental Data Analysis, 28 December 2020. doi:10.5285/62866635ab074e07b93f17fbf87a2c1a.",
+      "doi": "10.5285/62866635ab074e07b93f17fbf87a2c1a",
+      "requires_agreement": false,
+      "geography": "global",
+      "coverage_start": "1982",
+      "coverage_end": "2018",
+      "missing_years": [
+        "1994"
+      ],
+      "temporal_resolution": "monthly",
+      "quality": "beta",
+      "unit_source": "m2",
+      "spatial_resolution": "0.25 degrees",
+      "downloaded_at": "2026-08-05",
+      "source_last_updated": null,
+      "checksum": "d882fee1f8dba5abd6d8ca2a63661814f9a5d4a2038138a14d69ca5c8f2abd9a",
+      "series": [
+        "firecci_lt11_annual_burned_area"
+      ],
+      "processed_files": [
+        "burned_area_firecci_lt11.json",
+        "burned_area_firecci_lt11.csv"
+      ],
+      "footnotes": [
+        "f_beta_product",
+        "f_grid_resolution",
+        "f_missing_year",
+        "f_product_level",
+        "f_sensor_break",
+        "f_zero_no_detection"
+      ],
+      "notes": "Månedlige rutenett på 0,25° summert til årlige landtotaler med admin-0-geometrien fra K6. Rutenettfilene lastes ned i GitHub Actions og slettes etter aggregering. Andelen brent areal uten landtilknytning i denne kjøringen: 0.0083%. To grupper entiteter får ingen rader, av hver sin grunn: 6 der rutenettet ikke treffer geometrien, og 1 som ikke finnes i K6-geometrien i det hele tatt.",
+      "excluded_unobserved": [
+        "BLM",
+        "CCK",
+        "GIB",
+        "SXM",
+        "TKL",
+        "VAT"
+      ],
+      "excluded_no_geometry": [
+        "UMI"
+      ]
     }
   }
 }
