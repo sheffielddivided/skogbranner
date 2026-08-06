@@ -1549,10 +1549,19 @@ finnes, er et tall uten nevner.
 **Åpent punkt: brannstørrelsesfordelingen.** § 8 fører den under S4, og den er
 ikke laget. K4 gir landtotaler, og en fordeling krever areal per brann.
 
-To sonderinger fra Actions har lett etter de tallene — `sonder_branner()` i
-`etl/sources/k4_effis.py`. Karttjenestens WFS svarte 502 på lagnavnene vi
-prøvde, og tre adresser i statistikk-API-et svarte 404. Vi vet altså ikke hvor
-tallene ligger, bare hvor de ikke ligger.
+Sonderingen i `sonder_branner()` i `etl/sources/k4_effis.py` har spurt kilden
+selv, og svarene peker to veier:
+
+- **API-et beskriver seg selv, og har ingen adresse per brann.** `openapi.json`
+  fører fire stier: `/geocoder`, `/healtz`, `/rda-stats` og `/status`. Merk at
+  årsserien vi faktisk henter, ligger under `/statistics/`, som ikke står i den
+  beskrivelsen — spesifikasjonen dekker altså ikke hele tjenesten, og
+  `/statistics/openapi.json` svarer 404. `/rda-stats` er ikke undersøkt
+  nærmere og er det nærmeste vi har et spor.
+- **Karttjenesten, som er der polygonene ville ligget, svarer 500 på alt.**
+  Også et rent `GetCapabilities` uten lagnavn. Da er det tjenesten som feiler,
+  ikke adressen vår som er feil, og vi kan ikke se om dataene er der. Det er
+  verdt å prøve igjen en annen dag.
 
 Fordelingen skal **ikke** tilnærmes fra landtotaler. Andelen fra de største
 brannene kan ikke regnes av en sum; et anslag ville vært et tall siden ikke
