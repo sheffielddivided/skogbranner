@@ -935,7 +935,7 @@ ALB,Albania,country,2022,burned_area_km2,177.64,km2,K4,effis_rda_annual_burned_a
 ALB,Albania,country,2023,burned_area_km2,55.63,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
 ALB,Albania,country,2024,burned_area_km2,466.23,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
 ALB,Albania,country,2025,burned_area_km2,599.33,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
-ALB,Albania,country,2026,burned_area_km2,14.44,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_incomplete_year
+ALB,Albania,country,2026,burned_area_km2,16.36,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_incomplete_year
 AND,Andorra,country,2006,burned_area_km2,0.0,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_zero_no_detection
 AND,Andorra,country,2007,burned_area_km2,0.0,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_zero_no_detection
 AND,Andorra,country,2008,burned_area_km2,0.0,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_zero_no_detection
@@ -1040,7 +1040,7 @@ BGR,Bulgaria,country,2022,burned_area_km2,145.79,km2,K4,effis_rda_annual_burned_
 BGR,Bulgaria,country,2023,burned_area_km2,158.45,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
 BGR,Bulgaria,country,2024,burned_area_km2,447.45,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
 BGR,Bulgaria,country,2025,burned_area_km2,327.52,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
-BGR,Bulgaria,country,2026,burned_area_km2,9.19,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_incomplete_year
+BGR,Bulgaria,country,2026,burned_area_km2,11.55,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_incomplete_year
 BHR,Bahrain,country,2006,burned_area_km2,0.0,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_zero_no_detection
 BHR,Bahrain,country,2007,burned_area_km2,0.0,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_zero_no_detection
 BHR,Bahrain,country,2008,burned_area_km2,0.0,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_zero_no_detection
@@ -1082,7 +1082,7 @@ BIH,Bosnia-Hercegovina,country,2022,burned_area_km2,728.99,km2,K4,effis_rda_annu
 BIH,Bosnia-Hercegovina,country,2023,burned_area_km2,32.11,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
 BIH,Bosnia-Hercegovina,country,2024,burned_area_km2,435.71,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
 BIH,Bosnia-Hercegovina,country,2025,burned_area_km2,381.12,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
-BIH,Bosnia-Hercegovina,country,2026,burned_area_km2,204.24,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_incomplete_year
+BIH,Bosnia-Hercegovina,country,2026,burned_area_km2,205.04,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_incomplete_year
 CHE,Sveits,country,2006,burned_area_km2,0.0,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_zero_no_detection
 CHE,Sveits,country,2007,burned_area_km2,0.0,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_zero_no_detection
 CHE,Sveits,country,2008,burned_area_km2,0.0,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_zero_no_detection
@@ -1166,7 +1166,7 @@ DEU,Tyskland,country,2022,burned_area_km2,42.93,km2,K4,effis_rda_annual_burned_a
 DEU,Tyskland,country,2023,burned_area_km2,9.75,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
 DEU,Tyskland,country,2024,burned_area_km2,8.26,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
 DEU,Tyskland,country,2025,burned_area_km2,54.75,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
-DEU,Tyskland,country,2026,burned_area_km2,24.42,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_incomplete_year
+DEU,Tyskland,country,2026,burned_area_km2,26.86,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_incomplete_year
 DNK,Danmark,country,2006,burned_area_km2,0.0,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_zero_no_detection
 DNK,Danmark,country,2007,burned_area_km2,0.0,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_zero_no_detection
 DNK,Danmark,country,2008,burned_area_km2,0.0,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_zero_no_detection
@@ -1208,7 +1208,7 @@ DZA,Algerie,country,2022,burned_area_km2,525.56,km2,K4,effis_rda_annual_burned_a
 DZA,Algerie,country,2023,burned_area_km2,695.9,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
 DZA,Algerie,country,2024,burned_area_km2,81.58,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
 DZA,Algerie,country,2025,burned_area_km2,177.77,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
-DZA,Algerie,country,2026,burned_area_km2,1853.03,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_incomplete_year
+DZA,Algerie,country,2026,burned_area_km2,1853.73,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_incomplete_year
 EGY,Egypt,country,2006,burned_area_km2,0.0,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_zero_no_detection
 EGY,Egypt,country,2007,burned_area_km2,0.0,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_zero_no_detection
 EGY,Egypt,country,2008,burned_area_km2,0.0,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_zero_no_detection
@@ -1250,7 +1250,7 @@ ESP,Spania,country,2022,burned_area_km2,3065.55,km2,K4,effis_rda_annual_burned_a
 ESP,Spania,country,2023,burned_area_km2,912.2,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
 ESP,Spania,country,2024,burned_area_km2,426.15,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
 ESP,Spania,country,2025,burned_area_km2,3930.79,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
-ESP,Spania,country,2026,burned_area_km2,2224.04,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_incomplete_year
+ESP,Spania,country,2026,burned_area_km2,2227.83,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_incomplete_year
 EST,Estland,country,2006,burned_area_km2,0.0,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_zero_no_detection
 EST,Estland,country,2007,burned_area_km2,0.0,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_zero_no_detection
 EST,Estland,country,2008,burned_area_km2,0.0,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_zero_no_detection
@@ -1313,7 +1313,7 @@ FRA,Frankrike,country,2022,burned_area_km2,663.37,km2,K4,effis_rda_annual_burned
 FRA,Frankrike,country,2023,burned_area_km2,223.5,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
 FRA,Frankrike,country,2024,burned_area_km2,122.68,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
 FRA,Frankrike,country,2025,burned_area_km2,369.51,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
-FRA,Frankrike,country,2026,burned_area_km2,928.91,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_incomplete_year
+FRA,Frankrike,country,2026,burned_area_km2,928.71,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_incomplete_year
 GBR,Storbritannia,country,2006,burned_area_km2,0.0,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_zero_no_detection
 GBR,Storbritannia,country,2007,burned_area_km2,0.0,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_zero_no_detection
 GBR,Storbritannia,country,2008,burned_area_km2,0.0,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_zero_no_detection
@@ -1376,7 +1376,7 @@ GRC,Hellas,country,2022,burned_area_km2,224.8,km2,K4,effis_rda_annual_burned_are
 GRC,Hellas,country,2023,burned_area_km2,1747.73,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
 GRC,Hellas,country,2024,burned_area_km2,419.48,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
 GRC,Hellas,country,2025,burned_area_km2,478.19,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
-GRC,Hellas,country,2026,burned_area_km2,306.24,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_incomplete_year
+GRC,Hellas,country,2026,burned_area_km2,302.01,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_incomplete_year
 GUY,Guyana,country,2006,burned_area_km2,0.0,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_zero_no_detection
 GUY,Guyana,country,2007,burned_area_km2,0.0,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_zero_no_detection
 GUY,Guyana,country,2008,burned_area_km2,0.0,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_zero_no_detection
@@ -1460,7 +1460,7 @@ IRL,Irland,country,2022,burned_area_km2,29.82,km2,K4,effis_rda_annual_burned_are
 IRL,Irland,country,2023,burned_area_km2,43.02,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
 IRL,Irland,country,2024,burned_area_km2,1.33,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
 IRL,Irland,country,2025,burned_area_km2,43.55,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
-IRL,Irland,country,2026,burned_area_km2,25.74,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_incomplete_year
+IRL,Irland,country,2026,burned_area_km2,26.1,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_incomplete_year
 IRN,Iran,country,2006,burned_area_km2,0.0,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_zero_no_detection
 IRN,Iran,country,2007,burned_area_km2,0.0,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_zero_no_detection
 IRN,Iran,country,2008,burned_area_km2,0.0,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_zero_no_detection
@@ -1565,7 +1565,7 @@ ITA,Italia,country,2022,burned_area_km2,587.51,km2,K4,effis_rda_annual_burned_ar
 ITA,Italia,country,2023,burned_area_km2,979.84,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
 ITA,Italia,country,2024,burned_area_km2,401.22,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
 ITA,Italia,country,2025,burned_area_km2,843.48,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
-ITA,Italia,country,2026,burned_area_km2,742.9,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_incomplete_year
+ITA,Italia,country,2026,burned_area_km2,746.67,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_incomplete_year
 JOR,Jordan,country,2006,burned_area_km2,0.0,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_zero_no_detection
 JOR,Jordan,country,2007,burned_area_km2,0.0,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_zero_no_detection
 JOR,Jordan,country,2008,burned_area_km2,0.0,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_zero_no_detection
@@ -1754,7 +1754,7 @@ MAR,Marokko,country,2022,burned_area_km2,321.32,km2,K4,effis_rda_annual_burned_a
 MAR,Marokko,country,2023,burned_area_km2,76.27,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
 MAR,Marokko,country,2024,burned_area_km2,6.52,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
 MAR,Marokko,country,2025,burned_area_km2,26.17,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
-MAR,Marokko,country,2026,burned_area_km2,44.0,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_incomplete_year
+MAR,Marokko,country,2026,burned_area_km2,45.68,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_incomplete_year
 MDA,Moldova,country,2006,burned_area_km2,0.0,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_zero_no_detection
 MDA,Moldova,country,2007,burned_area_km2,0.0,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_zero_no_detection
 MDA,Moldova,country,2008,burned_area_km2,0.0,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_zero_no_detection
@@ -1838,7 +1838,7 @@ MNE,Montenegro,country,2022,burned_area_km2,245.79,km2,K4,effis_rda_annual_burne
 MNE,Montenegro,country,2023,burned_area_km2,4.54,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
 MNE,Montenegro,country,2024,burned_area_km2,230.54,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
 MNE,Montenegro,country,2025,burned_area_km2,276.58,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
-MNE,Montenegro,country,2026,burned_area_km2,94.76,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_incomplete_year
+MNE,Montenegro,country,2026,burned_area_km2,96.54,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_incomplete_year
 MTQ,Martinique,country,2006,burned_area_km2,0.0,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_zero_no_detection
 MTQ,Martinique,country,2007,burned_area_km2,0.0,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_zero_no_detection
 MTQ,Martinique,country,2008,burned_area_km2,0.0,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_zero_no_detection
@@ -2048,7 +2048,7 @@ ROU,Romania,country,2022,burned_area_km2,1532.07,km2,K4,effis_rda_annual_burned_
 ROU,Romania,country,2023,burned_area_km2,166.22,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
 ROU,Romania,country,2024,burned_area_km2,360.57,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
 ROU,Romania,country,2025,burned_area_km2,1294.43,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
-ROU,Romania,country,2026,burned_area_km2,127.05,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_incomplete_year
+ROU,Romania,country,2026,burned_area_km2,133.97,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_incomplete_year
 SAU,Saudi-Arabia,country,2006,burned_area_km2,0.0,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_zero_no_detection
 SAU,Saudi-Arabia,country,2007,burned_area_km2,0.0,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_zero_no_detection
 SAU,Saudi-Arabia,country,2008,burned_area_km2,0.0,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_zero_no_detection
@@ -2090,7 +2090,7 @@ SRB,Serbia,country,2022,burned_area_km2,115.08,km2,K4,effis_rda_annual_burned_ar
 SRB,Serbia,country,2023,burned_area_km2,23.12,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
 SRB,Serbia,country,2024,burned_area_km2,389.54,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
 SRB,Serbia,country,2025,burned_area_km2,278.82,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
-SRB,Serbia,country,2026,burned_area_km2,27.87,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_incomplete_year
+SRB,Serbia,country,2026,burned_area_km2,33.02,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_incomplete_year
 SVK,Slovakia,country,2006,burned_area_km2,0.0,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_zero_no_detection
 SVK,Slovakia,country,2007,burned_area_km2,0.0,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_zero_no_detection
 SVK,Slovakia,country,2008,burned_area_km2,0.0,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_zero_no_detection
@@ -2195,7 +2195,7 @@ TUN,Tunisia,country,2022,burned_area_km2,108.46,km2,K4,effis_rda_annual_burned_a
 TUN,Tunisia,country,2023,burned_area_km2,59.04,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
 TUN,Tunisia,country,2024,burned_area_km2,11.1,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
 TUN,Tunisia,country,2025,burned_area_km2,61.5,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
-TUN,Tunisia,country,2026,burned_area_km2,206.62,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_incomplete_year
+TUN,Tunisia,country,2026,burned_area_km2,207.69,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_incomplete_year
 TUR,Tyrkia,country,2006,burned_area_km2,84.75,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
 TUR,Tyrkia,country,2007,burned_area_km2,68.61,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
 TUR,Tyrkia,country,2008,burned_area_km2,278.48,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
@@ -2216,7 +2216,7 @@ TUR,Tyrkia,country,2022,burned_area_km2,156.85,km2,K4,effis_rda_annual_burned_ar
 TUR,Tyrkia,country,2023,burned_area_km2,325.99,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
 TUR,Tyrkia,country,2024,burned_area_km2,1208.09,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
 TUR,Tyrkia,country,2025,burned_area_km2,1540.53,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
-TUR,Tyrkia,country,2026,burned_area_km2,310.0,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_incomplete_year
+TUR,Tyrkia,country,2026,burned_area_km2,311.3,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_incomplete_year
 UKR,Ukraina,country,2006,burned_area_km2,0.0,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_zero_no_detection
 UKR,Ukraina,country,2007,burned_area_km2,0.0,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_zero_no_detection
 UKR,Ukraina,country,2008,burned_area_km2,0.0,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_zero_no_detection
@@ -2237,7 +2237,7 @@ UKR,Ukraina,country,2022,burned_area_km2,2605.88,km2,K4,effis_rda_annual_burned_
 UKR,Ukraina,country,2023,burned_area_km2,2139.21,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
 UKR,Ukraina,country,2024,burned_area_km2,9178.79,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
 UKR,Ukraina,country,2025,burned_area_km2,6007.59,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
-UKR,Ukraina,country,2026,burned_area_km2,2929.11,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_incomplete_year
+UKR,Ukraina,country,2026,burned_area_km2,2941.78,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_incomplete_year
 XKX,Kosovo,country,2006,burned_area_km2,0.0,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level;f_zero_no_detection
 XKX,Kosovo,country,2007,burned_area_km2,162.46,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level
 XKX,Kosovo,country,2008,burned_area_km2,2.7,km2,K4,effis_rda_annual_burned_area,measured,f_sensor_break;f_min_fire_size;f_coverage_change;f_product_level

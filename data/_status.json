@@ -2,52 +2,52 @@
   "schema_version": 1,
   "_skjema": "se CLAUDE.md § 6 og etl/schema.py",
   "_om": "Siste kjørestatus per kilde. Skrives av ETL, leses av byggetrinnet. Feiler en kilde, beholdes forrige datasett og siden viser en diskré merknad om at akkurat den serien ikke er oppdatert siden dato X. Rutenettkilder fører i tillegg unattributed_share og unattributed_km2: hvor mye brent areal som falt utenfor all landgeometri i kjøringen, slik at andelen kan følges over tid.",
-  "last_run": "2026-08-06T01:23:25+00:00",
+  "last_run": "2026-08-06T14:15:43+00:00",
   "sources": {
     "K1": {
       "status": "ok",
-      "last_attempt": "2026-08-06T00:39:47+00:00",
-      "last_success": "2026-08-06T00:39:47+00:00",
+      "last_attempt": "2026-08-06T13:28:45+00:00",
+      "last_success": "2026-08-06T13:28:45+00:00",
       "rows": 3900,
       "checksum": "a60fa5fded76cff4f7e76bc5f9e93e0f4bc2dc27a581914115d01808b6fab881",
       "message": "hentet og normalisert"
     },
     "K2": {
       "status": "ok",
-      "last_attempt": "2026-08-06T00:44:52+00:00",
-      "last_success": "2026-08-06T00:44:52+00:00",
+      "last_attempt": "2026-08-06T14:15:43+00:00",
+      "last_success": "2026-08-06T14:15:43+00:00",
       "rows": 2682,
       "checksum": "044436f64aa11a9371b1eefdd3704e74a1a19315f71ec84e1aa7e4cd6438c778",
       "message": "16 avvik av 2495 sammenlignede"
     },
     "K3": {
       "status": "ok",
-      "last_attempt": "2026-08-06T00:39:50+00:00",
-      "last_success": "2026-08-06T00:39:50+00:00",
+      "last_attempt": "2026-08-06T14:11:43+00:00",
+      "last_success": "2026-08-06T14:11:43+00:00",
       "rows": 1838,
       "checksum": "bbc05c239e5d471700c2d440800c9c41318aaf74eaae7db82445557ab6c05a06",
       "message": "hentet og normalisert"
     },
     "K4": {
       "status": "ok",
-      "last_attempt": "2026-08-06T00:42:17+00:00",
-      "last_success": "2026-08-06T00:42:17+00:00",
+      "last_attempt": "2026-08-06T14:14:09+00:00",
+      "last_success": "2026-08-06T14:14:09+00:00",
       "rows": 1365,
-      "checksum": "510f13bae8cff59bbbc716ebef437a71de40c33c416f753e379a90f87311408b",
+      "checksum": "c15563896b29e1c2ad648c50bc226e295ce24f863836944688d9863df8e48143",
       "message": "hentet og normalisert"
     },
     "K5": {
       "status": "ok",
-      "last_attempt": "2026-08-06T00:42:18+00:00",
-      "last_success": "2026-08-06T00:42:18+00:00",
+      "last_attempt": "2026-08-06T14:14:10+00:00",
+      "last_success": "2026-08-06T14:14:10+00:00",
       "rows": 43,
-      "checksum": "32fe27d4ddefecf6e52bc98bc7013f8af8522a415429de1d288b19ef510ef679",
+      "checksum": "39e5df1bbb1b6ad72e97509ca8d7974c7a69a3aca0015153cd9c2d52b9fe9d62",
       "message": "hentet og normalisert"
     },
     "K7": {
       "status": "ok",
-      "last_attempt": "2026-08-06T00:42:21+00:00",
-      "last_success": "2026-08-06T00:42:21+00:00",
+      "last_attempt": "2026-08-06T14:14:11+00:00",
+      "last_success": "2026-08-06T14:14:11+00:00",
       "rows": 121,
       "checksum": "9248134616e43740a596fce592e7ac72e0bd41334de831f4712a3f37cc2bcefc",
       "message": "hentet og normalisert"

@@ -118,7 +118,7 @@
       "quality": "measured",
       "unit_source": "hectares",
       "downloaded_at": "2026-08-06",
-      "checksum": "510f13bae8cff59bbbc716ebef437a71de40c33c416f753e379a90f87311408b",
+      "checksum": "c15563896b29e1c2ad648c50bc226e295ce24f863836944688d9863df8e48143",
       "series": [
         "effis_rda_annual_burned_area"
       ],
@@ -151,7 +151,7 @@
       "quality": "reported",
       "unit_source": "acres",
       "downloaded_at": "2026-08-06",
-      "checksum": "32fe27d4ddefecf6e52bc98bc7013f8af8522a415429de1d288b19ef510ef679",
+      "checksum": "39e5df1bbb1b6ad72e97509ca8d7974c7a69a3aca0015153cd9c2d52b9fe9d62",
       "series": [
         "nifc_annual_burned_area",
         "nifc_annual_fire_count"
