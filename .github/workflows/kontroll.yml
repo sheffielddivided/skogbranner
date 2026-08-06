@@ -67,6 +67,11 @@ jobs:
       - name: Valider datasettet
         run: python -m etl.validate
 
+      # Theil–Sen og Mann–Kendall er skrevet ut i repoet. Testene kjører dem
+      # mot datasett med kjent fasit, se etl/test_derive.py.
+      - name: Kjør Python-testene
+        run: python -m unittest discover -s etl -t . -p "test_*.py" -v
+
   nettsted:
     name: Nettsted — tester
     runs-on: ubuntu-latest

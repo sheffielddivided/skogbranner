@@ -262,9 +262,15 @@ def les_publiserte():
     kildene skriver én fil per serie med sitt eget navn (se
     ``etl/run_static.py``), og de skal valideres på samme vilkår som resten.
     Et glob fanger dem uten at filnavnene får en kopi til her (T5).
+
+    insights.json holdes utenfor. Den ligger samme sted, men er avledninger og
+    ikke observasjoner — den har verken entitet, periode eller enhet å
+    validere, og skrives av derive.py etter at valideringen er unnagjort.
     """
     observasjoner = []
     for sti in sorted(schema.PROCESSED_DIR.glob("*.json")):
+        if sti == schema.INSIGHTS_JSON:
+            continue
         with open(sti, encoding="utf-8") as f:
             observasjoner.extend(json.load(f))
     return observasjoner
