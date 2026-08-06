@@ -12,7 +12,6 @@
 import * as Plot from "@observablehq/plot";
 import {
   avledning,
-  serieAar,
   observasjoner as alle,
   alleFotnoter,
   entitetsnavn,
