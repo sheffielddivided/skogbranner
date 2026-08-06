@@ -168,6 +168,38 @@ def persentil(verdier, p):
     return sortert[under] + (sortert[over] - sortert[under]) * (plass - under)
 
 
+def persentilplass(n, p):
+    """Hvilke ordningsverdier en persentil hviler på, talt fra nærmeste ende.
+
+    Med få år ligger en ytterpersentil mellom to enkeltår, og båndet er da
+    ikke bredere enn de to årene tillater. Setningen som forklarer båndet for
+    leseren, trenger å kunne si hvilke to — se CLAUDE.md § 7 og § 9.
+
+    Rangene telles fra den enden persentilen ligger nærmest: 1 er den laveste
+    for en lav persentil og den høyeste for en høy. Er persentilen midt i
+    serien, telles den fra bunnen.
+    """
+    if n < 2:
+        return {"ranks": [1], "interpolated": False, "from": "low"}
+
+    plass = (n - 1) * p / 100
+    under, over = math.floor(plass), math.ceil(plass)
+    fra_bunn = p <= 50
+    rang = lambda i: i + 1 if fra_bunn else n - i  # noqa: E731
+
+    if under == over:
+        return {
+            "ranks": [rang(under)],
+            "interpolated": False,
+            "from": "low" if fra_bunn else "high",
+        }
+    return {
+        "ranks": sorted((rang(under), rang(over))),
+        "interpolated": True,
+        "from": "low" if fra_bunn else "high",
+    }
+
+
 def _median(verdier):
     sortert = sorted(verdier)
     n = len(sortert)
@@ -664,6 +696,12 @@ def sesongband(serie, kode):
         basis_years=sorted(hele),
         n_years=len(hele),
         band_pct=list(SEASON_BAND_PCT),
+        # Hva kantene hviler på. Med få år er de interpolert mellom to
+        # enkeltår, og båndet er ikke fastere enn det.
+        band_edges={
+            "low": persentilplass(len(hele), lav),
+            "high": persentilplass(len(hele), hoy),
+        },
         weeks=[
             {
                 "week": uke,

@@ -367,6 +367,13 @@ const [s1, s2, s3, ...resten] = seksjoner;
         }. til den {figur6.bandPct[1]}. persentilen: ett år av ti ligger over
         båndet, ett av ti under. Linjen inne i båndet er medianen.
       </p>
+      <p data-derivation={`season_band.gwis_weekly_burned_area.WLD`}>
+        {
+          figur6.bandKanter.interpolert
+            ? `Med ${figur6.grunnlagsaar.length} år hviler kantene av båndet på interpolasjon mellom to enkeltår: den nedre mellom ${figur6.bandKanter.nedre}, den øvre mellom ${figur6.bandKanter.ovre}.`
+            : `Med ${figur6.grunnlagsaar.length} år faller kantene av båndet sammen med enkeltår: den nedre på ${figur6.bandKanter.nedre}, den øvre på ${figur6.bandKanter.ovre}.`
+        } Båndet blir mer stabilt jo flere år serien får.
+      </p>
       <p>
         Båndet sier hvor et vanlig år pleier å ligge på dette tidspunktet i
         året, og hvor mye årene pleier å sprike. Det sier ingenting om hvorfor

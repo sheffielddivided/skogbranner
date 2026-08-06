@@ -77089,6 +77089,24 @@
     10,
     90
    ],
+   "band_edges": {
+    "low": {
+     "ranks": [
+      2,
+      3
+     ],
+     "interpolated": true,
+     "from": "low"
+    },
+    "high": {
+     "ranks": [
+      2,
+      3
+     ],
+     "interpolated": true,
+     "from": "high"
+    }
+   },
    "weeks": [
     {
      "week": 1,
@@ -77617,6 +77635,24 @@
     10,
     90
    ],
+   "band_edges": {
+    "low": {
+     "ranks": [
+      2,
+      3
+     ],
+     "interpolated": true,
+     "from": "low"
+    },
+    "high": {
+     "ranks": [
+      2,
+      3
+     ],
+     "interpolated": true,
+     "from": "high"
+    }
+   },
    "weeks": [
     {
      "week": 1,
@@ -78145,6 +78181,24 @@
     10,
     90
    ],
+   "band_edges": {
+    "low": {
+     "ranks": [
+      2,
+      3
+     ],
+     "interpolated": true,
+     "from": "low"
+    },
+    "high": {
+     "ranks": [
+      2,
+      3
+     ],
+     "interpolated": true,
+     "from": "high"
+    }
+   },
    "weeks": [
     {
      "week": 1,
@@ -78673,6 +78727,24 @@
     10,
     90
    ],
+   "band_edges": {
+    "low": {
+     "ranks": [
+      2,
+      3
+     ],
+     "interpolated": true,
+     "from": "low"
+    },
+    "high": {
+     "ranks": [
+      2,
+      3
+     ],
+     "interpolated": true,
+     "from": "high"
+    }
+   },
    "weeks": [
     {
      "week": 1,
@@ -79201,6 +79273,24 @@
     10,
     90
    ],
+   "band_edges": {
+    "low": {
+     "ranks": [
+      2,
+      3
+     ],
+     "interpolated": true,
+     "from": "low"
+    },
+    "high": {
+     "ranks": [
+      2,
+      3
+     ],
+     "interpolated": true,
+     "from": "high"
+    }
+   },
    "weeks": [
     {
      "week": 1,
@@ -79729,6 +79819,24 @@
     10,
     90
    ],
+   "band_edges": {
+    "low": {
+     "ranks": [
+      2,
+      3
+     ],
+     "interpolated": true,
+     "from": "low"
+    },
+    "high": {
+     "ranks": [
+      2,
+      3
+     ],
+     "interpolated": true,
+     "from": "high"
+    }
+   },
    "weeks": [
     {
      "week": 1,
@@ -80257,6 +80365,24 @@
     10,
     90
    ],
+   "band_edges": {
+    "low": {
+     "ranks": [
+      2,
+      3
+     ],
+     "interpolated": true,
+     "from": "low"
+    },
+    "high": {
+     "ranks": [
+      2,
+      3
+     ],
+     "interpolated": true,
+     "from": "high"
+    }
+   },
    "weeks": [
     {
      "week": 1,
