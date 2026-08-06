@@ -259,10 +259,12 @@ etl/                Python-pakke. __init__.py er tom.
                     importerer herfra (T5).
   normalize.py      Kanonisk form. All enhetskonvertering skjer her.
   grid.py           Rutenett → landnivå, med geometrien fra K6. Enhetsnøytral
+  geo.py            Forenklet kartgeometri fra K6 → data/geo/verden.json
   derive.py         Maskinelle avledninger → data/processed/insights.json
   validate.py       Kontrollerer at output er gyldig før publisering
   test_derive.py    Kontroll av avledningene, mot datasett med kjent fasit.
                     python -m unittest discover -s etl -t .
+  test_geo.py       Kontroll av forenklingen av kartgeometrien
   run.py            Kjører pipelinen: hent → normaliser → valider → avled →
                     publiser
   run_static.py     Samme for de statiske kildene. Egen inngang, ikke et flagg
@@ -280,6 +282,7 @@ data/
                     Redaksjonelle navneoverstyringer, med begrunnelse. Se § 5
     land_area_km2.json
                     Landarealer regnet fra K6. Nevner i andelsindikatoren
+    verden.json     Forenklet kartgeometri fra K6. Bygget i Actions (T4)
   _sources.json     Kildemetadata: lisens, lenke, dekning, nedlastingsdato
   _status.json      Siste kjørestatus per kilde, for degradert visning
   _footnotes.json   Fotnotekode → norsk tekst. Se § 9
@@ -1313,6 +1316,7 @@ sluttbrukeravtale tas ikke inn før avtalen er avklart og notert i
       repotoppen (`python -m etl.<modul>`). Ingen relative importer, ingen
       `sys.path`-manipulering (§ 4)
 - [ ] Testene kjører: `python -m unittest discover -s etl -t .` og `npm test`
+- [ ] Siden typesjekker og bygger: `npm run check` og `npm run build`
 
 ---
 
@@ -1364,7 +1368,9 @@ sluttbrukeravtale tas ikke inn før avtalen er avklart og notert i
 - `.github/workflows/etl-statisk.yml` — manuelt utløst kjøring av en statisk
   kilde. Rutenettfilene lastes ned, aggregeres og slettes i Actions
 - `.github/workflows/kontroll.yml` — kontroll av pull requests: importerer
-  begge inngangene, kompilerer, validerer datasettet og kjører testene
+  begge inngangene, kompilerer, validerer datasettet, kjører testene,
+  typesjekker med `astro check` og bygger siden
+- `.github/workflows/geo.yml` — manuelt utløst bygging av kartgeometrien
 - `.github/workflows/rydd-grener.yml` — rydder maskinelle grener som er merget
 - `.github/workflows/deploy.yml` — bygger og publiserer ved push til `main`
 - Nettsiden — Astro, seks seksjoner, `src/komponenter/Figur.astro`,
@@ -1412,11 +1418,13 @@ ikke avledningen en setning trenger, stopper bygget — `avledning()` i
 K4 dekker foreløpig bare brent areal. Brannstørrelsesfordelingen S4 skal vise,
 krever polygonene fra Burnt Areas-databasen, som ikke er hentet.
 
-**Kartgeometrien er ikke laget.** K6 leverer geometrien rutenettkildene
-fordeles på, og landarealene regnes fra den, men det finnes ingen forenklet
-TopoJSON under `data/geo/` ennå. Den lages når S2 eller S4 trenger et kart, og
-skal da bygges fra det samme kartenhetslaget — ellers vil kartet vise andre
-grenser enn arealene og rasteriseringen bruker.
+**Kartgeometrien er skrevet, men ikke kjørt.** `etl/geo.py` bygger den
+forenklede geometrien fra det samme kartenhetslaget som landarealene og
+rutenettfordelingen bruker, og `.github/workflows/geo.yml` kjører den. Den må
+kjøres i Actions: K6 er en shapefil på fem megabyte, og T4 gjelder.
+
+Før `data/geo/verden.json` finnes, kan ikke S2 tegne kartet. Rekkefølgen er:
+kjør workflowen, slå sammen geometrien, bygg seksjonen.
 
 **Neste steg:** S2 — kart og rangering av land. Avledningene finnes
 (`rank.*`, `share.*`, `concentration.*`), men kartgeometrien er ikke laget,

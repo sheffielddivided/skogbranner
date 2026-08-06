@@ -133,6 +133,20 @@ GRID_MIN_ENTITY_CELLS = 1.0
 # at grensen følger datasettet.
 COMPOSITE_MIN_SERIES_SHARE = 0.5
 
+# Kartgeometrien forenkles før den legges i repoet: full oppløsning er
+# unødvendig for et verdenskart. Terskler for Douglas–Peucker i etl/geo.py, se
+# CLAUDE.md § 12.
+#
+# Toleranse i grader. Ett desimalgrad er om lag 111 km ved ekvator.
+GEO_SIMPLIFY_TOLERANCE_DEG = 0.05
+#
+# Antall desimaler koordinatene rundes til. Tre desimaler er om lag 100 meter.
+GEO_COORD_DECIMALS = 3
+#
+# En ring med færre punkter enn dette har ingen flate igjen å tegne, og
+# utelates framfor å bli en strek.
+GEO_MIN_RING_POINTS = 4
+
 # Ytre grenser for et gyldig årstall. Øvre grense settes av nedlastingsåret og
 # beregnes i validate.py.
 #
@@ -196,6 +210,7 @@ PROCESSED_DIR = REPO_ROOT / "data" / "processed"
 GEO_DIR = REPO_ROOT / "data" / "geo"
 
 LAND_AREA_JSON = GEO_DIR / "land_area_km2.json"
+GEO_WORLD_JSON = GEO_DIR / "verden.json"
 
 INSIGHTS_JSON = PROCESSED_DIR / "insights.json"
 

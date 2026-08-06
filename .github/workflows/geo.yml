@@ -1,0 +1,103 @@
+# Kartgeometrien.
+#
+# K6 er en shapefil på fem megabyte. Den hentes derfor her og ikke i en
+# utviklingssesjon (CLAUDE.md T4), og geometrien bygges av det samme
+# kartenhetslaget som landarealene og rutenettfordelingen bruker — ellers
+# ville kartet vist andre grenser enn tallene er regnet på (§ 12).
+#
+# Egen inngang, ikke et valg i etl-statisk.yml: dette er ikke en datakilde som
+# leverer observasjoner, og den skal kunne kjøres uten å røre noen serie.
+#
+# Kjøres manuelt. Geometrien endrer seg bare når Natural Earth gir ut en ny
+# versjon, eller når terskler i etl/schema.py endres.
+
+name: Kartgeometri
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: geo
+  cancel-in-progress: false
+
+jobs:
+  bygg:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # pyshp leser shapefilen. Den står i requirements.txt fordi K6 også
+      # brukes av den månedlige kjøringen.
+      - name: Installer avhengigheter
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+
+      # Kjøres som modul fra repotoppen (§ 4).
+      - name: Bygg geometrien
+        run: python -m etl.geo
+
+      # Rådata er gitignorert, men en tom mappe er den eneste tilstanden som
+      # beviser at slettingen faktisk skjedde.
+      - name: Slett rådata
+        run: |
+          rm -f data/raw/k6_*.zip
+          igjen="$(find data/raw -type f ! -name .gitkeep)"
+          if [ -n "$igjen" ]; then
+            echo "::error::Rådata ligger igjen etter kjøringen:"
+            echo "$igjen"
+            exit 1
+          fi
+          echo "data/raw/ er tom."
+
+      - name: Se etter endringer
+        id: endringer
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Eksplisitte stier. data/raw/ nevnes ikke, og et git add -A over
+          # hele treet brukes ikke (T4).
+          git add data/geo
+
+          if git diff --cached --quiet; then
+            echo "noe=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "noe=true" >> "$GITHUB_OUTPUT"
+          fi
+
+          git diff --cached --stat
+
+      - name: Opprett pull request
+        if: steps.endringer.outputs.noe == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gren="maskinell/geo-$(date -u +%Y%m%d-%H%M%S)"
+          git checkout -b "$gren"
+
+          tittel="Kartgeometri: bygget $(date -u +%Y-%m-%d)"
+          brodtekst=$'Maskinell kjøring av `python -m etl.geo`.\n\nShapefilen er hentet i Actions, forenklet og slettet. Kun den forenklede geometrien ligger i diffen.\n\nGå gjennom `data/geo/` før du slår sammen.'
+
+          git commit -m "$tittel" -m "Maskinell kjøring, se .github/workflows/geo.yml"
+          git push origin "HEAD:$gren"
+
+          gh pr create \
+            --base "${{ github.ref_name }}" \
+            --head "$gren" \
+            --title "$tittel" \
+            --body "$brodtekst"
+
+      - name: Ingen endringer
+        if: steps.endringer.outputs.noe != 'true'
+        run: echo "Ingen endringer i data/geo/. Ingen pull request opprettet."
