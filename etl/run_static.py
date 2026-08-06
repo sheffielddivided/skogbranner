@@ -24,15 +24,19 @@ import zipfile
 from collections import defaultdict
 
 from etl import normalize, validate
-from etl.schema import GRID_MAX_UNATTRIBUTED_SHARE, GRID_MIN_ENTITY_CELLS
+from etl.schema import (
+    GRID_MAX_UNATTRIBUTED_SHARE,
+    GRID_MIN_ENTITY_CELLS,
+    PROCESSED_FILE,
+)
 from etl.sources import k6_natural_earth, k8_firecci, k9_gfed5, k10_gcd
 
-# Filnavnet under data/processed/ per kilde. Navnet følger serien, ikke
-# kildekoden, slik at en lesbar nedlastingslenke peker på det figuren viser.
-FILNAVN = {
-    "k8": "burned_area_firecci_lt11",
-    "k9": "burned_area_gfed5",
-    "k10": "charcoal_composite_gcd",
+# Serien hver statisk kilde leverer. Filnavnet slås opp i PROCESSED_FILE, som
+# er det ene stedet filnavn bor (CLAUDE.md § 4).
+SERIE = {
+    "k8": "firecci_lt11_annual_burned_area",
+    "k9": "gfed5_annual_burned_area",
+    "k10": "gcd_charcoal_composite",
 }
 
 
@@ -228,7 +232,7 @@ def kjor_k8(kun_katalog=False):
         )
         raise validate.Valideringsfeil(f"{len(feil)} feil — ingenting publisert")
 
-    sti_json, sti_csv = normalize.skriv(observasjoner, FILNAVN["k8"])
+    sti_json, sti_csv = normalize.skriv(observasjoner, PROCESSED_FILE[SERIE["k8"]])
     k6_natural_earth.skriv_metadata(k6_info)
     k8_firecci.skriv_metadata(info, [sti_json.name, sti_csv.name])
     k8_firecci.skriv_status(
@@ -432,7 +436,7 @@ def kjor_k9(kun_katalog=False):
         )
         raise validate.Valideringsfeil(f"{len(feil)} feil — ingenting publisert")
 
-    sti_json, sti_csv = normalize.skriv(observasjoner, FILNAVN["k9"])
+    sti_json, sti_csv = normalize.skriv(observasjoner, PROCESSED_FILE[SERIE["k9"]])
     k6_natural_earth.skriv_metadata(k6_info)
     k9_gfed5.skriv_metadata(info, [sti_json.name, sti_csv.name])
     k9_gfed5.skriv_status(
@@ -469,7 +473,7 @@ def kjor_k10(kun_katalog=False):
         )
         raise validate.Valideringsfeil(f"{len(feil)} feil — ingenting publisert")
 
-    sti_json, sti_csv = normalize.skriv(observasjoner, FILNAVN["k10"])
+    sti_json, sti_csv = normalize.skriv(observasjoner, PROCESSED_FILE[SERIE["k10"]])
     k10_gcd.skriv_metadata(info, [sti_json.name, sti_csv.name])
     k10_gcd.skriv_status(
         "ok",

@@ -52,10 +52,16 @@ visuelt — en skjermleser skal møte figuren først.
 
 ### P3 — Ingen håndskrevne tall i brødtekst
 
-Alle tallfestede påstander i brødteksten genereres maskinelt fra datasettet ved
-byggetidspunkt, av `etl/derive.py`. **Aldri unntak.** Ikke «omtrent», ikke
-«rundt», ikke «i overkant av». Skal et tall stå i teksten, kommer det fra en
-mal som fylles fra `data/processed/insights.json`.
+Alle tallfestede påstander i brødteksten genereres maskinelt fra datasettet av
+`etl/derive.py`. **Aldri unntak.** Ikke «omtrent», ikke «rundt», ikke «i
+overkant av». Skal et tall stå i teksten, kommer det fra en mal som fylles fra
+`data/processed/insights.json`.
+
+**`derive.py` kjører i ETL, ikke under bygging av siden.** `insights.json`
+committes som de andre filene under `data/processed/`, og byggesteget leser den
+ferdige filen. En avledning som ble beregnet mens Astro bygde, ville ikke vært
+sporbar i git — da kunne et tall på siden endre seg uten at noen endring var
+committet, og bygget skal gi samme output for samme input (T3).
 
 Praktisk konsekvens: brødtekst skrives som maler med plassholdere. Finnes ikke
 avledningen, skal setningen ikke skrives — da må avledningen implementeres
@@ -87,6 +93,17 @@ Hver figur har en synlig kildelinje som inneholder, som et minimum:
    en «lignende» fil
 
 Kildelinjen er ikke valgfri og skjules ikke bak et klikk.
+
+**Figurens CSV er figurens egen.** Byggesteget skriver én CSV per figur, med
+nøyaktig de radene figuren tegner — samme serier, samme entiteter, samme år. En
+kanonisk fil under `data/processed/` som også bærer andre serier, er ikke
+«filen figuren bruker», selv om figuren henter tallene sine derfra. Leseren
+skal kunne laste ned figuren som tall og få igjen det hen så, uten å måtte
+filtrere selv.
+
+De kanoniske filene er fortsatt nedlastbare i sin helhet fra S6 (§ 8). De to
+lenkene svarer på hvert sitt spørsmål: figurens CSV på «hva står i denne
+figuren», den kanoniske filen på «hva har dere i datasettet».
 
 ### P6 — Forbehold som fotnoter per figur
 
@@ -244,22 +261,45 @@ etl/                Python-pakke. __init__.py er tom.
   grid.py           Rutenett → landnivå, med geometrien fra K6. Enhetsnøytral
   derive.py         Maskinelle avledninger → data/processed/insights.json
   validate.py       Kontrollerer at output er gyldig før publisering
-  run.py            Kjører pipelinen: hent → normaliser → valider → publiser
+  run.py            Kjører pipelinen: hent → normaliser → valider → avled →
+                    publiser
   run_static.py     Samme for de statiske kildene. Egen inngang, ikke et flagg
                     til run.py, slik at den månedlige kjøringen ikke kan dra
                     dem med seg (§ 5)
 data/
   raw/              Uendrede kildefiler. GITIGNORERT. Aldri committet.
   processed/        Kanoniske serier siden faktisk leser. Committes.
+                    Filnavnene står i PROCESSED_FILE i schema.py
   geo/              Forenklet geometri for kart. Committes.
     land_no.json    Entitetskode → norsk navn og nivå. Delt av alle kilder.
+    land_no_overrides.json
+                    Redaksjonelle navneoverstyringer, med begrunnelse. Se § 5
+    land_area_km2.json
+                    Landarealer regnet fra K6. Nevner i andelsindikatoren
   _sources.json     Kildemetadata: lisens, lenke, dekning, nedlastingsdato
   _status.json      Siste kjørestatus per kilde, for degradert visning
   _footnotes.json   Fotnotekode → norsk tekst. Se § 9
 src/                Nettsidens kildekode
 public/             Statiske ressurser som kopieres uendret
+scripts/            Hjelpeskript til bygget, kjørt av npm. Ikke en del av ETL
 .github/workflows/  ETL-kjøring og deploy
 ```
+
+### Filnavn under `data/processed/`
+
+Hvilken fil en serie havner i, er en **enumerasjon** og bor derfor ett sted i
+kode (T5): `PROCESSED_FILE` i `etl/schema.py`, med `series_id` som nøkkel.
+Ingen annen modul skriver et filnavn selv — verken `normalize.py`,
+`run_static.py` eller en kildemodul.
+
+De statiske kildene har hver sin fil, fordi hver av dem er én serie. De
+månedlige seriene som deler indikator, ligger i samme fil: `burned_area.*`
+bærer K1, K3, K4, K5 og K7. Det er filnavnet som er felles, ikke serien —
+`series_id` skiller dem inne i filen, og hver figur tegner sine egne rader
+(P5).
+
+Et filnavn som allerede er publisert, døpes ikke om. Lenken i en kildelinje
+skal fortsatt virke.
 
 ### Pakkeoppsett og importer
 
@@ -428,12 +468,15 @@ en ny versjon.
   sammen til én serie, og en figur som viser begge må markere bruddet, av
   samme grunn som ellers i § 6: det er to målemetoder, ikke én måling.
 
-- **K8 FireCCILT11** er et rutenettprodukt på 0,25°, ikke landtall. De månedlige
-  rutenettene summeres til årlige landtotaler med kartenhetene fra K6: hver rute
-  deles i et finere delrutenett, og rutens verdi fordeles mellom landene i ruten
-  etter hvor stor del av **landarealet** i ruten hvert av dem har. Havet får
-  ingenting — brent areal finnes bare på land, og en kystrute skal ikke miste
-  arealet sitt fordi halve ruten er sjø.
+- **K8 FireCCILT11** er et rutenettprodukt på 0,25°, ikke landtall. En rute er
+  om lag 773 km² ved ekvator, som er det største den kan bli i dette nettet.
+  Det er den målestokken `f_grid_resolution` regnes mot for denne kilden (§ 9).
+
+  De månedlige rutenettene summeres til årlige landtotaler med kartenhetene fra
+  K6: hver rute deles i et finere delrutenett, og rutens verdi fordeles mellom
+  landene i ruten etter hvor stor del av **landarealet** i ruten hvert av dem
+  har. Havet får ingenting — brent areal finnes bare på land, og en kystrute
+  skal ikke miste arealet sitt fordi halve ruten er sjø.
 
   En rute som bærer brent areal uten at noen landgeometri når fram, kan ikke
   tilskrives et land. Verdien går da til en uattribuert andel, som
@@ -681,7 +724,17 @@ nevner.
 | `measured` | Satellittmålt | Heltrukket linje |
 | `reported` | Nasjonalt rapportert, egne definisjoner | Stiplet linje |
 | `beta` | Foreløpig datasett, merket som sådan av produsenten | Heltrukket linje med redusert opasitet |
-| `reconstructed` | Rekonstruert eller proxy | Eget bånd, separat akse |
+| `reconstructed` | Rekonstruert eller proxy | Linje på egen akse |
+
+**Bånd brukes bare der kilden selv leverer et usikkerhetsintervall.** K10 har
+ikke noe slikt mål — kompositten er én kurve, og `n_series` sier hvor mange
+serier som ligger bak et punkt, ikke hvor mye de spriker. Et bånd rundt den
+ville tegnet en spredning vi ikke har målt, og det er en påstand siden ikke
+gjør (P1). `reconstructed` tegnes derfor som linje på egen akse.
+
+Kommer det senere en kilde som selv oppgir et intervall, kan intervallet tegnes
+som bånd. Da er båndet kildens egne tall, og tegnforklaringen sier hvilket
+intervall det er.
 
 `beta` betyr at **produsenten selv** har merket datasettet som foreløpig. Det
 er ikke vår vurdering av datakvaliteten. Serier med `beta` skal alltid ha
@@ -943,8 +996,6 @@ særbehandling og uten egen seksjon (P8).
   nivåforskjellen mellom to serier er ikke en endring i verden
 - `f_grid_resolution` — landet er lite i forhold til rutenettets oppløsning,
   slik at brent areal kan falle mellom rutene
-- `f_product_level` — satellittprodukter har ulik deteksjonsevne, så
-  nivåforskjellen mellom to serier er ikke en endring i verden
 - `f_smoothed` — hvert punkt er et glidende gjennomsnitt over en lengre
   periode, ikke en enkeltmåling
 - `f_thinning_record` — mot slutten av perioden bygger kurven på færre kilder,
@@ -970,10 +1021,12 @@ her, konstant i `etl/schema.py`. Den norske teksten leseren ser er noe annet —
 den er visningslagets oversettelse fra kodeverdi til lesbar tekst (§ 1), og står
 i `data/_footnotes.json`.
 
-Filen er ikke en tredje kopi av enumerasjonen. `validate.py` kontrollerer at
-nøklene der er nøyaktig `FOOTNOTE` fra `schema.py`, verken flere eller færre, så
-en ny kode kan ikke tas i bruk uten tekst og en tekst kan ikke bli stående etter
-at koden er fjernet.
+Filen er ikke en tredje kopi av enumerasjonen. Kodene ligger under nøkkelen
+`footnotes`, ved siden av `_om` og `_skjema`, som forklarer filen for den som
+åpner den uten å kjenne dette dokumentet. `validate.py` kontrollerer at nøklene
+**under `footnotes`** er nøyaktig `FOOTNOTE` fra `schema.py`, verken flere eller
+færre, så en ny kode kan ikke tas i bruk uten tekst og en tekst kan ikke bli
+stående etter at koden er fjernet.
 
 `f_missing_year` gjelder blant annet 1994 i K8. Et manglende år vises som
 brudd i kurven, aldri som 0 og aldri som interpolert verdi.
@@ -981,14 +1034,20 @@ brudd i kurven, aldri som 0 og aldri som interpolert verdi.
 `f_resolution_change` gjelder K9 for **1997–2000**, der oppløsningen er 1° mot
 0,25° fra 2001.
 
-`f_zero_no_detection` gjelder K1 og K8. Begge leverer et fullt rutenett av
-entiteter og år, og bruker 0 der satellittene ikke har påvist brent areal. En 0
-kan derfor bety at det ikke brant, at brannene var under deteksjonsgrensen,
-eller at området ikke er dekket — kilden skiller ikke. `normalize.py` merker
-hver nullverdi med fotnoten.
+`f_zero_no_detection` gjelder K1, K4, K8 og K9. Kriteriet er ikke hvilken form
+kilden har, men hva en 0 fra den betyr: kilden fører entiteten og året med
+verdien 0 i stedet for å utelate raden, og skiller ikke mellom «ingenting
+brant», «brannene lå under deteksjonsgrensen» og «området ble ikke sett».
+`normalize.py` merker hver nullverdi med fotnoten.
+
+Formen er ulik, tvetydigheten er den samme. K1 og K8 leverer et fullt rutenett
+av entiteter og år. K9 leverer de entitetene rutenettet treffer, for alle år i
+dekningen. K4 er landtotaler og ikke et rutenett i det hele tatt, men EFFIS
+fører landet med 0 for år uten kartlagt areal — og den nullen kan like gjerne
+bety at kartleggingen ikke fant noe som at ingenting brant.
 
 Dette er ikke det samme som «ingen data». En figur skal ikke tegne en 0 fra
-denne kilden som en målt null uten at fotnoten følger med.
+disse kildene som en målt null uten at fotnoten følger med.
 
 **Merkingen er også maskinlesbar, og det er poenget.** Trendreglene i § 7 finner
 nullene sine gjennom denne fotnoten: `TREND_MAX_ZERO_SHARE` og
@@ -1060,29 +1119,18 @@ leser tro at et punkt er en måling av det året, og at en topp er én hendelse.
 Endres `hw` i `etl/sources/k10_gcd.R`, må teksten i `data/_footnotes.json`
 endres i samme commit.
 
-`f_product_level` gjelder de satellittmålte arealseriene: K1, K8 og K9. Den
-sier at to serier kan ligge på ulikt nivå for samme år fordi produktene ser
-ulikt mye, og at avstanden mellom dem derfor ikke er informasjon om verden.
+`f_grid_resolution` gjelder rutenettkilder og påføres maskinelt. En entitet som
+dekker mindre enn `GRID_MIN_ENTITY_CELLS` ruter av **kildens eget rutenett**,
+får fotnoten på alle sine år.
 
-Den overlapper ikke med `f_min_fire_size`. Den fotnoten sier hva én serie ikke
-fanger opp; denne sier at *avstanden mellom to serier* ikke kan leses som en
-endring. Nasjonalt rapporterte kilder får den ikke — de har `f_reporting_basis`
-for en annen mekanisme, nemlig at definisjonene er ulike, ikke at
-deteksjonsevnen er det.
-
-Grunnen til at den trengs, er at kvalitetsbruddet i § 6 ikke fanger dette. K1
-og K9 er begge `measured`, så en figur som viser dem sammen tegner to
-heltrukne linjer uten noe som forklarer at den ene ligger nesten dobbelt så
-høyt som den andre.
-
-`f_grid_resolution` gjelder rutenettkilder og påføres maskinelt. En entitet med
-mindre landareal enn **én rute ved ekvator** — 0,25° × 0,25°, om lag 773 km²,
-som er den største en rute kan bli — får fotnoten på alle sine år.
+Terskelen er oppgitt i antall ruter, ikke i km². En rutes areal følger
+oppløsningen, og innenfor K9 skifter oppløsningen midt i serien — hvor stor én
+rute er for den enkelte kilden, står under kilden i § 5.
 
 Grensen er valgt fordi den har en fysisk betydning og ikke er en avrundet
-skjønnsverdi: et land under den får plass innenfor én rute hvor som helst på
-kloden. Da finnes det ingen rute som er landets alene, og tallet er en andel av
-ruter det deler med naboland eller hav.
+skjønnsverdi: en entitet under den får plass innenfor én rute. Da finnes det
+ingen rute som er entitetens alene, og tallet er en andel av ruter den deler
+med naboland eller hav.
 
 **Entiteter delrutenettet ikke treffer i det hele tatt, utelates fra kilden.**
 De skal ikke publiseres som 0 med fotnoter. En 0 fra en entitet rutenettet
@@ -1210,7 +1258,8 @@ sluttbrukeravtale tas ikke inn før avtalen er avklart og notert i
   `visning.test.ts`. Kjøres med `npm test`
 - `data/geo/land_no.json` — 260 entiteter, generert fra SSB
 - `data/geo/land_area_km2.json` — landarealer fra K6, nevner i andelsindikatoren
-- `data/processed/` — én fil per indikator, som JSON og CSV
+- `data/processed/` — bearbeidede serier som JSON og CSV. Hvilken fil hver
+  serie havner i, står i `PROCESSED_FILE` i `etl/schema.py` (§ 4)
 - `data/processed/burned_area_firecci_lt11.*` — K8, 1982–2018 uten 1994,
   8820 observasjoner
 - `data/processed/burned_area_gfed5.*` — K9, 1997–2020, 5880 observasjoner
@@ -1261,6 +1310,12 @@ som S3 skal bruke.
 
 K4 dekker foreløpig bare brent areal. Brannstørrelsesfordelingen S4 skal vise,
 krever polygonene fra Burnt Areas-databasen, som ikke er hentet.
+
+**Figurens egen CSV er ikke laget.** P5 krever at kildelinjen lenker til en CSV
+med nøyaktig de radene figuren tegner. `src/komponenter/Figur.astro` lenker i
+dag til den kanoniske filen fra `processed_files` i `data/_sources.json`, og for
+S1 betyr det `burned_area.csv`, som også bærer K3, K4, K5 og K7. Byggesteget må
+skrive figurens utsnitt til `public/data/` og lenke dit i stedet.
 
 **Kartgeometrien er ikke laget.** K6 leverer geometrien rutenettkildene
 fordeles på, og landarealene regnes fra den, men det finnes ingen forenklet
