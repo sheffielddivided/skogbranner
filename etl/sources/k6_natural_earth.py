@@ -1,11 +1,20 @@
-"""K6 — Natural Earth, admin-0: landgeometri.
+"""K6 — Natural Earth, admin-0: landgeometri og landarealer.
 
 Henter Natural Earths admin-0-lag (1:10 mill.) som shapefil, legger arkivet
 uendret i ``data/raw/`` og leverer geometriene videre som GeoJSON-aktige
 ordbøker. Ingen tolkning, ingen omregning — se ``etl/sources/README.md``.
 
-Kilden leverer ikke branndata. Den brukes til å fordele rutenettkilder på land
-og til landarealer, og tegnes ikke som egen serie (CLAUDE.md § 5 og § 8).
+Kilden leverer ikke branndata. Den gir to ting, og tegnes ikke som egen serie
+(CLAUDE.md § 5 og § 8):
+
+* **Geometri**, som rutenettkildene fordeles på land med, og som kartene
+  tegnes fra.
+* **Landarealer**, som er nevneren i ``burned_area_share_land`` og grunnlaget
+  for arealsammenligningen i § 7.
+
+**Admin-0 har ikke noe arealfelt.** Arealene regnes derfor fra polygonene, med
+den samme geometrien rutenettkildene fordeles på. Da er nevneren og
+rasteriseringen enige om hvor landegrensene går.
 
 Kjøres som modul fra repotoppen: ``python -m etl.sources.k6_natural_earth``
 """
@@ -13,12 +22,13 @@ Kjøres som modul fra repotoppen: ``python -m etl.sources.k6_natural_earth``
 import hashlib
 import io
 import json
+import math
 import urllib.error
 import urllib.request
 import zipfile
 from datetime import date
 
-from etl.schema import LAND_NO_JSON, RAW_DIR, SOURCES_JSON
+from etl.schema import LAND_AREA_JSON, LAND_NO_JSON, RAW_DIR, SOURCES_JSON
 
 SOURCE_ID = "K6"
 
@@ -212,6 +222,108 @@ def geometrier(sti=None):
     return ut, utelatt
 
 
+# Jordas autaliske radius i km: radien i den kula som har samme overflate som
+# WGS84-ellipsoiden. Den gjør at arealene stemmer i sum, ikke bare lokalt.
+AUTALISK_RADIUS_KM = 6371.0072
+
+
+def _ringareal(ring):
+    """Arealet av én lukket ring på kula, i km². Fortegnet følger omløpet.
+
+    Bruker formelen for sfærisk polygonareal. Fortegnet skiller ytterkant fra
+    hull, slik at et land med innsjøhull ikke får hullet regnet med.
+    """
+    if len(ring) < 4:
+        return 0.0
+
+    sum_ = 0.0
+    for (lon1, lat1), (lon2, lat2) in zip(ring, ring[1:]):
+        sum_ += math.radians(lon2 - lon1) * (
+            math.sin(math.radians(lat1)) + math.sin(math.radians(lat2))
+        )
+    return sum_ * AUTALISK_RADIUS_KM**2 / 2.0
+
+
+def _geometriareal(geometri):
+    """Arealet av en GeoJSON-geometri i km².
+
+    Første ring i et polygon er ytterkanten, resten er hull. Hullene kommer med
+    motsatt fortegn av ytterkanten, så summen trekker dem fra av seg selv.
+    """
+    type_ = geometri.get("type")
+    koordinater = geometri.get("coordinates") or []
+
+    if type_ == "Polygon":
+        polygoner = [koordinater]
+    elif type_ == "MultiPolygon":
+        polygoner = koordinater
+    else:
+        return 0.0
+
+    total = 0.0
+    for polygon in polygoner:
+        if not polygon:
+            continue
+        ytre = abs(_ringareal(polygon[0]))
+        hull = sum(abs(_ringareal(r)) for r in polygon[1:])
+        total += ytre - hull
+    return total
+
+
+def landarealer(geo, land=None):
+    """Summerer polygonarealene per entity-kode.
+
+    Summeres, ikke settes: et land består gjerne av flere polygoner, og
+    kartenhetene deler dessuten enkelte land i flere poster. Arealet er summen
+    av delene.
+
+    Returnerer (arealer, utelatt). ``utelatt`` er koder kilden fører som ikke
+    står i land_no.json — de er ikke en feil her, men føres opp slik at det er
+    sporbart hva som ikke er med.
+    """
+    land = land if land is not None else _land()
+
+    arealer = {}
+    utelatt = {}
+    for kode, geometri in geo:
+        areal = _geometriareal(geometri)
+        if areal <= 0:
+            continue
+        if kode in land:
+            arealer[kode] = arealer.get(kode, 0.0) + areal
+        else:
+            utelatt[kode] = round(utelatt.get(kode, 0.0) + areal, 2)
+
+    arealer = {k: round(v, 2) for k, v in sorted(arealer.items())}
+    return arealer, dict(sorted(utelatt.items()))
+
+
+def skriv_arealer(arealer, utelatt, info):
+    """Skriver data/geo/land_area_km2.json."""
+    data = {
+        "schema_version": 1,
+        "_om": "Landareal per entitet i km², regnet fra Natural Earths "
+        "admin-0-kartenheter. Admin-0 har ikke noe arealfelt, så arealene er "
+        "regnet fra polygonene med formelen for sfærisk polygonareal. Tallene "
+        "er nevneren i burned_area_share_land og grunnlaget for "
+        "arealsammenligningen. Se CLAUDE.md § 5 og etl/sources/"
+        "k6_natural_earth.py.",
+        "source_id": SOURCE_ID,
+        "layer": LAG,
+        "downloaded_at": info["downloaded_at"],
+        "_utelatt": "Koder Natural Earth fører, men som ikke står i "
+        "land_no.json. De er utelatt med vilje og føres opp her for at det "
+        "skal være sporbart hva som ikke er med.",
+        "excluded": utelatt,
+        "areas": arealer,
+    }
+    LAND_AREA_JSON.parent.mkdir(parents=True, exist_ok=True)
+    with open(LAND_AREA_JSON, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+        f.write("\n")
+    return LAND_AREA_JSON
+
+
 def skriv_metadata(info):
     """Registrerer kilden i data/_sources.json."""
     with open(SOURCES_JSON, encoding="utf-8") as f:
@@ -258,6 +370,13 @@ def main():
     print(f"K6: uten kode: {len(utelatt)}")
     if ukjente:
         print(f"K6: koder utenfor land_no.json: {', '.join(ukjente)}")
+
+    arealer, uten_oppforing = landarealer(geo, land)
+    skriv_arealer(arealer, uten_oppforing, info)
+    print(
+        f"K6: landareal for {len(arealer)} entiteter → {LAND_AREA_JSON.name}"
+        + (f", {len(uten_oppforing)} utelatt" if uten_oppforing else "")
+    )
     return geo, info
 
 
