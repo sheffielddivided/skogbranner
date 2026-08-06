@@ -111,9 +111,10 @@ def fra_k1(rader, info):
     # Data for nedlastingsåret er per definisjon ufullstendige.
     ufullstendig_aar = int(info["downloaded_at"][:4])
 
-    # Gjelder hele serien: MODIS/VIIRS-overgangen og at de minste brannene
-    # ikke fanges opp. Se data/_sources.json for kildens egen ordlyd.
-    grunnfotnoter = ["f_sensor_break", "f_min_fire_size"]
+    # Gjelder hele serien: MODIS/VIIRS-overgangen, at de minste brannene ikke
+    # fanges opp, og at nivået avhenger av produktet. Se data/_sources.json for
+    # kildens egen ordlyd.
+    grunnfotnoter = ["f_sensor_break", "f_min_fire_size", "f_product_level"]
 
     observasjoner = []
     ukjente = set()

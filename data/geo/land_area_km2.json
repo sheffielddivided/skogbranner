@@ -3,7 +3,7 @@
   "_om": "Landareal per entitet i km², regnet fra Natural Earths admin-0-kartenheter. Admin-0 har ikke noe arealfelt, så arealene er regnet fra polygonene med formelen for sfærisk polygonareal. Tallene er nevneren i burned_area_share_land og grunnlaget for arealsammenligningen. Se CLAUDE.md § 5 og etl/sources/k6_natural_earth.py.",
   "source_id": "K6",
   "layer": "ne_10m_admin_0_map_units",
-  "downloaded_at": "2026-08-05",
+  "downloaded_at": "2026-08-06",
   "_utelatt": "Koder Natural Earth fører, men som ikke står i land_no.json. De er utelatt med vilje og føres opp her for at det skal være sporbart hva som ikke er med.",
   "excluded": {
     "ATA": 12258364.3
