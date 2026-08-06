@@ -703,3 +703,21 @@ a:visited {
 .rangering-tabell th[aria-sort="ascending"]::after {
   content: " ▴";
 }
+
+/* --- Sesongfiguren (S3) --- */
+
+.tegnforklaring-merke--median {
+  background: repeating-linear-gradient(
+    90deg,
+    var(--farge-serie) 0 5px,
+    transparent 5px 8px
+  );
+  align-self: center;
+  height: 2px;
+}
+
+.tegnforklaring-merke--band {
+  background: var(--farge-serie);
+  opacity: 0.16;
+  border: 1px solid var(--farge-serie);
+}

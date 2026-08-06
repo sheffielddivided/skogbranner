@@ -19,6 +19,7 @@ Kjøres som modul fra repotoppen: ``python -m etl.derive``
 
 import json
 import math
+import re
 from collections import defaultdict
 
 from etl import validate
@@ -27,6 +28,7 @@ from etl.schema import (
     CONCENTRATION_TOP_N,
     INSIGHTS_JSON,
     LAND_AREA_JSON,
+    SEASON_BAND_PCT,
     TREND_ALPHA,
     TREND_MAX_ZERO_SHARE,
     TREND_MAX_ZERO_TAIL,
@@ -143,6 +145,27 @@ def _prosent(x):
     if abs(x) >= 1:
         return round(x, DESIMALER_PROSENT)
     return round(x, -int(math.floor(math.log10(abs(x)))) + 1)
+
+
+def persentil(verdier, p):
+    """Persentil med lineær interpolasjon mellom ordningsverdiene.
+
+    Samme konvensjon som numpy og R type 7: er persentilen mellom to
+    observasjoner, veies de to nærmeste. Skrevet ut her fordi den månedlige
+    kjøringen ikke har numeriske avhengigheter.
+    """
+    sortert = sorted(verdier)
+    if not sortert:
+        return None
+    if len(sortert) == 1:
+        return sortert[0]
+
+    plass = (len(sortert) - 1) * p / 100
+    under = math.floor(plass)
+    over = math.ceil(plass)
+    if under == over:
+        return sortert[int(plass)]
+    return sortert[under] + (sortert[over] - sortert[under]) * (plass - under)
 
 
 def _median(verdier):
@@ -487,6 +510,174 @@ def arealsammenligning(verdi, landarealer, navn):
     }
 
 
+
+# --- Sesong (CLAUDE.md § 7) ---------------------------------------------
+#
+# Ukesseriene håndteres for seg. De årlige avledningene regner på år, og en
+# uke er ikke et år — men dekning og sesong er definert for begge.
+
+UKEPERIODE = re.compile(r"^(\d{4})-W(\d{2})$")
+
+
+def ukegrunnlag(observasjoner):
+    """Ordner ukesobservasjonene per serie, entitet, år og uke.
+
+    Samme regel som for årsseriene: inneværende år kjennes på
+    f_incomplete_year og holdes utenfor grunnlaget for median og persentiler,
+    men føres for seg slik at figuren kan tegne det (§ 7).
+    """
+    serier = {}
+    for o in observasjoner:
+        treff = UKEPERIODE.match(o["period"])
+        if not treff:
+            continue
+
+        serie = serier.setdefault(
+            o["series_id"],
+            {
+                "series_id": o["series_id"],
+                "source_id": o["source_id"],
+                "quality": o["quality"],
+                "indicator": o["indicator"],
+                "unit": o["unit"],
+                "entities": defaultdict(lambda: defaultdict(dict)),
+                "names": {},
+                "levels": {},
+                "incomplete_years": set(),
+            },
+        )
+        serie["names"][o["entity"]] = o["entity_name"]
+        serie["levels"][o["entity"]] = o["level"]
+
+        aar, uke = int(treff.group(1)), int(treff.group(2))
+        if UFULLSTENDIG in o["footnotes"]:
+            serie["incomplete_years"].add(aar)
+        serie["entities"][o["entity"]][aar][uke] = o["value"]
+
+    for serie in serier.values():
+        serie["incomplete_years"] = sorted(serie["incomplete_years"])
+    return serier
+
+
+def _kumulativ(uker):
+    """Kumulativ sum uke for uke, fra uke 1 til den siste uken med måling."""
+    ut = {}
+    sum_ = 0.0
+    for uke in range(1, max(uker) + 1 if uker else 1):
+        if uke in uker:
+            sum_ += uker[uke]
+            ut[uke] = round(sum_, DESIMALER_VERDI)
+    return ut
+
+
+def ukesdekning(serie, kode):
+    """Dekningen for en ukesserie: år, uker og hvilke år som er ufullstendige."""
+    aarene = serie["entities"][kode]
+    if not aarene:
+        return None
+    hele = [a for a in sorted(aarene) if a not in serie["incomplete_years"]]
+    return dict(
+        _felles(serie, kode),
+        kind="coverage",
+        first_year=min(aarene),
+        last_year=max(aarene),
+        n_years=len(aarene),
+        complete_years=hele,
+        n_complete_years=len(hele),
+        incomplete_years=serie["incomplete_years"],
+        n_weeks=sum(len(uker) for uker in aarene.values()),
+    )
+
+
+def sesongprofil(serie, kode):
+    """Median brent areal per uke, over de fullstendige årene.
+
+    Dette er sesongprofilen: når på året det brenner, uke for uke. Medianen
+    brukes framfor gjennomsnittet fordi ett år som stikker ut ikke skal flytte
+    hele kurven.
+    """
+    aarene = {
+        aar: uker
+        for aar, uker in serie["entities"][kode].items()
+        if aar not in serie["incomplete_years"]
+    }
+    if not aarene:
+        return None
+
+    per_uke = defaultdict(list)
+    for uker in aarene.values():
+        for uke, verdi in uker.items():
+            per_uke[uke].append(verdi)
+
+    return dict(
+        _felles(serie, kode),
+        kind="season_week",
+        basis_years=sorted(aarene),
+        n_years=len(aarene),
+        weeks=[
+            {
+                "week": uke,
+                "median": round(_median(per_uke[uke]), DESIMALER_VERDI),
+                "n_years": len(per_uke[uke]),
+            }
+            for uke in sorted(per_uke)
+        ],
+    )
+
+
+def sesongband(serie, kode):
+    """Kumulativ median og persentilbånd per uke, over fullstendige år.
+
+    Båndet dekker SEASON_BAND_PCT — se CLAUDE.md § 7. Inneværende år føres for
+    seg, med sin egen kumulative kurve, og inngår ikke i båndet.
+    """
+    alle = serie["entities"][kode]
+    hele = {
+        aar: _kumulativ(uker)
+        for aar, uker in alle.items()
+        if aar not in serie["incomplete_years"]
+    }
+    if not hele:
+        return None
+
+    lav, hoy = SEASON_BAND_PCT
+    per_uke = defaultdict(list)
+    for kurve in hele.values():
+        for uke, verdi in kurve.items():
+            per_uke[uke].append(verdi)
+
+    ufullstendig = None
+    for aar in serie["incomplete_years"]:
+        if aar in alle:
+            kurve = _kumulativ(alle[aar])
+            ufullstendig = {
+                "year": aar,
+                "last_week": max(kurve) if kurve else None,
+                "weeks": [
+                    {"week": uke, "value": verdi} for uke, verdi in sorted(kurve.items())
+                ],
+            }
+
+    return dict(
+        _felles(serie, kode),
+        kind="season_band",
+        basis_years=sorted(hele),
+        n_years=len(hele),
+        band_pct=list(SEASON_BAND_PCT),
+        weeks=[
+            {
+                "week": uke,
+                "median": round(_median(per_uke[uke]), DESIMALER_VERDI),
+                "low": round(persentil(per_uke[uke], lav), DESIMALER_VERDI),
+                "high": round(persentil(per_uke[uke], hoy), DESIMALER_VERDI),
+                "n_years": len(per_uke[uke]),
+            }
+            for uke in sorted(per_uke)
+        ],
+        incomplete_year=ufullstendig,
+    )
+
+
 # --- Sammenstilling --------------------------------------------------------
 
 
@@ -588,6 +779,18 @@ def avled(observasjoner):
                     period=str(siste),
                 )
                 sammendrag["area_comparison"] += 1
+
+    # Ukesseriene: dekning, sesongprofil og sesongbånd (§ 7).
+    for serie_id, serie in sorted(ukegrunnlag(observasjoner).items()):
+        for kode in sorted(serie["entities"]):
+            for navn, avledning_ in (
+                ("coverage", ukesdekning(serie, kode)),
+                ("season_week", sesongprofil(serie, kode)),
+                ("season_band", sesongband(serie, kode)),
+            ):
+                if avledning_:
+                    avledninger[f"{navn}.{serie_id}.{kode}"] = avledning_
+                    sammendrag[navn] = sammendrag.get(navn, 0) + 1
 
     sammendrag["trend"]["skipped"] = dict(
         sorted(sammendrag["trend"]["skipped"].items())

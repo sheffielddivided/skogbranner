@@ -451,6 +451,31 @@ en ny versjon.
 
   Den andre er som datagrunnlag for **S3**, der ukesoppløsningen brukes. Det er
   den eneste seksjonen der K2 er synlig for leseren.
+
+  **Ukesserien hentes per land og summeres til verdensdel og verden.** Kilden
+  svarer ikke på sone i ukesendepunktet — en sonekode der landkoden skal stå,
+  gir null rader. Inndelingen er derfor kildens egne sonelister, mens
+  summeringen er vår, og det står i `data/_sources.json`.
+
+  Verdenstallet summeres av landene, ikke av sonene. Et land kan ligge i flere
+  soner eller i ingen, og en sum av soner ville telt det to ganger eller ikke i
+  det hele tatt.
+
+  FN-inndelingen kilden bruker har Amerika som én verdensdel. Vi fører Nord- og
+  Sør-Amerika hver for seg, og bruker derfor kildens makroregioner for de to.
+
+  Landene selv publiseres ikke. De ville gitt over 180 000 rader uten at noen
+  figur viser dem, og S3 spør om når på året det brenner hvor — ikke om det
+  enkelte landet.
+
+  **Hentingen er skånsom og bufret.** Ukesserien er én forespørsel per land og
+  år, og GWIS er en offentlig tjeneste vi ikke betaler for. Det er derfor pause
+  mellom forespørslene, med lengden som `GWIS_REQUEST_PAUSE_S` i `schema.py`.
+
+  Et fullstendig år hentes aldri på nytt: den publiserte filen er
+  hurtigbufferen, og en månedlig kjøring ber bare om inneværende år. Det betyr
+  også at en revisjon GWIS gjør i et gammelt år, ikke fanges opp av seg selv —
+  vil man ha den, må filen slettes og serien hentes på nytt.
 - **K3 og K4 er to ulike produkter fra EFFIS**, og skal ikke forveksles.
 
   **K3** er landtotalene EFFIS publiserer som nedlastbar XLS sammen med
@@ -822,6 +847,8 @@ T5 forbyr.
 | Konsentrasjon | Andel av totalt brent areal fra de N største brannene eller landene |
 | Dekning | Første og siste år med data per enhet og serie |
 | Arealsammenligning | Landet hvis landareal ligger nærmest en gitt arealverdi, valgt maskinelt fra Natural Earth-arealene (K6) |
+| Sesongprofil | Median brent areal per uke i året, over fullstendige år, per entitet |
+| Sesongbånd | Kumulativ kurve per uke: median og persentilbånd over fullstendige år |
 
 **Arealsammenligning** gir leseren en fysisk referanse for et tall i km², som
 ellers er vanskelig å forestille seg. Sammenligningslandet velges maskinelt
@@ -833,6 +860,26 @@ Regelen garanterer at det finnes et sammenligningsland, ikke at det er et
 godt et. Landarealene ligger ujevnt fordelt, og et tall som havner i en luke
 mellom to land, får et sammenligningsland med stort avvik. Setningen skal
 derfor alltid ta med avviket, aldri bare navnet.
+
+**Sesongprofil og sesongbånd** er de to avledningene S3 bygger på, og begge
+regnes uke for uke over fullstendige år.
+
+Profilen er medianen for hver uke: uke 1 mot uke 1 i de andre årene, uke 2 mot
+uke 2. Den svarer på når på året det brenner et sted — brannsesongen.
+
+Båndet er den samme øvelsen på den kumulative kurven, altså summen fra uke 1 og
+utover. For hver uke sorteres årene, og båndet dekker `SEASON_BAND_PCT` i
+`etl/schema.py`: ett år av ti ligger over, ett av ti under. Linjen inne i
+båndet er medianen.
+
+Inneværende år inngår i ingen av dem. Det tegnes for seg, som sin egen
+kumulative kurve, og båndet sier hva et helt år pleier å være — noe et år som
+ikke er omme, ikke kan være med på å definere (§ 7, grunnlaget).
+
+Persentilene er regnet med lineær interpolasjon mellom ordningsverdiene, samme
+konvensjon som numpy og R type 7. Med fjorten år ligger den tiende persentilen
+mellom to observasjoner, og en avrunding til nærmeste ville flyttet båndet et
+helt år ut eller inn.
 
 **Konsentrasjon** regnes over de `CONCENTRATION_TOP_N` største, og beregnes
 ikke når serien har like få entiteter som N eller færre. Da er «de største»
