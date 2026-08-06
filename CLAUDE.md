@@ -1374,7 +1374,8 @@ sluttbrukeravtale tas ikke inn før avtalen er avklart og notert i
 - `etl/schema.py` — enumerasjonene, tersklene og stiene
 - `etl/sources/ssb_klass.py` — navnekilden, bygger `land_no.json`
 - `etl/sources/k1_owid.py` — K1, CSV og metadata
-- `etl/sources/k2_gwis.py` — K2, årsserie per land. Brukes til kryssjekk mot K1
+- `etl/sources/k2_gwis.py` — K2, i to roller: årsserie per land til kryssjekken
+  mot K1, og ukesserie per land, summert til verdensdel og verden, til S3
 - `etl/sources/k3_effis.py` — K3, nasjonalt rapporterte landtotaler fra XLS
 - `etl/sources/k4_effis.py` — K4, EFFIS' egen satellittkartlegging (RDA)
 - `etl/sources/k5_nifc.py` — K5, HTML-tabellen på statistikksiden
@@ -1399,6 +1400,7 @@ sluttbrukeravtale tas ikke inn før avtalen er avklart og notert i
 - `src/lib/csv.ts` — figurens egen CSV, med test i `csv.test.ts`
 - `src/figurer/overskriftstall.ts` og `globaltBrentAreal.ts` — S1s to figurer
 - `src/figurer/kartBrentAreal.ts` og `rangering.ts` — S2s to figurer
+- `src/figurer/sesongprofil.ts` og `kumulativUke.ts` — S3s to figurer
 - `src/komponenter/Kart.astro` — kart med bryter mellom to visninger, uten
   skript, og `Rangering.astro` — sorterbar tabell, lesbar uten skript
 - `src/pages/data/figur/[figur].csv.ts` — skriver én CSV per figur ved bygging
@@ -1412,6 +1414,8 @@ sluttbrukeravtale tas ikke inn før avtalen er avklart og notert i
   8820 observasjoner
 - `data/processed/burned_area_gfed5.*` — K9, 1997–2020, 5880 observasjoner
 - `data/processed/charcoal_composite_gcd.*` — K10, 6050 fvt–2010, 404 punkter
+- `data/processed/burned_area_weekly.*` — K2s ukesserie, 2012-W01–, seks
+  verdensdeler og verden. Landene bak summene publiseres ikke (§ 5)
 - `data/processed/insights.json` — avledningene, med id som nøkkel
 - `data/_footnotes.json` — fotnotetekstene, kontrollert mot `schema.py`
 - `requirements.txt` — den månedlige kjøringens avhengigheter: `openpyxl`
@@ -1457,12 +1461,11 @@ Nivåforskjellen vises som tre verdier for samme år, ikke som årsgjennomsnitt.
 Et gjennomsnitt er ikke en tillatt avledning (§ 7), og et felles år er
 dessuten en sammenligning leseren kan etterprøve i figuren selv.
 
-**Ikke implementert:** S2–S6 har overskrift og en merknad om at de ikke er
+**Ikke implementert:** S4–S6 har overskrift og en merknad om at de ikke er
 laget, så K3, K4, K5 og K7 ligger i datasettet uten at noen seksjon viser dem
-ennå. Det samme gjelder `fire_count` og `burned_area_share_land`, og K2s
-ukesoppløsning, som S3 skal bruke.
+ennå. Det samme gjelder `fire_count`.
 
-**Avledningene er i bruk i S1.** Hvert tall i teksten der er fylt fra
+**Avledningene er i bruk i S1, S2 og S3.** Hvert tall i teksten er fylt fra
 `insights.json`, og setningen bærer id-en i `data-derivation` (P3). Finnes
 ikke avledningen en setning trenger, stopper bygget — `avledning()` i
 `src/lib/data.ts` kaster framfor å la et tall mangle.
@@ -1495,5 +1498,24 @@ rangerer år innenfor én entitet — og konsentrasjonen, som navngir de størst
 finnes bare for summerbare enheter. Tabellen viser rekkefølgen; brødteksten
 påstår den ikke.
 
-**Neste steg:** S3 — året gjennom, med K2s ukesoppløsning. Den er hentet som
-årsserie i dag, og ukesserien må inn i pipelinen først.
+**S3 er ferdig.** Sesongprofilen viser hver verdensdel i sin egen rute med sin
+egen loddrette skala — Afrika brenner i en helt annen størrelsesorden enn
+Europa, og en felles skala ville gjort de minste kurvene til flate streker.
+Teksten sier derfor at formen kan sammenlignes mellom rutene, men ikke høyden.
+
+Den kumulative figuren tegner inneværende år mot medianen og persentilbåndet
+for de fullstendige årene. Året som ikke er omme, er med i figuren og utenfor
+grunnlaget (§ 7), og kurven stopper der målingene stopper.
+
+**Ukesserien er hentet, og hentingen er den tyngste vi har.** Første kjøring
+var 3 840 forespørsler og tok en time. En månedlig kjøring ber bare om
+inneværende år: 256 forespørsler, et par minutter. De fullstendige årene ligger
+i den publiserte filen, som er hurtigbufferen (§ 5).
+
+Prisen er at en feil etter hentingen er dyr. Det er derfor `run.py` tar vare på
+radene før statusen skrives, og K2s status føres per rolle — en feilet
+ukeshenting skal ikke kunne se ut som suksess fordi kryssjekken gikk bra
+etterpå.
+
+**Neste steg:** S4 — Europa, med K3 og K4. Brannstørrelsesfordelingen krever
+polygonene fra Burnt Areas-databasen, som ikke er hentet.
