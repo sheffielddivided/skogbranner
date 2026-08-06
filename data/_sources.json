@@ -19,7 +19,7 @@
       "temporal_resolution": "annual",
       "quality": "measured",
       "unit_source": "hectares",
-      "downloaded_at": "2026-08-05",
+      "downloaded_at": "2026-08-06",
       "source_last_updated": "2026-08-01",
       "checksum": "a60fa5fded76cff4f7e76bc5f9e93e0f4bc2dc27a581914115d01808b6fab881",
       "series": [
@@ -53,7 +53,7 @@
       "temporal_resolution": "",
       "quality": "",
       "unit_source": "",
-      "downloaded_at": "2026-08-05",
+      "downloaded_at": "2026-08-06",
       "source_last_updated": null,
       "checksum": "45bebe2aaf8bf42b9daf4428594925bcb11eabd32fe9dc6e0acf681438053eb5",
       "series": [],
@@ -77,7 +77,7 @@
       "temporal_resolution": "annual",
       "quality": "reported",
       "unit_source": "hectares",
-      "downloaded_at": "2026-08-05",
+      "downloaded_at": "2026-08-06",
       "source_last_updated": "2024",
       "checksum": "bbc05c239e5d471700c2d440800c9c41318aaf74eaae7db82445557ab6c05a06",
       "series": [
@@ -112,7 +112,7 @@
       "temporal_resolution": "annual",
       "quality": "reported",
       "unit_source": "acres",
-      "downloaded_at": "2026-08-05",
+      "downloaded_at": "2026-08-06",
       "checksum": "32fe27d4ddefecf6e52bc98bc7013f8af8522a415429de1d288b19ef510ef679",
       "series": [
         "nifc_annual_burned_area",
@@ -148,7 +148,7 @@
       "temporal_resolution": "annual",
       "quality": "reported",
       "unit_source": "hectares",
-      "downloaded_at": "2026-08-05",
+      "downloaded_at": "2026-08-06",
       "source_last_updated": "2026-05-13",
       "checksum": "9248134616e43740a596fce592e7ac72e0bd41334de831f4712a3f37cc2bcefc",
       "fire_count_checksum": "1049fe47f07f347761659f41199da573731a3eae10111c6176744343678b76f4",
@@ -184,7 +184,7 @@
       "temporal_resolution": "annual",
       "quality": "measured",
       "unit_source": "hectares",
-      "downloaded_at": "2026-08-05",
+      "downloaded_at": "2026-08-06",
       "checksum": "921adbab833cf9fed6b2bb23d4e3458ae8a1bb5235d09822510fd5b5acc00035",
       "series": [
         "gwis_annual_burned_area"
@@ -213,7 +213,7 @@
       "temporal_resolution": "annual",
       "quality": "measured",
       "unit_source": "hectares",
-      "downloaded_at": "2026-08-05",
+      "downloaded_at": "2026-08-06",
       "checksum": "510f13bae8cff59bbbc716ebef437a71de40c33c416f753e379a90f87311408b",
       "series": [
         "effis_rda_annual_burned_area"
