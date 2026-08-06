@@ -836,7 +836,7 @@ rekkefølgen. Hver seksjon åpner med figuren (P2).
 | S2 | Hvor på kloden | Geografisk fordeling: kart og rangering av land | K1 |
 | S3 | Året gjennom | Sesongvariasjon innenfor året — kumulativ kurve mot median og persentilbånd, i ukesoppløsning | K2 |
 | S4 | Europa | Land- og regionnivå, brent areal og andel av landareal, sorterbar tabell, brannstørrelsesfordeling | K3, K4 |
-| S5 | Den lange linjen | De samme seriene som i S1, pluss de nasjonale og proxyen, vist **hver for seg** i separate figurer med hver sin akse og hver sin dekningsperiode | K1, K5, K7, K8, K9, K10 |
+| S5 | Den lange linjen | De samme seriene som i S1, pluss de nasjonale og proxyen, vist **hver for seg** i separate figurer med hver sin akse og hver sin dekningsperiode. Kompositten avgrenses ved den yngste enden, se § 9 | K1, K5, K7, K8, K9, K10 |
 | S6 | Om dataene | Kildeoversikt, definisjoner, ordliste, alle fotnoter samlet, nedlastingslenker til alle bearbeidede CSV-filer, lenke til repoet | alle |
 
 **Hva kildekolonnen betyr.** Kolonnen lister kilder som leverer **tallverdiene
@@ -947,6 +947,8 @@ særbehandling og uten egen seksjon (P8).
   nivåforskjellen mellom to serier er ikke en endring i verden
 - `f_smoothed` — hvert punkt er et glidende gjennomsnitt over en lengre
   periode, ikke en enkeltmåling
+- `f_thinning_record` — mot slutten av perioden bygger kurven på færre kilder,
+  fordi sedimentkjernene slutter ved innsamlingstidspunktet
 
 `f_product_level` gjelder de satellittmålte arealseriene: K1, K4, K8 og K9.
 Den sier at to serier kan ligge på ulikt nivå for samme år fordi produktene ser
@@ -995,6 +997,43 @@ Merkes de ikke, gjelder terskelene ikke for serien, og en falsk nedgang av
 Qatar-typen — deteksjoner som stopper, ikke branner som avtar — ville passert
 ubemerket. En rutenettkilde som ikke merker nullene sine, undergraver derfor en
 regel som står et helt annet sted i dokumentet.
+
+`f_thinning_record` gjelder K10, og henger sammen med at **visningen av
+kurven avgrenses ved den yngste enden**.
+
+Antall serier bak hvert punkt står i `n_series` (§ 6). Det stiger fra rundt 110
+i den eldste delen til 360 rundt 1950, og faller så til 99 i det yngste
+punktet. Fallet skyldes at sedimentkjerner slutter ved innsamlingstidspunktet,
+ikke at noe skjer i verden — og det sammenfaller med den delen der kurven
+stiger kraftigst. Å vise den enden uten avgrensning ville invitere til en
+lesning dataene ikke bærer.
+
+**Regelen:** fra det yngste punktet og bakover utelates punkter fra visningen
+så lenge `n_series` er under `COMPOSITE_MIN_SERIES_SHARE` av det tetteste
+punktet. Den stopper ved det første punktet som er over.
+
+Terskelen er en **andel**, ikke et antall og ikke et årstall. Et antall ville
+blitt feil hvis databasen vokser, og et årstall ville vært en fasit vi måtte
+huske å endre. Grensen beregnes ved bygging, av dataene selv, og skal aldri
+fryses (§ 7, T5). `etl/schema.py` eier tallet; kilden skriver det til
+`data/_sources.json` som `min_series_share`, fordi byggetrinnet er TypeScript
+og ikke kan lese `schema.py` — verdien har fortsatt bare ett hjem.
+
+**Punktene blir liggende i datasettet med sin `n_series`.** Det er visningen
+som avgrenses, ikke dataene. Den som vil se hele halen, finner den i CSV-en.
+
+**Regelen kutter halen, ikke alle tynne punkter.** Det er avgjørende: målt mot
+det tetteste punktet ligger hele den eldste delen av kurven også under
+terskelen. Et filter ville strøket to tredjedeler av serien, altså nettopp den
+lange linjen proxyen finnes for.
+
+**Den eldste enden får ikke samme behandling**, og det er et bevisst valg.
+Der er antallet lavt, men **stabilt** — det svinger rundt 110–140 gjennom
+årtusener uten å falle sammen, og det sammenfaller ikke med noe brudd i
+kurven. Ved den yngste enden faller antallet derimot brått, fra 69 % til 28 %
+av det tetteste i ett steg, og faller sammen med den bratteste stigningen.
+Mekanismene er ulike: få lange kjerner er en egenskap ved arkivet, mens kjerner
+som slutter ved innsamlingsdato er en egenskap ved innsamlingen.
 
 `f_smoothed` gjelder K10. Hvert punkt i kompositten er et vektet snitt over et
 vindu på 500 år til hver side, og kurven viser derfor den langsiktige formen,

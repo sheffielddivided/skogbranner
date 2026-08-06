@@ -31,7 +31,12 @@ import subprocess
 from datetime import date, datetime, timezone
 from pathlib import Path
 
-from etl.schema import RAW_DIR, SOURCES_JSON, STATUS_JSON
+from etl.schema import (
+    COMPOSITE_MIN_SERIES_SHARE,
+    RAW_DIR,
+    SOURCES_JSON,
+    STATUS_JSON,
+)
 
 SOURCE_ID = "K10"
 SERIES_ID = "gcd_charcoal_composite"
@@ -152,6 +157,10 @@ def skriv_metadata(info, processed_files):
         "smoothing_halfwidth_years": 500,
         "n_series_min": info.get("n_series_min"),
         "n_series_max": info.get("n_series_max"),
+        # Terskelen visningen avgrenses med. Den skrives hit fordi byggetrinnet
+        # er TypeScript og ikke kan lese etl/schema.py — verdien har fortsatt
+        # bare ett hjem, og reiser hit som data (T5).
+        "min_series_share": COMPOSITE_MIN_SERIES_SHARE,
         "quality": "reconstructed",
         "unit_source": "zscore",
         "downloaded_at": info["downloaded_at"],
