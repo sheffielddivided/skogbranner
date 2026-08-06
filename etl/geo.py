@@ -19,10 +19,13 @@ import json
 
 from etl.schema import (
     GEO_COORD_DECIMALS,
+    GEO_EUROPE_JSON,
+    GEO_EUROPE_SIMPLIFY_TOLERANCE_DEG,
     GEO_MIN_RING_POINTS,
     GEO_SIMPLIFY_TOLERANCE_DEG,
     GEO_WORLD_JSON,
     LAND_NO_JSON,
+    PROCESSED_DIR,
 )
 from etl.sources import k6_natural_earth
 
@@ -67,13 +70,13 @@ def _rund(punkter):
     ]
 
 
-def _ring(ring):
+def _ring(ring, toleranse):
     """Én forenklet ring, eller None hvis den ikke lenger er en flate.
 
     En ring som faller under GEO_MIN_RING_POINTS punkter, har ingen flate igjen
     å tegne. Da utelates den heller enn å bli en strek.
     """
-    forenklet = _rund(forenkle(list(ring), GEO_SIMPLIFY_TOLERANCE_DEG))
+    forenklet = _rund(forenkle(list(ring), toleranse))
     if forenklet and forenklet[0] != forenklet[-1]:
         forenklet.append(forenklet[0])
     if len(forenklet) < GEO_MIN_RING_POINTS:
@@ -81,17 +84,19 @@ def _ring(ring):
     return forenklet
 
 
-def forenkle_geometri(geometri):
+def forenkle_geometri(geometri, toleranse=GEO_SIMPLIFY_TOLERANCE_DEG):
     """Forenkler en GeoJSON-geometri. Returnerer None hvis alt forsvant."""
     type_ = geometri["type"]
     if type_ == "Polygon":
-        ringer = [r for r in (_ring(ring) for ring in geometri["coordinates"]) if r]
+        ringer = [
+            r for r in (_ring(ring, toleranse) for ring in geometri["coordinates"]) if r
+        ]
         return {"type": "Polygon", "coordinates": ringer} if ringer else None
 
     if type_ == "MultiPolygon":
         flater = []
         for polygon in geometri["coordinates"]:
-            ringer = [r for r in (_ring(ring) for ring in polygon) if r]
+            ringer = [r for r in (_ring(ring, toleranse) for ring in polygon) if r]
             if ringer:
                 flater.append(ringer)
         return {"type": "MultiPolygon", "coordinates": flater} if flater else None
@@ -104,19 +109,42 @@ def _land():
         return json.load(f)["entities"]
 
 
-def bygg(sti=None):
+def effis_land():
+    """Entitetene EFFIS' egen kartlegging fører, lest av det ferdige datasettet.
+
+    Europa-kartet i S4 skal vise nøyaktig de landene serien dekker, verken
+    flere eller færre. Settet leses derfor av serien selv og skrives ikke som
+    en liste her — et land som kommer til i EFFIS-nettverket, skal komme med
+    uten at noen husker å redigere en liste (§ 7, T5).
+    """
+    with open(PROCESSED_DIR / "burned_area.json", encoding="utf-8") as f:
+        observasjoner = json.load(f)
+    return {
+        o["entity"]
+        for o in observasjoner
+        if o["series_id"] == "effis_rda_annual_burned_area"
+    }
+
+
+def bygg(sti=None, toleranse=GEO_SIMPLIFY_TOLERANCE_DEG, entiteter=None):
     """Leser K6-laget og returnerer (features, sammendrag).
 
     Flere kartenheter kan dele entity-kode. De samles til én flate per kode,
     slik at kartet har nøyaktig én form per entitet — den samme entiteten som
     tallene er ført på.
+
+    ``entiteter`` avgrenser utvalget til et kart som ikke viser hele verden.
+    Da regnes manglende geometri mot det utvalget, ikke mot alle entitetene i
+    land_no.json.
     """
     geometrier, utelatt = k6_natural_earth.geometrier(sti)
     land = _land()  # fasit for hvilke entiteter som finnes (§ 6)
 
     per_kode = {}
     for kode, geometri in geometrier:
-        forenklet = forenkle_geometri(geometri)
+        if entiteter is not None and kode not in entiteter:
+            continue
+        forenklet = forenkle_geometri(geometri, toleranse)
         if forenklet is None:
             continue
         flater = (
@@ -149,15 +177,18 @@ def bygg(sti=None):
             for ring in polygon
         ),
         "unknown_entities": ukjente,
-        "without_code": utelatt,
-        "missing_geometry": sorted(k for k in land if k not in per_kode),
+        "without_code": utelatt if entiteter is None else [],
+        "missing_geometry": sorted(
+            k for k in (entiteter if entiteter is not None else land) if k not in per_kode
+        ),
     }
     return features, sammendrag
 
 
-def skriv(features, sammendrag):
+def skriv(features, sammendrag, sti=GEO_WORLD_JSON, toleranse=GEO_SIMPLIFY_TOLERANCE_DEG, om=None):
     innhold = {
-        "_om": (
+        "_om": om
+        or (
             "Forenklet kartgeometri for verdenskartet, bygget fra "
             "kartenhetslaget i K6 — det samme laget landarealene og "
             "rutenettfordelingen bruker. Se CLAUDE.md § 12 og etl/geo.py."
@@ -165,22 +196,19 @@ def skriv(features, sammendrag):
         "_skjema": "GeoJSON FeatureCollection. id og properties.entity er entity-koden.",
         "source_id": k6_natural_earth.SOURCE_ID,
         "layer": k6_natural_earth.LAG,
-        "simplify_tolerance_deg": GEO_SIMPLIFY_TOLERANCE_DEG,
+        "simplify_tolerance_deg": toleranse,
         "coord_decimals": GEO_COORD_DECIMALS,
         "summary": sammendrag,
         "type": "FeatureCollection",
         "features": features,
     }
-    with open(GEO_WORLD_JSON, "w", encoding="utf-8") as f:
+    with open(sti, "w", encoding="utf-8") as f:
         json.dump(innhold, f, ensure_ascii=False, separators=(",", ":"))
         f.write("\n")
-    return GEO_WORLD_JSON
+    return sti
 
 
-def main():
-    k6_natural_earth.hent()
-    features, sammendrag = bygg()
-    sti = skriv(features, sammendrag)
+def _rapporter(sammendrag, sti, hva):
     print(
         f"geo: {sammendrag['entities']} entiteter, "
         f"{sammendrag['points']} punkter → {sti.name} "
@@ -188,9 +216,39 @@ def main():
     )
     if sammendrag["missing_geometry"]:
         print(
-            f"geo: {len(sammendrag['missing_geometry'])} entiteter i land_no.json "
-            "har ingen geometri: " + ", ".join(sammendrag["missing_geometry"])
+            f"geo: {len(sammendrag['missing_geometry'])} {hva} har ingen "
+            "geometri: " + ", ".join(sammendrag["missing_geometry"])
         )
+
+
+def main():
+    """Bygger begge kartfilene av samme nedlasting.
+
+    Verdenskartet og Europa-kartet tegner ulikt store områder på samme flate,
+    så én piksel dekker ulikt mange grader og forenklingen er ikke den samme.
+    Tersklene står i schema.py.
+    """
+    k6_natural_earth.hent()
+
+    features, sammendrag = bygg()
+    sti = skriv(features, sammendrag)
+    _rapporter(sammendrag, sti, "entiteter i land_no.json")
+
+    land = effis_land()
+    features, sammendrag = bygg(
+        toleranse=GEO_EUROPE_SIMPLIFY_TOLERANCE_DEG, entiteter=land
+    )
+    sti_europa = skriv(
+        features,
+        sammendrag,
+        GEO_EUROPE_JSON,
+        GEO_EUROPE_SIMPLIFY_TOLERANCE_DEG,
+        "Forenklet kartgeometri for Europa-kartet i S4, bygget fra samme "
+        "K6-lag som verdenskartet, men med finere toleranse. Utvalget er "
+        "entitetene EFFIS' egen kartlegging fører. Se CLAUDE.md § 12.",
+    )
+    _rapporter(sammendrag, sti_europa, "EFFIS-entiteter")
+
     return sti
 
 

@@ -148,6 +148,11 @@ COMPOSITE_MIN_SERIES_SHARE = 0.5
 #
 # Toleranse i grader. Ett desimalgrad er om lag 111 km ved ekvator.
 GEO_SIMPLIFY_TOLERANCE_DEG = 0.05
+
+# Europa-kartet i S4 tegner et mindre område på samme flate, så én piksel
+# dekker færre grader og forenklingen må være finere for at små land skal
+# beholde formen sin.
+GEO_EUROPE_SIMPLIFY_TOLERANCE_DEG = 0.02
 #
 # Antall desimaler koordinatene rundes til. Tre desimaler er om lag 100 meter.
 GEO_COORD_DECIMALS = 3
@@ -223,6 +228,7 @@ GEO_DIR = REPO_ROOT / "data" / "geo"
 
 LAND_AREA_JSON = GEO_DIR / "land_area_km2.json"
 GEO_WORLD_JSON = GEO_DIR / "verden.json"
+GEO_EUROPE_JSON = GEO_DIR / "europa.json"
 
 INSIGHTS_JSON = PROCESSED_DIR / "insights.json"
 
