@@ -358,14 +358,16 @@
     "zero_tail": 3
    }
   },
-  "coverage": 1132,
+  "coverage": 1139,
   "rank": 997,
   "anomaly": 900,
   "share_of_world": 609,
   "concentration": 164,
   "area_comparison": 3,
   "always_zero_entities": 201,
-  "derivations": 4937
+  "season_week": 7,
+  "season_band": 7,
+  "derivations": 4958
  },
  "derivations": {
   "anomaly.cnfdb_annual_fire_count.CAN.2025": {
@@ -48640,6 +48642,251 @@
    "missing_years": [],
    "incomplete_years": []
   },
+  "coverage.gwis_weekly_burned_area.AFR": {
+   "series_id": "gwis_weekly_burned_area",
+   "source_id": "K2",
+   "quality": "measured",
+   "indicator": "burned_area_km2",
+   "unit": "km2",
+   "entity": "AFR",
+   "entity_name": "Afrika",
+   "level": "region",
+   "kind": "coverage",
+   "first_year": 2012,
+   "last_year": 2026,
+   "n_years": 15,
+   "complete_years": [
+    2012,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+   ],
+   "n_complete_years": 14,
+   "incomplete_years": [
+    2026
+   ],
+   "n_weeks": 759
+  },
+  "coverage.gwis_weekly_burned_area.ASI": {
+   "series_id": "gwis_weekly_burned_area",
+   "source_id": "K2",
+   "quality": "measured",
+   "indicator": "burned_area_km2",
+   "unit": "km2",
+   "entity": "ASI",
+   "entity_name": "Asia",
+   "level": "region",
+   "kind": "coverage",
+   "first_year": 2012,
+   "last_year": 2026,
+   "n_years": 15,
+   "complete_years": [
+    2012,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+   ],
+   "n_complete_years": 14,
+   "incomplete_years": [
+    2026
+   ],
+   "n_weeks": 759
+  },
+  "coverage.gwis_weekly_burned_area.EUR": {
+   "series_id": "gwis_weekly_burned_area",
+   "source_id": "K2",
+   "quality": "measured",
+   "indicator": "burned_area_km2",
+   "unit": "km2",
+   "entity": "EUR",
+   "entity_name": "Europa",
+   "level": "region",
+   "kind": "coverage",
+   "first_year": 2012,
+   "last_year": 2026,
+   "n_years": 15,
+   "complete_years": [
+    2012,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+   ],
+   "n_complete_years": 14,
+   "incomplete_years": [
+    2026
+   ],
+   "n_weeks": 759
+  },
+  "coverage.gwis_weekly_burned_area.NAC": {
+   "series_id": "gwis_weekly_burned_area",
+   "source_id": "K2",
+   "quality": "measured",
+   "indicator": "burned_area_km2",
+   "unit": "km2",
+   "entity": "NAC",
+   "entity_name": "Nord-Amerika",
+   "level": "region",
+   "kind": "coverage",
+   "first_year": 2012,
+   "last_year": 2026,
+   "n_years": 15,
+   "complete_years": [
+    2012,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+   ],
+   "n_complete_years": 14,
+   "incomplete_years": [
+    2026
+   ],
+   "n_weeks": 759
+  },
+  "coverage.gwis_weekly_burned_area.OCE": {
+   "series_id": "gwis_weekly_burned_area",
+   "source_id": "K2",
+   "quality": "measured",
+   "indicator": "burned_area_km2",
+   "unit": "km2",
+   "entity": "OCE",
+   "entity_name": "Oseania",
+   "level": "region",
+   "kind": "coverage",
+   "first_year": 2012,
+   "last_year": 2026,
+   "n_years": 15,
+   "complete_years": [
+    2012,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+   ],
+   "n_complete_years": 14,
+   "incomplete_years": [
+    2026
+   ],
+   "n_weeks": 759
+  },
+  "coverage.gwis_weekly_burned_area.SAM": {
+   "series_id": "gwis_weekly_burned_area",
+   "source_id": "K2",
+   "quality": "measured",
+   "indicator": "burned_area_km2",
+   "unit": "km2",
+   "entity": "SAM",
+   "entity_name": "Sør-Amerika",
+   "level": "region",
+   "kind": "coverage",
+   "first_year": 2012,
+   "last_year": 2026,
+   "n_years": 15,
+   "complete_years": [
+    2012,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+   ],
+   "n_complete_years": 14,
+   "incomplete_years": [
+    2026
+   ],
+   "n_weeks": 759
+  },
+  "coverage.gwis_weekly_burned_area.WLD": {
+   "series_id": "gwis_weekly_burned_area",
+   "source_id": "K2",
+   "quality": "measured",
+   "indicator": "burned_area_km2",
+   "unit": "km2",
+   "entity": "WLD",
+   "entity_name": "Verden",
+   "level": "world",
+   "kind": "coverage",
+   "first_year": 2012,
+   "last_year": 2026,
+   "n_years": 15,
+   "complete_years": [
+    2012,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+   ],
+   "n_complete_years": 14,
+   "incomplete_years": [
+    2026
+   ],
+   "n_weeks": 759
+  },
   "coverage.nbac_annual_burned_area.CAN": {
    "series_id": "nbac_annual_burned_area",
    "source_id": "K7",
@@ -76810,6 +77057,5732 @@
    "tied": 0,
    "first_year": 2012,
    "last_year": 2025
+  },
+  "season_band.gwis_weekly_burned_area.AFR": {
+   "series_id": "gwis_weekly_burned_area",
+   "source_id": "K2",
+   "quality": "measured",
+   "indicator": "burned_area_km2",
+   "unit": "km2",
+   "entity": "AFR",
+   "entity_name": "Afrika",
+   "level": "region",
+   "kind": "season_band",
+   "basis_years": [
+    2012,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+   ],
+   "n_years": 14,
+   "band_pct": [
+    10,
+    90
+   ],
+   "weeks": [
+    {
+     "week": 1,
+     "median": 70520.4,
+     "low": 47639.19,
+     "high": 86236.02,
+     "n_years": 14
+    },
+    {
+     "week": 2,
+     "median": 142943.46,
+     "low": 99711.34,
+     "high": 157811.91,
+     "n_years": 14
+    },
+    {
+     "week": 3,
+     "median": 199519.32,
+     "low": 146366.2,
+     "high": 226542.35,
+     "n_years": 14
+    },
+    {
+     "week": 4,
+     "median": 251424.65,
+     "low": 195376.96,
+     "high": 302179.79,
+     "n_years": 14
+    },
+    {
+     "week": 5,
+     "median": 301052.24,
+     "low": 232147.24,
+     "high": 369469.93,
+     "n_years": 14
+    },
+    {
+     "week": 6,
+     "median": 348736.85,
+     "low": 260783.72,
+     "high": 422100.07,
+     "n_years": 14
+    },
+    {
+     "week": 7,
+     "median": 388049.1,
+     "low": 287921.92,
+     "high": 466804.88,
+     "n_years": 14
+    },
+    {
+     "week": 8,
+     "median": 425735.68,
+     "low": 305394.54,
+     "high": 502705.64,
+     "n_years": 14
+    },
+    {
+     "week": 9,
+     "median": 451478.68,
+     "low": 313382.11,
+     "high": 528211.85,
+     "n_years": 14
+    },
+    {
+     "week": 10,
+     "median": 473412.91,
+     "low": 333984.0,
+     "high": 548792.56,
+     "n_years": 14
+    },
+    {
+     "week": 11,
+     "median": 493996.04,
+     "low": 348779.26,
+     "high": 562816.12,
+     "n_years": 14
+    },
+    {
+     "week": 12,
+     "median": 508243.26,
+     "low": 365784.34,
+     "high": 575459.27,
+     "n_years": 14
+    },
+    {
+     "week": 13,
+     "median": 523757.07,
+     "low": 378558.08,
+     "high": 591691.68,
+     "n_years": 14
+    },
+    {
+     "week": 14,
+     "median": 536706.2,
+     "low": 390517.39,
+     "high": 605475.22,
+     "n_years": 14
+    },
+    {
+     "week": 15,
+     "median": 551631.79,
+     "low": 396983.32,
+     "high": 617175.03,
+     "n_years": 14
+    },
+    {
+     "week": 16,
+     "median": 562892.67,
+     "low": 406722.76,
+     "high": 632717.93,
+     "n_years": 14
+    },
+    {
+     "week": 17,
+     "median": 570378.45,
+     "low": 414401.57,
+     "high": 643862.61,
+     "n_years": 14
+    },
+    {
+     "week": 18,
+     "median": 582134.3,
+     "low": 424430.29,
+     "high": 653536.6,
+     "n_years": 14
+    },
+    {
+     "week": 19,
+     "median": 593779.77,
+     "low": 431530.95,
+     "high": 666344.13,
+     "n_years": 14
+    },
+    {
+     "week": 20,
+     "median": 609096.22,
+     "low": 440660.99,
+     "high": 693620.56,
+     "n_years": 14
+    },
+    {
+     "week": 21,
+     "median": 635008.21,
+     "low": 459309.76,
+     "high": 720665.47,
+     "n_years": 14
+    },
+    {
+     "week": 22,
+     "median": 668959.11,
+     "low": 490737.4,
+     "high": 751828.09,
+     "n_years": 14
+    },
+    {
+     "week": 23,
+     "median": 716120.96,
+     "low": 544180.87,
+     "high": 803469.75,
+     "n_years": 14
+    },
+    {
+     "week": 24,
+     "median": 769916.87,
+     "low": 592663.06,
+     "high": 858127.65,
+     "n_years": 14
+    },
+    {
+     "week": 25,
+     "median": 823217.7,
+     "low": 630589.41,
+     "high": 919080.92,
+     "n_years": 14
+    },
+    {
+     "week": 26,
+     "median": 878923.12,
+     "low": 677242.26,
+     "high": 975035.24,
+     "n_years": 14
+    },
+    {
+     "week": 27,
+     "median": 933604.56,
+     "low": 740930.04,
+     "high": 1036824.93,
+     "n_years": 14
+    },
+    {
+     "week": 28,
+     "median": 993410.27,
+     "low": 801681.73,
+     "high": 1112498.73,
+     "n_years": 14
+    },
+    {
+     "week": 29,
+     "median": 1046639.32,
+     "low": 868623.3,
+     "high": 1190392.55,
+     "n_years": 14
+    },
+    {
+     "week": 30,
+     "median": 1116300.75,
+     "low": 936951.4,
+     "high": 1262491.14,
+     "n_years": 14
+    },
+    {
+     "week": 31,
+     "median": 1175332.02,
+     "low": 1008310.56,
+     "high": 1361135.79,
+     "n_years": 14
+    },
+    {
+     "week": 32,
+     "median": 1255959.86,
+     "low": 1101857.38,
+     "high": 1458269.38,
+     "n_years": 14
+    },
+    {
+     "week": 33,
+     "median": 1327128.75,
+     "low": 1182659.4,
+     "high": 1548970.94,
+     "n_years": 14
+    },
+    {
+     "week": 34,
+     "median": 1415501.25,
+     "low": 1244426.28,
+     "high": 1638548.3,
+     "n_years": 14
+    },
+    {
+     "week": 35,
+     "median": 1507227.31,
+     "low": 1315677.97,
+     "high": 1720801.43,
+     "n_years": 14
+    },
+    {
+     "week": 36,
+     "median": 1584235.37,
+     "low": 1375288.06,
+     "high": 1803045.92,
+     "n_years": 14
+    },
+    {
+     "week": 37,
+     "median": 1659915.79,
+     "low": 1450644.73,
+     "high": 1877210.53,
+     "n_years": 14
+    },
+    {
+     "week": 38,
+     "median": 1713454.02,
+     "low": 1508269.54,
+     "high": 1937318.59,
+     "n_years": 14
+    },
+    {
+     "week": 39,
+     "median": 1766548.04,
+     "low": 1546515.62,
+     "high": 1985817.88,
+     "n_years": 14
+    },
+    {
+     "week": 40,
+     "median": 1809667.73,
+     "low": 1572497.99,
+     "high": 2009181.03,
+     "n_years": 14
+    },
+    {
+     "week": 41,
+     "median": 1859751.81,
+     "low": 1596949.49,
+     "high": 2047824.99,
+     "n_years": 14
+    },
+    {
+     "week": 42,
+     "median": 1884353.73,
+     "low": 1615370.49,
+     "high": 2085294.64,
+     "n_years": 14
+    },
+    {
+     "week": 43,
+     "median": 1911530.5,
+     "low": 1641413.38,
+     "high": 2107016.32,
+     "n_years": 14
+    },
+    {
+     "week": 44,
+     "median": 1941041.75,
+     "low": 1665862.6,
+     "high": 2130489.93,
+     "n_years": 14
+    },
+    {
+     "week": 45,
+     "median": 1969988.52,
+     "low": 1683477.59,
+     "high": 2169798.78,
+     "n_years": 14
+    },
+    {
+     "week": 46,
+     "median": 2006220.14,
+     "low": 1698037.82,
+     "high": 2207363.11,
+     "n_years": 14
+    },
+    {
+     "week": 47,
+     "median": 2042108.06,
+     "low": 1716941.23,
+     "high": 2248102.48,
+     "n_years": 14
+    },
+    {
+     "week": 48,
+     "median": 2089788.02,
+     "low": 1739667.03,
+     "high": 2286444.58,
+     "n_years": 14
+    },
+    {
+     "week": 49,
+     "median": 2135736.7,
+     "low": 1764148.31,
+     "high": 2352942.94,
+     "n_years": 14
+    },
+    {
+     "week": 50,
+     "median": 2200911.79,
+     "low": 1816969.94,
+     "high": 2441940.5,
+     "n_years": 14
+    },
+    {
+     "week": 51,
+     "median": 2273938.33,
+     "low": 1877670.56,
+     "high": 2533004.85,
+     "n_years": 14
+    },
+    {
+     "week": 52,
+     "median": 2342589.04,
+     "low": 1944305.02,
+     "high": 2614748.48,
+     "n_years": 14
+    }
+   ],
+   "incomplete_year": {
+    "year": 2026,
+    "last_week": 31,
+    "weeks": [
+     {
+      "week": 1,
+      "value": 48706.65
+     },
+     {
+      "week": 2,
+      "value": 90451.1
+     },
+     {
+      "week": 3,
+      "value": 127873.31
+     },
+     {
+      "week": 4,
+      "value": 172189.19
+     },
+     {
+      "week": 5,
+      "value": 194933.9
+     },
+     {
+      "week": 6,
+      "value": 214051.52
+     },
+     {
+      "week": 7,
+      "value": 237309.0
+     },
+     {
+      "week": 8,
+      "value": 267741.16
+     },
+     {
+      "week": 9,
+      "value": 293056.26
+     },
+     {
+      "week": 10,
+      "value": 310266.56
+     },
+     {
+      "week": 11,
+      "value": 317391.42
+     },
+     {
+      "week": 12,
+      "value": 321316.76
+     },
+     {
+      "week": 13,
+      "value": 326319.71
+     },
+     {
+      "week": 14,
+      "value": 332453.25
+     },
+     {
+      "week": 15,
+      "value": 338235.81
+     },
+     {
+      "week": 16,
+      "value": 344728.4
+     },
+     {
+      "week": 17,
+      "value": 348899.82
+     },
+     {
+      "week": 18,
+      "value": 354241.59
+     },
+     {
+      "week": 19,
+      "value": 359257.92
+     },
+     {
+      "week": 20,
+      "value": 365467.1
+     },
+     {
+      "week": 21,
+      "value": 378816.97
+     },
+     {
+      "week": 22,
+      "value": 393823.22
+     },
+     {
+      "week": 23,
+      "value": 410507.53
+     },
+     {
+      "week": 24,
+      "value": 435231.46
+     },
+     {
+      "week": 25,
+      "value": 460053.69
+     },
+     {
+      "week": 26,
+      "value": 488052.89
+     },
+     {
+      "week": 27,
+      "value": 525630.75
+     },
+     {
+      "week": 28,
+      "value": 543839.17
+     },
+     {
+      "week": 29,
+      "value": 577748.42
+     },
+     {
+      "week": 30,
+      "value": 619482.61
+     },
+     {
+      "week": 31,
+      "value": 660393.33
+     }
+    ]
+   }
+  },
+  "season_band.gwis_weekly_burned_area.ASI": {
+   "series_id": "gwis_weekly_burned_area",
+   "source_id": "K2",
+   "quality": "measured",
+   "indicator": "burned_area_km2",
+   "unit": "km2",
+   "entity": "ASI",
+   "entity_name": "Asia",
+   "level": "region",
+   "kind": "season_band",
+   "basis_years": [
+    2012,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+   ],
+   "n_years": 14,
+   "band_pct": [
+    10,
+    90
+   ],
+   "weeks": [
+    {
+     "week": 1,
+     "median": 2510.24,
+     "low": 1179.9,
+     "high": 4804.2,
+     "n_years": 14
+    },
+    {
+     "week": 2,
+     "median": 6672.28,
+     "low": 2733.21,
+     "high": 10408.04,
+     "n_years": 14
+    },
+    {
+     "week": 3,
+     "median": 10686.91,
+     "low": 5642.38,
+     "high": 16899.7,
+     "n_years": 14
+    },
+    {
+     "week": 4,
+     "median": 16882.62,
+     "low": 9300.19,
+     "high": 23838.93,
+     "n_years": 14
+    },
+    {
+     "week": 5,
+     "median": 25983.28,
+     "low": 13479.91,
+     "high": 34687.19,
+     "n_years": 14
+    },
+    {
+     "week": 6,
+     "median": 37179.58,
+     "low": 21523.85,
+     "high": 45542.79,
+     "n_years": 14
+    },
+    {
+     "week": 7,
+     "median": 46977.86,
+     "low": 26576.68,
+     "high": 56708.49,
+     "n_years": 14
+    },
+    {
+     "week": 8,
+     "median": 58365.85,
+     "low": 32338.49,
+     "high": 68541.19,
+     "n_years": 14
+    },
+    {
+     "week": 9,
+     "median": 79182.47,
+     "low": 45436.79,
+     "high": 90195.78,
+     "n_years": 14
+    },
+    {
+     "week": 10,
+     "median": 99042.74,
+     "low": 62456.65,
+     "high": 114398.7,
+     "n_years": 14
+    },
+    {
+     "week": 11,
+     "median": 127158.78,
+     "low": 84158.09,
+     "high": 147832.16,
+     "n_years": 14
+    },
+    {
+     "week": 12,
+     "median": 162470.72,
+     "low": 90161.83,
+     "high": 176667.33,
+     "n_years": 14
+    },
+    {
+     "week": 13,
+     "median": 192456.71,
+     "low": 107588.16,
+     "high": 223652.94,
+     "n_years": 14
+    },
+    {
+     "week": 14,
+     "median": 218135.52,
+     "low": 133957.02,
+     "high": 248016.5,
+     "n_years": 14
+    },
+    {
+     "week": 15,
+     "median": 240220.29,
+     "low": 147729.95,
+     "high": 267365.95,
+     "n_years": 14
+    },
+    {
+     "week": 16,
+     "median": 257261.05,
+     "low": 157617.97,
+     "high": 285140.84,
+     "n_years": 14
+    },
+    {
+     "week": 17,
+     "median": 265296.73,
+     "low": 168102.66,
+     "high": 300606.98,
+     "n_years": 14
+    },
+    {
+     "week": 18,
+     "median": 274304.68,
+     "low": 172119.98,
+     "high": 307017.77,
+     "n_years": 14
+    },
+    {
+     "week": 19,
+     "median": 277790.96,
+     "low": 174161.0,
+     "high": 312623.78,
+     "n_years": 14
+    },
+    {
+     "week": 20,
+     "median": 280703.16,
+     "low": 175633.31,
+     "high": 315146.64,
+     "n_years": 14
+    },
+    {
+     "week": 21,
+     "median": 282712.67,
+     "low": 178995.5,
+     "high": 316958.63,
+     "n_years": 14
+    },
+    {
+     "week": 22,
+     "median": 284915.99,
+     "low": 180563.94,
+     "high": 318752.75,
+     "n_years": 14
+    },
+    {
+     "week": 23,
+     "median": 287203.57,
+     "low": 181529.9,
+     "high": 320096.04,
+     "n_years": 14
+    },
+    {
+     "week": 24,
+     "median": 289589.86,
+     "low": 182674.51,
+     "high": 322654.68,
+     "n_years": 14
+    },
+    {
+     "week": 25,
+     "median": 293998.29,
+     "low": 183863.18,
+     "high": 324746.55,
+     "n_years": 14
+    },
+    {
+     "week": 26,
+     "median": 296809.14,
+     "low": 184792.45,
+     "high": 326251.3,
+     "n_years": 14
+    },
+    {
+     "week": 27,
+     "median": 299201.15,
+     "low": 186104.11,
+     "high": 327927.62,
+     "n_years": 14
+    },
+    {
+     "week": 28,
+     "median": 301650.04,
+     "low": 188020.84,
+     "high": 329546.59,
+     "n_years": 14
+    },
+    {
+     "week": 29,
+     "median": 305292.71,
+     "low": 189397.28,
+     "high": 331437.35,
+     "n_years": 14
+    },
+    {
+     "week": 30,
+     "median": 308253.88,
+     "low": 191665.11,
+     "high": 333066.43,
+     "n_years": 14
+    },
+    {
+     "week": 31,
+     "median": 312387.65,
+     "low": 193272.8,
+     "high": 335482.38,
+     "n_years": 14
+    },
+    {
+     "week": 32,
+     "median": 313891.79,
+     "low": 196502.29,
+     "high": 341058.63,
+     "n_years": 14
+    },
+    {
+     "week": 33,
+     "median": 316168.96,
+     "low": 199852.21,
+     "high": 345988.15,
+     "n_years": 14
+    },
+    {
+     "week": 34,
+     "median": 320368.04,
+     "low": 201631.06,
+     "high": 349678.14,
+     "n_years": 14
+    },
+    {
+     "week": 35,
+     "median": 322304.21,
+     "low": 203188.49,
+     "high": 360388.4,
+     "n_years": 14
+    },
+    {
+     "week": 36,
+     "median": 323799.33,
+     "low": 205581.99,
+     "high": 374744.63,
+     "n_years": 14
+    },
+    {
+     "week": 37,
+     "median": 325357.03,
+     "low": 208645.07,
+     "high": 384259.21,
+     "n_years": 14
+    },
+    {
+     "week": 38,
+     "median": 328515.49,
+     "low": 210957.14,
+     "high": 395121.3,
+     "n_years": 14
+    },
+    {
+     "week": 39,
+     "median": 331408.14,
+     "low": 213761.77,
+     "high": 402249.21,
+     "n_years": 14
+    },
+    {
+     "week": 40,
+     "median": 334346.33,
+     "low": 217246.06,
+     "high": 409403.23,
+     "n_years": 14
+    },
+    {
+     "week": 41,
+     "median": 336774.95,
+     "low": 219375.91,
+     "high": 417965.92,
+     "n_years": 14
+    },
+    {
+     "week": 42,
+     "median": 339737.1,
+     "low": 220878.87,
+     "high": 426554.06,
+     "n_years": 14
+    },
+    {
+     "week": 43,
+     "median": 343279.46,
+     "low": 223574.14,
+     "high": 435495.3,
+     "n_years": 14
+    },
+    {
+     "week": 44,
+     "median": 350785.77,
+     "low": 226290.05,
+     "high": 446598.61,
+     "n_years": 14
+    },
+    {
+     "week": 45,
+     "median": 356887.48,
+     "low": 230284.14,
+     "high": 453092.07,
+     "n_years": 14
+    },
+    {
+     "week": 46,
+     "median": 359605.98,
+     "low": 232463.05,
+     "high": 455345.82,
+     "n_years": 14
+    },
+    {
+     "week": 47,
+     "median": 360684.85,
+     "low": 234125.92,
+     "high": 456929.61,
+     "n_years": 14
+    },
+    {
+     "week": 48,
+     "median": 361727.81,
+     "low": 234960.45,
+     "high": 458103.06,
+     "n_years": 14
+    },
+    {
+     "week": 49,
+     "median": 362957.28,
+     "low": 235783.79,
+     "high": 459582.13,
+     "n_years": 14
+    },
+    {
+     "week": 50,
+     "median": 364124.18,
+     "low": 237293.94,
+     "high": 460885.37,
+     "n_years": 14
+    },
+    {
+     "week": 51,
+     "median": 365642.91,
+     "low": 238945.79,
+     "high": 463287.89,
+     "n_years": 14
+    },
+    {
+     "week": 52,
+     "median": 368053.23,
+     "low": 240461.97,
+     "high": 466349.28,
+     "n_years": 14
+    }
+   ],
+   "incomplete_year": {
+    "year": 2026,
+    "last_week": 31,
+    "weeks": [
+     {
+      "week": 1,
+      "value": 1427.37
+     },
+     {
+      "week": 2,
+      "value": 3283.35
+     },
+     {
+      "week": 3,
+      "value": 6122.9
+     },
+     {
+      "week": 4,
+      "value": 9804.8
+     },
+     {
+      "week": 5,
+      "value": 13459.86
+     },
+     {
+      "week": 6,
+      "value": 19457.18
+     },
+     {
+      "week": 7,
+      "value": 28676.95
+     },
+     {
+      "week": 8,
+      "value": 33012.4
+     },
+     {
+      "week": 9,
+      "value": 41233.08
+     },
+     {
+      "week": 10,
+      "value": 51157.58
+     },
+     {
+      "week": 11,
+      "value": 63366.7
+     },
+     {
+      "week": 12,
+      "value": 87682.63
+     },
+     {
+      "week": 13,
+      "value": 116571.78
+     },
+     {
+      "week": 14,
+      "value": 141136.07
+     },
+     {
+      "week": 15,
+      "value": 167221.62
+     },
+     {
+      "week": 16,
+      "value": 177920.15
+     },
+     {
+      "week": 17,
+      "value": 183474.69
+     },
+     {
+      "week": 18,
+      "value": 186168.49
+     },
+     {
+      "week": 19,
+      "value": 188193.07
+     },
+     {
+      "week": 20,
+      "value": 189399.42
+     },
+     {
+      "week": 21,
+      "value": 191275.66
+     },
+     {
+      "week": 22,
+      "value": 192083.1
+     },
+     {
+      "week": 23,
+      "value": 192573.72
+     },
+     {
+      "week": 24,
+      "value": 193044.26
+     },
+     {
+      "week": 25,
+      "value": 193629.74
+     },
+     {
+      "week": 26,
+      "value": 194130.06
+     },
+     {
+      "week": 27,
+      "value": 194655.13
+     },
+     {
+      "week": 28,
+      "value": 195214.2
+     },
+     {
+      "week": 29,
+      "value": 196067.16
+     },
+     {
+      "week": 30,
+      "value": 197370.52
+     },
+     {
+      "week": 31,
+      "value": 199493.88
+     }
+    ]
+   }
+  },
+  "season_band.gwis_weekly_burned_area.EUR": {
+   "series_id": "gwis_weekly_burned_area",
+   "source_id": "K2",
+   "quality": "measured",
+   "indicator": "burned_area_km2",
+   "unit": "km2",
+   "entity": "EUR",
+   "entity_name": "Europa",
+   "level": "region",
+   "kind": "season_band",
+   "basis_years": [
+    2012,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+   ],
+   "n_years": 14,
+   "band_pct": [
+    10,
+    90
+   ],
+   "weeks": [
+    {
+     "week": 1,
+     "median": 72.59,
+     "low": 30.11,
+     "high": 173.2,
+     "n_years": 14
+    },
+    {
+     "week": 2,
+     "median": 139.59,
+     "low": 70.09,
+     "high": 253.45,
+     "n_years": 14
+    },
+    {
+     "week": 3,
+     "median": 203.79,
+     "low": 100.44,
+     "high": 371.1,
+     "n_years": 14
+    },
+    {
+     "week": 4,
+     "median": 277.74,
+     "low": 143.11,
+     "high": 541.68,
+     "n_years": 14
+    },
+    {
+     "week": 5,
+     "median": 380.15,
+     "low": 214.12,
+     "high": 747.22,
+     "n_years": 14
+    },
+    {
+     "week": 6,
+     "median": 556.74,
+     "low": 320.26,
+     "high": 959.48,
+     "n_years": 14
+    },
+    {
+     "week": 7,
+     "median": 842.42,
+     "low": 440.33,
+     "high": 1511.37,
+     "n_years": 14
+    },
+    {
+     "week": 8,
+     "median": 1185.94,
+     "low": 635.81,
+     "high": 2105.02,
+     "n_years": 14
+    },
+    {
+     "week": 9,
+     "median": 1759.15,
+     "low": 970.12,
+     "high": 2464.43,
+     "n_years": 14
+    },
+    {
+     "week": 10,
+     "median": 2643.11,
+     "low": 1330.63,
+     "high": 6242.51,
+     "n_years": 14
+    },
+    {
+     "week": 11,
+     "median": 4611.35,
+     "low": 1843.82,
+     "high": 10427.46,
+     "n_years": 14
+    },
+    {
+     "week": 12,
+     "median": 7910.77,
+     "low": 2846.79,
+     "high": 16469.86,
+     "n_years": 14
+    },
+    {
+     "week": 13,
+     "median": 11772.8,
+     "low": 4539.77,
+     "high": 21646.55,
+     "n_years": 14
+    },
+    {
+     "week": 14,
+     "median": 17524.19,
+     "low": 6718.96,
+     "high": 28770.63,
+     "n_years": 14
+    },
+    {
+     "week": 15,
+     "median": 26810.87,
+     "low": 9926.95,
+     "high": 42962.83,
+     "n_years": 14
+    },
+    {
+     "week": 16,
+     "median": 35628.54,
+     "low": 16285.96,
+     "high": 55129.04,
+     "n_years": 14
+    },
+    {
+     "week": 17,
+     "median": 47729.19,
+     "low": 21712.69,
+     "high": 65418.28,
+     "n_years": 14
+    },
+    {
+     "week": 18,
+     "median": 54016.99,
+     "low": 27827.76,
+     "high": 75800.32,
+     "n_years": 14
+    },
+    {
+     "week": 19,
+     "median": 59638.62,
+     "low": 40211.11,
+     "high": 82412.6,
+     "n_years": 14
+    },
+    {
+     "week": 20,
+     "median": 61164.28,
+     "low": 43882.12,
+     "high": 89705.04,
+     "n_years": 14
+    },
+    {
+     "week": 21,
+     "median": 62934.82,
+     "low": 45856.77,
+     "high": 91955.48,
+     "n_years": 14
+    },
+    {
+     "week": 22,
+     "median": 65206.99,
+     "low": 46858.2,
+     "high": 96218.92,
+     "n_years": 14
+    },
+    {
+     "week": 23,
+     "median": 66553.69,
+     "low": 48489.03,
+     "high": 103690.68,
+     "n_years": 14
+    },
+    {
+     "week": 24,
+     "median": 71233.29,
+     "low": 50185.37,
+     "high": 108717.48,
+     "n_years": 14
+    },
+    {
+     "week": 25,
+     "median": 74894.15,
+     "low": 53894.78,
+     "high": 113756.63,
+     "n_years": 14
+    },
+    {
+     "week": 26,
+     "median": 80573.57,
+     "low": 63933.5,
+     "high": 118327.72,
+     "n_years": 14
+    },
+    {
+     "week": 27,
+     "median": 87771.97,
+     "low": 67203.08,
+     "high": 122946.05,
+     "n_years": 14
+    },
+    {
+     "week": 28,
+     "median": 99610.56,
+     "low": 70068.47,
+     "high": 145407.99,
+     "n_years": 14
+    },
+    {
+     "week": 29,
+     "median": 110612.62,
+     "low": 74368.09,
+     "high": 155567.7,
+     "n_years": 14
+    },
+    {
+     "week": 30,
+     "median": 116333.88,
+     "low": 88118.62,
+     "high": 163875.97,
+     "n_years": 14
+    },
+    {
+     "week": 31,
+     "median": 122057.56,
+     "low": 95891.0,
+     "high": 171820.99,
+     "n_years": 14
+    },
+    {
+     "week": 32,
+     "median": 128653.88,
+     "low": 100117.02,
+     "high": 176833.78,
+     "n_years": 14
+    },
+    {
+     "week": 33,
+     "median": 133582.65,
+     "low": 102780.59,
+     "high": 181445.36,
+     "n_years": 14
+    },
+    {
+     "week": 34,
+     "median": 136696.31,
+     "low": 104664.15,
+     "high": 184074.09,
+     "n_years": 14
+    },
+    {
+     "week": 35,
+     "median": 138695.46,
+     "low": 106045.09,
+     "high": 187265.09,
+     "n_years": 14
+    },
+    {
+     "week": 36,
+     "median": 142453.57,
+     "low": 106807.32,
+     "high": 190250.18,
+     "n_years": 14
+    },
+    {
+     "week": 37,
+     "median": 143598.79,
+     "low": 107461.43,
+     "high": 192318.5,
+     "n_years": 14
+    },
+    {
+     "week": 38,
+     "median": 146115.05,
+     "low": 108632.76,
+     "high": 195365.72,
+     "n_years": 14
+    },
+    {
+     "week": 39,
+     "median": 149245.14,
+     "low": 110246.97,
+     "high": 197477.03,
+     "n_years": 14
+    },
+    {
+     "week": 40,
+     "median": 152663.1,
+     "low": 111158.62,
+     "high": 201014.56,
+     "n_years": 14
+    },
+    {
+     "week": 41,
+     "median": 156683.29,
+     "low": 112369.81,
+     "high": 206326.78,
+     "n_years": 14
+    },
+    {
+     "week": 42,
+     "median": 160933.35,
+     "low": 113410.12,
+     "high": 209534.92,
+     "n_years": 14
+    },
+    {
+     "week": 43,
+     "median": 163287.82,
+     "low": 114294.95,
+     "high": 212335.65,
+     "n_years": 14
+    },
+    {
+     "week": 44,
+     "median": 164630.62,
+     "low": 115033.55,
+     "high": 214049.94,
+     "n_years": 14
+    },
+    {
+     "week": 45,
+     "median": 165426.4,
+     "low": 115330.89,
+     "high": 215023.95,
+     "n_years": 14
+    },
+    {
+     "week": 46,
+     "median": 165677.38,
+     "low": 115455.03,
+     "high": 215324.66,
+     "n_years": 14
+    },
+    {
+     "week": 47,
+     "median": 165914.83,
+     "low": 115614.28,
+     "high": 215556.73,
+     "n_years": 14
+    },
+    {
+     "week": 48,
+     "median": 165984.62,
+     "low": 115701.44,
+     "high": 215626.06,
+     "n_years": 14
+    },
+    {
+     "week": 49,
+     "median": 166026.71,
+     "low": 115794.18,
+     "high": 215685.82,
+     "n_years": 14
+    },
+    {
+     "week": 50,
+     "median": 166107.02,
+     "low": 115842.71,
+     "high": 215738.61,
+     "n_years": 14
+    },
+    {
+     "week": 51,
+     "median": 166327.6,
+     "low": 115946.51,
+     "high": 215783.93,
+     "n_years": 14
+    },
+    {
+     "week": 52,
+     "median": 166586.99,
+     "low": 116024.63,
+     "high": 215946.71,
+     "n_years": 14
+    }
+   ],
+   "incomplete_year": {
+    "year": 2026,
+    "last_week": 31,
+    "weeks": [
+     {
+      "week": 1,
+      "value": 47.77
+     },
+     {
+      "week": 2,
+      "value": 101.34
+     },
+     {
+      "week": 3,
+      "value": 146.76
+     },
+     {
+      "week": 4,
+      "value": 176.82
+     },
+     {
+      "week": 5,
+      "value": 202.92
+     },
+     {
+      "week": 6,
+      "value": 247.62
+     },
+     {
+      "week": 7,
+      "value": 329.24
+     },
+     {
+      "week": 8,
+      "value": 722.58
+     },
+     {
+      "week": 9,
+      "value": 933.42
+     },
+     {
+      "week": 10,
+      "value": 1354.38
+     },
+     {
+      "week": 11,
+      "value": 2192.52
+     },
+     {
+      "week": 12,
+      "value": 2722.96
+     },
+     {
+      "week": 13,
+      "value": 3950.33
+     },
+     {
+      "week": 14,
+      "value": 5952.51
+     },
+     {
+      "week": 15,
+      "value": 7160.51
+     },
+     {
+      "week": 16,
+      "value": 8345.27
+     },
+     {
+      "week": 17,
+      "value": 9442.5
+     },
+     {
+      "week": 18,
+      "value": 12247.73
+     },
+     {
+      "week": 19,
+      "value": 16735.04
+     },
+     {
+      "week": 20,
+      "value": 20585.25
+     },
+     {
+      "week": 21,
+      "value": 21405.86
+     },
+     {
+      "week": 22,
+      "value": 21637.54
+     },
+     {
+      "week": 23,
+      "value": 22950.49
+     },
+     {
+      "week": 24,
+      "value": 26037.75
+     },
+     {
+      "week": 25,
+      "value": 27469.29
+     },
+     {
+      "week": 26,
+      "value": 29692.46
+     },
+     {
+      "week": 27,
+      "value": 31943.14
+     },
+     {
+      "week": 28,
+      "value": 32721.89
+     },
+     {
+      "week": 29,
+      "value": 37473.63
+     },
+     {
+      "week": 30,
+      "value": 41416.11
+     },
+     {
+      "week": 31,
+      "value": 47577.37
+     }
+    ]
+   }
+  },
+  "season_band.gwis_weekly_burned_area.NAC": {
+   "series_id": "gwis_weekly_burned_area",
+   "source_id": "K2",
+   "quality": "measured",
+   "indicator": "burned_area_km2",
+   "unit": "km2",
+   "entity": "NAC",
+   "entity_name": "Nord-Amerika",
+   "level": "region",
+   "kind": "season_band",
+   "basis_years": [
+    2012,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+   ],
+   "n_years": 14,
+   "band_pct": [
+    10,
+    90
+   ],
+   "weeks": [
+    {
+     "week": 1,
+     "median": 582.51,
+     "low": 298.42,
+     "high": 906.53,
+     "n_years": 14
+    },
+    {
+     "week": 2,
+     "median": 1370.41,
+     "low": 757.69,
+     "high": 2177.53,
+     "n_years": 14
+    },
+    {
+     "week": 3,
+     "median": 2474.04,
+     "low": 1223.95,
+     "high": 3352.54,
+     "n_years": 14
+    },
+    {
+     "week": 4,
+     "median": 3530.28,
+     "low": 1826.49,
+     "high": 4784.75,
+     "n_years": 14
+    },
+    {
+     "week": 5,
+     "median": 4796.98,
+     "low": 3038.16,
+     "high": 6151.64,
+     "n_years": 14
+    },
+    {
+     "week": 6,
+     "median": 5879.44,
+     "low": 3912.8,
+     "high": 8242.08,
+     "n_years": 14
+    },
+    {
+     "week": 7,
+     "median": 7075.8,
+     "low": 4976.13,
+     "high": 10883.1,
+     "n_years": 14
+    },
+    {
+     "week": 8,
+     "median": 9009.05,
+     "low": 5533.01,
+     "high": 13196.41,
+     "n_years": 14
+    },
+    {
+     "week": 9,
+     "median": 11906.77,
+     "low": 7699.38,
+     "high": 17327.75,
+     "n_years": 14
+    },
+    {
+     "week": 10,
+     "median": 15466.72,
+     "low": 10625.9,
+     "high": 20643.97,
+     "n_years": 14
+    },
+    {
+     "week": 11,
+     "median": 18427.65,
+     "low": 13603.16,
+     "high": 25125.09,
+     "n_years": 14
+    },
+    {
+     "week": 12,
+     "median": 23225.4,
+     "low": 16757.28,
+     "high": 30182.22,
+     "n_years": 14
+    },
+    {
+     "week": 13,
+     "median": 29667.87,
+     "low": 20913.4,
+     "high": 36527.33,
+     "n_years": 14
+    },
+    {
+     "week": 14,
+     "median": 37016.4,
+     "low": 25447.1,
+     "high": 42570.86,
+     "n_years": 14
+    },
+    {
+     "week": 15,
+     "median": 44219.34,
+     "low": 31605.89,
+     "high": 51399.73,
+     "n_years": 14
+    },
+    {
+     "week": 16,
+     "median": 51983.68,
+     "low": 37994.53,
+     "high": 61560.71,
+     "n_years": 14
+    },
+    {
+     "week": 17,
+     "median": 58981.69,
+     "low": 46210.94,
+     "high": 72589.92,
+     "n_years": 14
+    },
+    {
+     "week": 18,
+     "median": 65268.56,
+     "low": 53329.0,
+     "high": 81211.97,
+     "n_years": 14
+    },
+    {
+     "week": 19,
+     "median": 71528.99,
+     "low": 59860.28,
+     "high": 90478.79,
+     "n_years": 14
+    },
+    {
+     "week": 20,
+     "median": 79058.86,
+     "low": 63757.21,
+     "high": 102118.43,
+     "n_years": 14
+    },
+    {
+     "week": 21,
+     "median": 84282.56,
+     "low": 66744.72,
+     "high": 106496.24,
+     "n_years": 14
+    },
+    {
+     "week": 22,
+     "median": 88067.99,
+     "low": 70529.39,
+     "high": 109774.28,
+     "n_years": 14
+    },
+    {
+     "week": 23,
+     "median": 92471.64,
+     "low": 73720.49,
+     "high": 113726.36,
+     "n_years": 14
+    },
+    {
+     "week": 24,
+     "median": 94208.89,
+     "low": 76526.75,
+     "high": 117111.92,
+     "n_years": 14
+    },
+    {
+     "week": 25,
+     "median": 99408.34,
+     "low": 78732.5,
+     "high": 122889.71,
+     "n_years": 14
+    },
+    {
+     "week": 26,
+     "median": 106972.66,
+     "low": 82477.53,
+     "high": 131327.97,
+     "n_years": 14
+    },
+    {
+     "week": 27,
+     "median": 109115.87,
+     "low": 89925.74,
+     "high": 136961.58,
+     "n_years": 14
+    },
+    {
+     "week": 28,
+     "median": 112648.45,
+     "low": 94094.63,
+     "high": 140022.16,
+     "n_years": 14
+    },
+    {
+     "week": 29,
+     "median": 116385.8,
+     "low": 99055.52,
+     "high": 142796.85,
+     "n_years": 14
+    },
+    {
+     "week": 30,
+     "median": 119730.45,
+     "low": 105005.43,
+     "high": 145622.59,
+     "n_years": 14
+    },
+    {
+     "week": 31,
+     "median": 124895.63,
+     "low": 111884.63,
+     "high": 150644.23,
+     "n_years": 14
+    },
+    {
+     "week": 32,
+     "median": 129547.64,
+     "low": 116154.9,
+     "high": 156654.21,
+     "n_years": 14
+    },
+    {
+     "week": 33,
+     "median": 136762.68,
+     "low": 120476.15,
+     "high": 159964.62,
+     "n_years": 14
+    },
+    {
+     "week": 34,
+     "median": 139164.14,
+     "low": 122193.44,
+     "high": 162060.12,
+     "n_years": 14
+    },
+    {
+     "week": 35,
+     "median": 140419.62,
+     "low": 123517.91,
+     "high": 166497.15,
+     "n_years": 14
+    },
+    {
+     "week": 36,
+     "median": 145919.98,
+     "low": 124778.47,
+     "high": 168518.69,
+     "n_years": 14
+    },
+    {
+     "week": 37,
+     "median": 147388.08,
+     "low": 126724.46,
+     "high": 170049.59,
+     "n_years": 14
+    },
+    {
+     "week": 38,
+     "median": 148858.17,
+     "low": 128130.51,
+     "high": 170724.32,
+     "n_years": 14
+    },
+    {
+     "week": 39,
+     "median": 150208.62,
+     "low": 129490.03,
+     "high": 171873.46,
+     "n_years": 14
+    },
+    {
+     "week": 40,
+     "median": 151996.74,
+     "low": 130841.0,
+     "high": 173069.16,
+     "n_years": 14
+    },
+    {
+     "week": 41,
+     "median": 153575.98,
+     "low": 132601.26,
+     "high": 175194.55,
+     "n_years": 14
+    },
+    {
+     "week": 42,
+     "median": 155919.29,
+     "low": 133878.59,
+     "high": 177313.89,
+     "n_years": 14
+    },
+    {
+     "week": 43,
+     "median": 156964.74,
+     "low": 135342.67,
+     "high": 179866.52,
+     "n_years": 14
+    },
+    {
+     "week": 44,
+     "median": 158633.29,
+     "low": 137160.02,
+     "high": 181655.94,
+     "n_years": 14
+    },
+    {
+     "week": 45,
+     "median": 160264.05,
+     "low": 138870.86,
+     "high": 182647.42,
+     "n_years": 14
+    },
+    {
+     "week": 46,
+     "median": 161463.16,
+     "low": 140236.37,
+     "high": 184036.61,
+     "n_years": 14
+    },
+    {
+     "week": 47,
+     "median": 163021.91,
+     "low": 140998.75,
+     "high": 184983.46,
+     "n_years": 14
+    },
+    {
+     "week": 48,
+     "median": 163721.46,
+     "low": 141356.33,
+     "high": 186387.44,
+     "n_years": 14
+    },
+    {
+     "week": 49,
+     "median": 164916.17,
+     "low": 141720.16,
+     "high": 188122.33,
+     "n_years": 14
+    },
+    {
+     "week": 50,
+     "median": 165696.4,
+     "low": 142177.59,
+     "high": 189248.27,
+     "n_years": 14
+    },
+    {
+     "week": 51,
+     "median": 166131.52,
+     "low": 142654.33,
+     "high": 189792.27,
+     "n_years": 14
+    },
+    {
+     "week": 52,
+     "median": 166623.93,
+     "low": 143058.27,
+     "high": 190089.28,
+     "n_years": 14
+    }
+   ],
+   "incomplete_year": {
+    "year": 2026,
+    "last_week": 31,
+    "weeks": [
+     {
+      "week": 1,
+      "value": 319.85
+     },
+     {
+      "week": 2,
+      "value": 934.91
+     },
+     {
+      "week": 3,
+      "value": 1920.36
+     },
+     {
+      "week": 4,
+      "value": 2271.21
+     },
+     {
+      "week": 5,
+      "value": 3353.86
+     },
+     {
+      "week": 6,
+      "value": 5006.74
+     },
+     {
+      "week": 7,
+      "value": 6360.15
+     },
+     {
+      "week": 8,
+      "value": 8213.79
+     },
+     {
+      "week": 9,
+      "value": 10168.3
+     },
+     {
+      "week": 10,
+      "value": 11503.7
+     },
+     {
+      "week": 11,
+      "value": 14074.74
+     },
+     {
+      "week": 12,
+      "value": 17584.99
+     },
+     {
+      "week": 13,
+      "value": 19160.43
+     },
+     {
+      "week": 14,
+      "value": 20958.27
+     },
+     {
+      "week": 15,
+      "value": 23284.3
+     },
+     {
+      "week": 16,
+      "value": 24959.19
+     },
+     {
+      "week": 17,
+      "value": 27658.64
+     },
+     {
+      "week": 18,
+      "value": 29841.37
+     },
+     {
+      "week": 19,
+      "value": 32214.66
+     },
+     {
+      "week": 20,
+      "value": 35372.18
+     },
+     {
+      "week": 21,
+      "value": 37214.26
+     },
+     {
+      "week": 22,
+      "value": 38073.33
+     },
+     {
+      "week": 23,
+      "value": 38675.38
+     },
+     {
+      "week": 24,
+      "value": 39310.17
+     },
+     {
+      "week": 25,
+      "value": 40920.05
+     },
+     {
+      "week": 26,
+      "value": 49395.95
+     },
+     {
+      "week": 27,
+      "value": 53824.5
+     },
+     {
+      "week": 28,
+      "value": 55657.53
+     },
+     {
+      "week": 29,
+      "value": 64233.95
+     },
+     {
+      "week": 30,
+      "value": 69710.55
+     },
+     {
+      "week": 31,
+      "value": 72034.97
+     }
+    ]
+   }
+  },
+  "season_band.gwis_weekly_burned_area.OCE": {
+   "series_id": "gwis_weekly_burned_area",
+   "source_id": "K2",
+   "quality": "measured",
+   "indicator": "burned_area_km2",
+   "unit": "km2",
+   "entity": "OCE",
+   "entity_name": "Oseania",
+   "level": "region",
+   "kind": "season_band",
+   "basis_years": [
+    2012,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+   ],
+   "n_years": 14,
+   "band_pct": [
+    10,
+    90
+   ],
+   "weeks": [
+    {
+     "week": 1,
+     "median": 3130.09,
+     "low": 426.98,
+     "high": 7627.23,
+     "n_years": 14
+    },
+    {
+     "week": 2,
+     "median": 6197.47,
+     "low": 1185.64,
+     "high": 13915.19,
+     "n_years": 14
+    },
+    {
+     "week": 3,
+     "median": 7607.6,
+     "low": 1917.05,
+     "high": 18501.84,
+     "n_years": 14
+    },
+    {
+     "week": 4,
+     "median": 8534.32,
+     "low": 2585.06,
+     "high": 22379.09,
+     "n_years": 14
+    },
+    {
+     "week": 5,
+     "median": 9674.42,
+     "low": 3209.48,
+     "high": 24947.19,
+     "n_years": 14
+    },
+    {
+     "week": 6,
+     "median": 10498.49,
+     "low": 3738.61,
+     "high": 27101.77,
+     "n_years": 14
+    },
+    {
+     "week": 7,
+     "median": 11298.52,
+     "low": 4913.51,
+     "high": 30596.17,
+     "n_years": 14
+    },
+    {
+     "week": 8,
+     "median": 12126.59,
+     "low": 6008.23,
+     "high": 33079.54,
+     "n_years": 14
+    },
+    {
+     "week": 9,
+     "median": 13169.61,
+     "low": 7188.21,
+     "high": 34001.86,
+     "n_years": 14
+    },
+    {
+     "week": 10,
+     "median": 15392.04,
+     "low": 8990.09,
+     "high": 35356.95,
+     "n_years": 14
+    },
+    {
+     "week": 11,
+     "median": 18271.61,
+     "low": 11340.15,
+     "high": 37106.17,
+     "n_years": 14
+    },
+    {
+     "week": 12,
+     "median": 22888.97,
+     "low": 13316.24,
+     "high": 38626.52,
+     "n_years": 14
+    },
+    {
+     "week": 13,
+     "median": 27488.33,
+     "low": 16616.12,
+     "high": 39554.88,
+     "n_years": 14
+    },
+    {
+     "week": 14,
+     "median": 30715.22,
+     "low": 20837.19,
+     "high": 42549.57,
+     "n_years": 14
+    },
+    {
+     "week": 15,
+     "median": 36794.83,
+     "low": 26924.61,
+     "high": 49009.24,
+     "n_years": 14
+    },
+    {
+     "week": 16,
+     "median": 42904.16,
+     "low": 32077.49,
+     "high": 58896.38,
+     "n_years": 14
+    },
+    {
+     "week": 17,
+     "median": 49383.94,
+     "low": 36869.67,
+     "high": 70897.33,
+     "n_years": 14
+    },
+    {
+     "week": 18,
+     "median": 57772.07,
+     "low": 44635.35,
+     "high": 82690.53,
+     "n_years": 14
+    },
+    {
+     "week": 19,
+     "median": 68322.49,
+     "low": 51801.69,
+     "high": 97500.47,
+     "n_years": 14
+    },
+    {
+     "week": 20,
+     "median": 76961.1,
+     "low": 58438.76,
+     "high": 106931.48,
+     "n_years": 14
+    },
+    {
+     "week": 21,
+     "median": 80415.07,
+     "low": 62825.22,
+     "high": 114324.18,
+     "n_years": 14
+    },
+    {
+     "week": 22,
+     "median": 86969.88,
+     "low": 67010.38,
+     "high": 120527.51,
+     "n_years": 14
+    },
+    {
+     "week": 23,
+     "median": 95891.24,
+     "low": 72038.94,
+     "high": 127760.11,
+     "n_years": 14
+    },
+    {
+     "week": 24,
+     "median": 103698.88,
+     "low": 76592.69,
+     "high": 136433.2,
+     "n_years": 14
+    },
+    {
+     "week": 25,
+     "median": 110068.58,
+     "low": 80425.53,
+     "high": 145810.07,
+     "n_years": 14
+    },
+    {
+     "week": 26,
+     "median": 116874.6,
+     "low": 86123.14,
+     "high": 155639.77,
+     "n_years": 14
+    },
+    {
+     "week": 27,
+     "median": 121125.26,
+     "low": 91715.85,
+     "high": 163688.3,
+     "n_years": 14
+    },
+    {
+     "week": 28,
+     "median": 127049.18,
+     "low": 96246.61,
+     "high": 169202.11,
+     "n_years": 14
+    },
+    {
+     "week": 29,
+     "median": 133745.67,
+     "low": 101480.9,
+     "high": 176605.83,
+     "n_years": 14
+    },
+    {
+     "week": 30,
+     "median": 140206.86,
+     "low": 108545.72,
+     "high": 186050.37,
+     "n_years": 14
+    },
+    {
+     "week": 31,
+     "median": 147561.07,
+     "low": 113370.3,
+     "high": 192761.63,
+     "n_years": 14
+    },
+    {
+     "week": 32,
+     "median": 153941.65,
+     "low": 117442.0,
+     "high": 200547.02,
+     "n_years": 14
+    },
+    {
+     "week": 33,
+     "median": 162227.35,
+     "low": 122535.88,
+     "high": 208620.88,
+     "n_years": 14
+    },
+    {
+     "week": 34,
+     "median": 171287.93,
+     "low": 126782.51,
+     "high": 213475.07,
+     "n_years": 14
+    },
+    {
+     "week": 35,
+     "median": 180574.64,
+     "low": 131342.83,
+     "high": 221081.56,
+     "n_years": 14
+    },
+    {
+     "week": 36,
+     "median": 187385.26,
+     "low": 134222.94,
+     "high": 233120.48,
+     "n_years": 14
+    },
+    {
+     "week": 37,
+     "median": 193525.23,
+     "low": 136870.73,
+     "high": 244918.14,
+     "n_years": 14
+    },
+    {
+     "week": 38,
+     "median": 200519.21,
+     "low": 139588.32,
+     "high": 257044.12,
+     "n_years": 14
+    },
+    {
+     "week": 39,
+     "median": 207946.74,
+     "low": 143599.6,
+     "high": 270557.29,
+     "n_years": 14
+    },
+    {
+     "week": 40,
+     "median": 221464.82,
+     "low": 152202.64,
+     "high": 296177.91,
+     "n_years": 14
+    },
+    {
+     "week": 41,
+     "median": 233193.32,
+     "low": 159486.11,
+     "high": 327223.17,
+     "n_years": 14
+    },
+    {
+     "week": 42,
+     "median": 248559.68,
+     "low": 167639.14,
+     "high": 361033.74,
+     "n_years": 14
+    },
+    {
+     "week": 43,
+     "median": 260411.41,
+     "low": 177656.64,
+     "high": 394807.61,
+     "n_years": 14
+    },
+    {
+     "week": 44,
+     "median": 276430.67,
+     "low": 185077.41,
+     "high": 418720.0,
+     "n_years": 14
+    },
+    {
+     "week": 45,
+     "median": 290072.97,
+     "low": 195022.58,
+     "high": 438819.81,
+     "n_years": 14
+    },
+    {
+     "week": 46,
+     "median": 300716.55,
+     "low": 210323.19,
+     "high": 445697.6,
+     "n_years": 14
+    },
+    {
+     "week": 47,
+     "median": 306805.51,
+     "low": 217396.27,
+     "high": 449736.25,
+     "n_years": 14
+    },
+    {
+     "week": 48,
+     "median": 322351.04,
+     "low": 223576.36,
+     "high": 455136.05,
+     "n_years": 14
+    },
+    {
+     "week": 49,
+     "median": 335166.47,
+     "low": 231326.67,
+     "high": 469090.08,
+     "n_years": 14
+    },
+    {
+     "week": 50,
+     "median": 346075.41,
+     "low": 235266.11,
+     "high": 476999.93,
+     "n_years": 14
+    },
+    {
+     "week": 51,
+     "median": 353834.79,
+     "low": 237897.23,
+     "high": 491173.7,
+     "n_years": 14
+    },
+    {
+     "week": 52,
+     "median": 361030.2,
+     "low": 238898.17,
+     "high": 501757.93,
+     "n_years": 14
+    }
+   ],
+   "incomplete_year": {
+    "year": 2026,
+    "last_week": 31,
+    "weeks": [
+     {
+      "week": 1,
+      "value": 2492.58
+     },
+     {
+      "week": 2,
+      "value": 7368.22
+     },
+     {
+      "week": 3,
+      "value": 9447.67
+     },
+     {
+      "week": 4,
+      "value": 11011.98
+     },
+     {
+      "week": 5,
+      "value": 11708.02
+     },
+     {
+      "week": 6,
+      "value": 12037.28
+     },
+     {
+      "week": 7,
+      "value": 12249.61
+     },
+     {
+      "week": 8,
+      "value": 12589.05
+     },
+     {
+      "week": 9,
+      "value": 13038.97
+     },
+     {
+      "week": 10,
+      "value": 13591.3
+     },
+     {
+      "week": 11,
+      "value": 14256.04
+     },
+     {
+      "week": 12,
+      "value": 15179.66
+     },
+     {
+      "week": 13,
+      "value": 17958.0
+     },
+     {
+      "week": 14,
+      "value": 20891.97
+     },
+     {
+      "week": 15,
+      "value": 29574.1
+     },
+     {
+      "week": 16,
+      "value": 35433.23
+     },
+     {
+      "week": 17,
+      "value": 42463.0
+     },
+     {
+      "week": 18,
+      "value": 47559.25
+     },
+     {
+      "week": 19,
+      "value": 53617.4
+     },
+     {
+      "week": 20,
+      "value": 57080.8
+     },
+     {
+      "week": 21,
+      "value": 61189.03
+     },
+     {
+      "week": 22,
+      "value": 68665.97
+     },
+     {
+      "week": 23,
+      "value": 76441.56
+     },
+     {
+      "week": 24,
+      "value": 81696.71
+     },
+     {
+      "week": 25,
+      "value": 88199.16
+     },
+     {
+      "week": 26,
+      "value": 91924.36
+     },
+     {
+      "week": 27,
+      "value": 98763.47
+     },
+     {
+      "week": 28,
+      "value": 103103.67
+     },
+     {
+      "week": 29,
+      "value": 111951.84
+     },
+     {
+      "week": 30,
+      "value": 121523.72
+     },
+     {
+      "week": 31,
+      "value": 125676.71
+     }
+    ]
+   }
+  },
+  "season_band.gwis_weekly_burned_area.SAM": {
+   "series_id": "gwis_weekly_burned_area",
+   "source_id": "K2",
+   "quality": "measured",
+   "indicator": "burned_area_km2",
+   "unit": "km2",
+   "entity": "SAM",
+   "entity_name": "Sør-Amerika",
+   "level": "region",
+   "kind": "season_band",
+   "basis_years": [
+    2012,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+   ],
+   "n_years": 14,
+   "band_pct": [
+    10,
+    90
+   ],
+   "weeks": [
+    {
+     "week": 1,
+     "median": 3718.34,
+     "low": 2348.11,
+     "high": 5498.41,
+     "n_years": 14
+    },
+    {
+     "week": 2,
+     "median": 8611.53,
+     "low": 5137.24,
+     "high": 11561.71,
+     "n_years": 14
+    },
+    {
+     "week": 3,
+     "median": 13947.52,
+     "low": 8386.34,
+     "high": 19661.87,
+     "n_years": 14
+    },
+    {
+     "week": 4,
+     "median": 18693.54,
+     "low": 11991.95,
+     "high": 31337.25,
+     "n_years": 14
+    },
+    {
+     "week": 5,
+     "median": 24919.94,
+     "low": 14372.22,
+     "high": 37584.82,
+     "n_years": 14
+    },
+    {
+     "week": 6,
+     "median": 31058.16,
+     "low": 17223.48,
+     "high": 43205.81,
+     "n_years": 14
+    },
+    {
+     "week": 7,
+     "median": 36892.26,
+     "low": 20799.82,
+     "high": 49147.21,
+     "n_years": 14
+    },
+    {
+     "week": 8,
+     "median": 43060.21,
+     "low": 25457.16,
+     "high": 56335.39,
+     "n_years": 14
+    },
+    {
+     "week": 9,
+     "median": 48213.79,
+     "low": 30287.14,
+     "high": 66523.49,
+     "n_years": 14
+    },
+    {
+     "week": 10,
+     "median": 53119.73,
+     "low": 35417.76,
+     "high": 77927.96,
+     "n_years": 14
+    },
+    {
+     "week": 11,
+     "median": 57874.41,
+     "low": 38502.33,
+     "high": 91745.6,
+     "n_years": 14
+    },
+    {
+     "week": 12,
+     "median": 64335.98,
+     "low": 42402.41,
+     "high": 101137.76,
+     "n_years": 14
+    },
+    {
+     "week": 13,
+     "median": 69965.2,
+     "low": 45416.2,
+     "high": 105871.87,
+     "n_years": 14
+    },
+    {
+     "week": 14,
+     "median": 74899.41,
+     "low": 48235.72,
+     "high": 111252.03,
+     "n_years": 14
+    },
+    {
+     "week": 15,
+     "median": 78711.14,
+     "low": 49824.43,
+     "high": 115559.44,
+     "n_years": 14
+    },
+    {
+     "week": 16,
+     "median": 80942.84,
+     "low": 52024.36,
+     "high": 118112.54,
+     "n_years": 14
+    },
+    {
+     "week": 17,
+     "median": 82925.62,
+     "low": 54110.56,
+     "high": 121194.61,
+     "n_years": 14
+    },
+    {
+     "week": 18,
+     "median": 85019.19,
+     "low": 55992.53,
+     "high": 123967.95,
+     "n_years": 14
+    },
+    {
+     "week": 19,
+     "median": 87268.45,
+     "low": 58117.39,
+     "high": 126825.67,
+     "n_years": 14
+    },
+    {
+     "week": 20,
+     "median": 89517.74,
+     "low": 61255.27,
+     "high": 130398.4,
+     "n_years": 14
+    },
+    {
+     "week": 21,
+     "median": 91695.06,
+     "low": 65351.52,
+     "high": 134477.08,
+     "n_years": 14
+    },
+    {
+     "week": 22,
+     "median": 93692.57,
+     "low": 68103.99,
+     "high": 138478.21,
+     "n_years": 14
+    },
+    {
+     "week": 23,
+     "median": 96594.91,
+     "low": 70183.47,
+     "high": 143236.29,
+     "n_years": 14
+    },
+    {
+     "week": 24,
+     "median": 99232.66,
+     "low": 72280.4,
+     "high": 148997.28,
+     "n_years": 14
+    },
+    {
+     "week": 25,
+     "median": 102630.3,
+     "low": 74637.62,
+     "high": 154724.36,
+     "n_years": 14
+    },
+    {
+     "week": 26,
+     "median": 105540.27,
+     "low": 77295.77,
+     "high": 160966.27,
+     "n_years": 14
+    },
+    {
+     "week": 27,
+     "median": 109461.12,
+     "low": 81071.92,
+     "high": 166434.83,
+     "n_years": 14
+    },
+    {
+     "week": 28,
+     "median": 113686.43,
+     "low": 86330.84,
+     "high": 194216.47,
+     "n_years": 14
+    },
+    {
+     "week": 29,
+     "median": 117927.04,
+     "low": 94370.19,
+     "high": 211402.88,
+     "n_years": 14
+    },
+    {
+     "week": 30,
+     "median": 124277.29,
+     "low": 106050.97,
+     "high": 223442.73,
+     "n_years": 14
+    },
+    {
+     "week": 31,
+     "median": 135931.2,
+     "low": 116889.93,
+     "high": 247011.25,
+     "n_years": 14
+    },
+    {
+     "week": 32,
+     "median": 153048.19,
+     "low": 129885.71,
+     "high": 274298.08,
+     "n_years": 14
+    },
+    {
+     "week": 33,
+     "median": 179843.21,
+     "low": 142457.3,
+     "high": 300010.24,
+     "n_years": 14
+    },
+    {
+     "week": 34,
+     "median": 209468.83,
+     "low": 160205.96,
+     "high": 328735.16,
+     "n_years": 14
+    },
+    {
+     "week": 35,
+     "median": 248002.04,
+     "low": 191588.35,
+     "high": 366262.31,
+     "n_years": 14
+    },
+    {
+     "week": 36,
+     "median": 286937.15,
+     "low": 214834.69,
+     "high": 414745.98,
+     "n_years": 14
+    },
+    {
+     "week": 37,
+     "median": 334205.33,
+     "low": 239167.9,
+     "high": 460391.36,
+     "n_years": 14
+    },
+    {
+     "week": 38,
+     "median": 369890.11,
+     "low": 263934.0,
+     "high": 492363.2,
+     "n_years": 14
+    },
+    {
+     "week": 39,
+     "median": 394237.08,
+     "low": 284540.57,
+     "high": 538493.1,
+     "n_years": 14
+    },
+    {
+     "week": 40,
+     "median": 410844.79,
+     "low": 300140.92,
+     "high": 576068.85,
+     "n_years": 14
+    },
+    {
+     "week": 41,
+     "median": 430049.55,
+     "low": 316103.98,
+     "high": 607208.08,
+     "n_years": 14
+    },
+    {
+     "week": 42,
+     "median": 458565.84,
+     "low": 326075.35,
+     "high": 623794.12,
+     "n_years": 14
+    },
+    {
+     "week": 43,
+     "median": 470326.66,
+     "low": 336786.99,
+     "high": 638995.09,
+     "n_years": 14
+    },
+    {
+     "week": 44,
+     "median": 481373.78,
+     "low": 342151.59,
+     "high": 653414.28,
+     "n_years": 14
+    },
+    {
+     "week": 45,
+     "median": 493854.78,
+     "low": 347442.33,
+     "high": 662131.85,
+     "n_years": 14
+    },
+    {
+     "week": 46,
+     "median": 506188.9,
+     "low": 352093.75,
+     "high": 670067.54,
+     "n_years": 14
+    },
+    {
+     "week": 47,
+     "median": 517043.62,
+     "low": 353713.82,
+     "high": 676061.51,
+     "n_years": 14
+    },
+    {
+     "week": 48,
+     "median": 527565.36,
+     "low": 355059.49,
+     "high": 683863.52,
+     "n_years": 14
+    },
+    {
+     "week": 49,
+     "median": 532848.75,
+     "low": 357164.74,
+     "high": 687440.86,
+     "n_years": 14
+    },
+    {
+     "week": 50,
+     "median": 537117.77,
+     "low": 360761.8,
+     "high": 690824.75,
+     "n_years": 14
+    },
+    {
+     "week": 51,
+     "median": 541734.0,
+     "low": 364299.68,
+     "high": 693971.57,
+     "n_years": 14
+    },
+    {
+     "week": 52,
+     "median": 545886.82,
+     "low": 368023.14,
+     "high": 696551.25,
+     "n_years": 14
+    }
+   ],
+   "incomplete_year": {
+    "year": 2026,
+    "last_week": 31,
+    "weeks": [
+     {
+      "week": 1,
+      "value": 2700.64
+     },
+     {
+      "week": 2,
+      "value": 4577.39
+     },
+     {
+      "week": 3,
+      "value": 7474.58
+     },
+     {
+      "week": 4,
+      "value": 10047.5
+     },
+     {
+      "week": 5,
+      "value": 12098.69
+     },
+     {
+      "week": 6,
+      "value": 16521.82
+     },
+     {
+      "week": 7,
+      "value": 20155.93
+     },
+     {
+      "week": 8,
+      "value": 24965.02
+     },
+     {
+      "week": 9,
+      "value": 32464.65
+     },
+     {
+      "week": 10,
+      "value": 35308.87
+     },
+     {
+      "week": 11,
+      "value": 38169.14
+     },
+     {
+      "week": 12,
+      "value": 45705.14
+     },
+     {
+      "week": 13,
+      "value": 48242.52
+     },
+     {
+      "week": 14,
+      "value": 49706.93
+     },
+     {
+      "week": 15,
+      "value": 51861.49
+     },
+     {
+      "week": 16,
+      "value": 53078.21
+     },
+     {
+      "week": 17,
+      "value": 54332.7
+     },
+     {
+      "week": 18,
+      "value": 55708.47
+     },
+     {
+      "week": 19,
+      "value": 57530.19
+     },
+     {
+      "week": 20,
+      "value": 59171.9
+     },
+     {
+      "week": 21,
+      "value": 61121.98
+     },
+     {
+      "week": 22,
+      "value": 62689.82
+     },
+     {
+      "week": 23,
+      "value": 64180.51
+     },
+     {
+      "week": 24,
+      "value": 65680.93
+     },
+     {
+      "week": 25,
+      "value": 67300.26
+     },
+     {
+      "week": 26,
+      "value": 69896.12
+     },
+     {
+      "week": 27,
+      "value": 72104.33
+     },
+     {
+      "week": 28,
+      "value": 72982.51
+     },
+     {
+      "week": 29,
+      "value": 75451.23
+     },
+     {
+      "week": 30,
+      "value": 78209.07
+     },
+     {
+      "week": 31,
+      "value": 81267.49
+     }
+    ]
+   }
+  },
+  "season_band.gwis_weekly_burned_area.WLD": {
+   "series_id": "gwis_weekly_burned_area",
+   "source_id": "K2",
+   "quality": "measured",
+   "indicator": "burned_area_km2",
+   "unit": "km2",
+   "entity": "WLD",
+   "entity_name": "Verden",
+   "level": "world",
+   "kind": "season_band",
+   "basis_years": [
+    2012,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+   ],
+   "n_years": 14,
+   "band_pct": [
+    10,
+    90
+   ],
+   "weeks": [
+    {
+     "week": 1,
+     "median": 84938.89,
+     "low": 60979.86,
+     "high": 97536.96,
+     "n_years": 14
+    },
+    {
+     "week": 2,
+     "median": 166686.19,
+     "low": 129977.25,
+     "high": 194865.55,
+     "n_years": 14
+    },
+    {
+     "week": 3,
+     "median": 234561.31,
+     "low": 183630.1,
+     "high": 279040.12,
+     "n_years": 14
+    },
+    {
+     "week": 4,
+     "median": 305404.92,
+     "low": 242000.69,
+     "high": 365146.62,
+     "n_years": 14
+    },
+    {
+     "week": 5,
+     "median": 359086.96,
+     "low": 297389.17,
+     "high": 447283.57,
+     "n_years": 14
+    },
+    {
+     "week": 6,
+     "median": 426838.22,
+     "low": 332019.75,
+     "high": 528341.4,
+     "n_years": 14
+    },
+    {
+     "week": 7,
+     "median": 486652.15,
+     "low": 357720.01,
+     "high": 591303.62,
+     "n_years": 14
+    },
+    {
+     "week": 8,
+     "median": 549987.2,
+     "low": 389576.94,
+     "high": 640741.63,
+     "n_years": 14
+    },
+    {
+     "week": 9,
+     "median": 617858.52,
+     "low": 442680.26,
+     "high": 689683.38,
+     "n_years": 14
+    },
+    {
+     "week": 10,
+     "median": 676698.64,
+     "low": 493383.24,
+     "high": 745020.58,
+     "n_years": 14
+    },
+    {
+     "week": 11,
+     "median": 734538.09,
+     "low": 554674.2,
+     "high": 804874.21,
+     "n_years": 14
+    },
+    {
+     "week": 12,
+     "median": 792650.94,
+     "low": 600543.86,
+     "high": 874237.62,
+     "n_years": 14
+    },
+    {
+     "week": 13,
+     "median": 857609.1,
+     "low": 639819.6,
+     "high": 928660.02,
+     "n_years": 14
+    },
+    {
+     "week": 14,
+     "median": 906457.69,
+     "low": 673343.24,
+     "high": 989888.28,
+     "n_years": 14
+    },
+    {
+     "week": 15,
+     "median": 959950.24,
+     "low": 707988.67,
+     "high": 1064991.14,
+     "n_years": 14
+    },
+    {
+     "week": 16,
+     "median": 1017890.87,
+     "low": 759976.95,
+     "high": 1123261.2,
+     "n_years": 14
+    },
+    {
+     "week": 17,
+     "median": 1065438.16,
+     "low": 817376.46,
+     "high": 1174831.49,
+     "n_years": 14
+    },
+    {
+     "week": 18,
+     "median": 1103488.51,
+     "low": 860491.44,
+     "high": 1214794.12,
+     "n_years": 14
+    },
+    {
+     "week": 19,
+     "median": 1145492.73,
+     "low": 906544.97,
+     "high": 1266132.22,
+     "n_years": 14
+    },
+    {
+     "week": 20,
+     "median": 1194770.95,
+     "low": 944694.42,
+     "high": 1315296.21,
+     "n_years": 14
+    },
+    {
+     "week": 21,
+     "median": 1251663.81,
+     "low": 982081.08,
+     "high": 1362060.38,
+     "n_years": 14
+    },
+    {
+     "week": 22,
+     "median": 1307736.59,
+     "low": 1030453.83,
+     "high": 1407783.21,
+     "n_years": 14
+    },
+    {
+     "week": 23,
+     "median": 1361294.51,
+     "low": 1096490.99,
+     "high": 1474074.75,
+     "n_years": 14
+    },
+    {
+     "week": 24,
+     "median": 1425092.85,
+     "low": 1158065.16,
+     "high": 1549606.67,
+     "n_years": 14
+    },
+    {
+     "week": 25,
+     "median": 1491279.9,
+     "low": 1220194.49,
+     "high": 1629557.71,
+     "n_years": 14
+    },
+    {
+     "week": 26,
+     "median": 1576950.62,
+     "low": 1288194.51,
+     "high": 1718712.19,
+     "n_years": 14
+    },
+    {
+     "week": 27,
+     "median": 1664189.1,
+     "low": 1373437.93,
+     "high": 1815503.35,
+     "n_years": 14
+    },
+    {
+     "week": 28,
+     "median": 1759351.57,
+     "low": 1476590.67,
+     "high": 1920424.83,
+     "n_years": 14
+    },
+    {
+     "week": 29,
+     "median": 1872730.35,
+     "low": 1573657.56,
+     "high": 2032261.79,
+     "n_years": 14
+    },
+    {
+     "week": 30,
+     "median": 1982295.94,
+     "low": 1675627.67,
+     "high": 2149831.69,
+     "n_years": 14
+    },
+    {
+     "week": 31,
+     "median": 2091196.09,
+     "low": 1778893.29,
+     "high": 2285382.69,
+     "n_years": 14
+    },
+    {
+     "week": 32,
+     "median": 2203162.02,
+     "low": 1915011.69,
+     "high": 2409201.08,
+     "n_years": 14
+    },
+    {
+     "week": 33,
+     "median": 2320734.7,
+     "low": 2031696.58,
+     "high": 2545628.71,
+     "n_years": 14
+    },
+    {
+     "week": 34,
+     "median": 2461693.88,
+     "low": 2123392.52,
+     "high": 2661115.46,
+     "n_years": 14
+    },
+    {
+     "week": 35,
+     "median": 2580845.2,
+     "low": 2250044.04,
+     "high": 2779082.58,
+     "n_years": 14
+    },
+    {
+     "week": 36,
+     "median": 2706789.92,
+     "low": 2373705.15,
+     "high": 2930913.03,
+     "n_years": 14
+    },
+    {
+     "week": 37,
+     "median": 2864907.25,
+     "low": 2487770.87,
+     "high": 3069162.46,
+     "n_years": 14
+    },
+    {
+     "week": 38,
+     "median": 2971499.0,
+     "low": 2602881.68,
+     "high": 3187264.59,
+     "n_years": 14
+    },
+    {
+     "week": 39,
+     "median": 3067353.49,
+     "low": 2684720.13,
+     "high": 3286819.91,
+     "n_years": 14
+    },
+    {
+     "week": 40,
+     "median": 3133846.35,
+     "low": 2766981.41,
+     "high": 3387028.79,
+     "n_years": 14
+    },
+    {
+     "week": 41,
+     "median": 3204984.74,
+     "low": 2852332.1,
+     "high": 3462538.26,
+     "n_years": 14
+    },
+    {
+     "week": 42,
+     "median": 3305644.0,
+     "low": 2915890.85,
+     "high": 3547747.4,
+     "n_years": 14
+    },
+    {
+     "week": 43,
+     "median": 3392947.04,
+     "low": 2994124.55,
+     "high": 3625256.44,
+     "n_years": 14
+    },
+    {
+     "week": 44,
+     "median": 3461040.32,
+     "low": 3057412.02,
+     "high": 3692044.49,
+     "n_years": 14
+    },
+    {
+     "week": 45,
+     "median": 3535370.42,
+     "low": 3079914.08,
+     "high": 3756260.97,
+     "n_years": 14
+    },
+    {
+     "week": 46,
+     "median": 3593532.23,
+     "low": 3093512.58,
+     "high": 3823967.98,
+     "n_years": 14
+    },
+    {
+     "week": 47,
+     "median": 3639367.64,
+     "low": 3106210.19,
+     "high": 3897110.6,
+     "n_years": 14
+    },
+    {
+     "week": 48,
+     "median": 3693681.3,
+     "low": 3119876.08,
+     "high": 3966293.47,
+     "n_years": 14
+    },
+    {
+     "week": 49,
+     "median": 3756784.88,
+     "low": 3132949.24,
+     "high": 4031950.89,
+     "n_years": 14
+    },
+    {
+     "week": 50,
+     "median": 3834851.98,
+     "low": 3202317.79,
+     "high": 4120209.65,
+     "n_years": 14
+    },
+    {
+     "week": 51,
+     "median": 3921198.77,
+     "low": 3286332.95,
+     "high": 4214928.66,
+     "n_years": 14
+    },
+    {
+     "week": 52,
+     "median": 4016398.76,
+     "low": 3360026.22,
+     "high": 4312243.79,
+     "n_years": 14
+    }
+   ],
+   "incomplete_year": {
+    "year": 2026,
+    "last_week": 31,
+    "weeks": [
+     {
+      "week": 1,
+      "value": 55694.86
+     },
+     {
+      "week": 2,
+      "value": 106716.31
+     },
+     {
+      "week": 3,
+      "value": 152985.58
+     },
+     {
+      "week": 4,
+      "value": 205501.5
+     },
+     {
+      "week": 5,
+      "value": 235757.25
+     },
+     {
+      "week": 6,
+      "value": 267322.16
+     },
+     {
+      "week": 7,
+      "value": 305080.88
+     },
+     {
+      "week": 8,
+      "value": 347244.0
+     },
+     {
+      "week": 9,
+      "value": 390894.68
+     },
+     {
+      "week": 10,
+      "value": 423182.39
+     },
+     {
+      "week": 11,
+      "value": 449450.56
+     },
+     {
+      "week": 12,
+      "value": 490192.14
+     },
+     {
+      "week": 13,
+      "value": 532202.77
+     },
+     {
+      "week": 14,
+      "value": 571099.0
+     },
+     {
+      "week": 15,
+      "value": 617337.83
+     },
+     {
+      "week": 16,
+      "value": 644464.45
+     },
+     {
+      "week": 17,
+      "value": 666271.35
+     },
+     {
+      "week": 18,
+      "value": 685766.9
+     },
+     {
+      "week": 19,
+      "value": 707548.28
+     },
+     {
+      "week": 20,
+      "value": 727076.65
+     },
+     {
+      "week": 21,
+      "value": 751023.76
+     },
+     {
+      "week": 22,
+      "value": 776972.98
+     },
+     {
+      "week": 23,
+      "value": 805329.19
+     },
+     {
+      "week": 24,
+      "value": 841001.28
+     },
+     {
+      "week": 25,
+      "value": 877572.19
+     },
+     {
+      "week": 26,
+      "value": 923091.84
+     },
+     {
+      "week": 27,
+      "value": 976921.32
+     },
+     {
+      "week": 28,
+      "value": 1003518.97
+     },
+     {
+      "week": 29,
+      "value": 1062926.23
+     },
+     {
+      "week": 30,
+      "value": 1127712.58
+     },
+     {
+      "week": 31,
+      "value": 1186443.75
+     }
+    ]
+   }
+  },
+  "season_week.gwis_weekly_burned_area.AFR": {
+   "series_id": "gwis_weekly_burned_area",
+   "source_id": "K2",
+   "quality": "measured",
+   "indicator": "burned_area_km2",
+   "unit": "km2",
+   "entity": "AFR",
+   "entity_name": "Afrika",
+   "level": "region",
+   "kind": "season_week",
+   "basis_years": [
+    2012,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+   ],
+   "n_years": 14,
+   "weeks": [
+    {
+     "week": 1,
+     "median": 70520.4,
+     "n_years": 14
+    },
+    {
+     "week": 2,
+     "median": 65331.41,
+     "n_years": 14
+    },
+    {
+     "week": 3,
+     "median": 59409.61,
+     "n_years": 14
+    },
+    {
+     "week": 4,
+     "median": 52679.93,
+     "n_years": 14
+    },
+    {
+     "week": 5,
+     "median": 55604.25,
+     "n_years": 14
+    },
+    {
+     "week": 6,
+     "median": 48627.62,
+     "n_years": 14
+    },
+    {
+     "week": 7,
+     "median": 35241.17,
+     "n_years": 14
+    },
+    {
+     "week": 8,
+     "median": 29803.29,
+     "n_years": 14
+    },
+    {
+     "week": 9,
+     "median": 23764.9,
+     "n_years": 14
+    },
+    {
+     "week": 10,
+     "median": 21940.45,
+     "n_years": 14
+    },
+    {
+     "week": 11,
+     "median": 16432.82,
+     "n_years": 14
+    },
+    {
+     "week": 12,
+     "median": 13478.55,
+     "n_years": 14
+    },
+    {
+     "week": 13,
+     "median": 14587.06,
+     "n_years": 14
+    },
+    {
+     "week": 14,
+     "median": 12860.4,
+     "n_years": 14
+    },
+    {
+     "week": 15,
+     "median": 10566.58,
+     "n_years": 14
+    },
+    {
+     "week": 16,
+     "median": 11144.1,
+     "n_years": 14
+    },
+    {
+     "week": 17,
+     "median": 10675.56,
+     "n_years": 14
+    },
+    {
+     "week": 18,
+     "median": 10574.1,
+     "n_years": 14
+    },
+    {
+     "week": 19,
+     "median": 12368.99,
+     "n_years": 14
+    },
+    {
+     "week": 20,
+     "median": 18446.96,
+     "n_years": 14
+    },
+    {
+     "week": 21,
+     "median": 25157.9,
+     "n_years": 14
+    },
+    {
+     "week": 22,
+     "median": 31194.6,
+     "n_years": 14
+    },
+    {
+     "week": 23,
+     "median": 46886.93,
+     "n_years": 14
+    },
+    {
+     "week": 24,
+     "median": 50463.54,
+     "n_years": 14
+    },
+    {
+     "week": 25,
+     "median": 49287.33,
+     "n_years": 14
+    },
+    {
+     "week": 26,
+     "median": 57157.42,
+     "n_years": 14
+    },
+    {
+     "week": 27,
+     "median": 63135.7,
+     "n_years": 14
+    },
+    {
+     "week": 28,
+     "median": 66124.12,
+     "n_years": 14
+    },
+    {
+     "week": 29,
+     "median": 69544.7,
+     "n_years": 14
+    },
+    {
+     "week": 30,
+     "median": 72492.57,
+     "n_years": 14
+    },
+    {
+     "week": 31,
+     "median": 70442.75,
+     "n_years": 14
+    },
+    {
+     "week": 32,
+     "median": 83546.24,
+     "n_years": 14
+    },
+    {
+     "week": 33,
+     "median": 77965.68,
+     "n_years": 14
+    },
+    {
+     "week": 34,
+     "median": 85989.74,
+     "n_years": 14
+    },
+    {
+     "week": 35,
+     "median": 77828.9,
+     "n_years": 14
+    },
+    {
+     "week": 36,
+     "median": 77246.04,
+     "n_years": 14
+    },
+    {
+     "week": 37,
+     "median": 74104.76,
+     "n_years": 14
+    },
+    {
+     "week": 38,
+     "median": 57940.99,
+     "n_years": 14
+    },
+    {
+     "week": 39,
+     "median": 46458.3,
+     "n_years": 14
+    },
+    {
+     "week": 40,
+     "median": 37470.01,
+     "n_years": 14
+    },
+    {
+     "week": 41,
+     "median": 36818.15,
+     "n_years": 14
+    },
+    {
+     "week": 42,
+     "median": 27537.25,
+     "n_years": 14
+    },
+    {
+     "week": 43,
+     "median": 28919.07,
+     "n_years": 14
+    },
+    {
+     "week": 44,
+     "median": 27546.51,
+     "n_years": 14
+    },
+    {
+     "week": 45,
+     "median": 28288.12,
+     "n_years": 14
+    },
+    {
+     "week": 46,
+     "median": 32912.55,
+     "n_years": 14
+    },
+    {
+     "week": 47,
+     "median": 35218.31,
+     "n_years": 14
+    },
+    {
+     "week": 48,
+     "median": 43250.51,
+     "n_years": 14
+    },
+    {
+     "week": 49,
+     "median": 45948.68,
+     "n_years": 14
+    },
+    {
+     "week": 50,
+     "median": 63460.01,
+     "n_years": 14
+    },
+    {
+     "week": 51,
+     "median": 75162.39,
+     "n_years": 14
+    },
+    {
+     "week": 52,
+     "median": 69984.17,
+     "n_years": 14
+    }
+   ]
+  },
+  "season_week.gwis_weekly_burned_area.ASI": {
+   "series_id": "gwis_weekly_burned_area",
+   "source_id": "K2",
+   "quality": "measured",
+   "indicator": "burned_area_km2",
+   "unit": "km2",
+   "entity": "ASI",
+   "entity_name": "Asia",
+   "level": "region",
+   "kind": "season_week",
+   "basis_years": [
+    2012,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+   ],
+   "n_years": 14,
+   "weeks": [
+    {
+     "week": 1,
+     "median": 2510.24,
+     "n_years": 14
+    },
+    {
+     "week": 2,
+     "median": 3750.71,
+     "n_years": 14
+    },
+    {
+     "week": 3,
+     "median": 4470.03,
+     "n_years": 14
+    },
+    {
+     "week": 4,
+     "median": 6473.76,
+     "n_years": 14
+    },
+    {
+     "week": 5,
+     "median": 6448.31,
+     "n_years": 14
+    },
+    {
+     "week": 6,
+     "median": 8881.75,
+     "n_years": 14
+    },
+    {
+     "week": 7,
+     "median": 9050.71,
+     "n_years": 14
+    },
+    {
+     "week": 8,
+     "median": 11344.04,
+     "n_years": 14
+    },
+    {
+     "week": 9,
+     "median": 18078.21,
+     "n_years": 14
+    },
+    {
+     "week": 10,
+     "median": 20531.62,
+     "n_years": 14
+    },
+    {
+     "week": 11,
+     "median": 26288.08,
+     "n_years": 14
+    },
+    {
+     "week": 12,
+     "median": 30173.36,
+     "n_years": 14
+    },
+    {
+     "week": 13,
+     "median": 26190.68,
+     "n_years": 14
+    },
+    {
+     "week": 14,
+     "median": 24175.64,
+     "n_years": 14
+    },
+    {
+     "week": 15,
+     "median": 19564.92,
+     "n_years": 14
+    },
+    {
+     "week": 16,
+     "median": 17145.89,
+     "n_years": 14
+    },
+    {
+     "week": 17,
+     "median": 9453.01,
+     "n_years": 14
+    },
+    {
+     "week": 18,
+     "median": 5938.18,
+     "n_years": 14
+    },
+    {
+     "week": 19,
+     "median": 3865.74,
+     "n_years": 14
+    },
+    {
+     "week": 20,
+     "median": 2471.2,
+     "n_years": 14
+    },
+    {
+     "week": 21,
+     "median": 2001.03,
+     "n_years": 14
+    },
+    {
+     "week": 22,
+     "median": 1784.19,
+     "n_years": 14
+    },
+    {
+     "week": 23,
+     "median": 1795.34,
+     "n_years": 14
+    },
+    {
+     "week": 24,
+     "median": 1761.43,
+     "n_years": 14
+    },
+    {
+     "week": 25,
+     "median": 1841.42,
+     "n_years": 14
+    },
+    {
+     "week": 26,
+     "median": 1642.95,
+     "n_years": 14
+    },
+    {
+     "week": 27,
+     "median": 1474.68,
+     "n_years": 14
+    },
+    {
+     "week": 28,
+     "median": 1657.43,
+     "n_years": 14
+    },
+    {
+     "week": 29,
+     "median": 2092.37,
+     "n_years": 14
+    },
+    {
+     "week": 30,
+     "median": 2309.78,
+     "n_years": 14
+    },
+    {
+     "week": 31,
+     "median": 1980.32,
+     "n_years": 14
+    },
+    {
+     "week": 32,
+     "median": 2402.17,
+     "n_years": 14
+    },
+    {
+     "week": 33,
+     "median": 3118.72,
+     "n_years": 14
+    },
+    {
+     "week": 34,
+     "median": 2663.28,
+     "n_years": 14
+    },
+    {
+     "week": 35,
+     "median": 2386.02,
+     "n_years": 14
+    },
+    {
+     "week": 36,
+     "median": 2449.31,
+     "n_years": 14
+    },
+    {
+     "week": 37,
+     "median": 2062.58,
+     "n_years": 14
+    },
+    {
+     "week": 38,
+     "median": 2754.23,
+     "n_years": 14
+    },
+    {
+     "week": 39,
+     "median": 2601.44,
+     "n_years": 14
+    },
+    {
+     "week": 40,
+     "median": 2457.18,
+     "n_years": 14
+    },
+    {
+     "week": 41,
+     "median": 3304.66,
+     "n_years": 14
+    },
+    {
+     "week": 42,
+     "median": 3305.01,
+     "n_years": 14
+    },
+    {
+     "week": 43,
+     "median": 5307.77,
+     "n_years": 14
+    },
+    {
+     "week": 44,
+     "median": 6602.88,
+     "n_years": 14
+    },
+    {
+     "week": 45,
+     "median": 4413.81,
+     "n_years": 14
+    },
+    {
+     "week": 46,
+     "median": 2155.61,
+     "n_years": 14
+    },
+    {
+     "week": 47,
+     "median": 1320.22,
+     "n_years": 14
+    },
+    {
+     "week": 48,
+     "median": 1045.99,
+     "n_years": 14
+    },
+    {
+     "week": 49,
+     "median": 1142.9,
+     "n_years": 14
+    },
+    {
+     "week": 50,
+     "median": 1183.17,
+     "n_years": 14
+    },
+    {
+     "week": 51,
+     "median": 1847.01,
+     "n_years": 14
+    },
+    {
+     "week": 52,
+     "median": 2274.88,
+     "n_years": 14
+    }
+   ]
+  },
+  "season_week.gwis_weekly_burned_area.EUR": {
+   "series_id": "gwis_weekly_burned_area",
+   "source_id": "K2",
+   "quality": "measured",
+   "indicator": "burned_area_km2",
+   "unit": "km2",
+   "entity": "EUR",
+   "entity_name": "Europa",
+   "level": "region",
+   "kind": "season_week",
+   "basis_years": [
+    2012,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+   ],
+   "n_years": 14,
+   "weeks": [
+    {
+     "week": 1,
+     "median": 72.59,
+     "n_years": 14
+    },
+    {
+     "week": 2,
+     "median": 65.57,
+     "n_years": 14
+    },
+    {
+     "week": 3,
+     "median": 54.39,
+     "n_years": 14
+    },
+    {
+     "week": 4,
+     "median": 70.45,
+     "n_years": 14
+    },
+    {
+     "week": 5,
+     "median": 86.77,
+     "n_years": 14
+    },
+    {
+     "week": 6,
+     "median": 138.48,
+     "n_years": 14
+    },
+    {
+     "week": 7,
+     "median": 168.76,
+     "n_years": 14
+    },
+    {
+     "week": 8,
+     "median": 329.8,
+     "n_years": 14
+    },
+    {
+     "week": 9,
+     "median": 534.58,
+     "n_years": 14
+    },
+    {
+     "week": 10,
+     "median": 905.64,
+     "n_years": 14
+    },
+    {
+     "week": 11,
+     "median": 1361.95,
+     "n_years": 14
+    },
+    {
+     "week": 12,
+     "median": 1936.13,
+     "n_years": 14
+    },
+    {
+     "week": 13,
+     "median": 4161.85,
+     "n_years": 14
+    },
+    {
+     "week": 14,
+     "median": 3334.34,
+     "n_years": 14
+    },
+    {
+     "week": 15,
+     "median": 7390.88,
+     "n_years": 14
+    },
+    {
+     "week": 16,
+     "median": 9724.31,
+     "n_years": 14
+    },
+    {
+     "week": 17,
+     "median": 7835.88,
+     "n_years": 14
+    },
+    {
+     "week": 18,
+     "median": 7989.42,
+     "n_years": 14
+    },
+    {
+     "week": 19,
+     "median": 7453.37,
+     "n_years": 14
+    },
+    {
+     "week": 20,
+     "median": 3091.04,
+     "n_years": 14
+    },
+    {
+     "week": 21,
+     "median": 1769.59,
+     "n_years": 14
+    },
+    {
+     "week": 22,
+     "median": 1028.68,
+     "n_years": 14
+    },
+    {
+     "week": 23,
+     "median": 1445.71,
+     "n_years": 14
+    },
+    {
+     "week": 24,
+     "median": 2451.99,
+     "n_years": 14
+    },
+    {
+     "week": 25,
+     "median": 5026.14,
+     "n_years": 14
+    },
+    {
+     "week": 26,
+     "median": 7196.77,
+     "n_years": 14
+    },
+    {
+     "week": 27,
+     "median": 5447.36,
+     "n_years": 14
+    },
+    {
+     "week": 28,
+     "median": 8564.48,
+     "n_years": 14
+    },
+    {
+     "week": 29,
+     "median": 7964.38,
+     "n_years": 14
+    },
+    {
+     "week": 30,
+     "median": 6720.24,
+     "n_years": 14
+    },
+    {
+     "week": 31,
+     "median": 6500.08,
+     "n_years": 14
+    },
+    {
+     "week": 32,
+     "median": 5866.02,
+     "n_years": 14
+    },
+    {
+     "week": 33,
+     "median": 3258.19,
+     "n_years": 14
+    },
+    {
+     "week": 34,
+     "median": 2451.87,
+     "n_years": 14
+    },
+    {
+     "week": 35,
+     "median": 2055.7,
+     "n_years": 14
+    },
+    {
+     "week": 36,
+     "median": 1729.55,
+     "n_years": 14
+    },
+    {
+     "week": 37,
+     "median": 1775.05,
+     "n_years": 14
+    },
+    {
+     "week": 38,
+     "median": 2163.9,
+     "n_years": 14
+    },
+    {
+     "week": 39,
+     "median": 2070.55,
+     "n_years": 14
+    },
+    {
+     "week": 40,
+     "median": 1894.06,
+     "n_years": 14
+    },
+    {
+     "week": 41,
+     "median": 1674.39,
+     "n_years": 14
+    },
+    {
+     "week": 42,
+     "median": 1729.28,
+     "n_years": 14
+    },
+    {
+     "week": 43,
+     "median": 1520.34,
+     "n_years": 14
+    },
+    {
+     "week": 44,
+     "median": 871.17,
+     "n_years": 14
+    },
+    {
+     "week": 45,
+     "median": 511.54,
+     "n_years": 14
+    },
+    {
+     "week": 46,
+     "median": 232.27,
+     "n_years": 14
+    },
+    {
+     "week": 47,
+     "median": 172.22,
+     "n_years": 14
+    },
+    {
+     "week": 48,
+     "median": 76.96,
+     "n_years": 14
+    },
+    {
+     "week": 49,
+     "median": 81.66,
+     "n_years": 14
+    },
+    {
+     "week": 50,
+     "median": 73.0,
+     "n_years": 14
+    },
+    {
+     "week": 51,
+     "median": 83.65,
+     "n_years": 14
+    },
+    {
+     "week": 52,
+     "median": 74.66,
+     "n_years": 14
+    }
+   ]
+  },
+  "season_week.gwis_weekly_burned_area.NAC": {
+   "series_id": "gwis_weekly_burned_area",
+   "source_id": "K2",
+   "quality": "measured",
+   "indicator": "burned_area_km2",
+   "unit": "km2",
+   "entity": "NAC",
+   "entity_name": "Nord-Amerika",
+   "level": "region",
+   "kind": "season_week",
+   "basis_years": [
+    2012,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+   ],
+   "n_years": 14,
+   "weeks": [
+    {
+     "week": 1,
+     "median": 582.51,
+     "n_years": 14
+    },
+    {
+     "week": 2,
+     "median": 757.67,
+     "n_years": 14
+    },
+    {
+     "week": 3,
+     "median": 961.86,
+     "n_years": 14
+    },
+    {
+     "week": 4,
+     "median": 1103.43,
+     "n_years": 14
+    },
+    {
+     "week": 5,
+     "median": 1235.52,
+     "n_years": 14
+    },
+    {
+     "week": 6,
+     "median": 1225.76,
+     "n_years": 14
+    },
+    {
+     "week": 7,
+     "median": 1368.01,
+     "n_years": 14
+    },
+    {
+     "week": 8,
+     "median": 1683.81,
+     "n_years": 14
+    },
+    {
+     "week": 9,
+     "median": 2489.6,
+     "n_years": 14
+    },
+    {
+     "week": 10,
+     "median": 3244.82,
+     "n_years": 14
+    },
+    {
+     "week": 11,
+     "median": 3308.75,
+     "n_years": 14
+    },
+    {
+     "week": 12,
+     "median": 4674.18,
+     "n_years": 14
+    },
+    {
+     "week": 13,
+     "median": 6271.83,
+     "n_years": 14
+    },
+    {
+     "week": 14,
+     "median": 6216.42,
+     "n_years": 14
+    },
+    {
+     "week": 15,
+     "median": 8168.66,
+     "n_years": 14
+    },
+    {
+     "week": 16,
+     "median": 7203.72,
+     "n_years": 14
+    },
+    {
+     "week": 17,
+     "median": 8637.78,
+     "n_years": 14
+    },
+    {
+     "week": 18,
+     "median": 6688.62,
+     "n_years": 14
+    },
+    {
+     "week": 19,
+     "median": 6680.59,
+     "n_years": 14
+    },
+    {
+     "week": 20,
+     "median": 7216.67,
+     "n_years": 14
+    },
+    {
+     "week": 21,
+     "median": 5018.99,
+     "n_years": 14
+    },
+    {
+     "week": 22,
+     "median": 3686.82,
+     "n_years": 14
+    },
+    {
+     "week": 23,
+     "median": 3235.28,
+     "n_years": 14
+    },
+    {
+     "week": 24,
+     "median": 2373.49,
+     "n_years": 14
+    },
+    {
+     "week": 25,
+     "median": 3328.92,
+     "n_years": 14
+    },
+    {
+     "week": 26,
+     "median": 4440.43,
+     "n_years": 14
+    },
+    {
+     "week": 27,
+     "median": 5228.72,
+     "n_years": 14
+    },
+    {
+     "week": 28,
+     "median": 4040.45,
+     "n_years": 14
+    },
+    {
+     "week": 29,
+     "median": 3618.05,
+     "n_years": 14
+    },
+    {
+     "week": 30,
+     "median": 3608.86,
+     "n_years": 14
+    },
+    {
+     "week": 31,
+     "median": 5948.95,
+     "n_years": 14
+    },
+    {
+     "week": 32,
+     "median": 4353.86,
+     "n_years": 14
+    },
+    {
+     "week": 33,
+     "median": 3423.79,
+     "n_years": 14
+    },
+    {
+     "week": 34,
+     "median": 1874.76,
+     "n_years": 14
+    },
+    {
+     "week": 35,
+     "median": 1351.38,
+     "n_years": 14
+    },
+    {
+     "week": 36,
+     "median": 1695.94,
+     "n_years": 14
+    },
+    {
+     "week": 37,
+     "median": 1516.17,
+     "n_years": 14
+    },
+    {
+     "week": 38,
+     "median": 1167.02,
+     "n_years": 14
+    },
+    {
+     "week": 39,
+     "median": 1144.47,
+     "n_years": 14
+    },
+    {
+     "week": 40,
+     "median": 1209.16,
+     "n_years": 14
+    },
+    {
+     "week": 41,
+     "median": 1294.14,
+     "n_years": 14
+    },
+    {
+     "week": 42,
+     "median": 1451.42,
+     "n_years": 14
+    },
+    {
+     "week": 43,
+     "median": 1496.04,
+     "n_years": 14
+    },
+    {
+     "week": 44,
+     "median": 1668.55,
+     "n_years": 14
+    },
+    {
+     "week": 45,
+     "median": 1116.28,
+     "n_years": 14
+    },
+    {
+     "week": 46,
+     "median": 1106.46,
+     "n_years": 14
+    },
+    {
+     "week": 47,
+     "median": 911.59,
+     "n_years": 14
+    },
+    {
+     "week": 48,
+     "median": 699.55,
+     "n_years": 14
+    },
+    {
+     "week": 49,
+     "median": 695.08,
+     "n_years": 14
+    },
+    {
+     "week": 50,
+     "median": 595.73,
+     "n_years": 14
+    },
+    {
+     "week": 51,
+     "median": 440.88,
+     "n_years": 14
+    },
+    {
+     "week": 52,
+     "median": 345.99,
+     "n_years": 14
+    }
+   ]
+  },
+  "season_week.gwis_weekly_burned_area.OCE": {
+   "series_id": "gwis_weekly_burned_area",
+   "source_id": "K2",
+   "quality": "measured",
+   "indicator": "burned_area_km2",
+   "unit": "km2",
+   "entity": "OCE",
+   "entity_name": "Oseania",
+   "level": "region",
+   "kind": "season_week",
+   "basis_years": [
+    2012,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+   ],
+   "n_years": 14,
+   "weeks": [
+    {
+     "week": 1,
+     "median": 3130.09,
+     "n_years": 14
+    },
+    {
+     "week": 2,
+     "median": 2734.78,
+     "n_years": 14
+    },
+    {
+     "week": 3,
+     "median": 1879.8,
+     "n_years": 14
+    },
+    {
+     "week": 4,
+     "median": 1375.05,
+     "n_years": 14
+    },
+    {
+     "week": 5,
+     "median": 847.81,
+     "n_years": 14
+    },
+    {
+     "week": 6,
+     "median": 1011.57,
+     "n_years": 14
+    },
+    {
+     "week": 7,
+     "median": 1088.41,
+     "n_years": 14
+    },
+    {
+     "week": 8,
+     "median": 959.46,
+     "n_years": 14
+    },
+    {
+     "week": 9,
+     "median": 889.08,
+     "n_years": 14
+    },
+    {
+     "week": 10,
+     "median": 1471.7,
+     "n_years": 14
+    },
+    {
+     "week": 11,
+     "median": 2014.72,
+     "n_years": 14
+    },
+    {
+     "week": 12,
+     "median": 1884.3,
+     "n_years": 14
+    },
+    {
+     "week": 13,
+     "median": 2618.81,
+     "n_years": 14
+    },
+    {
+     "week": 14,
+     "median": 3822.19,
+     "n_years": 14
+    },
+    {
+     "week": 15,
+     "median": 5290.04,
+     "n_years": 14
+    },
+    {
+     "week": 16,
+     "median": 8394.28,
+     "n_years": 14
+    },
+    {
+     "week": 17,
+     "median": 7068.94,
+     "n_years": 14
+    },
+    {
+     "week": 18,
+     "median": 7720.24,
+     "n_years": 14
+    },
+    {
+     "week": 19,
+     "median": 9738.9,
+     "n_years": 14
+    },
+    {
+     "week": 20,
+     "median": 8729.15,
+     "n_years": 14
+    },
+    {
+     "week": 21,
+     "median": 7220.53,
+     "n_years": 14
+    },
+    {
+     "week": 22,
+     "median": 5117.38,
+     "n_years": 14
+    },
+    {
+     "week": 23,
+     "median": 5454.73,
+     "n_years": 14
+    },
+    {
+     "week": 24,
+     "median": 5424.06,
+     "n_years": 14
+    },
+    {
+     "week": 25,
+     "median": 5261.56,
+     "n_years": 14
+    },
+    {
+     "week": 26,
+     "median": 4979.43,
+     "n_years": 14
+    },
+    {
+     "week": 27,
+     "median": 5473.44,
+     "n_years": 14
+    },
+    {
+     "week": 28,
+     "median": 5626.12,
+     "n_years": 14
+    },
+    {
+     "week": 29,
+     "median": 6513.9,
+     "n_years": 14
+    },
+    {
+     "week": 30,
+     "median": 6666.49,
+     "n_years": 14
+    },
+    {
+     "week": 31,
+     "median": 5482.94,
+     "n_years": 14
+    },
+    {
+     "week": 32,
+     "median": 5966.0,
+     "n_years": 14
+    },
+    {
+     "week": 33,
+     "median": 7062.26,
+     "n_years": 14
+    },
+    {
+     "week": 34,
+     "median": 6098.3,
+     "n_years": 14
+    },
+    {
+     "week": 35,
+     "median": 7492.6,
+     "n_years": 14
+    },
+    {
+     "week": 36,
+     "median": 8440.45,
+     "n_years": 14
+    },
+    {
+     "week": 37,
+     "median": 8205.98,
+     "n_years": 14
+    },
+    {
+     "week": 38,
+     "median": 9148.81,
+     "n_years": 14
+    },
+    {
+     "week": 39,
+     "median": 8810.0,
+     "n_years": 14
+    },
+    {
+     "week": 40,
+     "median": 10768.24,
+     "n_years": 14
+    },
+    {
+     "week": 41,
+     "median": 9603.29,
+     "n_years": 14
+    },
+    {
+     "week": 42,
+     "median": 12725.14,
+     "n_years": 14
+    },
+    {
+     "week": 43,
+     "median": 14343.61,
+     "n_years": 14
+    },
+    {
+     "week": 44,
+     "median": 14206.66,
+     "n_years": 14
+    },
+    {
+     "week": 45,
+     "median": 11393.33,
+     "n_years": 14
+    },
+    {
+     "week": 46,
+     "median": 8820.67,
+     "n_years": 14
+    },
+    {
+     "week": 47,
+     "median": 6141.17,
+     "n_years": 14
+    },
+    {
+     "week": 48,
+     "median": 5944.41,
+     "n_years": 14
+    },
+    {
+     "week": 49,
+     "median": 4736.36,
+     "n_years": 14
+    },
+    {
+     "week": 50,
+     "median": 5023.33,
+     "n_years": 14
+    },
+    {
+     "week": 51,
+     "median": 4364.85,
+     "n_years": 14
+    },
+    {
+     "week": 52,
+     "median": 2617.64,
+     "n_years": 14
+    }
+   ]
+  },
+  "season_week.gwis_weekly_burned_area.SAM": {
+   "series_id": "gwis_weekly_burned_area",
+   "source_id": "K2",
+   "quality": "measured",
+   "indicator": "burned_area_km2",
+   "unit": "km2",
+   "entity": "SAM",
+   "entity_name": "Sør-Amerika",
+   "level": "region",
+   "kind": "season_week",
+   "basis_years": [
+    2012,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+   ],
+   "n_years": 14,
+   "weeks": [
+    {
+     "week": 1,
+     "median": 3718.34,
+     "n_years": 14
+    },
+    {
+     "week": 2,
+     "median": 5091.93,
+     "n_years": 14
+    },
+    {
+     "week": 3,
+     "median": 4647.5,
+     "n_years": 14
+    },
+    {
+     "week": 4,
+     "median": 6029.96,
+     "n_years": 14
+    },
+    {
+     "week": 5,
+     "median": 5380.05,
+     "n_years": 14
+    },
+    {
+     "week": 6,
+     "median": 4527.8,
+     "n_years": 14
+    },
+    {
+     "week": 7,
+     "median": 5668.31,
+     "n_years": 14
+    },
+    {
+     "week": 8,
+     "median": 5258.72,
+     "n_years": 14
+    },
+    {
+     "week": 9,
+     "median": 4605.66,
+     "n_years": 14
+    },
+    {
+     "week": 10,
+     "median": 5413.43,
+     "n_years": 14
+    },
+    {
+     "week": 11,
+     "median": 5776.52,
+     "n_years": 14
+    },
+    {
+     "week": 12,
+     "median": 5801.93,
+     "n_years": 14
+    },
+    {
+     "week": 13,
+     "median": 4615.48,
+     "n_years": 14
+    },
+    {
+     "week": 14,
+     "median": 3865.38,
+     "n_years": 14
+    },
+    {
+     "week": 15,
+     "median": 3337.91,
+     "n_years": 14
+    },
+    {
+     "week": 16,
+     "median": 2231.7,
+     "n_years": 14
+    },
+    {
+     "week": 17,
+     "median": 2187.86,
+     "n_years": 14
+    },
+    {
+     "week": 18,
+     "median": 2272.93,
+     "n_years": 14
+    },
+    {
+     "week": 19,
+     "median": 2235.2,
+     "n_years": 14
+    },
+    {
+     "week": 20,
+     "median": 1642.92,
+     "n_years": 14
+    },
+    {
+     "week": 21,
+     "median": 1957.51,
+     "n_years": 14
+    },
+    {
+     "week": 22,
+     "median": 1976.3,
+     "n_years": 14
+    },
+    {
+     "week": 23,
+     "median": 2365.77,
+     "n_years": 14
+    },
+    {
+     "week": 24,
+     "median": 3009.64,
+     "n_years": 14
+    },
+    {
+     "week": 25,
+     "median": 3864.88,
+     "n_years": 14
+    },
+    {
+     "week": 26,
+     "median": 4031.53,
+     "n_years": 14
+    },
+    {
+     "week": 27,
+     "median": 4840.44,
+     "n_years": 14
+    },
+    {
+     "week": 28,
+     "median": 5762.81,
+     "n_years": 14
+    },
+    {
+     "week": 29,
+     "median": 7975.18,
+     "n_years": 14
+    },
+    {
+     "week": 30,
+     "median": 11475.58,
+     "n_years": 14
+    },
+    {
+     "week": 31,
+     "median": 13868.1,
+     "n_years": 14
+    },
+    {
+     "week": 32,
+     "median": 18070.42,
+     "n_years": 14
+    },
+    {
+     "week": 33,
+     "median": 23664.54,
+     "n_years": 14
+    },
+    {
+     "week": 34,
+     "median": 28265.48,
+     "n_years": 14
+    },
+    {
+     "week": 35,
+     "median": 29754.42,
+     "n_years": 14
+    },
+    {
+     "week": 36,
+     "median": 34908.74,
+     "n_years": 14
+    },
+    {
+     "week": 37,
+     "median": 39290.47,
+     "n_years": 14
+    },
+    {
+     "week": 38,
+     "median": 28424.81,
+     "n_years": 14
+    },
+    {
+     "week": 39,
+     "median": 22797.76,
+     "n_years": 14
+    },
+    {
+     "week": 40,
+     "median": 21117.75,
+     "n_years": 14
+    },
+    {
+     "week": 41,
+     "median": 20925.28,
+     "n_years": 14
+    },
+    {
+     "week": 42,
+     "median": 15802.72,
+     "n_years": 14
+    },
+    {
+     "week": 43,
+     "median": 13654.55,
+     "n_years": 14
+    },
+    {
+     "week": 44,
+     "median": 9438.7,
+     "n_years": 14
+    },
+    {
+     "week": 45,
+     "median": 8010.47,
+     "n_years": 14
+    },
+    {
+     "week": 46,
+     "median": 7199.7,
+     "n_years": 14
+    },
+    {
+     "week": 47,
+     "median": 6615.52,
+     "n_years": 14
+    },
+    {
+     "week": 48,
+     "median": 5995.61,
+     "n_years": 14
+    },
+    {
+     "week": 49,
+     "median": 4831.07,
+     "n_years": 14
+    },
+    {
+     "week": 50,
+     "median": 3767.73,
+     "n_years": 14
+    },
+    {
+     "week": 51,
+     "median": 3452.83,
+     "n_years": 14
+    },
+    {
+     "week": 52,
+     "median": 3048.3,
+     "n_years": 14
+    }
+   ]
+  },
+  "season_week.gwis_weekly_burned_area.WLD": {
+   "series_id": "gwis_weekly_burned_area",
+   "source_id": "K2",
+   "quality": "measured",
+   "indicator": "burned_area_km2",
+   "unit": "km2",
+   "entity": "WLD",
+   "entity_name": "Verden",
+   "level": "world",
+   "kind": "season_week",
+   "basis_years": [
+    2012,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+   ],
+   "n_years": 14,
+   "weeks": [
+    {
+     "week": 1,
+     "median": 84938.89,
+     "n_years": 14
+    },
+    {
+     "week": 2,
+     "median": 76287.46,
+     "n_years": 14
+    },
+    {
+     "week": 3,
+     "median": 72666.54,
+     "n_years": 14
+    },
+    {
+     "week": 4,
+     "median": 66140.61,
+     "n_years": 14
+    },
+    {
+     "week": 5,
+     "median": 68528.61,
+     "n_years": 14
+    },
+    {
+     "week": 6,
+     "median": 66039.24,
+     "n_years": 14
+    },
+    {
+     "week": 7,
+     "median": 53321.51,
+     "n_years": 14
+    },
+    {
+     "week": 8,
+     "median": 53894.61,
+     "n_years": 14
+    },
+    {
+     "week": 9,
+     "median": 53426.96,
+     "n_years": 14
+    },
+    {
+     "week": 10,
+     "median": 53641.39,
+     "n_years": 14
+    },
+    {
+     "week": 11,
+     "median": 51454.92,
+     "n_years": 14
+    },
+    {
+     "week": 12,
+     "median": 61088.61,
+     "n_years": 14
+    },
+    {
+     "week": 13,
+     "median": 57720.32,
+     "n_years": 14
+    },
+    {
+     "week": 14,
+     "median": 57362.68,
+     "n_years": 14
+    },
+    {
+     "week": 15,
+     "median": 61601.35,
+     "n_years": 14
+    },
+    {
+     "week": 16,
+     "median": 56516.97,
+     "n_years": 14
+    },
+    {
+     "week": 17,
+     "median": 50175.6,
+     "n_years": 14
+    },
+    {
+     "week": 18,
+     "median": 43393.38,
+     "n_years": 14
+    },
+    {
+     "week": 19,
+     "median": 44077.29,
+     "n_years": 14
+    },
+    {
+     "week": 20,
+     "median": 41807.56,
+     "n_years": 14
+    },
+    {
+     "week": 21,
+     "median": 45308.6,
+     "n_years": 14
+    },
+    {
+     "week": 22,
+     "median": 50761.39,
+     "n_years": 14
+    },
+    {
+     "week": 23,
+     "median": 65875.84,
+     "n_years": 14
+    },
+    {
+     "week": 24,
+     "median": 67289.13,
+     "n_years": 14
+    },
+    {
+     "week": 25,
+     "median": 75377.45,
+     "n_years": 14
+    },
+    {
+     "week": 26,
+     "median": 78345.98,
+     "n_years": 14
+    },
+    {
+     "week": 27,
+     "median": 85536.48,
+     "n_years": 14
+    },
+    {
+     "week": 28,
+     "median": 101777.28,
+     "n_years": 14
+    },
+    {
+     "week": 29,
+     "median": 97503.44,
+     "n_years": 14
+    },
+    {
+     "week": 30,
+     "median": 106181.24,
+     "n_years": 14
+    },
+    {
+     "week": 31,
+     "median": 108327.14,
+     "n_years": 14
+    },
+    {
+     "week": 32,
+     "median": 119460.55,
+     "n_years": 14
+    },
+    {
+     "week": 33,
+     "median": 119904.09,
+     "n_years": 14
+    },
+    {
+     "week": 34,
+     "median": 125118.85,
+     "n_years": 14
+    },
+    {
+     "week": 35,
+     "median": 122273.07,
+     "n_years": 14
+    },
+    {
+     "week": 36,
+     "median": 131465.01,
+     "n_years": 14
+    },
+    {
+     "week": 37,
+     "median": 128543.14,
+     "n_years": 14
+    },
+    {
+     "week": 38,
+     "median": 102471.48,
+     "n_years": 14
+    },
+    {
+     "week": 39,
+     "median": 86504.65,
+     "n_years": 14
+    },
+    {
+     "week": 40,
+     "median": 80130.06,
+     "n_years": 14
+    },
+    {
+     "week": 41,
+     "median": 75682.12,
+     "n_years": 14
+    },
+    {
+     "week": 42,
+     "median": 72864.95,
+     "n_years": 14
+    },
+    {
+     "week": 43,
+     "median": 63635.01,
+     "n_years": 14
+    },
+    {
+     "week": 44,
+     "median": 63107.9,
+     "n_years": 14
+    },
+    {
+     "week": 45,
+     "median": 61661.01,
+     "n_years": 14
+    },
+    {
+     "week": 46,
+     "median": 53661.06,
+     "n_years": 14
+    },
+    {
+     "week": 47,
+     "median": 47522.69,
+     "n_years": 14
+    },
+    {
+     "week": 48,
+     "median": 58587.35,
+     "n_years": 14
+    },
+    {
+     "week": 49,
+     "median": 68446.13,
+     "n_years": 14
+    },
+    {
+     "week": 50,
+     "median": 74492.99,
+     "n_years": 14
+    },
+    {
+     "week": 51,
+     "median": 87109.32,
+     "n_years": 14
+    },
+    {
+     "week": 52,
+     "median": 83125.19,
+     "n_years": 14
+    }
+   ]
   },
   "share.firecci_lt11_annual_burned_area.ABW.2018": {
    "series_id": "firecci_lt11_annual_burned_area",
