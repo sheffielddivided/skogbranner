@@ -219,35 +219,43 @@ def sonder_uker(land="NOR", aar=None):
     utviklingssesjon. Uten denne måtte parseren skrives på gjetning. Kjøres i
     Actions, se .github/workflows/etl.yml.
 
-    Sonderingen henter tre ting: sonelista med koder og typer, ukesserien for
-    ett land, og den samme adressen med en sonekode i stedet for et land — det
-    siste avgjør om verdensdelene kan hentes ferdig aggregert fra kilden, eller
-    om de må summeres av landene.
+    Sonderingen svarer på tre spørsmål: hvilke soner kilden har, om
+    year-parameteret faktisk velger år, og om sonekodene kan brukes der
+    landkoden står — det siste avgjør om verdensdelene kan hentes ferdig
+    aggregert eller må summeres av landene.
     """
-    aar = aar or date.today().year - 1
-
     soner = _hent_liste(SONE_URL)
     print(f"soner: {len(soner)}")
     for sone in soner:
         print(f"  {sone.get('code')!r} type={sone.get('type')!r} navn={sone.get('name')!r}")
 
-    for nokkel, adresse in (
-        (f"land {land}", UKE_URL.format(land=land, aar=aar)),
-        ("sone AFRICA", UKE_URL.format(land="AFRICA", aar=aar)),
-    ):
+    def vis(nokkel, adresse):
         print(f"\n--- {nokkel}: {adresse}")
         try:
             svar = _hent_json(adresse)
         except Exception as e:  # noqa: BLE001 — sonderingen skal vise alt
             print(f"  feilet: {type(e).__name__}: {e}")
-            continue
-        print(f"  type: {type(svar).__name__}")
-        if isinstance(svar, list):
-            print(f"  lengde: {len(svar)}")
-            for rad in svar[:3]:
-                print(f"  rad: {json.dumps(rad, ensure_ascii=False)}")
-        else:
-            print(f"  innhold: {json.dumps(svar, ensure_ascii=False)[:600]}")
+            return
+        if not isinstance(svar, dict):
+            print(f"  type: {type(svar).__name__} — uventet")
+            return
+        for felt, rader in svar.items():
+            if not isinstance(rader, list):
+                print(f"  {felt}: {rader!r}")
+                continue
+            print(f"  {felt}: {len(rader)} rader")
+            if rader:
+                print(f"    første: {json.dumps(rader[0], ensure_ascii=False)}")
+                print(f"    siste:  {json.dumps(rader[-1], ensure_ascii=False)}")
+
+    # Samme land, tre år. Svarer year-parameteret med ulike datoer, velger den
+    # faktisk år; er datoene like, gjør den det ikke.
+    for aarstall in (2019, 2023, 2026):
+        vis(f"land {land}, år {aarstall}", UKE_URL.format(land=land, aar=aarstall))
+
+    # Sonekodene fra lista over, ikke gjettede navn.
+    for sone in ("UN_AFR", "WORLD"):
+        vis(f"sone {sone}", UKE_URL.format(land=sone, aar=2023))
 
     return None
 
