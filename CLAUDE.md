@@ -1345,6 +1345,9 @@ sluttbrukeravtale tas ikke inn før avtalen er avklart og notert i
 - `etl/run_static.py` — pipelinen for de statiske kildene
 - `src/lib/visning.ts` — avgrensningen av kompositten, med test i
   `visning.test.ts`. Kjøres med `npm test`
+- `src/lib/csv.ts` — figurens egen CSV, med test i `csv.test.ts`
+- `src/figurer/overskriftstall.ts` og `globaltBrentAreal.ts` — S1s to figurer
+- `src/pages/data/figur/[figur].csv.ts` — skriver én CSV per figur ved bygging
 - `data/geo/land_no.json` — 260 entiteter, generert fra SSB
 - `data/geo/land_area_km2.json` — landarealer fra K6, nevner i andelsindikatoren
 - `data/processed/` — bearbeidede serier som JSON og CSV. Hvilken fil hver
@@ -1364,7 +1367,8 @@ sluttbrukeravtale tas ikke inn før avtalen er avklart og notert i
   begge inngangene, kompilerer, validerer datasettet og kjører testene
 - `.github/workflows/rydd-grener.yml` — rydder maskinelle grener som er merget
 - `.github/workflows/deploy.yml` — bygger og publiserer ved push til `main`
-- Nettsiden — Astro, seks seksjoner, `src/komponenter/Figur.astro` og S1
+- Nettsiden — Astro, seks seksjoner, `src/komponenter/Figur.astro`,
+  `Overskriftstall.astro` og S1 med begge figurene
 
 Ingen av disse er stubber. De skal ikke skrives på nytt.
 
@@ -1384,59 +1388,29 @@ ved kjøringen som artefakt i stedet.
 Alle tre statiske kildene er kjørt, og dataene deres ligger i repoet. De hentes
 ikke på nytt uten at produsenten publiserer en ny versjon (§ 5).
 
-**Åpent punkt til fase 6 — figurteksten i S1.** De tre satellittseriene ligger
-på svært ulikt nivå der de overlapper: K8 gir 459 Mha per år i snitt, K9 gir
-775, og K1 ligger omtrent på K8s nivå. Det er en faktor 1,7 mellom
-ytterpunktene, mellom serier som alle har krav på å måle det samme.
+**S1 er ferdig, og figurteksten der løser det som var det åpne punktet.** De
+tre satellittseriene ligger på ulikt nivå og peker i ulik retning, og teksten
+under oversiktsfiguren forklarer begge deler uten å utpeke en riktig serie
+(P1): nivåforskjellen vises i det siste året alle tre dekker, og retningene
+forklares med at trendene gjelder hver sin periode og er regnet på hvert sitt
+produkt.
 
-`f_product_level` forklarer hvorfor, men en fotnote er ikke nok når avviket er
-det første leseren ser i figuren. Figurteksten må ta det eksplisitt, og den må
-gjøre det **uten å påstå hvilken serie som er riktig** — det er en vurdering
-siden ikke gjør (P1). Skriv om hva produktene ser ulikt, ikke om hvem som ser
-best.
-
-**De spriker ikke bare i nivå. De peker i hver sin retning.** Trendene i
-`insights.json` er beregnet per serie, innenfor én kilde og én `quality`, slik
-§ 7 krever — og de svarer ulikt:
-
-| Serie | Periode | Retning | Per tiår | p |
-|---|---|---|---|---|
-| K8 | 1982–2018 | stigende | +145 888 km² | 0,006 |
-| K9 | 1997–2020 | fallende | −793 805 km² | 0,00001 |
-| K1 | 2012–2025 | ingen trend publiseres — serien er kortere enn `TREND_MIN_YEARS_AGGREGATE` | | |
-
-Hver av de to som står igjen, er statistisk signifikant, og hver av dem er
-regnet riktig. Men de dekker ulike perioder med ulike produkter, og settes de
-under hverandre i samme seksjon, leser leseren en konklusjon uansett hvor
-nøytralt hver enkelt setning er formulert. Det er ikke ordlyden som bærer
-påstanden, det er naboskapet.
-
-Figurteksten må derfor si hvorfor to serier kan gi hver sin retning uten at
-noen av dem tar feil: de ser ulike perioder, med ulik deteksjonsevne, og
-ingen av dem dekker den andres tidsrom. Den skal ikke slå fast hvilken
-retning som gjelder, og den skal ikke la være å nevne at de spriker.
-
-En sammenskjøtt trend over alle tre er uansett forbudt (§ 7), og det er ikke
-en omgåelse av problemet — det er den samme regelen sett fra en annen kant.
+Nivåforskjellen vises som tre verdier for samme år, ikke som årsgjennomsnitt.
+Et gjennomsnitt er ikke en tillatt avledning (§ 7), og et felles år er
+dessuten en sammenligning leseren kan etterprøve i figuren selv.
 
 **Ikke implementert:** S2–S6 har overskrift og en merknad om at de ikke er
 laget, så K3, K4, K5 og K7 ligger i datasettet uten at noen seksjon viser dem
 ennå. Det samme gjelder `fire_count` og `burned_area_share_land`, og K2s
 ukesoppløsning, som S3 skal bruke.
 
-**Avledningene er beregnet, men ingen setning bruker dem ennå.**
-`insights.json` ligger i repoet, og ingen tekst på siden har tall i seg — det
-er derfor P3 ikke er brutt i dag. Første setning som skal ha et tall, henter
-det derfra og bærer id-en som `data-derivation`.
+**Avledningene er i bruk i S1.** Hvert tall i teksten der er fylt fra
+`insights.json`, og setningen bærer id-en i `data-derivation` (P3). Finnes
+ikke avledningen en setning trenger, stopper bygget — `avledning()` i
+`src/lib/data.ts` kaster framfor å la et tall mangle.
 
 K4 dekker foreløpig bare brent areal. Brannstørrelsesfordelingen S4 skal vise,
 krever polygonene fra Burnt Areas-databasen, som ikke er hentet.
-
-**Figurens egen CSV er ikke laget.** P5 krever at kildelinjen lenker til en CSV
-med nøyaktig de radene figuren tegner. `src/komponenter/Figur.astro` lenker i
-dag til den kanoniske filen fra `processed_files` i `data/_sources.json`, og for
-S1 betyr det `burned_area.csv`, som også bærer K3, K4, K5 og K7. Byggesteget må
-skrive figurens utsnitt til `public/data/` og lenke dit i stedet.
 
 **Kartgeometrien er ikke laget.** K6 leverer geometrien rutenettkildene
 fordeles på, og landarealene regnes fra den, men det finnes ingen forenklet
@@ -1444,8 +1418,6 @@ TopoJSON under `data/geo/` ennå. Den lages når S2 eller S4 trenger et kart, og
 skal da bygges fra det samme kartenhetslaget — ellers vil kartet vise andre
 grenser enn arealene og rasteriseringen bruker.
 
-**Neste steg:** S1s overskriftstall — figur 1 i § 8. Avledningene den trenger,
-finnes nå: `area_comparison.owid_annual_area_burnt.<år>` gir
-arealsammenligningen, og seriens `last_complete_year` står under `series` i
-`insights.json`. Det som gjenstår, er å hente dem inn i malen og feste
-`data-derivation` på setningen.
+**Neste steg:** S2 — kart og rangering av land. Avledningene finnes
+(`rank.*`, `share.*`, `concentration.*`), men kartgeometrien er ikke laget,
+se over.

@@ -26,6 +26,10 @@
 
   --farge-serie: #9a3412;
   --farge-serie-svak: #fde6d3;
+  /* Tre serier i samme figur. Fargene bærer aldri informasjon alene: hver
+     serie har også sin egen punktform, og den foreløpige er tegnet svakere. */
+  --farge-serie-b: #1d4ed8;
+  --farge-serie-c: #6d28d9;
   --farge-akse: #57534e;
   --farge-merknad: #7c2d12;
   --farge-merknad-flate: #fff7ed;
@@ -46,6 +50,8 @@
 
     --farge-serie: #f97316;
     --farge-serie-svak: #451a03;
+    --farge-serie-b: #60a5fa;
+    --farge-serie-c: #c4b5fd;
     --farge-akse: #a8a29e;
     --farge-merknad: #fdba74;
     --farge-merknad-flate: #292524;
@@ -348,6 +354,59 @@ a:visited {
   border: 1.5px dashed var(--farge-serie);
 }
 
+/* Seriene i oversiktsfiguren. Merket gjentar linjefargen; formen står i
+   figuren selv, og kvaliteten forklares i teksten ved siden av (§ 6). */
+.tegnforklaring-merke--maalt-b {
+  background: var(--farge-serie-b);
+}
+
+.tegnforklaring-merke--beta {
+  background: var(--farge-serie-c);
+  opacity: 0.55;
+}
+
+.tegnforklaring-merke--ufullstendig-punkt {
+  background: var(--farge-flate);
+  border: 1.5px dashed var(--farge-tekst-svak);
+}
+
+/* --- Overskriftstall (S1, figur 1) --- */
+
+.overskriftstall-verdi {
+  margin: 0.5rem 0 0;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.overskriftstall-tall {
+  font-family: var(--skrift-tall);
+  font-size: clamp(2.25rem, 8vw, 3.5rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--farge-serie);
+}
+
+.overskriftstall-enhet {
+  font-size: 1.25rem;
+  color: var(--farge-tekst-svak);
+}
+
+.overskriftstall-sammenligning {
+  margin: 0.75rem 0 0;
+  font-size: 1.0625rem;
+  max-width: 40rem;
+}
+
+.overskriftstall-forklaring {
+  margin: 0.5rem 0 0;
+  font-size: 0.9375rem;
+  color: var(--farge-tekst-svak);
+  max-width: 40rem;
+}
+
 /* --- Kildelinje --- */
 
 .kildelinje,
@@ -364,6 +423,13 @@ a:visited {
 
 .kildelinje-sitering cite {
   font-style: normal;
+  /* Siteringene gjengis ordrett (§ 5), og en DOI er én lang streng uten
+     mellomrom. Den skal brytes framfor å skyve figuren ut av skjermen. */
+  overflow-wrap: anywhere;
+}
+
+.kildelinje a {
+  overflow-wrap: anywhere;
 }
 
 .kildelinje-merke {

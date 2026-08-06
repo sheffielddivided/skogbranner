@@ -1,0 +1,125 @@
+---
+/**
+ * S1, figur 1 — overskriftstallet (CLAUDE.md § 8).
+ *
+ * Tallet og arealsammenligningen kommer fra data/processed/insights.json, og
+ * setningene bærer id-en til avledningen de er fylt fra (P3). Ingenting her
+ * er skrevet for hånd.
+ *
+ * Figuren er et tall og ikke en graf, men kravene i P5 og P6 gjelder likevel:
+ * kildelinje med dekning, nedlastingsdato og lenke til figurens egen CSV, og
+ * fotnotene som hører til akkurat denne verdien.
+ */
+import { kilde, fotnotetekst } from "../lib/data";
+import { dato, tall, desimaltall } from "../lib/format";
+
+interface Props {
+  id: string;
+  tittel: string;
+  aar: number;
+  verdi: number;
+  sammenligning: { land: string; areal: number; avvikProsent: number };
+  avledningId: string;
+  kildeIder: string[];
+  dekning: Record<string, { fra: number; til: number }>;
+  fotnoter: string[];
+  csvFil: string;
+}
+
+const {
+  id,
+  tittel,
+  aar,
+  verdi,
+  sammenligning,
+  avledningId,
+  kildeIder,
+  dekning,
+  fotnoter,
+  csvFil,
+} = Astro.props;
+
+const base = import.meta.env.BASE_URL;
+const csvUrl = `${base}data/figur/${csvFil}`;
+
+// Avviket har fortegn i avledningen. Retningen sies med ord, slik at leseren
+// slipper å tolke et minustegn, og størrelsen står som den er.
+const retning = sammenligning.avvikProsent < 0 ? "mindre enn" : "mer enn";
+const avvik = Math.abs(sammenligning.avvikProsent);
+
+// Dekningen settes sammen her og ikke i malen, slik at et enkeltår ikke får
+// et mellomrom foran punktumet.
+const kildene = kildeIder.map((kildeId) => {
+  const d = dekning[kildeId]!;
+  return {
+    k: kilde(kildeId),
+    dekning: d.fra === d.til ? String(d.fra) : `${d.fra}–${d.til}`,
+  };
+});
+---
+
+<div class="figur overskriftstall" id={id}>
+  <h3 class="figur-tittel">{tittel}</h3>
+
+  <p class="overskriftstall-verdi" data-derivation={avledningId}>
+    <span class="overskriftstall-tall">{tall(verdi)}</span>
+    <span class="overskriftstall-enhet">km²</span>
+  </p>
+
+  <p class="overskriftstall-sammenligning" data-derivation={avledningId}>
+    Landarealet til {sammenligning.land} er {tall(sammenligning.areal)} km².
+    Arealet som brant på jorden i {aar}, er {desimaltall(avvik)} prosent {retning} det.
+  </p>
+
+  <p class="overskriftstall-forklaring">
+    Sammenligningslandet er ikke valgt av oss. Det er landet hvis landareal
+    ligger nærmest tallet, plukket maskinelt fra det samme kartgrunnlaget som
+    resten av siden bruker. {aar} er det siste hele året i serien. Inneværende år
+    er holdt utenfor: det er ikke omme, og en del av et år kan ikke sammenlignes
+    med et helt.
+  </p>
+
+  {
+    kildene.map((rad) => (
+      <p class="kildelinje">
+        <span class="kildelinje-merke">Kilde</span>
+        <a href={rad.k.url} rel="noreferrer">{rad.k.name}</a>.
+        Dekning i denne figuren: {rad.dekning}.
+        Data hentet {dato(rad.k.downloaded_at)}.
+        Lisens: <a href={rad.k.license_url} rel="noreferrer">{rad.k.license}</a>.
+      </p>
+    ))
+  }
+
+  <p class="kildelinje">
+    <span class="kildelinje-merke">Tallene</span>
+    <a href={csvUrl} download>Last ned figurens tall som CSV ({csvFil})</a>. Filen
+    inneholder nøyaktig den raden tallet er hentet fra.
+  </p>
+
+  {
+    kildene
+      .filter((rad) => rad.k.attribution)
+      .map((rad) => (
+        <p class="kildelinje-sitering">
+          <span class="kildelinje-merke">Sitering</span>
+          <cite>{rad.k.attribution}</cite>
+        </p>
+      ))
+  }
+
+  {
+    fotnoter.length > 0 && (
+      <div class="fotnoter">
+        <h4 class="fotnoter-tittel" id={`${id}-fotnoter`}>
+          Forbehold for dette tallet
+        </h4>
+        <ol aria-labelledby={`${id}-fotnoter`}>
+          {fotnoter.map((kode) => (
+            <li id={`${id}-${kode}`}>{fotnotetekst(kode)}</li>
+          ))}
+        </ol>
+      </div>
+    )
+  }
+</div>

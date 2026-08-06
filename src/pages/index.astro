@@ -5,15 +5,47 @@
  * Hver seksjon åpner med figuren. Forklarende tekst ligger under, også i
  * DOM-rekkefølgen, slik at en skjermleser møter figuren først (P2).
  *
+ * Tall i brødteksten finnes ikke som skrevne verdier. De hentes fra
+ * data/processed/insights.json, og setningen bærer id-en til avledningen i
+ * data-derivation (P3).
+ *
  * Foreløpig har bare S1 innhold. De øvrige står med overskrift og en merknad
  * om at de ikke er laget ennå.
  */
 import Side from "../layouts/Side.astro";
 import Figur from "../komponenter/Figur.astro";
+import Overskriftstall from "../komponenter/Overskriftstall.astro";
 import { seksjoner } from "../lib/seksjoner";
-import { globaltBrentAreal } from "../figurer/globaltBrentAreal";
+import { overskriftstall, globaltBrentAreal } from "../figurer";
+import { avledning, avledetTall } from "../lib/data";
+import { tall, pverdi } from "../lib/format";
 
-const figurS1 = globaltBrentAreal();
+const figur1 = overskriftstall();
+const figur2 = globaltBrentAreal();
+
+// Nivåforskjellen vises i det siste året alle tre seriene dekker, ikke som et
+// gjennomsnitt. Et årsgjennomsnitt er ikke en tillatt avledning (§ 7), og et
+// felles år er dessuten en sammenligning leseren kan etterprøve i figuren.
+const NIVAA_AAR = 2018;
+const nivaa = [
+  { navn: "FireCCILT11", id: `rank.firecci_lt11_annual_burned_area.WLD.${NIVAA_AAR}` },
+  { navn: "GFED5", id: `rank.gfed5_annual_burned_area.WLD.${NIVAA_AAR}` },
+  { navn: "Our World in Data", id: `rank.owid_annual_area_burnt.WLD.${NIVAA_AAR}` },
+].map((s) => ({ ...s, verdi: avledetTall(s.id, "value") }));
+
+const dekningK8 = avledning("coverage.firecci_lt11_annual_burned_area.WLD");
+const dekningK9 = avledning("coverage.gfed5_annual_burned_area.WLD");
+const dekningK1 = avledning("coverage.owid_annual_area_burnt.WLD");
+
+const trendK8 = avledning("trend.firecci_lt11_annual_burned_area.WLD");
+const trendK9 = avledning("trend.gfed5_annual_burned_area.WLD");
+const trendK1 = avledning("trend.owid_annual_area_burnt.WLD");
+
+const manglerK8 = (dekningK8.missing_years as number[]).join(", ");
+const aarFoer =
+  (dekningK9.first_year as number) - (dekningK8.first_year as number);
+const aarEtter =
+  (dekningK9.last_year as number) - (dekningK8.last_year as number);
 
 const [s1, ...resten] = seksjoner;
 ---
@@ -28,33 +60,133 @@ const [s1, ...resten] = seksjoner;
       {s1!.tittel}
     </h2>
 
-    <Figur {...figurS1} />
+    <Overskriftstall {...figur1} />
+
+    <Figur {...figur2} />
 
     <div class="seksjon-tekst">
       <h3>Hva figuren viser</h3>
       <p>
         <strong>Brent areal</strong> er hvor stort område som har brent, målt i
-        kvadratkilometer. Det sier noe om hvor mye som brant, ikke hvor mange
-        branner det var. Én stor brann og mange små kan gi det samme arealet.
+        kvadratkilometer. Det sier hvor mye som brant, ikke hvor mange branner
+        det var. Én stor brann og mange små kan gi samme areal.
       </p>
       <p>
-        Tallene kommer fra satellitter. En <strong>satellittsensor</strong> er
-        et måleinstrument om bord som registrerer stråling fra bakken, og
-        brannspor kjennes igjen på at overflaten endrer farge og varme. Metoden
-        dekker hele kloden på samme måte, uten å være avhengig av at noen
-        rapporterer inn.
+        Figuren viser tre serier, ikke én kurve. Hver serie er ett
+        satellittprodukt, og hvert produkt dekker sin egen periode: FireCCILT11
+        fra <span data-derivation="coverage.firecci_lt11_annual_burned_area.WLD"
+          >{dekningK8.first_year} til {dekningK8.last_year}</span
+        >, GFED5 fra <span data-derivation="coverage.gfed5_annual_burned_area.WLD"
+          >{dekningK9.first_year} til {dekningK9.last_year}</span
+        >, og Our World in Data fra <span
+          data-derivation="coverage.owid_annual_area_burnt.WLD"
+          >{dekningK1.first_year}</span
+        >. De er tegnet hver for seg, med brudd mellom seg, fordi de ikke er den
+        samme målingen.
       </p>
       <p>
-        Den har også sine grenser. De minste brannene forsvinner mellom
-        målepunktene, og et bytte av sensor kan gi et brudd i serien.
-        Forbeholdene som gjelder akkurat denne figuren, står nummerert rett
-        under den.
+        Den blekere linjen er FireCCILT11. Produsenten har selv merket
+        datasettet som foreløpig, og linjen er tegnet svakere for at det skal
+        synes. Det er produsentens merking, ikke vår vurdering av kvaliteten.
+        Hver serie har i tillegg sin egen punktform, slik at de kan skilles uten
+        farge.
+      </p>
+      <p data-derivation="coverage.firecci_lt11_annual_burned_area.WLD">
+        {manglerK8} mangler helt i FireCCILT11. Året er tegnet som et brudd i
+        linjen — ikke som null, og ikke som en verdi vi har regnet oss fram til.
+      </p>
+
+      <h3>Hvorfor de ligger på ulikt nivå</h3>
+      <p>
+        {NIVAA_AAR} er det siste året alle tre dekker. Der viser{" "}
+        {
+          nivaa.map((s, i) => (
+            <>
+              {i > 0 ? (i === nivaa.length - 1 ? " og " : ", ") : ""}
+              {s.navn}{" "}
+              <span data-derivation={s.id}>{tall(s.verdi)} km²</span>
+            </>
+          ))
+        }.
       </p>
       <p>
-        Det siste året i figuren er ikke omme. Søylen viser bare det som er
-        registrert så langt, og er derfor ikke sammenlignbar med et helt år.
-        Den er tegnet med lysere flate og stiplet omriss for å skille den fra
-        de hele årene.
+        Forskjellen handler om hva produktene ser. En <strong
+          >satellittsensor</strong
+        > er et måleinstrument om bord som registrerer stråling fra bakken, og
+        brannspor kjennes igjen på at overflaten endrer farge og varme. Hvor
+        liten en brann kan være før den forsvinner mellom målepunktene, avhenger
+        av oppløsningen, av hvor ofte satellitten passerer, og av skydekket.
+        GFED5 tar i tillegg med brent areal i jordbruksland, torvmark og
+        avskogingsområder som de andre produktene i liten grad fanger opp.
+      </p>
+      <p>
+        Avstanden mellom to serier er derfor informasjon om målingene, ikke om
+        verden. Den kan ikke leses som en endring.
+      </p>
+
+      <h3>Hvorfor to av dem peker i hver sin retning</h3>
+      <p>
+        For to av seriene er det regnet ut en trend. En <strong>trend</strong> er
+        den jevne endringen gjennom perioden, regnet med en metode som tåler
+        enkeltår som stikker ut. Beregningen gir også en <strong>p-verdi</strong
+        >: et mål på hvor godt tilfeldig variasjon alene forklarer mønsteret.
+        Lav p-verdi betyr at tilfeldighet er en dårlig forklaring.
+      </p>
+      <p>
+        FireCCILT11 stiger med <span
+          data-derivation="trend.firecci_lt11_annual_burned_area.WLD"
+          >{tall(Math.abs(trendK8.slope_per_decade as number))} km² per tiår fra{
+            " "
+          }{trendK8.first_year} til {trendK8.last_year} ({pverdi(trendK8.p_value as number)})</span
+        >. GFED5 faller med <span
+          data-derivation="trend.gfed5_annual_burned_area.WLD"
+          >{tall(Math.abs(trendK9.slope_per_decade as number))} km² per tiår fra{
+            " "
+          }{trendK9.first_year} til {trendK9.last_year} ({pverdi(trendK9.p_value as number)})</span
+        >.
+      </p>
+      <p>
+        Retningene gjelder hver sin periode, og de motsier derfor ikke
+        hverandre. FireCCILT11 begynner <span
+          data-derivation="coverage.firecci_lt11_annual_burned_area.WLD"
+          >{aarFoer} år før</span
+        > GFED5 og slutter <span
+          data-derivation="coverage.gfed5_annual_burned_area.WLD"
+          >{aarEtter} år før</span
+        > den. En serie som ender der FireCCILT11 ender, sier ingenting om årene
+        etter, og en som begynner der GFED5 begynner, sier ingenting om årene før.
+      </p>
+      <p>
+        Perioden er den ene grunnen. Den andre er at trendene er regnet på hvert
+        sitt produkt, og produktene ser ulikt mye — det samme som gjør at de
+        ligger på ulikt nivå. En endring i det ett produkt fanger opp, er ikke
+        uten videre den samme endringen et annet produkt ville målt over de
+        samme årene. To trender fra to produkter over to perioder er to
+        observasjoner, ikke to svar på samme spørsmål.
+      </p>
+      <p>
+        Av samme grunn er seriene ikke skjøtt sammen til én lang linje. En slik
+        linje ville hatt et sprang der det ene produktet tar over for det andre,
+        og et sprang som kommer av byttet, ser ut som en endring i verden uten å
+        være det.
+      </p>
+      <p data-derivation="trend.owid_annual_area_burnt.WLD">
+        For Our World in Datas serie er det ikke regnet noen trend. Serien
+        dekker {trendK1.n_years} hele år, og grensen for en trend på verdensnivå
+        er {trendK1.min_years}. Under den veier enkeltår for tungt: tas det
+        siste året med eller ikke, endrer både størrelsen på endringen og hvor
+        sikker beregningen ser ut.
+      </p>
+
+      <h3>Hva figuren ikke svarer på</h3>
+      <p>
+        Figuren sier ikke hvilken serie som ligger nærmest sannheten. Det er en
+        vurdering av produktene som denne siden ikke gjør. Den viser hva hver av
+        dem måler, hvor langt tilbake de går, og hvor de er usikre.
+      </p>
+      <p>
+        Det siste året i figuren er ikke omme. Det er tegnet med åpent merke og
+        stiplet strek, og viser bare det som er registrert så langt.
       </p>
     </div>
   </section>

@@ -7,6 +7,30 @@ export function tall(verdi: number): string {
   return heltall.format(verdi);
 }
 
+const desimaler = new Intl.NumberFormat("nb-NO", { maximumFractionDigits: 2 });
+
+/** Tall med norsk desimalkomma, inntil to desimaler. */
+export function desimaltall(verdi: number): string {
+  return desimaler.format(verdi);
+}
+
+/**
+ * P-verdien slik den skal leses.
+ *
+ * Under en tusendel skrives den som en grense i stedet for som et tall med
+ * mange nuller. «p under 0,001» sier det samme som «p = 0,000014», og sier det
+ * på en måte leseren kan bruke.
+ */
+export function pverdi(verdi: number): string {
+  if (verdi < 0.001) return "p under 0,001";
+  return `p = ${pdesimaler.format(verdi)}`;
+}
+
+const pdesimaler = new Intl.NumberFormat("nb-NO", {
+  minimumFractionDigits: 3,
+  maximumFractionDigits: 3,
+});
+
 const maaneder = [
   "januar",
   "februar",

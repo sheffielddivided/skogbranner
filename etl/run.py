@@ -16,7 +16,7 @@ import json
 import traceback
 
 from etl import derive, normalize, validate
-from etl.schema import RAW_DIR, SOURCES_JSON
+from etl.schema import PROCESSED_FILE, RAW_DIR, SOURCES_JSON
 from etl.sources import (
     k1_owid,
     k2_gwis,
@@ -178,7 +178,7 @@ def main():
         raise validate.Valideringsfeil(f"{len(feil)} feil — ingenting publisert")
 
     filer = normalize.skriv_per_fil(observasjoner)
-    _oppdater_filliste(filer)
+    _oppdater_filliste()
 
     kryssjekk_k1_k2([o for o in observasjoner if o["source_id"] == k1_owid.SOURCE_ID])
 
@@ -197,19 +197,25 @@ def main():
     return observasjoner
 
 
-def _oppdater_filliste(filer):
-    """Fører opp hvilke filer hver kilde havnet i, i data/_sources.json.
+def _oppdater_filliste():
+    """Fører opp hvilke kanoniske filer hver kilde ligger i, i _sources.json.
 
-    Gjøres til slutt, fordi en kilde ikke vet hvilke filer den deler med de
-    andre før alle er normalisert. Kildelinjen under en figur skal peke på den
-    filen figuren faktisk bruker (P5).
+    Filnavnet slås opp i schema.PROCESSED_FILE, ikke i det denne kjøringen
+    tilfeldigvis skrev. Ellers ville en månedlig kjøring tømt oppføringen til
+    de statiske kildene, som den ikke rører.
+
+    Dette er de kanoniske filene, som S6 lenker til. Figurens egen CSV er noe
+    annet og skrives av byggesteget (P5).
     """
     with open(SOURCES_JSON, encoding="utf-8") as f:
         sources = json.load(f)
 
     per_kilde = {}
     for o in validate.les_publiserte():
-        per_kilde.setdefault(o["source_id"], set()).update(filer.get(o["series_id"], []))
+        navn = PROCESSED_FILE[o["series_id"]]
+        per_kilde.setdefault(o["source_id"], set()).update(
+            [f"{navn}.json", f"{navn}.csv"]
+        )
 
     for source_id, navn in per_kilde.items():
         if source_id in sources["sources"]:

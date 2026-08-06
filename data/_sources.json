@@ -258,8 +258,8 @@
         "firecci_lt11_annual_burned_area"
       ],
       "processed_files": [
-        "burned_area.csv",
-        "burned_area.json"
+        "burned_area_firecci_lt11.csv",
+        "burned_area_firecci_lt11.json"
       ],
       "footnotes": [
         "f_beta_product",
@@ -317,8 +317,8 @@
         "gfed5_annual_burned_area"
       ],
       "processed_files": [
-        "burned_area.csv",
-        "burned_area.json"
+        "burned_area_gfed5.csv",
+        "burned_area_gfed5.json"
       ],
       "footnotes": [
         "f_grid_resolution",
@@ -406,7 +406,10 @@
       "series": [
         "gcd_charcoal_composite"
       ],
-      "processed_files": [],
+      "processed_files": [
+        "charcoal_composite_gcd.csv",
+        "charcoal_composite_gcd.json"
+      ],
       "footnotes": [
         "f_proxy",
         "f_smoothed",
