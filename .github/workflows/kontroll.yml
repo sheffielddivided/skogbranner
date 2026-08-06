@@ -1,0 +1,84 @@
+# Kontroll av pull requests mot main.
+#
+# Jobben finnes fordi en manglende import kostet en ETL-kjøring på fire og et
+# halvt minutt og en feilsøkingsrunde: normalize.py importerer alle
+# kildemodulene, to av dem importerer openpyxl, og en workflow som ikke
+# installerte den falt før noe av kjøringen startet. Et importsteg fanger det
+# på sekunder.
+#
+# Hvert importsteg speiler en virkelig inngang med sine egne avhengigheter.
+# Rekkefølgen er ikke tilfeldig: den månedlige kjøringen kontrolleres med kun
+# requirements.txt installert, slik at en ny avhengighet i importkjeden fanges
+# her og ikke i en kjøring. Først etterpå legges de statiske kildenes tyngre
+# avhengigheter på.
+
+name: Kontroll
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: kontroll-${{ github.head_ref }}
+  cancel-in-progress: true
+
+jobs:
+  etl:
+    name: ETL — importer og kompiler
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Avhengigheter for den månedlige kjøringen
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+
+      # Importerer inngangen, som drar med seg normalize.py og alle
+      # kildemodulene den bruker. Går denne gjennom, kan den månedlige
+      # kjøringen i det minste starte.
+      - name: Importer den månedlige kjøringen
+        run: python -c "import etl.run"
+
+      - name: Avhengigheter for de statiske kildene
+        run: |
+          python -m pip install \
+            "numpy==2.3.5" \
+            "netCDF4==1.7.2" \
+            "rasterio==1.5.0"
+
+      # etl.grid importeres eksplisitt: run_static henter den først når en
+      # rutenettkilde kjøres, så en importfeil der ville ellers ikke vist seg
+      # før midt i en kjøring på flere gigabyte.
+      - name: Importer de statiske kildene
+        run: python -c "import etl.run_static, etl.grid"
+
+      # Fanger syntaksfeil i filer ingen av inngangene når.
+      - name: Kompiler alle Python-filene
+        run: python -m compileall -q etl
+
+      - name: Valider datasettet
+        run: python -m etl.validate
+
+  nettsted:
+    name: Nettsted — tester
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      # Node kjører TypeScript direkte, så testene trenger ingen avhengigheter.
+      # Se src/lib/visning.test.ts, som feiler hvis avgrensningen av
+      # kompositten gjøres symmetrisk (CLAUDE.md § 9).
+      - name: Kjør testene
+        run: npm test
