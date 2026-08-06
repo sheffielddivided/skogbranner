@@ -54,7 +54,7 @@
       "quality": "measured",
       "unit_source": "hectares",
       "downloaded_at": "2026-08-06",
-      "checksum": "921adbab833cf9fed6b2bb23d4e3458ae8a1bb5235d09822510fd5b5acc00035",
+      "checksum": "044436f64aa11a9371b1eefdd3704e74a1a19315f71ec84e1aa7e4cd6438c778",
       "series": [
         "gwis_annual_burned_area"
       ],
@@ -258,8 +258,8 @@
         "firecci_lt11_annual_burned_area"
       ],
       "processed_files": [
-        "burned_area_firecci_lt11.json",
-        "burned_area_firecci_lt11.csv"
+        "burned_area.csv",
+        "burned_area.json"
       ],
       "footnotes": [
         "f_beta_product",
@@ -317,8 +317,8 @@
         "gfed5_annual_burned_area"
       ],
       "processed_files": [
-        "burned_area_gfed5.json",
-        "burned_area_gfed5.csv"
+        "burned_area.csv",
+        "burned_area.json"
       ],
       "footnotes": [
         "f_grid_resolution",
@@ -406,10 +406,7 @@
       "series": [
         "gcd_charcoal_composite"
       ],
-      "processed_files": [
-        "charcoal_composite_gcd.json",
-        "charcoal_composite_gcd.csv"
-      ],
+      "processed_files": [],
       "footnotes": [
         "f_proxy",
         "f_smoothed",
