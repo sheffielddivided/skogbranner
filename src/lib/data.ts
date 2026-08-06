@@ -12,6 +12,10 @@ import kilderJson from "../../data/_sources.json";
 import fotnoterJson from "../../data/_footnotes.json";
 import statusJson from "../../data/_status.json";
 
+// Regelen for å avgrense en kompositt ved den yngste enden bor i sin egen rene
+// modul, slik at den kan testes uten Astro og uten datafilene. Se § 9.
+export { visningsgrense, visningspunkter } from "./visning.ts";
+
 export interface Observasjon {
   entity: string;
   entity_name: string;
@@ -97,38 +101,3 @@ export function serie(seriesId: string, entity: string): Observasjon[] {
     .sort((a, b) => a.period.localeCompare(b.period));
 }
 
-/**
- * Siste periode en kompositt kan vises fram til.
- *
- * En kompositt av mange kilder tynnes ut mot slutten når kildene slutter til
- * ulik tid. K10 er sedimentært kull, og kjernene slutter ved
- * innsamlingstidspunktet: antallet serier faller fra det tetteste punktet mot
- * nåtiden, samtidig som kurven stiger. Å vise den enden uten avgrensning ville
- * invitere til en lesning dataene ikke bærer.
- *
- * Regelen kutter **halen**, ikke alle tynne punkter: fra det yngste punktet og
- * bakover fjernes punkter så lenge de ligger under terskelen, og den stopper
- * ved det første som er over. Den eldste enden er også tynn, men tynn på en
- * annen måte — se CLAUDE.md § 9.
- *
- * Grensen beregnes her, ved bygging, av dataene og terskelen kilden oppgir.
- * Den skal aldri skrives som et årstall (§ 7, T5).
- */
-export function visningsgrense(
-  punkter: Observasjon[],
-  minsteAndel: number,
-): string | null {
-  const medAntall = punkter
-    .filter((o) => typeof o.n_series === "number")
-    .sort((a, b) => Number(a.period) - Number(b.period));
-  if (medAntall.length === 0) return null;
-
-  const tetteste = Math.max(...medAntall.map((o) => o.n_series as number));
-  const grense = minsteAndel * tetteste;
-
-  let siste = medAntall.length - 1;
-  while (siste >= 0 && (medAntall[siste].n_series as number) < grense) {
-    siste -= 1;
-  }
-  return siste < 0 ? null : medAntall[siste].period;
-}

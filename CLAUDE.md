@@ -1022,18 +1022,33 @@ og ikke kan lese `schema.py` — verdien har fortsatt bare ett hjem.
 **Punktene blir liggende i datasettet med sin `n_series`.** Det er visningen
 som avgrenses, ikke dataene. Den som vil se hele halen, finner den i CSV-en.
 
-**Regelen kutter halen, ikke alle tynne punkter.** Det er avgjørende: målt mot
-det tetteste punktet ligger hele den eldste delen av kurven også under
-terskelen. Et filter ville strøket to tredjedeler av serien, altså nettopp den
-lange linjen proxyen finnes for.
+**Regelen er ensidig, og skal aldri gjøres om til et filter.** Den trimmer
+halen fra det yngste punktet og bakover, og stopper ved første punkt over
+terskelen. Den ser aldri på den eldste enden.
 
-**Den eldste enden får ikke samme behandling**, og det er et bevisst valg.
-Der er antallet lavt, men **stabilt** — det svinger rundt 110–140 gjennom
-årtusener uten å falle sammen, og det sammenfaller ikke med noe brudd i
-kurven. Ved den yngste enden faller antallet derimot brått, fra 69 % til 28 %
-av det tetteste i ett steg, og faller sammen med den bratteste stigningen.
-Mekanismene er ulike: få lange kjerner er en egenskap ved arkivet, mens kjerner
-som slutter ved innsamlingsdato er en egenskap ved innsamlingen.
+Fristelsen er å skrive den om til noe som ser renere ut: «vis punkter med
+`n_series` over terskelen». Det ville vært en annen regel, og den ville
+ødelagt figuren. **174 av de 175 punktene under terskelen ligger i den eldste
+enden**, som er 31–39 % av det tetteste punktet. Et symmetrisk filter ville
+strøket to tredjedeler av serien og kuttet den lange linjen proxyen finnes for.
+
+`src/lib/visning.test.ts` feiler hvis noen gjør det likevel. Den kontrollerer
+at det eldste punktet i visningen ligger **under** terskelen — noe som er sant
+for en haletrimming og umulig for et filter.
+
+**Det er mekanismen som skiller de to endene, ikke nivået.** Målt mot det
+tetteste punktet er den eldste enden tynnere enn den yngste, så et resonnement
+som bare ser på tallene ville behandlet dem likt eller kuttet feil ende:
+
+- **Den eldste enden:** få lange kjerner er en egenskap ved arkivet. Antallet
+  er lavt, men **stabilt** — det svinger rundt 110–140 gjennom årtusener uten
+  å falle sammen, og det sammenfaller ikke med noe brudd i kurven.
+- **Den yngste enden:** kjerner som slutter ved innsamlingsdato er en egenskap
+  ved innsamlingen. Antallet faller **brått, i ett steg**, fra 69 % til 28 % av
+  det tetteste — midt i den bratteste stigningen i kurven.
+
+Et lavt, jevnt antall bærer en lang linje. Et antall som kollapser akkurat der
+kurven stiger, gjør det ikke.
 
 `f_smoothed` gjelder K10. Hvert punkt i kompositten er et vektet snitt over et
 vindu på 500 år til hver side, og kurven viser derfor den langsiktige formen,
@@ -1191,6 +1206,8 @@ sluttbrukeravtale tas ikke inn før avtalen er avklart og notert i
 - `etl/validate.py` — kontrollene i § 6 og § 11, og kryssjekken K1 mot K2
 - `etl/run.py` — de månedlige kildene. Én som feiler, tar ikke ned de andre
 - `etl/run_static.py` — pipelinen for de statiske kildene
+- `src/lib/visning.ts` — avgrensningen av kompositten, med test i
+  `visning.test.ts`. Kjøres med `npm test`
 - `data/geo/land_no.json` — 260 entiteter, generert fra SSB
 - `data/geo/land_area_km2.json` — landarealer fra K6, nevner i andelsindikatoren
 - `data/processed/` — én fil per indikator, som JSON og CSV
