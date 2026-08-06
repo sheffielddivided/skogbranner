@@ -50,18 +50,25 @@ jobs:
         with:
           python-version: "3.12"
 
-      # Den månedlige kjøringen klarer seg med standardbiblioteket. Disse
-      # avhengighetene trengs kun for rutenettkildene: netCDF-lesing,
-      # shapefil-lesing og rasterisering av landgeometrien.
+      # ETL-pakkens egne avhengigheter. De trengs uansett hvilken kilde som
+      # hentes: normalize.py importerer alle kildemodulene, og noen av dem
+      # leser XLSX. Uten dette feiler importen før kilden i det hele tatt
+      # starter — også for en kilde som i seg selv ikke bruker dem.
+      - name: Installer avhengigheter
+        if: ${{ !inputs.kun_katalog }}
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+
+      # I tillegg for rutenettkildene: netCDF-lesing og rasterisering.
+      # pyshp kommer fra requirements.txt.
       - name: Installer avhengigheter — rutenettkilder
         if: ${{ !inputs.kun_katalog && inputs.kilde != 'k10' }}
         run: |
-          python -m pip install --upgrade pip
           python -m pip install \
             "numpy==2.3.5" \
             "netCDF4==1.7.2" \
-            "rasterio==1.5.0" \
-            "pyshp==2.3.1"
+            "rasterio==1.5.0"
 
       # K10 er en R-kilde. Kullserien ligger i GCD-pakken, så det lastes ikke
       # ned data — men pakkene er gamle nok til å trenge litt hjelp.

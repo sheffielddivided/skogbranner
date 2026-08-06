@@ -12,6 +12,10 @@ import kilderJson from "../../data/_sources.json";
 import fotnoterJson from "../../data/_footnotes.json";
 import statusJson from "../../data/_status.json";
 
+// Regelen for å avgrense en kompositt ved den yngste enden bor i sin egen rene
+// modul, slik at den kan testes uten Astro og uten datafilene. Se § 9.
+export { visningsgrense, visningspunkter } from "./visning.ts";
+
 export interface Observasjon {
   entity: string;
   entity_name: string;
@@ -24,6 +28,8 @@ export interface Observasjon {
   series_id: string;
   quality: string;
   footnotes: string[];
+  /** Valgfritt: antall serier bak punktet, for kilder som fører det (§ 6). */
+  n_series?: number;
 }
 
 export interface Kilde {
@@ -94,3 +100,4 @@ export function serie(seriesId: string, entity: string): Observasjon[] {
     .filter((o) => o.series_id === seriesId && o.entity === entity)
     .sort((a, b) => a.period.localeCompare(b.period));
 }
+

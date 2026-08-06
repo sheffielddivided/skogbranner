@@ -727,7 +727,7 @@ def fra_k10(rader, info):
 
     # Kurven er både et indirekte mål og et glidende gjennomsnitt. Vindusbredden
     # står i fotnoteteksten, fordi den avgjør hvordan kurven skal leses.
-    fotnoter = ["f_proxy", "f_smoothed"]
+    fotnoter = ["f_proxy", "f_smoothed", "f_thinning_record"]
 
     observasjoner = []
     for rad in rader:

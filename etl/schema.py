@@ -78,6 +78,7 @@ FOOTNOTE = frozenset(
         "f_grid_resolution",
         "f_product_level",
         "f_smoothed",
+        "f_thinning_record",
     }
 )
 
@@ -116,6 +117,12 @@ GRID_MAX_UNATTRIBUTED_SHARE = 0.02
 # til rutenettets oppløsning, og får f_grid_resolution. Målt mot arealet av én
 # rute ved ekvator, som er den største en rute kan bli — se CLAUDE.md § 9.
 GRID_MIN_ENTITY_CELLS = 1.0
+
+# En kompositt av mange kilder tynnes ut mot slutten når kildene slutter til
+# ulik tid. Visningen avgrenses der halen faller under denne andelen av det
+# tetteste punktet — se CLAUDE.md § 9. Andel, ikke antall og ikke årstall, slik
+# at grensen følger datasettet.
+COMPOSITE_MIN_SERIES_SHARE = 0.5
 
 # Ytre grenser for et gyldig årstall. Øvre grense settes av nedlastingsåret og
 # beregnes i validate.py.

@@ -836,7 +836,7 @@ rekkefølgen. Hver seksjon åpner med figuren (P2).
 | S2 | Hvor på kloden | Geografisk fordeling: kart og rangering av land | K1 |
 | S3 | Året gjennom | Sesongvariasjon innenfor året — kumulativ kurve mot median og persentilbånd, i ukesoppløsning | K2 |
 | S4 | Europa | Land- og regionnivå, brent areal og andel av landareal, sorterbar tabell, brannstørrelsesfordeling | K3, K4 |
-| S5 | Den lange linjen | De samme seriene som i S1, pluss de nasjonale og proxyen, vist **hver for seg** i separate figurer med hver sin akse og hver sin dekningsperiode | K1, K5, K7, K8, K9, K10 |
+| S5 | Den lange linjen | De samme seriene som i S1, pluss de nasjonale og proxyen, vist **hver for seg** i separate figurer med hver sin akse og hver sin dekningsperiode. Kompositten avgrenses ved den yngste enden, se § 9 | K1, K5, K7, K8, K9, K10 |
 | S6 | Om dataene | Kildeoversikt, definisjoner, ordliste, alle fotnoter samlet, nedlastingslenker til alle bearbeidede CSV-filer, lenke til repoet | alle |
 
 **Hva kildekolonnen betyr.** Kolonnen lister kilder som leverer **tallverdiene
@@ -947,6 +947,8 @@ særbehandling og uten egen seksjon (P8).
   nivåforskjellen mellom to serier er ikke en endring i verden
 - `f_smoothed` — hvert punkt er et glidende gjennomsnitt over en lengre
   periode, ikke en enkeltmåling
+- `f_thinning_record` — mot slutten av perioden bygger kurven på færre kilder,
+  fordi sedimentkjernene slutter ved innsamlingstidspunktet
 
 `f_product_level` gjelder de satellittmålte arealseriene: K1, K4, K8 og K9.
 Den sier at to serier kan ligge på ulikt nivå for samme år fordi produktene ser
@@ -995,6 +997,58 @@ Merkes de ikke, gjelder terskelene ikke for serien, og en falsk nedgang av
 Qatar-typen — deteksjoner som stopper, ikke branner som avtar — ville passert
 ubemerket. En rutenettkilde som ikke merker nullene sine, undergraver derfor en
 regel som står et helt annet sted i dokumentet.
+
+`f_thinning_record` gjelder K10, og henger sammen med at **visningen av
+kurven avgrenses ved den yngste enden**.
+
+Antall serier bak hvert punkt står i `n_series` (§ 6). Det stiger fra rundt 110
+i den eldste delen til 360 rundt 1950, og faller så til 99 i det yngste
+punktet. Fallet skyldes at sedimentkjerner slutter ved innsamlingstidspunktet,
+ikke at noe skjer i verden — og det sammenfaller med den delen der kurven
+stiger kraftigst. Å vise den enden uten avgrensning ville invitere til en
+lesning dataene ikke bærer.
+
+**Regelen:** fra det yngste punktet og bakover utelates punkter fra visningen
+så lenge `n_series` er under `COMPOSITE_MIN_SERIES_SHARE` av det tetteste
+punktet. Den stopper ved det første punktet som er over.
+
+Terskelen er en **andel**, ikke et antall og ikke et årstall. Et antall ville
+blitt feil hvis databasen vokser, og et årstall ville vært en fasit vi måtte
+huske å endre. Grensen beregnes ved bygging, av dataene selv, og skal aldri
+fryses (§ 7, T5). `etl/schema.py` eier tallet; kilden skriver det til
+`data/_sources.json` som `min_series_share`, fordi byggetrinnet er TypeScript
+og ikke kan lese `schema.py` — verdien har fortsatt bare ett hjem.
+
+**Punktene blir liggende i datasettet med sin `n_series`.** Det er visningen
+som avgrenses, ikke dataene. Den som vil se hele halen, finner den i CSV-en.
+
+**Regelen er ensidig, og skal aldri gjøres om til et filter.** Den trimmer
+halen fra det yngste punktet og bakover, og stopper ved første punkt over
+terskelen. Den ser aldri på den eldste enden.
+
+Fristelsen er å skrive den om til noe som ser renere ut: «vis punkter med
+`n_series` over terskelen». Det ville vært en annen regel, og den ville
+ødelagt figuren. **174 av de 175 punktene under terskelen ligger i den eldste
+enden**, som er 31–39 % av det tetteste punktet. Et symmetrisk filter ville
+strøket to tredjedeler av serien og kuttet den lange linjen proxyen finnes for.
+
+`src/lib/visning.test.ts` feiler hvis noen gjør det likevel. Den kontrollerer
+at det eldste punktet i visningen ligger **under** terskelen — noe som er sant
+for en haletrimming og umulig for et filter.
+
+**Det er mekanismen som skiller de to endene, ikke nivået.** Målt mot det
+tetteste punktet er den eldste enden tynnere enn den yngste, så et resonnement
+som bare ser på tallene ville behandlet dem likt eller kuttet feil ende:
+
+- **Den eldste enden:** få lange kjerner er en egenskap ved arkivet. Antallet
+  er lavt, men **stabilt** — det svinger rundt 110–140 gjennom årtusener uten
+  å falle sammen, og det sammenfaller ikke med noe brudd i kurven.
+- **Den yngste enden:** kjerner som slutter ved innsamlingsdato er en egenskap
+  ved innsamlingen. Antallet faller **brått, i ett steg**, fra 69 % til 28 % av
+  det tetteste — midt i den bratteste stigningen i kurven.
+
+Et lavt, jevnt antall bærer en lang linje. Et antall som kollapser akkurat der
+kurven stiger, gjør det ikke.
 
 `f_smoothed` gjelder K10. Hvert punkt i kompositten er et vektet snitt over et
 vindu på 500 år til hver side, og kurven viser derfor den langsiktige formen,
@@ -1152,6 +1206,8 @@ sluttbrukeravtale tas ikke inn før avtalen er avklart og notert i
 - `etl/validate.py` — kontrollene i § 6 og § 11, og kryssjekken K1 mot K2
 - `etl/run.py` — de månedlige kildene. Én som feiler, tar ikke ned de andre
 - `etl/run_static.py` — pipelinen for de statiske kildene
+- `src/lib/visning.ts` — avgrensningen av kompositten, med test i
+  `visning.test.ts`. Kjøres med `npm test`
 - `data/geo/land_no.json` — 260 entiteter, generert fra SSB
 - `data/geo/land_area_km2.json` — landarealer fra K6, nevner i andelsindikatoren
 - `data/processed/` — én fil per indikator, som JSON og CSV

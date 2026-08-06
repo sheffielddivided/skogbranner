@@ -396,9 +396,10 @@
       "smoothing_halfwidth_years": 500,
       "n_series_min": 99,
       "n_series_max": 360,
+      "min_series_share": 0.5,
       "quality": "reconstructed",
       "unit_source": "zscore",
-      "downloaded_at": "2026-08-05",
+      "downloaded_at": "2026-08-06",
       "source_last_updated": null,
       "checksum": "592b00a45ab48ae6668cffc295404e31cba2c0f7b2f18a1db183338aeb12e845",
       "package_versions": {},
@@ -408,7 +409,8 @@
       "processed_files": [],
       "footnotes": [
         "f_proxy",
-        "f_smoothed"
+        "f_smoothed",
+        "f_thinning_record"
       ],
       "notes": "Hvert punkt er et vektet snitt over 500 år til hver side. Kompositt bygget med paleofire: minimaks, Box-Cox og z-score mot en felles basisperiode, deretter lavpassfiltrert snitt med bootstrappet usikkerhet. Utvalget er alle stedene i databasen, ikke et redaksjonelt utvalg. paleofire ble trukket fra CRAN i 2023 og installeres fra arkivet, uten rgdal, som pakken bare bruker i funksjoner vi ikke kaller. Alderen er regnet om fra år før 1950 til kalenderår."
     }
