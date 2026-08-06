@@ -812,28 +812,43 @@ def skriv(observasjoner, navn):
     return sti_json, sti_csv
 
 
-def skriv_per_indikator(observasjoner):
-    """Skriver én fil per indikator, og returnerer filnavnene per indikator.
+def skriv_per_fil(observasjoner):
+    """Skriver observasjonene til filene serien deres hører hjemme i.
 
-    Filnavnene står i schema.PROCESSED_FILE. Observasjonene sorteres innenfor
-    hver fil, slik at samme input alltid gir samme fil (T3).
+    Hvilken fil en serie havner i, står i schema.PROCESSED_FILE — flere serier
+    kan dele fil. Observasjonene sorteres innenfor hver fil, slik at samme
+    input alltid gir samme fil (T3).
+
+    Returnerer filnavnene per series_id.
     """
-    filer = {}
-    per_indikator = defaultdict(list)
+    per_fil = defaultdict(list)
     for o in observasjoner:
-        per_indikator[o["indicator"]].append(o)
+        per_fil[_filnavn(o["series_id"])].append(o)
 
-    for indikator, gruppe in sorted(per_indikator.items()):
+    navn_per_serie = {}
+    for navn, gruppe in sorted(per_fil.items()):
         gruppe.sort(key=lambda o: (o["series_id"], o["entity"], o["period"]))
-        sti_json, sti_csv = skriv(gruppe, PROCESSED_FILE[indikator])
-        filer[indikator] = [sti_json.name, sti_csv.name]
-    return filer
+        sti_json, sti_csv = skriv(gruppe, navn)
+        for o in gruppe:
+            navn_per_serie[o["series_id"]] = [sti_json.name, sti_csv.name]
+    return navn_per_serie
+
+
+def _filnavn(series_id):
+    """Filnavnet serien skrives til, fra schema.PROCESSED_FILE."""
+    navn = PROCESSED_FILE[series_id]
+    if navn is None:
+        raise KeyError(
+            f"serien {series_id!r} har ingen fil i PROCESSED_FILE og skal ikke "
+            "publiseres"
+        )
+    return navn
 
 
 def main():
     rader, metadata, info = k1_owid.hent()
     observasjoner = fra_k1(rader, info)
-    filer = skriv_per_indikator(observasjoner)
+    filer = skriv_per_fil(observasjoner)
     print(f"normalize: {len(observasjoner)} observasjoner → {filer}")
     return observasjoner, metadata, info
 

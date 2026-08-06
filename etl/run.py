@@ -177,14 +177,14 @@ def main():
             print("FEIL:", melding)
         raise validate.Valideringsfeil(f"{len(feil)} feil — ingenting publisert")
 
-    filer = normalize.skriv_per_indikator(observasjoner)
+    filer = normalize.skriv_per_fil(observasjoner)
     _oppdater_filliste(filer)
 
     kryssjekk_k1_k2([o for o in observasjoner if o["source_id"] == k1_owid.SOURCE_ID])
 
     print(f"validate: {len(observasjoner)} observasjoner OK")
-    for indikator, navn in sorted(filer.items()):
-        print(f"skrevet:   {indikator} → {', '.join(navn)}")
+    for serie, navn in sorted(filer.items()):
+        print(f"skrevet:   {serie} → {', '.join(navn)}")
 
     if feilede:
         raise RuntimeError(
@@ -205,7 +205,7 @@ def _oppdater_filliste(filer):
 
     per_kilde = {}
     for o in validate.les_publiserte():
-        per_kilde.setdefault(o["source_id"], set()).update(filer.get(o["indicator"], []))
+        per_kilde.setdefault(o["source_id"], set()).update(filer.get(o["series_id"], []))
 
     for source_id, navn in per_kilde.items():
         if source_id in sources["sources"]:

@@ -30,19 +30,6 @@ INDICATOR_UNIT = {
 
 INDICATOR = frozenset(INDICATOR_UNIT)
 
-# Filnavnet hver indikator får under data/processed/, uten etternavn. Én fil
-# per indikator, slik at kildelinjen under en figur kan peke på den filen
-# figuren faktisk bruker (CLAUDE.md P5).
-#
-# Arealfilen het burned_area før fire_count kom til, og beholder navnet — en
-# omdøping ville brutt lenkene som allerede er publisert.
-PROCESSED_FILE = {
-    "burned_area_km2": "burned_area",
-    "burned_area_share_land": "burned_area_share_land",
-    "charcoal_index": "charcoal_index",
-    "fire_count": "fire_count",
-}
-
 
 # --- Kildekoder (CLAUDE.md § 5) ---
 
@@ -76,7 +63,6 @@ FOOTNOTE = frozenset(
         "f_incomplete_inventory",
         "f_product_level",
         "f_grid_resolution",
-        "f_product_level",
         "f_smoothed",
         "f_thinning_record",
     }
@@ -113,9 +99,10 @@ TREND_MAX_ZERO_TAIL = 2
 # kjøringen — se CLAUDE.md § 5.
 GRID_MAX_UNATTRIBUTED_SHARE = 0.02
 
-# En entitet med mindre landareal enn dette antallet ruter er liten i forhold
-# til rutenettets oppløsning, og får f_grid_resolution. Målt mot arealet av én
-# rute ved ekvator, som er den største en rute kan bli — se CLAUDE.md § 9.
+# En entitet som dekker mindre enn dette antallet ruter av kildens eget
+# rutenett, er liten i forhold til oppløsningen og får f_grid_resolution.
+# Oppgitt i ruter, ikke km², fordi en rutes areal følger oppløsningen — se
+# CLAUDE.md § 9.
 GRID_MIN_ENTITY_CELLS = 1.0
 
 # En kompositt av mange kilder tynnes ut mot slutten når kildene slutter til
@@ -140,23 +127,36 @@ YEAR_MIN = -12000
 #
 # Én serie bærer én indikator. Avledede indikatorer får derfor egen serie-id,
 # slik at dekningsperiode og trend regnes per indikator og ikke blandes.
-SERIES_ID = frozenset(
-    {
-        "owid_annual_area_burnt",  # K1
-        "owid_annual_area_burnt_share_land",  # avledet av K1, nevner fra K6
-        "gwis_annual_burned_area",  # K2
-        "effis_annual_country_totals",  # K3, nasjonalt rapportert areal
-        "effis_annual_country_fire_count",  # K3, nasjonalt rapportert antall
-        "effis_rda_annual_burned_area",  # K4, EFFIS' egen satellittkartlegging
-        "nifc_annual_burned_area",  # K5
-        "nifc_annual_fire_count",  # K5
-        "nbac_annual_burned_area",  # K7
-        "cnfdb_annual_fire_count",  # K7
-        "firecci_lt11_annual_burned_area",  # K8
-        "gfed5_annual_burned_area",  # K9
-        "gcd_charcoal_composite",  # K10
-    }
-)
+#
+# Verdien er filnavnet serien skrives til under data/processed/, uten
+# etternavn. Filnavnene er en enumerasjon og bor bare her — ingen annen modul
+# skriver et filnavn selv (CLAUDE.md § 4).
+#
+# Flere serier kan dele fil. De statiske kildene har hver sin, fordi hver av
+# dem er én serie, mens de månedlige seriene med samme indikator ligger sammen.
+# Arealfilen het burned_area før fire_count kom til, og beholder navnet — en
+# omdøping ville brutt lenkene som allerede er publisert.
+#
+# None betyr at serien ikke publiseres. K2 hentes bare for kryssjekken mot K1,
+# og observasjonene dens når aldri data/processed/ (§ 5).
+PROCESSED_FILE = {
+    "owid_annual_area_burnt": "burned_area",  # K1
+    # avledet av K1, nevner fra K6
+    "owid_annual_area_burnt_share_land": "burned_area_share_land",
+    "gwis_annual_burned_area": None,  # K2, kun kryssjekk
+    "effis_annual_country_totals": "burned_area",  # K3, rapportert areal
+    "effis_annual_country_fire_count": "fire_count",  # K3, rapportert antall
+    "effis_rda_annual_burned_area": "burned_area",  # K4, satellittkartlegging
+    "nifc_annual_burned_area": "burned_area",  # K5
+    "nifc_annual_fire_count": "fire_count",  # K5
+    "nbac_annual_burned_area": "burned_area",  # K7
+    "cnfdb_annual_fire_count": "fire_count",  # K7
+    "firecci_lt11_annual_burned_area": "burned_area_firecci_lt11",  # K8
+    "gfed5_annual_burned_area": "burned_area_gfed5",  # K9
+    "gcd_charcoal_composite": "charcoal_composite_gcd",  # K10
+}
+
+SERIES_ID = frozenset(PROCESSED_FILE)
 
 
 # --- Stier ---

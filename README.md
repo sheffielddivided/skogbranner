@@ -12,7 +12,7 @@ Publiseres statisk på GitHub Pages under `/skogbranner/`.
 - **Ingen tese.** Ingen standpunkt, ingen konklusjon.
 - **Data har forrang.** Hver seksjon åpner med figuren. Teksten står under.
 - **Ingen håndskrevne tall.** Alle tallfestede påstander i brødteksten
-  genereres maskinelt fra datasettet ved byggetidspunkt.
+  genereres maskinelt fra datasettet, i ETL.
 - **Nøytralt språk.** Retning og størrelse beskrives, ikke betydning.
 - **Full sporbarhet.** Hver figur oppgir kilde med lenke, dekningsperiode,
   nedlastingsdato og lenke til CSV-filen figuren faktisk bruker.
