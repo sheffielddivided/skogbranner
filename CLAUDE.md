@@ -388,6 +388,20 @@ en ny versjon.
   Terskelen er `CROSSCHECK_THRESHOLD` i `etl/schema.py`. Valideringskoden
   importerer konstanten og skriver aldri tallet selv (T5).
 
+  **Kryssjekken sammenligner kun fullstendige år.** De to kildene hentes ikke
+  på samme tidspunkt, og K1 er dessuten OWIDs kopi av K2. I et år som ikke er
+  omme måler avviket derfor hvor lenge siden det er at hver av dem tok sin
+  kopi, ikke om de er uenige om målingen.
+
+  Det er ikke en antakelse: første gang rapporten ble kjørt over hele
+  perioden, lå 53 av 69 avvik i inneværende år, og K2 lå høyere enn K1 i 68
+  av 69. Tas inneværende år ut, står 16 avvik igjen — de som faktisk er
+  revisjoner GWIS har gjort etter at OWID tok sin kopi.
+
+  Dette er samme grunn som § 7 holder inneværende år utenfor alle
+  avledninger. Kryssjekken er ingen avledning, men et ufullstendig år er like
+  usammenlignbart her.
+
   Den andre er som datagrunnlag for **S3**, der ukesoppløsningen brukes. Det er
   den eneste seksjonen der K2 er synlig for leseren.
 - **K3 og K4 er to ulike produkter fra EFFIS**, og skal ikke forveksles.
@@ -400,9 +414,15 @@ en ny versjon.
 
   **K4** er EFFIS' egen Rapid Damage Assessment: satellittkartlegging fra
   MODIS, VIIRS og Sentinel-2. Den er `measured`, ikke `reported`, og skal
-  aldri ha `f_reporting_basis` — tallene er ikke rapportert av noen. Den er en
-  hurtigkartlegging som revideres når bedre bilder foreligger, og har derfor
-  `f_product_level`.
+  aldri ha `f_reporting_basis` — tallene er ikke rapportert av noen. Som de
+  andre satellittproduktene bærer den `f_product_level`, fordi den ser en
+  annen andel av brannene enn K1 gjør og derfor ligger på et annet nivå for
+  samme år.
+
+  At kartleggingen gjøres mens sesongen pågår og revideres når bedre bilder
+  foreligger, står i kildens `notes` i `data/_sources.json`. Det er en
+  egenskap ved kilden, ikke et forbehold ved den enkelte observasjonen, og
+  får derfor ingen fotnote.
 
   De to dekker samme geografi og overlapper i tid. De skal aldri skjøtes
   sammen til én serie, og en figur som viser begge må markere bruddet, av
@@ -886,10 +906,25 @@ særbehandling og uten egen seksjon (P8).
   systematisk, og eldre år finnes ikke
 - `f_incomplete_inventory` — databasen er verken komplett eller feilfri, og
   datakvaliteten varierer mellom rapporterende byråer og år
-- `f_product_level` — tallene er en hurtigkartlegging gjort mens sesongen
-  pågår, og revideres når bedre satellittbilder foreligger
+- `f_product_level` — satellittprodukter har ulik deteksjonsevne, så
+  nivåforskjellen mellom to serier er ikke en endring i verden
 - `f_grid_resolution` — landet er lite i forhold til rutenettets oppløsning,
   slik at brent areal kan falle mellom rutene
+
+`f_product_level` gjelder de satellittmålte arealseriene: K1, K4, K8 og K9.
+Den sier at to serier kan ligge på ulikt nivå for samme år fordi produktene ser
+ulikt mye, og at avstanden mellom dem derfor ikke er informasjon om verden.
+
+Den overlapper ikke med `f_min_fire_size`. Den fotnoten sier hva én serie ikke
+fanger opp; denne sier at *avstanden mellom to serier* ikke kan leses som en
+endring. Nasjonalt rapporterte kilder får den ikke — de har `f_reporting_basis`
+for en annen mekanisme, nemlig at definisjonene er ulike, ikke at
+deteksjonsevnen er det.
+
+Grunnen til at den trengs, er at kvalitetsbruddet i § 6 ikke fanger dette. K1
+og K9 er begge `measured`, så en figur som viser dem sammen tegner to
+heltrukne linjer uten noe som forklarer at den ene ligger nesten dobbelt så
+høyt som den andre.
 
 **Hvor fotnotetekstene bor.** Kodene over er enumerasjonen, og følger T5: prosa
 her, konstant i `etl/schema.py`. Den norske teksten leseren ser er noe annet —

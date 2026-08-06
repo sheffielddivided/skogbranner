@@ -162,20 +162,34 @@ def kryssjekk(k1_observasjoner, k2_observasjoner):
     Begge sett skal være kanoniske observasjoner i km², slik at sammenligningen
     ikke gjør en enhetskonvertering på egen hånd (T1).
 
+    **Bare fullstendige år sammenlignes.** De to kildene henter ikke på samme
+    tidspunkt, så i et år som ikke er omme måler avviket hvor lenge siden det
+    er at hver av dem tok sin kopi — ikke om de er uenige om målingen. Se
+    CLAUDE.md § 5 under K2.
+
+    Ufullstendige år kjennes på ``f_incomplete_year``, som normalize.py alt har
+    satt. Årstallet regnes ikke ut på nytt her, for da ville to steder kunne bli
+    uenige om hvilket år som er ufullstendig.
+
     Returnerer en liste avvik, sortert etter størrelsen på det relative
     avviket. Rapporten er et arbeidsverktøy for redaktøren og publiseres ikke
     — se CLAUDE.md § 5.
     """
+    UFULLSTENDIG = "f_incomplete_year"
+
     k2 = {
         (o["entity"], o["period"]): o
         for o in k2_observasjoner
         if o["indicator"] == "burned_area_km2"
+        and UFULLSTENDIG not in o["footnotes"]
     }
 
     avvik = []
     sammenlignet = 0
     for o in k1_observasjoner:
         if o["indicator"] != "burned_area_km2":
+            continue
+        if UFULLSTENDIG in o["footnotes"]:
             continue
         motpart = k2.get((o["entity"], o["period"]))
         if motpart is None:
@@ -219,6 +233,8 @@ def avviksrapport(avvik, sammenlignet):
         "",
         f"Sammenlignet {sammenlignet} observasjoner av brent areal for samme "
         f"entitet og år.",
+        "Kun fullstendige år. Inneværende år måler ulikt hentetidspunkt, ikke "
+        "uenighet om målingen.",
         f"Terskel: {terskel:g} % relativt avvik.",
         f"Over terskelen: {len(avvik)}.",
         "",
