@@ -7,16 +7,27 @@
 #
 # Regelen er at en maskinell gren uten åpen pull request er ferdig: enten er
 # den slått sammen, eller så er den forkastet. Grener med åpen pull request
-# røres aldri.
+# røres aldri, og standardgrenen røres aldri.
 #
 # Kjøringen er tørr som standard. Den lister hva den ville slettet, og sletter
 # ingenting før den kjøres med slett = true.
+#
+# Mønsteret er en inndata, ikke fast, fordi det finnes flere slags maskinelle
+# grener: workflowene lager etl/*, og en agentsesjon lager sin egen
+# utviklingsgren. Standardverdien er likevel kun etl/*, slik at en kjøring uten
+# argumenter aldri kan ta en gren noen arbeider på. Skal andre grener ryddes,
+# oppgis de eksplisitt — helst med fullt navn, ikke som et vidt mønster.
 
 name: Rydd maskinelle grener
 
 on:
   workflow_dispatch:
     inputs:
+      moenster:
+        description: "Grennavn eller mønstre, adskilt med mellomrom"
+        required: false
+        default: "etl/*"
+        type: string
       slett:
         description: "Slett grenene. Er den av, listes de bare opp"
         required: false
@@ -41,21 +52,43 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SLETT: ${{ inputs.slett }}
+          MOENSTER: ${{ inputs.moenster }}
         run: |
           set -euo pipefail
 
-          # Kun grener workflowene selv har laget. Mønsteret er bevisst smalt:
-          # alt annet, inkludert utviklingsgrener, holdes utenfor.
-          kandidater="$(git ls-remote --heads origin 'refs/heads/etl/*' \
+          # Mønstrene skal sendes videre til git ls-remote, ikke utvides mot
+          # filsystemet. Uten dette ville «etl/*» blitt til filene i etl/, som
+          # ligger i utsjekkingen.
+          set -f
+
+          # Uten oppgitt mønster ryddes kun grenene workflowene selv har laget.
+          refs=""
+          for m in ${MOENSTER:-etl/*}; do
+            refs="$refs refs/heads/$m"
+          done
+          echo "Mønstre: ${MOENSTER:-etl/*}"
+
+          # shellcheck disable=SC2086
+          kandidater="$(git ls-remote --heads origin $refs \
             | sed 's|.*refs/heads/||')"
 
           if [ -z "$kandidater" ]; then
-            echo "Ingen maskinelle grener å rydde."
+            echo "Ingen grener å rydde."
             exit 0
           fi
 
+          standard="$(gh repo view --json defaultBranchRef --jq .defaultBranchRef.name)"
+
           igjen=0
           for gren in $kandidater; do
+            # Standardgrenen kan treffes av et vidt mønster, og skal aldri
+            # kunne slettes av en opprydder.
+            if [ "$gren" = "$standard" ]; then
+              echo "beholdes  $gren — standardgren"
+              igjen=$((igjen + 1))
+              continue
+            fi
+
             aapne="$(gh pr list --head "$gren" --state open --json number --jq 'length')"
             if [ "$aapne" != "0" ]; then
               echo "beholdes  $gren — har åpen pull request"
