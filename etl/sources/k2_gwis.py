@@ -22,11 +22,20 @@ Kjøres som modul fra repotoppen: ``python -m etl.sources.k2_gwis``
 
 import hashlib
 import json
+import time
 import urllib.error
 import urllib.request
 from datetime import date, datetime, timezone
 
-from etl.schema import RAW_DIR, SOURCES_JSON, STATUS_JSON
+from etl.schema import (
+    GWIS_REQUEST_PAUSE_S,
+    HA_TO_KM2,
+    PROCESSED_DIR,
+    PROCESSED_FILE,
+    RAW_DIR,
+    SOURCES_JSON,
+    STATUS_JSON,
+)
 
 SOURCE_ID = "K2"
 SERIES_ID = "gwis_annual_burned_area"
@@ -71,20 +80,23 @@ IKKE_ENTITETER = {
 # ikke et land og har ingen landliste å slå opp.
 SONETYPER_MED_LAND = frozenset({"continent", "macregion", "region"})
 
-# GWIS' verdensdeler, oversatt til regionkodene i data/geo/land_no.json (§ 6).
-# Ukesserien publiseres på verdensdel og verden, ikke per land: landene ville
-# gitt 180 000 rader uten at noen figur viser dem, og S3 spør om når på året
-# det brenner hvor — ikke om det enkelte landet.
+# GWIS' soner, oversatt til regionkodene i data/geo/land_no.json (§ 6).
+# Kodene er lest av sonelista, ikke gjettet — se sonder_uker().
 #
-# Sonekoden hos GWIS er nøkkelen, vår regionkode er verdien. En sone vi ikke
-# kjenner igjen, stopper kjøringen framfor å forsvinne stille.
+# Verdensdelene hos GWIS følger FNs inndeling, der Amerika er én verdensdel
+# (UN_AME). Vi fører Nord- og Sør-Amerika hver for seg, og bruker derfor
+# kildens makroregioner N_AME og S_AME for de to.
+#
+# Ukesserien publiseres på verdensdel og verden, ikke per land: landene ville
+# gitt over 180 000 rader uten at noen figur viser dem, og S3 spør om når på
+# året det brenner hvor — ikke om det enkelte landet.
 GWIS_SONE_MAP = {
-    "AFRICA": "AFR",
-    "ASIA": "ASI",
-    "EUROPE": "EUR",
-    "NORTH_AMERICA": "NAC",
-    "SOUTH_AMERICA": "SAM",
-    "OCEANIA": "OCE",
+    "UN_AFR": "AFR",
+    "UN_ASI": "ASI",
+    "UN_EUR": "EUR",
+    "UN_OCE": "OCE",
+    "N_AME": "NAC",
+    "S_AME": "SAM",
 }
 
 BRUKERAGENT = "skogbranner-etl/1.0 (+https://github.com/sheffielddivided/skogbranner)"
@@ -260,6 +272,154 @@ def sonder_uker(land="NOR", aar=None):
     return None
 
 
+def soner_med_land():
+    """Sonene vi fører som regioner, med landene kilden legger i hver.
+
+    Inndelingen er kildens. Summeringen er vår — GWIS svarer ikke på sone i
+    ukesendepunktet, se sonder_uker().
+    """
+    ut = {}
+    for sone in _hent_liste(SONE_URL):
+        kode = sone.get("code")
+        if kode not in GWIS_SONE_MAP:
+            continue
+        land = _hent_liste(LAND_URL.format(sone=kode))
+        # Kildens koder oversettes til våre med én gang, slik at
+        # sammenligningen mot de hentede landene skjer i ett kodesett (§ 6).
+        iso3 = sorted(
+            {entity_kode((o.get("iso3") or "").strip()) for o in land} - {""}
+        )
+        if iso3:
+            ut[GWIS_SONE_MAP[kode]] = iso3
+
+    mangler = sorted(set(GWIS_SONE_MAP.values()) - set(ut))
+    if mangler:
+        raise ValueError(f"GWIS ga ingen landliste for sonene {mangler}")
+    return ut
+
+
+def _bufrede_aar():
+    """Årene ukesserien allerede er publisert for, og radene deres.
+
+    Et fullstendig år hentes ikke på nytt: verdiene ligger fast, og en månedlig
+    kjøring skal ikke be kilden om fjorten år med uker den allerede har svart
+    på. Den publiserte filen er hurtigbufferen — se CLAUDE.md § 5.
+
+    Inneværende år er aldri bufret. Det er nettopp det året som endrer seg.
+    """
+    sti = PROCESSED_DIR / f"{PROCESSED_FILE[UKE_SERIES_ID]}.json"
+    if not sti.exists():
+        return {}
+
+    with open(sti, encoding="utf-8") as f:
+        publisert = json.load(f)
+
+    inneverende = date.today().year
+    per_aar = {}
+    for o in publisert:
+        if o.get("series_id") != UKE_SERIES_ID:
+            continue
+        aar = int(o["period"][:4])
+        if aar >= inneverende:
+            continue
+        per_aar.setdefault(aar, []).append(o)
+    return per_aar
+
+
+def hent_uker(aar_fra, aar_til, land_koder=None, bufret=None):
+    """Henter ukesserien per land, og summerer den til soner og verden.
+
+    Returnerer (rader, info). Radene er (entity, år, uke, hektar), der entity
+    er en regionkode eller WLD — landene selv publiseres ikke (§ 5).
+
+    Hentingen er skånsom: én forespørsel per land og år, med pause mellom, og
+    fullstendige år som allerede er publisert, hentes ikke på nytt.
+    """
+    RAW_DIR.mkdir(parents=True, exist_ok=True)
+
+    soner = soner_med_land()
+    # Verdenstallet summeres av alle landene kilden fører, ikke bare av dem som
+    # ligger i en av de seks sonene. Et land utenfor sonene skal telle globalt.
+    koder = land_koder if land_koder is not None else sorted(hent_landkoder())
+    bufret = _bufrede_aar() if bufret is None else bufret
+
+    aarene = [a for a in range(aar_fra, aar_til + 1) if a not in bufret]
+    per_land = {}
+    uten_svar = []
+    forespørsler = 0
+
+    for aar in aarene:
+        for iso3 in koder:
+            if forespørsler:
+                time.sleep(GWIS_REQUEST_PAUSE_S)
+            forespørsler += 1
+            try:
+                svar = _hent_json(UKE_URL.format(land=iso3, aar=aar))
+            except (urllib.error.URLError, TimeoutError, OSError) as e:
+                uten_svar.append(f"{iso3} {aar}: {type(e).__name__}")
+                continue
+
+            for rad in (svar or {}).get("banfweekly") or []:
+                # None betyr at uken ikke er nådd ennå. Det er ingen måling, og
+                # skal ikke bli en null (§ 6).
+                if rad.get("area_ha") is None:
+                    continue
+                per_land[(entity_kode(iso3), aar, int(rad["week"]))] = float(
+                    rad["area_ha"]
+                )
+
+    rader = _summer_til_soner(per_land, soner)
+    for aar, gamle in sorted(bufret.items()):
+        rader.extend(
+            {
+                "entity": o["entity"],
+                "year": aar,
+                "week": int(o["period"][6:]),
+                "ba_ha": o["value"] / HA_TO_KM2,
+                "bufret": True,
+            }
+            for o in gamle
+        )
+
+    rader.sort(key=lambda r: (r["entity"], r["year"], r["week"]))
+
+    info = {
+        "source_id": SOURCE_ID,
+        "series_id": UKE_SERIES_ID,
+        "downloaded_at": date.today().isoformat(),
+        "rows": len(rader),
+        "requests": forespørsler,
+        "years_fetched": aarene,
+        "years_cached": sorted(bufret),
+        "countries": len(koder),
+        "zones": {kode: len(land) for kode, land in sorted(soner.items())},
+        "unanswered": uten_svar,
+    }
+    return rader, info
+
+
+def _summer_til_soner(per_land, soner):
+    """Summerer landenes uker til regionene og til verden.
+
+    Verdenstallet summeres av landene, ikke av regionene: et land kan ligge i
+    flere soner eller i ingen, og en sum av soner ville da telt det to ganger
+    eller ikke i det hele tatt.
+    """
+    per_entitet = {}
+    for (iso3, aar, uke), hektar in per_land.items():
+        for region, land in soner.items():
+            if iso3 in land:
+                nokkel = (region, aar, uke)
+                per_entitet[nokkel] = per_entitet.get(nokkel, 0.0) + hektar
+        verden = ("WLD", aar, uke)
+        per_entitet[verden] = per_entitet.get(verden, 0.0) + hektar
+
+    return [
+        {"entity": entitet, "year": aar, "week": uke, "ba_ha": hektar}
+        for (entitet, aar, uke), hektar in per_entitet.items()
+    ]
+
+
 def skriv_metadata(info):
     """Registrerer kilden i data/_sources.json.
 
@@ -297,6 +457,44 @@ def skriv_metadata(info):
         "arbeidsverktøy og publiseres ikke. Ukesoppløsningen fra samme kilde "
         "skal brukes i seksjonen om sesongvariasjon.",
     }
+    with open(SOURCES_JSON, "w", encoding="utf-8") as f:
+        json.dump(sources, f, ensure_ascii=False, indent=2)
+        f.write("\n")
+
+
+def skriv_uke_metadata(info):
+    """Oppdaterer K2s oppføring med ukesserien.
+
+    Kilden er den samme; det er oppløsningen som er ny. Oppføringen får derfor
+    begge seriene og en temporal_resolution som sier at begge finnes, framfor
+    en ny kildekode — en K-kode er én kilde, ikke ett endepunkt (§ 5).
+    """
+    with open(SOURCES_JSON, encoding="utf-8") as f:
+        sources = json.load(f)
+
+    oppforing = sources["sources"].setdefault(SOURCE_ID, {})
+    oppforing.update(
+        {
+            "name": "GWIS — Global Wildfire Information System",
+            "temporal_resolution": "annual og weekly",
+            "series": sorted({*oppforing.get("series", []), SERIES_ID, UKE_SERIES_ID}),
+            "weekly": {
+                "downloaded_at": info["downloaded_at"],
+                "requests": info["requests"],
+                "years_fetched": info["years_fetched"],
+                "years_cached": info["years_cached"],
+                "countries": info["countries"],
+                "zones": info["zones"],
+                "unanswered": len(info["unanswered"]),
+            },
+            "notes": "Brukes til å kryssjekke K1, som er Our World in Datas "
+            "bearbeiding av det samme grunnlaget. Avviksrapporten er et "
+            "arbeidsverktøy og publiseres ikke. Ukesserien er hentet per land "
+            "og summert til verdensdel og verden — kilden svarer ikke på sone "
+            "i ukesendepunktet. Fullstendige år hentes ikke på nytt.",
+        }
+    )
+
     with open(SOURCES_JSON, "w", encoding="utf-8") as f:
         json.dump(sources, f, ensure_ascii=False, indent=2)
         f.write("\n")

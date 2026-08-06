@@ -110,6 +110,15 @@ TREND_ALPHA = 0.05
 # største står for (CLAUDE.md § 7).
 CONCENTRATION_TOP_N = 10
 
+# Sesongbåndet i S3: persentilene båndet dekker, regnet per uke over
+# fullstendige år. Se CLAUDE.md § 7.
+SEASON_BAND_PCT = (10, 90)
+
+# Pause mellom forespørslene mot GWIS, i sekunder. Ukesserien er én
+# forespørsel per land og år, og kilden er en offentlig tjeneste uten
+# betaling — hentingen skal være skånsom framfor rask. Se CLAUDE.md § 5.
+GWIS_REQUEST_PAUSE_S = 0.25
+
 # Avvik fra normal over denne prosenten uttrykkes som multiplikator i teksten.
 # Verdien i insights.json er den samme uansett — det er formuleringen som
 # endrer seg, se CLAUDE.md § 7.
@@ -180,6 +189,7 @@ PROCESSED_FILE = {
     # avledet av K1, nevner fra K6
     "owid_annual_area_burnt_share_land": "burned_area_share_land",
     "gwis_annual_burned_area": None,  # K2, kun kryssjekk
+    "gwis_weekly_burned_area": "burned_area_weekly",  # K2, ukesserien til S3
     "effis_annual_country_totals": "burned_area",  # K3, rapportert areal
     "effis_annual_country_fire_count": "fire_count",  # K3, rapportert antall
     "effis_rda_annual_burned_area": "burned_area",  # K4, satellittkartlegging

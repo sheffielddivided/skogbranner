@@ -16,6 +16,8 @@ import json
 import traceback
 
 from etl import derive, normalize, validate
+from datetime import date
+
 from etl.schema import PROCESSED_FILE, RAW_DIR, SOURCES_JSON
 from etl.sources import (
     k1_owid,
@@ -32,6 +34,9 @@ from etl.sources import (
 # gitignorert. Se CLAUDE.md § 5.
 AVVIKSRAPPORT = RAW_DIR / "kryssjekk_k1_k2.md"
 
+# Første året GWIS har ukesdata for. Samme startår som årsserien (§ 5).
+K2_UKE_FRA = 2012
+
 
 def _forrige(publisert, source_id):
     """Plukker ut en kildes forrige observasjoner fra det som lå der før."""
@@ -46,6 +51,18 @@ def hent_k1():
     )
     k1_owid.skriv_metadata(metadata, info, [])
     return observasjoner, info
+
+
+def hent_k2_uker():
+    """K2s ukesserie, som S3 bruker.
+
+    Hentingen er skånsom og bufret: fullstendige år som allerede er publisert,
+    hentes ikke på nytt, og det er pause mellom forespørslene (§ 5). Første
+    kjøring henter hele perioden, senere kjøringer bare inneværende år.
+    """
+    rader, info = k2_gwis.hent_uker(K2_UKE_FRA, date.today().year)
+    k2_gwis.skriv_uke_metadata(info)
+    return normalize.fra_k2_uker(rader, info), info
 
 
 def hent_k3():
@@ -76,6 +93,7 @@ def hent_k7():
 # her og ikke i workflowen, slik at kildeoversikten ikke får en kopi til (T5).
 KILDER = [
     (k1_owid, hent_k1),
+    (k2_gwis, hent_k2_uker),
     (k3_effis, hent_k3),
     (k4_effis, hent_k4),
     (k5_nifc, hent_k5),
