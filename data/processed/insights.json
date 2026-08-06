@@ -350,10 +350,10 @@
  "summary": {
   "series": 12,
   "trend": {
-   "computed": 791,
+   "computed": 783,
    "skipped": {
     "smoothed": 1,
-    "too_few_years": 5,
+    "too_few_years": 13,
     "zero_share": 332,
     "zero_tail": 3
    }
@@ -99623,18 +99623,10 @@
    "entity_name": "Afrika",
    "level": "region",
    "kind": "trend",
-   "computed": true,
+   "computed": false,
+   "reason": "too_few_years",
    "n_years": 14,
-   "first_year": 2012,
-   "last_year": 2025,
-   "slope_per_year": -54616.05,
-   "slope_per_decade": -546160.5,
-   "s": -49,
-   "z": -2.6278,
-   "p_value": 0.008595,
-   "alpha": 0.05,
-   "significant": true,
-   "direction": "decreasing"
+   "min_years": 20
   },
   "trend.owid_annual_area_burnt.AGO": {
    "series_id": "owid_annual_area_burnt",
@@ -99809,18 +99801,10 @@
    "entity_name": "Asia",
    "level": "region",
    "kind": "trend",
-   "computed": true,
+   "computed": false,
+   "reason": "too_few_years",
    "n_years": 14,
-   "first_year": 2012,
-   "last_year": 2025,
-   "slope_per_year": -15518.94,
-   "slope_per_decade": -155189.4,
-   "s": -55,
-   "z": -2.9562,
-   "p_value": 0.003114,
-   "alpha": 0.05,
-   "significant": true,
-   "direction": "decreasing"
+   "min_years": 20
   },
   "trend.owid_annual_area_burnt.ASM": {
    "series_id": "owid_annual_area_burnt",
@@ -101095,18 +101079,10 @@
    "entity_name": "EU (27 land)",
    "level": "region",
    "kind": "trend",
-   "computed": true,
+   "computed": false,
+   "reason": "too_few_years",
    "n_years": 14,
-   "first_year": 2012,
-   "last_year": 2025,
-   "slope_per_year": -125.5,
-   "slope_per_decade": -1254.97,
-   "s": -13,
-   "z": -0.6569,
-   "p_value": 0.51122,
-   "alpha": 0.05,
-   "significant": false,
-   "direction": "none"
+   "min_years": 20
   },
   "trend.owid_annual_area_burnt.EUR": {
    "series_id": "owid_annual_area_burnt",
@@ -101118,18 +101094,10 @@
    "entity_name": "Europa",
    "level": "region",
    "kind": "trend",
-   "computed": true,
+   "computed": false,
+   "reason": "too_few_years",
    "n_years": 14,
-   "first_year": 2012,
-   "last_year": 2025,
-   "slope_per_year": -8340.48,
-   "slope_per_decade": -83404.75,
-   "s": -35,
-   "z": -1.8613,
-   "p_value": 0.062698,
-   "alpha": 0.05,
-   "significant": false,
-   "direction": "none"
+   "min_years": 20
   },
   "trend.owid_annual_area_burnt.EUR_XRU": {
    "series_id": "owid_annual_area_burnt",
@@ -101141,18 +101109,10 @@
    "entity_name": "Europa (uten Russland)",
    "level": "region",
    "kind": "trend",
-   "computed": true,
+   "computed": false,
+   "reason": "too_few_years",
    "n_years": 14,
-   "first_year": 2012,
-   "last_year": 2025,
-   "slope_per_year": -1188.09,
-   "slope_per_decade": -11880.87,
-   "s": -35,
-   "z": -1.8613,
-   "p_value": 0.062698,
-   "alpha": 0.05,
-   "significant": false,
-   "direction": "none"
+   "min_years": 20
   },
   "trend.owid_annual_area_burnt.FIN": {
    "series_id": "owid_annual_area_burnt",
@@ -102983,18 +102943,10 @@
    "entity_name": "Nord-Amerika",
    "level": "region",
    "kind": "trend",
-   "computed": true,
+   "computed": false,
+   "reason": "too_few_years",
    "n_years": 14,
-   "first_year": 2012,
-   "last_year": 2025,
-   "slope_per_year": 145.18,
-   "slope_per_decade": 1451.8,
-   "s": 5,
-   "z": 0.219,
-   "p_value": 0.826666,
-   "alpha": 0.05,
-   "significant": false,
-   "direction": "none"
+   "min_years": 20
   },
   "trend.owid_annual_area_burnt.NAM": {
    "series_id": "owid_annual_area_burnt",
@@ -103300,18 +103252,10 @@
    "entity_name": "Oseania",
    "level": "region",
    "kind": "trend",
-   "computed": true,
+   "computed": false,
+   "reason": "too_few_years",
    "n_years": 14,
-   "first_year": 2012,
-   "last_year": 2025,
-   "slope_per_year": -2408.36,
-   "slope_per_decade": -24083.57,
-   "s": -9,
-   "z": -0.438,
-   "p_value": 0.661416,
-   "alpha": 0.05,
-   "significant": false,
-   "direction": "none"
+   "min_years": 20
   },
   "trend.owid_annual_area_burnt.OMN": {
    "series_id": "owid_annual_area_burnt",
@@ -103755,18 +103699,10 @@
    "entity_name": "Sør-Amerika",
    "level": "region",
    "kind": "trend",
-   "computed": true,
+   "computed": false,
+   "reason": "too_few_years",
    "n_years": 14,
-   "first_year": 2012,
-   "last_year": 2025,
-   "slope_per_year": 5162.91,
-   "slope_per_decade": 51629.07,
-   "s": 9,
-   "z": 0.438,
-   "p_value": 0.661416,
-   "alpha": 0.05,
-   "significant": false,
-   "direction": "none"
+   "min_years": 20
   },
   "trend.owid_annual_area_burnt.SAU": {
    "series_id": "owid_annual_area_burnt",

@@ -31,7 +31,7 @@ from etl.schema import (
     TREND_MAX_ZERO_SHARE,
     TREND_MAX_ZERO_TAIL,
     TREND_MIN_YEARS,
-    TREND_MIN_YEARS_WORLD,
+    TREND_MIN_YEARS_AGGREGATE,
 )
 
 # Fotnotene avledningene leser. De er kildens egen merking av hva en verdi er,
@@ -39,6 +39,10 @@ from etl.schema import (
 UFULLSTENDIG = "f_incomplete_year"
 TVETYDIG_NULL = "f_zero_no_detection"
 GLATTET = "f_smoothed"
+
+# Nivåene som regnes som aggregater. En trend for dem har en egen grense for
+# hvor kort serien kan være (§ 7).
+AGGREGATNIVAA = frozenset({"world", "region"})
 
 # Enheter en prosentvis avviks- eller andelsberegning er definert for. En
 # z-score er en avstand i standardavvik, ikke en mengde, og «så mange prosent
@@ -326,11 +330,11 @@ def trend(serie, kode):
     if serie["smoothed"]:
         return dict(felles, reason="smoothed", n_years=len(punkter))
 
-    # Verdensnivået har sin egen grense. En global trend leses som en påstand
-    # om verden, og tåler ikke å hvile på et enkeltår (§ 7).
+    # Aggregatene har sin egen grense. En trend for verden eller en region
+    # leses som en oppsummering, og tåler ikke å hvile på et enkeltår (§ 7).
     min_aar = (
-        TREND_MIN_YEARS_WORLD
-        if serie["levels"][kode] == "world"
+        TREND_MIN_YEARS_AGGREGATE
+        if serie["levels"][kode] in AGGREGATNIVAA
         else TREND_MIN_YEARS
     )
     if len(punkter) < min_aar:

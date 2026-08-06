@@ -895,18 +895,22 @@ ikke holder for få år, og `TREND_MIN_YEARS` i `etl/schema.py` setter grensen.
 En p-verdi regnet på en håndfull punkter ville sett like presis ut som en
 regnet på førti, og det er nettopp den forskjellen leseren ikke kan se.
 
-**Verdensnivået har en høyere grense: `TREND_MIN_YEARS_WORLD`.** En trend for
-en enkelt entitet er et tall om det landet. En trend for verden leses som en
-påstand om verden, og den skal ikke kunne hvile på et enkeltår.
+**Aggregater har en høyere grense: `TREND_MIN_YEARS_AGGREGATE`.** Den gjelder
+`level: world` og `level: region`.
 
 Grunnen står i dataene. K1s verdensserie flytter seg fra −477 000 til
 −638 000 km² per tiår når 2025 tas med, og p-verdien fra 0,044 til 0,012. Ett
 år av fjorten som flytter både størrelsen og signifikansen, er ikke et
-grunnlag for å publisere en global trend. K8 og K9, som har 36 og 24 år,
-beholder sine.
+grunnlag for å publisere en trend som oppsummerer noe. K8 og K9, som har 36 og
+24 år, beholder sine.
 
-Grensen gjelder `level: world`. Land og regioner beholder `TREND_MIN_YEARS` —
-der er tallet en observasjon om én entitet, ikke en oppsummering av verden.
+**Skjørheten følger serielengden, ikke aggregeringsnivået.** K1s regioner har
+de samme fjorten årene som verdensserien, og ett år veier like tungt der. Å
+publisere en europeisk trend, men ikke en global, fra samme kilde med samme
+grunnlag, ville vært en asymmetri uten begrunnelse.
+
+Land beholder `TREND_MIN_YEARS`. Der er den korte serien en begrensning ved
+kilden, og en nasjonal trend leses ikke som en uttalelse om verden.
 
 **Glattede serier får ingen trend.** K10 er et vektet snitt over et vindu på
 flere hundre år (`f_smoothed`, § 9), og nabopunktene er derfor ikke
@@ -1399,7 +1403,7 @@ best.
 |---|---|---|---|---|
 | K8 | 1982–2018 | stigende | +145 888 km² | 0,006 |
 | K9 | 1997–2020 | fallende | −793 805 km² | 0,00001 |
-| K1 | 2012–2025 | ingen trend publiseres — serien er kortere enn `TREND_MIN_YEARS_WORLD` | | |
+| K1 | 2012–2025 | ingen trend publiseres — serien er kortere enn `TREND_MIN_YEARS_AGGREGATE` | | |
 
 Hver av de to som står igjen, er statistisk signifikant, og hver av dem er
 regnet riktig. Men de dekker ulike perioder med ulike produkter, og settes de

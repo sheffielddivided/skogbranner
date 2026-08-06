@@ -97,10 +97,10 @@ TREND_MAX_ZERO_TAIL = 2
 # en normaltilnærming som ikke holder for korte serier — se CLAUDE.md § 7.
 TREND_MIN_YEARS = 10
 
-# Verdensnivået har en høyere grense enn de øvrige entitetene. En global trend
-# leses som en påstand om verden, og skal tåle at et enkeltår faller bort —
-# se CLAUDE.md § 7.
-TREND_MIN_YEARS_WORLD = 20
+# Aggregater — verden og regionene — har en høyere grense enn landene. En trend
+# for et aggregat leses som en oppsummering, og skal tåle at et enkeltår faller
+# bort — se CLAUDE.md § 7.
+TREND_MIN_YEARS_AGGREGATE = 20
 
 # Signifikansnivå for Mann–Kendall. Over denne p-verdien rapporteres trenden
 # som «ingen statistisk signifikant trend» (CLAUDE.md § 7).
