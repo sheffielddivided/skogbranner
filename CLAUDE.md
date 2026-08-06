@@ -1087,6 +1087,10 @@ sluttbrukeravtale tas ikke inn før avtalen er avklart og notert i
 - `etl/run_static.py` — pipelinen for de statiske kildene
 - `data/geo/land_no.json` — 260 entiteter, generert fra SSB
 - `data/processed/burned_area.json` og `.csv` — K1, 2012–, 3900 observasjoner
+- `data/processed/burned_area_firecci_lt11.*` — K8, 1982–2018 uten 1994,
+  8820 observasjoner
+- `data/processed/burned_area_gfed5.*` — K9, 1997–2020, 5880 observasjoner
+- `data/processed/charcoal_composite_gcd.*` — K10, 6050 fvt–2010, 404 punkter
 - `data/_footnotes.json` — fotnotetekstene, kontrollert mot `schema.py`
 - `.github/workflows/etl.yml` — månedlig kjøring, endringer som pull request
 - `.github/workflows/etl-statisk.yml` — manuelt utløst kjøring av en statisk
@@ -1104,14 +1108,19 @@ Hver figur har en modul under `src/figurer/` som bygger graf, tabell og
 fotnoteliste fra observasjonene. Hvilke fotnoter en figur viser, utledes av
 dataene — ikke av en liste i figurmodulen.
 
-**Hentet, men ikke kjørt:** ingen av de statiske kildene ligger i repoet ennå.
-Koden og workflowen er på plass, men filene under `data/processed/` finnes
-først etter at `etl-statisk.yml` er kjørt for hver kilde og pull requestene er
-slått sammen:
+Alle tre statiske kildene er kjørt, og dataene deres ligger i repoet. De
+hentes ikke på nytt uten at produsenten publiserer en ny versjon (§ 5).
 
-- `kilde: k8` → `burned_area_firecci_lt11.*`, 432 månedsfiler, 6,7 GiB
-- `kilde: k9` → `burned_area_gfed5.*`, ett arkiv på 253 MiB med 288 månedsfiler
-- `kilde: k10` → `charcoal_composite_gcd.*`, ingen datanedlasting
+**Åpent punkt til fase 6 — figurteksten i S1.** De tre satellittseriene ligger
+på svært ulikt nivå der de overlapper: K8 gir 459 Mha per år i snitt, K9 gir
+775, og K1 ligger omtrent på K8s nivå. Det er en faktor 1,7 mellom
+ytterpunktene, mellom serier som alle har krav på å måle det samme.
+
+`f_product_level` forklarer hvorfor, men en fotnote er ikke nok når avviket er
+det første leseren ser i figuren. Figurteksten må ta det eksplisitt, og den må
+gjøre det **uten å påstå hvilken serie som er riktig** — det er en vurdering
+siden ikke gjør (P1). Skriv om hva produktene ser ulikt, ikke om hvem som ser
+best.
 
 **Ikke implementert:** `etl/derive.py` inneholder kun beskrivelse av
 ansvarsområde. S2–S6 har overskrift og en merknad om at de ikke er laget.
