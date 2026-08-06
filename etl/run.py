@@ -146,14 +146,17 @@ def kryssjekk_k1_k2(k1_observasjoner):
 
         k2_gwis.skriv_metadata(info)
         k2_gwis.skriv_status(
-            "ok", f"{len(avvik)} avvik av {sammenlignet} sammenlignede", info
+            "ok",
+            f"{len(avvik)} avvik av {sammenlignet} sammenlignede",
+            info,
+            rolle="crosscheck",
         )
         print(
             f"K2: kryssjekket {sammenlignet} observasjoner mot K1, "
             f"{len(avvik)} over terskelen → {AVVIKSRAPPORT.name}"
         )
     except Exception as e:
-        k2_gwis.skriv_status("failed", f"{type(e).__name__}: {e}")
+        k2_gwis.skriv_status("failed", f"{type(e).__name__}: {e}", rolle="crosscheck")
         print(f"K2 FEILET: {type(e).__name__}: {e} — kryssjekken er ikke kjørt")
 
 
@@ -166,13 +169,24 @@ def main():
 
     observasjoner = []
     feilede = []
+    bokforingsfeil = []
 
     for modul, hent in KILDER:
         try:
             nye, info = hent()
-            modul.skriv_status("ok", "hentet og normalisert", info)
             observasjoner += nye
             print(f"{modul.SOURCE_ID}: {len(nye)} observasjoner")
+            # Bokføringen skjer etter at radene er tatt vare på. En feil i
+            # statusskrivingen er ikke en feil ved dataene, og skal ikke kaste
+            # en henting som tok minutter — den logges og publiseringen går
+            # videre med en uendret statusoppføring.
+            try:
+                modul.skriv_status("ok", "hentet og normalisert", info)
+            except Exception as e:
+                bokforingsfeil.append(f"{modul.SOURCE_ID}: {type(e).__name__}: {e}")
+                print(f"{modul.SOURCE_ID}: status ikke skrevet: {type(e).__name__}: {e}")
+                traceback.print_exc()
+            continue
         except Exception as e:
             beholdt = _forrige(publisert, modul.SOURCE_ID)
             modul.skriv_status(
@@ -207,6 +221,8 @@ def main():
     print(f"validate: {len(observasjoner)} observasjoner OK")
     for serie, navn in sorted(filer.items()):
         print(f"skrevet:   {serie} → {', '.join(navn)}")
+    for melding in bokforingsfeil:
+        print(f"BOKFØRING: {melding}")
 
     if feilede:
         raise RuntimeError(

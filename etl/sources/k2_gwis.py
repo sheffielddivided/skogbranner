@@ -57,6 +57,18 @@ UKE_URL = f"{API}/statistics/v2/gwis/weekly?country={{land}}&year={{aar}}"
 
 LANDING_URL = "https://gwis.jrc.ec.europa.eu/apps/gwis.statistics/estimates"
 
+# Kilden er én, med to roller og to oppløsninger (§ 5). Navn og merknad står
+# derfor ett sted, og begge skrivestegene bruker dem — ellers ville det steget
+# som kjørte sist, bestemt hvordan hele kilden ble beskrevet.
+NAVN = "GWIS — Global Wildfire Information System"
+NOTES = (
+    "Brukes til å kryssjekke K1, som er Our World in Datas bearbeiding av det "
+    "samme grunnlaget. Avviksrapporten er et arbeidsverktøy og publiseres "
+    "ikke. Ukesserien er hentet per land og summert til verdensdel og verden "
+    "— kilden svarer ikke på sone i ukesendepunktet. Fullstendige år hentes "
+    "ikke på nytt."
+)
+
 RAW_JSON = RAW_DIR / "k2_gwis_estimates.json"
 RAW_UKE_JSON = RAW_DIR / "k2_gwis_weekly.json"
 
@@ -383,10 +395,14 @@ def hent_uker(aar_fra, aar_til, land_koder=None, bufret=None):
 
     rader.sort(key=lambda r: (r["entity"], r["year"], r["week"]))
 
+    raa = json.dumps(rader, ensure_ascii=False, sort_keys=True).encode("utf-8")
+    RAW_UKE_JSON.write_bytes(raa)
+
     info = {
         "source_id": SOURCE_ID,
         "series_id": UKE_SERIES_ID,
         "downloaded_at": date.today().isoformat(),
+        "checksum": _sha256(raa),
         "rows": len(rader),
         "requests": forespørsler,
         "years_fetched": aarene,
@@ -420,6 +436,11 @@ def _summer_til_soner(per_land, soner):
     ]
 
 
+def _opplosning(serier):
+    """temporal_resolution utledet av hvilke serier som faktisk er hentet."""
+    return "annual og weekly" if UKE_SERIES_ID in serier else "annual"
+
+
 def skriv_metadata(info):
     """Registrerer kilden i data/_sources.json.
 
@@ -430,33 +451,37 @@ def skriv_metadata(info):
     with open(SOURCES_JSON, encoding="utf-8") as f:
         sources = json.load(f)
 
-    sources["sources"][SOURCE_ID] = {
-        "source_id": SOURCE_ID,
-        "name": "GWIS — Global Wildfire Information System, årlige estimater",
-        "publisher": "Joint Research Centre, Europakommisjonen, under Copernicus",
-        "url": LANDING_URL,
-        "download_url": AAR_URL.format(land="NOR"),
-        "license": "Copernicus-data. Fri bruk med kildeangivelse.",
-        "license_url": "https://www.copernicus.eu/en/access-data/copyright-and-licences",
-        "attribution": "Global Wildfire Information System (GWIS), Copernicus "
-        "Emergency Management Service, Joint Research Centre.",
-        "requires_agreement": False,
-        "geography": "global",
-        "coverage_start": str(info["coverage_start"]),
-        "coverage_end": str(info["coverage_end"]),
-        "temporal_resolution": "annual",
-        "quality": "measured",
-        "unit_source": "hectares",
-        "downloaded_at": info["downloaded_at"],
-        "checksum": info["checksum"],
-        "series": [SERIES_ID],
-        "processed_files": [],
-        "footnotes": ["f_sensor_break", "f_min_fire_size"],
-        "notes": "Brukes til å kryssjekke K1, som er Our World in Datas "
-        "bearbeiding av det samme grunnlaget. Avviksrapporten er et "
-        "arbeidsverktøy og publiseres ikke. Ukesoppløsningen fra samme kilde "
-        "skal brukes i seksjonen om sesongvariasjon.",
-    }
+    # Oppføringen fylles av to steg, og dette kjører sist. Den skrives derfor
+    # inn i det som allerede står der — en full erstatning ville strøket
+    # ukesblokken og etterlatt K2 som om bare årsserien fantes.
+    oppforing = sources["sources"].setdefault(SOURCE_ID, {})
+    serier = sorted({*oppforing.get("series", []), SERIES_ID})
+    oppforing.update(
+        {
+            "source_id": SOURCE_ID,
+            "name": NAVN,
+            "publisher": "Joint Research Centre, Europakommisjonen, under Copernicus",
+            "url": LANDING_URL,
+            "download_url": AAR_URL.format(land="NOR"),
+            "license": "Copernicus-data. Fri bruk med kildeangivelse.",
+            "license_url": "https://www.copernicus.eu/en/access-data/copyright-and-licences",
+            "attribution": "Global Wildfire Information System (GWIS), Copernicus "
+            "Emergency Management Service, Joint Research Centre.",
+            "requires_agreement": False,
+            "geography": "global",
+            "coverage_start": str(info["coverage_start"]),
+            "coverage_end": str(info["coverage_end"]),
+            "temporal_resolution": _opplosning(serier),
+            "quality": "measured",
+            "unit_source": "hectares",
+            "downloaded_at": info["downloaded_at"],
+            "checksum": info["checksum"],
+            "series": serier,
+            "processed_files": oppforing.get("processed_files", []),
+            "footnotes": ["f_sensor_break", "f_min_fire_size"],
+            "notes": NOTES,
+        }
+    )
     with open(SOURCES_JSON, "w", encoding="utf-8") as f:
         json.dump(sources, f, ensure_ascii=False, indent=2)
         f.write("\n")
@@ -473,13 +498,15 @@ def skriv_uke_metadata(info):
         sources = json.load(f)
 
     oppforing = sources["sources"].setdefault(SOURCE_ID, {})
+    serier = sorted({*oppforing.get("series", []), SERIES_ID, UKE_SERIES_ID})
     oppforing.update(
         {
-            "name": "GWIS — Global Wildfire Information System",
-            "temporal_resolution": "annual og weekly",
-            "series": sorted({*oppforing.get("series", []), SERIES_ID, UKE_SERIES_ID}),
+            "name": NAVN,
+            "temporal_resolution": _opplosning(serier),
+            "series": serier,
             "weekly": {
                 "downloaded_at": info["downloaded_at"],
+                "checksum": info["checksum"],
                 "requests": info["requests"],
                 "years_fetched": info["years_fetched"],
                 "years_cached": info["years_cached"],
@@ -487,11 +514,7 @@ def skriv_uke_metadata(info):
                 "zones": info["zones"],
                 "unanswered": len(info["unanswered"]),
             },
-            "notes": "Brukes til å kryssjekke K1, som er Our World in Datas "
-            "bearbeiding av det samme grunnlaget. Avviksrapporten er et "
-            "arbeidsverktøy og publiseres ikke. Ukesserien er hentet per land "
-            "og summert til verdensdel og verden — kilden svarer ikke på sone "
-            "i ukesendepunktet. Fullstendige år hentes ikke på nytt.",
+            "notes": NOTES,
         }
     )
 
@@ -500,21 +523,40 @@ def skriv_uke_metadata(info):
         f.write("\n")
 
 
-def skriv_status(status, melding, info=None):
-    """Skriver kjørestatus til data/_status.json."""
+def skriv_status(status, melding, info=None, rolle="weekly"):
+    """Skriver kjørestatus til data/_status.json.
+
+    K2 har to roller, og de kjører hver for seg (§ 5). Hver rolle får sin egen
+    oppføring under ``roles``, og den samlede statusen er ok bare hvis begge
+    er det — ellers ville rollen som kjørte sist, kunne overskrive en feil i
+    den andre og få kilden til å se hentet ut.
+    """
     with open(STATUS_JSON, encoding="utf-8") as f:
         data = json.load(f)
 
     naa = datetime.now(timezone.utc).isoformat(timespec="seconds")
     forrige = data["sources"].get(SOURCE_ID, {})
-    data["last_run"] = naa
-    data["sources"][SOURCE_ID] = {
+    roller = dict(forrige.get("roles", {}))
+    roller[rolle] = {
         "status": status,
         "last_attempt": naa,
-        "last_success": naa if status == "ok" else forrige.get("last_success"),
-        "rows": info["rows"] if info else forrige.get("rows"),
-        "checksum": info["checksum"] if info else forrige.get("checksum"),
+        "rows": info["rows"] if info else None,
         "message": melding,
+    }
+    samlet = "ok" if all(r["status"] == "ok" for r in roller.values()) else "failed"
+
+    data["last_run"] = naa
+    data["sources"][SOURCE_ID] = {
+        "status": samlet,
+        "last_attempt": naa,
+        "last_success": naa if samlet == "ok" else forrige.get("last_success"),
+        "rows": info["rows"] if info else forrige.get("rows"),
+        # Ikke alle inngangene bærer en sjekksum. En status som mangler den,
+        # skal skrives likevel — statusfilen er det som forteller hva som gikk
+        # galt, og den må ikke selv kunne velte kjøringen.
+        "checksum": info.get("checksum") if info else forrige.get("checksum"),
+        "message": melding,
+        "roles": roller,
     }
     with open(STATUS_JSON, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
