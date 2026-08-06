@@ -30,6 +30,7 @@ from etl.schema import RAW_DIR, SOURCES_JSON, STATUS_JSON
 
 SOURCE_ID = "K2"
 SERIES_ID = "gwis_annual_burned_area"
+UKE_SERIES_ID = "gwis_weekly_burned_area"
 
 API = "https://api2.effis.emergency.copernicus.eu"
 
@@ -48,6 +49,7 @@ UKE_URL = f"{API}/statistics/v2/gwis/weekly?country={{land}}&year={{aar}}"
 LANDING_URL = "https://gwis.jrc.ec.europa.eu/apps/gwis.statistics/estimates"
 
 RAW_JSON = RAW_DIR / "k2_gwis_estimates.json"
+RAW_UKE_JSON = RAW_DIR / "k2_gwis_weekly.json"
 
 # GWIS koder enkelte entiteter med egne X-koder. Her oversettes de til
 # entity-kodene i data/geo/land_no.json.
@@ -68,6 +70,22 @@ IKKE_ENTITETER = {
 # Sonelista inneholder både verdensdeler og en verdenskode. Verdenskoden er
 # ikke et land og har ingen landliste å slå opp.
 SONETYPER_MED_LAND = frozenset({"continent", "macregion", "region"})
+
+# GWIS' verdensdeler, oversatt til regionkodene i data/geo/land_no.json (§ 6).
+# Ukesserien publiseres på verdensdel og verden, ikke per land: landene ville
+# gitt 180 000 rader uten at noen figur viser dem, og S3 spør om når på året
+# det brenner hvor — ikke om det enkelte landet.
+#
+# Sonekoden hos GWIS er nøkkelen, vår regionkode er verdien. En sone vi ikke
+# kjenner igjen, stopper kjøringen framfor å forsvinne stille.
+GWIS_SONE_MAP = {
+    "AFRICA": "AFR",
+    "ASIA": "ASI",
+    "EUROPE": "EUR",
+    "NORTH_AMERICA": "NAC",
+    "SOUTH_AMERICA": "SAM",
+    "OCEANIA": "OCE",
+}
 
 BRUKERAGENT = "skogbranner-etl/1.0 (+https://github.com/sheffielddivided/skogbranner)"
 
@@ -194,6 +212,46 @@ def hent():
     return rader, info
 
 
+def sonder_uker(land="NOR", aar=None):
+    """Skriver ut hva ukesendepunktet faktisk svarer med.
+
+    Formatet er ikke dokumentert noe sted, og verten er ikke nåbar fra en
+    utviklingssesjon. Uten denne måtte parseren skrives på gjetning. Kjøres i
+    Actions, se .github/workflows/etl.yml.
+
+    Sonderingen henter tre ting: sonelista med koder og typer, ukesserien for
+    ett land, og den samme adressen med en sonekode i stedet for et land — det
+    siste avgjør om verdensdelene kan hentes ferdig aggregert fra kilden, eller
+    om de må summeres av landene.
+    """
+    aar = aar or date.today().year - 1
+
+    soner = _hent_liste(SONE_URL)
+    print(f"soner: {len(soner)}")
+    for sone in soner:
+        print(f"  {sone.get('code')!r} type={sone.get('type')!r} navn={sone.get('name')!r}")
+
+    for nokkel, adresse in (
+        (f"land {land}", UKE_URL.format(land=land, aar=aar)),
+        ("sone AFRICA", UKE_URL.format(land="AFRICA", aar=aar)),
+    ):
+        print(f"\n--- {nokkel}: {adresse}")
+        try:
+            svar = _hent_json(adresse)
+        except Exception as e:  # noqa: BLE001 — sonderingen skal vise alt
+            print(f"  feilet: {type(e).__name__}: {e}")
+            continue
+        print(f"  type: {type(svar).__name__}")
+        if isinstance(svar, list):
+            print(f"  lengde: {len(svar)}")
+            for rad in svar[:3]:
+                print(f"  rad: {json.dumps(rad, ensure_ascii=False)}")
+        else:
+            print(f"  innhold: {json.dumps(svar, ensure_ascii=False)[:600]}")
+
+    return None
+
+
 def skriv_metadata(info):
     """Registrerer kilden i data/_sources.json.
 
@@ -257,7 +315,15 @@ def skriv_status(status, melding, info=None):
         f.write("\n")
 
 
-def main():
+def main(argv=None):
+    import sys
+
+    if (argv or sys.argv[1:])[:1] == ["--uke-prove"]:
+        return sonder_uker()
+    return _main_aar()
+
+
+def _main_aar():
     rader, info = hent()
     print(
         f"K2: {info['rows']} årsrader for {info['countries']} land, "
