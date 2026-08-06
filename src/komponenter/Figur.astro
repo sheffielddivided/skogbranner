@@ -7,6 +7,10 @@
  * fotnotetekstene fra data/_footnotes.json — ingen av delene skrives for hånd
  * i en side.
  *
+ * En figur kan vise flere kilder. Da får hver kilde sin egen linje, med den
+ * dekningsperioden akkurat den serien har i denne figuren, og med siteringen
+ * kilden krever (§ 5).
+ *
  * Rekkefølgen i DOM er figur før forklarende tekst (P2). Teksten som hører
  * til seksjonen legges etter komponenten, ikke inni den.
  */
@@ -32,8 +36,11 @@ interface Props {
   /** Eget oppsett for smal skjerm, ikke den samme figuren skalert ned (§ 9). */
   svgMobil: string;
   grafBeskrivelse: string;
-  kildeId: string;
-  dekning: { fra: number; til: number };
+  kildeIder: string[];
+  /** Dekningsperioden hver kilde har i denne figuren (P5). */
+  dekningPerKilde: Record<string, { fra: number; til: number }>;
+  /** Filnavnet på figurens egen CSV, skrevet av byggesteget (P5). */
+  csvFil: string;
   fotnoter: string[];
   tabell: Tabell;
   tegnforklaring?: Tegnforklaring[];
@@ -45,46 +52,56 @@ const {
   svg,
   svgMobil,
   grafBeskrivelse,
-  kildeId,
-  dekning,
+  kildeIder,
+  dekningPerKilde,
+  csvFil,
   fotnoter,
   tabell,
   tegnforklaring = [],
 } = Astro.props;
 
-const k = kilde(kildeId);
-
-// Lenken skal peke til den CSV-filen figuren faktisk bruker, ikke til mappen
-// og ikke til en lignende fil (P5).
-const csvNavn = k.processed_files.find((f) => f.endsWith(".csv"));
-if (!csvNavn) {
-  throw new Error(
-    `Kilden ${kildeId} har ingen CSV-fil i processed_files. Kildelinjen kan ikke bygges.`,
-  );
-}
 const base = import.meta.env.BASE_URL;
-const csvUrl = `${base}data/${csvNavn}`;
 
-// Feilet siste henting, beholdt pipelinen forrige datasett. Da skal leseren se
-// en diskré merknad om at akkurat denne serien ikke er oppdatert siden dato X
-// (§ 4). Går alt bra, står det ingenting.
-const status = kildestatus(kildeId);
-const ikkeOppdatert =
-  status && status.status !== "ok" && status.last_success
-    ? dato(status.last_success)
-    : null;
+// Lenken skal peke til den CSV-filen figuren faktisk bruker — figurens egen,
+// med nøyaktig de radene den tegner, ikke den kanoniske filen som også bærer
+// andre serier (P5).
+const csvUrl = `${base}data/figur/${csvFil}`;
+
+const kildene = kildeIder.map((kildeId) => {
+  const k = kilde(kildeId);
+  const dekning = dekningPerKilde[kildeId];
+  if (!dekning) {
+    throw new Error(
+      `Kilden ${kildeId} mangler dekningsperiode i figuren ${id}. Kildelinjen kan ikke bygges (P5).`,
+    );
+  }
+
+  // Feilet siste henting, beholdt pipelinen forrige datasett. Da skal leseren
+  // se en diskré merknad om at akkurat denne serien ikke er oppdatert siden
+  // dato X (§ 4). Går alt bra, står det ingenting.
+  const status = kildestatus(kildeId);
+  const ikkeOppdatert =
+    status && status.status !== "ok" && status.last_success
+      ? dato(status.last_success)
+      : null;
+
+  return { kildeId, k, dekning, ikkeOppdatert };
+});
 ---
 
 <div class="figur" id={id}>
   <h3 class="figur-tittel">{tittel}</h3>
 
   {
-    ikkeOppdatert && (
-      <p class="merknad-ikke-oppdatert">
-        Denne serien er ikke oppdatert siden {ikkeOppdatert}. Siste henting fra
-        kilden gikk ikke gjennom, og figuren viser forrige datasett.
-      </p>
-    )
+    kildene
+      .filter((rad) => rad.ikkeOppdatert)
+      .map((rad) => (
+        <p class="merknad-ikke-oppdatert">
+          {rad.k.name} er ikke oppdatert siden {rad.ikkeOppdatert}. Siste
+          henting fra kilden gikk ikke gjennom, og figuren viser forrige
+          datasett.
+        </p>
+      ))
   }
 
   <figure class="figur-graf">
@@ -105,22 +122,33 @@ const ikkeOppdatert =
     )
   }
 
+  {
+    kildene.map((rad) => (
+      <p class="kildelinje">
+        <span class="kildelinje-merke">Kilde</span>
+        <a href={rad.k.url} rel="noreferrer">{rad.k.name}</a>.
+        Dekning i denne figuren: {rad.dekning.fra}–{rad.dekning.til}.
+        Data hentet {dato(rad.k.downloaded_at)}.
+        Lisens: <a href={rad.k.license_url} rel="noreferrer">{rad.k.license}</a>.
+      </p>
+    ))
+  }
+
   <p class="kildelinje">
-    <span class="kildelinje-merke">Kilde</span>
-    <a href={k.url} rel="noreferrer">{k.name}</a>.
-    Dekning i denne figuren: {dekning.fra}–{dekning.til}.
-    Data hentet {dato(k.downloaded_at)}.
-    <a href={csvUrl} download>Last ned tallene som CSV ({csvNavn})</a>.
-    Lisens: <a href={k.license_url} rel="noreferrer">{k.license}</a>.
+    <span class="kildelinje-merke">Tallene</span>
+    <a href={csvUrl} download>Last ned figurens tall som CSV ({csvFil})</a>. Filen
+    inneholder nøyaktig de radene figuren tegner.
   </p>
 
   {
-    k.attribution && (
-      <p class="kildelinje-sitering">
-        <span class="kildelinje-merke">Sitering</span>
-        <cite>{k.attribution}</cite>
-      </p>
-    )
+    kildene
+      .filter((rad) => rad.k.attribution)
+      .map((rad) => (
+        <p class="kildelinje-sitering">
+          <span class="kildelinje-merke">Sitering</span>
+          <cite>{rad.k.attribution}</cite>
+        </p>
+      ))
   }
 
   {
