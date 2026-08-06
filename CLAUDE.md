@@ -1401,6 +1401,10 @@ sluttbrukeravtale tas ikke inn før avtalen er avklart og notert i
 - `src/figurer/overskriftstall.ts` og `globaltBrentAreal.ts` — S1s to figurer
 - `src/figurer/kartBrentAreal.ts` og `rangering.ts` — S2s to figurer
 - `src/figurer/sesongprofil.ts` og `kumulativUke.ts` — S3s to figurer
+- `src/figurer/kartEuropa.ts`, `landsammenligning.ts` og `rangeringEuropa.ts`
+  — S4s tre figurer
+- `src/komponenter/Sammenligning.astro` — figur med avkryssing av land, uten
+  skript
 - `src/komponenter/Kart.astro` — kart med bryter mellom to visninger, uten
   skript, og `Rangering.astro` — sorterbar tabell, lesbar uten skript
 - `src/pages/data/figur/[figur].csv.ts` — skriver én CSV per figur ved bygging
@@ -1408,6 +1412,9 @@ sluttbrukeravtale tas ikke inn før avtalen er avklart og notert i
 - `data/geo/land_area_km2.json` — landarealer fra K6, nevner i andelsindikatoren
 - `data/geo/verden.json` — forenklet kartgeometri, 237 entiteter, bygget av
   `etl/geo.py` i Actions
+- `data/geo/europa.json` — samme kilde og samme kartenheter, men finere
+  forenkling og bare entitetene EFFIS fører. Europa-kartet i S4 dekker et
+  mindre område på samme flate, så én piksel er færre grader
 - `data/processed/` — bearbeidede serier som JSON og CSV. Hvilken fil hver
   serie havner i, står i `PROCESSED_FILE` i `etl/schema.py` (§ 4)
 - `data/processed/burned_area_firecci_lt11.*` — K8, 1982–2018 uten 1994,
@@ -1461,9 +1468,9 @@ Nivåforskjellen vises som tre verdier for samme år, ikke som årsgjennomsnitt.
 Et gjennomsnitt er ikke en tillatt avledning (§ 7), og et felles år er
 dessuten en sammenligning leseren kan etterprøve i figuren selv.
 
-**Ikke implementert:** S4–S6 har overskrift og en merknad om at de ikke er
-laget, så K3, K4, K5 og K7 ligger i datasettet uten at noen seksjon viser dem
-ennå. Det samme gjelder `fire_count`.
+**Ikke implementert:** S5 og S6 har overskrift og en merknad om at de ikke er
+laget, så K5 og K7 ligger i datasettet uten at noen seksjon viser dem ennå.
+Det samme gjelder `fire_count`.
 
 **Avledningene er i bruk i S1, S2 og S3.** Hvert tall i teksten er fylt fra
 `insights.json`, og setningen bærer id-en i `data-derivation` (P3). Finnes
@@ -1517,5 +1524,38 @@ radene før statusen skrives, og K2s status føres per rolle — en feilet
 ukeshenting skal ikke kunne se ut som suksess fordi kryssjekken gikk bra
 etterpå.
 
-**Neste steg:** S4 — Europa, med K3 og K4. Brannstørrelsesfordelingen krever
-polygonene fra Burnt Areas-databasen, som ikke er hentet.
+**S4 er ferdig, med ett unntak.** Kartet tegner EFFIS-området på den finere
+geometrien, med samme bryter som S2. Utsnittet er fast og ikke tilpasset
+dataene, slik at to årganger kan sammenlignes. De seks oversjøiske områdene
+kilden fører — Réunion, Mayotte, Guadeloupe, Martinique, Saint-Martin og
+Guyana — ligger utenfor utsnittet og sies i klartekst under kartet. Settet
+regnes av geometrien ved kjøring.
+
+Sammenligningsfiguren tegner begge EFFIS-seriene, aldri skjøtt sammen: K4
+heltrukket, K3 stiplet. Alle landene ligger blekt i bakgrunnen, og de leseren
+krysser av for, får farge og navn. Avkryssingen er avkryssingsbokser og CSS.
+Grensen på fem land håndheves bare hvis skript kjører — uten skript kan
+leseren krysse av flere, og figuren blir travel, ikke feil.
+
+De fem som er krysset av på forhånd, er de med størst brent areal i siste
+fullstendige år. Det er en sortering for å velge en startvisning, ikke en
+avledning: § 7 rangerer år innenfor én entitet, ikke land mot hverandre, og
+teksten sier at utvalget er maskinelt.
+
+Tabellen er den sorterbare fra S2, uten kolonnen for andel av verdens brente
+areal. K4 dekker et område, ikke kloden, og en andel av en sum som ikke
+finnes, er et tall uten nevner.
+
+**Åpent punkt: brannstørrelsesfordelingen.** § 8 fører den under S4, og den er
+ikke laget. K4 gir landtotaler, og en fordeling krever areal per brann.
+
+To sonderinger fra Actions har lett etter de tallene — `sonder_branner()` i
+`etl/sources/k4_effis.py`. Karttjenestens WFS svarte 502 på lagnavnene vi
+prøvde, og tre adresser i statistikk-API-et svarte 404. Vi vet altså ikke hvor
+tallene ligger, bare hvor de ikke ligger.
+
+Fordelingen skal **ikke** tilnærmes fra landtotaler. Andelen fra de største
+brannene kan ikke regnes av en sum; et anslag ville vært et tall siden ikke
+har målt, og det er nettopp det P3 forbyr.
+
+**Neste steg:** S5 — den lange linjen, med seriene hver for seg.
