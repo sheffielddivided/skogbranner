@@ -82,8 +82,19 @@ jobs:
         with:
           node-version: "22"
 
-      # Node kjører TypeScript direkte, så testene trenger ingen avhengigheter.
+      - name: Avhengigheter
+        run: npm ci
+
       # Se src/lib/visning.test.ts, som feiler hvis avgrensningen av
       # kompositten gjøres symmetrisk (CLAUDE.md § 9).
       - name: Kjør testene
         run: npm test
+
+      # astro check typesjekker også .astro-filene, som tsc alene ikke ser.
+      - name: Typesjekk
+        run: npm run check
+
+      # Bygget er kontrollen på at figurene faktisk kan tegnes: en avledning
+      # som mangler, stopper her framfor å gi en side med et hull i (P3).
+      - name: Bygg siden
+        run: npm run build
