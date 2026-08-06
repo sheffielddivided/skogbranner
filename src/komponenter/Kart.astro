@@ -1,0 +1,188 @@
+---
+/**
+ * Verdenskart med bryter mellom to visninger (CLAUDE.md § 8, S2).
+ *
+ * Begge kartene tegnes ved bygging. Bryteren er radioknapper og CSS — ingen
+ * skript, og figuren virker med JavaScript slått av (§ 9). Uten støtte for
+ * :has() i nettleseren vises begge kartene under hverandre, som er en
+ * degradering leseren kan lese seg til av merkelappene.
+ *
+ * Kildelinje, fotnoter og tabell følger samme krav som enhver annen figur
+ * (P5, P6), og lenken går til figurens egen CSV.
+ */
+import { kilde, fotnotetekst } from "../lib/data";
+import { dato } from "../lib/format";
+
+interface Visning {
+  nokkel: string;
+  merkelapp: string;
+  svg: string;
+  svgMobil: string;
+  grafBeskrivelse: string;
+}
+
+interface Tabell {
+  beskrivelse: string;
+  kolonner: string[];
+  rader: (string | number)[][];
+}
+
+interface Props {
+  id: string;
+  tittel: string;
+  visninger: Visning[];
+  kildeIder: string[];
+  dekningPerKilde: Record<string, { fra: number; til: number }>;
+  csvFil: string;
+  fotnoter: string[];
+  tabell: Tabell;
+  /** Entiteter med tall, men uten flate på kartet. Sies i klartekst under. */
+  utenGeometri: string[];
+}
+
+const {
+  id,
+  tittel,
+  visninger,
+  kildeIder,
+  dekningPerKilde,
+  csvFil,
+  fotnoter,
+  tabell,
+  utenGeometri,
+} = Astro.props;
+
+const base = import.meta.env.BASE_URL;
+const csvUrl = `${base}data/figur/${csvFil}`;
+
+const kildene = kildeIder.map((kildeId) => {
+  const d = dekningPerKilde[kildeId]!;
+  return {
+    k: kilde(kildeId),
+    dekning: d.fra === d.til ? String(d.fra) : `${d.fra}–${d.til}`,
+  };
+});
+---
+
+<div class="figur kart" id={id}>
+  <h3 class="figur-tittel">{tittel}</h3>
+
+  <fieldset class="kart-bryter">
+    <legend>Hva fargen viser</legend>
+    {
+      visninger.map((v, i) => (
+        <>
+          <input
+            class="kart-valg"
+            type="radio"
+            name={`${id}-visning`}
+            id={`${id}-${v.nokkel}`}
+            value={v.nokkel}
+            checked={i === 0}
+          />
+          <label for={`${id}-${v.nokkel}`}>{v.merkelapp}</label>
+        </>
+      ))
+    }
+  </fieldset>
+
+  {
+    visninger.map((v) => (
+      <figure class="figur-graf kart-visning" data-visning={v.nokkel}>
+        <div class="graf graf--bred" role="img" aria-label={v.grafBeskrivelse} set:html={v.svg} />
+        <div class="graf graf--smal" role="img" aria-label={v.grafBeskrivelse} set:html={v.svgMobil} />
+      </figure>
+    ))
+  }
+
+  <ul class="tegnforklaring">
+    <li>
+      <span class="tegnforklaring-merke tegnforklaring-merke--ingen-data" aria-hidden="true" />
+      Ingen data: kilden fører ikke landet dette året. Det er ikke det samme som
+      at ingenting brant.
+    </li>
+  </ul>
+
+  {
+    utenGeometri.length > 0 && (
+      <p class="kart-merknad">
+        Disse har tall i tabellen, men er for små til å tegnes i
+        verdensmålestokk og har derfor ingen flate på kartet:{" "}
+        {utenGeometri.join(", ")}.
+      </p>
+    )
+  }
+
+  {
+    kildene.map((rad) => (
+      <p class="kildelinje">
+        <span class="kildelinje-merke">Kilde</span>
+        <a href={rad.k.url} rel="noreferrer">{rad.k.name}</a>.
+        Dekning i denne figuren: {rad.dekning}.
+        Data hentet {dato(rad.k.downloaded_at)}.
+        Lisens: <a href={rad.k.license_url} rel="noreferrer">{rad.k.license}</a>.
+      </p>
+    ))
+  }
+
+  <p class="kildelinje">
+    <span class="kildelinje-merke">Kartgrunnlag</span>
+    Natural Earth, kartenhetene i admin-0. Public domain. Geometrien ligger i
+    repoet og hentes ikke fra en flistjeneste.
+  </p>
+
+  <p class="kildelinje">
+    <span class="kildelinje-merke">Tallene</span>
+    <a href={csvUrl} download>Last ned figurens tall som CSV ({csvFil})</a>. Filen
+    inneholder nøyaktig de radene kartet er tegnet med, i begge visninger.
+  </p>
+
+  {
+    kildene
+      .filter((rad) => rad.k.attribution)
+      .map((rad) => (
+        <p class="kildelinje-sitering">
+          <span class="kildelinje-merke">Sitering</span>
+          <cite>{rad.k.attribution}</cite>
+        </p>
+      ))
+  }
+
+  {
+    fotnoter.length > 0 && (
+      <div class="fotnoter">
+        <h4 class="fotnoter-tittel" id={`${id}-fotnoter`}>
+          Forbehold for denne figuren
+        </h4>
+        <ol aria-labelledby={`${id}-fotnoter`}>
+          {fotnoter.map((kode) => (
+            <li id={`${id}-${kode}`}>{fotnotetekst(kode)}</li>
+          ))}
+        </ol>
+      </div>
+    )
+  }
+
+  <details class="tabell">
+    <summary>Vis tallene som tabell</summary>
+    <div class="tabell-ramme">
+      <table>
+        <caption>{tabell.beskrivelse}</caption>
+        <thead>
+          <tr>{tabell.kolonner.map((k) => <th scope="col">{k}</th>)}</tr>
+        </thead>
+        <tbody>
+          {
+            tabell.rader.map((rad) => (
+              <tr>
+                {rad.map((celle, i) =>
+                  i === 0 ? <th scope="row">{celle}</th> : <td>{celle}</td>,
+                )}
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </details>
+</div>

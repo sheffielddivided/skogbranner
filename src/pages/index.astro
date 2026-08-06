@@ -16,12 +16,29 @@ import Side from "../layouts/Side.astro";
 import Figur from "../komponenter/Figur.astro";
 import Overskriftstall from "../komponenter/Overskriftstall.astro";
 import { seksjoner } from "../lib/seksjoner";
-import { overskriftstall, globaltBrentAreal } from "../figurer";
+import Kart from "../komponenter/Kart.astro";
+import Rangering from "../komponenter/Rangering.astro";
+import {
+  overskriftstall,
+  globaltBrentAreal,
+  kartBrentAreal,
+  rangering,
+} from "../figurer";
 import { avledning, avledetTall } from "../lib/data";
-import { tall, pverdi } from "../lib/format";
+import { tall, pverdi, desimaltall } from "../lib/format";
 
 const figur1 = overskriftstall();
 const figur2 = globaltBrentAreal();
+const figur3 = kartBrentAreal();
+const figur4 = rangering();
+
+// Konsentrasjonen navngir de største landene. Det er en tillatt avledning
+// (§ 7); en rangering av land mot hverandre er det ikke, og teksten sier
+// derfor ingenting om hvem som ligger øverst i andelsvisningen.
+const konsentrasjon = figur4.konsentrasjon;
+const storste = (konsentrasjon.entities as { entity_name: string }[])
+  .slice(0, 3)
+  .map((e) => e.entity_name);
 
 // Nivåforskjellen vises i det siste året alle tre seriene dekker, ikke som et
 // gjennomsnitt. Et årsgjennomsnitt er ikke en tillatt avledning (§ 7), og et
@@ -47,7 +64,7 @@ const aarFoer =
 const aarEtter =
   (dekningK9.last_year as number) - (dekningK8.last_year as number);
 
-const [s1, ...resten] = seksjoner;
+const [s1, s2, ...resten] = seksjoner;
 ---
 
 <Side
@@ -187,6 +204,99 @@ const [s1, ...resten] = seksjoner;
       <p>
         Det siste året i figuren er ikke omme. Det er tegnet med åpent merke og
         stiplet strek, og viser bare det som er registrert så langt.
+      </p>
+    </div>
+  </section>
+
+  <section class="seksjon" id={s2!.id} aria-labelledby={`${s2!.id}-tittel`}>
+    <h2 id={`${s2!.id}-tittel`}>
+      <span class="seksjon-kode">{s2!.kode}</span>
+      {s2!.tittel}
+    </h2>
+
+    <Kart {...figur3} />
+
+    <Rangering {...figur4} />
+
+    <div class="seksjon-tekst">
+      <h3>Hva kartet viser</h3>
+      <p>
+        Kartet viser hvor mye som brant i hvert land i {figur3.aar}, det siste
+        hele året i serien. Fargen står for verdien i den visningen bryteren
+        står på — jo sterkere farge, jo høyere verdi.
+      </p>
+      <p>
+        Land uten data er tegnet uten farge og står som «ingen data» i
+        tabellen. Det er ikke det samme som at ingenting brant: kilden fører
+        ikke alle land hvert år, og et land uten rad er et land vi ikke har et
+        tall for.
+      </p>
+      <p>
+        Noen land står med null. Den nullen betyr at satellittene ikke har
+        påvist brent areal, og kilden skiller ikke mellom «ingenting brant»,
+        «brannene var for små til å bli sett» og «området ble ikke observert».
+        Forbeholdet står nummerert under figuren.
+      </p>
+
+      <h3>To måter å måle på</h3>
+      <p>Bryteren over kartet velger hva fargen står for.</p>
+      <p>
+        <strong>Brent areal i kvadratkilometer</strong> viser hvor store
+        områder som brant. Store land kommer høyt opp fordi de er store — et
+        land med mye areal har mer som kan brenne.
+      </p>
+      <p>
+        <strong>Andel av landarealet</strong> deler det brente arealet på
+        landets samlede landareal. Da blir små og store land sammenlignbare, og
+        tallet svarer på hvor stor del av landet som brant, ikke hvor mange
+        kvadratkilometer det ble.
+      </p>
+      <p>
+        De to svarer på hvert sitt spørsmål, og rekkefølgen mellom landene er
+        ikke den samme i de to visningene. Ingen av dem er den riktige; det
+        avhenger av hva du vil vite.
+      </p>
+      <p>
+        Nevneren i andelen er landarealet regnet fra det samme kartgrunnlaget
+        kartet er tegnet med, slik at flaten du ser og tallet du leser hører
+        sammen.
+      </p>
+
+      <h3>Hvor mye som ligger hos de største</h3>
+      <p data-derivation={`concentration.owid_annual_area_burnt.${figur4.aar}`}>
+        De {konsentrasjon.top_n} landene med størst brent areal i {figur4.aar}
+        {" "}stod for {desimaltall(konsentrasjon.share_pct as number)} prosent av
+        verdens totale brente areal. De tre største var {storste[0]}, {storste[1]}
+        {" "}og {storste[2]}.
+      </p>
+      <p>
+        Tallet beskriver fordelingen mellom land. Hvorfor arealet ligger der det
+        ligger, sier siden ingenting om.
+      </p>
+
+      <h3>Hva kartet ikke viser</h3>
+      <p data-derivation="trend.owid_annual_area_burnt.WLD">
+        Kartet viser ingen trend. En trend for verden eller en verdensdel
+        krever en lengre serie enn denne kilden har: serien dekker {
+          trendK1.n_years
+        } hele år, og grensen for et aggregat er {trendK1.min_years}.
+        Kontinenter og regioner kan derfor vises som verdier for ett år, men
+        ikke som en retning over tid.
+      </p>
+      <p>
+        Kartet viser heller ikke hvor i landet det brant. Tallet er en sum for
+        hele landet, og et land kan ha alt sitt brente areal i ett hjørne.
+      </p>
+
+      <h3>Tabellen</h3>
+      <p>
+        Tabellen viser hvert land med brent areal i kvadratkilometer, andel av
+        landarealet og andel av verdens brente areal. Uten sortering står
+        landene etter brent areal, med det største først.
+      </p>
+      <p>
+        Land uten data står med «ingen data» og havner sist uansett hvilken vei
+        du sorterer. En måling som mangler, er ikke en lav verdi.
       </p>
     </div>
   </section>

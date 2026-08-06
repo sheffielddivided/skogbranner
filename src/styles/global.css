@@ -30,6 +30,17 @@
      serie har også sin egen punktform, og den foreløpige er tegnet svakere. */
   --farge-serie-b: #1d4ed8;
   --farge-serie-c: #6d28d9;
+
+  /* Kartets fargetrapp. Én farge som blir mørkere, slik at rekkefølgen kan
+     leses ved fargeblindhet — fargen bærer aldri informasjon alene, og
+     tallene står i tabellen (§ 9). */
+  --farge-kart-1: #fee8d6;
+  --farge-kart-2: #fdcfa4;
+  --farge-kart-3: #f9a668;
+  --farge-kart-4: #ea7a35;
+  --farge-kart-5: #c65014;
+  --farge-kart-6: #7c2d12;
+  --farge-ingen-data: #d6d3d1;
   --farge-akse: #57534e;
   --farge-merknad: #7c2d12;
   --farge-merknad-flate: #fff7ed;
@@ -52,6 +63,14 @@
     --farge-serie-svak: #451a03;
     --farge-serie-b: #60a5fa;
     --farge-serie-c: #c4b5fd;
+
+    --farge-kart-1: #422006;
+    --farge-kart-2: #713f12;
+    --farge-kart-3: #a16207;
+    --farge-kart-4: #d97706;
+    --farge-kart-5: #f59e0b;
+    --farge-kart-6: #fcd34d;
+    --farge-ingen-data: #57534e;
     --farge-akse: #a8a29e;
     --farge-merknad: #fdba74;
     --farge-merknad-flate: #292524;
@@ -579,4 +598,108 @@ a:visited {
 
 .attribusjon-sitering cite {
   font-style: normal;
+}
+
+/* --- Kart (S2) --- */
+
+.kart-bryter {
+  margin: 0 0 1rem;
+  padding: 0;
+  border: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.kart-bryter legend {
+  padding: 0;
+  font-size: 0.875rem;
+  color: var(--farge-tekst-svak);
+}
+
+.kart-valg {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+.kart-bryter label {
+  display: inline-block;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid var(--farge-kant);
+  border-radius: 999px;
+  font-size: 0.9375rem;
+  cursor: pointer;
+}
+
+.kart-valg:checked + label {
+  background: var(--farge-tekst);
+  border-color: var(--farge-tekst);
+  color: var(--farge-bakgrunn);
+}
+
+/* Tastaturfokus skal være synlig også når selve knappen er skjult (§ 9). */
+.kart-valg:focus-visible + label {
+  outline: 2px solid var(--farge-lenke);
+  outline-offset: 2px;
+}
+
+/* Uten :has() vises begge kartene under hverandre. Merkelappene sier hvilket
+   som er hvilket, så figuren er fortsatt lesbar. */
+.kart:has(.kart-valg[value="km2"]:checked) .kart-visning[data-visning="andel"],
+.kart:has(.kart-valg[value="andel"]:checked) .kart-visning[data-visning="km2"] {
+  display: none;
+}
+
+.kart-merknad {
+  margin: 0.75rem 0 0;
+  font-size: 0.875rem;
+  color: var(--farge-tekst-svak);
+}
+
+.tegnforklaring-merke--ingen-data {
+  background: var(--farge-ingen-data);
+  border: 1px solid var(--farge-kant);
+}
+
+/* --- Rangeringstabell (S2) --- */
+
+.rangering-tabell {
+  width: 100%;
+}
+
+.rangering .tabell-ramme {
+  max-height: 32rem;
+  overflow: auto;
+}
+
+.rangering-tabell thead th {
+  position: sticky;
+  top: 0;
+  background: var(--farge-flate);
+  z-index: 1;
+}
+
+.sorteringsknapp {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  text-align: inherit;
+  text-decoration: underline dotted;
+  text-underline-offset: 0.25em;
+}
+
+.rangering-tabell th[aria-sort]::after {
+  content: " ▾";
+  font-size: 0.75em;
+}
+
+.rangering-tabell th[aria-sort="ascending"]::after {
+  content: " ▴";
 }

@@ -1351,9 +1351,14 @@ sluttbrukeravtale tas ikke inn før avtalen er avklart og notert i
   `visning.test.ts`. Kjøres med `npm test`
 - `src/lib/csv.ts` — figurens egen CSV, med test i `csv.test.ts`
 - `src/figurer/overskriftstall.ts` og `globaltBrentAreal.ts` — S1s to figurer
+- `src/figurer/kartBrentAreal.ts` og `rangering.ts` — S2s to figurer
+- `src/komponenter/Kart.astro` — kart med bryter mellom to visninger, uten
+  skript, og `Rangering.astro` — sorterbar tabell, lesbar uten skript
 - `src/pages/data/figur/[figur].csv.ts` — skriver én CSV per figur ved bygging
 - `data/geo/land_no.json` — 260 entiteter, generert fra SSB
 - `data/geo/land_area_km2.json` — landarealer fra K6, nevner i andelsindikatoren
+- `data/geo/verden.json` — forenklet kartgeometri, 237 entiteter, bygget av
+  `etl/geo.py` i Actions
 - `data/processed/` — bearbeidede serier som JSON og CSV. Hvilken fil hver
   serie havner i, står i `PROCESSED_FILE` i `etl/schema.py` (§ 4)
 - `data/processed/burned_area_firecci_lt11.*` — K8, 1982–2018 uten 1994,
@@ -1418,14 +1423,30 @@ ikke avledningen en setning trenger, stopper bygget — `avledning()` i
 K4 dekker foreløpig bare brent areal. Brannstørrelsesfordelingen S4 skal vise,
 krever polygonene fra Burnt Areas-databasen, som ikke er hentet.
 
-**Kartgeometrien er skrevet, men ikke kjørt.** `etl/geo.py` bygger den
-forenklede geometrien fra det samme kartenhetslaget som landarealene og
-rutenettfordelingen bruker, og `.github/workflows/geo.yml` kjører den. Den må
-kjøres i Actions: K6 er en shapefil på fem megabyte, og T4 gjelder.
+**Kartgeometrien er bygget.** `etl/geo.py` forenkler kartenhetslaget fra K6 med
+Douglas–Peucker og skriver `data/geo/verden.json`. Jobben kjøres av
+`.github/workflows/geo.yml` og må kjøres i Actions: K6 er en shapefil på fem
+megabyte, og T4 gjelder. Geometrien bygges bare på nytt når Natural Earth gir
+ut en ny versjon, eller når tersklene i `schema.py` endres.
 
-Før `data/geo/verden.json` finnes, kan ikke S2 tegne kartet. Rekkefølgen er:
-kjør workflowen, slå sammen geometrien, bygg seksjonen.
+**24 entiteter i `land_no.json` har ingen flate.** Ni av dem er aggregater —
+verden og regionene — som K6 ikke leverer geometri for. De femten øvrige er så
+små at de forsvinner i forenklingen: Monaco er 2 km², og ingen verdensmålestokk
+viser det. De har fortsatt tall i tabellen, og kartfiguren sier i klartekst
+hvilke det gjelder. Settet beregnes ved kjøring og står i `summary` i
+`verden.json`.
 
-**Neste steg:** S2 — kart og rangering av land. Avledningene finnes
-(`rank.*`, `share.*`, `concentration.*`), men kartgeometrien er ikke laget,
-se over.
+**S2 er ferdig.** Kartet har to visninger — brent areal i km² og andel av
+landarealet — og bryteren mellom dem er radioknapper og CSS, uten skript.
+Rangeringstabellen er ferdig sortert i HTML og fullt lesbar uten JavaScript;
+sorteringsknappene legges bare til hvis skript kjører, av vårt eget skript uten
+avhengigheter (T2).
+
+Teksten i S2 sier ikke hvilket land som ligger øverst i andelsvisningen. En
+rangering av entiteter mot hverandre er ikke en tillatt avledning — § 7
+rangerer år innenfor én entitet — og konsentrasjonen, som navngir de største,
+finnes bare for summerbare enheter. Tabellen viser rekkefølgen; brødteksten
+påstår den ikke.
+
+**Neste steg:** S3 — året gjennom, med K2s ukesoppløsning. Den er hentet som
+årsserie i dag, og ukesserien må inn i pipelinen først.
