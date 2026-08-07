@@ -171,8 +171,6 @@ export function landsammenligning() {
       .map(([kode]) => kode),
   );
 
-  const harRapportert = new Set(rapportert.map((p) => p.entity));
-
   const observasjoner: Observasjon[] = alle.filter(
     (o) =>
       (o.series_id === MAALT_SERIE || o.series_id === RAPPORTERT_SERIE) &&
@@ -237,7 +235,6 @@ export function landsammenligning() {
       kode,
       navn: navn.get(kode) ?? kode,
       valgt: forhandsvalgt.has(kode),
-      harRapportert: harRapportert.has(kode),
     })),
     maksValgte: FORHANDSVALGTE,
     tabell: {
