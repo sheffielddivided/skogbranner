@@ -1407,6 +1407,8 @@ sluttbrukeravtale tas ikke inn før avtalen er avklart og notert i
   skript
 - `src/figurer/globaleSerier.ts`, `nasjonaleSerier.ts` og `kullindeks.ts` —
   S5s tre figurer
+- `src/komponenter/Kildeoversikt.astro` og `src/lib/katalog.ts` — S6s
+  kildeoversikt og filkatalog, begge lest av datasettet
 - `src/komponenter/Kart.astro` — kart med bryter mellom to visninger, uten
   skript, og `Rangering.astro` — sorterbar tabell, lesbar uten skript
 - `src/pages/data/figur/[figur].csv.ts` — skriver én CSV per figur ved bygging
@@ -1470,8 +1472,9 @@ Nivåforskjellen vises som tre verdier for samme år, ikke som årsgjennomsnitt.
 Et gjennomsnitt er ikke en tillatt avledning (§ 7), og et felles år er
 dessuten en sammenligning leseren kan etterprøve i figuren selv.
 
-**Ikke implementert:** S6 har overskrift og en merknad om at den ikke er laget.
-`fire_count` ligger i datasettet uten at noen figur viser det ennå.
+**Ikke implementert:** `fire_count` ligger i datasettet uten at noen figur
+viser det ennå. Filen er nedlastbar fra S6, og teksten der sier hva
+indikatoren er.
 
 **Avledningene er i bruk i S1, S2 og S3.** Hvert tall i teksten er fylt fra
 `insights.json`, og setningen bærer id-en i `data-derivation` (P3). Finnes
@@ -1595,5 +1598,29 @@ Med dagens datasett trimmes ett punkt bort, og visningen stopper i 1990.
 `aarstallTekst()` skriver negative år som «6050 fvt» i aksemerker, kildelinjer
 og tabeller. Begge har test i `format.test.ts`.
 
-**Neste steg:** S6 — om dataene, med kildeoversikt, ordliste, alle fotnoter
-samlet og nedlastingslenker til de bearbeidede filene.
+**S6 er ferdig.** Kildeoversikten bygges av `data/_sources.json`, ordlisten
+forklarer de sju fagbegrepene som er innført underveis, alle fotnotene står
+samlet i tillegg til plasseringen under hver figur, og filkatalogen leser
+radtall og serier av filene selv — en fil som vokser, oppdaterer sin egen
+linje.
+
+De påkrevde siteringene gjengis ordrett under hver kilde: K7, K8, K9 og K10,
+og EFFIS' egen datalisens for K3 og K4. Kontrollert mot `_sources.json` i den
+bygde siden, ikke bare i malen.
+
+**De to åpne punktene står i seksjonen, ikke bare her.** Leseren får vite at
+brannstørrelsesfordelingen ikke er hentet og hvorfor, og at K2s hurtigbuffer
+ikke fanger opp en revisjon GWIS gjør i et gammelt år.
+
+**Ansvarsfraskrivelsen i sidefoten er vedtatt ordlyd.** Den sier at prosjektet
+er privat og ikke-kommersielt, at siden ikke garanterer at dataene er
+fullstendige eller nøyaktige, og at eneste kontaktvei er issues på GitHub.
+
+Den er en juridisk ansvarsbegrensning, ikke et metodisk forbehold. De
+metodiske står fortsatt som nummererte fotnoter under hver figur, og samlet i
+S6 — P6 forbyr å flytte dem til sidefoten.
+
+**Alle seks seksjonene er nå bygget.**
+
+**Neste steg:** ingen seksjon står igjen. Det som gjenstår er de to åpne
+punktene over, og `fire_count`, som ligger i datasettet uten en figur.

@@ -1,0 +1,93 @@
+---
+/**
+ * Kildeoversikten i S6 (CLAUDE.md § 8).
+ *
+ * Alt leses fra data/_sources.json: en ny kilde dukker opp her av seg selv, og
+ * ingenting om en kilde skrives to steder.
+ *
+ * Siteringer som må gjengis ordrett, står uendret — ikke oversatt, ikke
+ * forkortet, ikke omskrevet (§ 5). Det samme gjelder lisensteksten fra EFFIS.
+ */
+import { alleKilder } from "../lib/data";
+import { dato } from "../lib/format";
+
+const kilder = alleKilder();
+
+/** Kodeverdien oversatt til lesbar norsk tekst (§ 1). */
+const KVALITET: Record<string, string> = {
+  measured: "satellittmålt",
+  reported: "nasjonalt rapportert",
+  beta: "foreløpig, merket av produsenten",
+  reconstructed: "rekonstruert, indirekte mål",
+};
+
+const GEOGRAFI: Record<string, string> = {
+  global: "global",
+  europe: "Europa",
+  "europe-mena": "Europa, Midtøsten og Nord-Afrika",
+  usa: "USA",
+  canada: "Canada",
+};
+
+function dekning(k: { coverage_start: string; coverage_end: string }): string {
+  if (!k.coverage_start && !k.coverage_end) return "ikke en tidsserie";
+  const fra = Number(k.coverage_start);
+  const til = Number(k.coverage_end);
+  const vis = (n: number) => (n < 0 ? `${Math.abs(n)} fvt` : String(n));
+  return `${vis(fra)}–${vis(til)}`;
+}
+---
+
+<div class="kildeoversikt">
+  {
+    kilder.map((k) => (
+      <section class="kildekort" id={`kilde-${k.source_id}`}>
+        <h4>
+          <span class="kildelinje-merke">{k.source_id}</span>
+          <a href={k.url} rel="noreferrer">{k.name}</a>
+        </h4>
+
+        <dl class="kildefakta">
+          <dt>Utgiver</dt>
+          <dd>{k.publisher}</dd>
+
+          <dt>Geografi</dt>
+          <dd>{GEOGRAFI[k.geography ?? ""] ?? k.geography ?? "—"}</dd>
+
+          <dt>Dekning</dt>
+          <dd>{dekning(k)}</dd>
+
+          <dt>Kvalitet</dt>
+          <dd>{k.quality ? (KVALITET[k.quality] ?? k.quality) : "leverer ikke tallverdier"}</dd>
+
+          <dt>Lisens</dt>
+          <dd>
+            <a href={k.license_url} rel="noreferrer">{k.license}</a>
+          </dd>
+
+          <dt>Hentet</dt>
+          <dd>{dato(k.downloaded_at)}</dd>
+        </dl>
+
+        {
+          k.requires_agreement && (
+            <p class="kilde-avtale">
+              Kilden krever sluttbrukeravtale. Avtalen er akseptert.
+            </p>
+          )
+        }
+
+        {
+          k.attribution && (
+            <p class="kilde-sitering">
+              <span class="kildelinje-merke">Sitering</span>
+              <cite>{k.attribution}</cite>
+            </p>
+          )
+        }
+
+        {k.notes && <p class="kilde-merknad">{k.notes}</p>}
+      </section>
+    ))
+  }
+</div>

@@ -9,8 +9,7 @@
  * data/processed/insights.json, og setningen bærer id-en til avledningen i
  * data-derivation (P3).
  *
- * S1 til S5 har innhold. S6 står med overskrift og en merknad om at den ikke
- * er laget ennå.
+ * Alle seks seksjonene har innhold.
  */
 import Side from "../layouts/Side.astro";
 import Figur from "../komponenter/Figur.astro";
@@ -19,6 +18,7 @@ import { seksjoner } from "../lib/seksjoner";
 import Kart from "../komponenter/Kart.astro";
 import Rangering from "../komponenter/Rangering.astro";
 import Sammenligning from "../komponenter/Sammenligning.astro";
+import Kildeoversikt from "../komponenter/Kildeoversikt.astro";
 import {
   overskriftstall,
   globaltBrentAreal,
@@ -33,7 +33,13 @@ import {
   nasjonaleSerier,
   kullindeks,
 } from "../figurer";
-import { avledning, avledetTall } from "../lib/data";
+import {
+  avledning,
+  avledetTall,
+  alleKilder,
+  alleFotnoter,
+} from "../lib/data";
+import { datafiler } from "../lib/katalog";
 import { tall, pverdi, desimaltall } from "../lib/format";
 
 const figur1 = overskriftstall();
@@ -86,7 +92,16 @@ const aarFoer =
 const aarEtter =
   (dekningK9.last_year as number) - (dekningK8.last_year as number);
 
-const [s1, s2, s3, s4, s5, ...resten] = seksjoner;
+// S6 er oppslagsdelen. Alt der leses av datasettet ved bygging: kildene fra
+// _sources.json, forbeholdene fra _footnotes.json, og filene med radtallene
+// sine fra filene selv. Ingen av tallene skrives for hånd (P3).
+const kilder = alleKilder();
+const forbehold = alleFotnoter();
+const filer = datafiler();
+const REPO = "https://github.com/sheffielddivided/skogbranner";
+const base = import.meta.env.BASE_URL;
+
+const [s1, s2, s3, s4, s5, s6] = seksjoner;
 ---
 
 <Side
@@ -739,15 +754,200 @@ const [s1, s2, s3, s4, s5, ...resten] = seksjoner;
     </div>
   </section>
 
-  {
-    resten.map((s) => (
-      <section class="seksjon" id={s.id} aria-labelledby={`${s.id}-tittel`}>
-        <h2 id={`${s.id}-tittel`}>
-          <span class="seksjon-kode">{s.kode}</span>
-          {s.tittel}
-        </h2>
-        <p class="ikke-laget">Denne seksjonen er ikke laget ennå.</p>
-      </section>
-    ))
-  }
+
+  <section class="seksjon" id={s6!.id} aria-labelledby={`${s6!.id}-tittel`}>
+    <h2 id={`${s6!.id}-tittel`}>
+      <span class="seksjon-kode">{s6!.kode}</span>
+      {s6!.tittel}
+    </h2>
+
+    <div class="seksjon-tekst">
+      <p>
+        Denne seksjonen er oppslagsdelen. Her står hvor tallene kommer fra, hva
+        ordene betyr, hvilke forbehold som gjelder, og hvor du kan laste ned alt
+        sammen.
+      </p>
+
+      <h3 id="kildene">Kildene siden bruker</h3>
+      <p>
+        {kilder.length} kilder. Hver av dem har en kode som følger tallene gjennom
+        hele datasettet: står det K4 i en CSV-fil, er raden hentet herfra.
+      </p>
+      <p>
+        Kvaliteten sier hva slags måling det er, og styrer hvordan serien
+        tegnes: satellittmålt med heltrukket linje, nasjonalt rapportert med
+        stiplet, foreløpig med svakere strek, rekonstruert på egen akse.
+      </p>
+      <p>
+        Fire kilder krever at siteringen gjengis ordrett, og den står uendret
+        under kilden — ikke oversatt, ikke forkortet. K3 og K4 har en egen
+        datalisens fra EFFIS, og lenken går til lisensteksten.
+      </p>
+    </div>
+
+    <Kildeoversikt />
+
+    <div class="seksjon-tekst">
+      <h3 id="apne-punkter">To ting som ikke er som de skal</h3>
+      <p>
+        <strong>K4 dekker foreløpig bare brent areal.</strong> Brannstørrelsesfordelingen
+        som hører hjemme i Europa-seksjonen, er ikke laget. Den krever areal per
+        brann, og K4 gir landtotaler.
+      </p>
+      <p>
+        To sonderinger har lett etter tallene: EFFIS' eget API beskriver seg selv
+        med fire adresser, ingen av dem per brann, og karttjenesten der
+        polygonene ville ligget, svarer med serverfeil på alt — også på en
+        forespørsel uten parametre. Vi vet hvor tallene ikke ligger, ikke hvor de
+        ligger.
+      </p>
+      <p>
+        Fordelingen er ikke anslått fra landtotaler. Andelen fra de største
+        brannene kan ikke regnes av en sum.
+      </p>
+      <p>
+        <strong>K2 hentes med en hurtigbuffer.</strong> Ukesserien er én forespørsel
+        per land og år, og et fullstendig år hentes ikke på nytt: den publiserte
+        filen er bufferen, og en månedlig kjøring ber bare om inneværende år. Det
+        sparer kilden for tusenvis av forespørsler.
+      </p>
+      <p>
+        Prisen er at en revisjon GWIS gjør i et gammelt år, ikke fanges opp av
+        seg selv. Skal den inn, må filen slettes og serien hentes på nytt.
+      </p>
+
+      <h3 id="ordliste">Ord og begreper</h3>
+      <dl class="ordliste">
+        <dt>Brent areal</dt>
+        <dd>
+          Hvor stort område som har brent, målt i kvadratkilometer. Det sier hvor
+          mye som brant, ikke hvor mange branner det var: én stor brann og mange
+          små kan gi samme areal.
+        </dd>
+
+        <dt>Brannsesong</dt>
+        <dd>
+          Den delen av året da det brenner mest et bestemt sted. Når på året det
+          er, varierer fra verdensdel til verdensdel.
+        </dd>
+
+        <dt>Median</dt>
+        <dd>
+          Den midterste verdien når tallene sorteres etter størrelse: halvparten
+          ligger over, halvparten under. Brukes framfor gjennomsnitt fordi ett år
+          som stikker ut, ikke skal flytte hele kurven.
+        </dd>
+
+        <dt>Persentilbånd</dt>
+        <dd>
+          Et område som viser hvor de fleste årene ligger. Båndet på denne siden
+          dekker fra den 10. til den 90. persentilen: ett år av ti ligger over,
+          ett av ti under.
+        </dd>
+
+        <dt>Satellittsensor</dt>
+        <dd>
+          Måleinstrumentet om bord i satellitten, som registrerer stråling fra
+          bakken. Brannspor kjennes igjen på at overflaten endrer farge og varme.
+          Hvor liten en brann kan være før den forsvinner mellom målepunktene,
+          avhenger av sensoren.
+        </dd>
+
+        <dt>Proxy</dt>
+        <dd>
+          Et indirekte spor: noe som ikke er det vi vil måle, men som henger
+          sammen med det. Kull i innsjøsedimenter er en proxy for brann — det
+          måler ikke brent areal, men mengden kull sier noe om hvor mye som
+          brant.
+        </dd>
+
+        <dt>Z-score</dt>
+        <dd>
+          Hvor mange standardavvik en verdi ligger over eller under
+          gjennomsnittet for sin egen serie. Den har ingen enhet og kan ikke
+          sammenlignes med et areal. Verdien 0 er seriens eget gjennomsnitt, ikke
+          fravær av det som måles.
+        </dd>
+      </dl>
+
+      <h3 id="forbehold">Alle forbehold, samlet</h3>
+      <p>
+        De {forbehold.length} forbeholdene under står også nummerert under hver enkelt
+        figur de gjelder for. Her er de samlet, slik at de kan leses under ett.
+      </p>
+      <p>
+        Et forbehold sier hva målingen ikke fanger opp, eller hvor den er
+        usikker. Det sier ikke at tallet er feil.
+      </p>
+      <dl class="forbeholdsliste">
+        {
+          forbehold.map(([kode, tekst]) => (
+            <>
+              <dt id={`forbehold-${kode}`}>
+                <code>{kode}</code>
+              </dt>
+              <dd>{tekst}</dd>
+            </>
+          ))
+        }
+      </dl>
+
+      <h3 id="nedlasting">Last ned dataene</h3>
+      <p>
+        Alle bearbeidede serier ligger som CSV. Kolonnene er de samme i alle
+        filene, og de samme som i figurenes egne nedlastinger.
+      </p>
+      <p>
+        Hver figur på siden har i tillegg sin egen CSV med nøyaktig de radene
+        figuren tegner. De to svarer på hvert sitt spørsmål: figurens fil på «hva
+        står i denne figuren», filene under på «hva har dere i datasettet».
+      </p>
+      <div class="tabell-ramme">
+        <table class="filtabell">
+          <thead>
+            <tr>
+              <th scope="col">Fil</th>
+              <th scope="col">Innhold</th>
+              <th scope="col">Rader</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              filer.map((f) => (
+                <tr>
+                  <th scope="row">
+                    <a href={`${base}data/${f.navn}`} download>{f.navn}</a>
+                  </th>
+                  <td>
+                    {f.innhold}
+                    {f.merknad && <span class="filmerknad">{f.merknad}</span>}
+                  </td>
+                  <td class="filtabell-tall">{tall(f.rader)}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <h3 id="hvordan">Hvordan siden er laget</h3>
+      <p>
+        Alt er bygget på forhånd. Nettleseren gjør ingen kall til andre
+        nettsteder, og figurene tegnes ferdig når siden bygges — de virker med
+        JavaScript slått av.
+      </p>
+      <p>
+        Datasettet oppdateres av en månedlig jobb som henter kildene på nytt,
+        kontrollerer resultatet og legger endringene fram til gjennomsyn før de
+        publiseres. Feiler en kilde, beholdes forrige datasett, og siden sier at
+        akkurat den serien ikke er oppdatert.
+      </p>
+      <p>
+        <a href={REPO} rel="noreferrer">Kildekoden ligger på GitHub</a>. Alt — ETL,
+        figurer, tekst og reglene siden er bygget etter — er åpent. Finner du en
+        feil, opprett gjerne et issue der.
+      </p>
+    </div>
+  </section>
+
 </Side>

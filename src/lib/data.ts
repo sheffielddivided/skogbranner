@@ -57,6 +57,13 @@ export interface Kilde {
   downloaded_at: string;
   processed_files: string[];
   footnotes: string[];
+  /** Feltene S6 trenger i tillegg, og som ikke alle kilder har. */
+  geography?: string;
+  temporal_resolution?: string;
+  requires_agreement?: boolean;
+  agreement_accepted?: string;
+  series?: string[];
+  notes?: string;
 }
 
 /**
@@ -101,6 +108,18 @@ export const observasjoner = [
 const kilder = kilderJson.sources as unknown as Record<string, Kilde>;
 const fotnotetekster = fotnoterJson.footnotes as Record<string, string>;
 const status = statusJson.sources as unknown as Record<string, Kildestatus>;
+
+/**
+ * Alle kildene, sortert på kodens tall.
+ *
+ * S6 lister dem, og sidefoten attribuerer dem. En ny kilde i _sources.json
+ * dukker begge steder opp av seg selv — lista skrives ikke for hånd.
+ */
+export function alleKilder(): Kilde[] {
+  return Object.values(kilder).sort((a, b) =>
+    a.source_id.localeCompare(b.source_id, "nb", { numeric: true }),
+  );
+}
 
 /** Kildemetadata for en kildekode. Kaster hvis koden ikke finnes. */
 export function kilde(sourceId: string): Kilde {
