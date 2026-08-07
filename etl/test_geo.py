@@ -11,7 +11,11 @@ Kjøres fra repotoppen: ``python -m unittest etl.test_geo``
 import unittest
 
 from etl import geo
-from etl.schema import GEO_COORD_DECIMALS, GEO_MIN_RING_POINTS
+from etl.schema import (
+    GEO_COORD_DECIMALS,
+    GEO_MIN_RING_POINTS,
+    GEO_SIMPLIFY_TOLERANCE_DEG,
+)
 
 
 class Forenkling(unittest.TestCase):
@@ -58,8 +62,17 @@ class Geometri(unittest.TestCase):
             ]
         ]
 
+    def forenkle(self, geometri, toleranse=GEO_SIMPLIFY_TOLERANCE_DEG):
+        """Samme to steg som bygget: punktene avgjøres først, så settes de inn.
+
+        Punktutvalget er felles for alle ringene, fordi det er det som holder
+        delte grenser sammen. Testene går derfor samme vei som bygget.
+        """
+        behold = geo.behold_punkter([geometri], toleranse)
+        return geo.forenkle_geometri(geometri, behold)
+
     def test_polygon_beholder_formen_og_lukkes(self):
-        ut = geo.forenkle_geometri({"type": "Polygon", "coordinates": self.kvadrat(10)})
+        ut = self.forenkle({"type": "Polygon", "coordinates": self.kvadrat(10)})
         ring = ut["coordinates"][0]
         self.assertEqual(ring[0], ring[-1])
         self.assertGreaterEqual(len(ring), GEO_MIN_RING_POINTS)
@@ -67,10 +80,10 @@ class Geometri(unittest.TestCase):
     def test_en_flate_som_forsvinner_helt_tas_ut(self):
         # En ring som er mindre enn toleransen har ingen flate igjen å tegne.
         liten = {"type": "Polygon", "coordinates": self.kvadrat(0.001)}
-        self.assertIsNone(geo.forenkle_geometri(liten))
+        self.assertIsNone(self.forenkle(liten))
 
     def test_multipolygon_beholder_de_flatene_som_har_form(self):
-        ut = geo.forenkle_geometri(
+        ut = self.forenkle(
             {
                 "type": "MultiPolygon",
                 "coordinates": [self.kvadrat(10), self.kvadrat(0.001)],
@@ -79,7 +92,7 @@ class Geometri(unittest.TestCase):
         self.assertEqual(len(ut["coordinates"]), 1)
 
     def test_koordinatene_rundes(self):
-        ut = geo.forenkle_geometri(
+        ut = self.forenkle(
             {
                 "type": "Polygon",
                 "coordinates": [
@@ -98,8 +111,79 @@ class Geometri(unittest.TestCase):
 
     def test_ukjent_geometritype_avvises(self):
         with self.assertRaises(ValueError):
-            geo.forenkle_geometri({"type": "LineString", "coordinates": []})
+            geo.forenkle_geometri({"type": "LineString", "coordinates": []}, set())
 
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class DelteGrenser(unittest.TestCase):
+    """Forenklingen skal ikke rive naboland fra hverandre.
+
+    Natural Earth deler koordinater eksakt mellom naboer. Forenkles hver ring
+    for seg, kan Douglas–Peucker beholde et punkt i det ene landet og forkaste
+    det i det andre — og da får kartet en hvit stripe langs grensen.
+    """
+
+    def naboer(self):
+        """To ruter som deler en grense med en liten bulk på midten.
+
+        Bulken er akkurat stor nok til at den ene ringen kan finne den verdt å
+        beholde og den andre ikke, hvis de forenkles hver for seg.
+        """
+        grense = [[5, 0], [5, 3], [5.04, 5], [5, 7], [5, 10]]
+        vest = [[0, 0]] + grense + [[0, 10], [0, 0]]
+        # Øst leser den samme grensen andre veien, slik kartdata gjør.
+        ost = [[10, 0]] + list(reversed(grense)) + [[10, 10], [10, 0]]
+        return (
+            {"type": "Polygon", "coordinates": [vest]},
+            {"type": "Polygon", "coordinates": [ost]},
+        )
+
+    def grensepunkter(self, ring):
+        return [tuple(p) for p in ring if p[0] >= 5 - 1e-9 and p[0] <= 5.05]
+
+    def test_delt_grense_far_samme_punkter_i_begge_land(self):
+        vest, ost = self.naboer()
+        behold = geo.behold_punkter([vest, ost], 0.05)
+
+        ut_vest = geo.forenkle_geometri(vest, behold)
+        ut_ost = geo.forenkle_geometri(ost, behold)
+
+        langs_vest = set(self.grensepunkter(ut_vest["coordinates"][0]))
+        langs_ost = set(self.grensepunkter(ut_ost["coordinates"][0]))
+        self.assertEqual(
+            langs_vest,
+            langs_ost,
+            "delt grense har ulike punkter i de to landene — kartet får en "
+            "hvit stripe mellom dem",
+        )
+
+    def test_douglas_peucker_kan_avgjore_samme_punkt_ulikt(self):
+        """Kontrollen som gir testen over verdi.
+
+        Samme punkt, to omgivelser: i den ene ligger det langt fra linjen
+        mellom naboene og beholdes, i den andre nesten på den og forkastes.
+        Det er slik en delt grense river seg når hver ring forenkles for seg.
+        """
+        felles = [5, 0.06]
+        med_bulk = geo.forenkle([[0, 0], felles, [10, 0]], 0.05)
+        uten_bulk = geo.forenkle([[0, 0], felles, [10, 0.12]], 0.05)
+
+        self.assertIn(felles, med_bulk)
+        self.assertNotIn(felles, uten_bulk)
+
+    def test_utvalget_er_unionen_av_ringenes_egne(self):
+        """Et punkt én ring trenger, beholdes for alle ringene som har det."""
+        a = {"type": "Polygon", "coordinates": [[[0, 0], [5, 0.06], [10, 0], [0, 0]]]}
+        b = {
+            "type": "Polygon",
+            "coordinates": [[[0, 0], [5, 0.06], [10, 0.12], [0, 0]]],
+        }
+        alene = geo.behold_punkter([b], 0.05)
+        sammen = geo.behold_punkter([a, b], 0.05)
+
+        self.assertNotIn((5, 0.06), alene)
+        self.assertIn((5, 0.06), sammen)
+

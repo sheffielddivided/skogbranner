@@ -81,7 +81,9 @@ function tegn(
       x: "aar",
       y: "verdi",
       z: "entity",
-      stroke: "var(--farge-ingen-data)",
+      // Egen farge, ikke «ingen data»-flatens: linjene bærer mening og må
+      // klare kontrastkravet (§ 9).
+      stroke: "var(--farge-bakgrunnslinje)",
       strokeWidth: 0.75,
     }),
   ];
