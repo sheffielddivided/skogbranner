@@ -109,17 +109,42 @@ def behold_punkter(geometrier, toleranse):
     return behold
 
 
+def signert_areal(ring):
+    """Ringens signerte areal i kvadratgrader. Fortegnet er viklingsretningen."""
+    return sum(x1 * y2 - x2 * y1 for (x1, y1), (x2, y2) in zip(ring, ring[1:])) / 2
+
+
 def _ring(ring, behold):
     """Én ring med bare de punktene som skal beholdes.
 
-    En ring som faller under GEO_MIN_RING_POINTS punkter, har ingen flate igjen
-    å tegne. Da utelates den heller enn å bli en strek.
+    To ting kan gjøre at ringen ikke lenger er en flate, og begge fører til at
+    den utelates framfor å bli tegnet.
+
+    Den ene er at det er for få punkter igjen: under GEO_MIN_RING_POINTS er det
+    ingen flate å tegne, bare en strek.
+
+    Den andre er at punktene som er igjen, ligger på linje eller har byttet
+    rekkefølge, slik at ringen omslutter null areal eller vikler seg motsatt vei
+    av den den kom fra. Punkttellingen fanger ikke det — en splint på fire
+    punkter teller like høyt som en øy på fire. **Og en vrengt ring er ikke en
+    liten feil.** Tegneren avgjør innsiden av en flate på kloden av
+    viklingsretningen, så en ring som har vrengt seg, dekker hele resten av
+    kloden i stedet for seg selv, og kartet blir én farge. Det skjer med
+    grensesplinter som DMZ-stripen mellom de to koreanske statene: den
+    overlever forenklingen som en nesten rett trekant, og fortegnet er da
+    tilfeldig.
+
+    Fortegnet sammenlignes med ringen den kom fra, ikke mot en fast retning.
+    Hvilken vei en ytre ring og et hull vikler seg, er motsatt av hverandre, og
+    det er bare endringen som er feilen.
     """
     rundet = _rund(ring)
     igjen = [p for p in rundet if (p[0], p[1]) in behold]
     if igjen and igjen[0] != igjen[-1]:
         igjen.append(igjen[0])
     if len(igjen) < GEO_MIN_RING_POINTS:
+        return None
+    if signert_areal(igjen) * signert_areal(rundet) <= 0:
         return None
     return igjen
 

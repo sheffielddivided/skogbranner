@@ -26,6 +26,7 @@ from etl import validate
 from etl.schema import (
     ANOMALY_FACTOR_PCT,
     CONCENTRATION_TOP_N,
+    GEO_WORLD_JSON,
     INSIGHTS_JSON,
     LAND_AREA_JSON,
     SEASON_BAND_PCT,
@@ -584,6 +585,52 @@ def arealsammenligning(verdi, landarealer, navn):
     }
 
 
+def kartdekning(serie, aar, flater, landarealer, navn):
+    """Hvor mange av entitetene med tall som har en egen flate på kartet.
+
+    Forenklingen av kartgeometrien tar bort de minste landene: etter den har de
+    ingen flate igjen å tegne (§ 12). De har fortsatt tall i tabellen, og
+    figuren skal kunne si hvor mange det gjelder uten å ramse dem opp.
+
+    Illustrasjonen viser hvor grensen faktisk går: det minste landet som ennå
+    har en flate, mot det største som ikke har det. Grensen følger form like
+    mye som areal, så de to er ikke sortert etter hverandre — og det er nettopp
+    derfor begge oppgis.
+    """
+    med_verdi = sorted(
+        kode
+        for kode, aar_verdier in serie["entities"].items()
+        if serie["levels"][kode] == "country" and aar in aar_verdier
+    )
+    if not med_verdi:
+        return None
+
+    med = [kode for kode in med_verdi if kode in flater]
+    uten = [kode for kode in med_verdi if kode not in flater]
+
+    def ytterpunkt(koder, velg):
+        kandidater = {k: landarealer[k] for k in koder if k in landarealer}
+        if not kandidater:
+            return None
+        kode = velg(kandidater.items(), key=lambda rad: (rad[1], rad[0]))[0]
+        return {
+            "entity": kode,
+            "entity_name": navn.get(kode, kode),
+            "land_area_km2": kandidater[kode],
+        }
+
+    return {
+        "kind": "map_area_coverage",
+        "geometry": GEO_WORLD_JSON.name,
+        "period": str(aar),
+        "entities_with_value": len(med_verdi),
+        "entities_with_area": len(med),
+        "entities_without_area": len(uten),
+        "smallest_with_area": ytterpunkt(med, min),
+        "largest_without_area": ytterpunkt(uten, max),
+    }
+
+
 
 # --- Sesong (CLAUDE.md § 7) ---------------------------------------------
 #
@@ -766,6 +813,12 @@ def _landarealer():
         return json.load(f)["areas"]
 
 
+def _kartflater():
+    """Entitetene kartgeometrien har en flate for, slik den ligger nå (§ 12)."""
+    with open(GEO_WORLD_JSON, encoding="utf-8") as f:
+        return {flate["id"] for flate in json.load(f)["features"]}
+
+
 def _verdenstall(serie, aar):
     """Seriens eget verdenstall for året, der serien har en verdensrad."""
     for kode, aar_verdier in serie["entities"].items():
@@ -778,6 +831,7 @@ def avled(observasjoner):
     """Bygger alle avledningene, med id som nøkkel."""
     serier = grunnlag(observasjoner)
     landarealer = _landarealer()
+    kartflater = _kartflater()
     navn = {}
     for serie in serier.values():
         navn.update(serie["names"])
@@ -793,6 +847,7 @@ def avled(observasjoner):
         "concentration": 0,
         "coverage_overlap": 0,
         "area_comparison": 0,
+        "map_area_coverage": 0,
         "always_zero_entities": 0,
     }
 
@@ -877,6 +932,18 @@ def avled(observasjoner):
                     period=str(siste),
                 )
                 sammendrag["area_comparison"] += 1
+
+        if siste is not None:
+            d = kartdekning(serie, siste, kartflater, landarealer, navn)
+            if d:
+                avledninger[f"map_area_coverage.{serie_id}.{siste}"] = dict(
+                    d,
+                    series_id=serie_id,
+                    source_id=serie["source_id"],
+                    quality=serie["quality"],
+                    indicator=serie["indicator"],
+                )
+                sammendrag["map_area_coverage"] += 1
 
     # Ukesseriene: dekning, sesongprofil og sesongbånd (§ 7).
     for serie_id, serie in sorted(ukegrunnlag(observasjoner).items()):
