@@ -107,11 +107,9 @@ const regler = land
     </div>
   </fieldset>
 
-  <div class="figur-graf figur-graf-stor" role="img" aria-label={grafBeskrivelse}>
-    <Fragment set:html={svg} />
-  </div>
-  <div class="figur-graf figur-graf-liten" role="img" aria-label={grafBeskrivelse}>
-    <Fragment set:html={svgMobil} />
+  <div class="figur-graf">
+    <div class="graf graf--bred" role="img" aria-label={grafBeskrivelse} set:html={svg} />
+    <div class="graf graf--smal" role="img" aria-label={grafBeskrivelse} set:html={svgMobil} />
   </div>
 
   <ul class="tegnforklaring">

@@ -277,6 +277,12 @@ export function globaltBrentAreal() {
     ),
     fotnoter,
     tegnforklaring,
+    // Figuren tegner både beta og measured. Bruddet er markert med opasitet og
+    // punktform, og markeringen står i tegnforklaringen (§ 6).
+    kvalitetsforklaring: {
+      beta: "Tegnet svakere fordi produsenten selv har merket datasettet som foreløpig.",
+      measured: "Satellittmålt.",
+    },
     tabell,
     observasjoner: alleObservasjoner,
     csvFil: `${ID}.csv`,

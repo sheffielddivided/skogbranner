@@ -11,7 +11,12 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 
-import { visningsgrense, visningspunkter, type Punkt } from "./visning.ts";
+import {
+  visningsgrense,
+  visningspunkter,
+  sammenlignPeriode,
+  type Punkt,
+} from "./visning.ts";
 
 const ANDEL = 0.5;
 
@@ -91,3 +96,62 @@ test("punkter uten n_series holdes utenfor", () => {
   assert.equal(visningsgrense([{ period: "2000" }], ANDEL), null);
   assert.deepEqual(visningspunkter([], ANDEL), []);
 });
+
+/*
+ * Rekkefølgen på perioder med fortegn.
+ *
+ * data.ts sorterte perioden som streng. Da kom «-10» først og «990» sist i
+ * K10, og «det yngste punktet» ble et annet punkt enn det figuren tegner —
+ * teksten under figuren oppga antall kjerner fra feil år.
+ *
+ * Testene under feiler på den gamle oppførselen: de sammenligner mot
+ * localeCompare, som er det data.ts brukte.
+ */
+
+const KOMPOSITT = [
+  { period: "-6050", n_series: 137 },
+  { period: "-10", n_series: 210 },
+  { period: "990", n_series: 252 },
+  { period: "1990", n_series: 248 },
+  { period: "2010", n_series: 99 },
+];
+
+test("perioder sorteres i tidsrekkefølge, ikke som tekst", () => {
+  const vaar = [...KOMPOSITT].sort((a, b) => sammenlignPeriode(a.period, b.period));
+  const streng = [...KOMPOSITT].sort((a, b) => a.period.localeCompare(b.period));
+
+  assert.deepEqual(
+    vaar.map((p) => p.period),
+    ["-6050", "-10", "990", "1990", "2010"],
+  );
+  // Den gamle sorteringen ga en annen rekkefølge. Blir de like, er testen
+  // uten verdi og skal si fra.
+  assert.notDeepEqual(
+    vaar.map((p) => p.period),
+    streng.map((p) => p.period),
+  );
+});
+
+test("serie og visningspunkter er enige om rekkefølgen", () => {
+  // Slik data.ts sorterer, mot slik visning.ts gjør det. De skal gi samme
+  // rekkefølge for de punktene som er med i visningen.
+  const somSerie = [...KOMPOSITT].sort((a, b) =>
+    sammenlignPeriode(a.period, b.period),
+  );
+  const vist = visningspunkter(KOMPOSITT, 0.5);
+
+  assert.deepEqual(
+    vist.map((p) => p.period),
+    somSerie.filter((p) => Number(p.period) <= 1990).map((p) => p.period),
+  );
+});
+
+test("det yngste punktet er det yngste i tid", () => {
+  const sortert = [...KOMPOSITT].sort((a, b) =>
+    sammenlignPeriode(a.period, b.period),
+  );
+  const yngste = sortert[sortert.length - 1]!;
+  assert.equal(yngste.period, "2010");
+  assert.equal(yngste.n_series, 99);
+});
+

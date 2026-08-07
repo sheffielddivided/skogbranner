@@ -12,6 +12,23 @@
  * `visning.test.ts`, som feiler hvis noen gjør den symmetrisk.
  */
 
+/**
+ * Sammenligner to ISO 8601-perioder i tidsrekkefølge.
+ *
+ * Årstallet kan bære fortegn — K10 rekker ned før år null (§ 6) — så perioden
+ * kan ikke sammenlignes som streng: «-6050» kommer da etter «-10», og «990»
+ * havner sist av alle. Året leses derfor som tall, og resten av perioden
+ * («-W31», «-08») avgjør bare når årene er like.
+ *
+ * Funksjonen bor her fordi denne modulen er ren, og fordi det skal finnes
+ * nøyaktig én slik sammenligner: data.ts bruker den samme.
+ */
+export function sammenlignPeriode(a: string, b: string): number {
+  const aar = (p: string) => Number(p.slice(0, p.startsWith("-") ? 5 : 4));
+  const rest = (p: string) => p.slice(p.startsWith("-") ? 5 : 4);
+  return aar(a) - aar(b) || rest(a).localeCompare(rest(b));
+}
+
 /** Det minste et punkt trenger å bære for å kunne avgrenses. */
 export interface Punkt {
   period: string;
@@ -60,5 +77,5 @@ function sorterEtterPeriode<T extends Punkt>(punkter: T[]): T[] {
   return punkter
     .filter((p) => typeof p.n_series === "number")
     .slice()
-    .sort((a, b) => Number(a.period) - Number(b.period));
+    .sort((a, b) => sammenlignPeriode(a.period, b.period));
 }

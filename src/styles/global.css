@@ -41,6 +41,10 @@
   --farge-kart-5: #c65014;
   --farge-kart-6: #7c2d12;
   --farge-ingen-data: #d6d3d1;
+  /* Bakgrunnslinjene i sammenligningsfiguren bærer mening — «de øvrige
+     landene» — og må derfor klare 3:1 mot bakgrunnen (§ 9). «Ingen data»-
+     flaten gjør ikke det, og skal heller ikke: den er fravær av måling. */
+  --farge-bakgrunnslinje: #8a8580;
   --farge-akse: #57534e;
   --farge-merknad: #7c2d12;
   --farge-merknad-flate: #fff7ed;
@@ -71,6 +75,7 @@
     --farge-kart-5: #f59e0b;
     --farge-kart-6: #fcd34d;
     --farge-ingen-data: #57534e;
+    --farge-bakgrunnslinje: #8a8580;
     --farge-akse: #a8a29e;
     --farge-merknad: #fdba74;
     --farge-merknad-flate: #292524;

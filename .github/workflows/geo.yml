@@ -15,6 +15,12 @@ name: Kartgeometri
 
 on:
   workflow_dispatch:
+    inputs:
+      kandidater:
+        description: "Skriv kandidatfiler ved disse tersklene i stedet, f.eks. 0.05,0.1,0.2"
+        required: false
+        default: ""
+        type: string
 
 permissions:
   contents: write
@@ -44,7 +50,12 @@ jobs:
 
       # Kjøres som modul fra repotoppen (§ 4).
       - name: Bygg geometrien
-        run: python -m etl.geo
+        run: |
+          if [ -n "${{ inputs.kandidater }}" ]; then
+            python -m etl.geo --kandidater "${{ inputs.kandidater }}"
+          else
+            python -m etl.geo
+          fi
 
       # Rådata er gitignorert, men en tom mappe er den eneste tilstanden som
       # beviser at slettingen faktisk skjedde.

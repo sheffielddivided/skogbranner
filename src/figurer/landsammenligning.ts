@@ -81,7 +81,9 @@ function tegn(
       x: "aar",
       y: "verdi",
       z: "entity",
-      stroke: "var(--farge-ingen-data)",
+      // Egen farge, ikke «ingen data»-flatens: linjene bærer mening og må
+      // klare kontrastkravet (§ 9).
+      stroke: "var(--farge-bakgrunnslinje)",
       strokeWidth: 0.75,
     }),
   ];
@@ -229,6 +231,12 @@ export function landsammenligning() {
         tekst: "De øvrige landene, uten navn.",
       },
     ],
+    // Figuren tegner både measured og reported. Bruddet er markert med
+    // strekform, og markeringen står i tegnforklaringen (§ 6).
+    kvalitetsforklaring: {
+      measured: "Satellittkartlagt av EFFIS",
+      reported: "Rapportert av landet selv",
+    },
     // Avkryssingslista. Rekkefølgen er alfabetisk på norsk navn, slik at et
     // land kan finnes uten å vite hvor stort det er.
     land: koder.map((kode) => ({

@@ -392,11 +392,12 @@
   "anomaly": 931,
   "share_of_world": 609,
   "concentration": 164,
+  "coverage_overlap": 310,
   "area_comparison": 3,
   "always_zero_entities": 216,
   "season_week": 7,
   "season_band": 7,
-  "derivations": 5169
+  "derivations": 5479
  },
  "derivations": {
   "anomaly.cnfdb_annual_fire_count.CAN.2025": {
@@ -59964,6 +59965,4689 @@
    "incomplete_years": [
     2026
    ]
+  },
+  "coverage_overlap.burned_area_km2.ABW": {
+   "kind": "coverage_overlap",
+   "entity": "ABW",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Aruba"
+  },
+  "coverage_overlap.burned_area_km2.AFG": {
+   "kind": "coverage_overlap",
+   "entity": "AFG",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Afghanistan"
+  },
+  "coverage_overlap.burned_area_km2.AGO": {
+   "kind": "coverage_overlap",
+   "entity": "AGO",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Angola"
+  },
+  "coverage_overlap.burned_area_km2.AIA": {
+   "kind": "coverage_overlap",
+   "entity": "AIA",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Anguilla"
+  },
+  "coverage_overlap.burned_area_km2.ALA": {
+   "kind": "coverage_overlap",
+   "entity": "ALA",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Åland"
+  },
+  "coverage_overlap.burned_area_km2.ALB": {
+   "kind": "coverage_overlap",
+   "entity": "ALB",
+   "series": [
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 4,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Albania"
+  },
+  "coverage_overlap.burned_area_km2.AND": {
+   "kind": "coverage_overlap",
+   "entity": "AND",
+   "series": [
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 4,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Andorra"
+  },
+  "coverage_overlap.burned_area_km2.ARE": {
+   "kind": "coverage_overlap",
+   "entity": "ARE",
+   "series": [
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 4,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "De forente arabiske emirater"
+  },
+  "coverage_overlap.burned_area_km2.ARG": {
+   "kind": "coverage_overlap",
+   "entity": "ARG",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Argentina"
+  },
+  "coverage_overlap.burned_area_km2.ARM": {
+   "kind": "coverage_overlap",
+   "entity": "ARM",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Armenia"
+  },
+  "coverage_overlap.burned_area_km2.ASM": {
+   "kind": "coverage_overlap",
+   "entity": "ASM",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Amerikansk Samoa"
+  },
+  "coverage_overlap.burned_area_km2.ATF": {
+   "kind": "coverage_overlap",
+   "entity": "ATF",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "De franske sørterritorier"
+  },
+  "coverage_overlap.burned_area_km2.ATG": {
+   "kind": "coverage_overlap",
+   "entity": "ATG",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Antigua og Barbuda"
+  },
+  "coverage_overlap.burned_area_km2.AUS": {
+   "kind": "coverage_overlap",
+   "entity": "AUS",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Australia"
+  },
+  "coverage_overlap.burned_area_km2.AUT": {
+   "kind": "coverage_overlap",
+   "entity": "AUT",
+   "series": [
+    "effis_annual_country_totals",
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 5,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Østerrike"
+  },
+  "coverage_overlap.burned_area_km2.AZE": {
+   "kind": "coverage_overlap",
+   "entity": "AZE",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Aserbajdsjan"
+  },
+  "coverage_overlap.burned_area_km2.BDI": {
+   "kind": "coverage_overlap",
+   "entity": "BDI",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Burundi"
+  },
+  "coverage_overlap.burned_area_km2.BEL": {
+   "kind": "coverage_overlap",
+   "entity": "BEL",
+   "series": [
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 4,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Belgia"
+  },
+  "coverage_overlap.burned_area_km2.BEN": {
+   "kind": "coverage_overlap",
+   "entity": "BEN",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Benin"
+  },
+  "coverage_overlap.burned_area_km2.BES": {
+   "kind": "coverage_overlap",
+   "entity": "BES",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Bonaire, Sint Eustatius og Saba"
+  },
+  "coverage_overlap.burned_area_km2.BFA": {
+   "kind": "coverage_overlap",
+   "entity": "BFA",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Burkina Faso"
+  },
+  "coverage_overlap.burned_area_km2.BGD": {
+   "kind": "coverage_overlap",
+   "entity": "BGD",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Bangladesh"
+  },
+  "coverage_overlap.burned_area_km2.BGR": {
+   "kind": "coverage_overlap",
+   "entity": "BGR",
+   "series": [
+    "effis_annual_country_totals",
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 5,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Bulgaria"
+  },
+  "coverage_overlap.burned_area_km2.BHR": {
+   "kind": "coverage_overlap",
+   "entity": "BHR",
+   "series": [
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 4,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Bahrain"
+  },
+  "coverage_overlap.burned_area_km2.BHS": {
+   "kind": "coverage_overlap",
+   "entity": "BHS",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Bahamas"
+  },
+  "coverage_overlap.burned_area_km2.BIH": {
+   "kind": "coverage_overlap",
+   "entity": "BIH",
+   "series": [
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 4,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Bosnia-Hercegovina"
+  },
+  "coverage_overlap.burned_area_km2.BLR": {
+   "kind": "coverage_overlap",
+   "entity": "BLR",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Belarus"
+  },
+  "coverage_overlap.burned_area_km2.BLZ": {
+   "kind": "coverage_overlap",
+   "entity": "BLZ",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Belize"
+  },
+  "coverage_overlap.burned_area_km2.BMU": {
+   "kind": "coverage_overlap",
+   "entity": "BMU",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Bermuda"
+  },
+  "coverage_overlap.burned_area_km2.BOL": {
+   "kind": "coverage_overlap",
+   "entity": "BOL",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Bolivia"
+  },
+  "coverage_overlap.burned_area_km2.BRA": {
+   "kind": "coverage_overlap",
+   "entity": "BRA",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Brasil"
+  },
+  "coverage_overlap.burned_area_km2.BRB": {
+   "kind": "coverage_overlap",
+   "entity": "BRB",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Barbados"
+  },
+  "coverage_overlap.burned_area_km2.BRN": {
+   "kind": "coverage_overlap",
+   "entity": "BRN",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Brunei"
+  },
+  "coverage_overlap.burned_area_km2.BTN": {
+   "kind": "coverage_overlap",
+   "entity": "BTN",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Bhutan"
+  },
+  "coverage_overlap.burned_area_km2.BVT": {
+   "kind": "coverage_overlap",
+   "entity": "BVT",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Bouvetøya"
+  },
+  "coverage_overlap.burned_area_km2.BWA": {
+   "kind": "coverage_overlap",
+   "entity": "BWA",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Botswana"
+  },
+  "coverage_overlap.burned_area_km2.CAF": {
+   "kind": "coverage_overlap",
+   "entity": "CAF",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Den sentralafrikanske republikk"
+  },
+  "coverage_overlap.burned_area_km2.CAN": {
+   "kind": "coverage_overlap",
+   "entity": "CAN",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "nbac_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 4,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Canada"
+  },
+  "coverage_overlap.burned_area_km2.CHE": {
+   "kind": "coverage_overlap",
+   "entity": "CHE",
+   "series": [
+    "effis_annual_country_totals",
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 5,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Sveits"
+  },
+  "coverage_overlap.burned_area_km2.CHL": {
+   "kind": "coverage_overlap",
+   "entity": "CHL",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Chile"
+  },
+  "coverage_overlap.burned_area_km2.CHN": {
+   "kind": "coverage_overlap",
+   "entity": "CHN",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Kina"
+  },
+  "coverage_overlap.burned_area_km2.CIV": {
+   "kind": "coverage_overlap",
+   "entity": "CIV",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Elfenbenskysten"
+  },
+  "coverage_overlap.burned_area_km2.CMR": {
+   "kind": "coverage_overlap",
+   "entity": "CMR",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Kamerun"
+  },
+  "coverage_overlap.burned_area_km2.COD": {
+   "kind": "coverage_overlap",
+   "entity": "COD",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Kongo-Kinshasa"
+  },
+  "coverage_overlap.burned_area_km2.COG": {
+   "kind": "coverage_overlap",
+   "entity": "COG",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Kongo-Brazzaville"
+  },
+  "coverage_overlap.burned_area_km2.COK": {
+   "kind": "coverage_overlap",
+   "entity": "COK",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Cookøyene"
+  },
+  "coverage_overlap.burned_area_km2.COL": {
+   "kind": "coverage_overlap",
+   "entity": "COL",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Colombia"
+  },
+  "coverage_overlap.burned_area_km2.COM": {
+   "kind": "coverage_overlap",
+   "entity": "COM",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Komorene"
+  },
+  "coverage_overlap.burned_area_km2.CPV": {
+   "kind": "coverage_overlap",
+   "entity": "CPV",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Kapp Verde"
+  },
+  "coverage_overlap.burned_area_km2.CRI": {
+   "kind": "coverage_overlap",
+   "entity": "CRI",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Costa Rica"
+  },
+  "coverage_overlap.burned_area_km2.CUB": {
+   "kind": "coverage_overlap",
+   "entity": "CUB",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Cuba"
+  },
+  "coverage_overlap.burned_area_km2.CUW": {
+   "kind": "coverage_overlap",
+   "entity": "CUW",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Curaçao"
+  },
+  "coverage_overlap.burned_area_km2.CXR": {
+   "kind": "coverage_overlap",
+   "entity": "CXR",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Christmasøya"
+  },
+  "coverage_overlap.burned_area_km2.CYM": {
+   "kind": "coverage_overlap",
+   "entity": "CYM",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Caymanøyene"
+  },
+  "coverage_overlap.burned_area_km2.CYP": {
+   "kind": "coverage_overlap",
+   "entity": "CYP",
+   "series": [
+    "effis_annual_country_totals",
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 5,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Kypros"
+  },
+  "coverage_overlap.burned_area_km2.CZE": {
+   "kind": "coverage_overlap",
+   "entity": "CZE",
+   "series": [
+    "effis_annual_country_totals",
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 5,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Tsjekkia"
+  },
+  "coverage_overlap.burned_area_km2.DEU": {
+   "kind": "coverage_overlap",
+   "entity": "DEU",
+   "series": [
+    "effis_annual_country_totals",
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 5,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Tyskland"
+  },
+  "coverage_overlap.burned_area_km2.DJI": {
+   "kind": "coverage_overlap",
+   "entity": "DJI",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Djibouti"
+  },
+  "coverage_overlap.burned_area_km2.DMA": {
+   "kind": "coverage_overlap",
+   "entity": "DMA",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Dominica"
+  },
+  "coverage_overlap.burned_area_km2.DNK": {
+   "kind": "coverage_overlap",
+   "entity": "DNK",
+   "series": [
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 4,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Danmark"
+  },
+  "coverage_overlap.burned_area_km2.DOM": {
+   "kind": "coverage_overlap",
+   "entity": "DOM",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Den dominikanske republikk"
+  },
+  "coverage_overlap.burned_area_km2.DZA": {
+   "kind": "coverage_overlap",
+   "entity": "DZA",
+   "series": [
+    "effis_annual_country_totals",
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 5,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Algerie"
+  },
+  "coverage_overlap.burned_area_km2.ECU": {
+   "kind": "coverage_overlap",
+   "entity": "ECU",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Ecuador"
+  },
+  "coverage_overlap.burned_area_km2.EGY": {
+   "kind": "coverage_overlap",
+   "entity": "EGY",
+   "series": [
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 4,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Egypt"
+  },
+  "coverage_overlap.burned_area_km2.ERI": {
+   "kind": "coverage_overlap",
+   "entity": "ERI",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Eritrea"
+  },
+  "coverage_overlap.burned_area_km2.ESH": {
+   "kind": "coverage_overlap",
+   "entity": "ESH",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Vest-Sahara"
+  },
+  "coverage_overlap.burned_area_km2.ESP": {
+   "kind": "coverage_overlap",
+   "entity": "ESP",
+   "series": [
+    "effis_annual_country_totals",
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 5,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Spania"
+  },
+  "coverage_overlap.burned_area_km2.EST": {
+   "kind": "coverage_overlap",
+   "entity": "EST",
+   "series": [
+    "effis_annual_country_totals",
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 5,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Estland"
+  },
+  "coverage_overlap.burned_area_km2.ETH": {
+   "kind": "coverage_overlap",
+   "entity": "ETH",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Etiopia"
+  },
+  "coverage_overlap.burned_area_km2.FIN": {
+   "kind": "coverage_overlap",
+   "entity": "FIN",
+   "series": [
+    "effis_annual_country_totals",
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 5,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Finland"
+  },
+  "coverage_overlap.burned_area_km2.FJI": {
+   "kind": "coverage_overlap",
+   "entity": "FJI",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Fiji"
+  },
+  "coverage_overlap.burned_area_km2.FLK": {
+   "kind": "coverage_overlap",
+   "entity": "FLK",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Falklandsøyene"
+  },
+  "coverage_overlap.burned_area_km2.FRA": {
+   "kind": "coverage_overlap",
+   "entity": "FRA",
+   "series": [
+    "effis_annual_country_totals",
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 5,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Frankrike"
+  },
+  "coverage_overlap.burned_area_km2.FRO": {
+   "kind": "coverage_overlap",
+   "entity": "FRO",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Færøyene"
+  },
+  "coverage_overlap.burned_area_km2.FSM": {
+   "kind": "coverage_overlap",
+   "entity": "FSM",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Mikronesiaføderasjonen"
+  },
+  "coverage_overlap.burned_area_km2.GAB": {
+   "kind": "coverage_overlap",
+   "entity": "GAB",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Gabon"
+  },
+  "coverage_overlap.burned_area_km2.GBR": {
+   "kind": "coverage_overlap",
+   "entity": "GBR",
+   "series": [
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 4,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Storbritannia"
+  },
+  "coverage_overlap.burned_area_km2.GEO": {
+   "kind": "coverage_overlap",
+   "entity": "GEO",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Georgia"
+  },
+  "coverage_overlap.burned_area_km2.GGY": {
+   "kind": "coverage_overlap",
+   "entity": "GGY",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Guernsey"
+  },
+  "coverage_overlap.burned_area_km2.GHA": {
+   "kind": "coverage_overlap",
+   "entity": "GHA",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Ghana"
+  },
+  "coverage_overlap.burned_area_km2.GIN": {
+   "kind": "coverage_overlap",
+   "entity": "GIN",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Guinea"
+  },
+  "coverage_overlap.burned_area_km2.GLP": {
+   "kind": "coverage_overlap",
+   "entity": "GLP",
+   "series": [
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 4,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Guadeloupe"
+  },
+  "coverage_overlap.burned_area_km2.GMB": {
+   "kind": "coverage_overlap",
+   "entity": "GMB",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Gambia"
+  },
+  "coverage_overlap.burned_area_km2.GNB": {
+   "kind": "coverage_overlap",
+   "entity": "GNB",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Guinea-Bissau"
+  },
+  "coverage_overlap.burned_area_km2.GNQ": {
+   "kind": "coverage_overlap",
+   "entity": "GNQ",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Ekvatorial-Guinea"
+  },
+  "coverage_overlap.burned_area_km2.GRC": {
+   "kind": "coverage_overlap",
+   "entity": "GRC",
+   "series": [
+    "effis_annual_country_totals",
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 5,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Hellas"
+  },
+  "coverage_overlap.burned_area_km2.GRD": {
+   "kind": "coverage_overlap",
+   "entity": "GRD",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Grenada"
+  },
+  "coverage_overlap.burned_area_km2.GRL": {
+   "kind": "coverage_overlap",
+   "entity": "GRL",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Grønland"
+  },
+  "coverage_overlap.burned_area_km2.GTM": {
+   "kind": "coverage_overlap",
+   "entity": "GTM",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Guatemala"
+  },
+  "coverage_overlap.burned_area_km2.GUF": {
+   "kind": "coverage_overlap",
+   "entity": "GUF",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Fransk Guyana"
+  },
+  "coverage_overlap.burned_area_km2.GUM": {
+   "kind": "coverage_overlap",
+   "entity": "GUM",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Guam"
+  },
+  "coverage_overlap.burned_area_km2.GUY": {
+   "kind": "coverage_overlap",
+   "entity": "GUY",
+   "series": [
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 4,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Guyana"
+  },
+  "coverage_overlap.burned_area_km2.HKG": {
+   "kind": "coverage_overlap",
+   "entity": "HKG",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Hongkong"
+  },
+  "coverage_overlap.burned_area_km2.HMD": {
+   "kind": "coverage_overlap",
+   "entity": "HMD",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Heard- og McDonaldøyene"
+  },
+  "coverage_overlap.burned_area_km2.HND": {
+   "kind": "coverage_overlap",
+   "entity": "HND",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Honduras"
+  },
+  "coverage_overlap.burned_area_km2.HRV": {
+   "kind": "coverage_overlap",
+   "entity": "HRV",
+   "series": [
+    "effis_annual_country_totals",
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 5,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Kroatia"
+  },
+  "coverage_overlap.burned_area_km2.HTI": {
+   "kind": "coverage_overlap",
+   "entity": "HTI",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Haiti"
+  },
+  "coverage_overlap.burned_area_km2.HUN": {
+   "kind": "coverage_overlap",
+   "entity": "HUN",
+   "series": [
+    "effis_annual_country_totals",
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 5,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Ungarn"
+  },
+  "coverage_overlap.burned_area_km2.IDN": {
+   "kind": "coverage_overlap",
+   "entity": "IDN",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Indonesia"
+  },
+  "coverage_overlap.burned_area_km2.IMN": {
+   "kind": "coverage_overlap",
+   "entity": "IMN",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Man"
+  },
+  "coverage_overlap.burned_area_km2.IND": {
+   "kind": "coverage_overlap",
+   "entity": "IND",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "India"
+  },
+  "coverage_overlap.burned_area_km2.IOT": {
+   "kind": "coverage_overlap",
+   "entity": "IOT",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Det britiske territorium i Indiahavet"
+  },
+  "coverage_overlap.burned_area_km2.IRL": {
+   "kind": "coverage_overlap",
+   "entity": "IRL",
+   "series": [
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 4,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Irland"
+  },
+  "coverage_overlap.burned_area_km2.IRN": {
+   "kind": "coverage_overlap",
+   "entity": "IRN",
+   "series": [
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 4,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Iran"
+  },
+  "coverage_overlap.burned_area_km2.IRQ": {
+   "kind": "coverage_overlap",
+   "entity": "IRQ",
+   "series": [
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 4,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Irak"
+  },
+  "coverage_overlap.burned_area_km2.ISL": {
+   "kind": "coverage_overlap",
+   "entity": "ISL",
+   "series": [
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 4,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Island"
+  },
+  "coverage_overlap.burned_area_km2.ISR": {
+   "kind": "coverage_overlap",
+   "entity": "ISR",
+   "series": [
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 4,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Israel"
+  },
+  "coverage_overlap.burned_area_km2.ITA": {
+   "kind": "coverage_overlap",
+   "entity": "ITA",
+   "series": [
+    "effis_annual_country_totals",
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 5,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Italia"
+  },
+  "coverage_overlap.burned_area_km2.JAM": {
+   "kind": "coverage_overlap",
+   "entity": "JAM",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Jamaica"
+  },
+  "coverage_overlap.burned_area_km2.JEY": {
+   "kind": "coverage_overlap",
+   "entity": "JEY",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Jersey"
+  },
+  "coverage_overlap.burned_area_km2.JOR": {
+   "kind": "coverage_overlap",
+   "entity": "JOR",
+   "series": [
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 4,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Jordan"
+  },
+  "coverage_overlap.burned_area_km2.JPN": {
+   "kind": "coverage_overlap",
+   "entity": "JPN",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Japan"
+  },
+  "coverage_overlap.burned_area_km2.KAZ": {
+   "kind": "coverage_overlap",
+   "entity": "KAZ",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Kasakhstan"
+  },
+  "coverage_overlap.burned_area_km2.KEN": {
+   "kind": "coverage_overlap",
+   "entity": "KEN",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Kenya"
+  },
+  "coverage_overlap.burned_area_km2.KGZ": {
+   "kind": "coverage_overlap",
+   "entity": "KGZ",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Kirgisistan"
+  },
+  "coverage_overlap.burned_area_km2.KHM": {
+   "kind": "coverage_overlap",
+   "entity": "KHM",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Kambodsja"
+  },
+  "coverage_overlap.burned_area_km2.KIR": {
+   "kind": "coverage_overlap",
+   "entity": "KIR",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Kiribati"
+  },
+  "coverage_overlap.burned_area_km2.KNA": {
+   "kind": "coverage_overlap",
+   "entity": "KNA",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "St. Kitts og Nevis"
+  },
+  "coverage_overlap.burned_area_km2.KOR": {
+   "kind": "coverage_overlap",
+   "entity": "KOR",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Sør-Korea"
+  },
+  "coverage_overlap.burned_area_km2.KWT": {
+   "kind": "coverage_overlap",
+   "entity": "KWT",
+   "series": [
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 4,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Kuwait"
+  },
+  "coverage_overlap.burned_area_km2.LAO": {
+   "kind": "coverage_overlap",
+   "entity": "LAO",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Laos"
+  },
+  "coverage_overlap.burned_area_km2.LBN": {
+   "kind": "coverage_overlap",
+   "entity": "LBN",
+   "series": [
+    "effis_annual_country_totals",
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 5,
+   "first_year": 2015,
+   "last_year": 2018,
+   "n_years": 4,
+   "indicator": "burned_area_km2",
+   "entity_name": "Libanon"
+  },
+  "coverage_overlap.burned_area_km2.LBR": {
+   "kind": "coverage_overlap",
+   "entity": "LBR",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Liberia"
+  },
+  "coverage_overlap.burned_area_km2.LBY": {
+   "kind": "coverage_overlap",
+   "entity": "LBY",
+   "series": [
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 4,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Libya"
+  },
+  "coverage_overlap.burned_area_km2.LCA": {
+   "kind": "coverage_overlap",
+   "entity": "LCA",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "St. Lucia"
+  },
+  "coverage_overlap.burned_area_km2.LIE": {
+   "kind": "coverage_overlap",
+   "entity": "LIE",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Liechtenstein"
+  },
+  "coverage_overlap.burned_area_km2.LKA": {
+   "kind": "coverage_overlap",
+   "entity": "LKA",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Sri Lanka"
+  },
+  "coverage_overlap.burned_area_km2.LSO": {
+   "kind": "coverage_overlap",
+   "entity": "LSO",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Lesotho"
+  },
+  "coverage_overlap.burned_area_km2.LTU": {
+   "kind": "coverage_overlap",
+   "entity": "LTU",
+   "series": [
+    "effis_annual_country_totals",
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 5,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Litauen"
+  },
+  "coverage_overlap.burned_area_km2.LUX": {
+   "kind": "coverage_overlap",
+   "entity": "LUX",
+   "series": [
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 4,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Luxembourg"
+  },
+  "coverage_overlap.burned_area_km2.LVA": {
+   "kind": "coverage_overlap",
+   "entity": "LVA",
+   "series": [
+    "effis_annual_country_totals",
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 5,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Latvia"
+  },
+  "coverage_overlap.burned_area_km2.MAC": {
+   "kind": "coverage_overlap",
+   "entity": "MAC",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Macao"
+  },
+  "coverage_overlap.burned_area_km2.MAF": {
+   "kind": "coverage_overlap",
+   "entity": "MAF",
+   "series": [
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 4,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Saint-Martin (FR)"
+  },
+  "coverage_overlap.burned_area_km2.MAR": {
+   "kind": "coverage_overlap",
+   "entity": "MAR",
+   "series": [
+    "effis_annual_country_totals",
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 5,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Marokko"
+  },
+  "coverage_overlap.burned_area_km2.MCO": {
+   "kind": "coverage_overlap",
+   "entity": "MCO",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Monaco"
+  },
+  "coverage_overlap.burned_area_km2.MDA": {
+   "kind": "coverage_overlap",
+   "entity": "MDA",
+   "series": [
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 4,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Moldova"
+  },
+  "coverage_overlap.burned_area_km2.MDG": {
+   "kind": "coverage_overlap",
+   "entity": "MDG",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Madagaskar"
+  },
+  "coverage_overlap.burned_area_km2.MDV": {
+   "kind": "coverage_overlap",
+   "entity": "MDV",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Maldivene"
+  },
+  "coverage_overlap.burned_area_km2.MEX": {
+   "kind": "coverage_overlap",
+   "entity": "MEX",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Mexico"
+  },
+  "coverage_overlap.burned_area_km2.MHL": {
+   "kind": "coverage_overlap",
+   "entity": "MHL",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Marshalløyene"
+  },
+  "coverage_overlap.burned_area_km2.MKD": {
+   "kind": "coverage_overlap",
+   "entity": "MKD",
+   "series": [
+    "effis_annual_country_totals",
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 5,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Nord-Makedonia"
+  },
+  "coverage_overlap.burned_area_km2.MLI": {
+   "kind": "coverage_overlap",
+   "entity": "MLI",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Mali"
+  },
+  "coverage_overlap.burned_area_km2.MLT": {
+   "kind": "coverage_overlap",
+   "entity": "MLT",
+   "series": [
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 4,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Malta"
+  },
+  "coverage_overlap.burned_area_km2.MMR": {
+   "kind": "coverage_overlap",
+   "entity": "MMR",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Myanmar"
+  },
+  "coverage_overlap.burned_area_km2.MNE": {
+   "kind": "coverage_overlap",
+   "entity": "MNE",
+   "series": [
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 4,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Montenegro"
+  },
+  "coverage_overlap.burned_area_km2.MNG": {
+   "kind": "coverage_overlap",
+   "entity": "MNG",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Mongolia"
+  },
+  "coverage_overlap.burned_area_km2.MNP": {
+   "kind": "coverage_overlap",
+   "entity": "MNP",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Nord-Marianene"
+  },
+  "coverage_overlap.burned_area_km2.MOZ": {
+   "kind": "coverage_overlap",
+   "entity": "MOZ",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Mosambik"
+  },
+  "coverage_overlap.burned_area_km2.MRT": {
+   "kind": "coverage_overlap",
+   "entity": "MRT",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Mauritania"
+  },
+  "coverage_overlap.burned_area_km2.MSR": {
+   "kind": "coverage_overlap",
+   "entity": "MSR",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Montserrat"
+  },
+  "coverage_overlap.burned_area_km2.MTQ": {
+   "kind": "coverage_overlap",
+   "entity": "MTQ",
+   "series": [
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 4,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Martinique"
+  },
+  "coverage_overlap.burned_area_km2.MUS": {
+   "kind": "coverage_overlap",
+   "entity": "MUS",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Mauritius"
+  },
+  "coverage_overlap.burned_area_km2.MWI": {
+   "kind": "coverage_overlap",
+   "entity": "MWI",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Malawi"
+  },
+  "coverage_overlap.burned_area_km2.MYS": {
+   "kind": "coverage_overlap",
+   "entity": "MYS",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Malaysia"
+  },
+  "coverage_overlap.burned_area_km2.MYT": {
+   "kind": "coverage_overlap",
+   "entity": "MYT",
+   "series": [
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 4,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Mayotte"
+  },
+  "coverage_overlap.burned_area_km2.NAM": {
+   "kind": "coverage_overlap",
+   "entity": "NAM",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Namibia"
+  },
+  "coverage_overlap.burned_area_km2.NCL": {
+   "kind": "coverage_overlap",
+   "entity": "NCL",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Ny-Caledonia"
+  },
+  "coverage_overlap.burned_area_km2.NER": {
+   "kind": "coverage_overlap",
+   "entity": "NER",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Niger"
+  },
+  "coverage_overlap.burned_area_km2.NFK": {
+   "kind": "coverage_overlap",
+   "entity": "NFK",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Norfolkøya"
+  },
+  "coverage_overlap.burned_area_km2.NGA": {
+   "kind": "coverage_overlap",
+   "entity": "NGA",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Nigeria"
+  },
+  "coverage_overlap.burned_area_km2.NIC": {
+   "kind": "coverage_overlap",
+   "entity": "NIC",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Nicaragua"
+  },
+  "coverage_overlap.burned_area_km2.NIU": {
+   "kind": "coverage_overlap",
+   "entity": "NIU",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Niue"
+  },
+  "coverage_overlap.burned_area_km2.NLD": {
+   "kind": "coverage_overlap",
+   "entity": "NLD",
+   "series": [
+    "effis_annual_country_totals",
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 5,
+   "first_year": 2017,
+   "last_year": 2018,
+   "n_years": 2,
+   "indicator": "burned_area_km2",
+   "entity_name": "Nederland"
+  },
+  "coverage_overlap.burned_area_km2.NONISO_AKD": {
+   "kind": "coverage_overlap",
+   "entity": "NONISO_AKD",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Akrotiri og Dhekelia"
+  },
+  "coverage_overlap.burned_area_km2.NONISO_CYN": {
+   "kind": "coverage_overlap",
+   "entity": "NONISO_CYN",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Nord-Kypros"
+  },
+  "coverage_overlap.burned_area_km2.NOR": {
+   "kind": "coverage_overlap",
+   "entity": "NOR",
+   "series": [
+    "effis_annual_country_totals",
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 5,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Norge"
+  },
+  "coverage_overlap.burned_area_km2.NPL": {
+   "kind": "coverage_overlap",
+   "entity": "NPL",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Nepal"
+  },
+  "coverage_overlap.burned_area_km2.NRU": {
+   "kind": "coverage_overlap",
+   "entity": "NRU",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Nauru"
+  },
+  "coverage_overlap.burned_area_km2.NZL": {
+   "kind": "coverage_overlap",
+   "entity": "NZL",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "New Zealand"
+  },
+  "coverage_overlap.burned_area_km2.OMN": {
+   "kind": "coverage_overlap",
+   "entity": "OMN",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Oman"
+  },
+  "coverage_overlap.burned_area_km2.PAK": {
+   "kind": "coverage_overlap",
+   "entity": "PAK",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Pakistan"
+  },
+  "coverage_overlap.burned_area_km2.PAN": {
+   "kind": "coverage_overlap",
+   "entity": "PAN",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Panama"
+  },
+  "coverage_overlap.burned_area_km2.PCN": {
+   "kind": "coverage_overlap",
+   "entity": "PCN",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Pitcairn"
+  },
+  "coverage_overlap.burned_area_km2.PER": {
+   "kind": "coverage_overlap",
+   "entity": "PER",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Peru"
+  },
+  "coverage_overlap.burned_area_km2.PHL": {
+   "kind": "coverage_overlap",
+   "entity": "PHL",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Filippinene"
+  },
+  "coverage_overlap.burned_area_km2.PLW": {
+   "kind": "coverage_overlap",
+   "entity": "PLW",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Palau"
+  },
+  "coverage_overlap.burned_area_km2.PNG": {
+   "kind": "coverage_overlap",
+   "entity": "PNG",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Papua Ny-Guinea"
+  },
+  "coverage_overlap.burned_area_km2.POL": {
+   "kind": "coverage_overlap",
+   "entity": "POL",
+   "series": [
+    "effis_annual_country_totals",
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 5,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Polen"
+  },
+  "coverage_overlap.burned_area_km2.PRI": {
+   "kind": "coverage_overlap",
+   "entity": "PRI",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Puerto Rico"
+  },
+  "coverage_overlap.burned_area_km2.PRK": {
+   "kind": "coverage_overlap",
+   "entity": "PRK",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Nord-Korea"
+  },
+  "coverage_overlap.burned_area_km2.PRT": {
+   "kind": "coverage_overlap",
+   "entity": "PRT",
+   "series": [
+    "effis_annual_country_totals",
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 5,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Portugal"
+  },
+  "coverage_overlap.burned_area_km2.PRY": {
+   "kind": "coverage_overlap",
+   "entity": "PRY",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Paraguay"
+  },
+  "coverage_overlap.burned_area_km2.PSE": {
+   "kind": "coverage_overlap",
+   "entity": "PSE",
+   "series": [
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 4,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Palestina"
+  },
+  "coverage_overlap.burned_area_km2.PYF": {
+   "kind": "coverage_overlap",
+   "entity": "PYF",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Fransk Polynesia"
+  },
+  "coverage_overlap.burned_area_km2.QAT": {
+   "kind": "coverage_overlap",
+   "entity": "QAT",
+   "series": [
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 4,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Qatar"
+  },
+  "coverage_overlap.burned_area_km2.REU": {
+   "kind": "coverage_overlap",
+   "entity": "REU",
+   "series": [
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 4,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Réunion"
+  },
+  "coverage_overlap.burned_area_km2.ROU": {
+   "kind": "coverage_overlap",
+   "entity": "ROU",
+   "series": [
+    "effis_annual_country_totals",
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 5,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Romania"
+  },
+  "coverage_overlap.burned_area_km2.RUS": {
+   "kind": "coverage_overlap",
+   "entity": "RUS",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Russland"
+  },
+  "coverage_overlap.burned_area_km2.RWA": {
+   "kind": "coverage_overlap",
+   "entity": "RWA",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Rwanda"
+  },
+  "coverage_overlap.burned_area_km2.SAU": {
+   "kind": "coverage_overlap",
+   "entity": "SAU",
+   "series": [
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 4,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Saudi-Arabia"
+  },
+  "coverage_overlap.burned_area_km2.SDN": {
+   "kind": "coverage_overlap",
+   "entity": "SDN",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Sudan"
+  },
+  "coverage_overlap.burned_area_km2.SEN": {
+   "kind": "coverage_overlap",
+   "entity": "SEN",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Senegal"
+  },
+  "coverage_overlap.burned_area_km2.SGP": {
+   "kind": "coverage_overlap",
+   "entity": "SGP",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Singapore"
+  },
+  "coverage_overlap.burned_area_km2.SGS": {
+   "kind": "coverage_overlap",
+   "entity": "SGS",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Sør-Georgia og Sør-Sandwichøyene"
+  },
+  "coverage_overlap.burned_area_km2.SHN": {
+   "kind": "coverage_overlap",
+   "entity": "SHN",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Sankt Helena, Ascension og Tristan da Cunha"
+  },
+  "coverage_overlap.burned_area_km2.SJM": {
+   "kind": "coverage_overlap",
+   "entity": "SJM",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Svalbard og Jan Mayen"
+  },
+  "coverage_overlap.burned_area_km2.SLB": {
+   "kind": "coverage_overlap",
+   "entity": "SLB",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Salomonøyene"
+  },
+  "coverage_overlap.burned_area_km2.SLE": {
+   "kind": "coverage_overlap",
+   "entity": "SLE",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Sierra Leone"
+  },
+  "coverage_overlap.burned_area_km2.SLV": {
+   "kind": "coverage_overlap",
+   "entity": "SLV",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "El Salvador"
+  },
+  "coverage_overlap.burned_area_km2.SMR": {
+   "kind": "coverage_overlap",
+   "entity": "SMR",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "San Marino"
+  },
+  "coverage_overlap.burned_area_km2.SOM": {
+   "kind": "coverage_overlap",
+   "entity": "SOM",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Somalia"
+  },
+  "coverage_overlap.burned_area_km2.SPM": {
+   "kind": "coverage_overlap",
+   "entity": "SPM",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Saint-Pierre-et-Miquelon"
+  },
+  "coverage_overlap.burned_area_km2.SRB": {
+   "kind": "coverage_overlap",
+   "entity": "SRB",
+   "series": [
+    "effis_annual_country_totals",
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 5,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Serbia"
+  },
+  "coverage_overlap.burned_area_km2.SSD": {
+   "kind": "coverage_overlap",
+   "entity": "SSD",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Sør-Sudan"
+  },
+  "coverage_overlap.burned_area_km2.STP": {
+   "kind": "coverage_overlap",
+   "entity": "STP",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "São Tomé og Príncipe"
+  },
+  "coverage_overlap.burned_area_km2.SUR": {
+   "kind": "coverage_overlap",
+   "entity": "SUR",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Surinam"
+  },
+  "coverage_overlap.burned_area_km2.SVK": {
+   "kind": "coverage_overlap",
+   "entity": "SVK",
+   "series": [
+    "effis_annual_country_totals",
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 5,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Slovakia"
+  },
+  "coverage_overlap.burned_area_km2.SVN": {
+   "kind": "coverage_overlap",
+   "entity": "SVN",
+   "series": [
+    "effis_annual_country_totals",
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 5,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Slovenia"
+  },
+  "coverage_overlap.burned_area_km2.SWE": {
+   "kind": "coverage_overlap",
+   "entity": "SWE",
+   "series": [
+    "effis_annual_country_totals",
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 5,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Sverige"
+  },
+  "coverage_overlap.burned_area_km2.SWZ": {
+   "kind": "coverage_overlap",
+   "entity": "SWZ",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Eswatini"
+  },
+  "coverage_overlap.burned_area_km2.SYC": {
+   "kind": "coverage_overlap",
+   "entity": "SYC",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Seychellene"
+  },
+  "coverage_overlap.burned_area_km2.SYR": {
+   "kind": "coverage_overlap",
+   "entity": "SYR",
+   "series": [
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 4,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Syria"
+  },
+  "coverage_overlap.burned_area_km2.TCA": {
+   "kind": "coverage_overlap",
+   "entity": "TCA",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Turks- og Caicosøyene"
+  },
+  "coverage_overlap.burned_area_km2.TCD": {
+   "kind": "coverage_overlap",
+   "entity": "TCD",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Tsjad"
+  },
+  "coverage_overlap.burned_area_km2.TGO": {
+   "kind": "coverage_overlap",
+   "entity": "TGO",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Togo"
+  },
+  "coverage_overlap.burned_area_km2.THA": {
+   "kind": "coverage_overlap",
+   "entity": "THA",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Thailand"
+  },
+  "coverage_overlap.burned_area_km2.TJK": {
+   "kind": "coverage_overlap",
+   "entity": "TJK",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Tadsjikistan"
+  },
+  "coverage_overlap.burned_area_km2.TKM": {
+   "kind": "coverage_overlap",
+   "entity": "TKM",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Turkmenistan"
+  },
+  "coverage_overlap.burned_area_km2.TLS": {
+   "kind": "coverage_overlap",
+   "entity": "TLS",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Øst-Timor"
+  },
+  "coverage_overlap.burned_area_km2.TON": {
+   "kind": "coverage_overlap",
+   "entity": "TON",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Tonga"
+  },
+  "coverage_overlap.burned_area_km2.TTO": {
+   "kind": "coverage_overlap",
+   "entity": "TTO",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Trinidad og Tobago"
+  },
+  "coverage_overlap.burned_area_km2.TUN": {
+   "kind": "coverage_overlap",
+   "entity": "TUN",
+   "series": [
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 4,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Tunisia"
+  },
+  "coverage_overlap.burned_area_km2.TUR": {
+   "kind": "coverage_overlap",
+   "entity": "TUR",
+   "series": [
+    "effis_annual_country_totals",
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 5,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Tyrkia"
+  },
+  "coverage_overlap.burned_area_km2.TUV": {
+   "kind": "coverage_overlap",
+   "entity": "TUV",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Tuvalu"
+  },
+  "coverage_overlap.burned_area_km2.TWN": {
+   "kind": "coverage_overlap",
+   "entity": "TWN",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Taiwan"
+  },
+  "coverage_overlap.burned_area_km2.TZA": {
+   "kind": "coverage_overlap",
+   "entity": "TZA",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Tanzania"
+  },
+  "coverage_overlap.burned_area_km2.UGA": {
+   "kind": "coverage_overlap",
+   "entity": "UGA",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Uganda"
+  },
+  "coverage_overlap.burned_area_km2.UKR": {
+   "kind": "coverage_overlap",
+   "entity": "UKR",
+   "series": [
+    "effis_annual_country_totals",
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 5,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Ukraina"
+  },
+  "coverage_overlap.burned_area_km2.URY": {
+   "kind": "coverage_overlap",
+   "entity": "URY",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Uruguay"
+  },
+  "coverage_overlap.burned_area_km2.USA": {
+   "kind": "coverage_overlap",
+   "entity": "USA",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "nifc_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 4,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "USA"
+  },
+  "coverage_overlap.burned_area_km2.UZB": {
+   "kind": "coverage_overlap",
+   "entity": "UZB",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Usbekistan"
+  },
+  "coverage_overlap.burned_area_km2.VCT": {
+   "kind": "coverage_overlap",
+   "entity": "VCT",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "St. Vincent og Grenadinene"
+  },
+  "coverage_overlap.burned_area_km2.VEN": {
+   "kind": "coverage_overlap",
+   "entity": "VEN",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Venezuela"
+  },
+  "coverage_overlap.burned_area_km2.VGB": {
+   "kind": "coverage_overlap",
+   "entity": "VGB",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "De britiske Jomfruøyer"
+  },
+  "coverage_overlap.burned_area_km2.VIR": {
+   "kind": "coverage_overlap",
+   "entity": "VIR",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "De amerikanske Jomfruøyer"
+  },
+  "coverage_overlap.burned_area_km2.VNM": {
+   "kind": "coverage_overlap",
+   "entity": "VNM",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Vietnam"
+  },
+  "coverage_overlap.burned_area_km2.VUT": {
+   "kind": "coverage_overlap",
+   "entity": "VUT",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Vanuatu"
+  },
+  "coverage_overlap.burned_area_km2.WLD": {
+   "kind": "coverage_overlap",
+   "entity": "WLD",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Verden"
+  },
+  "coverage_overlap.burned_area_km2.WLF": {
+   "kind": "coverage_overlap",
+   "entity": "WLF",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Wallis- og Futunaøyene"
+  },
+  "coverage_overlap.burned_area_km2.WSM": {
+   "kind": "coverage_overlap",
+   "entity": "WSM",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Samoa"
+  },
+  "coverage_overlap.burned_area_km2.XKX": {
+   "kind": "coverage_overlap",
+   "entity": "XKX",
+   "series": [
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 4,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Kosovo"
+  },
+  "coverage_overlap.burned_area_km2.YEM": {
+   "kind": "coverage_overlap",
+   "entity": "YEM",
+   "series": [
+    "effis_rda_annual_burned_area",
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 4,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Jemen"
+  },
+  "coverage_overlap.burned_area_km2.ZAF": {
+   "kind": "coverage_overlap",
+   "entity": "ZAF",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Sør-Afrika"
+  },
+  "coverage_overlap.burned_area_km2.ZMB": {
+   "kind": "coverage_overlap",
+   "entity": "ZMB",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Zambia"
+  },
+  "coverage_overlap.burned_area_km2.ZWE": {
+   "kind": "coverage_overlap",
+   "entity": "ZWE",
+   "series": [
+    "firecci_lt11_annual_burned_area",
+    "gfed5_annual_burned_area",
+    "owid_annual_area_burnt"
+   ],
+   "n_series": 3,
+   "first_year": 2012,
+   "last_year": 2018,
+   "n_years": 7,
+   "indicator": "burned_area_km2",
+   "entity_name": "Zimbabwe"
+  },
+  "coverage_overlap.burned_area_share_land.ALB": {
+   "kind": "coverage_overlap",
+   "entity": "ALB",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Albania"
+  },
+  "coverage_overlap.burned_area_share_land.AND": {
+   "kind": "coverage_overlap",
+   "entity": "AND",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Andorra"
+  },
+  "coverage_overlap.burned_area_share_land.ARE": {
+   "kind": "coverage_overlap",
+   "entity": "ARE",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "De forente arabiske emirater"
+  },
+  "coverage_overlap.burned_area_share_land.AUT": {
+   "kind": "coverage_overlap",
+   "entity": "AUT",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Østerrike"
+  },
+  "coverage_overlap.burned_area_share_land.BEL": {
+   "kind": "coverage_overlap",
+   "entity": "BEL",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Belgia"
+  },
+  "coverage_overlap.burned_area_share_land.BGR": {
+   "kind": "coverage_overlap",
+   "entity": "BGR",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Bulgaria"
+  },
+  "coverage_overlap.burned_area_share_land.BHR": {
+   "kind": "coverage_overlap",
+   "entity": "BHR",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Bahrain"
+  },
+  "coverage_overlap.burned_area_share_land.BIH": {
+   "kind": "coverage_overlap",
+   "entity": "BIH",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Bosnia-Hercegovina"
+  },
+  "coverage_overlap.burned_area_share_land.CHE": {
+   "kind": "coverage_overlap",
+   "entity": "CHE",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Sveits"
+  },
+  "coverage_overlap.burned_area_share_land.CYP": {
+   "kind": "coverage_overlap",
+   "entity": "CYP",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Kypros"
+  },
+  "coverage_overlap.burned_area_share_land.CZE": {
+   "kind": "coverage_overlap",
+   "entity": "CZE",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Tsjekkia"
+  },
+  "coverage_overlap.burned_area_share_land.DEU": {
+   "kind": "coverage_overlap",
+   "entity": "DEU",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Tyskland"
+  },
+  "coverage_overlap.burned_area_share_land.DNK": {
+   "kind": "coverage_overlap",
+   "entity": "DNK",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Danmark"
+  },
+  "coverage_overlap.burned_area_share_land.DZA": {
+   "kind": "coverage_overlap",
+   "entity": "DZA",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Algerie"
+  },
+  "coverage_overlap.burned_area_share_land.EGY": {
+   "kind": "coverage_overlap",
+   "entity": "EGY",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Egypt"
+  },
+  "coverage_overlap.burned_area_share_land.ESP": {
+   "kind": "coverage_overlap",
+   "entity": "ESP",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Spania"
+  },
+  "coverage_overlap.burned_area_share_land.EST": {
+   "kind": "coverage_overlap",
+   "entity": "EST",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Estland"
+  },
+  "coverage_overlap.burned_area_share_land.FIN": {
+   "kind": "coverage_overlap",
+   "entity": "FIN",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Finland"
+  },
+  "coverage_overlap.burned_area_share_land.FRA": {
+   "kind": "coverage_overlap",
+   "entity": "FRA",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Frankrike"
+  },
+  "coverage_overlap.burned_area_share_land.GBR": {
+   "kind": "coverage_overlap",
+   "entity": "GBR",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Storbritannia"
+  },
+  "coverage_overlap.burned_area_share_land.GLP": {
+   "kind": "coverage_overlap",
+   "entity": "GLP",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Guadeloupe"
+  },
+  "coverage_overlap.burned_area_share_land.GRC": {
+   "kind": "coverage_overlap",
+   "entity": "GRC",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Hellas"
+  },
+  "coverage_overlap.burned_area_share_land.GUY": {
+   "kind": "coverage_overlap",
+   "entity": "GUY",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Guyana"
+  },
+  "coverage_overlap.burned_area_share_land.HRV": {
+   "kind": "coverage_overlap",
+   "entity": "HRV",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Kroatia"
+  },
+  "coverage_overlap.burned_area_share_land.HUN": {
+   "kind": "coverage_overlap",
+   "entity": "HUN",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Ungarn"
+  },
+  "coverage_overlap.burned_area_share_land.IRL": {
+   "kind": "coverage_overlap",
+   "entity": "IRL",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Irland"
+  },
+  "coverage_overlap.burned_area_share_land.IRN": {
+   "kind": "coverage_overlap",
+   "entity": "IRN",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Iran"
+  },
+  "coverage_overlap.burned_area_share_land.IRQ": {
+   "kind": "coverage_overlap",
+   "entity": "IRQ",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Irak"
+  },
+  "coverage_overlap.burned_area_share_land.ISL": {
+   "kind": "coverage_overlap",
+   "entity": "ISL",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Island"
+  },
+  "coverage_overlap.burned_area_share_land.ISR": {
+   "kind": "coverage_overlap",
+   "entity": "ISR",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Israel"
+  },
+  "coverage_overlap.burned_area_share_land.ITA": {
+   "kind": "coverage_overlap",
+   "entity": "ITA",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Italia"
+  },
+  "coverage_overlap.burned_area_share_land.JOR": {
+   "kind": "coverage_overlap",
+   "entity": "JOR",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Jordan"
+  },
+  "coverage_overlap.burned_area_share_land.KWT": {
+   "kind": "coverage_overlap",
+   "entity": "KWT",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Kuwait"
+  },
+  "coverage_overlap.burned_area_share_land.LBN": {
+   "kind": "coverage_overlap",
+   "entity": "LBN",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Libanon"
+  },
+  "coverage_overlap.burned_area_share_land.LBY": {
+   "kind": "coverage_overlap",
+   "entity": "LBY",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Libya"
+  },
+  "coverage_overlap.burned_area_share_land.LTU": {
+   "kind": "coverage_overlap",
+   "entity": "LTU",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Litauen"
+  },
+  "coverage_overlap.burned_area_share_land.LUX": {
+   "kind": "coverage_overlap",
+   "entity": "LUX",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Luxembourg"
+  },
+  "coverage_overlap.burned_area_share_land.LVA": {
+   "kind": "coverage_overlap",
+   "entity": "LVA",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Latvia"
+  },
+  "coverage_overlap.burned_area_share_land.MAF": {
+   "kind": "coverage_overlap",
+   "entity": "MAF",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Saint-Martin (FR)"
+  },
+  "coverage_overlap.burned_area_share_land.MAR": {
+   "kind": "coverage_overlap",
+   "entity": "MAR",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Marokko"
+  },
+  "coverage_overlap.burned_area_share_land.MDA": {
+   "kind": "coverage_overlap",
+   "entity": "MDA",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Moldova"
+  },
+  "coverage_overlap.burned_area_share_land.MKD": {
+   "kind": "coverage_overlap",
+   "entity": "MKD",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Nord-Makedonia"
+  },
+  "coverage_overlap.burned_area_share_land.MLT": {
+   "kind": "coverage_overlap",
+   "entity": "MLT",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Malta"
+  },
+  "coverage_overlap.burned_area_share_land.MNE": {
+   "kind": "coverage_overlap",
+   "entity": "MNE",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Montenegro"
+  },
+  "coverage_overlap.burned_area_share_land.MTQ": {
+   "kind": "coverage_overlap",
+   "entity": "MTQ",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Martinique"
+  },
+  "coverage_overlap.burned_area_share_land.MYT": {
+   "kind": "coverage_overlap",
+   "entity": "MYT",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Mayotte"
+  },
+  "coverage_overlap.burned_area_share_land.NLD": {
+   "kind": "coverage_overlap",
+   "entity": "NLD",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Nederland"
+  },
+  "coverage_overlap.burned_area_share_land.NOR": {
+   "kind": "coverage_overlap",
+   "entity": "NOR",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Norge"
+  },
+  "coverage_overlap.burned_area_share_land.POL": {
+   "kind": "coverage_overlap",
+   "entity": "POL",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Polen"
+  },
+  "coverage_overlap.burned_area_share_land.PRT": {
+   "kind": "coverage_overlap",
+   "entity": "PRT",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Portugal"
+  },
+  "coverage_overlap.burned_area_share_land.PSE": {
+   "kind": "coverage_overlap",
+   "entity": "PSE",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Palestina"
+  },
+  "coverage_overlap.burned_area_share_land.QAT": {
+   "kind": "coverage_overlap",
+   "entity": "QAT",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Qatar"
+  },
+  "coverage_overlap.burned_area_share_land.REU": {
+   "kind": "coverage_overlap",
+   "entity": "REU",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Réunion"
+  },
+  "coverage_overlap.burned_area_share_land.ROU": {
+   "kind": "coverage_overlap",
+   "entity": "ROU",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Romania"
+  },
+  "coverage_overlap.burned_area_share_land.SAU": {
+   "kind": "coverage_overlap",
+   "entity": "SAU",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Saudi-Arabia"
+  },
+  "coverage_overlap.burned_area_share_land.SRB": {
+   "kind": "coverage_overlap",
+   "entity": "SRB",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Serbia"
+  },
+  "coverage_overlap.burned_area_share_land.SVK": {
+   "kind": "coverage_overlap",
+   "entity": "SVK",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Slovakia"
+  },
+  "coverage_overlap.burned_area_share_land.SVN": {
+   "kind": "coverage_overlap",
+   "entity": "SVN",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Slovenia"
+  },
+  "coverage_overlap.burned_area_share_land.SWE": {
+   "kind": "coverage_overlap",
+   "entity": "SWE",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Sverige"
+  },
+  "coverage_overlap.burned_area_share_land.SYR": {
+   "kind": "coverage_overlap",
+   "entity": "SYR",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Syria"
+  },
+  "coverage_overlap.burned_area_share_land.TUN": {
+   "kind": "coverage_overlap",
+   "entity": "TUN",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Tunisia"
+  },
+  "coverage_overlap.burned_area_share_land.TUR": {
+   "kind": "coverage_overlap",
+   "entity": "TUR",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Tyrkia"
+  },
+  "coverage_overlap.burned_area_share_land.UKR": {
+   "kind": "coverage_overlap",
+   "entity": "UKR",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Ukraina"
+  },
+  "coverage_overlap.burned_area_share_land.XKX": {
+   "kind": "coverage_overlap",
+   "entity": "XKX",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Kosovo"
+  },
+  "coverage_overlap.burned_area_share_land.YEM": {
+   "kind": "coverage_overlap",
+   "entity": "YEM",
+   "series": [
+    "effis_rda_annual_burned_area_share_land",
+    "owid_annual_area_burnt_share_land"
+   ],
+   "n_series": 2,
+   "first_year": 2012,
+   "last_year": 2025,
+   "n_years": 14,
+   "indicator": "burned_area_share_land",
+   "entity_name": "Jemen"
   },
   "rank.cnfdb_annual_fire_count.CAN.2025": {
    "series_id": "cnfdb_annual_fire_count",

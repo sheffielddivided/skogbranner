@@ -25,6 +25,7 @@ import statusJson from "../../data/_status.json";
 // Regelen for å avgrense en kompositt ved den yngste enden bor i sin egen rene
 // modul, slik at den kan testes uten Astro og uten datafilene. Se § 9.
 export { visningsgrense, visningspunkter } from "./visning.ts";
+import { sammenlignPeriode } from "./visning.ts";
 
 export interface Observasjon {
   entity: string;
@@ -188,6 +189,28 @@ export function fotnotetekst(kode: string): string {
   return tekst;
 }
 
+/**
+ * Vindusbredden i glattingen, lest av fotnoteteksten som oppgir den.
+ *
+ * Bredden har to hjem etter § 9: `hw` i etl/sources/k10_gcd.R, og
+ * fotnoteteksten i data/_footnotes.json, som skal endres i samme commit.
+ * Brødteksten skal ikke bli et tredje — den leser tallet her.
+ *
+ * Kaster hvis fotnoteteksten ikke lenger oppgir et tall. Da har noen skrevet
+ * om forbeholdet, og setningen i brødteksten kan ikke lenger fylles.
+ */
+export function glattingsvindu(): number {
+  const tekst = fotnotetekst("f_smoothed");
+  const treff = tekst.match(/(\d+)\s*år/);
+  if (!treff) {
+    throw new Error(
+      "Fotnoten f_smoothed oppgir ikke lenger vindusbredden i år. " +
+        "Setningen om glattingen kan ikke fylles (P3).",
+    );
+  }
+  return Number(treff[1]);
+}
+
 /** Alle fotnotekoder som finnes, i den rekkefølgen de står i filen. */
 export function alleFotnoter(): [string, string][] {
   return Object.entries(fotnotetekster);
@@ -261,11 +284,17 @@ export function avledetTall(id: string, felt: string): number {
   return verdi;
 }
 
-/** Observasjoner for én serie og én entitet, sortert på periode. */
+/**
+ * Observasjoner for én serie og én entitet, i tidsrekkefølge.
+ *
+ * Sorteringen går gjennom sammenlignPeriode, som leser året som tall med
+ * fortegn. En strengsortering ville lagt «990» sist og «-10» først i K10, og
+ * da ville «det yngste punktet» vært et annet punkt enn det figuren tegner.
+ */
 export function serie(seriesId: string, entity: string): Observasjon[] {
   return observasjoner
     .filter((o) => o.series_id === seriesId && o.entity === entity)
-    .sort((a, b) => a.period.localeCompare(b.period));
+    .sort((a, b) => sammenlignPeriode(a.period, b.period));
 }
 
 /**

@@ -206,6 +206,12 @@ export function globaleSerier() {
         tekst: "Åpent punkt: inneværende år, som ikke er omme.",
       },
     ],
+    // Figuren tegner både beta og measured. Bruddet er markert med opasitet,
+    // og markeringen står i tegnforklaringen (§ 6).
+    kvalitetsforklaring: {
+      beta: "FireCCILT11 er tegnet svakere fordi produsenten selv merker datasettet som foreløpig.",
+      measured: "Satellittmålt brent areal.",
+    },
     tabell: {
       beskrivelse:
         "Globalt brent areal i km² per år og produkt. «Ingen data» betyr at " +

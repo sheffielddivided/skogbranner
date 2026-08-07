@@ -19,6 +19,7 @@ import json
 
 from etl.schema import (
     GEO_COORD_DECIMALS,
+    GEO_DIR,
     GEO_EUROPE_JSON,
     GEO_EUROPE_SIMPLIFY_TOLERANCE_DEG,
     GEO_MIN_RING_POINTS,
@@ -70,33 +71,73 @@ def _rund(punkter):
     ]
 
 
-def _ring(ring, toleranse):
-    """Én forenklet ring, eller None hvis den ikke lenger er en flate.
+def _ringer(geometri):
+    """Ringene i en geometri, med posisjonen sin, så de kan settes tilbake."""
+    type_ = geometri["type"]
+    if type_ == "Polygon":
+        return [((i,), ring) for i, ring in enumerate(geometri["coordinates"])]
+    if type_ == "MultiPolygon":
+        return [
+            ((i, j), ring)
+            for i, polygon in enumerate(geometri["coordinates"])
+            for j, ring in enumerate(polygon)
+        ]
+    raise ValueError(f"uventet geometritype: {type_}")
+
+
+def behold_punkter(geometrier, toleranse):
+    """Punktene forenklingen skal beholde, bestemt på tvers av alle ringene.
+
+    **Dette er det som holder nabolandene sammen.** Natural Earth deler
+    koordinater eksakt mellom naboer: samme punkt ligger i begge landenes ring.
+    Forenkles hver ring for seg, kan Douglas–Peucker beholde et punkt i det ene
+    landet og forkaste det i det andre. Grensen river seg da fra hverandre, og
+    kartet får en hvit stripe mellom to land som deler grense.
+
+    Derfor avgjøres punktene én gang, felles: et punkt beholdes hvis **minst
+    én** ring trenger det. Da får begge naboene nøyaktig samme punktrekke langs
+    den delte grensen, og stripen kan ikke oppstå.
+
+    Prisen er at en ring kan beholde et punkt dens egen form ikke trengte.
+    Det er en billig pris for en grense som holder.
+    """
+    behold = set()
+    for geometri in geometrier:
+        for _, ring in _ringer(geometri):
+            for punkt in forenkle(_rund(ring), toleranse):
+                behold.add((punkt[0], punkt[1]))
+    return behold
+
+
+def _ring(ring, behold):
+    """Én ring med bare de punktene som skal beholdes.
 
     En ring som faller under GEO_MIN_RING_POINTS punkter, har ingen flate igjen
     å tegne. Da utelates den heller enn å bli en strek.
     """
-    forenklet = _rund(forenkle(list(ring), toleranse))
-    if forenklet and forenklet[0] != forenklet[-1]:
-        forenklet.append(forenklet[0])
-    if len(forenklet) < GEO_MIN_RING_POINTS:
+    rundet = _rund(ring)
+    igjen = [p for p in rundet if (p[0], p[1]) in behold]
+    if igjen and igjen[0] != igjen[-1]:
+        igjen.append(igjen[0])
+    if len(igjen) < GEO_MIN_RING_POINTS:
         return None
-    return forenklet
+    return igjen
 
 
-def forenkle_geometri(geometri, toleranse=GEO_SIMPLIFY_TOLERANCE_DEG):
-    """Forenkler en GeoJSON-geometri. Returnerer None hvis alt forsvant."""
+def forenkle_geometri(geometri, behold):
+    """Forenkler en GeoJSON-geometri mot et felles punktutvalg.
+
+    Returnerer None hvis alt forsvant.
+    """
     type_ = geometri["type"]
     if type_ == "Polygon":
-        ringer = [
-            r for r in (_ring(ring, toleranse) for ring in geometri["coordinates"]) if r
-        ]
+        ringer = [r for r in (_ring(ring, behold) for ring in geometri["coordinates"]) if r]
         return {"type": "Polygon", "coordinates": ringer} if ringer else None
 
     if type_ == "MultiPolygon":
         flater = []
         for polygon in geometri["coordinates"]:
-            ringer = [r for r in (_ring(ring, toleranse) for ring in polygon) if r]
+            ringer = [r for r in (_ring(ring, behold) for ring in polygon) if r]
             if ringer:
                 flater.append(ringer)
         return {"type": "MultiPolygon", "coordinates": flater} if flater else None
@@ -140,11 +181,19 @@ def bygg(sti=None, toleranse=GEO_SIMPLIFY_TOLERANCE_DEG, entiteter=None):
     geometrier, utelatt = k6_natural_earth.geometrier(sti)
     land = _land()  # fasit for hvilke entiteter som finnes (§ 6)
 
+    valgte = [
+        (kode, geometri)
+        for kode, geometri in geometrier
+        if entiteter is None or kode in entiteter
+    ]
+
+    # Punktene avgjøres først, på tvers av alle ringene, slik at delte grenser
+    # beholder samme punktrekke i begge landene. Se behold_punkter().
+    behold = behold_punkter([g for _, g in valgte], toleranse)
+
     per_kode = {}
-    for kode, geometri in geometrier:
-        if entiteter is not None and kode not in entiteter:
-            continue
-        forenklet = forenkle_geometri(geometri, toleranse)
+    for kode, geometri in valgte:
+        forenklet = forenkle_geometri(geometri, behold)
         if forenklet is None:
             continue
         flater = (
@@ -221,6 +270,31 @@ def _rapporter(sammendrag, sti, hva):
         )
 
 
+def kandidater(toleranser, sti=None):
+    """Skriver verdenskartet ved flere terskler, til sammenligning.
+
+    Forenklingen skal velges av hvordan kartet ser ut, ikke av et tall. Da
+    trengs det noe å se på. Filene er midlertidige og skal ikke bli liggende.
+    """
+    for toleranse in toleranser:
+        features, sammendrag = bygg(sti, toleranse=toleranse)
+        navn = f"kandidat-{str(toleranse).replace('.', '_')}.json"
+        sti_ut = skriv(
+            features,
+            sammendrag,
+            GEO_DIR / navn,
+            toleranse,
+            f"Midlertidig kandidat ved toleranse {toleranse}°, til å velge "
+            "forenkling av. Skal ikke publiseres.",
+        )
+        print(
+            f"kandidat {toleranse}°: {sammendrag['points']} punkter, "
+            f"{sammendrag['entities']} entiteter, "
+            f"{len(sammendrag['missing_geometry'])} uten flate → "
+            f"{sti_ut.name} ({sti_ut.stat().st_size / 1024:.0f} KiB)"
+        )
+
+
 def main():
     """Bygger begge kartfilene av samme nedlasting.
 
@@ -228,7 +302,13 @@ def main():
     så én piksel dekker ulikt mange grader og forenklingen er ikke den samme.
     Tersklene står i schema.py.
     """
+    import sys
+
     k6_natural_earth.hent()
+
+    argv = sys.argv[1:]
+    if argv and argv[0] == "--kandidater":
+        return kandidater([float(x) for x in argv[1].split(",")])
 
     features, sammendrag = bygg()
     sti = skriv(features, sammendrag)

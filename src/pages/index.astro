@@ -38,6 +38,7 @@ import {
   avledetTall,
   alleKilder,
   alleFotnoter,
+  glattingsvindu,
 } from "../lib/data";
 import { datafiler } from "../lib/katalog";
 import { tall, pverdi, desimaltall } from "../lib/format";
@@ -68,10 +69,14 @@ const storste = (konsentrasjon.entities as { entity_name: string }[])
   .slice(0, 3)
   .map((e) => e.entity_name);
 
-// Nivåforskjellen vises i det siste året alle tre seriene dekker, ikke som et
+// Nivåforskjellen vises i det siste året alle seriene dekker, ikke som et
 // gjennomsnitt. Et årsgjennomsnitt er ikke en tillatt avledning (§ 7), og et
 // felles år er dessuten en sammenligning leseren kan etterprøve i figuren.
-const NIVAA_AAR = 2018;
+//
+// Hvilket år det er, følger av dekningen og står som egen avledning — ikke som
+// en konstant her, som ville blitt stille gal den dagen en serie utvides.
+const overlapp = avledning("coverage_overlap.burned_area_km2.WLD");
+const NIVAA_AAR = overlapp.last_year as number;
 const nivaa = [
   { navn: "FireCCILT11", id: `rank.firecci_lt11_annual_burned_area.WLD.${NIVAA_AAR}` },
   { navn: "GFED5", id: `rank.gfed5_annual_burned_area.WLD.${NIVAA_AAR}` },
@@ -87,6 +92,33 @@ const trendK9 = avledning("trend.gfed5_annual_burned_area.WLD");
 const trendK1 = avledning("trend.owid_annual_area_burnt.WLD");
 
 const manglerK8 = (dekningK8.missing_years as number[]).join(", ");
+
+// Spennene S5 avslutter med. Årstallene kommer fra dekningsavledningene, og
+// spennet er regnet av dem — ikke rundet av til «førti år» (P3).
+const dekningK5 = avledning("coverage.nifc_annual_burned_area.USA");
+const dekningK7 = avledning("coverage.nbac_annual_burned_area.CAN");
+const spenn = (fra: number, til: number) => til - fra + 1;
+const satellittSpenn = spenn(
+  Math.min(
+    dekningK8.first_year as number,
+    dekningK9.first_year as number,
+    dekningK1.first_year as number,
+  ),
+  Math.max(
+    dekningK8.last_year as number,
+    dekningK9.last_year as number,
+    dekningK1.last_year as number,
+  ),
+);
+const nasjonaltSpenn = spenn(
+  Math.min(dekningK5.first_year as number, dekningK7.first_year as number),
+  Math.max(dekningK5.last_year as number, dekningK7.last_year as number),
+);
+const kullSpenn = spenn(figur12.fra, figur12.til);
+
+// Vindusbredden står i fotnoten under figuren. Brødteksten leser den derfra,
+// framfor å bli en tredje kopi av tallet (§ 9).
+const vindu = glattingsvindu();
 const aarFoer =
   (dekningK9.first_year as number) - (dekningK8.first_year as number);
 const aarEtter =
@@ -152,7 +184,9 @@ const [s1, s2, s3, s4, s5, s6] = seksjoner;
 
       <h3>Hvorfor de ligger på ulikt nivå</h3>
       <p>
-        {NIVAA_AAR} er det siste året alle tre dekker. Der viser{" "}
+        <span data-derivation="coverage_overlap.burned_area_km2.WLD"
+          >{NIVAA_AAR} er det siste året alle tre dekker</span
+        >. Der viser{" "}
         {
           nivaa.map((s, i) => (
             <>
@@ -565,7 +599,9 @@ const [s1, s2, s3, s4, s5, s6] = seksjoner;
       <p>
         Høyden i én rute kan ikke sammenlignes med høyden i en annen. Hver rute
         har sin egen skala, og produktene ligger dessuten på ulikt nivå for
-        samme år. I {NIVAA_AAR}, det siste året alle tre dekker, viser{" "}
+        samme år. I <span data-derivation="coverage_overlap.burned_area_km2.WLD"
+          >{NIVAA_AAR}, det siste året alle tre dekker</span
+        >, viser{" "}
         {
           nivaa.map((s, i) => (
             <>
@@ -686,7 +722,8 @@ const [s1, s2, s3, s4, s5, s6] = seksjoner;
         } av dem der grunnlaget er tettest. Hver kjerne har sin egen skala, for
         noen innsjøer samler mer kull enn andre uansett hvor mye det brenner. Hver
         kjerne er derfor omregnet til hvor mange standardavvik den ligger over
-        eller under sitt eget gjennomsnitt, og kurven er snittet av dem.
+        eller under sitt eget gjennomsnitt — en <strong>z-score</strong> — og
+        kurven er snittet av dem.
       </p>
       <p>
         Derfor er den loddrette aksen enhetsløs. Verdien 0 betyr «midt på treet
@@ -706,10 +743,11 @@ const [s1, s2, s3, s4, s5, s6] = seksjoner;
         null. Denne kan ikke.
       </p>
       <p>
-        Hvert punkt er et glidende gjennomsnitt over 500 år til hver side. En
-        topp er ikke én brannsesong og ikke ett år; det er tusen år lagt sammen.
-        To punkter som ligger nær hverandre, bygger dessuten på mange av de
-        samme kjernene og er ikke uavhengige.
+        Hvert punkt er et glidende gjennomsnitt over {tall(vindu)} år til hver
+        side. En topp er ikke én brannsesong og ikke ett år; det er {
+          tall(vindu * 2)
+        } år lagt sammen. To punkter som ligger nær hverandre, bygger dessuten
+        på mange av de samme kjernene og er ikke uavhengige.
       </p>
       <p>
         Av samme grunn er det ikke regnet noen trend for kurven. En
@@ -736,16 +774,24 @@ const [s1, s2, s3, s4, s5, s6] = seksjoner;
         inn i en annen.
       </p>
       <p>
-        <strong>Satellittene</strong> måler areal direkte, over hele kloden, i førti
-        år.
+        <strong>Satellittene</strong> måler areal direkte, over hele kloden, i{" "}
+        <span
+          data-derivation="coverage.firecci_lt11_annual_burned_area.WLD"
+          >{tall(satellittSpenn)} år</span
+        >.
       </p>
       <p>
-        <strong>De nasjonale seriene</strong> teller det landene selv har registrert,
-        i to land, i femti år.
+        <strong>De nasjonale seriene</strong> teller det landene selv har
+        registrert, i to land, i <span
+          data-derivation="coverage.nbac_annual_burned_area.CAN"
+          >{tall(nasjonaltSpenn)} år</span
+        >.
       </p>
       <p>
-        <strong>Kullindeksen</strong> er et indirekte spor, uten enhet, over åtte
-        tusen år.
+        <strong>Kullindeksen</strong> er et indirekte spor, uten enhet, over{" "}
+        <span data-derivation="coverage.gcd_charcoal_composite.WLD"
+          >{tall(kullSpenn)} år</span
+        >.
       </p>
       <p>
         En kurve som gikk fra sedimenter til satellitter i én strek, ville sett
@@ -829,6 +875,13 @@ const [s1, s2, s3, s4, s5, s6] = seksjoner;
         <dd>
           Den delen av året da det brenner mest et bestemt sted. Når på året det
           er, varierer fra verdensdel til verdensdel.
+        </dd>
+
+        <dt>Kumulativ kurve</dt>
+        <dd>
+          En kurve som legger sammen etter hvert som den går: ved uke 10 viser
+          den alt som er kommet til i de ti første ukene. Den synker aldri, og
+          det den forteller, er hvor bratt den stiger og når.
         </dd>
 
         <dt>Median</dt>
