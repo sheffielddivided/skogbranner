@@ -808,3 +808,93 @@ a:visited {
   height: 0;
   translate: 0 0.45rem;
 }
+
+/* --- S6 Om dataene --- */
+
+.kildeoversikt {
+  display: grid;
+  gap: 1rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.kildekort {
+  border: 1px solid var(--farge-kant);
+  border-radius: 4px;
+  padding: 1rem 1.25rem 1.25rem;
+}
+
+.kildekort h4 {
+  margin: 0 0 0.75rem;
+  font-size: 1.05rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* Fakta om kilden, som par. På smal skjerm legger de seg under hverandre. */
+.kildefakta {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.15rem 1rem;
+  margin: 0;
+  font-size: 0.92rem;
+}
+
+.kildefakta dt {
+  color: var(--farge-tekst-svak);
+}
+
+.kildefakta dd {
+  margin: 0;
+}
+
+.kilde-avtale,
+.kilde-merknad {
+  margin: 0.75rem 0 0;
+  font-size: 0.92rem;
+  color: var(--farge-tekst-svak);
+}
+
+/* Siteringen skal gjengis ordrett, og skilles derfor visuelt fra vår egen
+   tekst — leseren skal se hvor kildens ord begynner (§ 5). */
+.kilde-sitering {
+  margin: 0.75rem 0 0;
+  padding-left: 0.75rem;
+  border-left: 2px solid var(--farge-kant);
+  font-size: 0.92rem;
+}
+
+.ordliste,
+.forbeholdsliste {
+  margin: 1rem 0 1.5rem;
+}
+
+.ordliste dt,
+.forbeholdsliste dt {
+  font-weight: 600;
+  margin-top: 0.85rem;
+}
+
+.ordliste dd,
+.forbeholdsliste dd {
+  margin: 0.2rem 0 0;
+}
+
+.forbeholdsliste dt code {
+  font-weight: 400;
+  font-size: 0.92rem;
+}
+
+.filtabell-tall {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.filmerknad {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.9rem;
+  color: var(--farge-tekst-svak);
+}

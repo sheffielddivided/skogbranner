@@ -5,6 +5,10 @@
  * Kildene leses fra data/_sources.json, slik at en ny kilde dukker opp her av
  * seg selv. Siteringer som må gjengis ordrett, står uendret — ikke oversatt,
  * ikke forkortet (§ 5).
+ *
+ * Ansvarsfraskrivelsen her er en juridisk ansvarsbegrensning, ikke et metodisk
+ * forbehold. De metodiske står som nummererte fotnoter under hver figur, og
+ * samlet i S6 — P6 forbyr å flytte dem hit.
  */
 import kilderJson from "../../data/_sources.json";
 import type { Kilde } from "../lib/data";
@@ -50,7 +54,18 @@ const REPO = "https://github.com/sheffielddivided/skogbranner";
     </p>
     <p>
       Dette er et privat, ikke-kommersielt prosjekt uten tilknytning til noen
-      arbeidsgiver. <a href={REPO} rel="noreferrer">Kildekoden ligger på GitHub</a>.
+      arbeidsgiver eller organisasjon.
+    </p>
+    <p>
+      Siden gir ingen garanti for at dataene er fullstendige eller nøyaktige.
+      Tallene er hentet fra kildene slik de forelå på nedlastingstidspunktet, og
+      kildene revideres.
+    </p>
+    <p>
+      Spørsmål og feilmeldinger tas som issues på
+      <a href={`${REPO}/issues`} rel="noreferrer">GitHub</a>. Det finnes ingen
+      annen kontaktvei. <a href={REPO} rel="noreferrer">Kildekoden ligger samme
+      sted</a>.
     </p>
     <p>
       Siden laster ingenting fra andre nettsteder. Den bruker ikke
