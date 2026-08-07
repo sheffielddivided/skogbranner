@@ -1419,6 +1419,8 @@ sluttbrukeravtale tas ikke inn før avtalen er avklart og notert i
 - `src/lib/figurkontroll.ts` — byggekontrollen av kvalitetsbrudd per figur
   (§ 6), med test i `figurkontroll.test.ts`
 - `src/lib/csv.ts` — figurens egen CSV, med test i `csv.test.ts`
+- `src/lib/kartutsnitt.ts` — det faste utsnittet et kart tegnes i, med test i
+  `kartutsnitt.test.ts`
 - `src/figurer/overskriftstall.ts` og `globaltBrentAreal.ts` — S1s to figurer
 - `src/figurer/kartBrentAreal.ts` og `rangering.ts` — S2s to figurer
 - `src/figurer/sesongprofil.ts` og `kumulativUke.ts` — S3s to figurer
@@ -1511,12 +1513,48 @@ Douglas–Peucker og skriver `data/geo/verden.json`. Jobben kjøres av
 megabyte, og T4 gjelder. Geometrien bygges bare på nytt når Natural Earth gir
 ut en ny versjon, eller når tersklene i `schema.py` endres.
 
-**24 entiteter i `land_no.json` har ingen flate.** Ni av dem er aggregater —
-verden og regionene — som K6 ikke leverer geometri for. De femten øvrige er så
-små at de forsvinner i forenklingen: Monaco er 2 km², og ingen verdensmålestokk
-viser det. De har fortsatt tall i tabellen, og kartfiguren sier i klartekst
-hvilke det gjelder. Settet beregnes ved kjøring og står i `summary` i
-`verden.json`.
+**Forenklingen er topologibevarende.** Natural Earth deler koordinater eksakt
+mellom naboland. Forenkles hver ring for seg, kan Douglas–Peucker beholde et
+punkt i det ene landet og forkaste det i det andre, og grensen river seg fra
+hverandre. Punktene avgjøres derfor som union over alle ringene: et punkt
+beholdes hvis minst én ring trenger det.
+
+Prisen er synlig i filen. Ved samme toleranse er unionsbygget større enn en
+forenkling per ring, og hele veksten er punkter naboen får tilbake — 5 335
+delte koordinater blir 7 037. Filen vokser fordi grensene henger sammen.
+
+**En ring som har mistet flaten sin, tegnes ikke.** Punkttellingen alene fanget
+ikke det: en grensesplint på fire punkter teller like høyt som en øy på fire, og
+en splint som overlever som en nesten rett trekant har tilfeldig fortegn på
+arealet. Tegneren avgjør innsiden av en flate på kloden av viklingsretningen, så
+en vrengt ring dekker resten av kloden i stedet for seg selv, og hele kartet blir
+én farge. `_ring()` sammenligner derfor fortegnet med ringen den kom fra.
+Kontrollen er ikke teoretisk — den slår ut på DMZ-stripen i Korea, Kypros og
+Syria fra 0,10° og oppover.
+
+**Tersklene er valgt av rendrede kart.** Verdenskartet ligger på
+`GEO_SIMPLIFY_TOLERANCE_DEG`, Europa-kartet på
+`GEO_EUROPE_SIMPLIFY_TOLERANCE_DEG`, og begge ligger like under der
+forenklingen begynner å synes i den størrelsen leseren faktisk ser kartet.
+Prøvesteinen er den greske øygruppen: ved neste trinn oppover er de fleste øyene
+borte. Europa-kartet tegner et nærmere utsnitt på samme flate og tåler derfor
+mindre.
+
+Filstørrelsen er en konsekvens av valget, ikke målet det er valgt etter. Den er
+heller ikke bare geometriens: hver kartfigur tegner geometrien åtte ganger — to
+visninger, hver i to størrelser, hver i to lag — så en fil på en halv megabyte
+blir flere megabyte DOM.
+
+**Noen entiteter i `land_no.json` har ingen flate.** Ni av dem er aggregater —
+verden og regionene — som K6 ikke leverer geometri for. Resten er så små at de
+forsvinner i forenklingen: Monaco er 2 km², og ingen verdensmålestokk viser det.
+De har fortsatt tall i tabellen, og kartfiguren sier i klartekst hvilke det
+gjelder. Settet beregnes ved kjøring og står i `summary` i `verden.json`.
+
+Antallet følger terskelen, og det er den ene kostnaden ved å forenkle som
+leseren faktisk får se. Europa-kartet har derfor en strengere grense enn
+verdenskartet: det skal vise nøyaktig de landene EFFIS-serien dekker, så et
+EFFIS-land uten flate er ikke et akseptabelt utfall.
 
 **S2 er ferdig.** Kartet har to visninger — brent areal i km² og andel av
 landarealet — og bryteren mellom dem er radioknapper og CSS, uten skript.
@@ -1551,7 +1589,17 @@ etterpå.
 
 **S4 er ferdig, med ett unntak.** Kartet tegner EFFIS-området på den finere
 geometrien, med samme bryter som S2. Utsnittet er fast og ikke tilpasset
-dataene, slik at to årganger kan sammenlignes. De seks oversjøiske områdene
+dataene, slik at to årganger kan sammenlignes.
+
+Ruten som låser utsnittet bygges av `utsnittsflate()` i `src/lib/kartutsnitt.ts`.
+Den vikles slik tegneren forventer, og det er ikke en detalj: viklet motsatt vei
+er ruten hele kloden utenom ruten, projeksjonen krymper til null, og hvert land
+tegnes i samme punkt. Kartet blir da en prikk uten at noe feiler underveis —
+geometrien ligger der, hver flate er tegnet, alle sammen oppå hverandre.
+`kartutsnitt.test.ts` måler hvor stor flate utsnittet faktisk dekker, fordi det
+er den eneste kontrollen som ser forskjellen.
+
+De seks oversjøiske områdene
 kilden fører — Réunion, Mayotte, Guadeloupe, Martinique, Saint-Martin og
 Guyana — ligger utenfor utsnittet og sies i klartekst under kartet. Settet
 regnes av geometrien ved kjøring.

@@ -147,12 +147,18 @@ COMPOSITE_MIN_SERIES_SHARE = 0.5
 # CLAUDE.md § 12.
 #
 # Toleranse i grader. Ett desimalgrad er om lag 111 km ved ekvator.
-GEO_SIMPLIFY_TOLERANCE_DEG = 0.05
+#
+# Terskelen er valgt av rendrede kart, ikke av en filstørrelse: den ligger like
+# under der forenklingen begynner å synes. Den greske øygruppen er prøvesteinen
+# — ved 0,15° er de fleste øyene borte, ved 0,10° er de tynnere, men fortsatt en
+# øygruppe.
+GEO_SIMPLIFY_TOLERANCE_DEG = 0.10
 
 # Europa-kartet i S4 tegner et mindre område på samme flate, så én piksel
 # dekker færre grader og forenklingen må være finere for at små land skal
-# beholde formen sin.
-GEO_EUROPE_SIMPLIFY_TOLERANCE_DEG = 0.02
+# beholde formen sin. Utsnittet er om lag fire ganger så nært som
+# verdenskartets, og terskelen følger det.
+GEO_EUROPE_SIMPLIFY_TOLERANCE_DEG = 0.05
 #
 # Antall desimaler koordinatene rundes til. Tre desimaler er om lag 100 meter.
 GEO_COORD_DECIMALS = 3

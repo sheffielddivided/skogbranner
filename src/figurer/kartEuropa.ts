@@ -21,6 +21,7 @@ import {
   type Observasjon,
 } from "../lib/data";
 import { tilSvg } from "../lib/plot";
+import { utsnittsflate } from "../lib/kartutsnitt";
 import { tall, desimaltall } from "../lib/format";
 import type { Visning } from "./kartBrentAreal";
 
@@ -97,21 +98,11 @@ function tegn(
     margin: 0,
     style: { background: "transparent", fontSize: "12px" },
     // Utsnittet er fast, ikke tilpasset dataene: kartet skal se likt ut fra år
-    // til år, slik at to årganger kan sammenlignes.
+    // til år, slik at to årganger kan sammenlignes. Ruten bygges av
+    // utsnittsflate(), som vikler den slik tegneren forventer.
     projection: {
       type: "conic-conformal",
-      domain: {
-        type: "Polygon",
-        coordinates: [
-          [
-            [UTSNITT.vest, UTSNITT.sor],
-            [UTSNITT.ost, UTSNITT.sor],
-            [UTSNITT.ost, UTSNITT.nord],
-            [UTSNITT.vest, UTSNITT.nord],
-            [UTSNITT.vest, UTSNITT.sor],
-          ],
-        ],
-      },
+      domain: utsnittsflate(UTSNITT),
     },
     color: {
       type: "threshold",

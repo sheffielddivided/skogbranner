@@ -109,6 +109,34 @@ class Geometri(unittest.TestCase):
             self.assertEqual(x, round(x, GEO_COORD_DECIMALS))
             self.assertEqual(y, round(y, GEO_COORD_DECIMALS))
 
+    def test_en_ring_som_har_vrengt_seg_tas_ut(self):
+        """En splint som overlever som en nesten rett trekant, tegnes ikke.
+
+        Grensesplinter i kartdataene forenkles til noen få punkter som ligger
+        nesten på linje. Fortegnet på arealet er da tilfeldig, og en ring som
+        har byttet fortegn dekker hele kloden i stedet for seg selv.
+        """
+        splint = [[0, 0], [2, 0.02], [4, 0], [2, 0.01], [0, 0]]
+        self.assertLess(geo.signert_areal(splint), 0)
+
+        # Fire punkter igjen, altså nok til å passere punkttellingen, men det
+        # ene av de to som bar formen er borte, og ringen vikler seg motsatt.
+        vrengt = geo._ring(splint, {(0, 0), (4, 0), (2, 0.01)})
+        self.assertIsNone(vrengt)
+
+    def test_en_ring_som_beholder_viklingen_blir_staaende(self):
+        ring = [[0, 0], [10, 0], [10, 10], [0, 10], [0, 0]]
+        behold = {(p[0], p[1]) for p in ring}
+        ut = geo._ring(ring, behold)
+        self.assertIsNotNone(ut)
+        self.assertGreater(geo.signert_areal(ut) * geo.signert_areal(ring), 0)
+
+    def test_signert_areal_skiller_de_to_retningene(self):
+        med_klokken = [[0, 0], [0, 1], [1, 1], [1, 0], [0, 0]]
+        mot_klokken = list(reversed(med_klokken))
+        self.assertLess(geo.signert_areal(med_klokken), 0)
+        self.assertGreater(geo.signert_areal(mot_klokken), 0)
+
     def test_ukjent_geometritype_avvises(self):
         with self.assertRaises(ValueError):
             geo.forenkle_geometri({"type": "LineString", "coordinates": []}, set())
@@ -134,8 +162,9 @@ class DelteGrenser(unittest.TestCase):
         """
         grense = [[5, 0], [5, 3], [5.04, 5], [5, 7], [5, 10]]
         vest = [[0, 0]] + grense + [[0, 10], [0, 0]]
-        # Øst leser den samme grensen andre veien, slik kartdata gjør.
-        ost = [[10, 0]] + list(reversed(grense)) + [[10, 10], [10, 0]]
+        # Øst leser den samme grensen andre veien, slik kartdata gjør. Ringen
+        # går derfor rundt den andre veien også — ellers krysser den seg selv.
+        ost = [[10, 0], [10, 10]] + list(reversed(grense)) + [[10, 0]]
         return (
             {"type": "Polygon", "coordinates": [vest]},
             {"type": "Polygon", "coordinates": [ost]},
