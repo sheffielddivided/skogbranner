@@ -1405,6 +1405,8 @@ sluttbrukeravtale tas ikke inn før avtalen er avklart og notert i
   — S4s tre figurer
 - `src/komponenter/Sammenligning.astro` — figur med avkryssing av land, uten
   skript
+- `src/figurer/globaleSerier.ts`, `nasjonaleSerier.ts` og `kullindeks.ts` —
+  S5s tre figurer
 - `src/komponenter/Kart.astro` — kart med bryter mellom to visninger, uten
   skript, og `Rangering.astro` — sorterbar tabell, lesbar uten skript
 - `src/pages/data/figur/[figur].csv.ts` — skriver én CSV per figur ved bygging
@@ -1468,9 +1470,8 @@ Nivåforskjellen vises som tre verdier for samme år, ikke som årsgjennomsnitt.
 Et gjennomsnitt er ikke en tillatt avledning (§ 7), og et felles år er
 dessuten en sammenligning leseren kan etterprøve i figuren selv.
 
-**Ikke implementert:** S5 og S6 har overskrift og en merknad om at de ikke er
-laget, så K5 og K7 ligger i datasettet uten at noen seksjon viser dem ennå.
-Det samme gjelder `fire_count`.
+**Ikke implementert:** S6 har overskrift og en merknad om at den ikke er laget.
+`fire_count` ligger i datasettet uten at noen figur viser det ennå.
 
 **Avledningene er i bruk i S1, S2 og S3.** Hvert tall i teksten er fylt fra
 `insights.json`, og setningen bærer id-en i `data-derivation` (P3). Finnes
@@ -1567,4 +1568,32 @@ Fordelingen skal **ikke** tilnærmes fra landtotaler. Andelen fra de største
 brannene kan ikke regnes av en sum; et anslag ville vært et tall siden ikke
 har målt, og det er nettopp det P3 forbyr.
 
-**Neste steg:** S5 — den lange linjen, med seriene hver for seg.
+**S5 er ferdig.** Tre figurer, ingen av dem en gjentakelse av S1s
+oversiktsfigur: de globale satellittproduktene i hver sin rute, de to lange
+nasjonale seriene i hver sin, og kullkompositten alene.
+
+Hver rute har sin egen loddrette skala, mens tidsaksen er felles innenfor hver
+figur. Da blir ulik dekningsperiode synlig i seg selv — K1s fjorten år tar en
+liten del av en akse som begynner i 1982 — uten at høydene kan leses mot
+hverandre. Teksten sier det samme i klartekst.
+
+**Kullfiguren er bygget mot én bestemt feillesning.** At kurven leses som
+«brent areal over tid», er det mest sannsynlige som kan gå galt, og figuren
+motvirker det på fire steder: tittelen sier hva verdien er og ikke er, aksen
+er navngitt i standardavvik, nullinjen er merket som seriens eget
+gjennomsnitt, og ingen km²-verdi finnes i figuren — heller ikke i tabellen
+eller i tooltipen. Teksten forklarer i tillegg hva en proxy er, at skalaen
+ikke har noe nullpunkt for «ingen brann», og at hvert punkt er tusen år lagt
+sammen.
+
+Kompositten avgrenses ved den yngste enden, av regelen i `src/lib/visning.ts`.
+Med dagens datasett trimmes ett punkt bort, og visningen stopper i 1990.
+
+**Årstall kan bære fortegn, og det bet nesten.** `aarstall()` i
+`src/lib/format.ts` leste fire tegn av perioden, som gjorde «-6050» til år
+−605 uten å feile noe sted. Funksjonen tar nå fortegnet med, og
+`aarstallTekst()` skriver negative år som «6050 fvt» i aksemerker, kildelinjer
+og tabeller. Begge har test i `format.test.ts`.
+
+**Neste steg:** S6 — om dataene, med kildeoversikt, ordliste, alle fotnoter
+samlet og nedlastingslenker til de bearbeidede filene.

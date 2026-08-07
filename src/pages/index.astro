@@ -9,8 +9,8 @@
  * data/processed/insights.json, og setningen bærer id-en til avledningen i
  * data-derivation (P3).
  *
- * S1 til S4 har innhold. De øvrige står med overskrift og en merknad om at de
- * ikke er laget ennå.
+ * S1 til S5 har innhold. S6 står med overskrift og en merknad om at den ikke
+ * er laget ennå.
  */
 import Side from "../layouts/Side.astro";
 import Figur from "../komponenter/Figur.astro";
@@ -29,6 +29,9 @@ import {
   kartEuropa,
   landsammenligning,
   rangeringEuropa,
+  globaleSerier,
+  nasjonaleSerier,
+  kullindeks,
 } from "../figurer";
 import { avledning, avledetTall } from "../lib/data";
 import { tall, pverdi, desimaltall } from "../lib/format";
@@ -42,6 +45,14 @@ const figur6 = kumulativUke();
 const figur7 = kartEuropa();
 const figur8 = landsammenligning();
 const figur9 = rangeringEuropa();
+const figur10 = globaleSerier();
+const figur11 = nasjonaleSerier();
+const figur12 = kullindeks();
+
+// Trendene i S5 gjelder hver sin serie, hver sin kilde og hver sin periode
+// (§ 7). De hentes hver for seg, og setningene bærer id-en (P3).
+const trendK5 = avledning("trend.nifc_annual_burned_area.USA");
+const trendK7 = avledning("trend.nbac_annual_burned_area.CAN");
 
 // Konsentrasjonen navngir de største landene. Det er en tillatt avledning
 // (§ 7); en rangering av land mot hverandre er det ikke, og teksten sier
@@ -75,7 +86,7 @@ const aarFoer =
 const aarEtter =
   (dekningK9.last_year as number) - (dekningK8.last_year as number);
 
-const [s1, s2, s3, s4, ...resten] = seksjoner;
+const [s1, s2, s3, s4, s5, ...resten] = seksjoner;
 ---
 
 <Side
@@ -499,6 +510,231 @@ const [s1, s2, s3, s4, ...resten] = seksjoner;
         Tabellen viser rekkefølgen mellom landene i det siste hele året.
         Rekkefølgen er en sortering, ikke en avledning: siden rangerer år
         innenfor ett land, ikke land mot hverandre.
+      </p>
+    </div>
+  </section>
+
+  <section class="seksjon" id={s5!.id} aria-labelledby={`${s5!.id}-tittel`}>
+    <h2 id={`${s5!.id}-tittel`}>
+      <span class="seksjon-kode">{s5!.kode}</span>
+      {s5!.tittel}
+    </h2>
+
+    <Figur {...figur10} />
+
+    <div class="seksjon-tekst">
+      <h3>Hva figuren viser</h3>
+      <p>
+        Tre satellittprodukter har målt globalt brent areal, hvert over sin egen
+        periode. De ligger her i hver sin rute, med hver sin loddrette skala, og
+        er ikke tegnet oppå hverandre.
+      </p>
+      <p>
+        Tidsaksen er den samme i alle tre rutene. Da ser du hvor langt tilbake
+        hvert produkt rekker: FireCCILT11 begynner i <span
+          data-derivation="coverage.firecci_lt11_annual_burned_area.WLD"
+          >{dekningK8.first_year}</span
+        >, GFED5 i <span data-derivation="coverage.gfed5_annual_burned_area.WLD"
+          >{dekningK9.first_year}</span
+        >, Our World in Data i <span
+          data-derivation="coverage.owid_annual_area_burnt.WLD"
+          >{dekningK1.first_year}</span
+        >.
+      </p>
+      <p>
+        Inneværende år er markert som ufullstendig. Det er ikke omme, og verdien
+        dekker bare den delen av året som er gått.
+      </p>
+
+      <h3>Hvorfor rutene ikke kan leses mot hverandre</h3>
+      <p>
+        Høyden i én rute kan ikke sammenlignes med høyden i en annen. Hver rute
+        har sin egen skala, og produktene ligger dessuten på ulikt nivå for
+        samme år. I {NIVAA_AAR}, det siste året alle tre dekker, viser{" "}
+        {
+          nivaa.map((s, i) => (
+            <>
+              {i > 0 ? (i === nivaa.length - 1 ? " og " : ", ") : ""}
+              {s.navn}{" "}
+              <span data-derivation={s.id}>{tall(s.verdi)} km²</span>
+            </>
+          ))
+        }.
+      </p>
+      <p>
+        Forskjellen kommer av hva produktene ser. GFED5 tar med brent areal i
+        jordbruksland, torvmark og avskogingsområder som de andre produktene i
+        liten grad fanger opp. Nivåforskjellen er informasjon om hva målingene
+        ser, ikke om hvor mye som brant.
+      </p>
+      <p>
+        Vil du se de tre mot hverandre i samme år, står de i figuren øverst på
+        siden, der bruddene mellom dem er tegnet inn.
+      </p>
+
+      <h3>Trendene gjelder hver sin periode</h3>
+      <p>
+        FireCCILT11 stiger med <span
+          data-derivation="trend.firecci_lt11_annual_burned_area.WLD"
+          >{tall(Math.abs(trendK8.slope_per_decade as number))} km² per tiår fra{
+            " "
+          }{trendK8.first_year} til {trendK8.last_year} ({pverdi(
+            trendK8.p_value as number,
+          )})</span
+        >. GFED5 faller med <span data-derivation="trend.gfed5_annual_burned_area.WLD"
+          >{tall(Math.abs(trendK9.slope_per_decade as number))} km² per tiår fra{
+            " "
+          }{trendK9.first_year} til {trendK9.last_year} ({pverdi(
+            trendK9.p_value as number,
+          )})</span
+        >.
+      </p>
+      <p>
+        De to måler ikke de samme årene, og de måler ikke på samme måte. En
+        trend regnet på tvers av dem ville målt skiftet i produkt, ikke en
+        endring i verden.
+      </p>
+      <p data-derivation="coverage.owid_annual_area_burnt.WLD">
+        For Our World in Data er det ikke regnet noen trend. Serien har {
+          dekningK1.n_years
+        } hele år, og en global trend på så kort en serie flytter seg for mye når
+        ett år kommer til.
+      </p>
+    </div>
+
+    <Figur {...figur11} />
+
+    <div class="seksjon-tekst">
+      <h3>Hva de nasjonale seriene viser</h3>
+      <p>
+        To land har ført brannstatistikk lenger tilbake enn satellittene rekker.
+        Canada fra <span data-derivation="coverage.nbac_annual_burned_area.CAN"
+          >{trendK7.first_year}</span
+        >, USA fra <span data-derivation="coverage.nifc_annual_burned_area.USA"
+          >{trendK5.first_year}</span
+        >.
+      </p>
+      <p>
+        Begge er stiplet fordi tallene er rapportert av landene selv, ikke målt
+        fra satellitt. Hvert land følger sine egne definisjoner av hva som
+        telles, og de definisjonene er ikke de samme som satellittproduktenes.
+      </p>
+
+      <h3>Hva de to kan og ikke kan si</h3>
+      <p>
+        De to landene har hver sin rute og hver sin skala. Canada og USA er
+        ulikt store og har ulik natur, og figuren svarer ikke på hvem av dem som
+        brenner mest.
+      </p>
+      <p>
+        Serien for USA begynner der brannmyndighetene begynte å rapportere
+        systematisk. Eldre år finnes ikke — det betyr ikke at det ikke brant før
+        da.
+      </p>
+      <p>
+        Canadas database er verken komplett eller feilfri. Ikke alle branner er
+        kartlagt, og datakvaliteten varierer mellom byråene som rapporterer og
+        mellom år. Forbeholdene står nummerert under figuren.
+      </p>
+      <p>
+        USA stiger med <span data-derivation="trend.nifc_annual_burned_area.USA"
+          >{tall(Math.abs(trendK5.slope_per_decade as number))} km² per tiår ({pverdi(
+            trendK5.p_value as number,
+          )})</span
+        >, Canada med <span data-derivation="trend.nbac_annual_burned_area.CAN"
+          >{tall(Math.abs(trendK7.slope_per_decade as number))} km² per tiår ({pverdi(
+            trendK7.p_value as number,
+          )})</span
+        >. Hver trend er regnet innenfor sitt eget land og sin egen kilde.
+      </p>
+    </div>
+
+    <Figur {...figur12} />
+
+    <div class="seksjon-tekst">
+      <h3>Hva dette er, og hva det ikke er</h3>
+      <p>
+        Denne figuren måler ikke brent areal, og tallene er ikke
+        kvadratkilometer.
+      </p>
+      <p>
+        Når det brenner, faller det kullpartikler ned i innsjøer og legger seg i
+        bunnslammet. Forskere borer opp sedimentkjerner, teller kullpartiklene
+        lagvis og daterer lagene. Mye kull i et lag betyr at det brant mer i
+        området da laget ble avsatt. Et slikt indirekte spor kalles en <strong
+          >proxy</strong
+        >: den måler ikke det vi er ute etter, men noe som henger sammen med det.
+      </p>
+      <p data-derivation={`coverage.${"gcd_charcoal_composite"}.WLD`}>
+        Kurven er satt sammen av sedimentkjerner fra hele verden — {
+          tall(figur12.tetteste)
+        } av dem der grunnlaget er tettest. Hver kjerne har sin egen skala, for
+        noen innsjøer samler mer kull enn andre uansett hvor mye det brenner. Hver
+        kjerne er derfor omregnet til hvor mange standardavvik den ligger over
+        eller under sitt eget gjennomsnitt, og kurven er snittet av dem.
+      </p>
+      <p>
+        Derfor er den loddrette aksen enhetsløs. Verdien 0 betyr «midt på treet
+        for denne serien». Den betyr ikke at ingenting brant.
+      </p>
+
+      <h3>Hvorfor kurven ikke kan leses som brent areal over tid</h3>
+      <p>
+        Tre ting skiller den fra figurene over.
+      </p>
+      <p>
+        Den har ingen enhet. Et tall på 0,3 er ikke 0,3 av noe — det er en
+        avstand fra et gjennomsnitt.
+      </p>
+      <p>
+        Den har ingen nullpunkt for «ingen brann». En kurve i km² kan gå til
+        null. Denne kan ikke.
+      </p>
+      <p>
+        Hvert punkt er et glidende gjennomsnitt over 500 år til hver side. En
+        topp er ikke én brannsesong og ikke ett år; det er tusen år lagt sammen.
+        To punkter som ligger nær hverandre, bygger dessuten på mange av de
+        samme kjernene og er ikke uavhengige.
+      </p>
+      <p>
+        Av samme grunn er det ikke regnet noen trend for kurven. En
+        signifikanstest forutsetter at punktene er uavhengige, og her er de ikke
+        det — den ville målt glattingen.
+      </p>
+
+      <h3>Hvorfor kurven stopper der den gjør</h3>
+      <p>
+        Sedimentkjerner slutter der de ble hentet opp. Mot vår egen tid bygger
+        kurven derfor på færre og færre kjerner, og faller fra {
+          tall(figur12.tetteste)
+        } på det tetteste til {tall(figur12.yngsteKjerner)} i det yngste punktet.
+      </p>
+      <p>
+        Visningen stopper der grunnlaget tynnes ut, ved {figur12.til}. Det er
+        ikke fordi noe skjedde det året. Punktene finnes fortsatt i datasettet,
+        med antall kjerner bak hvert av dem, og kan lastes ned med figurens CSV.
+      </p>
+
+      <h3>Hvorfor de tre figurene ikke kan legges sammen</h3>
+      <p>
+        De tre figurene svarer på hvert sitt spørsmål, og ingen av dem kan leses
+        inn i en annen.
+      </p>
+      <p>
+        <strong>Satellittene</strong> måler areal direkte, over hele kloden, i førti
+        år.
+      </p>
+      <p>
+        <strong>De nasjonale seriene</strong> teller det landene selv har registrert,
+        i to land, i femti år.
+      </p>
+      <p>
+        <strong>Kullindeksen</strong> er et indirekte spor, uten enhet, over åtte
+        tusen år.
+      </p>
+      <p>
+        En kurve som gikk fra sedimenter til satellitter i én strek, ville sett
+        ut som én måling av verden gjennom åtte tusen år. Den finnes ikke.
       </p>
     </div>
   </section>
