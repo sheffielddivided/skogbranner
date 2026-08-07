@@ -58,7 +58,23 @@ export function dato(iso: string): string {
   return `${dag}. ${maaneder[maaned - 1]} ${aar}`;
 }
 
-/** Året i en ISO 8601-periode: «2026-W31» og «2026» gir begge 2026. */
+/**
+ * Året i en ISO 8601-periode: «2026-W31» og «2026» gir begge 2026.
+ *
+ * Årstallet kan bære fortegn — proxyen i K10 rekker ned før år null, og
+ * «-0500» er år 500 fvt (§ 6). Fortegnet må derfor være med i utsnittet.
+ */
 export function aarstall(periode: string): number {
-  return Number(periode.slice(0, 4));
+  const negativt = periode.startsWith("-");
+  return Number(periode.slice(0, negativt ? 5 : 4));
+}
+
+/**
+ * Årstallet slik leseren ser det: «6050 fvt» for negative år, ellers tallet.
+ *
+ * Oversettelsen fra kodeverdi til lesbar norsk tekst hører hjemme i
+ * visningslaget, ikke i dataene (§ 1).
+ */
+export function aarstallTekst(aar: number): string {
+  return aar < 0 ? `${Math.abs(aar)} fvt` : String(aar);
 }

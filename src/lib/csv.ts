@@ -35,14 +35,25 @@ function celle(verdi: string | number): string {
  *
  * Fotnotene skilles med semikolon, som i de kanoniske filene, fordi komma
  * allerede skiller kolonnene.
+ *
+ * ``n_series`` er et valgfritt felt som bare noen kilder fører (§ 6). Kolonnen
+ * legges til bakerst når figuren faktisk har den — som i den kanoniske filen —
+ * og utelates ellers, slik at den ikke står tom for alle de andre figurene.
  */
 export function tilCsv(observasjoner: Observasjon[]): string {
+  const harSerieantall = observasjoner.some((o) => o.n_series !== undefined);
+  const kolonner = harSerieantall ? [...KOLONNER, "n_series"] : [...KOLONNER];
+
   const rader = observasjoner.map((o) =>
-    KOLONNER.map((kolonne) =>
-      celle(
-        kolonne === "footnotes" ? o.footnotes.join(";") : (o[kolonne] as string | number),
-      ),
-    ).join(","),
+    kolonner
+      .map((kolonne) =>
+        celle(
+          kolonne === "footnotes"
+            ? o.footnotes.join(";")
+            : ((o[kolonne as keyof Observasjon] ?? "") as string | number),
+        ),
+      )
+      .join(","),
   );
-  return [KOLONNER.join(","), ...rader].join("\n") + "\n";
+  return [kolonner.join(","), ...rader].join("\n") + "\n";
 }

@@ -15,7 +15,7 @@
  * til seksjonen legges etter komponenten, ikke inni den.
  */
 import { kilde, fotnotetekst, kildestatus } from "../lib/data";
-import { dato } from "../lib/format";
+import { aarstallTekst, dato } from "../lib/format";
 
 interface Tabell {
   beskrivelse: string;
@@ -127,7 +127,7 @@ const kildene = kildeIder.map((kildeId) => {
       <p class="kildelinje">
         <span class="kildelinje-merke">Kilde</span>
         <a href={rad.k.url} rel="noreferrer">{rad.k.name}</a>.
-        Dekning i denne figuren: {rad.dekning.fra}–{rad.dekning.til}.
+        Dekning i denne figuren: {aarstallTekst(rad.dekning.fra)}–{aarstallTekst(rad.dekning.til)}.
         Data hentet {dato(rad.k.downloaded_at)}.
         Lisens: <a href={rad.k.license_url} rel="noreferrer">{rad.k.license}</a>.
       </p>

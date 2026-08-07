@@ -793,3 +793,18 @@ a:visited {
 .tegnforklaring-merke--bakgrunn {
   background: var(--farge-ingen-data);
 }
+
+/* --- Kullindeksen (S5, figur 14) --- */
+
+/* Kompositten tegnes i sin egen farge, ikke arealfargen: kurven skal ikke
+   ligne på en km²-serie (§ 6). */
+.tegnforklaring-merke--rekonstruert {
+  background: var(--farge-serie-c);
+}
+
+.tegnforklaring-merke--nullinje {
+  background: transparent;
+  border-top: 2px solid var(--farge-akse);
+  height: 0;
+  translate: 0 0.45rem;
+}

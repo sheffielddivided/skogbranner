@@ -15,6 +15,9 @@ import { kumulativUke } from "./kumulativUke";
 import { kartEuropa } from "./kartEuropa";
 import { landsammenligning } from "./landsammenligning";
 import { rangeringEuropa } from "./rangeringEuropa";
+import { globaleSerier } from "./globaleSerier";
+import { nasjonaleSerier } from "./nasjonaleSerier";
+import { kullindeks } from "./kullindeks";
 import type { Observasjon } from "../lib/data";
 
 export interface FigurData {
@@ -33,6 +36,9 @@ export const figurer: FigurData[] = [
   kartEuropa(),
   landsammenligning(),
   rangeringEuropa(),
+  globaleSerier(),
+  nasjonaleSerier(),
+  kullindeks(),
 ];
 
 export {
@@ -45,4 +51,7 @@ export {
   kartEuropa,
   landsammenligning,
   rangeringEuropa,
+  globaleSerier,
+  nasjonaleSerier,
+  kullindeks,
 };
