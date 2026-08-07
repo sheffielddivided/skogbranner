@@ -316,6 +316,48 @@ def dekning(serie, kode):
     )
 
 
+def felles_dekning(serier, kode):
+    """Årene alle seriene for én entitet dekker.
+
+    Flere serier kan måle det samme, hver over sin egen periode. Skal to av dem
+    sammenlignes i et enkeltår, må året være et år begge faktisk dekker — og
+    hvilket år det er, følger av dekningen, ikke av hva noen husker.
+
+    Overlappet er første år noen serie starter, seneste av startene, mot siste
+    år alle rekker. Serier uten rader for entiteten teller ikke med.
+
+    Returnerer None når færre enn to serier dekker entiteten, eller når de
+    ikke overlapper i det hele tatt.
+    """
+    dekkende = []
+    for serie_id, serie in sorted(serier.items()):
+        # «in» framfor oppslag: entities er en defaultdict, og et oppslag på en
+        # entitet serien ikke har, ville opprettet den som tom.
+        if kode not in serie["entities"]:
+            continue
+        punkter = _punkter(serie, kode)
+        if punkter:
+            dekkende.append((serie_id, punkter[0][0], punkter[-1][0]))
+
+    if len(dekkende) < 2:
+        return None
+
+    forste = max(d[1] for d in dekkende)
+    siste = min(d[2] for d in dekkende)
+    if forste > siste:
+        return None
+
+    return {
+        "kind": "coverage_overlap",
+        "entity": kode,
+        "series": [d[0] for d in dekkende],
+        "n_series": len(dekkende),
+        "first_year": forste,
+        "last_year": siste,
+        "n_years": siste - forste + 1,
+    }
+
+
 def rangering(serie, kode, aar):
     """«År X er nummer N av M år med data for enhet E.»
 
@@ -749,9 +791,27 @@ def avled(observasjoner):
         "anomaly": 0,
         "share_of_world": 0,
         "concentration": 0,
+        "coverage_overlap": 0,
         "area_comparison": 0,
         "always_zero_entities": 0,
     }
+
+    # Årene flere serier for samme indikator dekker samtidig. Et enkeltår som
+    # sammenligner to produkter, må være et år begge faktisk måler, og hvilket
+    # år det er, følger av dekningen (§ 7).
+    per_indikator = defaultdict(dict)
+    for serie_id, serie in serier.items():
+        per_indikator[serie["indicator"]][serie_id] = serie
+
+    for indikator, gruppe in sorted(per_indikator.items()):
+        entiteter = sorted({k for s in gruppe.values() for k in s["entities"]})
+        for kode in entiteter:
+            overlapp = felles_dekning(gruppe, kode)
+            if overlapp:
+                overlapp["indicator"] = indikator
+                overlapp["entity_name"] = navn.get(kode, kode)
+                avledninger[f"coverage_overlap.{indikator}.{kode}"] = overlapp
+                sammendrag["coverage_overlap"] += 1
 
     for serie_id, serie in sorted(serier.items()):
         siste = serie["last_complete_year"]

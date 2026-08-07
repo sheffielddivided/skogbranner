@@ -19,11 +19,15 @@ import { globaleSerier } from "./globaleSerier";
 import { nasjonaleSerier } from "./nasjonaleSerier";
 import { kullindeks } from "./kullindeks";
 import type { Observasjon } from "../lib/data";
+import { kontrollerKvalitetsbrudd } from "../lib/figurkontroll";
 
 export interface FigurData {
   id: string;
   csvFil: string;
   observasjoner: Observasjon[];
+  tegnforklaring?: { merke: string; tekst: string }[];
+  /** Kvalitet → teksten som forklarer hvordan den er skilt ut (§ 6). */
+  kvalitetsforklaring?: Record<string, string>;
 }
 
 export const figurer: FigurData[] = [
@@ -40,6 +44,11 @@ export const figurer: FigurData[] = [
   nasjonaleSerier(),
   kullindeks(),
 ];
+
+// Ingen figur skal tegne flere quality-verdier uten at bruddet er markert
+// (§ 6). Kontrollen kjører her, når listen bygges, slik at et brudd stopper
+// bygget i stedet for å bli publisert.
+kontrollerKvalitetsbrudd(figurer);
 
 export {
   overskriftstall,

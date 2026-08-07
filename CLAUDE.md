@@ -784,7 +784,14 @@ Regelen over håndheves i to lag, fordi ingen av dem ser hele bildet alene.
   **dataene** er gyldige: at hver serie har én `quality`, og at ingen
   `series_id` har blandede verdier.
 - **Byggesteget for siden** ser figurene. Det kontrollerer at **ingen figur**
-  tegner flere `quality`-verdier uten at bruddet er markert.
+  tegner flere `quality`-verdier uten at bruddet er markert. Kontrollen står i
+  `src/lib/figurkontroll.ts` og kjøres når figurlisten bygges, slik at et brudd
+  stopper bygget framfor å bli publisert.
+
+  En figur som blander kvaliteter, oppgir `kvalitetsforklaring`: én tekst per
+  kvalitet den tegner. Kontrollen krever at hver av dem faktisk står i figurens
+  tegnforklaring — en markering som bare finnes i koden, når ikke leseren, og
+  teller derfor ikke.
 
 En figur kan lovlig vise flere serier med ulik `quality` — S1s oversiktsfigur
 gjør nettopp det. Det `validate.py` ikke kan avgjøre, er om bruddet mellom dem
@@ -846,9 +853,21 @@ T5 forbyr.
 | Andel | Enhetens andel av globalt totaltall for gitt år |
 | Konsentrasjon | Andel av totalt brent areal fra de N største brannene eller landene |
 | Dekning | Første og siste år med data per enhet og serie |
+| Felles dekning | Årene alle seriene for én indikator og entitet dekker samtidig |
 | Arealsammenligning | Landet hvis landareal ligger nærmest en gitt arealverdi, valgt maskinelt fra Natural Earth-arealene (K6) |
 | Sesongprofil | Median brent areal per uke i året, over fullstendige år, per entitet |
 | Sesongbånd | Kumulativ kurve per uke: median og persentilbånd over fullstendige år |
+
+**Felles dekning** svarer på hvilke år to eller flere serier faktisk måler de
+samme årene. Skal et enkeltår sammenligne to produkter — som når S1 og S5 viser
+nivåforskjellen mellom satellittproduktene — må året være et år begge dekker,
+og hvilket år det er, følger av dekningen. Et årstall skrevet inn i en mal
+ville vært riktig den dagen det ble skrevet og stille galt den dagen en serie
+ble utvidet.
+
+Overlappet regnes per indikator, over de seriene som fører entiteten, og
+beregnes ikke når færre enn to serier gjør det eller når de ikke overlapper i
+det hele tatt.
 
 **Arealsammenligning** gir leseren en fysisk referanse for et tall i km², som
 ellers er vanskelig å forestille seg. Sammenligningslandet velges maskinelt
@@ -1395,8 +1414,10 @@ sluttbrukeravtale tas ikke inn før avtalen er avklart og notert i
   fasit. Kjøres med `python -m unittest discover -s etl -t .`
 - `etl/run.py` — de månedlige kildene. Én som feiler, tar ikke ned de andre
 - `etl/run_static.py` — pipelinen for de statiske kildene
-- `src/lib/visning.ts` — avgrensningen av kompositten, med test i
-  `visning.test.ts`. Kjøres med `npm test`
+- `src/lib/visning.ts` — avgrensningen av kompositten og sammenligneren for
+  perioder, med test i `visning.test.ts`. Kjøres med `npm test`
+- `src/lib/figurkontroll.ts` — byggekontrollen av kvalitetsbrudd per figur
+  (§ 6), med test i `figurkontroll.test.ts`
 - `src/lib/csv.ts` — figurens egen CSV, med test i `csv.test.ts`
 - `src/figurer/overskriftstall.ts` og `globaltBrentAreal.ts` — S1s to figurer
 - `src/figurer/kartBrentAreal.ts` og `rangering.ts` — S2s to figurer

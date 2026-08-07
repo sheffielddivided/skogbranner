@@ -229,6 +229,12 @@ export function landsammenligning() {
         tekst: "De øvrige landene, uten navn.",
       },
     ],
+    // Figuren tegner både measured og reported. Bruddet er markert med
+    // strekform, og markeringen står i tegnforklaringen (§ 6).
+    kvalitetsforklaring: {
+      measured: "Satellittkartlagt av EFFIS",
+      reported: "Rapportert av landet selv",
+    },
     // Avkryssingslista. Rekkefølgen er alfabetisk på norsk navn, slik at et
     // land kan finnes uten å vite hvor stort det er.
     land: koder.map((kode) => ({
