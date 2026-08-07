@@ -855,6 +855,7 @@ T5 forbyr.
 | Dekning | Første og siste år med data per enhet og serie |
 | Felles dekning | Årene alle seriene for én indikator og entitet dekker samtidig |
 | Arealsammenligning | Landet hvis landareal ligger nærmest en gitt arealverdi, valgt maskinelt fra Natural Earth-arealene (K6) |
+| Kartdekning | Hvor mange entiteter med tall som ikke har en egen flate på kartet, og hvilke to entiteter grensen går mellom |
 | Sesongprofil | Median brent areal per uke i året, over fullstendige år, per entitet |
 | Sesongbånd | Kumulativ kurve per uke: median og persentilbånd over fullstendige år |
 
@@ -879,6 +880,22 @@ Regelen garanterer at det finnes et sammenligningsland, ikke at det er et
 godt et. Landarealene ligger ujevnt fordelt, og et tall som havner i en luke
 mellom to land, får et sammenligningsland med stort avvik. Setningen skal
 derfor alltid ta med avviket, aldri bare navnet.
+
+**Kartdekning** svarer på hvor mange land som har et tall uten å ha en flate å
+tegne det på. Forenklingen av kartgeometrien tar bort de minste (§ 12), og de
+er for mange til å ramses opp ved navn — men antallet skal stå, for det er den
+ene kostnaden ved forenklingen leseren faktisk møter.
+
+Sammen med antallet oppgis ytterpunktene: det minste landet som ennå har en
+flate, og det største som ikke har det. Det er ikke et sorteringsspørsmål —
+grensen følger formen like mye som arealet, så det største uten flate kan godt
+være større enn det minste med. Nettopp derfor oppgis begge; ett tall alene
+ville sett ut som en terskel i km², og det finnes ingen slik terskel.
+
+Avledningen leser den kartgeometrien som lå der da ETL kjørte. Geometrien
+bygges i en egen jobb, så byggesteget teller etter, av den geometrien figuren
+faktisk tegner, og stopper hvis de to ikke er enige. Da kan et gammelt tall
+ikke bli stående etter at kartet er bygget på nytt.
 
 **Sesongprofil og sesongbånd** er de to avledningene S3 bygger på, og begge
 regnes uke for uke over fullstendige år.
@@ -1541,18 +1558,25 @@ borte. Europa-kartet tegner et nærmere utsnitt på samme flate og tåler derfor
 mindre.
 
 Filstørrelsen er en konsekvens av valget, ikke målet det er valgt etter. Den er
-heller ikke bare geometriens: hver kartfigur tegner geometrien åtte ganger — to
-visninger, hver i to størrelser, hver i to lag — så en fil på en halv megabyte
-blir flere megabyte DOM.
+heller ikke bare geometriens: hver kartfigur tegner geometrien fire ganger — to
+visninger, hver i to størrelser — så en fil på en halv megabyte blir flere
+megabyte DOM.
+
+**Hvert land tegnes én gang.** Et land uten rad får «ingen data»-fargen av
+fargeskalaens `unknown`, ikke av et eget lag under datalaget. De to lagene ga
+samme bilde, men la de samme banene i dokumentet to ganger, og nesten hvert
+land har en rad — så det andre laget var i praksis en kopi av det første.
 
 **Noen entiteter i `land_no.json` har ingen flate.** Ni av dem er aggregater —
 verden og regionene — som K6 ikke leverer geometri for. Resten er så små at de
 forsvinner i forenklingen: Monaco er 2 km², og ingen verdensmålestokk viser det.
-De har fortsatt tall i tabellen, og kartfiguren sier i klartekst hvilke det
-gjelder. Settet beregnes ved kjøring og står i `summary` i `verden.json`.
+De har fortsatt tall i tabellen. Settet beregnes ved kjøring og står i `summary`
+i `verden.json`.
 
 Antallet følger terskelen, og det er den ene kostnaden ved å forenkle som
-leseren faktisk får se. Europa-kartet har derfor en strengere grense enn
+leseren faktisk får se. Derfor sier verdenskartet hvor mange land det gjelder,
+som en avledning (§ 7) og ikke som en liste over navn — listen var blitt lang
+nok til å drukne det den skulle si. Europa-kartet har en strengere grense enn
 verdenskartet: det skal vise nøyaktig de landene EFFIS-serien dekker, så et
 EFFIS-land uten flate er ikke et akseptabelt utfall.
 

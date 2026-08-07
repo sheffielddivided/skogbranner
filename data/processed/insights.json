@@ -394,10 +394,11 @@
   "concentration": 164,
   "coverage_overlap": 310,
   "area_comparison": 3,
+  "map_area_coverage": 12,
   "always_zero_entities": 216,
   "season_week": 7,
   "season_band": 7,
-  "derivations": 5479
+  "derivations": 5491
  },
  "derivations": {
   "anomaly.cnfdb_annual_fire_count.CAN.2025": {
@@ -64648,6 +64649,246 @@
    "n_years": 14,
    "indicator": "burned_area_share_land",
    "entity_name": "Jemen"
+  },
+  "map_area_coverage.cnfdb_annual_fire_count.2025": {
+   "kind": "map_area_coverage",
+   "geometry": "verden.json",
+   "period": "2025",
+   "entities_with_value": 1,
+   "entities_with_area": 1,
+   "entities_without_area": 0,
+   "smallest_with_area": {
+    "entity": "CAN",
+    "entity_name": "Canada",
+    "land_area_km2": 9894494.08
+   },
+   "largest_without_area": null,
+   "series_id": "cnfdb_annual_fire_count",
+   "source_id": "K7",
+   "quality": "reported",
+   "indicator": "fire_count"
+  },
+  "map_area_coverage.effis_annual_country_fire_count.2024": {
+   "kind": "map_area_coverage",
+   "geometry": "verden.json",
+   "period": "2024",
+   "entities_with_value": 29,
+   "entities_with_area": 29,
+   "entities_without_area": 0,
+   "smallest_with_area": {
+    "entity": "CYP",
+    "entity_name": "Kypros",
+    "land_area_km2": 5736.53
+   },
+   "largest_without_area": null,
+   "series_id": "effis_annual_country_fire_count",
+   "source_id": "K3",
+   "quality": "reported",
+   "indicator": "fire_count"
+  },
+  "map_area_coverage.effis_annual_country_totals.2024": {
+   "kind": "map_area_coverage",
+   "geometry": "verden.json",
+   "period": "2024",
+   "entities_with_value": 29,
+   "entities_with_area": 29,
+   "entities_without_area": 0,
+   "smallest_with_area": {
+    "entity": "CYP",
+    "entity_name": "Kypros",
+    "land_area_km2": 5736.53
+   },
+   "largest_without_area": null,
+   "series_id": "effis_annual_country_totals",
+   "source_id": "K3",
+   "quality": "reported",
+   "indicator": "burned_area_km2"
+  },
+  "map_area_coverage.effis_rda_annual_burned_area.2025": {
+   "kind": "map_area_coverage",
+   "geometry": "verden.json",
+   "period": "2025",
+   "entities_with_value": 65,
+   "entities_with_area": 64,
+   "entities_without_area": 1,
+   "smallest_with_area": {
+    "entity": "MLT",
+    "entity_name": "Malta",
+    "land_area_km2": 325.64
+   },
+   "largest_without_area": {
+    "entity": "MAF",
+    "entity_name": "Saint-Martin (FR)",
+    "land_area_km2": 68.5
+   },
+   "series_id": "effis_rda_annual_burned_area",
+   "source_id": "K4",
+   "quality": "measured",
+   "indicator": "burned_area_km2"
+  },
+  "map_area_coverage.effis_rda_annual_burned_area_share_land.2025": {
+   "kind": "map_area_coverage",
+   "geometry": "verden.json",
+   "period": "2025",
+   "entities_with_value": 65,
+   "entities_with_area": 64,
+   "entities_without_area": 1,
+   "smallest_with_area": {
+    "entity": "MLT",
+    "entity_name": "Malta",
+    "land_area_km2": 325.64
+   },
+   "largest_without_area": {
+    "entity": "MAF",
+    "entity_name": "Saint-Martin (FR)",
+    "land_area_km2": 68.5
+   },
+   "series_id": "effis_rda_annual_burned_area_share_land",
+   "source_id": "K4",
+   "quality": "measured",
+   "indicator": "burned_area_share_land"
+  },
+  "map_area_coverage.firecci_lt11_annual_burned_area.2018": {
+   "kind": "map_area_coverage",
+   "geometry": "verden.json",
+   "period": "2018",
+   "entities_with_value": 244,
+   "entities_with_area": 214,
+   "entities_without_area": 30,
+   "smallest_with_area": {
+    "entity": "CXR",
+    "entity_name": "Christmasøya",
+    "land_area_km2": 99.12
+   },
+   "largest_without_area": {
+    "entity": "MNP",
+    "entity_name": "Nord-Marianene",
+    "land_area_km2": 581.29
+   },
+   "series_id": "firecci_lt11_annual_burned_area",
+   "source_id": "K8",
+   "quality": "beta",
+   "indicator": "burned_area_km2"
+  },
+  "map_area_coverage.gfed5_annual_burned_area.2020": {
+   "kind": "map_area_coverage",
+   "geometry": "verden.json",
+   "period": "2020",
+   "entities_with_value": 244,
+   "entities_with_area": 214,
+   "entities_without_area": 30,
+   "smallest_with_area": {
+    "entity": "CXR",
+    "entity_name": "Christmasøya",
+    "land_area_km2": 99.12
+   },
+   "largest_without_area": {
+    "entity": "MNP",
+    "entity_name": "Nord-Marianene",
+    "land_area_km2": 581.29
+   },
+   "series_id": "gfed5_annual_burned_area",
+   "source_id": "K9",
+   "quality": "measured",
+   "indicator": "burned_area_km2"
+  },
+  "map_area_coverage.nbac_annual_burned_area.2025": {
+   "kind": "map_area_coverage",
+   "geometry": "verden.json",
+   "period": "2025",
+   "entities_with_value": 1,
+   "entities_with_area": 1,
+   "entities_without_area": 0,
+   "smallest_with_area": {
+    "entity": "CAN",
+    "entity_name": "Canada",
+    "land_area_km2": 9894494.08
+   },
+   "largest_without_area": null,
+   "series_id": "nbac_annual_burned_area",
+   "source_id": "K7",
+   "quality": "reported",
+   "indicator": "burned_area_km2"
+  },
+  "map_area_coverage.nifc_annual_burned_area.2025": {
+   "kind": "map_area_coverage",
+   "geometry": "verden.json",
+   "period": "2025",
+   "entities_with_value": 1,
+   "entities_with_area": 1,
+   "entities_without_area": 0,
+   "smallest_with_area": {
+    "entity": "USA",
+    "entity_name": "USA",
+    "land_area_km2": 9447862.69
+   },
+   "largest_without_area": null,
+   "series_id": "nifc_annual_burned_area",
+   "source_id": "K5",
+   "quality": "reported",
+   "indicator": "burned_area_km2"
+  },
+  "map_area_coverage.nifc_annual_fire_count.2025": {
+   "kind": "map_area_coverage",
+   "geometry": "verden.json",
+   "period": "2025",
+   "entities_with_value": 1,
+   "entities_with_area": 1,
+   "entities_without_area": 0,
+   "smallest_with_area": {
+    "entity": "USA",
+    "entity_name": "USA",
+    "land_area_km2": 9447862.69
+   },
+   "largest_without_area": null,
+   "series_id": "nifc_annual_fire_count",
+   "source_id": "K5",
+   "quality": "reported",
+   "indicator": "fire_count"
+  },
+  "map_area_coverage.owid_annual_area_burnt.2025": {
+   "kind": "map_area_coverage",
+   "geometry": "verden.json",
+   "period": "2025",
+   "entities_with_value": 251,
+   "entities_with_area": 214,
+   "entities_without_area": 37,
+   "smallest_with_area": {
+    "entity": "CXR",
+    "entity_name": "Christmasøya",
+    "land_area_km2": 99.12
+   },
+   "largest_without_area": {
+    "entity": "MNP",
+    "entity_name": "Nord-Marianene",
+    "land_area_km2": 581.29
+   },
+   "series_id": "owid_annual_area_burnt",
+   "source_id": "K1",
+   "quality": "measured",
+   "indicator": "burned_area_km2"
+  },
+  "map_area_coverage.owid_annual_area_burnt_share_land.2025": {
+   "kind": "map_area_coverage",
+   "geometry": "verden.json",
+   "period": "2025",
+   "entities_with_value": 250,
+   "entities_with_area": 214,
+   "entities_without_area": 36,
+   "smallest_with_area": {
+    "entity": "CXR",
+    "entity_name": "Christmasøya",
+    "land_area_km2": 99.12
+   },
+   "largest_without_area": {
+    "entity": "MNP",
+    "entity_name": "Nord-Marianene",
+    "land_area_km2": 581.29
+   },
+   "series_id": "owid_annual_area_burnt_share_land",
+   "source_id": "K1",
+   "quality": "measured",
+   "indicator": "burned_area_share_land"
   },
   "rank.cnfdb_annual_fire_count.CAN.2025": {
    "series_id": "cnfdb_annual_fire_count",

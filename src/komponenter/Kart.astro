@@ -10,8 +10,8 @@
  * Kildelinje, fotnoter og tabell følger samme krav som enhver annen figur
  * (P5, P6), og lenken går til figurens egen CSV.
  */
-import { kilde, fotnotetekst } from "../lib/data";
-import { dato } from "../lib/format";
+import { kilde, fotnotetekst, type Avledning } from "../lib/data";
+import { dato, tall } from "../lib/format";
 
 interface Visning {
   nokkel: string;
@@ -36,14 +36,18 @@ interface Props {
   csvFil: string;
   fotnoter: string[];
   tabell: Tabell;
-  /** Entiteter med tall, men uten flate på kartet. Sies i klartekst under. */
-  utenGeometri: string[];
   /**
-   * Hvorfor de mangler flate. Verdenskartet utelater dem fordi de er for små
-   * til å tegnes; Europa-kartet fordi de ligger utenfor utsnittet. Grunnen er
-   * ikke den samme, og leseren skal få den rette.
+   * Land som er for små til å få en flate etter forenklingen av geometrien.
+   * De er for mange til å ramses opp, så antallet kommer fra en avledning og
+   * setningen bærer id-en (P3). Grensen illustreres med ytterpunktene.
    */
-  utenGeometriGrunn?: string;
+  utenFlate?: { avledning: string; dekning: Avledning };
+  /**
+   * Entiteter med tall som ligger utenfor kartets utsnitt. Det er en annen sak
+   * enn utenFlate — de har en flate, den er bare ikke i bildet — og de er få
+   * nok til at de kan nevnes ved navn.
+   */
+  utenGeometri?: string[];
 }
 
 const {
@@ -55,9 +59,20 @@ const {
   csvFil,
   fotnoter,
   tabell,
-  utenGeometri,
-  utenGeometriGrunn = "er for små til å tegnes i verdensmålestokk og har derfor ingen flate på kartet",
+  utenFlate,
+  utenGeometri = [],
 } = Astro.props;
+
+/** Ytterpunktene i avledningen, der de finnes. */
+const grense = utenFlate && {
+  antall: utenFlate.dekning.entities_without_area as number,
+  minsteMed: utenFlate.dekning.smallest_with_area as
+    | { entity_name: string; land_area_km2: number }
+    | null,
+  storsteUten: utenFlate.dekning.largest_without_area as
+    | { entity_name: string; land_area_km2: number }
+    | null,
+};
 
 const base = import.meta.env.BASE_URL;
 const csvUrl = `${base}data/figur/${csvFil}`;
@@ -111,9 +126,27 @@ const kildene = kildeIder.map((kildeId) => {
   </ul>
 
   {
+    grense && grense.antall > 0 && (
+      <p class="kart-merknad" data-derivation={utenFlate!.avledning}>
+        {grense.antall} land har brent areal, men er for små til å bli en egen
+        flate når kartet tegnes i verdensmålestokk. De står i tabellen.
+        {grense.minsteMed && grense.storsteUten && (
+          <>
+            {" "}Grensen følger formen like mye som arealet:{" "}
+            {grense.minsteMed.entity_name} er med på kartet med sine{" "}
+            {tall(grense.minsteMed.land_area_km2)} km², mens{" "}
+            {grense.storsteUten.entity_name}, som er{" "}
+            {tall(grense.storsteUten.land_area_km2)} km², ikke er det.
+          </>
+        )}
+      </p>
+    )
+  }
+
+  {
     utenGeometri.length > 0 && (
       <p class="kart-merknad">
-        Disse har tall i tabellen, men {utenGeometriGrunn}:{" "}
+        Disse har tall i tabellen, men ligger utenfor kartutsnittet:{" "}
         {utenGeometri.join(", ")}.
       </p>
     )

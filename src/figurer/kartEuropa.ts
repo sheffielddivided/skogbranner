@@ -115,28 +115,23 @@ function tegn(
         "var(--farge-kart-5)",
         "var(--farge-kart-6)",
       ].slice(0, brudd.length + 1),
+      unknown: "var(--farge-ingen-data)",
       legend: true,
       label: skalatekst,
       tickFormat: (d: number) => merkeformat(d),
     },
+    // Hvert land tegnes én gang, som på verdenskartet: «ingen data»-fargen
+    // kommer fra fargeskalaens unknown, ikke fra et eget lag under.
     marks: [
-      // Alle land tegnes først i «ingen data»-flaten. Et land uten måling skal
-      // ikke se ut som et land med lav verdi (§ 6).
       Plot.geo(data, {
-        fill: "var(--farge-ingen-data)",
+        fill: (d: { verdi: number | undefined }) => d.verdi,
         stroke: "var(--farge-kant)",
         strokeWidth: 0.3,
+        title: (d: { entity: string; verdi: number | undefined }) =>
+          d.verdi === undefined
+            ? `${entitetsnavn(d.entity)}: ingen data`
+            : `${entitetsnavn(d.entity)}: ${format(d.verdi)}`,
       }),
-      Plot.geo(
-        data.filter((d) => d.verdi !== undefined),
-        {
-          fill: (d: { verdi: number }) => d.verdi,
-          stroke: "var(--farge-kant)",
-          strokeWidth: 0.3,
-          title: (d: { entity: string; verdi: number }) =>
-            `${entitetsnavn(d.entity)}: ${format(d.verdi)}`,
-        },
-      ),
     ],
   });
 }

@@ -19,6 +19,7 @@ import {
   alleFotnoter,
   geometri,
   entitetsnavn,
+  avledning,
   type Observasjon,
 } from "../lib/data";
 import { tilSvg } from "../lib/plot";
@@ -72,24 +73,19 @@ function tegn(
     verdi: verdier.get(f.properties.entity),
   }));
 
+  // Hvert land tegnes én gang. Et land uten måling får «ingen data»-fargen av
+  // fargeskalaens unknown, ikke av et eget lag under — to lag ville lagt de
+  // samme banene i dokumentet to ganger uten at leseren så forskjell.
   const marks = [
-    // Alle land tegnes først i «ingen data»-flaten. Et land uten måling skal
-    // ikke se ut som et land med lav verdi (§ 6).
     Plot.geo(data, {
-      fill: "var(--farge-ingen-data)",
+      fill: (d: { verdi: number | undefined }) => d.verdi,
       stroke: "var(--farge-kant)",
       strokeWidth: 0.3,
+      title: (d: { entity: string; verdi: number | undefined }) =>
+        d.verdi === undefined
+          ? `${entitetsnavn(d.entity)}: ingen data`
+          : `${entitetsnavn(d.entity)}: ${format(d.verdi)}`,
     }),
-    Plot.geo(
-      data.filter((d) => d.verdi !== undefined),
-      {
-        fill: (d: { verdi: number }) => d.verdi,
-        stroke: "var(--farge-kant)",
-        strokeWidth: 0.3,
-        title: (d: { entity: string; verdi: number }) =>
-          `${entitetsnavn(d.entity)}: ${format(d.verdi)}`,
-      },
-    ),
   ];
 
   return tilSvg(id, {
@@ -109,6 +105,9 @@ function tegn(
         "var(--farge-kart-5)",
         "var(--farge-kart-6)",
       ].slice(0, brudd.length + 1),
+      // Fargen et land uten rad får. Den står også i tegnforklaringen, så
+      // leseren slipper å slutte seg til hva den blasse flaten betyr (§ 6).
+      unknown: "var(--farge-ingen-data)",
       legend: true,
       label: skalatekst,
       // Enheten står i skalateksten. Gjentatt på hvert merke ville merkene
@@ -186,11 +185,25 @@ export function kartBrentAreal() {
     .map(([kode]) => kode)
     .filter((kode) => brukte.has(kode));
 
-  const utenGeometri = new Set(
-    geometri().summary.missing_geometry.filter((kode) =>
-      areal.some((o) => o.entity === kode),
-    ),
-  );
+  // Hvor mange land som har tall uten å ha en flate, er en avledning (§ 7).
+  // Tallet skrives ikke her — det leses fra insights.json, og setningen bærer
+  // id-en (P3).
+  const dekningId = `map_area_coverage.${AREAL_SERIE}.${aar}`;
+  const kartdekning = avledning(dekningId);
+
+  // Avledningen er regnet mot geometrien slik den lå da ETL kjørte, og
+  // geometrien bygges i en egen jobb. Bygges den på nytt uten at derive.py
+  // kjøres etterpå, ville setningen fortsatt stå med det gamle tallet. Derfor
+  // telles det samme her, av den geometrien figuren faktisk tegner.
+  const medFlate = new Set(geometri().features.map((f) => f.properties.entity));
+  const utenFlate = areal.filter((o) => !medFlate.has(o.entity)).length;
+  if (utenFlate !== kartdekning.entities_without_area) {
+    throw new Error(
+      `Avledningen ${dekningId} sier ${kartdekning.entities_without_area} land ` +
+        `uten flate, men kartet tegner ${utenFlate}. Kjør derive.py på nytt ` +
+        "etter at kartgeometrien er bygget.",
+    );
+  }
 
   const andelPer = new Map(andel.map((o) => [o.entity, o.value]));
   const tabell = {
@@ -219,6 +232,6 @@ export function kartBrentAreal() {
     tabell,
     observasjoner,
     csvFil: `${ID}.csv`,
-    utenGeometri: [...utenGeometri].map((kode) => entitetsnavn(kode)).sort(),
+    utenFlate: { avledning: dekningId, dekning: kartdekning },
   };
 }

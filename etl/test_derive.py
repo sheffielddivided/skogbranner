@@ -413,6 +413,42 @@ class Avledninger(unittest.TestCase):
         self.assertIsNone(derive.arealsammenligning(0, {"NOR": 1.0}, {}))
         self.assertIsNone(derive.arealsammenligning(None, {"NOR": 1.0}, {}))
 
+    def kartserie(self):
+        serie = _serie({2020: 1.0})
+        for kode in ("SWE", "MCO", "SMR"):
+            serie["entities"][kode] = {"2020": {"value": 1.0, "ambiguous_zero": False}}
+            serie["names"][kode] = kode
+            serie["levels"][kode] = "country"
+        serie["entities"]["NOR"] = {"2020": {"value": 1.0, "ambiguous_zero": False}}
+        serie["entities"]["WLD"] = {"2020": {"value": 4.0, "ambiguous_zero": False}}
+        serie["names"]["WLD"] = "Verden"
+        serie["levels"]["WLD"] = "world"
+        return serie
+
+    def test_kartdekning_teller_land_uten_flate(self):
+        arealer = {"NOR": 320000.0, "SWE": 410000.0, "MCO": 2.0, "SMR": 61.0}
+        d = derive.kartdekning(
+            self.kartserie(), "2020", {"NOR", "SWE"}, arealer, {}
+        )
+        self.assertEqual(d["entities_with_value"], 4)
+        self.assertEqual(d["entities_with_area"], 2)
+        self.assertEqual(d["entities_without_area"], 2)
+        # Verdensraden er ikke et land og skal ikke telles med.
+        self.assertNotIn("WLD", (d["smallest_with_area"] or {}).get("entity", ""))
+
+    def test_kartdekning_viser_hvor_grensen_gaar(self):
+        arealer = {"NOR": 320000.0, "SWE": 410000.0, "MCO": 2.0, "SMR": 61.0}
+        d = derive.kartdekning(
+            self.kartserie(), "2020", {"NOR", "SWE"}, arealer, {}
+        )
+        self.assertEqual(d["smallest_with_area"]["entity"], "NOR")
+        self.assertEqual(d["largest_without_area"]["entity"], "SMR")
+
+    def test_kartdekning_uten_entiteter_i_aaret(self):
+        self.assertIsNone(
+            derive.kartdekning(self.kartserie(), "1999", {"NOR"}, {}, {})
+        )
+
 
 class HeleDatasettet(unittest.TestCase):
     """Kontroller som må holde for avledningene slik de faktisk publiseres."""
