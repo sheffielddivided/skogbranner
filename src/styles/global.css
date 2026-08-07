@@ -721,3 +721,75 @@ a:visited {
   opacity: 0.16;
   border: 1px solid var(--farge-serie);
 }
+
+/* --- Sammenligning av land (S4, figur 10) --- */
+
+/* Landene de valgte kurvene tegnes med. Paletten er kort, og navnet ved enden
+   av kurven skiller land som deler farge (§ 9). */
+:root {
+  --farge-land-1: #9a3412;
+  --farge-land-2: #1d4ed8;
+  --farge-land-3: #15803d;
+  --farge-land-4: #6d28d9;
+  --farge-land-5: #b45309;
+  --farge-land-6: #0f766e;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --farge-land-1: #fb923c;
+    --farge-land-2: #60a5fa;
+    --farge-land-3: #4ade80;
+    --farge-land-4: #c4b5fd;
+    --farge-land-5: #fcd34d;
+    --farge-land-6: #5eead4;
+  }
+}
+
+.land-valg {
+  border: 1px solid var(--farge-kant);
+  border-radius: 4px;
+  padding: 0.75rem 1rem 1rem;
+  margin: 0 0 1rem;
+}
+
+.land-valg legend {
+  padding: 0 0.4rem;
+  font-size: 0.9rem;
+  color: var(--farge-tekst-svak);
+}
+
+.land-valg-liste {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+  gap: 0.15rem 0.75rem;
+}
+
+.land-valg-boks {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* En avkryssingsboks som er slått av, har nådd grensen for antall land. Den
+   skal se utilgjengelig ut, ikke borte. */
+.land-valg-boks:has(input:disabled) {
+  color: var(--farge-tekst-svak);
+}
+
+.tegnforklaring-merke--maalt {
+  background: var(--farge-serie);
+}
+
+.tegnforklaring-merke--rapportert {
+  background: transparent;
+  border-top: 2px dashed var(--farge-serie);
+  height: 0;
+  translate: 0 0.45rem;
+}
+
+.tegnforklaring-merke--bakgrunn {
+  background: var(--farge-ingen-data);
+}

@@ -12,6 +12,9 @@ import { kartBrentAreal } from "./kartBrentAreal";
 import { rangering } from "./rangering";
 import { sesongprofil } from "./sesongprofil";
 import { kumulativUke } from "./kumulativUke";
+import { kartEuropa } from "./kartEuropa";
+import { landsammenligning } from "./landsammenligning";
+import { rangeringEuropa } from "./rangeringEuropa";
 import type { Observasjon } from "../lib/data";
 
 export interface FigurData {
@@ -27,6 +30,9 @@ export const figurer: FigurData[] = [
   rangering(),
   sesongprofil(),
   kumulativUke(),
+  kartEuropa(),
+  landsammenligning(),
+  rangeringEuropa(),
 ];
 
 export {
@@ -36,4 +42,7 @@ export {
   rangering,
   sesongprofil,
   kumulativUke,
+  kartEuropa,
+  landsammenligning,
+  rangeringEuropa,
 };

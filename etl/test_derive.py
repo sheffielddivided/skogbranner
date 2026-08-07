@@ -544,3 +544,52 @@ class Sesong(unittest.TestCase):
         self.assertEqual(d["complete_years"], [2020, 2021, 2022, 2023])
         self.assertEqual(d["incomplete_years"], [2026])
         self.assertEqual(d["n_weeks"], 9)
+
+
+class Persentilplass(unittest.TestCase):
+    """Hvilke ordningsverdier en persentil hviler på (§ 7)."""
+
+    def test_fjorten_aar_interpolerer_mellom_to(self):
+        # (14 - 1) * 0,10 = 1,3 → mellom indeks 1 og 2, altså det nest laveste
+        # og det tredje laveste året.
+        self.assertEqual(
+            derive.persentilplass(14, 10),
+            {"ranks": [2, 3], "interpolated": True, "from": "low"},
+        )
+
+    def test_hoy_persentil_telles_fra_toppen(self):
+        # (14 - 1) * 0,90 = 11,7 → indeks 11 og 12, som talt fra toppen er det
+        # nest høyeste og det tredje høyeste.
+        self.assertEqual(
+            derive.persentilplass(14, 90),
+            {"ranks": [2, 3], "interpolated": True, "from": "high"},
+        )
+
+    def test_treffer_en_observasjon_uten_interpolasjon(self):
+        # (11 - 1) * 0,10 = 1,0 → nøyaktig det nest laveste året.
+        self.assertEqual(
+            derive.persentilplass(11, 10),
+            {"ranks": [2], "interpolated": False, "from": "low"},
+        )
+
+    def test_ett_aar_har_bare_seg_selv(self):
+        self.assertEqual(
+            derive.persentilplass(1, 10),
+            {"ranks": [1], "interpolated": False, "from": "low"},
+        )
+
+    def test_plassen_stemmer_med_persentilen(self):
+        # Kontrollen som binder de to sammen: verdien persentil() gir, skal
+        # ligge mellom de årene persentilplass() peker på.
+        verdier = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 7]
+        sortert = sorted(verdier)
+        for p in (10, 90):
+            plass = derive.persentilplass(len(verdier), p)
+            v = derive.persentil(verdier, p)
+            if plass["from"] == "low":
+                grenser = [sortert[r - 1] for r in plass["ranks"]]
+            else:
+                grenser = [sortert[len(sortert) - r] for r in plass["ranks"]]
+            self.assertGreaterEqual(v, min(grenser))
+            self.assertLessEqual(v, max(grenser))
+

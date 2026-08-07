@@ -1,0 +1,218 @@
+---
+/**
+ * Figur med avkryssing av land (CLAUDE.md § 8, S4).
+ *
+ * Alle landenes kurver ligger ferdig tegnet i SVG-en. Avkryssingsboksene og
+ * CSS bestemmer hvilke som vises — ingen skript, og figuren virker med
+ * JavaScript slått av (§ 9). Uten støtte for :has() vises alle kurvene, som er
+ * en degradering leseren kan lese seg til av merkelappen over lista.
+ *
+ * Grensen på antall valgte land håndheves bare hvis skript kjører. Uten skript
+ * kan leseren krysse av flere, og figuren blir travel — den blir ikke feil.
+ *
+ * Kildelinje, fotnoter, tegnforklaring og tabell følger samme krav som enhver
+ * annen figur (P5, P6), og lenken går til figurens egen CSV.
+ */
+import { kilde, fotnotetekst } from "../lib/data";
+import { dato } from "../lib/format";
+
+interface Land {
+  kode: string;
+  navn: string;
+  valgt: boolean;
+}
+
+interface Tabell {
+  beskrivelse: string;
+  kolonner: string[];
+  rader: (string | number)[][];
+}
+
+interface Props {
+  id: string;
+  tittel: string;
+  svg: string;
+  svgMobil: string;
+  grafBeskrivelse: string;
+  kildeIder: string[];
+  dekningPerKilde: Record<string, { fra: number; til: number }>;
+  csvFil: string;
+  fotnoter: string[];
+  tegnforklaring: { merke: string; tekst: string }[];
+  land: Land[];
+  maksValgte: number;
+  tabell: Tabell;
+}
+
+const {
+  id,
+  tittel,
+  svg,
+  svgMobil,
+  grafBeskrivelse,
+  kildeIder,
+  dekningPerKilde,
+  csvFil,
+  fotnoter,
+  tegnforklaring,
+  land,
+  maksValgte,
+  tabell,
+} = Astro.props;
+
+const base = import.meta.env.BASE_URL;
+const csvUrl = `${base}data/figur/${csvFil}`;
+
+const kildene = kildeIder.map((kildeId) => {
+  const d = dekningPerKilde[kildeId]!;
+  return {
+    k: kilde(kildeId),
+    dekning: d.fra === d.til ? String(d.fra) : `${d.fra}–${d.til}`,
+  };
+});
+
+// Én regel per land: kurvene vises når landets boks er krysset av. Reglene
+// skrives ut her fordi klassenavnene kommer av dataene og ikke kan stå i en
+// statisk stilfil.
+const regler = land
+  .map(
+    (l) =>
+      `#${id}:has(#${id}-${l.kode}:checked) .land-${l.kode} { display: inline; }`,
+  )
+  .join("\n");
+---
+
+<figure class="figur figur-sammenligning" id={id}>
+  <figcaption class="figur-tittel">{tittel}</figcaption>
+
+  <fieldset class="land-valg">
+    <legend>
+      Velg inntil {maksValgte} land. Uten JavaScript kan du krysse av flere.
+    </legend>
+    <div class="land-valg-liste">
+      {
+        land.map((l) => (
+          <label class="land-valg-boks">
+            <input
+              type="checkbox"
+              id={`${id}-${l.kode}`}
+              name={`${id}-land`}
+              value={l.kode}
+              checked={l.valgt}
+            />
+            <span>{l.navn}</span>
+          </label>
+        ))
+      }
+    </div>
+  </fieldset>
+
+  <div class="figur-graf figur-graf-stor" role="img" aria-label={grafBeskrivelse}>
+    <Fragment set:html={svg} />
+  </div>
+  <div class="figur-graf figur-graf-liten" role="img" aria-label={grafBeskrivelse}>
+    <Fragment set:html={svgMobil} />
+  </div>
+
+  <ul class="tegnforklaring">
+    {
+      tegnforklaring.map((t) => (
+        <li>
+          <span class={`tegnforklaring-merke tegnforklaring-merke--${t.merke}`} aria-hidden="true" />
+          {t.tekst}
+        </li>
+      ))
+    }
+  </ul>
+
+  <div class="figur-kilde">
+    <p>
+      <strong>Kilde</strong>
+      {
+        kildene.map((kildeInfo, i) => (
+          <>
+            {i > 0 && <span> </span>}
+            <a href={kildeInfo.k.url} rel="noopener">
+              {kildeInfo.k.name}
+            </a>
+            <span>. Dekning i denne figuren: {kildeInfo.dekning}.</span>
+            <span> Data hentet {dato(kildeInfo.k.downloaded_at)}.</span>
+            <span> Lisens: {kildeInfo.k.license}.</span>
+          </>
+        ))
+      }
+    </p>
+    <p>
+      <strong>Tallene</strong>
+      <a href={csvUrl} download>Last ned figurens tall som CSV ({csvFil})</a>.
+      Filen inneholder nøyaktig de radene figuren tegner — alle landene, ikke
+      bare de som er krysset av.
+    </p>
+    {
+      kildene.some((k) => k.k.attribution) && (
+        <p>
+          <strong>Sitering</strong>
+          {kildene.map((k) => k.k.attribution).join(" ")}
+        </p>
+      )
+    }
+  </div>
+
+  {
+    fotnoter.length > 0 && (
+      <div class="figur-fotnoter">
+        <h4>Forbehold for denne figuren</h4>
+        <ol>
+          {fotnoter.map((kode) => (
+            <li id={`${id}-${kode}`}>{fotnotetekst(kode)}</li>
+          ))}
+        </ol>
+      </div>
+    )
+  }
+
+  <details class="figur-tabell">
+    <summary>Vis tallene som tabell</summary>
+    <p>{tabell.beskrivelse}</p>
+    <div class="tabell-ramme">
+      <table>
+        <thead>
+          <tr>{tabell.kolonner.map((k) => <th scope="col">{k}</th>)}</tr>
+        </thead>
+        <tbody>
+          {
+            tabell.rader.map((rad) => (
+              <tr>
+                {rad.map((celle, i) =>
+                  i === 0 ? <th scope="row">{celle}</th> : <td>{celle}</td>,
+                )}
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </details>
+</figure>
+
+<style is:global set:html={`
+.figur-sammenligning .land-serie { display: none; }
+${regler}
+`}></style>
+
+<script is:inline define:vars={{ id, maksValgte }}>
+  // Grensen på antall valgte land. Uten skript kan leseren krysse av flere, og
+  // figuren blir travel — den blir ikke feil. Skriptet er vårt eget og henter
+  // ingenting utenfra (T2).
+  (function () {
+    const figur = document.getElementById(id);
+    if (!figur) return;
+    const bokser = [...figur.querySelectorAll('input[type="checkbox"]')];
+    function oppdater() {
+      const valgte = bokser.filter((b) => b.checked).length;
+      for (const b of bokser) b.disabled = !b.checked && valgte >= maksValgte;
+    }
+    for (const b of bokser) b.addEventListener("change", oppdater);
+    oppdater();
+  })();
+</script>

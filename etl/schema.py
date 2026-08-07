@@ -148,6 +148,11 @@ COMPOSITE_MIN_SERIES_SHARE = 0.5
 #
 # Toleranse i grader. Ett desimalgrad er om lag 111 km ved ekvator.
 GEO_SIMPLIFY_TOLERANCE_DEG = 0.05
+
+# Europa-kartet i S4 tegner et mindre område på samme flate, så én piksel
+# dekker færre grader og forenklingen må være finere for at små land skal
+# beholde formen sin.
+GEO_EUROPE_SIMPLIFY_TOLERANCE_DEG = 0.02
 #
 # Antall desimaler koordinatene rundes til. Tre desimaler er om lag 100 meter.
 GEO_COORD_DECIMALS = 3
@@ -193,6 +198,8 @@ PROCESSED_FILE = {
     "effis_annual_country_totals": "burned_area",  # K3, rapportert areal
     "effis_annual_country_fire_count": "fire_count",  # K3, rapportert antall
     "effis_rda_annual_burned_area": "burned_area",  # K4, satellittkartlegging
+    # avledet av K4, nevner fra K6
+    "effis_rda_annual_burned_area_share_land": "burned_area_share_land",
     "nifc_annual_burned_area": "burned_area",  # K5
     "nifc_annual_fire_count": "fire_count",  # K5
     "nbac_annual_burned_area": "burned_area",  # K7
@@ -221,6 +228,7 @@ GEO_DIR = REPO_ROOT / "data" / "geo"
 
 LAND_AREA_JSON = GEO_DIR / "land_area_km2.json"
 GEO_WORLD_JSON = GEO_DIR / "verden.json"
+GEO_EUROPE_JSON = GEO_DIR / "europa.json"
 
 INSIGHTS_JSON = PROCESSED_DIR / "insights.json"
 

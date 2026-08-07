@@ -19,6 +19,11 @@ on:
         required: false
         default: false
         type: boolean
+      brann_prove:
+        description: "Sonder EFFIS for areal per brann i stedet for å kjøre ETL"
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   contents: write
@@ -60,11 +65,17 @@ jobs:
         if: ${{ inputs.uke_prove }}
         run: python -m etl.sources.k2_gwis --uke-prove
 
+      # Brannstørrelsesfordelingen i S4 trenger areal per brann. Hvor de
+      # tallene ligger, er ikke dokumentert — se k4_effis.sonder_branner().
+      - name: Sonder EFFIS for areal per brann
+        if: ${{ inputs.brann_prove }}
+        run: python -m etl.sources.k4_effis --brann-prove
+
       # Navnekilden først: normalize.py slår opp norske navn i land_no.json,
       # så en revisjon hos SSB må være på plass før observasjonene bygges.
       - name: Navnekilde — SSB Klass
         id: navn
-        if: ${{ !inputs.uke_prove }}
+        if: ${{ !inputs.uke_prove && !inputs.brann_prove }}
         continue-on-error: true
         run: python -m etl.sources.ssb_klass
 
@@ -74,7 +85,7 @@ jobs:
       # siden dato X (§ 4). Jobben markeres som feilet i siste steg.
       - name: Hent, normaliser, valider og publiser
         id: etl
-        if: ${{ !inputs.uke_prove }}
+        if: ${{ !inputs.uke_prove && !inputs.brann_prove }}
         continue-on-error: true
         run: python -m etl.run
 
@@ -91,7 +102,7 @@ jobs:
 
       - name: Se etter endringer
         id: endringer
-        if: ${{ !inputs.uke_prove }}
+        if: ${{ !inputs.uke_prove && !inputs.brann_prove }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

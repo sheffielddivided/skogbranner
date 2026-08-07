@@ -38,6 +38,12 @@ interface Props {
   tabell: Tabell;
   /** Entiteter med tall, men uten flate på kartet. Sies i klartekst under. */
   utenGeometri: string[];
+  /**
+   * Hvorfor de mangler flate. Verdenskartet utelater dem fordi de er for små
+   * til å tegnes; Europa-kartet fordi de ligger utenfor utsnittet. Grunnen er
+   * ikke den samme, og leseren skal få den rette.
+   */
+  utenGeometriGrunn?: string;
 }
 
 const {
@@ -50,6 +56,7 @@ const {
   fotnoter,
   tabell,
   utenGeometri,
+  utenGeometriGrunn = "er for små til å tegnes i verdensmålestokk og har derfor ingen flate på kartet",
 } = Astro.props;
 
 const base = import.meta.env.BASE_URL;
@@ -106,8 +113,7 @@ const kildene = kildeIder.map((kildeId) => {
   {
     utenGeometri.length > 0 && (
       <p class="kart-merknad">
-        Disse har tall i tabellen, men er for små til å tegnes i
-        verdensmålestokk og har derfor ingen flate på kartet:{" "}
+        Disse har tall i tabellen, men {utenGeometriGrunn}:{" "}
         {utenGeometri.join(", ")}.
       </p>
     )

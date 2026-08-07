@@ -23,6 +23,7 @@ Kjøres som modul fra repotoppen: ``python -m etl.sources.k4_effis``
 
 import hashlib
 import json
+import re
 import urllib.error
 import urllib.request
 from datetime import date, datetime, timezone
@@ -241,7 +242,96 @@ def skriv_status(status, melding, info=None):
         f.write("\n")
 
 
-def main():
+
+
+# Brannstørrelsesfordelingen S4 skal vise, krever areal per brann og ikke bare
+# landtotalen. Hvor de tallene ligger, er ikke dokumentert, og verten er ikke
+# nåbar fra en utviklingssesjon. Sonderingen kjøres i Actions og skriver ut hva
+# adressene faktisk svarer med, slik at en parser kan skrives mot noe kjent.
+# Se .github/workflows/etl.yml.
+KART_WFS = "https://maps.effis.emergency.copernicus.eu/gwis"
+
+
+def sonder_branner():
+    """Skriver ut hva EFFIS svarer med på areal per brann.
+
+    Henter ingenting inn i datasettet og skriver ingen filer.
+
+    Første runde ga 502 fra karttjenesten og 404 fra tre gjettede API-adresser.
+    Denne runden slutter å gjette: den ber først om API-ets egen beskrivelse,
+    og bruker WFS-parameternavnene som hører til hver versjon — 2.0.0 vil ha
+    ``typeNames``, 1.1.0 vil ha ``typename``. Feil navn gir en tjenestefeil som
+    ser ut som om laget ikke finnes.
+    """
+
+    def hent(navn, url, tegn=1500, tid=300):
+        print(f"\n=== {navn}\n{url}")
+        try:
+            forespoersel = urllib.request.Request(
+                url, headers={"User-Agent": BRUKERAGENT}
+            )
+            with urllib.request.urlopen(forespoersel, timeout=tid) as svar:
+                kropp = svar.read().decode("utf-8", "replace")
+            print(f"  status: {svar.status}, {len(kropp)} tegn")
+            return kropp
+        except Exception as e:  # noqa: BLE001 — sonderingen skal vise alt
+            print(f"  FEIL: {type(e).__name__}: {e}")
+            return None
+
+    def vis(navn, url, tegn=1500, tid=300):
+        kropp = hent(navn, url, tegn, tid)
+        if kropp:
+            print("  " + kropp[:tegn].replace("\n", "\n  "))
+
+    # 1. Har API-et en beskrivelse av seg selv? Da slipper vi å gjette adresser.
+    for sti in ("openapi.json", "docs", "statistics/openapi.json"):
+        kropp = hent(f"API {sti}", f"{API}/{sti}", tid=60)
+        if kropp and sti.endswith(".json"):
+            try:
+                spek = json.loads(kropp)
+                for vei in sorted(spek.get("paths", {})):
+                    print(f"    {vei}")
+                continue
+            except json.JSONDecodeError:
+                pass
+        if kropp:
+            print("  " + kropp[:800].replace("\n", "\n  "))
+
+    # 2. Lagnavnene i karttjenesten. Bare navnene, ikke hele dokumentet.
+    kropp = hent(
+        "WFS GetCapabilities",
+        f"{KART_WFS}?service=WFS&version=1.1.0&request=GetCapabilities",
+        tid=300,
+    )
+    if kropp:
+        navn = re.findall(r"<(?:wfs:)?Name>([^<]+)</(?:wfs:)?Name>", kropp)
+        print(f"  lag: {len(navn)}")
+        for n in navn[:60]:
+            print(f"    {n}")
+
+    # 3. Noen få rader. Parameternavnet følger versjonen — se docstringen.
+    for lag in ("ms:modis.ba.poly", "modis.ba.poly"):
+        vis(
+            f"WFS 1.1.0 {lag}",
+            f"{KART_WFS}?service=WFS&version=1.1.0&request=GetFeature"
+            f"&typename={lag}&maxFeatures=2&outputFormat=json",
+            2000,
+        )
+        vis(
+            f"WFS 2.0.0 {lag}",
+            f"{KART_WFS}?service=WFS&version=2.0.0&request=GetFeature"
+            f"&typeNames={lag}&count=2&outputFormat=json",
+            2000,
+        )
+
+    return None
+
+
+def main(argv=None):
+    import sys
+
+    if (argv or sys.argv[1:])[:1] == ["--brann-prove"]:
+        return sonder_branner()
     rader, info = hent()
     print(
         f"K4: {info['rows']} årsrader for {info['countries']} land, "

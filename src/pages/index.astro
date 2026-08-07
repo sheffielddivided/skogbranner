@@ -9,8 +9,8 @@
  * data/processed/insights.json, og setningen bærer id-en til avledningen i
  * data-derivation (P3).
  *
- * Foreløpig har bare S1 innhold. De øvrige står med overskrift og en merknad
- * om at de ikke er laget ennå.
+ * S1 til S4 har innhold. De øvrige står med overskrift og en merknad om at de
+ * ikke er laget ennå.
  */
 import Side from "../layouts/Side.astro";
 import Figur from "../komponenter/Figur.astro";
@@ -18,6 +18,7 @@ import Overskriftstall from "../komponenter/Overskriftstall.astro";
 import { seksjoner } from "../lib/seksjoner";
 import Kart from "../komponenter/Kart.astro";
 import Rangering from "../komponenter/Rangering.astro";
+import Sammenligning from "../komponenter/Sammenligning.astro";
 import {
   overskriftstall,
   globaltBrentAreal,
@@ -25,6 +26,9 @@ import {
   rangering,
   sesongprofil,
   kumulativUke,
+  kartEuropa,
+  landsammenligning,
+  rangeringEuropa,
 } from "../figurer";
 import { avledning, avledetTall } from "../lib/data";
 import { tall, pverdi, desimaltall } from "../lib/format";
@@ -35,6 +39,9 @@ const figur3 = kartBrentAreal();
 const figur4 = rangering();
 const figur5 = sesongprofil();
 const figur6 = kumulativUke();
+const figur7 = kartEuropa();
+const figur8 = landsammenligning();
+const figur9 = rangeringEuropa();
 
 // Konsentrasjonen navngir de største landene. Det er en tillatt avledning
 // (§ 7); en rangering av land mot hverandre er det ikke, og teksten sier
@@ -68,7 +75,7 @@ const aarFoer =
 const aarEtter =
   (dekningK9.last_year as number) - (dekningK8.last_year as number);
 
-const [s1, s2, s3, ...resten] = seksjoner;
+const [s1, s2, s3, s4, ...resten] = seksjoner;
 ---
 
 <Side
@@ -367,6 +374,13 @@ const [s1, s2, s3, ...resten] = seksjoner;
         }. til den {figur6.bandPct[1]}. persentilen: ett år av ti ligger over
         båndet, ett av ti under. Linjen inne i båndet er medianen.
       </p>
+      <p data-derivation={`season_band.gwis_weekly_burned_area.WLD`}>
+        {
+          figur6.bandKanter.interpolert
+            ? `Med ${figur6.grunnlagsaar.length} år hviler kantene av båndet på interpolasjon mellom to enkeltår: den nedre mellom ${figur6.bandKanter.nedre}, den øvre mellom ${figur6.bandKanter.ovre}.`
+            : `Med ${figur6.grunnlagsaar.length} år faller kantene av båndet sammen med enkeltår: den nedre på ${figur6.bandKanter.nedre}, den øvre på ${figur6.bandKanter.ovre}.`
+        } Båndet blir mer stabilt jo flere år serien får.
+      </p>
       <p>
         Båndet sier hvor et vanlig år pleier å ligge på dette tidspunktet i
         året, og hvor mye årene pleier å sprike. Det sier ingenting om hvorfor
@@ -385,6 +399,106 @@ const [s1, s2, s3, ...resten] = seksjoner;
         Uke 1 er ikke den samme datoen hvert år, og ukene forskyver seg med
         noen dager fra år til år. Kurvene svarer på når i sesongen noe skjedde,
         ikke på hvilken dato.
+      </p>
+    </div>
+  </section>
+
+  <section class="seksjon" id={s4!.id} aria-labelledby={`${s4!.id}-tittel`}>
+    <h2 id={`${s4!.id}-tittel`}>
+      <span class="seksjon-kode">{s4!.kode}</span>
+      {s4!.tittel}
+    </h2>
+
+    <Kart
+      {...figur7}
+      utenGeometriGrunn="ligger utenfor kartutsnittet"
+    />
+
+    <Sammenligning {...figur8} />
+
+    <Rangering {...figur9} />
+
+    <div class="seksjon-tekst">
+      <h3>Hva kartet viser</h3>
+      <p>
+        EFFIS kartlegger brent areal fra satellitt. Kartleggingen dekker
+        Europa, Midtøsten og Nord-Afrika, og kartet viser hele det området —
+        seksjonen heter Europa, men kilden stopper ikke ved Europas grense, og
+        å klippe bort resten ville skjult hvor tallene kommer fra.
+      </p>
+      <p>
+        Det siste året som er omme, er {figur7.aar}. Inneværende år er ikke med
+        i kartet: et år som ikke er slutt, ville sett ut som et lavt år.
+      </p>
+
+      <h3>Hvordan de to visningene skiller seg</h3>
+      <p>
+        Den ene visningen er brent areal i kvadratkilometer. Den svarer på hvor
+        mye som brant. Den andre er det samme arealet delt på landets samlede
+        landareal, vist i prosent. Den svarer på hvor stor del av landet som
+        brant. Fargen står for verdien i den visningen bryteren står på — jo
+        sterkere farge, jo høyere verdi.
+      </p>
+      <p>
+        De to gir ulik rekkefølge. Et stort land kan ha mye brent areal og
+        likevel en liten andel; et lite land kan ha lite areal og en stor
+        andel. Ingen av visningene er den riktige — de svarer på hvert sitt
+        spørsmål.
+      </p>
+      <p>
+        Landarealet i nevneren kommer fra Natural Earth, som også leverer
+        flatene på kartet.
+      </p>
+
+      <h3>Hvordan sammenligningen brukes</h3>
+      <p>
+        Kryss av for inntil {figur8.maksValgte} land. De valgte landene tegnes
+        med navn; de øvrige ligger blekt i bakgrunnen, slik at et land kan leses
+        mot resten uten at de andre forsvinner.
+      </p>
+      <p>
+        Uten JavaScript virker avkryssingen fortsatt, og tallene står i tabellen
+        under.
+      </p>
+      <p>
+        {figur8.maksValgte} land er krysset av på forhånd: de med størst brent
+        areal i det siste året som er omme. Utvalget er maskinelt og sier
+        ingenting om hvilke land som er interessante.
+      </p>
+
+      <h3>To serier fra samme kilde</h3>
+      <p>
+        EFFIS gir to sett tall for de samme landene, og de er ikke det samme.
+      </p>
+      <p>
+        Den stiplede linjen er tallene landene selv rapporterer inn. Hvert land
+        følger sine egne definisjoner av hva som telles som en skogbrann, og
+        serien starter i {figur8.dekningPerKilde.K3!.fra} — men med bare noen
+        få land. Flere kommer til utover i serien.
+      </p>
+      <p>
+        Den heltrukne linjen er EFFIS' egen satellittkartlegging fra {
+          figur8.dekningPerKilde.K4!.fra
+        }. Den er ikke rapportert av noen, og den følger én definisjon for alle
+        land.
+      </p>
+      <p>
+        De to er tegnet hver for seg og skjøtes aldri sammen. Ligger de på ulikt
+        nivå for samme land og år, er det fordi de måler ulikt — ikke fordi noe
+        endret seg det året.
+      </p>
+
+      <h3>Hva figurene ikke svarer på</h3>
+      <p>
+        Trender er regnet hver for seg, innenfor én kilde og én kvalitet, og
+        over hver sin periode. To serier for samme land kan derfor peke i hver
+        sin retning uten at noen av dem er regnet feil. En trend på tvers av de
+        to ville målt skiftet i metode.
+      </p>
+      <p>
+        Tabellen viser rekkefølgen mellom landene i det siste hele året.
+        Rekkefølgen er en sortering, ikke en avledning: siden rangerer år
+        innenfor ett land, ikke land mot hverandre.
       </p>
     </div>
   </section>

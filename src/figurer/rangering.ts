@@ -29,7 +29,8 @@ export interface Rad {
   /** null betyr at kilden ikke fører entiteten dette året — ingen data. */
   areal: number | null;
   andelLand: number | null;
-  andelVerden: number | null;
+  /** Utelatt der serien ikke har et verdenstall å regne mot. Se S4. */
+  andelVerden?: number | null;
   fotnoter: string[];
 }
 

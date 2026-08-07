@@ -37,6 +37,23 @@ interface Aarspunkt {
   verdi: number;
 }
 
+interface Kant {
+  ranks: number[];
+  interpolated: boolean;
+  from: "low" | "high";
+}
+
+/** «det nest laveste», «det tredje høyeste» — ordenstall fra nærmeste ende. */
+const ORDENSTALL = ["", "", "nest ", "tredje ", "fjerde ", "femte "];
+
+function kantOrd(kant: Kant): string {
+  const ende = kant.from === "low" ? "laveste" : "høyeste";
+  const ord = kant.ranks.map(
+    (r) => `det ${ORDENSTALL[r] ?? `${r}. `}${ende}`,
+  );
+  return ord.join(" og ");
+}
+
 function tegn(
   id: string,
   band: Baandpunkt[],
@@ -109,6 +126,7 @@ export function kumulativUke() {
     verdi: u.value,
   }));
 
+  const kanter = a.band_edges as { low: Kant; high: Kant };
   const grunnlagsaar = a.basis_years as number[];
   const fra = Math.min(...grunnlagsaar);
   const til = Math.max(...grunnlagsaar);
@@ -178,5 +196,12 @@ export function kumulativUke() {
     grunnlagsaar,
     inneverendeAar: ufullstendig?.year ?? null,
     bandPct: [lav, hoy] as [number, number],
+    // Hva kantene av båndet hviler på. Med få år ligger de mellom to enkeltår,
+    // og båndet er ikke fastere enn de to tillater (§ 7).
+    bandKanter: {
+      interpolert: kanter.low.interpolated || kanter.high.interpolated,
+      nedre: kantOrd(kanter.low),
+      ovre: kantOrd(kanter.high),
+    },
   };
 }
