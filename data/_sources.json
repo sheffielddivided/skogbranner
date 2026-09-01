@@ -19,9 +19,9 @@
       "temporal_resolution": "annual",
       "quality": "measured",
       "unit_source": "hectares",
-      "downloaded_at": "2026-08-06",
-      "source_last_updated": "2026-08-01",
-      "checksum": "a60fa5fded76cff4f7e76bc5f9e93e0f4bc2dc27a581914115d01808b6fab881",
+      "downloaded_at": "2026-09-01",
+      "source_last_updated": "2026-08-28",
+      "checksum": "1da8439220aa9d16646572cb098469aabb727490fceb43fe8b3f81e872bd2987",
       "series": [
         "owid_annual_area_burnt"
       ],
@@ -35,7 +35,7 @@
         "f_sensor_break",
         "f_min_fire_size"
       ],
-      "notes": "Area burnt by wildfires in hectares. The 2026 data is incomplete and was last updated 01 August 2026."
+      "notes": "Area burnt by wildfires in hectares. The 2026 data is incomplete and was last updated 28 August 2026."
     },
     "K2": {
       "source_id": "K2",
@@ -53,8 +53,8 @@
       "temporal_resolution": "annual og weekly",
       "quality": "measured",
       "unit_source": "hectares",
-      "downloaded_at": "2026-08-06",
-      "checksum": "044436f64aa11a9371b1eefdd3704e74a1a19315f71ec84e1aa7e4cd6438c778",
+      "downloaded_at": "2026-09-01",
+      "checksum": "24c69fc5d1797dad3ede94368590d5e2fb25aba013e27960786a8833c2110d36",
       "series": [
         "gwis_annual_burned_area",
         "gwis_weekly_burned_area"
@@ -69,8 +69,8 @@
       ],
       "notes": "Brukes til å kryssjekke K1, som er Our World in Datas bearbeiding av det samme grunnlaget. Avviksrapporten er et arbeidsverktøy og publiseres ikke. Ukesserien er hentet per land og summert til verdensdel og verden — kilden svarer ikke på sone i ukesendepunktet. Fullstendige år hentes ikke på nytt.",
       "weekly": {
-        "downloaded_at": "2026-08-06",
-        "checksum": "d05e700f673585fce400b33f444d4293cf5e15282b9f4f1ad5348ae2906f1cf9",
+        "downloaded_at": "2026-09-01",
+        "checksum": "f7a698ba48542fb083d332e6f27d9a5dd6073ba9be6399f395e2aeeef57f37f2",
         "requests": 256,
         "years_fetched": [
           2026
@@ -119,7 +119,7 @@
       "temporal_resolution": "annual",
       "quality": "reported",
       "unit_source": "hectares",
-      "downloaded_at": "2026-08-06",
+      "downloaded_at": "2026-09-01",
       "source_last_updated": "2024",
       "checksum": "bbc05c239e5d471700c2d440800c9c41318aaf74eaae7db82445557ab6c05a06",
       "series": [
@@ -155,8 +155,8 @@
       "temporal_resolution": "annual",
       "quality": "measured",
       "unit_source": "hectares",
-      "downloaded_at": "2026-08-06",
-      "checksum": "f93cb4d2b317b1f130d3b188268c7843d2ae467614318517a1936bfb4198812c",
+      "downloaded_at": "2026-09-01",
+      "checksum": "0df3b14a55cd49e77bbee11a76a840743d258f5dc45a2c2000d11a3cf8b38ca7",
       "series": [
         "effis_rda_annual_burned_area"
       ],
@@ -190,8 +190,8 @@
       "temporal_resolution": "annual",
       "quality": "reported",
       "unit_source": "acres",
-      "downloaded_at": "2026-08-06",
-      "checksum": "91168e3d376f76821b3ec86ba42935dc344c2f2a9852d7f7c8e406cf977987fc",
+      "downloaded_at": "2026-09-01",
+      "checksum": "a9603a19d107944fbf3b0b46cf78697c6889db8908a0e07406f3495e42c3da01",
       "series": [
         "nifc_annual_burned_area",
         "nifc_annual_fire_count"
@@ -224,7 +224,7 @@
       "temporal_resolution": "",
       "quality": "",
       "unit_source": "",
-      "downloaded_at": "2026-08-06",
+      "downloaded_at": "2026-09-01",
       "source_last_updated": null,
       "checksum": "45bebe2aaf8bf42b9daf4428594925bcb11eabd32fe9dc6e0acf681438053eb5",
       "series": [],
@@ -250,10 +250,10 @@
       "temporal_resolution": "annual",
       "quality": "reported",
       "unit_source": "hectares",
-      "downloaded_at": "2026-08-06",
+      "downloaded_at": "2026-09-01",
       "source_last_updated": "2026-05-13",
       "checksum": "9248134616e43740a596fce592e7ac72e0bd41334de831f4712a3f37cc2bcefc",
-      "fire_count_checksum": "1049fe47f07f347761659f41199da573731a3eae10111c6176744343678b76f4",
+      "fire_count_checksum": "aca57f774056a316118d8476c35f383301cba5206c45996072626742d5de60ef",
       "series": [
         "nbac_annual_burned_area",
         "cnfdb_annual_fire_count"

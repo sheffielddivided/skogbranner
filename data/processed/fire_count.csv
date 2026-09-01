@@ -65,7 +65,7 @@ CAN,Canada,country,2021,fire_count,6710,count,K7,cnfdb_annual_fire_count,reporte
 CAN,Canada,country,2022,fire_count,5658,count,K7,cnfdb_annual_fire_count,reported,f_reporting_basis;f_incomplete_inventory
 CAN,Canada,country,2023,fire_count,6837,count,K7,cnfdb_annual_fire_count,reported,f_reporting_basis;f_incomplete_inventory
 CAN,Canada,country,2024,fire_count,5844,count,K7,cnfdb_annual_fire_count,reported,f_reporting_basis;f_incomplete_inventory
-CAN,Canada,country,2025,fire_count,6199,count,K7,cnfdb_annual_fire_count,reported,f_reporting_basis;f_incomplete_inventory
+CAN,Canada,country,2025,fire_count,6215,count,K7,cnfdb_annual_fire_count,reported,f_reporting_basis;f_incomplete_inventory
 AUT,Østerrike,country,1993,fire_count,112,count,K3,effis_annual_country_fire_count,reported,f_reporting_basis;f_coverage_change
 AUT,Østerrike,country,1994,fire_count,105,count,K3,effis_annual_country_fire_count,reported,f_reporting_basis;f_coverage_change
 AUT,Østerrike,country,1995,fire_count,54,count,K3,effis_annual_country_fire_count,reported,f_reporting_basis;f_coverage_change
