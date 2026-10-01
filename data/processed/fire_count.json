@@ -1061,7 +1061,7 @@
   "level": "country",
   "period": "2025",
   "indicator": "fire_count",
-  "value": 6199,
+  "value": 6215,
   "unit": "count",
   "source_id": "K7",
   "series_id": "cnfdb_annual_fire_count",

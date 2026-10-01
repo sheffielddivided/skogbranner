@@ -12889,7 +12889,7 @@
   "level": "region",
   "period": "2026-W29",
   "indicator": "burned_area_km2",
-  "value": 33909.25,
+  "value": 33915.08,
   "unit": "km2",
   "source_id": "K2",
   "series_id": "gwis_weekly_burned_area",
@@ -12907,7 +12907,7 @@
   "level": "region",
   "period": "2026-W30",
   "indicator": "burned_area_km2",
-  "value": 41734.19,
+  "value": 41735.98,
   "unit": "km2",
   "source_id": "K2",
   "series_id": "gwis_weekly_burned_area",
@@ -12925,7 +12925,151 @@
   "level": "region",
   "period": "2026-W31",
   "indicator": "burned_area_km2",
-  "value": 40910.72,
+  "value": 46274.35,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "AFR",
+  "entity_name": "Afrika",
+  "level": "region",
+  "period": "2026-W32",
+  "indicator": "burned_area_km2",
+  "value": 46222.38,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "AFR",
+  "entity_name": "Afrika",
+  "level": "region",
+  "period": "2026-W33",
+  "indicator": "burned_area_km2",
+  "value": 57632.99,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "AFR",
+  "entity_name": "Afrika",
+  "level": "region",
+  "period": "2026-W34",
+  "indicator": "burned_area_km2",
+  "value": 58136.69,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "AFR",
+  "entity_name": "Afrika",
+  "level": "region",
+  "period": "2026-W35",
+  "indicator": "burned_area_km2",
+  "value": 56242.76,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "AFR",
+  "entity_name": "Afrika",
+  "level": "region",
+  "period": "2026-W36",
+  "indicator": "burned_area_km2",
+  "value": 37935.39,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "AFR",
+  "entity_name": "Afrika",
+  "level": "region",
+  "period": "2026-W37",
+  "indicator": "burned_area_km2",
+  "value": 44626.04,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "AFR",
+  "entity_name": "Afrika",
+  "level": "region",
+  "period": "2026-W38",
+  "indicator": "burned_area_km2",
+  "value": 20607.16,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "AFR",
+  "entity_name": "Afrika",
+  "level": "region",
+  "period": "2026-W39",
+  "indicator": "burned_area_km2",
+  "value": 19337.33,
   "unit": "km2",
   "source_id": "K2",
   "series_id": "gwis_weekly_burned_area",
@@ -25827,7 +25971,7 @@
   "level": "region",
   "period": "2026-W29",
   "indicator": "burned_area_km2",
-  "value": 852.96,
+  "value": 874.16,
   "unit": "km2",
   "source_id": "K2",
   "series_id": "gwis_weekly_burned_area",
@@ -25845,7 +25989,7 @@
   "level": "region",
   "period": "2026-W30",
   "indicator": "burned_area_km2",
-  "value": 1303.36,
+  "value": 1586.19,
   "unit": "km2",
   "source_id": "K2",
   "series_id": "gwis_weekly_burned_area",
@@ -25863,7 +26007,151 @@
   "level": "region",
   "period": "2026-W31",
   "indicator": "burned_area_km2",
-  "value": 2123.36,
+  "value": 3670.06,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "ASI",
+  "entity_name": "Asia",
+  "level": "region",
+  "period": "2026-W32",
+  "indicator": "burned_area_km2",
+  "value": 3177.15,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "ASI",
+  "entity_name": "Asia",
+  "level": "region",
+  "period": "2026-W33",
+  "indicator": "burned_area_km2",
+  "value": 6490.49,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "ASI",
+  "entity_name": "Asia",
+  "level": "region",
+  "period": "2026-W34",
+  "indicator": "burned_area_km2",
+  "value": 7297.3,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "ASI",
+  "entity_name": "Asia",
+  "level": "region",
+  "period": "2026-W35",
+  "indicator": "burned_area_km2",
+  "value": 7578.12,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "ASI",
+  "entity_name": "Asia",
+  "level": "region",
+  "period": "2026-W36",
+  "indicator": "burned_area_km2",
+  "value": 6283.5,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "ASI",
+  "entity_name": "Asia",
+  "level": "region",
+  "period": "2026-W37",
+  "indicator": "burned_area_km2",
+  "value": 9289.33,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "ASI",
+  "entity_name": "Asia",
+  "level": "region",
+  "period": "2026-W38",
+  "indicator": "burned_area_km2",
+  "value": 7195.8,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "ASI",
+  "entity_name": "Asia",
+  "level": "region",
+  "period": "2026-W39",
+  "indicator": "burned_area_km2",
+  "value": 5645.39,
   "unit": "km2",
   "source_id": "K2",
   "series_id": "gwis_weekly_burned_area",
@@ -38767,7 +39055,7 @@
   "level": "region",
   "period": "2026-W29",
   "indicator": "burned_area_km2",
-  "value": 4751.74,
+  "value": 8344.65,
   "unit": "km2",
   "source_id": "K2",
   "series_id": "gwis_weekly_burned_area",
@@ -38785,7 +39073,7 @@
   "level": "region",
   "period": "2026-W30",
   "indicator": "burned_area_km2",
-  "value": 3942.48,
+  "value": 5018.35,
   "unit": "km2",
   "source_id": "K2",
   "series_id": "gwis_weekly_burned_area",
@@ -38803,7 +39091,151 @@
   "level": "region",
   "period": "2026-W31",
   "indicator": "burned_area_km2",
-  "value": 6161.26,
+  "value": 12122.41,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "EUR",
+  "entity_name": "Europa",
+  "level": "region",
+  "period": "2026-W32",
+  "indicator": "burned_area_km2",
+  "value": 5769.72,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "EUR",
+  "entity_name": "Europa",
+  "level": "region",
+  "period": "2026-W33",
+  "indicator": "burned_area_km2",
+  "value": 10094.76,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "EUR",
+  "entity_name": "Europa",
+  "level": "region",
+  "period": "2026-W34",
+  "indicator": "burned_area_km2",
+  "value": 9532.04,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "EUR",
+  "entity_name": "Europa",
+  "level": "region",
+  "period": "2026-W35",
+  "indicator": "burned_area_km2",
+  "value": 2917.32,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "EUR",
+  "entity_name": "Europa",
+  "level": "region",
+  "period": "2026-W36",
+  "indicator": "burned_area_km2",
+  "value": 1928.53,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "EUR",
+  "entity_name": "Europa",
+  "level": "region",
+  "period": "2026-W37",
+  "indicator": "burned_area_km2",
+  "value": 1053.8,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "EUR",
+  "entity_name": "Europa",
+  "level": "region",
+  "period": "2026-W38",
+  "indicator": "burned_area_km2",
+  "value": 786.38,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "EUR",
+  "entity_name": "Europa",
+  "level": "region",
+  "period": "2026-W39",
+  "indicator": "burned_area_km2",
+  "value": 442.68,
   "unit": "km2",
   "source_id": "K2",
   "series_id": "gwis_weekly_burned_area",
@@ -51705,7 +52137,7 @@
   "level": "region",
   "period": "2026-W29",
   "indicator": "burned_area_km2",
-  "value": 8576.42,
+  "value": 9400.15,
   "unit": "km2",
   "source_id": "K2",
   "series_id": "gwis_weekly_burned_area",
@@ -51723,7 +52155,7 @@
   "level": "region",
   "period": "2026-W30",
   "indicator": "burned_area_km2",
-  "value": 5476.6,
+  "value": 6707.86,
   "unit": "km2",
   "source_id": "K2",
   "series_id": "gwis_weekly_burned_area",
@@ -51741,7 +52173,151 @@
   "level": "region",
   "period": "2026-W31",
   "indicator": "burned_area_km2",
-  "value": 2324.42,
+  "value": 3299.92,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "NAC",
+  "entity_name": "Nord-Amerika",
+  "level": "region",
+  "period": "2026-W32",
+  "indicator": "burned_area_km2",
+  "value": 2395.56,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "NAC",
+  "entity_name": "Nord-Amerika",
+  "level": "region",
+  "period": "2026-W33",
+  "indicator": "burned_area_km2",
+  "value": 2370.02,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "NAC",
+  "entity_name": "Nord-Amerika",
+  "level": "region",
+  "period": "2026-W34",
+  "indicator": "burned_area_km2",
+  "value": 2309.42,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "NAC",
+  "entity_name": "Nord-Amerika",
+  "level": "region",
+  "period": "2026-W35",
+  "indicator": "burned_area_km2",
+  "value": 721.16,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "NAC",
+  "entity_name": "Nord-Amerika",
+  "level": "region",
+  "period": "2026-W36",
+  "indicator": "burned_area_km2",
+  "value": 484.69,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "NAC",
+  "entity_name": "Nord-Amerika",
+  "level": "region",
+  "period": "2026-W37",
+  "indicator": "burned_area_km2",
+  "value": 703.23,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "NAC",
+  "entity_name": "Nord-Amerika",
+  "level": "region",
+  "period": "2026-W38",
+  "indicator": "burned_area_km2",
+  "value": 400.17,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "NAC",
+  "entity_name": "Nord-Amerika",
+  "level": "region",
+  "period": "2026-W39",
+  "indicator": "burned_area_km2",
+  "value": 499.5,
   "unit": "km2",
   "source_id": "K2",
   "series_id": "gwis_weekly_burned_area",
@@ -64643,7 +65219,7 @@
   "level": "region",
   "period": "2026-W29",
   "indicator": "burned_area_km2",
-  "value": 8848.17,
+  "value": 9008.1,
   "unit": "km2",
   "source_id": "K2",
   "series_id": "gwis_weekly_burned_area",
@@ -64661,7 +65237,7 @@
   "level": "region",
   "period": "2026-W30",
   "indicator": "burned_area_km2",
-  "value": 9571.88,
+  "value": 9797.53,
   "unit": "km2",
   "source_id": "K2",
   "series_id": "gwis_weekly_burned_area",
@@ -64679,7 +65255,151 @@
   "level": "region",
   "period": "2026-W31",
   "indicator": "burned_area_km2",
-  "value": 4152.99,
+  "value": 5205.84,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "OCE",
+  "entity_name": "Oseania",
+  "level": "region",
+  "period": "2026-W32",
+  "indicator": "burned_area_km2",
+  "value": 5645.34,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "OCE",
+  "entity_name": "Oseania",
+  "level": "region",
+  "period": "2026-W33",
+  "indicator": "burned_area_km2",
+  "value": 5158.47,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "OCE",
+  "entity_name": "Oseania",
+  "level": "region",
+  "period": "2026-W34",
+  "indicator": "burned_area_km2",
+  "value": 4102.62,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "OCE",
+  "entity_name": "Oseania",
+  "level": "region",
+  "period": "2026-W35",
+  "indicator": "burned_area_km2",
+  "value": 4514.73,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "OCE",
+  "entity_name": "Oseania",
+  "level": "region",
+  "period": "2026-W36",
+  "indicator": "burned_area_km2",
+  "value": 5836.41,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "OCE",
+  "entity_name": "Oseania",
+  "level": "region",
+  "period": "2026-W37",
+  "indicator": "burned_area_km2",
+  "value": 7122.27,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "OCE",
+  "entity_name": "Oseania",
+  "level": "region",
+  "period": "2026-W38",
+  "indicator": "burned_area_km2",
+  "value": 6934.29,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "OCE",
+  "entity_name": "Oseania",
+  "level": "region",
+  "period": "2026-W39",
+  "indicator": "burned_area_km2",
+  "value": 5827.1,
   "unit": "km2",
   "source_id": "K2",
   "series_id": "gwis_weekly_burned_area",
@@ -77581,7 +78301,7 @@
   "level": "region",
   "period": "2026-W29",
   "indicator": "burned_area_km2",
-  "value": 2468.72,
+  "value": 2485.07,
   "unit": "km2",
   "source_id": "K2",
   "series_id": "gwis_weekly_burned_area",
@@ -77599,7 +78319,7 @@
   "level": "region",
   "period": "2026-W30",
   "indicator": "burned_area_km2",
-  "value": 2757.84,
+  "value": 2761.1,
   "unit": "km2",
   "source_id": "K2",
   "series_id": "gwis_weekly_burned_area",
@@ -77617,7 +78337,151 @@
   "level": "region",
   "period": "2026-W31",
   "indicator": "burned_area_km2",
-  "value": 3058.42,
+  "value": 3695.43,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "SAM",
+  "entity_name": "Sør-Amerika",
+  "level": "region",
+  "period": "2026-W32",
+  "indicator": "burned_area_km2",
+  "value": 6474.05,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "SAM",
+  "entity_name": "Sør-Amerika",
+  "level": "region",
+  "period": "2026-W33",
+  "indicator": "burned_area_km2",
+  "value": 8212.05,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "SAM",
+  "entity_name": "Sør-Amerika",
+  "level": "region",
+  "period": "2026-W34",
+  "indicator": "burned_area_km2",
+  "value": 8881.03,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "SAM",
+  "entity_name": "Sør-Amerika",
+  "level": "region",
+  "period": "2026-W35",
+  "indicator": "burned_area_km2",
+  "value": 9654.26,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "SAM",
+  "entity_name": "Sør-Amerika",
+  "level": "region",
+  "period": "2026-W36",
+  "indicator": "burned_area_km2",
+  "value": 5520.11,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "SAM",
+  "entity_name": "Sør-Amerika",
+  "level": "region",
+  "period": "2026-W37",
+  "indicator": "burned_area_km2",
+  "value": 11335.41,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "SAM",
+  "entity_name": "Sør-Amerika",
+  "level": "region",
+  "period": "2026-W38",
+  "indicator": "burned_area_km2",
+  "value": 14874.19,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "SAM",
+  "entity_name": "Sør-Amerika",
+  "level": "region",
+  "period": "2026-W39",
+  "indicator": "burned_area_km2",
+  "value": 9633.84,
   "unit": "km2",
   "source_id": "K2",
   "series_id": "gwis_weekly_burned_area",
@@ -90519,7 +91383,7 @@
   "level": "world",
   "period": "2026-W29",
   "indicator": "burned_area_km2",
-  "value": 59407.26,
+  "value": 64027.21,
   "unit": "km2",
   "source_id": "K2",
   "series_id": "gwis_weekly_burned_area",
@@ -90537,7 +91401,7 @@
   "level": "world",
   "period": "2026-W30",
   "indicator": "burned_area_km2",
-  "value": 64786.35,
+  "value": 67607.01,
   "unit": "km2",
   "source_id": "K2",
   "series_id": "gwis_weekly_burned_area",
@@ -90555,7 +91419,151 @@
   "level": "world",
   "period": "2026-W31",
   "indicator": "burned_area_km2",
-  "value": 58731.17,
+  "value": 74268.01,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "2026-W32",
+  "indicator": "burned_area_km2",
+  "value": 69684.2,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "2026-W33",
+  "indicator": "burned_area_km2",
+  "value": 89960.23,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "2026-W34",
+  "indicator": "burned_area_km2",
+  "value": 90259.1,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "2026-W35",
+  "indicator": "burned_area_km2",
+  "value": 81628.35,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "2026-W36",
+  "indicator": "burned_area_km2",
+  "value": 57988.63,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "2026-W37",
+  "indicator": "burned_area_km2",
+  "value": 74130.08,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "2026-W38",
+  "indicator": "burned_area_km2",
+  "value": 50797.99,
+  "unit": "km2",
+  "source_id": "K2",
+  "series_id": "gwis_weekly_burned_area",
+  "quality": "measured",
+  "footnotes": [
+   "f_sensor_break",
+   "f_min_fire_size",
+   "f_product_level",
+   "f_incomplete_year"
+  ]
+ },
+ {
+  "entity": "WLD",
+  "entity_name": "Verden",
+  "level": "world",
+  "period": "2026-W39",
+  "indicator": "burned_area_km2",
+  "value": 41385.84,
   "unit": "km2",
   "source_id": "K2",
   "series_id": "gwis_weekly_burned_area",
