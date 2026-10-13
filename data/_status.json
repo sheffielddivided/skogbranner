@@ -2,66 +2,66 @@
   "schema_version": 1,
   "_skjema": "se CLAUDE.md § 6 og etl/schema.py",
   "_om": "Siste kjørestatus per kilde. Skrives av ETL, leses av byggetrinnet. Feiler en kilde, beholdes forrige datasett og siden viser en diskré merknad om at akkurat den serien ikke er oppdatert siden dato X. Rutenettkilder fører i tillegg unattributed_share og unattributed_km2: hvor mye brent areal som falt utenfor all landgeometri i kjøringen, slik at andelen kan følges over tid.",
-  "last_run": "2026-09-01T09:20:01+00:00",
+  "last_run": "2026-10-01T10:51:07+00:00",
   "sources": {
     "K1": {
       "status": "ok",
-      "last_attempt": "2026-09-01T09:11:51+00:00",
-      "last_success": "2026-09-01T09:11:51+00:00",
+      "last_attempt": "2026-10-01T10:44:12+00:00",
+      "last_success": "2026-10-01T10:44:12+00:00",
       "rows": 3900,
-      "checksum": "1da8439220aa9d16646572cb098469aabb727490fceb43fe8b3f81e872bd2987",
+      "checksum": "02a3e91299139312981967a6ee5967075c065480f2ed51257d47de0d02178e7c",
       "message": "hentet og normalisert"
     },
     "K2": {
-      "status": "ok",
-      "last_attempt": "2026-09-01T09:20:01+00:00",
-      "last_success": "2026-09-01T09:20:01+00:00",
-      "rows": 2684,
-      "checksum": "24c69fc5d1797dad3ede94368590d5e2fb25aba013e27960786a8833c2110d36",
-      "message": "16 avvik av 2495 sammenlignede",
+      "status": "failed",
+      "last_attempt": "2026-10-01T10:51:07+00:00",
+      "last_success": "2026-10-01T10:48:11+00:00",
+      "rows": 5369,
+      "checksum": "ea8453f34f8176f4a061167125bd091c3d02d9c33d3280523933291de117884c",
+      "message": "ValueError: Entiteter uten oppføring i data/geo/land_no.json: Antarctica (ATA), Clipperton Island (XCL), Paracel Islands (XPI), Spratly Islands (XSP)",
       "roles": {
         "weekly": {
           "status": "ok",
-          "last_attempt": "2026-09-01T09:15:28+00:00",
-          "rows": 5334,
+          "last_attempt": "2026-10-01T10:48:11+00:00",
+          "rows": 5369,
           "message": "hentet og normalisert"
         },
         "crosscheck": {
-          "status": "ok",
-          "last_attempt": "2026-09-01T09:20:01+00:00",
-          "rows": 2684,
-          "message": "16 avvik av 2495 sammenlignede"
+          "status": "failed",
+          "last_attempt": "2026-10-01T10:51:07+00:00",
+          "rows": null,
+          "message": "ValueError: Entiteter uten oppføring i data/geo/land_no.json: Antarctica (ATA), Clipperton Island (XCL), Paracel Islands (XPI), Spratly Islands (XSP)"
         }
       }
     },
     "K3": {
       "status": "ok",
-      "last_attempt": "2026-09-01T09:15:30+00:00",
-      "last_success": "2026-09-01T09:15:30+00:00",
+      "last_attempt": "2026-10-01T10:48:14+00:00",
+      "last_success": "2026-10-01T10:48:14+00:00",
       "rows": 1838,
       "checksum": "bbc05c239e5d471700c2d440800c9c41318aaf74eaae7db82445557ab6c05a06",
       "message": "hentet og normalisert"
     },
     "K4": {
       "status": "ok",
-      "last_attempt": "2026-09-01T09:17:55+00:00",
-      "last_success": "2026-09-01T09:17:55+00:00",
+      "last_attempt": "2026-10-01T10:48:46+00:00",
+      "last_success": "2026-10-01T10:48:46+00:00",
       "rows": 1365,
-      "checksum": "0df3b14a55cd49e77bbee11a76a840743d258f5dc45a2c2000d11a3cf8b38ca7",
+      "checksum": "b9c3829537cc5ef12daa15112ee510ada9f503fe5b33408cd8a926c903d7e732",
       "message": "hentet og normalisert"
     },
     "K5": {
       "status": "ok",
-      "last_attempt": "2026-09-01T09:17:56+00:00",
-      "last_success": "2026-09-01T09:17:56+00:00",
+      "last_attempt": "2026-10-01T10:48:47+00:00",
+      "last_success": "2026-10-01T10:48:47+00:00",
       "rows": 43,
-      "checksum": "a9603a19d107944fbf3b0b46cf78697c6889db8908a0e07406f3495e42c3da01",
+      "checksum": "7e214fb6117de02e8bf3d6dfc6d802a77c467df6a9de454b55e26ef7aea6a771",
       "message": "hentet og normalisert"
     },
     "K7": {
       "status": "ok",
-      "last_attempt": "2026-09-01T09:17:57+00:00",
-      "last_success": "2026-09-01T09:17:57+00:00",
+      "last_attempt": "2026-10-01T10:48:49+00:00",
+      "last_success": "2026-10-01T10:48:49+00:00",
       "rows": 121,
       "checksum": "9248134616e43740a596fce592e7ac72e0bd41334de831f4712a3f37cc2bcefc",
       "message": "hentet og normalisert"
