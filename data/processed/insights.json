@@ -50527,7 +50527,7 @@
    "incomplete_years": [
     2026
    ],
-   "n_weeks": 767
+   "n_weeks": 771
   },
   "coverage.gwis_weekly_burned_area.ASI": {
    "series_id": "gwis_weekly_burned_area",
@@ -50562,7 +50562,7 @@
    "incomplete_years": [
     2026
    ],
-   "n_weeks": 767
+   "n_weeks": 771
   },
   "coverage.gwis_weekly_burned_area.EUR": {
    "series_id": "gwis_weekly_burned_area",
@@ -50597,7 +50597,7 @@
    "incomplete_years": [
     2026
    ],
-   "n_weeks": 767
+   "n_weeks": 771
   },
   "coverage.gwis_weekly_burned_area.NAC": {
    "series_id": "gwis_weekly_burned_area",
@@ -50632,7 +50632,7 @@
    "incomplete_years": [
     2026
    ],
-   "n_weeks": 767
+   "n_weeks": 771
   },
   "coverage.gwis_weekly_burned_area.OCE": {
    "series_id": "gwis_weekly_burned_area",
@@ -50667,7 +50667,7 @@
    "incomplete_years": [
     2026
    ],
-   "n_weeks": 767
+   "n_weeks": 771
   },
   "coverage.gwis_weekly_burned_area.SAM": {
    "series_id": "gwis_weekly_burned_area",
@@ -50702,7 +50702,7 @@
    "incomplete_years": [
     2026
    ],
-   "n_weeks": 767
+   "n_weeks": 771
   },
   "coverage.gwis_weekly_burned_area.WLD": {
    "series_id": "gwis_weekly_burned_area",
@@ -50737,7 +50737,7 @@
    "incomplete_years": [
     2026
    ],
-   "n_weeks": 767
+   "n_weeks": 771
   },
   "coverage.nbac_annual_burned_area.CAN": {
    "series_id": "nbac_annual_burned_area",
@@ -85200,7 +85200,7 @@
    ],
    "incomplete_year": {
     "year": 2026,
-    "last_week": 39,
+    "last_week": 43,
     "weeks": [
      {
       "week": 1,
@@ -85340,23 +85340,39 @@
      },
      {
       "week": 35,
-      "value": 883999.4
+      "value": 883999.43
      },
      {
       "week": 36,
-      "value": 921934.79
+      "value": 921934.82
      },
      {
       "week": 37,
-      "value": 966560.83
+      "value": 966560.86
      },
      {
       "week": 38,
-      "value": 987167.99
+      "value": 987168.02
      },
      {
       "week": 39,
-      "value": 1006505.32
+      "value": 1007302.71
+     },
+     {
+      "week": 40,
+      "value": 1018913.72
+     },
+     {
+      "week": 41,
+      "value": 1033278.23
+     },
+     {
+      "week": 42,
+      "value": 1057565.99
+     },
+     {
+      "week": 43,
+      "value": 1082181.84
      }
     ]
    }
@@ -85778,7 +85794,7 @@
    ],
    "incomplete_year": {
     "year": 2026,
-    "last_week": 39,
+    "last_week": 43,
     "weeks": [
      {
       "week": 1,
@@ -85894,47 +85910,63 @@
      },
      {
       "week": 29,
-      "value": 196088.36
+      "value": 196088.95
      },
      {
       "week": 30,
-      "value": 197674.55
+      "value": 197675.28
      },
      {
       "week": 31,
-      "value": 201344.61
+      "value": 201359.27
      },
      {
       "week": 32,
-      "value": 204521.76
+      "value": 204536.42
      },
      {
       "week": 33,
-      "value": 211012.25
+      "value": 211028.2
      },
      {
       "week": 34,
-      "value": 218309.55
+      "value": 218485.4
      },
      {
       "week": 35,
-      "value": 225887.67
+      "value": 226688.82
      },
      {
       "week": 36,
-      "value": 232171.17
+      "value": 233125.53
      },
      {
       "week": 37,
-      "value": 241460.5
+      "value": 243274.77
      },
      {
       "week": 38,
-      "value": 248656.3
+      "value": 251549.09
      },
      {
       "week": 39,
-      "value": 254301.69
+      "value": 260487.06
+     },
+     {
+      "week": 40,
+      "value": 269275.87
+     },
+     {
+      "week": 41,
+      "value": 277504.07
+     },
+     {
+      "week": 42,
+      "value": 285577.02
+     },
+     {
+      "week": 43,
+      "value": 290921.96
      }
     ]
    }
@@ -86356,7 +86388,7 @@
    ],
    "incomplete_year": {
     "year": 2026,
-    "last_week": 39,
+    "last_week": 43,
     "weeks": [
      {
       "week": 1,
@@ -86508,11 +86540,27 @@
      },
      {
       "week": 38,
-      "value": 90289.85
+      "value": 90290.0
      },
      {
       "week": 39,
-      "value": 90732.53
+      "value": 90790.03
+     },
+     {
+      "week": 40,
+      "value": 91381.68
+     },
+     {
+      "week": 41,
+      "value": 92087.13
+     },
+     {
+      "week": 42,
+      "value": 92406.25
+     },
+     {
+      "week": 43,
+      "value": 93067.52
      }
     ]
    }
@@ -86934,7 +86982,7 @@
    ],
    "incomplete_year": {
     "year": 2026,
-    "last_week": 39,
+    "last_week": 43,
     "weeks": [
      {
       "week": 1,
@@ -87078,19 +87126,35 @@
      },
      {
       "week": 36,
-      "value": 83346.31
+      "value": 83346.39
      },
      {
       "week": 37,
-      "value": 84049.54
+      "value": 84056.12
      },
      {
       "week": 38,
-      "value": 84449.71
+      "value": 84456.29
      },
      {
       "week": 39,
-      "value": 84949.21
+      "value": 84898.68
+     },
+     {
+      "week": 40,
+      "value": 85304.77
+     },
+     {
+      "week": 41,
+      "value": 85689.0
+     },
+     {
+      "week": 42,
+      "value": 86371.74
+     },
+     {
+      "week": 43,
+      "value": 86759.89
      }
     ]
    }
@@ -87512,7 +87576,7 @@
    ],
    "incomplete_year": {
     "year": 2026,
-    "last_week": 39,
+    "last_week": 43,
     "weeks": [
      {
       "week": 1,
@@ -87656,19 +87720,35 @@
      },
      {
       "week": 36,
-      "value": 152372.71
+      "value": 152419.16
      },
      {
       "week": 37,
-      "value": 159494.98
+      "value": 159622.87
      },
      {
       "week": 38,
-      "value": 166429.27
+      "value": 166777.15
      },
      {
       "week": 39,
-      "value": 172256.37
+      "value": 174808.92
+     },
+     {
+      "week": 40,
+      "value": 182230.4
+     },
+     {
+      "week": 41,
+      "value": 190885.3
+     },
+     {
+      "week": 42,
+      "value": 203435.3
+     },
+     {
+      "week": 43,
+      "value": 211626.26
      }
     ]
    }
@@ -88090,7 +88170,7 @@
    ],
    "incomplete_year": {
     "year": 2026,
-    "last_week": 39,
+    "last_week": 43,
     "weeks": [
      {
       "week": 1,
@@ -88206,47 +88286,63 @@
      },
      {
       "week": 29,
-      "value": 75467.58
+      "value": 75468.94
      },
      {
       "week": 30,
-      "value": 78228.68
+      "value": 78230.04
      },
      {
       "week": 31,
-      "value": 81924.11
+      "value": 81925.47
      },
      {
       "week": 32,
-      "value": 88398.16
+      "value": 88405.26
      },
      {
       "week": 33,
-      "value": 96610.21
+      "value": 96617.31
      },
      {
       "week": 34,
-      "value": 105491.24
+      "value": 105492.77
      },
      {
       "week": 35,
-      "value": 115145.5
+      "value": 115146.99
      },
      {
       "week": 36,
-      "value": 120665.61
+      "value": 120667.1
      },
      {
       "week": 37,
-      "value": 132001.02
+      "value": 132005.39
      },
      {
       "week": 38,
-      "value": 146875.21
+      "value": 147475.35
      },
      {
       "week": 39,
-      "value": 156509.05
+      "value": 158807.09
+     },
+     {
+      "week": 40,
+      "value": 171857.08
+     },
+     {
+      "week": 41,
+      "value": 183137.53
+     },
+     {
+      "week": 42,
+      "value": 190574.44
+     },
+     {
+      "week": 43,
+      "value": 198729.68
      }
     ]
    }
@@ -88668,7 +88764,7 @@
    ],
    "incomplete_year": {
     "year": 2026,
-    "last_week": 39,
+    "last_week": 43,
     "weeks": [
      {
       "week": 1,
@@ -88784,47 +88880,63 @@
      },
      {
       "week": 29,
-      "value": 1067546.18
+      "value": 1067548.13
      },
      {
       "week": 30,
-      "value": 1135153.19
+      "value": 1135155.28
      },
      {
       "week": 31,
-      "value": 1209421.2
+      "value": 1209437.22
      },
      {
       "week": 32,
-      "value": 1279105.4
+      "value": 1279127.16
      },
      {
       "week": 33,
-      "value": 1369065.63
+      "value": 1369088.68
      },
      {
       "week": 34,
-      "value": 1459324.73
+      "value": 1459502.11
      },
      {
       "week": 35,
-      "value": 1540953.08
+      "value": 1541755.75
      },
      {
       "week": 36,
-      "value": 1598941.71
+      "value": 1599944.12
      },
      {
       "week": 37,
-      "value": 1673071.79
+      "value": 1675024.93
      },
      {
       "week": 38,
-      "value": 1723869.78
+      "value": 1727717.35
      },
      {
       "week": 39,
-      "value": 1765255.62
+      "value": 1777095.94
+     },
+     {
+      "week": 40,
+      "value": 1818964.97
+     },
+     {
+      "week": 41,
+      "value": 1862582.71
+     },
+     {
+      "week": 42,
+      "value": 1915932.19
+     },
+     {
+      "week": 43,
+      "value": 1963288.6
      }
     ]
    }
