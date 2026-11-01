@@ -2,33 +2,33 @@
   "schema_version": 1,
   "_skjema": "se CLAUDE.md § 6 og etl/schema.py",
   "_om": "Siste kjørestatus per kilde. Skrives av ETL, leses av byggetrinnet. Feiler en kilde, beholdes forrige datasett og siden viser en diskré merknad om at akkurat den serien ikke er oppdatert siden dato X. Rutenettkilder fører i tillegg unattributed_share og unattributed_km2: hvor mye brent areal som falt utenfor all landgeometri i kjøringen, slik at andelen kan følges over tid.",
-  "last_run": "2026-10-01T10:51:07+00:00",
+  "last_run": "2026-11-01T11:07:34+00:00",
   "sources": {
     "K1": {
       "status": "ok",
-      "last_attempt": "2026-10-01T10:44:12+00:00",
-      "last_success": "2026-10-01T10:44:12+00:00",
+      "last_attempt": "2026-11-01T11:02:39+00:00",
+      "last_success": "2026-11-01T11:02:39+00:00",
       "rows": 3900,
-      "checksum": "02a3e91299139312981967a6ee5967075c065480f2ed51257d47de0d02178e7c",
+      "checksum": "040991afbf3a929ac26029bc6ae440f7929a9b30878daa664692cf060b1aaee7",
       "message": "hentet og normalisert"
     },
     "K2": {
       "status": "failed",
-      "last_attempt": "2026-10-01T10:51:07+00:00",
+      "last_attempt": "2026-11-01T11:07:34+00:00",
       "last_success": "2026-10-01T10:48:11+00:00",
-      "rows": 5369,
-      "checksum": "ea8453f34f8176f4a061167125bd091c3d02d9c33d3280523933291de117884c",
+      "rows": 5397,
+      "checksum": "34e87d211cca8c2be1157744b27fe003bb4a0d5b6d74da3aab1486e1ced6d8eb",
       "message": "ValueError: Entiteter uten oppføring i data/geo/land_no.json: Antarctica (ATA), Clipperton Island (XCL), Paracel Islands (XPI), Spratly Islands (XSP)",
       "roles": {
         "weekly": {
           "status": "ok",
-          "last_attempt": "2026-10-01T10:48:11+00:00",
-          "rows": 5369,
+          "last_attempt": "2026-11-01T11:05:36+00:00",
+          "rows": 5397,
           "message": "hentet og normalisert"
         },
         "crosscheck": {
           "status": "failed",
-          "last_attempt": "2026-10-01T10:51:07+00:00",
+          "last_attempt": "2026-11-01T11:07:34+00:00",
           "rows": null,
           "message": "ValueError: Entiteter uten oppføring i data/geo/land_no.json: Antarctica (ATA), Clipperton Island (XCL), Paracel Islands (XPI), Spratly Islands (XSP)"
         }
@@ -36,32 +36,32 @@
     },
     "K3": {
       "status": "ok",
-      "last_attempt": "2026-10-01T10:48:14+00:00",
-      "last_success": "2026-10-01T10:48:14+00:00",
+      "last_attempt": "2026-11-01T11:05:38+00:00",
+      "last_success": "2026-11-01T11:05:38+00:00",
       "rows": 1838,
       "checksum": "bbc05c239e5d471700c2d440800c9c41318aaf74eaae7db82445557ab6c05a06",
       "message": "hentet og normalisert"
     },
     "K4": {
       "status": "ok",
-      "last_attempt": "2026-10-01T10:48:46+00:00",
-      "last_success": "2026-10-01T10:48:46+00:00",
+      "last_attempt": "2026-11-01T11:05:58+00:00",
+      "last_success": "2026-11-01T11:05:58+00:00",
       "rows": 1365,
-      "checksum": "b9c3829537cc5ef12daa15112ee510ada9f503fe5b33408cd8a926c903d7e732",
+      "checksum": "02a70764ea1761950a232d83da82da7559afaea80cabf6ea72fe37f0fd638771",
       "message": "hentet og normalisert"
     },
     "K5": {
       "status": "ok",
-      "last_attempt": "2026-10-01T10:48:47+00:00",
-      "last_success": "2026-10-01T10:48:47+00:00",
+      "last_attempt": "2026-11-01T11:05:58+00:00",
+      "last_success": "2026-11-01T11:05:58+00:00",
       "rows": 43,
-      "checksum": "7e214fb6117de02e8bf3d6dfc6d802a77c467df6a9de454b55e26ef7aea6a771",
+      "checksum": "c3a59cf729f720cf07838031da7e54ef5ba878e7317f83e82add5629764ee54a",
       "message": "hentet og normalisert"
     },
     "K7": {
       "status": "ok",
-      "last_attempt": "2026-10-01T10:48:49+00:00",
-      "last_success": "2026-10-01T10:48:49+00:00",
+      "last_attempt": "2026-11-01T11:05:59+00:00",
+      "last_success": "2026-11-01T11:05:59+00:00",
       "rows": 121,
       "checksum": "9248134616e43740a596fce592e7ac72e0bd41334de831f4712a3f37cc2bcefc",
       "message": "hentet og normalisert"
